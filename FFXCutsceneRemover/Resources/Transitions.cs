@@ -2,6 +2,7 @@
 
 namespace FFXCutsceneRemover.Resources
 {
+    /* This class contains most of the transitions. Transitions added here are automatically evalutated in the main loop. */
     static class Transitions
     {
         public static readonly Dictionary<GameState, Transition> StandardTransitions = new Dictionary<GameState, Transition>()

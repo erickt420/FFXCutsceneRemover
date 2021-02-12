@@ -6,6 +6,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
+/*
+ * Main loops for the Cutscene Remover program.
+ */
 namespace FFXCutsceneRemover
 {
     class CutsceneRemover
@@ -17,6 +20,7 @@ namespace FFXCutsceneRemover
         private Process Game;
 
         private bool InBossFight = false;
+        private Transition PostBossFightTransition;
 
         public void ConnectToTarget()
         {
@@ -85,21 +89,27 @@ namespace FFXCutsceneRemover
                         }
                     }
 
+                    /* Loop for post boss fights transitions. Once we enter the fight we set the boss bit and the transition
+                     * to perform once we exit the AP menu. */
                     Dictionary<GameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
-                    foreach (var transition in postBossBattleTransitions)
+                    if (!InBossFight)
                     {
-                        if (transition.Key.CheckState())
+                        foreach (var transition in postBossBattleTransitions)
                         {
-                            InBossFight = true;
-                            Console.WriteLine("Entered Boss Fight");
+                            if (transition.Key.CheckState())
+                            {
+                                InBossFight = true;
+                                PostBossFightTransition = transition.Value;
+                                Console.WriteLine("Entered Boss Fight");
+                            }
                         }
-
-                        if (InBossFight && new GameState { Menu = 0 }.CheckState() && MemoryWatchers.Menu.Old == 1)
-                        {
-                            transition.Value.Execute();
-                            InBossFight = false;
-                            Console.WriteLine("Executing Post Boss Fight Transition");
-                        }
+                    }
+                    else if (new GameState { Menu = 0 }.CheckState() && MemoryWatchers.Menu.Old == 1)
+                    {
+                        PostBossFightTransition.Execute();
+                        InBossFight = false;
+                        PostBossFightTransition = null;
+                        Console.WriteLine("Executing Post Boss Fight Transition");
                     }
 
                     // SPECIAL CHECKS

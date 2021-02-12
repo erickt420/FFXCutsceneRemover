@@ -32,6 +32,7 @@
     {
         public string Name;
         public int BaseAddress;
+        // For DeepPointers
         public int[] Offsets;
 
         public MemoryLocationData(string name, int baseAddress, int offset)

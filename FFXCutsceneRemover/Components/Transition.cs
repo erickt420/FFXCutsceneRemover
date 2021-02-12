@@ -4,6 +4,8 @@ using System.Diagnostics;
 
 namespace FFXCutsceneRemover
 {
+    /* Represents a change in current state of the game's memory. Create one of these objects
+     * with the values you care about, and Execute() will set the game's state to match this object. */
     class Transition 
     {
         private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
@@ -83,6 +85,8 @@ namespace FFXCutsceneRemover
                 }
                 else
                 {
+                    // To write to a deep pointer we need to dereference its pointer path.
+                    // Then we write to the final pointer.
                     IntPtr finalPointer;
                     if (!watcher.DeepPtr.DerefOffsets(process, out finalPointer))
                     {
@@ -93,6 +97,7 @@ namespace FFXCutsceneRemover
             }
         }
 
+        /* Set the force load bit. Will immediately cause a fade and load. */
         private void ForceGameLoad()
         {
             WriteValue<byte>(memoryWatchers.ForceLoad, 1);

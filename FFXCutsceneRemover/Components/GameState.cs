@@ -2,6 +2,9 @@
 
 namespace FFXCutsceneRemover
 {
+    /* Represents the current state of the game's memory. Create one of these objects
+     * with the values you care about, and CheckState() will evaluate to true when
+     * the game state matches this object. */
     class GameState
     {
         private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
