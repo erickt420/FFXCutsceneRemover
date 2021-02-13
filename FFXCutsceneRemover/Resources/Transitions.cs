@@ -53,6 +53,15 @@ namespace FFXCutsceneRemover.Resources
             // END OF BESAID
             // START OF SS LIKI
             { new GameState { RoomNumber = 301, Storyline = 220 }, new Transition { RoomNumber = 301, Storyline = 228, SpawnPoint = 256 } },    // Tidus goofing around
+                                           // Tidus learns about Braska
+                                           // Tidus talks to Wakka
+            { new GameState { RoomNumber = 61, Storyline = 244  }, new Transition {Storyline = 248, ForceLoad = true } },                       // Tidus talks to Yuna
+                                           // Sin arrives
+                                           // Post Sin Fin battle
+                                           // Tidus is gone
+                                           // Tidus gets hit by scales
+                                           // Post Echuilles
+            { new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 43, Storyline = 292, ForceLoad = true } },    // Kilika is destroyed
             // END OF SS LIKI
             // START OF KILIKA
             { new GameState { RoomNumber = 43, Storyline = 292 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0 } },        // Undocking in Kilika
