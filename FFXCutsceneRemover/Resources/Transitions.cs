@@ -53,13 +53,29 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110, ForceLoad = true } }, // Rikku suggests going to Luca                                        
             // END OF BAAJ TEMPLE
             // START OF BESAID
+            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { RoomNumber = 118, SpawnPoint = 0, ForceLoad = true} },        // Tidus wakes up in the sea
+                                            // Wakka pushes Tidus ( Wakka joins the party)
+            { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 73 }, new Transition { RoomNumber = 67, Storyline = 124, ForceLoad = true} }, // Wakka asks Tidus to join his team
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0 } },        // Wakka explains his life story
+            { new GameState { RoomNumber = 133, Storyline = 130, }, new Transition { RoomNumber = 17, Storyline = 134, SpawnPoint = 3 } },      // Tidus arrives at Besaid Village
             { new GameState { RoomNumber = 84, Storyline = 134 }, new Transition { RoomNumber = 84, Storyline = 136, SpawnPoint = 0 } },        // Tidus enters the temple
+            { new GameState { RoomNumber = 84, Storyline = 136, State = 1 }, new Transition { Storyline = 140, ForceLoad = true } },            // Tidus speaks to the priest
+                                            // Priest enters Wakka's tent
             { new GameState { RoomNumber = 191, Storyline = 152 }, new Transition { RoomNumber = 145, Storyline = 154, SpawnPoint = 0 } },      // Tidus dreams about a flashback
+            { new GameState { RoomNumber = 42, Storyline = 154, State = 1}, new Transition { RoomNumber = 122, Storyline = 162, ForceLoad = true} }, // Tidus goes back into the temple
+                                            // Wakka catches up with Tidus in trials
+            { new GameState { RoomNumber = 103, Storyline = 164}, new Transition { RoomNumber = 42, Storyline = 170, ForceLoad = true} },       // Tidus meets Lulu and Kimahri + FMV
             { new GameState { RoomNumber = 42, Storyline = 170 }, new Transition { RoomNumber = 42, Storyline = 172, SpawnPoint = 0 } },        // The gang leave the cloister of trials
+                                            // Valefor summon
+                                            // Tidus monologue after naming
+                                            // Tidus joins the Aurochs
+                                            // Tidus speaks to Yuna
             { new GameState { RoomNumber = 68, Storyline = 184 }, new Transition { RoomNumber = 60, Storyline = 200, SpawnPoint = 0 } },        // Tidus sleeping, FMV and chat with Wakka
             { new GameState { RoomNumber = 17, Storyline = 200 }, new Transition { RoomNumber = 69, Storyline = 210, SpawnPoint = 515 } },      // Yuna says goodbye to Besaid
             { new GameState { RoomNumber = 67, Storyline = 210 }, new Transition { RoomNumber = 67, Storyline = 214, SpawnPoint = 0 } },        // Yuna says goodbye to Besaid again
+                                            // Kimahri FMV
+                                            // Post-Kimahri battle
+            { new GameState { RoomNumber = 19, Storyline = 218, State = 0 }, new Transition { RoomNumber = 301, Storyline = 220, ForceLoad = true } }, // S.S. Liki departs
             // END OF BESAID
             // START OF SS LIKI
             { new GameState { RoomNumber = 301, Storyline = 220 }, new Transition { RoomNumber = 301, Storyline = 228, SpawnPoint = 256 } },    // Tidus goofing around
