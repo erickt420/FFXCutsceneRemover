@@ -5,11 +5,12 @@ namespace FFXCutsceneRemover.Resources
     /* This class contains most of the transitions. Transitions added here are automatically evalutated in the main loop. */
     static class Transitions
     {
-        public static readonly Dictionary<GameState, Transition> StandardTransitions = new Dictionary<GameState, Transition>()
+        public static readonly Dictionary<IGameState, Transition> StandardTransitions = new Dictionary<IGameState, Transition>()
         {
             // SPECIAL
             { new GameState { Input = 2304, BattleState = 10 },  new Transition { BattleState = 778, ForceLoad = false } },                     // End any battle by holding start + select
             { new GameState { RoomNumber = 348 }, new Transition { RoomNumber = 23 } },                                                         // Skip Intro
+            { new GameState { RoomNumber = 349 }, new Transition { RoomNumber = 23 } },                                                         // Skip Intro
             // START OF ZANARKAND
             { new GameState { RoomNumber = 132, Storyline = 0 }, new Transition { RoomNumber = 368, Storyline = 3, SpawnPoint = 0 } },          // Beginning
             { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false } },      // Fangirls or kids, whichever Tidus talks to second
@@ -94,7 +95,7 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 264, Storyline = 1315 }, new Transition { RoomNumber = 263, Storyline = 1418, SpawnPoint = 0 } },    // Inn Sleep
         };
 
-        public static readonly Dictionary<GameState, Transition> PostBossBattleTransitions = new Dictionary<GameState, Transition>()
+        public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1480, SpawnPoint = 2} } // Spherimorph
         };

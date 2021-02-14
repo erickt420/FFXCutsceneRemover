@@ -95,7 +95,6 @@ namespace FFXCutsceneRemover
 
 
             Watchers.Clear();
-            Watchers = new MemoryWatcherList();
             Watchers.AddRange(new List<MemoryWatcher>() { 
                     RoomNumber,
                     Storyline,

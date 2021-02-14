@@ -1,5 +1,11 @@
 ﻿namespace FFXCutsceneRemover.Resources
 {
+    /* Create MemoryLocationData objects for all of your new memory addresses. You can add a deep pointer by specifying 1 or
+     * more additional offsets. 
+     *      new MemoryLocationData(MemoryLocationNames.Example, 0x00F2FD00, 0x124);
+     *      
+     * To specify more than 1 additional offset, pass the additional offsets as an array:
+     *      new MemoryLocationData(MemoryLocationNames.Example, 0x00F2FD00, { 0x124, 0xD24, ... }); */
     static class MemoryLocations
     {
         public static MemoryLocationData RoomNumber = new MemoryLocationData(MemoryLocationNames.RoomNumber, 0xD2CA90);
@@ -24,6 +30,8 @@
         public static MemoryLocationData AuronOverdrives = new MemoryLocationData(MemoryLocationNames.AuronOverdrives, 0xD307FC);
         public static MemoryLocationData PartyMembers = new MemoryLocationData(MemoryLocationNames.PartyMembers, 0xD307E8);
         public static MemoryLocationData Sandragoras = new MemoryLocationData(MemoryLocationNames.Sandragoras, 0xD2CD4E);
+        
+        // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
         public static MemoryLocationData GuadoCount = new MemoryLocationData(MemoryLocationNames.GuadoCount, 0x00F2FF14, 0x120);
     }

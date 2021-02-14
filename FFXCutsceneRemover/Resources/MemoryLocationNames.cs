@@ -1,5 +1,7 @@
 ﻿namespace FFXCutsceneRemover.Resources
 {
+    /*  Try to give a memorable, meaningful name for new addresses
+     *  that you add. */
     public class MemoryLocationNames
     {
         public static string RoomNumber = "RoomNumber";

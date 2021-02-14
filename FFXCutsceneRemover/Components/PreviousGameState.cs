@@ -2,10 +2,10 @@
 
 namespace FFXCutsceneRemover
 {
-    /* Represents the current state of the game's memory. Create one of these objects
+    /* Represents the previous state of the game's memory. Create one of these objects
      * with the values you care about, and CheckState() will evaluate to true when
      * the game state matches this object. */
-    class GameState : IGameState
+    class PreviousGameState : IGameState
     {
         private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
 
@@ -41,28 +41,28 @@ namespace FFXCutsceneRemover
             process = memoryWatchers.Process;
             memoryWatchers.Watchers.UpdateAll(process);
 
-            return TestValue(RoomNumber, memoryWatchers.RoomNumber.Current) &&
-                TestValue(Storyline, memoryWatchers.Storyline.Current) &&
-                TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Current) &&
-                TestValue(BattleState, memoryWatchers.BattleState.Current) &&
-                TestValue(Input, memoryWatchers.Input.Current) &&
-                TestValue(Menu, memoryWatchers.Menu.Current) &&
-                TestValue(Intro, memoryWatchers.Intro.Current) &&
-                TestValue(State, memoryWatchers.State.Current) &&
-                TestValue(XCoordinate, memoryWatchers.XCoordinate.Current) &&
-                TestValue(YCoordinate, memoryWatchers.YCoordinate.Current) &&
-                TestValue(Camera, memoryWatchers.Camera.Current) &&
-                TestValue(CameraRotation, memoryWatchers.CameraRotation.Current) &&
-                TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Current) &&
-                TestValue(MovementLock, memoryWatchers.MovementLock.Current) &&
-                TestValue(MusicId, memoryWatchers.MusicId.Current) &&
-                TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
-                TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
-                TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
-                TestValue(PartyMembers, memoryWatchers.PartyMembers.Current) &&
-                TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
-                TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
-                TestValue(GuadoCount, memoryWatchers.GuadoCount.Current);
+            return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
+                TestValue(Storyline, memoryWatchers.Storyline.Old) &&
+                TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Old) &&
+                TestValue(BattleState, memoryWatchers.BattleState.Old) &&
+                TestValue(Input, memoryWatchers.Input.Old) &&
+                TestValue(Menu, memoryWatchers.Menu.Old) &&
+                TestValue(Intro, memoryWatchers.Intro.Old) &&
+                TestValue(State, memoryWatchers.State.Old) &&
+                TestValue(XCoordinate, memoryWatchers.XCoordinate.Old) &&
+                TestValue(YCoordinate, memoryWatchers.YCoordinate.Old) &&
+                TestValue(Camera, memoryWatchers.Camera.Old) &&
+                TestValue(CameraRotation, memoryWatchers.CameraRotation.Old) &&
+                TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Old) &&
+                TestValue(MovementLock, memoryWatchers.MovementLock.Old) &&
+                TestValue(MusicId, memoryWatchers.MusicId.Old) &&
+                TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Old) &&
+                TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Old) &&
+                TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Old) &&
+                TestValue(PartyMembers, memoryWatchers.PartyMembers.Old) &&
+                TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
+                TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
+                TestValue(GuadoCount, memoryWatchers.GuadoCount.Old);
 
         }
 

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
+/* Please don't mess with this. */
 namespace FFXCutsceneRemover.ComponentUtil
 {
     using SizeT = UIntPtr;
