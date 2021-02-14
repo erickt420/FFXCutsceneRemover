@@ -87,6 +87,12 @@ namespace FFXCutsceneRemover.Resources
             // END OF KILIKA
             // START OF SS WINNO
             { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SpawnPoint = 0 } },       // Opening scenes
+                                            // Tidus stands up
+                                            // Meet O'aka
+            { new GameState { RoomNumber = 94, Storyline = 380, State = 1 }, new Transition { Storyline = 380, SpawnPoint = 2, ForceLoad = true  } }, // Eavesdropping on Lulu and Wakka
+                                            // Tidus flashback about Jecht
+                                            // Tidus fails Jecht shot + Yuna arrives
+            { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, ForceLoad = true  } }, // Tidus speaks to Yuna
             // END OF WINNO
             // START OF LUCA
             { new GameState { RoomNumber = 121, Storyline = 508 }, new Transition { RoomNumber = 88, Storyline = 514, SpawnPoint = 0 } },       // Aurochs win the game
