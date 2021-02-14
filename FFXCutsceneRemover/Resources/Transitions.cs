@@ -132,7 +132,14 @@ namespace FFXCutsceneRemover.Resources
             // START OF MI'IHEN
             { new GameState { RoomNumber = 95, Storyline = 730 }, new Transition { RoomNumber = 95, Storyline = 750, SpawnPoint = 0 } },         // Tidus runs up the stairs
             { new GameState { RoomNumber = 58, Storyline = 750 }, new Transition { RoomNumber = 58, Storyline = 734, SpawnPoint = 0 } },         // Reset it back to avoid a sequence break!
+            { new GameState { RoomNumber = 58, Storyline = 734, State = 0 }, new Transition { RoomNumber = 171, Storyline = 755, ForceLoad = true } }, // Auron is tired
             { new GameState { RoomNumber = 112, Storyline = 755 }, new Transition { RoomNumber = 171, Storyline = 760, SpawnPoint = 0 } },       // Tidus chats with Yuna
+                                            // Tidus chats to a guy
+                                            // Meet Rin
+            { new GameState { RoomNumber = 58, Storyline = 767 }, new Transition { MiihenFlag = 1 } },       // To the chocobo corral
+                                            // Pre-Chocobo Eater
+                                            // Fall down the cliff
+            { new GameState { RoomNumber = 59, Storyline = 777 }, new Transition { Storyline = 787 } },       // Seymour helps out
             // END OF MI'IHEN
             // START OF MUSHROOM ROCK ROAD
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0 } },        // Tidus distrusts Seymour

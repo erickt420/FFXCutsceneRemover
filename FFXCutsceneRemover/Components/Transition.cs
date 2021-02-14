@@ -42,6 +42,8 @@ namespace FFXCutsceneRemover
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
 
+        public byte? MiihenFlag = null;
+
         public Transition()
         {
             process = memoryWatchers.Process;
@@ -78,6 +80,8 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
+
+            WriteValue(memoryWatchers.MiihenFlag, MiihenFlag);
 
             if (ForceLoad)
             {

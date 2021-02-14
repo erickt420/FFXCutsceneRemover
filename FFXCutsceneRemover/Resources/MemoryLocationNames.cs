@@ -31,5 +31,8 @@
 
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
+
+        public static string MiihenFlag = "MiihenFlag";
+
     }
 }
