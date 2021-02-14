@@ -45,6 +45,11 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
 
+        public MemoryWatcher<byte> EnableAuron;
+
+        public MemoryWatcher<byte> LucaFlag;
+        public MemoryWatcher<byte> LucaFlag2;
+
         MemoryWatchers() { }
 
         public static MemoryWatchers Instance
@@ -93,6 +98,10 @@ namespace FFXCutsceneRemover
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
 
+            EnableAuron = GetMemoryWatcher<byte>(MemoryLocations.EnableAuron);
+
+            LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
+            LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
 
             Watchers.Clear();
             Watchers = new MemoryWatcherList();
@@ -120,7 +129,10 @@ namespace FFXCutsceneRemover
                     PartyMembers,
                     Sandragoras,
                     HpEnemyA,
-                    GuadoCount
+                    GuadoCount,
+                    EnableAuron,
+                    LucaFlag,
+                    LucaFlag2
             });
         }
 

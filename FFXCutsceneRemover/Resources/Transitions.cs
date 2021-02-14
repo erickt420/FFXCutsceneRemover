@@ -95,7 +95,39 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, ForceLoad = true  } }, // Tidus speaks to Yuna
             // END OF WINNO
             // START OF LUCA
+            { new GameState { RoomNumber = 268, Storyline = 427, State = 0 }, new Transition { RoomNumber = 355, Storyline = 430, ForceLoad = true } }, // Seymour arrives
+            { new GameState { RoomNumber = 72, Storyline = 430, State = 0 }, new Transition { Storyline = 440, SpawnPoint = 1797, ForceLoad = true } }, // Yuna enters the changing room
+            { new GameState { RoomNumber = 72, Storyline = 440, State = 0 }, new Transition { RoomNumber = 123, Storyline = 450, SpawnPoint = 4, ForceLoad = true } }, // Speaking to the Al Bhed
+            { new GameState { RoomNumber = 123, Storyline = 450 }, new Transition { LucaFlag = 8 } }, // Camera pan
+            { new GameState { RoomNumber = 77, Storyline = 450 }, new Transition { Storyline = 455, SpawnPoint = 1 } }, // Crowd mob Yuna
+            { new GameState { RoomNumber = 104, Storyline = 455 }, new Transition { LucaFlag2 = 2 } }, // Tidus and Yuna talk about Luca
+            //{ new GameState { RoomNumber = 159, Storyline = 455 }, new Transition { RoomNumber = 77, Storyline = 492, SpawnPoint = 1, EnableYuna = 16, EnableWakka = 16, Formation = new byte[]{0x5, 0x0, 0x3, 0xFF, 0xFF} } }, // Tidus and Yuna go to the cafe
+                                            // Machina fights
+                                            // Looking at the scoreboard
+            { new GameState { RoomNumber = 121, Storyline = 492 }, new Transition { RoomNumber = 88, Storyline = 500 } },                       // Wakka takes a beating
+            { new GameState { RoomNumber = 88, Storyline = 500 }, new Transition { LucaFlag = 9 } },                                            // Wakka won't last
+            { new GameState { RoomNumber = 299, Storyline = 502 }, new Transition { RoomNumber = 113, Storyline = 502, ForceLoad = true } },    // They jump on the boat
+                                            // Pre-Oblitzerator
+                                            // Post-Oblitzerator
+                                            // Yuna is rescued
             { new GameState { RoomNumber = 121, Storyline = 508 }, new Transition { RoomNumber = 88, Storyline = 514, SpawnPoint = 0 } },       // Aurochs win the game
+            { new GameState { RoomNumber = 72, Storyline = 514  }, new Transition { Storyline = 518, LucaFlag = 11, SpawnPoint = 1797 } },      // Wakka is injured
+                                            // Wakka subs himself
+            { new GameState { RoomNumber = 72, Storyline = 520  }, new Transition { RoomNumber = 124, Storyline = 535, ForceLoad = true } },    // Lulu speaks to Wakka
+                                            // Pre-Blitzball
+            { new GameState { RoomNumber = 72, Storyline = 540  }, new Transition { RoomNumber = 347, Storyline = 560} },                       // Halftime talk
+                                            // Fans are getting impatient
+            { new GameState { RoomNumber = 250, Storyline = 565 }, new Transition { RoomNumber = 124, Storyline = 575} },                       // Wakka chants
+                                            // Wakka joins the game
+            { new GameState { RoomNumber = 250, Storyline = 582 }, new Transition { RoomNumber = 125, Storyline = 583} },                       // Aurochs win/lose the game
+                                            // Pre-Sahagin fight
+                                            // Post-Sahagin fight
+            { new GameState { RoomNumber = 57, Storyline = 588 }, new Transition { Storyline = 600} },                                          // Lulu what's happening
+                                            // Tidus and Wakka join Auron
+                                            // Seymour summon Anima + FMV
+            { new GameState { RoomNumber = 104, Storyline = 610  }, new Transition { RoomNumber = 89, Storyline = 617, SpawnPoint = 1, EnableAuron = 17 } },    // Wakka quits the Aurochs
+                                            // Tidus and Auron join the group
+            { new GameState { RoomNumber = 107, Storyline = 630, State = 0 }, new Transition { RoomNumber = 95, Storyline = 730, SpawnPoint = 256, ForceLoad = true } },    // HA HA HA HA
             // END OF LUCA
             // START OF MI'IHEN
             { new GameState { RoomNumber = 95, Storyline = 730 }, new Transition { RoomNumber = 95, Storyline = 750, SpawnPoint = 0 } },         // Tidus runs up the stairs

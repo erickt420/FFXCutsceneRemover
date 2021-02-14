@@ -26,6 +26,11 @@
         public static MemoryLocationData Sandragoras = new MemoryLocationData(MemoryLocationNames.Sandragoras, 0xD2CD4E);
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
         public static MemoryLocationData GuadoCount = new MemoryLocationData(MemoryLocationNames.GuadoCount, 0x00F2FF14, 0x120);
+
+        public static MemoryLocationData EnableAuron = new MemoryLocationData(MemoryLocationNames.EnableAuron, 0xD321B0);
+
+        public static MemoryLocationData LucaFlag = new MemoryLocationData(MemoryLocationNames.LucaFlag, 0xD2CDE5);
+        public static MemoryLocationData LucaFlag2 = new MemoryLocationData(MemoryLocationNames.LucaFlag2, 0xD2CDE4);
     }
 
     public struct MemoryLocationData

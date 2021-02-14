@@ -26,5 +26,10 @@
         public static string Sandragoras = "Sandragoras";
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
+
+        public static string EnableAuron = "EnableAuron";
+
+        public static string LucaFlag = "LucaFlag";
+        public static string LucaFlag2 = "LucaFlag2";
     }
 }
