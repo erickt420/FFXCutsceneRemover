@@ -16,11 +16,14 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 368, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0 } },          // Tidus leaves fans
             { new GameState { RoomNumber = 376, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 5, SpawnPoint = 0 } },          // Tidus looks at Jecht sign
             { new GameState { RoomNumber = 371, Storyline = 5 }, new Transition { RoomNumber = 370, Storyline = 7, SpawnPoint = 0 } },          // Tidus navigates through the crowd and Blitzball FMV
+                                                            // Tidus sees Auron
             { new GameState { RoomNumber = 366, Storyline = 8 }, new Transition { RoomNumber = 389, Storyline = 12, SpawnPoint = 0 } },         // Tidus sees the fayth and follows Auron
             //{ new GameState { RoomNumber = 389, Storyline = 14 }, new Transition { RoomNumber = 389, Storyline = 15, SpawnPoint = 0 } },        // Sinspawn Ammes? - NOT WORKING - This CS ends with a battle.
             { new GameState { RoomNumber = 367, Storyline = 16 }, new Transition { RoomNumber = 367, Storyline = 18, SpawnPoint = 0 } },        // Tidus sees Jecht sign again
+                                                            // Pre-Tanker
             { new GameState { RoomNumber = 367, Storyline = 19 }, new Transition { RoomNumber = 367, Storyline = 20, SpawnPoint = 0 } },        // Tidus and Auron run as bridge explodes
             { new GameState { RoomNumber = 367, Storyline = 20 }, new Transition { RoomNumber = 384, Storyline = 20, SpawnPoint = 0 } },        // "This is your story"
+                                                            // Tidus wakes up inside Sin
             { new GameState { RoomNumber = 384, Storyline = 20, State = 0 }, new Transition { RoomNumber = 385 } },                             // Tidus swimming looking at himself as a child
             { new GameState { RoomNumber = 385, Storyline = 20 }, new Transition { RoomNumber = 48, Storyline = 30, SpawnPoint = 0 } },         // A dream of being alone
             // END OF ZANARKAND
@@ -41,6 +44,13 @@ namespace FFXCutsceneRemover.Resources
                                             // Sphere Grid Tutorial
                                             // Rikku explains mission
             { new GameState { RoomNumber = 64, Storyline = 70 }, new Transition { RoomNumber = 64, Storyline = 74, SpawnPoint = 0 } },          // They enter the submerged ruins
+                                            // Tidus bashes the console
+                                            // Tidus bashes the machine + Tros arrives
+                                            // They leave the submerged ruins
+                                            // Lights come on in submerged ruins
+            { new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, ForceLoad = true } }, // Airship is shown     
+            { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, ForceLoad = true } }, // Tidus gets back onto the boat                                          
+            { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110, ForceLoad = true } }, // Rikku suggests going to Luca                                        
             // END OF BAAJ TEMPLE
             // START OF BESAID
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0 } },        // Wakka explains his life story
