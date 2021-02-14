@@ -64,12 +64,26 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 43, Storyline = 292, ForceLoad = true } },    // Kilika is destroyed
             // END OF SS LIKI
             // START OF KILIKA
-            { new GameState { RoomNumber = 43, Storyline = 292 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0 } },        // Undocking in Kilika
-            { new GameState { RoomNumber = 152, Storyline = 300 }, new Transition { RoomNumber = 152, Storyline = 302, SpawnPoint = 0 } },      // Tidus wakes up
-            { new GameState { RoomNumber = 18, Storyline = 308 }, new Transition { RoomNumber = 18, Storyline = 312, SpawnPoint = 0 } },        // Camera pan in Kilika Woods
-            { new GameState { RoomNumber = 65, Storyline = 315 }, new Transition { RoomNumber = 65, Storyline = 322, SpawnPoint = 0 } },        // Race up the stairs
-            { new GameState { RoomNumber = 78, Storyline = 328 }, new Transition { RoomNumber = 78, Storyline = 330, SpawnPoint = 1 } },        // Arrival at temple
-            { new GameState { RoomNumber = 96, Storyline = 330 }, new Transition { RoomNumber = 96, Storyline = 335, SpawnPoint = 0 } },        // Camera pan in Kilika Temple
+            { new GameState { RoomNumber = 43, Storyline = 292 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0 } },               // Undocking in Kilika
+            { new GameState { RoomNumber = 53, Storyline = 294, State = 0 }, new Transition { RoomNumber = 152, Storyline = 304, ForceLoad = true } }, // Sending
+            { new GameState { RoomNumber = 152, Storyline = 300 }, new Transition { RoomNumber = 152, Storyline = 302, SpawnPoint = 0 } },             // Tidus wakes up
+            { new GameState { RoomNumber = 16, Storyline = 304, State = 1 }, new Transition { Storyline = 308, SpawnPoint = 2, ForceLoad = true } },   // Tidus speaks to Wakka
+            { new GameState { RoomNumber = 18, Storyline = 308 }, new Transition { RoomNumber = 18, Storyline = 312, SpawnPoint = 0 } },               // Camera pan in Kilika Woods
+            { new GameState { RoomNumber = 65, Storyline = 315 }, new Transition { RoomNumber = 65, Storyline = 322, SpawnPoint = 0 } },               // Race up the stairs
+                                            // Pre-Geneaux?
+                                            // Post-Geneaux?
+                                            // Tidus is tired
+            { new GameState { RoomNumber = 65, Storyline = 326, State = 1 }, new Transition { RoomNumber = 78, Storyline = 328, SpawnPoint = 1, ForceLoad = true } }, // No replacement for Chappu
+            { new GameState { RoomNumber = 78, Storyline = 328 }, new Transition { RoomNumber = 78, Storyline = 330, SpawnPoint = 1 } },                              // Arrival at temple
+            { new GameState { RoomNumber = 96, Storyline = 330 }, new Transition { RoomNumber = 96, Storyline = 335, SpawnPoint = 0 } },                              // Camera pan in Kilika Temple + pray
+                                            // Tidus is denied access
+                                            // Tidus is manhandled by Barthello
+                                            // Tidus decides to go inside
+                                            // Camera pan inside the trials
+            { new GameState { RoomNumber = 45, Storyline = 340 }, new Transition { Storyline = 346} }, // Guardians are annoyed at Tidus + Fayth explanation
+                                            // Yuna leaves the fayth room
+            { new GameState { RoomNumber = 78, Storyline = 348, State = 1 }, new Transition { RoomNumber = 18, Storyline = 360, SpawnPoint = 1, ForceLoad = true } }, // Tidus misses home
+            { new GameState { RoomNumber = 16, Storyline = 360, State = 1 }, new Transition { RoomNumber = 94, Storyline = 370, SpawnPoint = 256, ForceLoad = true } }, // Setting off to Luca
             // END OF KILIKA
             // START OF SS WINNO
             { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SpawnPoint = 0 } },       // Opening scenes
