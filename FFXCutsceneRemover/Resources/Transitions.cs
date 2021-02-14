@@ -169,8 +169,21 @@ namespace FFXCutsceneRemover.Resources
             // END OF MI'IHEN
             // START OF MUSHROOM ROCK ROAD
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0 } },        // Tidus distrusts Seymour
-            { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 131, Storyline = 845, SpawnPoint = 3 } },      // Tuna Summon
+            { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845 } },                                        // Preparing for Sin
+                                            // Pre-Sinspawn Gui
+                                            // Post-Sinspawn Gui + FMV
+            { new GameState { RoomNumber = 119, Storyline = 860 }, new Transition { RoomNumber = 247, Storyline = 865, ForceLoad = true } },    // Auron Look out + FMV
+                                            // Pre-Sinspawn Gui 2
+                                            // Post-Sinspawn Gui 2
+            { new GameState { RoomNumber = 247, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 922, ForceLoad = true } },    // Trying to beat Sin FMV
+                                            // Tidus wakes up
+                                            // Tidus sees Gatta
+                                            // Sin FMV
+                                            // Tidus chases after Sin
+            { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 131, Storyline = 845, SpawnPoint = 3 } },      // Yuna Summon
             { new GameState { RoomNumber = 218, Storyline = 902 }, new Transition { RoomNumber = 131, Storyline = 928, SpawnPoint = 3 } },      // Chasing after Sin
+                                            // Tidus speaks to Auron
+                                            // Leaving Mushroom Rock Road
             // END OF MRR
             // START OF DJOSE HIGHROAD
             { new GameState { RoomNumber = 93, Storyline = 960 }, new Transition { RoomNumber = 93, Storyline = 962, SpawnPoint = 0 } },        // Leave MRR -> Djose
