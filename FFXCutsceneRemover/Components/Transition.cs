@@ -9,9 +9,10 @@ namespace FFXCutsceneRemover
     class Transition 
     {
         private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
-        private readonly Process process;
 
+        private Process process;
         public bool ForceLoad = true;
+
         /* Only add members here for memory addresses that we want to write the value to.
          * If we only ever read the value then there is no need to add it here. */
         public short? RoomNumber = null;
@@ -44,13 +45,9 @@ namespace FFXCutsceneRemover
 
         public byte? MiihenFlag = null;
 
-        public Transition()
-        {
-            process = memoryWatchers.Process;
-        }
-
         public void Execute()
         {
+            process = memoryWatchers.Process;
             memoryWatchers.Watchers.UpdateAll(process);
 
             WriteValue(memoryWatchers.RoomNumber, RoomNumber);

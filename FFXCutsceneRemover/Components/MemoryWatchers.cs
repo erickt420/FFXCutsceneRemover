@@ -108,7 +108,6 @@ namespace FFXCutsceneRemover
             MiihenFlag = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag);
 
             Watchers.Clear();
-            Watchers = new MemoryWatcherList();
             Watchers.AddRange(new List<MemoryWatcher>() { 
                     RoomNumber,
                     Storyline,

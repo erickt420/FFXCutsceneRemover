@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
+/* Please don't mess with this. */
 namespace FFX_Cutscene_Remover.ComponentUtil
 {
     using SizeT = UIntPtr;

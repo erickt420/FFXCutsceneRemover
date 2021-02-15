@@ -2,6 +2,7 @@
 using FFXCutsceneRemover.Resources;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -15,48 +16,21 @@ namespace FFXCutsceneRemover
     {
         private static readonly string TARGET_NAME = "FFX";
 
+        // Print out the name and value of every memory
+        // address each iteration of the main loop
+        private readonly bool PrintDebugValues = false;
+
         private readonly MemoryWatchers MemoryWatchers = MemoryWatchers.Instance;
 
         private Process Game;
-
         private bool InBossFight = false;
         private Transition PostBossFightTransition;
-
-        public void ConnectToTarget()
-        {
-            Console.WriteLine("Connecting to FFX...");
-            Game = Process.GetProcessesByName(TARGET_NAME).OrderByDescending(x => x.StartTime)
-                     .FirstOrDefault(x => !x.HasExited);
-
-            if (Game == null || Game.HasExited)
-            {
-                Console.WriteLine("FFX not found! Waiting for 10 seconds.");
-
-                Thread.Sleep(10 * 1000);
-            }
-            else
-            {
-                Console.WriteLine("Connected to FFX!");
-            }
-        }
-
-        public void Initialize()
-        {
-            if (Game == null || Game.HasExited)
-            {
-                ConnectToTarget();
-                if (Game == null)
-                {
-                    return;
-                }
-            }
-        }
 
         public void MainLoop()
         {
             while (true)
             {
-                Initialize();
+                ConnectToTarget();
 
                 if (Game == null)
                 {
@@ -68,18 +42,21 @@ namespace FFXCutsceneRemover
                 Console.WriteLine("Starting main loop!");
                 while (!Game.HasExited)
                 {
-                    MemoryWatchers.Watchers.UpdateAll(Game);
-                    MemoryWatcherList watchers = MemoryWatchers.Watchers;
-
-                    // Report the current status of all of our watched memory. For debug purposes
-                    foreach (MemoryWatcher watcher in watchers)
+                    if (PrintDebugValues)
                     {
-                        Console.WriteLine(watcher.Name + ": " + watcher.Current);
+                        MemoryWatchers.Watchers.UpdateAll(Game);
+                        MemoryWatcherList watchers = MemoryWatchers.Watchers;
+
+                        // Report the current status of all of our watched memory. For debug purposes
+                        foreach (MemoryWatcher watcher in watchers)
+                        {
+                            Console.WriteLine(watcher.Name + ": " + watcher.Current);
+                        }
                     }
 
                     /* This loop iterates over the list of standard transitions
                      * and applies them when necessary. Most transitions can be performed here.*/
-                    Dictionary<GameState, Transition> standardTransitions = Transitions.StandardTransitions;
+                    Dictionary<IGameState, Transition> standardTransitions = Transitions.StandardTransitions;
                     foreach (var transition in standardTransitions)
                     {
                         if (transition.Key.CheckState())
@@ -91,7 +68,7 @@ namespace FFXCutsceneRemover
 
                     /* Loop for post boss fights transitions. Once we enter the fight we set the boss bit and the transition
                      * to perform once we exit the AP menu. */
-                    Dictionary<GameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
+                    Dictionary<IGameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
                     if (!InBossFight)
                     {
                         foreach (var transition in postBossBattleTransitions)
@@ -132,6 +109,32 @@ namespace FFXCutsceneRemover
                         new Transition { RoomNumber = 23, BattleState = 778 }.Execute();
                     }
                 }
+            }
+        }
+
+        private void ConnectToTarget()
+        {
+            Console.WriteLine("Connecting to FFX...");
+            try
+            {
+                Game = Process.GetProcessesByName(TARGET_NAME).OrderByDescending(x => x.StartTime)
+                         .FirstOrDefault(x => !x.HasExited);
+            }
+            catch (Win32Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+
+            if (Game == null || Game.HasExited)
+            {
+                Game = null;
+                Console.WriteLine("FFX not found! Waiting for 10 seconds.");
+
+                Thread.Sleep(10 * 1000);
+            }
+            else
+            {
+                Console.WriteLine("Connected to FFX!");
             }
         }
     }

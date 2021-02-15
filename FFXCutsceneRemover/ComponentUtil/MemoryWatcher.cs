@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 
+/* Please don't mess with this. */
 namespace FFX_Cutscene_Remover.ComponentUtil
 {
     public class MemoryWatcherList : List<MemoryWatcher>
@@ -39,8 +40,6 @@ namespace FFX_Cutscene_Remover.ComponentUtil
             {
                 foreach (var watcher in this)
                 {
-                    //watcher.Update(process);
-
                     try
                     {
                         watcher.Update(process);
