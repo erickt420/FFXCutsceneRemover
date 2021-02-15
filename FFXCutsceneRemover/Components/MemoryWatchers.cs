@@ -50,7 +50,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
 
-        public MemoryWatcher<byte> MiihenFlag;
+        public MemoryWatcher<byte> MiihenFlag1;
+        public MemoryWatcher<byte> MiihenFlag2;
+        public MemoryWatcher<byte> MiihenFlag3;
+        public MemoryWatcher<byte> MiihenFlag4;
 
         MemoryWatchers() { }
 
@@ -105,7 +108,10 @@ namespace FFXCutsceneRemover
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
 
-            MiihenFlag = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag);
+            MiihenFlag1 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag1);
+            MiihenFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag2);
+            MiihenFlag3 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag3);
+            MiihenFlag4 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag4);
 
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -136,7 +142,10 @@ namespace FFXCutsceneRemover
                     EnableAuron,
                     LucaFlag,
                     LucaFlag2,
-                    MiihenFlag
+                    MiihenFlag1,
+                    MiihenFlag2,
+                    MiihenFlag3,
+                    MiihenFlag4
             });
         }
 

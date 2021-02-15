@@ -40,7 +40,10 @@
         public static MemoryLocationData LucaFlag = new MemoryLocationData(MemoryLocationNames.LucaFlag, 0xD2CDE5);
         public static MemoryLocationData LucaFlag2 = new MemoryLocationData(MemoryLocationNames.LucaFlag2, 0xD2CDE4);
 
-        public static MemoryLocationData MiihenFlag = new MemoryLocationData(MemoryLocationNames.MiihenFlag, 0xD2CD00);
+        public static MemoryLocationData MiihenFlag1 = new MemoryLocationData(MemoryLocationNames.MiihenFlag1, 0xD2CCFE);
+        public static MemoryLocationData MiihenFlag2 = new MemoryLocationData(MemoryLocationNames.MiihenFlag2, 0xD2CCFF);
+        public static MemoryLocationData MiihenFlag3 = new MemoryLocationData(MemoryLocationNames.MiihenFlag3, 0xD2CD00);
+        public static MemoryLocationData MiihenFlag4 = new MemoryLocationData(MemoryLocationNames.MiihenFlag4, 0xD2CD04);
     }
 
     public struct MemoryLocationData

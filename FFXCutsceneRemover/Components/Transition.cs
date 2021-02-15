@@ -43,7 +43,10 @@ namespace FFXCutsceneRemover
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
 
-        public byte? MiihenFlag = null;
+        public byte? MiihenFlag1 = null;
+        public byte? MiihenFlag2 = null;
+        public byte? MiihenFlag3 = null;
+        public byte? MiihenFlag4 = null;
 
         public void Execute()
         {
@@ -78,7 +81,10 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
 
-            WriteValue(memoryWatchers.MiihenFlag, MiihenFlag);
+            WriteValue(memoryWatchers.MiihenFlag1, MiihenFlag1);
+            WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
+            WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
+            WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
 
             if (ForceLoad)
             {
