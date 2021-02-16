@@ -49,12 +49,12 @@ namespace FFXCutsceneRemover.Resources
                                             // Tidus bashes the machine + Tros arrives
                                             // They leave the submerged ruins
                                             // Lights come on in submerged ruins
-            { new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, ForceLoad = true } }, // Airship is shown     
+            //{ new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, ForceLoad = true } }, // Airship is shown  - Bug: needs to compare old with new Gamestate to work   
             { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, ForceLoad = true } }, // Tidus gets back onto the boat                                          
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110, ForceLoad = true } }, // Rikku suggests going to Luca                                        
             // END OF BAAJ TEMPLE
             // START OF BESAID
-            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { RoomNumber = 118, SpawnPoint = 0, ForceLoad = true} },        // Tidus wakes up in the sea
+            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 118, SpawnPoint = 0, ForceLoad = true} },        // Tidus wakes up in the sea
                                             // Wakka pushes Tidus ( Wakka joins the party)
             { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 73 }, new Transition { RoomNumber = 67, Storyline = 124, ForceLoad = true} }, // Wakka asks Tidus to join his team
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0 } },        // Wakka explains his life story
