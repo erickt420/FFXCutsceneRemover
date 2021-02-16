@@ -45,6 +45,16 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
 
+        public MemoryWatcher<byte> EnableAuron;
+
+        public MemoryWatcher<byte> LucaFlag;
+        public MemoryWatcher<byte> LucaFlag2;
+
+        public MemoryWatcher<byte> MiihenFlag1;
+        public MemoryWatcher<byte> MiihenFlag2;
+        public MemoryWatcher<byte> MiihenFlag3;
+        public MemoryWatcher<byte> MiihenFlag4;
+
         MemoryWatchers() { }
 
         public static MemoryWatchers Instance
@@ -93,6 +103,15 @@ namespace FFXCutsceneRemover
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
 
+            EnableAuron = GetMemoryWatcher<byte>(MemoryLocations.EnableAuron);
+
+            LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
+            LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
+
+            MiihenFlag1 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag1);
+            MiihenFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag2);
+            MiihenFlag3 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag3);
+            MiihenFlag4 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag4);
 
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -119,7 +138,14 @@ namespace FFXCutsceneRemover
                     PartyMembers,
                     Sandragoras,
                     HpEnemyA,
-                    GuadoCount
+                    GuadoCount,
+                    EnableAuron,
+                    LucaFlag,
+                    LucaFlag2,
+                    MiihenFlag1,
+                    MiihenFlag2,
+                    MiihenFlag3,
+                    MiihenFlag4
             });
         }
 

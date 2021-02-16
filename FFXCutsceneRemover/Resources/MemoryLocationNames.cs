@@ -28,5 +28,16 @@
         public static string Sandragoras = "Sandragoras";
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
+
+        public static string EnableAuron = "EnableAuron";
+
+        public static string LucaFlag = "LucaFlag";
+        public static string LucaFlag2 = "LucaFlag2";
+
+        public static string MiihenFlag1 = "MiihenFlag1";
+        public static string MiihenFlag2 = "MiihenFlag2";
+        public static string MiihenFlag3 = "MiihenFlag3";
+        public static string MiihenFlag4 = "MiihenFlag4";
+
     }
 }
