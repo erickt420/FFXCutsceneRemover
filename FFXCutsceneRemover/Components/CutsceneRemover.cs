@@ -18,13 +18,20 @@ namespace FFXCutsceneRemover
 
         // Print out the name and value of every memory
         // address each iteration of the main loop
-        private readonly bool PrintDebugValues = false;
+        private readonly bool PrintDebugValues = true;
 
         private readonly MemoryWatchers MemoryWatchers = MemoryWatchers.Instance;
 
         private Process Game;
         private bool InBossFight = false;
         private Transition PostBossFightTransition;
+        private int LoopSleepMillis;
+
+        public CutsceneRemover(bool debug, int loopSleepMillis)
+        {
+            PrintDebugValues = debug;
+            LoopSleepMillis = loopSleepMillis;
+        }
 
         public void MainLoop()
         {
@@ -66,6 +73,7 @@ namespace FFXCutsceneRemover
                         }
                     }
 
+                    
                     /* Loop for post boss fights transitions. Once we enter the fight we set the boss bit and the transition
                      * to perform once we exit the AP menu. */
                     Dictionary<IGameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
@@ -108,6 +116,9 @@ namespace FFXCutsceneRemover
                     {
                         new Transition { RoomNumber = 23, BattleState = 778 }.Execute();
                     }
+
+                    // Sleep for a bit so we don't destroy CPUs
+                    Thread.Sleep(LoopSleepMillis);
                 }
             }
         }

@@ -35,7 +35,7 @@ namespace FFXCutsceneRemover.Resources
                                             // Geogaesno arrives
             { new GameState { RoomNumber = 49, Storyline = 48 }, new Transition { RoomNumber = 50, Storyline = 48, SpawnPoint = 0 } },          // Escape from Geogaesno 
             { new GameState { RoomNumber = 50, Storyline = 48 }, new Transition { RoomNumber = 50, Storyline = 50, SpawnPoint = 0 } },          // Tidus in a collapsed corridor - Bug: Boss music still playing
-            { new GameState { RoomNumber = 63, Storyline = 50 }, new Transition { RoomNumber = 63, Storyline = 52, SpawnPoint = 0 } },          // Tidus needs fire - Bug - Wrong SpawnPoint? Spawns at top, should be bottom I think?
+            { new GameState { RoomNumber = 63, Storyline = 50 }, new Transition { RoomNumber = 63, Storyline = 52, SpawnPoint = 1 } },          // Tidus needs fire
             { new GameState { RoomNumber = 63, Storyline = 54 }, new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0 } },          // Tidus makes fire
             { new GameState { RoomNumber = 165, Storyline = 55 }, new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0 } },         // Tidus has a dream about Auron
                                             // Fire goes out and Klikk arrives
