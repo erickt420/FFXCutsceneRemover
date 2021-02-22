@@ -5,7 +5,7 @@ namespace FFXCutsceneRemover
     class Program
     {
         private static bool debug = false;
-        private static int loopSleepMillis = 10;
+        private static int loopSleepMillis = 16;
 
         static void Main(string[] args)
         {
