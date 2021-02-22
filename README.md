@@ -1,14 +1,13 @@
 # FFXCutsceneRemover
-Cutscene Skipper Program for FFX PC Version
+Cutscene skipping program for the Windows version of Final Fantasy X HD Remaster.
+Currently we are in the early stages of development. Most likely you will encounter issues or bugs. If so, please open an issue on GitHub or contact us in the modding channel of the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
 
-Usage:
-To run with default settings, just double click and enjoy, or run FFXCutsceneRemover.exe from cmd.
+### Usage:
+Just double click and enjoy or execute FFXCutsceneRemover.exe from cmd.
 
-To enable debug values pass true:
-FFXCutsceneRemover.exe true
-
-To change the amount of milliseconds the program sleeps between polling iterations:
-FFXCutsceneRemover.exe 50
-
-You can enable debug and set the loop sleep time:
-FFXCutsceneRemover.exe true 50
+### Arguments:
+You can use multiple arguments by separating them with a space.
+- enable debug:  
+`FFXCutsceneRemover.exe true`
+- change the amount of milliseconds the program sleeps between polling iterations:  
+`FFXCutsceneRemover.exe 50`
