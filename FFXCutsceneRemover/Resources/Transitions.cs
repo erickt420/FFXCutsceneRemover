@@ -90,8 +90,8 @@ namespace FFXCutsceneRemover.Resources
                                            // Tidus is gone
                                            // Tidus gets hit by scales
                                            // Post Echuilles
-            //{ new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 43, Storyline = 292, ForceLoad = true } },    // Kilika FMV - Party members added back on reward screen
-            { new GameState { RoomNumber = 220, Storyline = 285 }, new Transition { RoomNumber = 139, Storyline = 290, ForceLoad = true } },    // Recovering on the boat
+            //{ new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 220, Storyline = 285, ForceLoad = true } },    // Kilika FMV - Party members added back on reward screen - Bug: Need to enable menu to fix
+            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, ForceLoad = true } },    // Recovering on the boat
             { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292, ForceLoad = true } },    // Map shown
             // END OF SS LIKI
             // START OF KILIKA
