@@ -60,9 +60,9 @@ namespace FFXCutsceneRemover
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
                 TestValue(PartyMembers, memoryWatchers.PartyMembers.Current) &&
-                TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
-                TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
-                TestValue(GuadoCount, memoryWatchers.GuadoCount.Current);
+                TestValue(Sandragoras, memoryWatchers.Sandragoras.Current);// &&
+                //TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
+                //TestValue(GuadoCount, memoryWatchers.GuadoCount.Current);
 
         }
 
