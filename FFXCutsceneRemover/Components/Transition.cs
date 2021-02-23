@@ -73,8 +73,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
             WriteValue(memoryWatchers.PartyMembers, PartyMembers);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
-            WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
-            WriteValue(memoryWatchers.GuadoCount, GuadoCount);
+            //WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
+            //WriteValue(memoryWatchers.GuadoCount, GuadoCount);
 
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
 

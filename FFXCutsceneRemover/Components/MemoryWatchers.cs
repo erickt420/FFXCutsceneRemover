@@ -42,8 +42,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> AuronOverdrives;
         public MemoryWatcher<byte> PartyMembers;
         public MemoryWatcher<byte> Sandragoras;
-        public MemoryWatcher<int> HpEnemyA;
-        public MemoryWatcher<byte> GuadoCount;
+        //public MemoryWatcher<int> HpEnemyA;
+        //public MemoryWatcher<byte> GuadoCount;
 
         public MemoryWatcher<byte> EnableAuron;
 
@@ -100,8 +100,8 @@ namespace FFXCutsceneRemover
             AuronOverdrives = GetMemoryWatcher<short>(MemoryLocations.AuronOverdrives);
             PartyMembers = GetMemoryWatcher<byte>(MemoryLocations.PartyMembers);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
-            HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
-            GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
+            //HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
+            //GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
 
             EnableAuron = GetMemoryWatcher<byte>(MemoryLocations.EnableAuron);
 
@@ -137,8 +137,8 @@ namespace FFXCutsceneRemover
                     AuronOverdrives,
                     PartyMembers,
                     Sandragoras,
-                    HpEnemyA,
-                    GuadoCount,
+                    //HpEnemyA,
+                    //GuadoCount,
                     EnableAuron,
                     LucaFlag,
                     LucaFlag2,

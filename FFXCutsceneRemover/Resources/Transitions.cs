@@ -65,15 +65,17 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 191, Storyline = 152 }, new Transition { RoomNumber = 145, Storyline = 154, SpawnPoint = 0 } },      // Tidus dreams about a flashback
             { new GameState { RoomNumber = 42, Storyline = 154, State = 1}, new Transition { RoomNumber = 122, Storyline = 162, ForceLoad = true} }, // Tidus goes back into the temple
                                             // Wakka catches up with Tidus in trials
-            { new GameState { RoomNumber = 103, Storyline = 164}, new Transition { RoomNumber = 42, Storyline = 170, ForceLoad = true} },       // Tidus meets Lulu and Kimahri + FMV
+            //{ new GameState { RoomNumber = 103, Storyline = 164}, new Transition { RoomNumber = 42, Storyline = 170, ForceLoad = true} },     // Tidus meets Lulu and Kimahri + FMV - Bug: Need to enable Valefor here
             { new GameState { RoomNumber = 42, Storyline = 170 }, new Transition { RoomNumber = 42, Storyline = 172, SpawnPoint = 0 } },        // The gang leave the cloister of trials
                                             // Valefor summon
                                             // Tidus monologue after naming
                                             // Tidus joins the Aurochs
                                             // Tidus speaks to Yuna
-            { new GameState { RoomNumber = 68, Storyline = 184 }, new Transition { RoomNumber = 60, Storyline = 200, SpawnPoint = 0 } },        // Tidus sleeping, FMV and chat with Wakka
-            { new GameState { RoomNumber = 17, Storyline = 200 }, new Transition { RoomNumber = 69, Storyline = 210, SpawnPoint = 515 } },      // Yuna says goodbye to Besaid
-            { new GameState { RoomNumber = 67, Storyline = 210 }, new Transition { RoomNumber = 67, Storyline = 214, SpawnPoint = 0 } },        // Yuna says goodbye to Besaid again
+            { new GameState { RoomNumber = 68, Storyline = 184 }, new Transition { RoomNumber = 252, Storyline = 190} },                        // Tidus sleeping
+            { new GameState { RoomNumber = 252, Storyline = 190, State = 1 }, new Transition { RoomNumber = 60, Storyline = 196 } },            // Tidus has a dream about Yuna, Tidus wakes up + FMV
+                                            // Tidus wakes up again (Party healed at this point)
+            //{ new GameState { RoomNumber = 17, Storyline = 200 }, new Transition { RoomNumber = 69, Storyline = 210, SpawnPoint = 515 } },    // Yuna says goodbye to Besaid - Bug: Need to Enable + Equip Brotherhood, Lulu, Yuna, lots of things!
+            { new GameState { RoomNumber = 67, Storyline = 210 }, new Transition { RoomNumber = 67, Storyline = 214, SpawnPoint = 3 } },        // Yuna says goodbye to Besaid again
                                             // Kimahri FMV
                                             // Post-Kimahri battle
             { new GameState { RoomNumber = 19, Storyline = 218, State = 0 }, new Transition { RoomNumber = 301, Storyline = 220, ForceLoad = true } }, // S.S. Liki departs
@@ -88,7 +90,9 @@ namespace FFXCutsceneRemover.Resources
                                            // Tidus is gone
                                            // Tidus gets hit by scales
                                            // Post Echuilles
-            { new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 43, Storyline = 292, ForceLoad = true } },    // Kilika is destroyed
+            //{ new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 220, Storyline = 285, ForceLoad = true } },    // Kilika FMV - Party members added back on reward screen - Bug: Need to enable menu to fix
+            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, ForceLoad = true } },    // Recovering on the boat
+            { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292, ForceLoad = true } },    // Map shown
             // END OF SS LIKI
             // START OF KILIKA
             { new GameState { RoomNumber = 43, Storyline = 292 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0 } },               // Undocking in Kilika
@@ -116,23 +120,27 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SpawnPoint = 0 } },       // Opening scenes
                                             // Tidus stands up
                                             // Meet O'aka
-            { new GameState { RoomNumber = 94, Storyline = 380, State = 1 }, new Transition { Storyline = 380, SpawnPoint = 2, ForceLoad = true  } }, // Eavesdropping on Lulu and Wakka
+            //{ new GameState { RoomNumber = 94, Storyline = 380, State = 1 }, new Transition { Storyline = 380, SpawnPoint = 2, ForceLoad = false  } }, // Eavesdropping on Lulu and Wakka
                                             // Tidus flashback about Jecht
                                             // Tidus fails Jecht shot + Yuna arrives
             { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, ForceLoad = true  } }, // Tidus speaks to Yuna
             // END OF WINNO
             // START OF LUCA
             { new GameState { RoomNumber = 268, Storyline = 427, State = 0 }, new Transition { RoomNumber = 355, Storyline = 430, ForceLoad = true } }, // Seymour arrives
-            { new GameState { RoomNumber = 72, Storyline = 430, State = 0 }, new Transition { Storyline = 440, SpawnPoint = 1797, ForceLoad = true } }, // Yuna enters the changing room
+            //{ new GameState { RoomNumber = 72, Storyline = 430, State = 0 }, new Transition { Storyline = 440, SpawnPoint = 1797, ForceLoad = true } }, // Yuna enters the changing room
             { new GameState { RoomNumber = 72, Storyline = 440, State = 0 }, new Transition { RoomNumber = 123, Storyline = 450, SpawnPoint = 4, ForceLoad = true } }, // Speaking to the Al Bhed
-            { new GameState { RoomNumber = 123, Storyline = 450 }, new Transition { LucaFlag = 8 } }, // Camera pan
+            { new GameState { RoomNumber = 123, Storyline = 450 }, new Transition { LucaFlag = 8, ForceLoad = false} }, // Camera pan
             { new GameState { RoomNumber = 77, Storyline = 450 }, new Transition { Storyline = 455, SpawnPoint = 1 } }, // Crowd mob Yuna
-            { new GameState { RoomNumber = 104, Storyline = 455 }, new Transition { LucaFlag2 = 2 } }, // Tidus and Yuna talk about Luca
+            { new GameState { RoomNumber = 104, Storyline = 455 }, new Transition { LucaFlag2 = 2, ForceLoad = false } }, // Tidus and Yuna talk about Luca
+            { new GameState { RoomNumber = 159, Storyline = 455 }, new Transition { RoomNumber = 57, Storyline = 484 } }, // Tidus and Yuna at the cafe
+            { new GameState { RoomNumber = 57, Storyline = 484 }, new Transition { RoomNumber = 121, Storyline = 486 } }, // Mika begins the tournament
+            { new GameState { RoomNumber = 121, Storyline = 486 }, new Transition { RoomNumber = 159, Storyline = 488 } }, // Al Bhed Auroch game starts
+            { new GameState { RoomNumber = 159, Storyline = 488 }, new Transition { RoomNumber = 104, Storyline = 490 } }, // Kimahri Yuna's gone
             //{ new GameState { RoomNumber = 159, Storyline = 455 }, new Transition { RoomNumber = 77, Storyline = 492, SpawnPoint = 1, EnableYuna = 16, EnableWakka = 16, Formation = new byte[]{0x5, 0x0, 0x3, 0xFF, 0xFF} } }, // Tidus and Yuna go to the cafe
                                             // Machina fights
                                             // Looking at the scoreboard
             { new GameState { RoomNumber = 121, Storyline = 492 }, new Transition { RoomNumber = 88, Storyline = 500 } },                       // Wakka takes a beating
-            { new GameState { RoomNumber = 88, Storyline = 500 }, new Transition { LucaFlag = 9 } },                                            // Wakka won't last
+            { new GameState { RoomNumber = 88, Storyline = 500 }, new Transition { LucaFlag = 9, SpawnPoint = 258, ForceLoad = false } },       // Wakka won't last
             { new GameState { RoomNumber = 299, Storyline = 502 }, new Transition { RoomNumber = 113, Storyline = 502, ForceLoad = true } },    // They jump on the boat
                                             // Pre-Oblitzerator
                                             // Post-Oblitzerator
@@ -152,7 +160,9 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 57, Storyline = 588 }, new Transition { Storyline = 600} },                                          // Lulu what's happening
                                             // Tidus and Wakka join Auron
                                             // Seymour summon Anima + FMV
-            { new GameState { RoomNumber = 104, Storyline = 610  }, new Transition { RoomNumber = 89, Storyline = 617, SpawnPoint = 1, EnableAuron = 17 } },    // Wakka quits the Aurochs
+            { new GameState { RoomNumber = 104, Storyline = 610  }, new Transition { RoomNumber = 107, Storyline = 615 } },                   // Wakka quits the Aurochs
+            { new GameState { RoomNumber = 107, Storyline = 615  }, new Transition { RoomNumber = 89, Storyline = 616 } },                    // Wakka joins Yuna
+            { new GameState { RoomNumber = 89, Storyline = 616  }, new Transition { Storyline = 617, SpawnPoint = 1, EnableAuron = 17 } },    // Tidus shouts at Auron
                                             // Tidus and Auron join the group
             { new GameState { RoomNumber = 107, Storyline = 630, State = 0 }, new Transition { RoomNumber = 95, Storyline = 730, SpawnPoint = 256, ForceLoad = true } },    // HA HA HA HA
             // END OF LUCA
@@ -183,7 +193,14 @@ namespace FFXCutsceneRemover.Resources
                                             // Tidus sees Gatta
                                             // Sin FMV
                                             // Tidus chases after Sin
-            { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 131, Storyline = 938, SpawnPoint = 3 } },      // Yuna Summon + subsequent scenes
+            { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 218, Storyline = 902 } },      // Yuna tries to summon
+            { new GameState { RoomNumber = 218, Storyline = 902 }, new Transition { RoomNumber = 341, Storyline = 910 } },      // Tidus is swimming
+            { new GameState { RoomNumber = 341, Storyline = 910 }, new Transition { RoomNumber = 134, Storyline = 910 } },      // Nucleus
+            { new GameState { RoomNumber = 134, Storyline = 910 }, new Transition { RoomNumber = 131, Storyline = 910 } },      // Zanarkand flashback
+            { new GameState { RoomNumber = 131, Storyline = 910 }, new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3 } },      // Tidus monologue on beach
+                                            // Kinoc retreats
+                                            // Seymour flirts
+                                            // Tidus speaks to Auron
                                             // Leaving Mushroom Rock Road
             // END OF MRR
             // START OF DJOSE HIGHROAD
