@@ -12,6 +12,7 @@ namespace FFXCutsceneRemover
 
         private Process process;
         public bool ForceLoad = true;
+        public string Description = null;
 
         /* Only add members here for memory addresses that we want to write the value to.
          * If we only ever read the value then there is no need to add it here. */

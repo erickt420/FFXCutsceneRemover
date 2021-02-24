@@ -70,7 +70,8 @@ namespace FFXCutsceneRemover
                         {
                             Game.Suspend();
                             transition.Value.Execute();
-                            Console.WriteLine("Executing Standard Transition");
+                            string output = string.IsNullOrEmpty(transition.Value.Description) ? "Executing Standard Transition - No Description" : transition.Value.Description;
+                            Console.WriteLine(output);
                             Game.Resume();
                         }
                     }
