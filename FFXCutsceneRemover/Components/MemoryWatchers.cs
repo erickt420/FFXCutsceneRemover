@@ -47,6 +47,7 @@ namespace FFXCutsceneRemover
 
         public MemoryWatcher<byte> EnableYuna;
         public MemoryWatcher<byte> EnableAuron;
+        public MemoryWatcher<byte> EnableKimahri;
         public MemoryWatcher<byte> EnableWakka;
 
         public MemoryWatcher<byte> LucaFlag;
@@ -109,6 +110,7 @@ namespace FFXCutsceneRemover
 
             EnableYuna = GetMemoryWatcher<byte>(MemoryLocations.EnableYuna);
             EnableAuron = GetMemoryWatcher<byte>(MemoryLocations.EnableAuron);
+            EnableKimahri = GetMemoryWatcher<byte>(MemoryLocations.EnableKimahri);
             EnableWakka = GetMemoryWatcher<byte>(MemoryLocations.EnableWakka);
 
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
@@ -149,6 +151,7 @@ namespace FFXCutsceneRemover
                     //GuadoCount,
                     EnableYuna,
                     EnableAuron,
+                    EnableKimahri,
                     EnableWakka,
                     LucaFlag,
                     LucaFlag2,

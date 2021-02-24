@@ -91,7 +91,7 @@ namespace FFXCutsceneRemover.Resources
                                            // Tidus gets hit by scales
                                            // Post Echuilles
             //{ new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 220, Storyline = 285 } },    // Kilika FMV - Party members added back on reward screen - Bug: Need to enable menu to fix
-            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290 } },    // Recovering on the boat
+            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, EnableKimahri = 17 } },    // Recovering on the boat
             { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292 } },    // Map shown
             // END OF SS LIKI
             // START OF KILIKA
@@ -127,7 +127,7 @@ namespace FFXCutsceneRemover.Resources
             // END OF WINNO
             // START OF LUCA
             { new GameState { RoomNumber = 268, Storyline = 427, State = 0 }, new Transition { RoomNumber = 355, Storyline = 430 } }, // Seymour arrives
-            //{ new GameState { RoomNumber = 72, Storyline = 430, State = 0 }, new Transition { Storyline = 440, SpawnPoint = 1797 } }, // Yuna enters the changing room
+            { new GameState { RoomNumber = 72, Storyline = 430, State = 0 }, new Transition { Storyline = 440, SpawnPoint = 1797 } }, // Yuna enters the changing room
             { new GameState { RoomNumber = 72, Storyline = 440, State = 0 }, new Transition { RoomNumber = 123, Storyline = 450, SpawnPoint = 4 } }, // Speaking to the Al Bhed
             { new GameState { RoomNumber = 123, Storyline = 450 }, new Transition { LucaFlag = 8, ForceLoad = false} }, // Camera pan
             { new GameState { RoomNumber = 77, Storyline = 450 }, new Transition { Storyline = 455, SpawnPoint = 1 } }, // Crowd mob Yuna
@@ -139,8 +139,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 104, Storyline = 490 }, new Transition { RoomNumber = 77, Storyline = 492, SpawnPoint = 1, EnableYuna = 16, EnableWakka = 16, Formation = new byte[]{0x5, 0x0, 0x3, 0xFF, 0xFF} } }, // Tidus and Yuna go to the cafe
                                             // Machina fights
                                             // Looking at the scoreboard
-            { new GameState { RoomNumber = 121, Storyline = 492 }, new Transition { RoomNumber = 88, Storyline = 500 } },                       // Wakka takes a beating
-            { new GameState { RoomNumber = 88, Storyline = 500 }, new Transition { LucaFlag = 9, SpawnPoint = 258, ForceLoad = false } },       // Wakka won't last
+            { new GameState { RoomNumber = 121, Storyline = 492 }, new Transition { RoomNumber = 88, Storyline = 500, LucaFlag = 9, SpawnPoint = 258} }, // Wakka takes a beating
+            //{ new GameState { RoomNumber = 88, Storyline = 500 }, new Transition { LucaFlag = 9, SpawnPoint = 258, ForceLoad = false } },       // Wakka won't last
             { new GameState { RoomNumber = 299, Storyline = 502 }, new Transition { RoomNumber = 113, Storyline = 502 } },    // They jump on the boat
                                             // Pre-Oblitzerator
                                             // Post-Oblitzerator

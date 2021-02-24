@@ -40,6 +40,7 @@ namespace FFXCutsceneRemover
 
         public byte? EnableYuna = null;
         public byte? EnableAuron = null;
+        public byte? EnableKimahri = null;
         public byte? EnableWakka = null;
 
         public byte? LucaFlag = null;
@@ -82,6 +83,7 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
+            WriteValue(memoryWatchers.EnableKimahri, EnableKimahri);
             WriteValue(memoryWatchers.EnableWakka, EnableWakka);
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);

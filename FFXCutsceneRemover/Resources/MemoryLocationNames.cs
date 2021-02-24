@@ -31,6 +31,7 @@
 
         public static string EnableYuna = "EnableYuna";
         public static string EnableAuron = "EnableAuron";
+        public static string EnableKimahri = "EnableKimahri";
         public static string EnableWakka = "EnableWakka";
 
         public static string LucaFlag = "LucaFlag";
