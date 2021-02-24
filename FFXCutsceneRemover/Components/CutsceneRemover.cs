@@ -66,7 +66,7 @@ namespace FFXCutsceneRemover
                     Dictionary<IGameState, Transition> standardTransitions = Transitions.StandardTransitions;
                     foreach (var transition in standardTransitions)
                     {
-                        if (transition.Key.CheckState())
+                        if (transition.Key.CheckState() && MemoryWatchers.ForceLoad.Current == 0)
                         {
                             Game.Suspend();
                             transition.Value.Execute();
