@@ -38,7 +38,9 @@ namespace FFXCutsceneRemover
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
 
+        public byte? EnableYuna = null;
         public byte? EnableAuron = null;
+        public byte? EnableWakka = null;
 
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
@@ -47,6 +49,8 @@ namespace FFXCutsceneRemover
         public byte? MiihenFlag2 = null;
         public byte? MiihenFlag3 = null;
         public byte? MiihenFlag4 = null;
+
+        public byte[] Formation = null;
 
         public void Execute()
         {
@@ -76,7 +80,9 @@ namespace FFXCutsceneRemover
             //WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             //WriteValue(memoryWatchers.GuadoCount, GuadoCount);
 
+            WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
+            WriteValue(memoryWatchers.EnableWakka, EnableWakka);
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
@@ -85,6 +91,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
             WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
             WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
+
+            WriteBytes(memoryWatchers.Formation, Formation);
 
             if (ForceLoad)
             {
@@ -111,6 +119,14 @@ namespace FFXCutsceneRemover
                     }
                     process.WriteValue(finalPointer, value.Value);
                 }
+            }
+        }
+
+        private void WriteBytes(MemoryWatcher watcher, byte[] bytes)
+        {
+            if (bytes != null)
+            {
+                process.WriteBytes(watcher.Address, bytes);
             }
         }
 

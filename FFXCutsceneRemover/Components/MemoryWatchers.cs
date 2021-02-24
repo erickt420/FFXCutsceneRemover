@@ -45,7 +45,9 @@ namespace FFXCutsceneRemover
         //public MemoryWatcher<int> HpEnemyA;
         //public MemoryWatcher<byte> GuadoCount;
 
+        public MemoryWatcher<byte> EnableYuna;
         public MemoryWatcher<byte> EnableAuron;
+        public MemoryWatcher<byte> EnableWakka;
 
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
@@ -54,6 +56,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MiihenFlag2;
         public MemoryWatcher<byte> MiihenFlag3;
         public MemoryWatcher<byte> MiihenFlag4;
+
+        public MemoryWatcher<byte> Formation;
 
         MemoryWatchers() { }
 
@@ -103,7 +107,9 @@ namespace FFXCutsceneRemover
             //HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             //GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
 
+            EnableYuna = GetMemoryWatcher<byte>(MemoryLocations.EnableYuna);
             EnableAuron = GetMemoryWatcher<byte>(MemoryLocations.EnableAuron);
+            EnableWakka = GetMemoryWatcher<byte>(MemoryLocations.EnableWakka);
 
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
@@ -112,6 +118,8 @@ namespace FFXCutsceneRemover
             MiihenFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag2);
             MiihenFlag3 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag3);
             MiihenFlag4 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag4);
+
+            Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
 
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -139,7 +147,9 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     //HpEnemyA,
                     //GuadoCount,
+                    EnableYuna,
                     EnableAuron,
+                    EnableWakka,
                     LucaFlag,
                     LucaFlag2,
                     MiihenFlag1,

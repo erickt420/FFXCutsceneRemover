@@ -136,7 +136,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 57, Storyline = 484 }, new Transition { RoomNumber = 121, Storyline = 486 } }, // Mika begins the tournament
             { new GameState { RoomNumber = 121, Storyline = 486 }, new Transition { RoomNumber = 159, Storyline = 488 } }, // Al Bhed Auroch game starts
             { new GameState { RoomNumber = 159, Storyline = 488 }, new Transition { RoomNumber = 104, Storyline = 490 } }, // Kimahri Yuna's gone
-            //{ new GameState { RoomNumber = 159, Storyline = 455 }, new Transition { RoomNumber = 77, Storyline = 492, SpawnPoint = 1, EnableYuna = 16, EnableWakka = 16, Formation = new byte[]{0x5, 0x0, 0x3, 0xFF, 0xFF} } }, // Tidus and Yuna go to the cafe
+            { new GameState { RoomNumber = 104, Storyline = 490 }, new Transition { RoomNumber = 77, Storyline = 492, SpawnPoint = 1, EnableYuna = 16, EnableWakka = 16, Formation = new byte[]{0x5, 0x0, 0x3, 0xFF, 0xFF} } }, // Tidus and Yuna go to the cafe
                                             // Machina fights
                                             // Looking at the scoreboard
             { new GameState { RoomNumber = 121, Storyline = 492 }, new Transition { RoomNumber = 88, Storyline = 500 } },                       // Wakka takes a beating

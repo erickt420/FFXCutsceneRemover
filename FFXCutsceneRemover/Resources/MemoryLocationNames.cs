@@ -29,7 +29,9 @@
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
 
+        public static string EnableYuna = "EnableYuna";
         public static string EnableAuron = "EnableAuron";
+        public static string EnableWakka = "EnableWakka";
 
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
@@ -39,5 +41,6 @@
         public static string MiihenFlag3 = "MiihenFlag3";
         public static string MiihenFlag4 = "MiihenFlag4";
 
+        public static string Formation = "Formation";
     }
 }
