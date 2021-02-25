@@ -45,10 +45,13 @@ namespace FFXCutsceneRemover
         //public MemoryWatcher<int> HpEnemyA;
         //public MemoryWatcher<byte> GuadoCount;
 
+        public MemoryWatcher<byte> EnableTidus;
         public MemoryWatcher<byte> EnableYuna;
         public MemoryWatcher<byte> EnableAuron;
         public MemoryWatcher<byte> EnableKimahri;
         public MemoryWatcher<byte> EnableWakka;
+        public MemoryWatcher<byte> EnableLulu;
+        public MemoryWatcher<byte> EnableRikku;
 
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
@@ -59,6 +62,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MiihenFlag4;
 
         public MemoryWatcher<byte> Formation;
+        public MemoryWatcher<byte> ViaPurifico;
 
         MemoryWatchers() { }
 
@@ -108,10 +112,13 @@ namespace FFXCutsceneRemover
             //HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             //GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
 
+            EnableTidus = GetMemoryWatcher<byte>(MemoryLocations.EnableTidus);
             EnableYuna = GetMemoryWatcher<byte>(MemoryLocations.EnableYuna);
             EnableAuron = GetMemoryWatcher<byte>(MemoryLocations.EnableAuron);
             EnableKimahri = GetMemoryWatcher<byte>(MemoryLocations.EnableKimahri);
             EnableWakka = GetMemoryWatcher<byte>(MemoryLocations.EnableWakka);
+            EnableLulu = GetMemoryWatcher<byte>(MemoryLocations.EnableLulu);
+            EnableRikku = GetMemoryWatcher<byte>(MemoryLocations.EnableRikku);
 
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
@@ -122,6 +129,7 @@ namespace FFXCutsceneRemover
             MiihenFlag4 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag4);
 
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
+            ViaPurifico = GetMemoryWatcher<byte>(MemoryLocations.ViaPurifico);
 
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -149,16 +157,20 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     //HpEnemyA,
                     //GuadoCount,
+                    EnableTidus,
                     EnableYuna,
                     EnableAuron,
                     EnableKimahri,
                     EnableWakka,
+                    EnableLulu,
+                    EnableRikku,
                     LucaFlag,
                     LucaFlag2,
                     MiihenFlag1,
                     MiihenFlag2,
                     MiihenFlag3,
-                    MiihenFlag4
+                    MiihenFlag4,
+                    ViaPurifico
             });
         }
 
