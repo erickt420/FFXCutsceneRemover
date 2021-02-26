@@ -168,16 +168,16 @@ namespace FFXCutsceneRemover.Resources
             // END OF LUCA
             // START OF MI'IHEN
             { new GameState { RoomNumber = 95, Storyline = 730 }, new Transition { Storyline = 734, MiihenFlag1 = 5, MiihenFlag2 = 4, ForceLoad = false, Description = "Tidus runs up the stairs"} },
-            { new GameState { RoomNumber = 120, Storyline = 734 }, new Transition { MiihenFlag1 = 141, ForceLoad = false, Description = "Meet Calli"} },
-            { new GameState { RoomNumber = 127, Storyline = 734 }, new Transition { MiihenFlag1 = 221, MiihenFlag2 = 148, ForceLoad = false, Description = "Luzzu, Gatta and Shelinda scenes"} },
+            { new GameState { RoomNumber = 120, Storyline = 734, MiihenFlag1 = 133}, new Transition { MiihenFlag1 = 141, ForceLoad = false, Description = "Meet Calli"} },
+            { new GameState { RoomNumber = 127, Storyline = 734, MiihenFlag1 = 141 }, new Transition { MiihenFlag1 = 221, MiihenFlag2 = 148, ForceLoad = false, Description = "Luzzu, Gatta and Shelinda scenes"} },
             { new GameState { RoomNumber = 58, Storyline = 734, State = 0 }, new Transition { RoomNumber = 171, Storyline = 755, Description = "Auron is tired"} },
             { new GameState { RoomNumber = 112, Storyline = 755 }, new Transition { RoomNumber = 171, Storyline = 760, SpawnPoint = 0, Description = "Tidus chats with Yuna" } },
                                             // Tidus chats to a guy
                                             // Meet Rin
-            { new GameState { RoomNumber = 58, Storyline = 767 }, new Transition { MiihenFlag3 = 1 , ForceLoad = false, Description = "To the chocobo corral"} },
+            { new GameState { RoomNumber = 58, Storyline = 767, MiihenFlag3 = 0 }, new Transition { MiihenFlag3 = 1 , ForceLoad = false, Description = "To the chocobo corral"} },
                                             // Pre-Chocobo Eater
                                             // Fall down the cliff (MiihenFlag = 3 after)
-            { new GameState { RoomNumber = 116, Storyline = 772 }, new Transition { MiihenFlag4 = 4 , ForceLoad = false, Description = "Luzzu and Gatta move a cart"} },
+            { new GameState { RoomNumber = 116, Storyline = 772, MiihenFlag4 = 0}, new Transition { MiihenFlag4 = 4 , ForceLoad = false, Description = "Luzzu and Gatta move a cart"} },
             { new GameState { RoomNumber = 59, Storyline = 777, State = 0}, new Transition { Storyline = 787, SpawnPoint = 3, Description = "Seymour helps out"} },
             // END OF MI'IHEN
             // START OF MUSHROOM ROCK ROAD

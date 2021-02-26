@@ -43,6 +43,11 @@ namespace FFXCutsceneRemover
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
 
+        public byte? MiihenFlag1 = null;
+        public byte? MiihenFlag2 = null;
+        public byte? MiihenFlag3 = null;
+        public byte? MiihenFlag4 = null;
+
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
 
@@ -76,6 +81,10 @@ namespace FFXCutsceneRemover
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Current) &&
                 TestValue(LucaFlag, memoryWatchers.LucaFlag.Current) &&
                 TestValue(LucaFlag2, memoryWatchers.LucaFlag2.Current) &&
+                TestValue(MiihenFlag1, memoryWatchers.MiihenFlag1.Current) &&
+                TestValue(MiihenFlag2, memoryWatchers.MiihenFlag2.Current) &&
+                TestValue(MiihenFlag3, memoryWatchers.MiihenFlag3.Current) &&
+                TestValue(MiihenFlag4, memoryWatchers.MiihenFlag4.Current) &&
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current);// &&
                 //TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
