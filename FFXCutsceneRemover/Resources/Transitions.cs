@@ -13,7 +13,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 349 }, new Transition { RoomNumber = 23, Description = "Skip Intro"} },
             // START OF ZANARKAND
             { new GameState { RoomNumber = 132, Storyline = 0 }, new Transition { RoomNumber = 368, Storyline = 3, SpawnPoint = 0, Description = "Beginning"} },
-            { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false, Description = "Fangirls or kids, whichever Tidus talks to second"} },
+            { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1, FangirlsOrKidsSkip = 1 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false, Description = "Fangirls or kids, whichever Tidus talks to second"} },
+            { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1, FangirlsOrKidsSkip = 2 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false, Description = "Fangirls or kids, whichever Tidus talks to second"} },
             { new GameState { RoomNumber = 368, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans"} },
             { new GameState { RoomNumber = 376, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 5, SpawnPoint = 0, Description = "Tidus looks at Jecht sign"} },
             { new GameState { RoomNumber = 371, Storyline = 5 }, new Transition { RoomNumber = 370, Storyline = 7, SpawnPoint = 0, Description = "Tidus navigates through the crowd and Blitzball FMV"} },
