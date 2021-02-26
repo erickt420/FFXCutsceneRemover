@@ -102,8 +102,10 @@ namespace FFXCutsceneRemover
                         Game.Suspend();
                         PostBossFightTransition.Execute();
                         InBossFight = false;
+                        string output = "Executing Post Boss Fight Transition - ";
+                        output += string.IsNullOrEmpty(PostBossFightTransition.Description) ? "No Description" : PostBossFightTransition.Description;
+                        Console.WriteLine(output);
                         PostBossFightTransition = null;
-                        Console.WriteLine("Executing Post Boss Fight Transition");
                         Game.Resume();
                     }
 
