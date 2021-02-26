@@ -35,6 +35,11 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public byte? EnableWakka = null;
+        public byte? EnableRikku = null;
+
+        public byte? MoonflowFlag = null;
+        public byte? MoonflowFlag2 = null;
 
         public bool CheckState()
         {
@@ -60,7 +65,11 @@ namespace FFXCutsceneRemover
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
                 TestValue(PartyMembers, memoryWatchers.PartyMembers.Current) &&
-                TestValue(Sandragoras, memoryWatchers.Sandragoras.Current);// &&
+                TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
+                TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
+                TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
+                TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
+                TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current);// &&
                 //TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 //TestValue(GuadoCount, memoryWatchers.GuadoCount.Current);
 

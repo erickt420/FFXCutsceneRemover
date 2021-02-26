@@ -12,6 +12,7 @@ namespace FFXCutsceneRemover
 
         private Process process;
         public bool ForceLoad = true;
+        public string Description = null;
 
         /* Only add members here for memory addresses that we want to write the value to.
          * If we only ever read the value then there is no need to add it here. */
@@ -38,7 +39,13 @@ namespace FFXCutsceneRemover
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
 
+        public byte? EnableTidus = null;
+        public byte? EnableYuna = null;
         public byte? EnableAuron = null;
+        public byte? EnableKimahri = null;
+        public byte? EnableWakka = null;
+        public byte? EnableLulu = null;
+        public byte? EnableRikku = null;
 
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
@@ -47,6 +54,16 @@ namespace FFXCutsceneRemover
         public byte? MiihenFlag2 = null;
         public byte? MiihenFlag3 = null;
         public byte? MiihenFlag4 = null;
+
+        public byte? MoonflowFlag = null;
+        public byte? MoonflowFlag2 = null;
+        public byte? RikkuOutfit = null;
+
+        public byte? MacalaniaFlag = null;
+
+        public byte[] Formation = null;
+        
+        public byte? ViaPurifico = null;
 
         public void Execute()
         {
@@ -75,8 +92,13 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             //WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             //WriteValue(memoryWatchers.GuadoCount, GuadoCount);
-
+            WriteValue(memoryWatchers.EnableTidus, EnableTidus);
+            WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
+            WriteValue(memoryWatchers.EnableKimahri, EnableKimahri);
+            WriteValue(memoryWatchers.EnableWakka, EnableWakka);
+            WriteValue(memoryWatchers.EnableLulu, EnableLulu);
+            WriteValue(memoryWatchers.EnableRikku, EnableRikku);
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
@@ -85,6 +107,16 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
             WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
             WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
+
+            WriteValue(memoryWatchers.MoonflowFlag, MoonflowFlag);
+            WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
+            WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
+
+            WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
+
+            WriteBytes(memoryWatchers.Formation, Formation);
+
+            WriteValue(memoryWatchers.ViaPurifico, ViaPurifico);
 
             if (ForceLoad)
             {
@@ -111,6 +143,14 @@ namespace FFXCutsceneRemover
                     }
                     process.WriteValue(finalPointer, value.Value);
                 }
+            }
+        }
+
+        private void WriteBytes(MemoryWatcher watcher, byte[] bytes)
+        {
+            if (bytes != null)
+            {
+                process.WriteBytes(watcher.Address, bytes);
             }
         }
 

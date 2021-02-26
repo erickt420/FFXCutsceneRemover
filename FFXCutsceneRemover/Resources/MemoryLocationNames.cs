@@ -29,7 +29,13 @@
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
 
+        public static string EnableTidus = "EnableTidus";
+        public static string EnableYuna = "EnableYuna";
         public static string EnableAuron = "EnableAuron";
+        public static string EnableKimahri = "EnableKimahri";
+        public static string EnableWakka = "EnableWakka";
+        public static string EnableLulu = "EnableLulu";
+        public static string EnableRikku = "EnableRikku";
 
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
@@ -39,5 +45,14 @@
         public static string MiihenFlag3 = "MiihenFlag3";
         public static string MiihenFlag4 = "MiihenFlag4";
 
+        public static string MoonflowFlag = "MoonflowFlag";
+        public static string MoonflowFlag2 = "MoonflowFlag2";
+        public static string RikkuOutfit = "RikkuOutfit";
+
+        public static string MacalaniaFlag = "MacalaniaFlag";
+
+        public static string Formation = "Formation";
+
+        public static string ViaPurifico = "ViaPurifico";
     }
 }
