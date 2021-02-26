@@ -38,6 +38,8 @@ namespace FFXCutsceneRemover
         public byte? EnableWakka = null;
         public byte? EnableRikku = null;
 
+        public byte? BesaidFlag1 = null;
+
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
 
@@ -68,6 +70,7 @@ namespace FFXCutsceneRemover
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
+                TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Current) &&
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current);// &&
                 //TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&

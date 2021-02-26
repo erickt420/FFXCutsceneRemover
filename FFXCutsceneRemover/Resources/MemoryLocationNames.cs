@@ -36,8 +36,11 @@
         public static string EnableWakka = "EnableWakka";
         public static string EnableLulu = "EnableLulu";
         public static string EnableRikku = "EnableRikku";
+        public static string EnableValefor = "EnableValefor";
 
         public static string BaajFlag1 = "BaajFlag1";
+
+        public static string BesaidFlag1 = "BesaidFlag1";
 
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
