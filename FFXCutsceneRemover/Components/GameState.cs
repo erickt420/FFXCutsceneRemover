@@ -28,7 +28,7 @@ namespace FFXCutsceneRemover
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
         public byte? MusicId = null;
-        public byte? CutsceneAlt = null;
+        public short? CutsceneAlt = null;
         public byte? AirshipDestinations = null;
         public short? AuronOverdrives = null;
         public byte? PartyMembers = null;
@@ -39,6 +39,9 @@ namespace FFXCutsceneRemover
         public byte? EnableRikku = null;
 
         public byte? BesaidFlag1 = null;
+
+        public byte? LucaFlag = null;
+        public byte? LucaFlag2 = null;
 
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
@@ -71,6 +74,8 @@ namespace FFXCutsceneRemover
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Current) &&
+                TestValue(LucaFlag, memoryWatchers.LucaFlag.Current) &&
+                TestValue(LucaFlag2, memoryWatchers.LucaFlag2.Current) &&
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current);// &&
                 //TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&

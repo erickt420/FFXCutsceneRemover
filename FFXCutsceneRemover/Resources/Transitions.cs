@@ -121,15 +121,18 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 94, Storyline = 380, State = 1 }, new Transition { Storyline = 380, SpawnPoint = 2, ForceLoad = false, Description = "Eavesdropping on Lulu and Wakka"} },
                                             // Tidus flashback about Jecht
                                             // Tidus fails Jecht shot + Yuna arrives
-            { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, Description = "Tidus speaks to Yuna"} },
+            { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 402, Description = "Tidus speaks to Yuna"} },
             // END OF WINNO
             // START OF LUCA
+            { new GameState { RoomNumber = 267, Storyline = 402 }, new Transition { RoomNumber = 377, Storyline = 404, Description = "Luca FMV + Kilika Beasts undock"} },
+            { new GameState { RoomNumber = 377, Storyline = 404 }, new Transition { RoomNumber = 267, Storyline = 405, Description = "Inside the Cafe"} },
+            { new GameState { RoomNumber = 267, Storyline = 405 }, new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, Description = "Besaid Aurochs undock"} },
             { new GameState { RoomNumber = 268, Storyline = 427, State = 0 }, new Transition { RoomNumber = 355, Storyline = 430, Description = "Seymour arrives" } },
             { new GameState { RoomNumber = 72, Storyline = 430, State = 0 }, new Transition { Storyline = 440, SpawnPoint = 1797, Description = "Yuna enters the changing room"} },
             { new GameState { RoomNumber = 72, Storyline = 440, State = 0 }, new Transition { RoomNumber = 123, Storyline = 450, SpawnPoint = 4, Description = "Speaking to the Al Bhed"} },
-            { new GameState { RoomNumber = 123, Storyline = 450 }, new Transition { LucaFlag = 8, ForceLoad = false, Description = "Camera pan"} },
+            { new GameState { RoomNumber = 123, Storyline = 450, LucaFlag = 0}, new Transition { LucaFlag = 8, ForceLoad = false, Description = "Camera pan"} },
             { new GameState { RoomNumber = 77, Storyline = 450 }, new Transition { Storyline = 455, SpawnPoint = 1, Description = "Crowd mob Yuna"} },
-            { new GameState { RoomNumber = 104, Storyline = 455 }, new Transition { LucaFlag2 = 2, ForceLoad = false, Description = "Tidus and Yuna talk about Luca"} },
+            { new GameState { RoomNumber = 104, Storyline = 455, LucaFlag2 = 0}, new Transition { LucaFlag2 = 2, ForceLoad = false, Description = "Tidus and Yuna talk about Luca"} },
             { new GameState { RoomNumber = 159, Storyline = 455 }, new Transition { RoomNumber = 57, Storyline = 484, Description = "Tidus and Yuna at the cafe"} },
             { new GameState { RoomNumber = 57, Storyline = 484 }, new Transition { RoomNumber = 121, Storyline = 486, Description = "Mika begins the tournament"} },
             { new GameState { RoomNumber = 121, Storyline = 486 }, new Transition { RoomNumber = 159, Storyline = 488, Description = "Al Bhed Auroch game starts"} },
@@ -138,7 +141,6 @@ namespace FFXCutsceneRemover.Resources
                                             // Machina fights
                                             // Looking at the scoreboard
             { new GameState { RoomNumber = 121, Storyline = 492 }, new Transition { RoomNumber = 88, Storyline = 500, LucaFlag = 9, SpawnPoint = 258, Description = "Wakka takes a beating"} },
-            //{ new GameState { RoomNumber = 88, Storyline = 500 }, new Transition { LucaFlag = 9, SpawnPoint = 258, ForceLoad = false, Description = "Wakka won't last" } },
             { new GameState { RoomNumber = 299, Storyline = 502 }, new Transition { RoomNumber = 113, Storyline = 502, Description = "They jump on the boat"} },
                                             // Pre-Oblitzerator
                                             // Post-Oblitzerator
@@ -157,11 +159,11 @@ namespace FFXCutsceneRemover.Resources
                                             // Post-Sahagin fight
             { new GameState { RoomNumber = 57, Storyline = 588 }, new Transition { Storyline = 600, Description = "Lulu what's happening"} },
                                             // Tidus and Wakka join Auron
-                                            // Seymour summon Anima + FMV
+            //{ new GameState { RoomNumber = 57, Storyline = 600, CutsceneAlt = 755 }, new Transition { RoomNumber = 104, Storyline = 610, Description = "Seymour summon Anima + FMV"} }, // Bug: Motion blur is on, need a value to turn off
             { new GameState { RoomNumber = 104, Storyline = 610  }, new Transition { RoomNumber = 107, Storyline = 615, Description = "Wakka quits the Aurochs" } },
             { new GameState { RoomNumber = 107, Storyline = 615  }, new Transition { RoomNumber = 89, Storyline = 616, Description = "Wakka joins Yuna"} },
             { new GameState { RoomNumber = 89, Storyline = 616  }, new Transition { Storyline = 617, SpawnPoint = 1, EnableAuron = 17, Description = "Tidus shouts at Auron"} },
-                                            // Tidus and Auron join the group
+            //{ new GameState { RoomNumber = 107, Storyline = 617 }, new Transition { Storyline = 630, SpawnPoint = 0, Description = "Tidus and Auron join the group"} }, // Bug: softlock, cannot speak to Yuna
             { new GameState { RoomNumber = 107, Storyline = 630, State = 0 }, new Transition { RoomNumber = 95, Storyline = 730, SpawnPoint = 256, Description = "HA HA HA HA"} },
             // END OF LUCA
             // START OF MI'IHEN
@@ -307,7 +309,7 @@ namespace FFXCutsceneRemover.Resources
 		    } },
 		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition { RoomNumber = 208, Storyline = 2275, SpawnPoint = 2, ForceLoad = false, Description = "Enter Highbridge"} },
 		    { new GameState { RoomNumber = 183, Storyline = 2290}, new Transition { RoomNumber = 183, Storyline = 2300, SpawnPoint = 0, ForceLoad = false, Description = "Natus Death"} },
-		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 128}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, Description = "Lake Scene"} },
+		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 3712}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, Description = "Lake Scene"} },
 
 		    
 		    

@@ -37,7 +37,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EncounterStatus;
         public MemoryWatcher<byte> MovementLock;
         public MemoryWatcher<byte> MusicId;
-        public MemoryWatcher<byte> CutsceneAlt;
+        public MemoryWatcher<short> CutsceneAlt;
         public MemoryWatcher<byte> AirshipDestinations;
         public MemoryWatcher<short> AuronOverdrives;
         public MemoryWatcher<byte> PartyMembers;
@@ -115,7 +115,7 @@ namespace FFXCutsceneRemover
             EncounterStatus = GetMemoryWatcher<byte>(MemoryLocations.EncounterStatus);
             MovementLock = GetMemoryWatcher<byte>(MemoryLocations.MovementLock);
             MusicId = GetMemoryWatcher<byte>(MemoryLocations.MusicId);
-            CutsceneAlt = GetMemoryWatcher<byte>(MemoryLocations.CutsceneAlt);
+            CutsceneAlt = GetMemoryWatcher<short>(MemoryLocations.CutsceneAlt);
             AirshipDestinations = GetMemoryWatcher<byte>(MemoryLocations.AirshipDestinations);
             AuronOverdrives = GetMemoryWatcher<short>(MemoryLocations.AuronOverdrives);
             PartyMembers = GetMemoryWatcher<byte>(MemoryLocations.PartyMembers);
