@@ -41,15 +41,14 @@ namespace FFXCutsceneRemover.Resources
                                             // Fire goes out and Klikk arrives
                                             // Rikku arrives during Klikk fight
             { new GameState { RoomNumber = 63, Storyline = 58 }, new Transition { RoomNumber = 71, Storyline = 60, SpawnPoint = 0, Description = "Rikku punches Tidus"} },
-            { new GameState { RoomNumber = 71, Storyline = 60 }, new Transition { RoomNumber = 71, Storyline = 66, SpawnPoint = 0, Description = "Tidus wakes up on boat"} },
-                                            // Sphere Grid Tutorial
+            { new GameState { RoomNumber = 71, Storyline = 60 }, new Transition { RoomNumber = 71, Storyline = 66, SpawnPoint = 0, BaajFlag1 = 1, Description = "Tidus wakes up on boat + Sphere Grid tutorial"} },
                                             // Rikku explains mission
             { new GameState { RoomNumber = 64, Storyline = 70 }, new Transition { RoomNumber = 64, Storyline = 74, SpawnPoint = 0, Description = "They enter the submerged ruins" } },
                                             // Tidus bashes the console
                                             // Tidus bashes the machine + Tros arrives
                                             // They leave the submerged ruins
                                             // Lights come on in submerged ruins
-            //{ new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, Description = "Airship is shown" } }, // Bug: needs to compare old with new Gamestate to work   
+            { new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, Description = "Airship is shown" } }, 
             { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, Description = "Tidus gets back onto the boat"} },                                       
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110 , Description = "Rikku suggests going to Luca"} },                                     
             // END OF BAAJ TEMPLE

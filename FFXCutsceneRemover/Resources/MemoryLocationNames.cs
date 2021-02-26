@@ -37,6 +37,8 @@
         public static string EnableLulu = "EnableLulu";
         public static string EnableRikku = "EnableRikku";
 
+        public static string BaajFlag1 = "BaajFlag1";
+
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
 

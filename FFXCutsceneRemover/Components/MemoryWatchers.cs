@@ -53,6 +53,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EnableLulu;
         public MemoryWatcher<byte> EnableRikku;
 
+        public MemoryWatcher<byte> BaajFlag1;
+
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
 
@@ -126,6 +128,8 @@ namespace FFXCutsceneRemover
             EnableLulu = GetMemoryWatcher<byte>(MemoryLocations.EnableLulu);
             EnableRikku = GetMemoryWatcher<byte>(MemoryLocations.EnableRikku);
 
+            BaajFlag1 = GetMemoryWatcher<byte>(MemoryLocations.BaajFlag1);
+
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
 
@@ -176,6 +180,7 @@ namespace FFXCutsceneRemover
                     EnableWakka,
                     EnableLulu,
                     EnableRikku,
+                    BaajFlag1,
                     LucaFlag,
                     LucaFlag2,
                     MiihenFlag1,

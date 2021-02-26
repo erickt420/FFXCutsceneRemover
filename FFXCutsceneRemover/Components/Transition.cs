@@ -47,6 +47,8 @@ namespace FFXCutsceneRemover
         public byte? EnableLulu = null;
         public byte? EnableRikku = null;
 
+        public byte? BaajFlag1 = null;
+
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
 
@@ -99,6 +101,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EnableWakka, EnableWakka);
             WriteValue(memoryWatchers.EnableLulu, EnableLulu);
             WriteValue(memoryWatchers.EnableRikku, EnableRikku);
+
+            WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
