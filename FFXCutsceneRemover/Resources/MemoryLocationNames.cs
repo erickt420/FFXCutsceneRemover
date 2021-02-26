@@ -45,6 +45,12 @@
         public static string MiihenFlag3 = "MiihenFlag3";
         public static string MiihenFlag4 = "MiihenFlag4";
 
+        public static string MoonflowFlag = "MoonflowFlag";
+        public static string MoonflowFlag2 = "MoonflowFlag2";
+        public static string RikkuOutfit = "RikkuOutfit";
+
+        public static string MacalaniaFlag = "MacalaniaFlag";
+
         public static string Formation = "Formation";
 
         public static string ViaPurifico = "ViaPurifico";

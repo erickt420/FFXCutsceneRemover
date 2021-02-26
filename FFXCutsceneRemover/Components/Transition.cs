@@ -55,6 +55,12 @@ namespace FFXCutsceneRemover
         public byte? MiihenFlag3 = null;
         public byte? MiihenFlag4 = null;
 
+        public byte? MoonflowFlag = null;
+        public byte? MoonflowFlag2 = null;
+        public byte? RikkuOutfit = null;
+
+        public byte? MacalaniaFlag = null;
+
         public byte[] Formation = null;
         
         public byte? ViaPurifico = null;
@@ -101,6 +107,12 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
             WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
             WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
+
+            WriteValue(memoryWatchers.MoonflowFlag, MoonflowFlag);
+            WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
+            WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
+
+            WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
 
             WriteBytes(memoryWatchers.Formation, Formation);
 

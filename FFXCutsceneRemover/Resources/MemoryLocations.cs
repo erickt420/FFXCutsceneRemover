@@ -52,6 +52,12 @@
         public static MemoryLocationData MiihenFlag3 = new MemoryLocationData(MemoryLocationNames.MiihenFlag3, 0xD2CD00);
         public static MemoryLocationData MiihenFlag4 = new MemoryLocationData(MemoryLocationNames.MiihenFlag4, 0xD2CD04);
 
+        public static MemoryLocationData MoonflowFlag = new MemoryLocationData(MemoryLocationNames.MoonflowFlag, 0xD2CC7F);
+        public static MemoryLocationData MoonflowFlag2 = new MemoryLocationData(MemoryLocationNames.MoonflowFlag2, 0xD2CC83);
+        public static MemoryLocationData RikkuOutfit = new MemoryLocationData(MemoryLocationNames.RikkuOutfit, 0xD2CB61);
+
+        public static MemoryLocationData MacalaniaFlag = new MemoryLocationData(MemoryLocationNames.MacalaniaFlag, 0xD2CD16);
+
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
         
         public static MemoryLocationData ViaPurifico = new MemoryLocationData(MemoryLocationNames.ViaPurifico, 0xD2CC84);

@@ -198,28 +198,75 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 341, Storyline = 910 }, new Transition { RoomNumber = 134, Storyline = 910, Description = "Nucleus"} },
             { new GameState { RoomNumber = 134, Storyline = 910 }, new Transition { RoomNumber = 131, Storyline = 910, Description = "Zanarkand flashback"} },
             { new GameState { RoomNumber = 131, Storyline = 910 }, new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, Description = "Tidus monologue on beach"} },
-                                            // Kinoc retreats
-                                            // Seymour flirts
-                                            // Tidus speaks to Auron
+            { new GameState { RoomNumber = 131, Storyline = 922, State = 0 }, new Transition { RoomNumber = 131, Storyline = 928, SpawnPoint = 3, Description = "Kinoc retreats"} },
+            { new GameState { RoomNumber = 131, Storyline = 928, State = 0 }, new Transition { RoomNumber = 131, Storyline = 938, SpawnPoint = 0, Description = "Tidus speaks to Auron"} },
                                             // Leaving Mushroom Rock Road
             // END OF MRR
             // START OF DJOSE HIGHROAD
-            { new GameState { RoomNumber = 93, Storyline = 960 }, new Transition { RoomNumber = 93, Storyline = 962, SpawnPoint = 0,     Description = "Leave MRR -> Djose"} },
-		    { new GameState { RoomNumber = 76, Storyline = 962 }, new Transition { RoomNumber = 76, Storyline = 990, SpawnPoint = 0,     Description = "Djose -> Trials"} },
-		    { new GameState { RoomNumber = 214, Storyline = 990 }, new Transition { RoomNumber = 214, Storyline = 995, SpawnPoint = 0,   Description = "Trials -> Chamber"} },
-		    { new GameState { RoomNumber = 161, Storyline = 1010 }, new Transition { RoomNumber = 161, Storyline = 1032, SpawnPoint = 0, Description = "Wake Yuna -> Moonflow"} },
-		    { new GameState { RoomNumber = 105, Storyline = 1032 }, new Transition { RoomNumber = 105, Storyline = 1045, SpawnPoint = 0, Description = "Moonflow/Shoopuff"} },
-		    { new GameState { RoomNumber = 291, Storyline = 1045 }, new Transition { RoomNumber = 99, Storyline = 1060, SpawnPoint = 0,  Description = "Pre-Extractor"} },
-		    { new GameState { RoomNumber = 291, Storyline = 1060 }, new Transition { RoomNumber = 236, Storyline = 1070, SpawnPoint = 0, Description = "Post-Extractor"} },
-		    { new GameState { RoomNumber = 189, Storyline = 1070 }, new Transition { RoomNumber = 189, Storyline = 1085, SpawnPoint = 0, Description = "Remove Rikku's appearance"} },
-		    //{ new GameState { RoomNumber = 141, Storyline = 1104 }, new Transition { RoomNumber = 163, Storyline = 1126, SpawnPoint = 1, Description = "Seymour's Room to Farplane"} },
-		    //{ new GameState { RoomNumber = 163, Storyline = 1126 }, new Transition { RoomNumber = 163, Storyline = 1190, SpawnPoint = 0, Description = "Skip Farplane"} },
-            { new GameState { RoomNumber = 213, Storyline = 1156 }, new Transition { RoomNumber = 213, Storyline = 1300, SpawnPoint = 0, Description = "Farplane Cutscenes"} },
-            { new GameState { RoomNumber = 257, Storyline = 1300 }, new Transition { RoomNumber = 135, Storyline = 1300, SpawnPoint = 2, Description = "Skip Guadosalam Exit"} },
-		    { new GameState { RoomNumber = 264, Storyline = 1315 }, new Transition { RoomNumber = 263, Storyline = 1418, SpawnPoint = 0, Description = "Inn Sleep"} },
-
+            { new GameState { RoomNumber = 93, Storyline = 960 }, new Transition { RoomNumber = 93, Storyline = 961, SpawnPoint = 0,     Description = "Kimahri speaks"} },
+            { new GameState { RoomNumber = 93, Storyline = 961, State = 0 }, new Transition { RoomNumber = 93, Storyline = 962, SpawnPoint = 1, Description = "Tidus is eager to go to Zanarkand"} },
+            { new GameState { RoomNumber = 76, Storyline = 962 }, new Transition { Storyline = 970, SpawnPoint = 0, Description = "Tidus whoa"} },
+            { new GameState { RoomNumber = 82, Storyline = 970 }, new Transition { Storyline = 971, SpawnPoint = 0, Description = "Arrival at Djose Temple"} },
+            { new GameState { RoomNumber = 81, Storyline = 971 }, new Transition { Storyline = 985, SpawnPoint = 0, Description = "Meet Isaaru"} },
+            { new GameState { RoomNumber = 214, Storyline = 990 }, new Transition { RoomNumber = 214, Storyline = 995, SpawnPoint = 0, Description = "Entering the Djose trials"} },
+            //{ new GameState { RoomNumber = 90, Storyline = 998, State = 0 }, new Transition { RoomNumber = 90, Storyline = 1000, SpawnPoint = 0, Description = "Yuna enters the chamber"} }, : Bug: Spawned out of the cutscene
+                                            // Yuna exits the chamber (name Ixion)
+            { new GameState { RoomNumber = 82, Storyline = 1005 }, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, Description = "Tidus wakes up"} },
+            //{ new GameState { RoomNumber = 161, Storyline = 1010 }, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, Description = "Tidus wakes Yuna up"} },
+            { new GameState { RoomNumber = 82, Storyline = 1015, State = 0 }, new Transition { RoomNumber = 82, Storyline = 1020, SpawnPoint = 2, Description = "Yuna has bed hair"} },
+            { new GameState { RoomNumber = 76, Storyline = 1020, State = 0 }, new Transition { RoomNumber = 76, Storyline = 1025, SpawnPoint = 0, Description = "Clasko wait for me"} },
+            { new GameState { RoomNumber = 93, Storyline = 1028 }, new Transition { RoomNumber = 93, Storyline = 1030, SpawnPoint = 1, Description = "Moonflow here we come"} },
+            // END OF DJOSE HIGHROAD
+            // START OF MOONFLOW
+            { new GameState { RoomNumber = 75, Storyline = 1030 }, new Transition { RoomNumber = 75, Storyline = 1032, MoonflowFlag = 1, Description = "Biran and Yenke taunt"} },
+            { new GameState { RoomNumber = 105, Storyline = 1032, State = 0 }, new Transition { RoomNumber = 105, Storyline = 1040, SpawnPoint = 1, Description = "Tidus sees the Moonflow river"} },
+            { new GameState { RoomNumber = 105, Storyline = 1040 }, new Transition { RoomNumber = 187, Storyline = 1045, SpawnPoint = 0, Description = "Tidus sees a shoopuf"} },
+            { new GameState { RoomNumber = 235, Storyline = 1045, MoonflowFlag = 1}, new Transition { MoonflowFlag = 65, Description = "The chocobos cannot cross"} },
+            { new GameState { RoomNumber = 291, Storyline = 1045}, new Transition { RoomNumber = 99, Storyline = 1045, Description = "Shoopuf launching + map"} },
+            { new GameState { RoomNumber = 99, Storyline = 1045}, new Transition { RoomNumber = 291, Storyline = 1048, Description = "A sunken city"} },
+            { new GameState { RoomNumber = 291, Storyline = 1048}, new Transition { RoomNumber = 99, Storyline = 1060, Description = "A debate about machina"} },
+                                            // Pre-Extractor
+                                            // Post-Extractor
+		    { new GameState { RoomNumber = 291, Storyline = 1060 }, new Transition { RoomNumber = 236, Storyline = 1070, SpawnPoint = 0, Description = "Back on the shoopuf"} },
+		    { new GameState { RoomNumber = 109, Storyline = 1070 }, new Transition { RoomNumber = 109, Storyline = 1085, SpawnPoint = 0, EnableRikku = 17, MoonflowFlag2 = 36, RikkuOutfit = 0, Description = "Reunite with Rikku + FMV"} },
+            { new GameState { RoomNumber = 97, Storyline = 1085, MoonflowFlag2 = 36 }, new Transition { MoonflowFlag2 = 100, Description = "Map shown"} },
+            // END OF MOONFLOW
+            // START OF GUADOSALAM
+            { new GameState { RoomNumber = 135, Storyline = 1085 }, new Transition { RoomNumber = 135, Storyline = 1096, SpawnPoint = 0, Description = "Meet Tromell + Customise tutorial"} },
+            { new GameState { RoomNumber = 163, Storyline = 1096, State = 1}, new Transition { RoomNumber = 163, Storyline = 1104, SpawnPoint = 1, Description = "Tromell invites the gang in"} },           
+                                            // Tromell gets Seymour
+                                            // Speaking to everyone
+                                            // Seymour arrives + FMV
+            { new GameState { RoomNumber = 197, Storyline = 1104}, new Transition { RoomNumber = 217, Storyline = 1118, Description = "Seymour proposes to Yuna"} },
+            { new GameState { RoomNumber = 217, Storyline = 1118}, new Transition { RoomNumber = 163, Storyline = 1126, SpawnPoint = 1, Description = "Yuna drinks a glass of water"} },
+            { new GameState { RoomNumber = 135, Storyline = 1126, State = 1}, new Transition { RoomNumber = 135, Storyline = 1132, SpawnPoint = 257, Description = "The gang discuss the proposal"} },
+            { new GameState { RoomNumber = 257, Storyline = 1132}, new Transition { RoomNumber = 257, Storyline = 1138, SpawnPoint = 0, Description = "Tidus freaks out about the undead"} },
+            { new GameState { RoomNumber = 257, Storyline = 1138}, new Transition { RoomNumber = 257, Storyline = 1154, SpawnPoint = 0, Description = "Auron and Rikku stay behind"} },
+                                            // Tidus enters the Farplane
+            //{ new GameState { RoomNumber = 193, Storyline = 1154}, new Transition { RoomNumber = 193, Storyline = 1156, SpawnPoint = 0, Description = "Farplane FMV"} }, // bug: Characters not loaded in if trying to skip FMV         
+                                            // Wakka speaks to Chappu, Brotherhood gets "buffed" here
+                                            // Tidus speaks to Yuna
+            { new GameState { RoomNumber = 134, Storyline = 1170}, new Transition { RoomNumber = 193, Storyline = 1172, Description = "Zanarkand flashback"} },
+            { new GameState { RoomNumber = 193, Storyline = 1172}, new Transition { RoomNumber = 364, Storyline = 1176, Description = "Tidus is embarrassed"} },
+            { new GameState { RoomNumber = 364, Storyline = 1176}, new Transition { RoomNumber = 175, Storyline = 1184, Description = "Jyscal returns"} },
+            { new GameState { RoomNumber = 175, Storyline = 1184}, new Transition { RoomNumber = 135, Storyline = 1190, SpawnPoint = 258, Description = "Tidus asks about Jyscal"} },
+            { new GameState { RoomNumber = 135, Storyline = 1190, State = 1}, new Transition { RoomNumber = 135, Storyline = 1194, SpawnPoint = 258, Description = "Affection scene"} },
+            { new GameState { RoomNumber = 135, Storyline = 1194, State = 1}, new Transition { RoomNumber = 135, Storyline = 1196, SpawnPoint = 4, Description = "Tidus speaks to Shelinda"} },
+            { new GameState { RoomNumber = 135, Storyline = 1196, State = 1}, new Transition { RoomNumber = 135, Storyline = 1200, Description = "Yuna asks Jyscal what she can do"} },
+            { new GameState { RoomNumber = 135, Storyline = 1200}, new Transition { RoomNumber = 135, Storyline = 1210, SpawnPoint = 257, Description = "Macarena Temple"} },       
+            // END OF GUADOSALAM
+            // START OF THUNDER PLAINS
+            { new GameState { RoomNumber = 140, Storyline = 1300}, new Transition { RoomNumber = 140, Storyline = 1310, SpawnPoint = 0, Description = "Map + Rikku afraid + tutorial"} },
+            { new GameState { RoomNumber = 140, Storyline = 1310, State = 0}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, Description = "Rikku freaks out"} },
+            { new GameState { RoomNumber = 256, Storyline = 1310}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },    
+            { new GameState { RoomNumber = 264, Storyline = 1320}, new Transition { RoomNumber = 263, Storyline = 1325, Description = "Tidus barges in Yuna's room + Sleep"} }, // bug: party not healed
+            { new GameState { RoomNumber = 263, Storyline = 1335}, new Transition { RoomNumber = 256, Storyline = 1340, Description = "Leaving the agency"} },
+            { new GameState { RoomNumber = 162, Storyline = 1340}, new Transition { RoomNumber = 162, Storyline = 1375, Description = "Yuna decides to marry Seymour"} },
+            // END OF THUNDER PLAINS
 		    // START OF MACALANIA
-		    // Missing Macalania intro and birdman etc.
+            { new GameState { RoomNumber = 110, Storyline = 1375}, new Transition { RoomNumber = 110, Storyline = 1400, Description = "Arriving at Macalania"} },
+            { new GameState { RoomNumber = 110, Storyline = 1400, State = 0}, new Transition { RoomNumber = 110, Storyline = 1407, SpawnPoint = 5, Description = "Tidus is worried about Yuna"} },
+            { new GameState { RoomNumber = 241, Storyline = 1407}, new Transition { RoomNumber = 241, Storyline = 1413, MacalaniaFlag = 32, Description = "Barthello has lost Dona + Butterfly guy"} },
 		    { new GameState { RoomNumber = 221, Storyline = 1413 }, new Transition { RoomNumber = 221, Storyline = 1420, SpawnPoint = 0, Description = "Pre-Spherimorph Auron Smash"} },
 		    //{ new GameState { Storyline = 1470, AuronOverdrives = 11553 }, new Transition { AuronOverdrives = 11569, ForceLoad = false, Description = "Adding Shooting Star"} }, // Added to Spherimorph (boss loop) but needs testing
 		    { new GameState { RoomNumber = 106, Storyline = 1504 }, new Transition { Storyline = 1530, Description = "Jysscal Skip"} },

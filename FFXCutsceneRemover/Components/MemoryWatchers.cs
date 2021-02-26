@@ -61,6 +61,12 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MiihenFlag3;
         public MemoryWatcher<byte> MiihenFlag4;
 
+        public MemoryWatcher<byte> MoonflowFlag;
+        public MemoryWatcher<byte> MoonflowFlag2;
+        public MemoryWatcher<byte> RikkuOutfit;
+
+        public MemoryWatcher<byte> MacalaniaFlag;
+
         public MemoryWatcher<byte> Formation;
         public MemoryWatcher<byte> ViaPurifico;
 
@@ -128,6 +134,12 @@ namespace FFXCutsceneRemover
             MiihenFlag3 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag3);
             MiihenFlag4 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag4);
 
+            MoonflowFlag = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag);
+            MoonflowFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag2);
+            RikkuOutfit = GetMemoryWatcher<byte>(MemoryLocations.RikkuOutfit);
+
+            MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
+
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
             ViaPurifico = GetMemoryWatcher<byte>(MemoryLocations.ViaPurifico);
 
@@ -170,6 +182,10 @@ namespace FFXCutsceneRemover
                     MiihenFlag2,
                     MiihenFlag3,
                     MiihenFlag4,
+                    MoonflowFlag,
+                    MoonflowFlag2,
+                    RikkuOutfit,
+                    MacalaniaFlag,
                     ViaPurifico
             });
         }
