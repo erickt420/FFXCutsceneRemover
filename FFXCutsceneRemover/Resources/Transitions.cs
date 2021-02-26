@@ -145,7 +145,6 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 299, Storyline = 502 }, new Transition { RoomNumber = 113, Storyline = 502, Description = "They jump on the boat"} },
                                             // Pre-Oblitzerator
                                             // Post-Oblitzerator
-                                            // Yuna is rescued
             { new GameState { RoomNumber = 121, Storyline = 508 }, new Transition { RoomNumber = 88, Storyline = 514, SpawnPoint = 0, Description = "Aurochs win the game" } },
             { new GameState { RoomNumber = 72, Storyline = 514  }, new Transition { Storyline = 518, LucaFlag = 11, SpawnPoint = 1797, Description = "Wakka is injured"} },
                                             // Wakka subs himself
@@ -189,7 +188,6 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 119, Storyline = 860 }, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } }, // bug: People leave/join the party, need to fix that
                                             // Pre-Sinspawn Gui 2
                                             // Post-Sinspawn Gui 2
-            //{ new GameState { RoomNumber = 247, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 922, Description = "Trying to beat Sin FMV"} }, // bug: FMV playing as you gain control, breaks the game
                                             // Tidus wakes up
                                             // Tidus sees Gatta
                                             // Sin FMV
@@ -318,6 +316,8 @@ namespace FFXCutsceneRemover.Resources
 
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
+            { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, Description = "Oblitzerator"} },
+            { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, Description = "Sinspawn Gui 2"} },
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1480, SpawnPoint = 2, Description = "Spherimorph", AuronOverdrives = 11569} },
             { new GameState { HpEnemyA = 16000, Storyline = 1485 }, new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, Description = "Crawler"} },
             { new GameState { HpEnemyA = 1200, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
