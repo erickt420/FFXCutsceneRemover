@@ -317,7 +317,7 @@ namespace FFXCutsceneRemover.Resources
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
             { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, Description = "Oblitzerator"} },
-            { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, Description = "Sinspawn Gui 2"} },
+            { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, EnableTidus = 17, EnableKimahri = 17, EnableLulu = 17, EnableWakka = 17, Description = "Sinspawn Gui 2"} }, // Bug: minor, formation gets set back to whatever it was in Gui 1, would need to store what it was!
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1480, SpawnPoint = 2, Description = "Spherimorph", AuronOverdrives = 11569} },
             { new GameState { HpEnemyA = 16000, Storyline = 1485 }, new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, Description = "Crawler"} },
             { new GameState { HpEnemyA = 1200, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
