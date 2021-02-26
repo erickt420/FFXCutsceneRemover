@@ -9,8 +9,6 @@ namespace FFXCutsceneRemover
     {
         private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
 
-        private Process process;
-
         /* Only add members here for memory addresses that we want to read the value of.
          * If we only ever write the value then there is no need to add it here. */
         public short? RoomNumber = null;
@@ -38,9 +36,6 @@ namespace FFXCutsceneRemover
 
         public bool CheckState()
         {
-            process = memoryWatchers.Process;
-            memoryWatchers.Watchers.UpdateAll(process);
-
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
                 TestValue(Storyline, memoryWatchers.Storyline.Old) &&
                 TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Old) &&
@@ -60,10 +55,9 @@ namespace FFXCutsceneRemover
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Old) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Old) &&
                 TestValue(PartyMembers, memoryWatchers.PartyMembers.Old) &&
-                TestValue(Sandragoras, memoryWatchers.Sandragoras.Old);// &&
-                //TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
-                //TestValue(GuadoCount, memoryWatchers.GuadoCount.Old);
-
+                TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
+                TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
+                TestValue(GuadoCount, memoryWatchers.GuadoCount.Old);
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct
