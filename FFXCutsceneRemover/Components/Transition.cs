@@ -50,6 +50,9 @@ namespace FFXCutsceneRemover
 
         public byte? BaajFlag1 = null;
 
+        public byte? SSWinnoFlag1 = null;
+        public byte? SSWinnoFlag2 = null;
+
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
 
@@ -105,6 +108,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EnableValefor, EnableValefor);
 
             WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);
+            WriteValue(memoryWatchers.SSWinnoFlag1, SSWinnoFlag1);
+            WriteValue(memoryWatchers.SSWinnoFlag2, SSWinnoFlag2);
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);

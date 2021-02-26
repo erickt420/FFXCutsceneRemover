@@ -58,6 +58,9 @@ namespace FFXCutsceneRemover
 
         public MemoryWatcher<byte> BesaidFlag1;
 
+        public MemoryWatcher<byte> SSWinnoFlag1;
+        public MemoryWatcher<byte> SSWinnoFlag2;
+
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
 
@@ -136,6 +139,9 @@ namespace FFXCutsceneRemover
 
             BesaidFlag1 = GetMemoryWatcher<byte>(MemoryLocations.BesaidFlag1);
 
+            SSWinnoFlag1 = GetMemoryWatcher<byte>(MemoryLocations.SSWinnoFlag1);
+            SSWinnoFlag2 = GetMemoryWatcher<byte>(MemoryLocations.SSWinnoFlag2);
+
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
 
@@ -189,6 +195,8 @@ namespace FFXCutsceneRemover
                     EnableValefor,
                     BaajFlag1,
                     BesaidFlag1,
+                    SSWinnoFlag1,
+                    SSWinnoFlag2,
                     LucaFlag,
                     LucaFlag2,
                     MiihenFlag1,

@@ -39,6 +39,9 @@ namespace FFXCutsceneRemover
 
         public byte? BesaidFlag1 = null;
 
+        public byte? SSWinnoFlag1 = null;
+        public byte? SSWinnoFlag2 = null;
+
         public byte? LucaFlag = null;
         public byte? LucaFlag2 = null;
 
@@ -76,6 +79,8 @@ namespace FFXCutsceneRemover
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Current) &&
+                TestValue(SSWinnoFlag1, memoryWatchers.SSWinnoFlag1.Current) &&
+                TestValue(SSWinnoFlag2, memoryWatchers.SSWinnoFlag2.Current) &&
                 TestValue(LucaFlag, memoryWatchers.LucaFlag.Current) &&
                 TestValue(LucaFlag2, memoryWatchers.LucaFlag2.Current) &&
                 TestValue(MiihenFlag1, memoryWatchers.MiihenFlag1.Current) &&

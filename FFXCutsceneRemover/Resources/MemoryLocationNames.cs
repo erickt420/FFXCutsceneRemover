@@ -42,6 +42,9 @@
 
         public static string BesaidFlag1 = "BesaidFlag1";
 
+        public static string SSWinnoFlag1 = "SSWinnoFlag1";
+        public static string SSWinnoFlag2 = "SSWinnoFlag2";
+
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
 

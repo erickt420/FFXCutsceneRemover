@@ -116,11 +116,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 16, Storyline = 360, State = 1 }, new Transition { RoomNumber = 94, Storyline = 370, SpawnPoint = 256, Description = "Setting off to Luca"} },
             // END OF KILIKA
             // START OF SS WINNO
-            { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SpawnPoint = 0, Description = "Opening scenes"} },
-                                            // Tidus stands up
-                                            // Meet O'aka
-            //{ new GameState { RoomNumber = 94, Storyline = 380, State = 1 }, new Transition { Storyline = 380, SpawnPoint = 2, ForceLoad = false, Description = "Eavesdropping on Lulu and Wakka"} },
-                                            // Tidus flashback about Jecht
+            { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SSWinnoFlag2 = 1, Description = "Opening scenes"} },
+            { new GameState { RoomNumber = 237, Storyline = 372, SSWinnoFlag2 = 1 }, new Transition { RoomNumber = 237, Storyline = 372, SSWinnoFlag1 = 170, SSWinnoFlag2 = 9, Description = "Meet O'aka"} },
+            { new GameState { RoomNumber = 94, Storyline = 380, SSWinnoFlag2 = 25 }, new Transition { Storyline = 380, SSWinnoFlag2 = 31, SpawnPoint = 2, Description = "Eavesdropping on Lulu and Wakka"} },
+            //{ new GameState { RoomNumber = 94, Storyline = 385 }, new Transition { RoomNumber = 94, Storyline = 390, Description = "Tidus looks at the blitzball"} },
+            //{ new GameState { RoomNumber = 191, Storyline = 387 }, new Transition { RoomNumber = 94, Storyline = 390, Description = "Zanarkand flashback"} }, // Bug: Skips Jecht shot minigame, not sure want to get rid of that
                                             // Tidus fails Jecht shot + Yuna arrives
             { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 402, Description = "Tidus speaks to Yuna"} },
             // END OF WINNO
