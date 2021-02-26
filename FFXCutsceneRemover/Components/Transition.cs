@@ -67,8 +67,8 @@ namespace FFXCutsceneRemover
 
         public void Execute()
         {
+            // Always update to get the latest process
             process = memoryWatchers.Process;
-            memoryWatchers.Watchers.UpdateAll(process);
 
             WriteValue(memoryWatchers.RoomNumber, RoomNumber);
             WriteValue(memoryWatchers.Storyline, Storyline);
@@ -90,8 +90,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
             WriteValue(memoryWatchers.PartyMembers, PartyMembers);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
-            //WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
-            //WriteValue(memoryWatchers.GuadoCount, GuadoCount);
+            WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
+            WriteValue(memoryWatchers.GuadoCount, GuadoCount);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
@@ -99,23 +99,17 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EnableWakka, EnableWakka);
             WriteValue(memoryWatchers.EnableLulu, EnableLulu);
             WriteValue(memoryWatchers.EnableRikku, EnableRikku);
-
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
             WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
-
             WriteValue(memoryWatchers.MiihenFlag1, MiihenFlag1);
             WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
             WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
             WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
-
             WriteValue(memoryWatchers.MoonflowFlag, MoonflowFlag);
             WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
-
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
-
             WriteBytes(memoryWatchers.Formation, Formation);
-
             WriteValue(memoryWatchers.ViaPurifico, ViaPurifico);
 
             if (ForceLoad)

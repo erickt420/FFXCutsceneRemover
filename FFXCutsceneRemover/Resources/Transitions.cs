@@ -310,9 +310,6 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition { RoomNumber = 208, Storyline = 2275, SpawnPoint = 2, ForceLoad = false, Description = "Enter Highbridge"} },
 		    { new GameState { RoomNumber = 183, Storyline = 2290}, new Transition { RoomNumber = 183, Storyline = 2300, SpawnPoint = 0, ForceLoad = false, Description = "Natus Death"} },
 		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 128}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, Description = "Lake Scene"} },
-
-		    
-		    
         };
 
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()

@@ -49,9 +49,13 @@ namespace FFXCutsceneRemover
                 Console.WriteLine("Starting main loop!");
                 while (!Game.HasExited)
                 {
+
+                    // Update the values of our memory watchers.
+                    // This is really important.
+                    MemoryWatchers.Watchers.UpdateAll(Game);
+
                     if (PrintDebugValues)
                     {
-                        MemoryWatchers.Watchers.UpdateAll(Game);
                         MemoryWatcherList watchers = MemoryWatchers.Watchers;
 
                         // Report the current status of all of our watched memory. For debug purposes
@@ -59,6 +63,7 @@ namespace FFXCutsceneRemover
                         {
                             Console.WriteLine(watcher.Name + ": " + watcher.Current);
                         }
+                        Console.Write("InBossFight: " + InBossFight);
                     }
 
                     /* This loop iterates over the list of standard transitions
@@ -92,7 +97,7 @@ namespace FFXCutsceneRemover
                             }
                         }
                     }
-                    else if (new GameState { Menu = 0 }.CheckState() && MemoryWatchers.Menu.Old == 1)
+                    else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
                     {
                         Game.Suspend();
                         PostBossFightTransition.Execute();
@@ -120,7 +125,7 @@ namespace FFXCutsceneRemover
                     if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
                     {
                         Game.Suspend();
-                        new Transition { RoomNumber = 23, BattleState = 778 }.Execute();
+                        new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" }.Execute();
                         Game.Resume();
                     }
                     
