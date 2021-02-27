@@ -300,7 +300,12 @@ namespace FFXCutsceneRemover.Resources
 			    EnableTidus = 0, EnableYuna = 17, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0,
 			    ViaPurificoPlatform = 1 //Bug (Minor): Doesn't seem to be working on ASL either. Value should enable the first platform and set direction to North
 		    } },
-		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition { Storyline = 2275, SpawnPoint = 2, ForceLoad = false, Description = "Enter Highbridge"} },
+		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition
+		    {
+			    Storyline = 2275, SpawnPoint = 2, ForceLoad = true, Description = "Enter Highbridge",
+			    Formation = new byte[]{ 0x0, 0x1, 0x4, 0x6, 0x2, 0x5, 0xFF },
+			    EnableLulu = 17, EnableYuna = 17, EnableAuron = 17
+		    } },
 		    { new GameState { RoomNumber = 183, Storyline = 2290}, new Transition { RoomNumber = 183, Storyline = 2300, SpawnPoint = 0, ForceLoad = false, Description = "Natus Death"} },
 		    // END OF BEVELLE
 		    // START OF CALM LANDS
