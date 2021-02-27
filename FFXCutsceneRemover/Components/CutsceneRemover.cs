@@ -93,7 +93,7 @@ namespace FFXCutsceneRemover
                             {
                                 InBossFight = true;
                                 PostBossFightTransition = transition.Value;
-                                Console.WriteLine("Entered Boss Fight");
+                                Console.WriteLine("Entered Boss Fight: " + transition.Value.Description);
                             }
                         }
                     }
@@ -141,7 +141,7 @@ namespace FFXCutsceneRemover
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
                     {
                         Game.Suspend();
-                        new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"};
+                        new Transition { RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"};
                         Game.Resume();
                     }
                     
@@ -149,7 +149,7 @@ namespace FFXCutsceneRemover
                     if (new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48}.CheckState() && MemoryWatchers.XCoordinate.Current > 250f)
                     {
                         Game.Suspend();
-                        new Transition {RoomNumber = 259, Storyline = 2510, SpawnPoint = 0, Description = "Yuna looks at Defender X's corpse"};
+                        new Transition { RoomNumber = 259, Storyline = 2510, SpawnPoint = 0, Description = "Yuna looks at Defender X's corpse"};
                         Game.Resume();
                     }
 
