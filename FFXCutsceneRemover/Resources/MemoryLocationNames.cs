@@ -53,6 +53,7 @@
 
         public static string Formation = "Formation";
 
-        public static string ViaPurifico = "ViaPurifico";
+        public static string ViaPurificoPlatform = "ViaPurificoPlatform";
+        public static string CalmLandsFlag = "CalmLandsFlag";
     }
 }

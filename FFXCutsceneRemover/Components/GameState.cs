@@ -27,7 +27,7 @@ namespace FFXCutsceneRemover
         public byte? MovementLock = null;
         public byte? MusicId = null;
         public byte? CutsceneAlt = null;
-        public byte? AirshipDestinations = null;
+        public short? AirshipDestinations = null;
         public short? AuronOverdrives = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
