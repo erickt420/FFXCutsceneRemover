@@ -153,6 +153,7 @@ namespace FFXCutsceneRemover
                         Game.Suspend();
                         new Transition { RoomNumber = 259, Storyline = 2510, SpawnPoint = 0 }.Execute();
                         Console.WriteLine("Yuna looks at Defender X's corpse (Custom skip)");
+                        // Bug: If you enter sunken cave and return to this screen, you will skip to Gagazet (issue with using coords - need to find another method)
                         Game.Resume();
                     }
 

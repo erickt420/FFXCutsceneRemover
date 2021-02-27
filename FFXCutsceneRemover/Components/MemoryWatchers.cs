@@ -38,7 +38,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MovementLock;
         public MemoryWatcher<byte> MusicId;
         public MemoryWatcher<byte> CutsceneAlt;
-        public MemoryWatcher<byte> AirshipDestinations;
+        public MemoryWatcher<short> AirshipDestinations;
         public MemoryWatcher<short> AuronOverdrives;
         public MemoryWatcher<byte> PartyMembers;
         public MemoryWatcher<byte> Sandragoras;
@@ -68,7 +68,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MacalaniaFlag;
 
         public MemoryWatcher<byte> Formation;
+        
         public MemoryWatcher<byte> ViaPurificoPlatform;
+        
+        public MemoryWatcher<byte> CalmLandsFlag;
 
         MemoryWatchers() { }
 
@@ -111,7 +114,7 @@ namespace FFXCutsceneRemover
             MovementLock = GetMemoryWatcher<byte>(MemoryLocations.MovementLock);
             MusicId = GetMemoryWatcher<byte>(MemoryLocations.MusicId);
             CutsceneAlt = GetMemoryWatcher<byte>(MemoryLocations.CutsceneAlt);
-            AirshipDestinations = GetMemoryWatcher<byte>(MemoryLocations.AirshipDestinations);
+            AirshipDestinations = GetMemoryWatcher<short>(MemoryLocations.AirshipDestinations);
             AuronOverdrives = GetMemoryWatcher<short>(MemoryLocations.AuronOverdrives);
             PartyMembers = GetMemoryWatcher<byte>(MemoryLocations.PartyMembers);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
@@ -142,6 +145,7 @@ namespace FFXCutsceneRemover
 
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
+            CalmLandsFlag = GetMemoryWatcher<byte>(MemoryLocations.CalmLandsFlag);
 
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -186,7 +190,8 @@ namespace FFXCutsceneRemover
                     MoonflowFlag2,
                     RikkuOutfit,
                     MacalaniaFlag,
-                    ViaPurificoPlatform
+                    ViaPurificoPlatform,
+                    CalmLandsFlag
             });
         }
 
