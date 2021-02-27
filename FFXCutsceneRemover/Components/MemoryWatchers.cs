@@ -68,7 +68,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MacalaniaFlag;
 
         public MemoryWatcher<byte> Formation;
-        public MemoryWatcher<byte> ViaPurifico;
+        public MemoryWatcher<byte> ViaPurificoPlatform;
 
         MemoryWatchers() { }
 
@@ -141,7 +141,7 @@ namespace FFXCutsceneRemover
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
 
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
-            ViaPurifico = GetMemoryWatcher<byte>(MemoryLocations.ViaPurifico);
+            ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
 
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -186,7 +186,7 @@ namespace FFXCutsceneRemover
                     MoonflowFlag2,
                     RikkuOutfit,
                     MacalaniaFlag,
-                    ViaPurifico
+                    ViaPurificoPlatform
             });
         }
 

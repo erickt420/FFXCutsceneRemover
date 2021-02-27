@@ -277,21 +277,21 @@ namespace FFXCutsceneRemover.Resources
 		    {
 			    RoomNumber = 129, Storyline = 1704, SpawnPoint = 0, Description = "Bikanel Intro",
 			    Formation = new byte[]{ 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-			    EnableTidus = 11, EnableYuna = 0, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0
+			    EnableTidus = 17, EnableYuna = 0, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0
 		    } },
 		    { new GameState { Storyline = 1715, EnableWakka = 255 }, new Transition
 		    {
 			    RoomNumber = 263, Storyline = 1418, SpawnPoint = 0, ForceLoad = false, Description = "Add Auron, Lulu, Wakka after Zu",
 			    Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0xFF, 0xFF, 0xFF },
-			    EnableAuron = 11, EnableLulu = 11, EnableWakka = 11
+			    EnableAuron = 17, EnableLulu = 17, EnableWakka = 17
 		    } },
 		    { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 255, State = 1 }, new Transition
 			{
-				Storyline = 1720, SpawnPoint = 3, EnableRikku = 11,
+				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17,
 				Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0x6, 0xFF, 0xFF }
 				
 			} },
-		    { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, Description = "Disabling Encounters"} },
+		    { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
 		    { new GameState { RoomNumber = 261, Storyline = 1940 }, new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, ForceLoad = false, Description = "Home to Airship"} },
 		    { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, ForceLoad = false, Description = "Airship Bridge Cutscene"} },
 		    { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
@@ -299,13 +299,13 @@ namespace FFXCutsceneRemover.Resources
 		    // START OF BEVELLE
 		    { new GameState { RoomNumber = 205, Storyline = 2060, State = 1}, new Transition { Storyline = 2075, SpawnPoint = 0, Description = "Evrae to Guards"} },
 		    { new GameState { RoomNumber = 205, Storyline = 2085}, new Transition { RoomNumber = 180, Storyline = 2135, Description = "Bevelle Guards to Trials"} },
-		    { new GameState { RoomNumber = 306, Storyline = 2135, State = 1}, new Transition {RoomNumber = 226, Storyline = 2150, ForceLoad = false, Description = "Trials to Bahamut naming"} }, // TODO: Remove this and skip straight to Via Purifico. Add Bahamut manually
+		    { new GameState { RoomNumber = 306, Storyline = 2135}, new Transition { RoomNumber = 226, Storyline = 2150, ForceLoad = false, Description = "Trials to Bahamut naming"} }, // TODO: Remove this and skip straight to Via Purifico. Add Bahamut manually
 		    { new GameState { RoomNumber = 226, Storyline = 2155, Menu = 0}, new Transition
 		    {
 			    RoomNumber = 198, Storyline = 2220, SpawnPoint = 0, Description = "Bahamut to Via Purifico",
 			    Formation = new byte[]{ 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
-			    EnableTidus = 0, EnableYuna = 11, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0,
-			    ViaPurifico = 1 //Bug (Minor): Doesn't seem to be working on ASL either. Value should enable the first platform and set direction to North
+			    EnableTidus = 0, EnableYuna = 17, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0,
+			    ViaPurificoPlatform = 1 //Bug (Minor): Doesn't seem to be working on ASL either. Value should enable the first platform and set direction to North
 		    } },
 		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition { RoomNumber = 208, Storyline = 2275, SpawnPoint = 2, ForceLoad = false, Description = "Enter Highbridge"} },
 		    { new GameState { RoomNumber = 183, Storyline = 2290}, new Transition { RoomNumber = 183, Storyline = 2300, SpawnPoint = 0, ForceLoad = false, Description = "Natus Death"} },

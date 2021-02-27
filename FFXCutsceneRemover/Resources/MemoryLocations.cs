@@ -60,7 +60,7 @@
 
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
         
-        public static MemoryLocationData ViaPurifico = new MemoryLocationData(MemoryLocationNames.ViaPurifico, 0xD2CC84);
+        public static MemoryLocationData ViaPurificoPlatform = new MemoryLocationData(MemoryLocationNames.ViaPurificoPlatform, 0xD2CC84);
     }
 
     public struct MemoryLocationData

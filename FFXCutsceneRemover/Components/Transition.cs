@@ -63,7 +63,7 @@ namespace FFXCutsceneRemover
 
         public byte[] Formation = null;
         
-        public byte? ViaPurifico = null;
+        public byte? ViaPurificoPlatform = null;
 
         public void Execute()
         {
@@ -110,7 +110,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteBytes(memoryWatchers.Formation, Formation);
-            WriteValue(memoryWatchers.ViaPurifico, ViaPurifico);
+            WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
 
             if (ForceLoad)
             {
