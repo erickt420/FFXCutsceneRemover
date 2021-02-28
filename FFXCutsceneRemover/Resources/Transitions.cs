@@ -56,7 +56,7 @@ namespace FFXCutsceneRemover.Resources
             // START OF BESAID
             { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 118, SpawnPoint = 0, Description = "Tidus wakes up in the sea"} },
                                             // Wakka pushes Tidus ( Wakka joins the party)
-            { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 73 }, new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
+            { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 1353 }, new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0, Description = "Wakka explains his life story"} },
             { new GameState { RoomNumber = 133, Storyline = 130, }, new Transition { RoomNumber = 17, Storyline = 134, SpawnPoint = 3, Description = "Tidus arrives at Besaid Village" } },
             { new GameState { RoomNumber = 84, Storyline = 134 }, new Transition { RoomNumber = 84, Storyline = 136, SpawnPoint = 0, Description = "Tidus enters the temple"} },
@@ -263,7 +263,6 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 110, Storyline = 1400, State = 0}, new Transition { RoomNumber = 110, Storyline = 1407, SpawnPoint = 5, Description = "Tidus is worried about Yuna"} },
             { new GameState { RoomNumber = 241, Storyline = 1407}, new Transition { RoomNumber = 241, Storyline = 1413, MacalaniaFlag = 32, Description = "Barthello has lost Dona + Butterfly guy"} },
 		    { new GameState { RoomNumber = 221, Storyline = 1413 }, new Transition { RoomNumber = 221, Storyline = 1420, SpawnPoint = 0, Description = "Pre-Spherimorph Auron Smash"} },
-		    //{ new GameState { Storyline = 1470, AuronOverdrives = 11553 }, new Transition { AuronOverdrives = 11569, ForceLoad = false, Description = "Adding Shooting Star"} }, // Added to Spherimorph (boss loop) but needs testing
 		    { new GameState { RoomNumber = 106, Storyline = 1504 }, new Transition { Storyline = 1530, Description = "Jysscal Skip"} },
 		    { new GameState { RoomNumber = 80, Storyline = 1545 }, new Transition { Storyline = 1557, ForceLoad = false, Description = "Backflip Skip"} },
 		    
@@ -274,20 +273,20 @@ namespace FFXCutsceneRemover.Resources
 			    Formation = new byte[]{ 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
 			    EnableTidus = 17, EnableYuna = 0, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0
 		    } },
-		    { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 255, State = 1 }, new Transition
+		    { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 0, State = 1 }, new Transition
 			{
 				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17, Description = "Wakka Glare",
 				Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0x6, 0xFF, 0xFF }
 			} },
 		    { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
 		    { new GameState { RoomNumber = 261, Storyline = 1940 }, new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, Description = "Home to Airship"} },
-		    { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, ForceLoad = false, Description = "Airship Bridge Cutscene"} },
+		    { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, Description = "Airship Bridge Cutscene"} },
 		    { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
 		    // END OF HOME
 		    // START OF BEVELLE
 		    { new GameState { RoomNumber = 205, Storyline = 2060, State = 1}, new Transition { Storyline = 2075, SpawnPoint = 0, Description = "Evrae to Guards"} },
 		    { new GameState { RoomNumber = 205, Storyline = 2085}, new Transition { RoomNumber = 180, Storyline = 2135, Description = "Bevelle Guards to Trials"} },
-		    { new GameState { RoomNumber = 306, Storyline = 2135}, new Transition { RoomNumber = 226, Storyline = 2150, ForceLoad = false, Description = "Trials to Bahamut naming"} }, // TODO: Remove this and skip straight to Via Purifico. Add Bahamut manually
+		    { new GameState { RoomNumber = 306, Storyline = 2135}, new Transition { RoomNumber = 226, Storyline = 2150, State = 1, ForceLoad = false, Description = "Trials to Bahamut naming"} }, // TODO: Remove this and skip straight to Via Purifico. Add Bahamut manually
 		    { new GameState { RoomNumber = 226, Storyline = 2155, Menu = 0}, new Transition
 		    {
 			    RoomNumber = 198, Storyline = 2220, SpawnPoint = 0, Description = "Bahamut to Via Purifico",
@@ -306,28 +305,26 @@ namespace FFXCutsceneRemover.Resources
 		    // START OF CALM LANDS & GAGAZET
 		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 3712}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, Description = "Lake Scene"} },
 		    { new GameState { RoomNumber = 223, Storyline = 2385}, new Transition { Storyline = 2400, CalmLandsFlag = 36, ForceLoad = false, Description = "Calm Lands Intro + Gorge flag"} },
-		    { new GameState { RoomNumber = 259, Storyline = 2510, CutsceneAlt = 70}, new Transition { Storyline = 2530, SpawnPoint = 1, Description = "Ronso Singing"} },
+		    { new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48, XCoordinate = 265.3771973f }, new Transition { RoomNumber = 259, Storyline = 2510, SpawnPoint = 0, Description = "Yuna reflects"} },
+	        { new GameState { RoomNumber = 259, Storyline = 2510, CutsceneAlt = 70}, new Transition { Storyline = 2530, SpawnPoint = 1, Description = "Ronso Singing"} },
 		    // TODO: Add back in the flashback
-		    //{ new GameState { RoomNumber = 285, Storyline = 2555 }, new Transition { Storyline = 2585, SpawnPoint = 2, Description = "Flux to Sanctuary Keeper"} },
 		    // TODO: Auron talks to Yuna at the end of the cave
 		    // END OF GAGAZET
 		    // START OF ZANARKAND
 		    { new GameState { RoomNumber = 132, Storyline =  2680, State = 0}, new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, Description = "Zanarkand Campfire"} },
 		    { new GameState { RoomNumber = 318, Storyline = 2790}, new Transition { Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
-		    { new GameState { RoomNumber = 270, Storyline = 2835 }, new Transition { Storyline = 2850, ForceLoad = false, Description = "Auron flashback"} },
 		    { new GameState { RoomNumber = 315, Storyline = 2850 }, new Transition { RoomNumber = 194, Storyline = 2900, SpawnPoint = 2, Description = "End of Zanarkand"} },
 		    // END OF ZANARKAND
 		    // START OF SIN
 		    { new GameState { RoomNumber = 211, Storyline = 2900, XCoordinate = -9.918679f}, new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, Description = "Yuna/Kimahri talk about defeating Sin"} },
-		    { new GameState { RoomNumber = 208, Storyline = 2920, CutsceneAlt = 90}, new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AirshipDestinations = 2560, Description = "Return from Highbridge"} },
+		    { new GameState { RoomNumber = 208, Storyline = 2920, CutsceneAlt = 91}, new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AirshipDestinations = 2560, Description = "Return from Highbridge"} },
 		    { new GameState { RoomNumber = 255, Storyline = 2990}, new Transition { RoomNumber = 211, Storyline = 3010, SpawnPoint = 1, Description = "Sin destination cutscene"} }, //Bug (Minor): Wrong area/spawn
 		    { new GameState { RoomNumber = 277, Storyline = 3010}, new Transition { RoomNumber = 199, Storyline = 3085, Description = "Left Fin" } },
 		    { new GameState { RoomNumber = 200, Storyline = 3100}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Right Fin death" } },
 		    { new GameState { RoomNumber = 201, Storyline = 3120}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, ForceLoad = false, Description = "Core Death"} },
 		    { new GameState { RoomNumber = 202, Storyline = 3125, XCoordinate = 18.58586121f, State = 0}, new Transition { RoomNumber = 374, Storyline = 3135, SpawnPoint = 1, Description = "Yuna monologue"} },
-		    { new GameState { RoomNumber = 204, Storyline = 3210}, new Transition { Storyline = 3250, ForceLoad = false, Description = "Nucleus spawned"} },
-		    { new GameState { RoomNumber = 325, Storyline = 3300, CutsceneAlt = 71}, new Transition { RoomNumber = 326, Storyline = 3360, Description = "BFA Death. GG!"} }
-		    
+		    { new GameState { RoomNumber = 325, Storyline = 3300, CutsceneAlt = 71}, new Transition { RoomNumber = 326, Storyline = 3360, Description = "BFA Death. GG!"} },
+
         };
 
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
@@ -341,10 +338,10 @@ namespace FFXCutsceneRemover.Resources
 	            Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0xFF, 0xFF, 0xFF }, EnableWakka = 17} },
             { new GameState { HpEnemyA = 9000, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
             { new GameState { HpEnemyA = 70000, Storyline = 2555 }, new Transition { RoomNumber = 285, Storyline = 2585, SpawnPoint = 2, Description = "Seymour Flux"} },
-            { new GameState { HpEnemyA = 40000, Storyline = 2585 }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, Description = "Sanctuary Keeper"} }
-            // TODO: Yunalesca
-            
-	            
+            { new GameState { HpEnemyA = 40000, Storyline = 2585 }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, Description = "Sanctuary Keeper"} },
+            { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, Description = "Yunalesca"} },
+            { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
+
         };
     }
 }
