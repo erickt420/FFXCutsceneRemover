@@ -42,6 +42,7 @@
         public static MemoryLocationData EnableWakka = new MemoryLocationData(MemoryLocationNames.EnableWakka, 0xD322D8);
         public static MemoryLocationData EnableLulu = new MemoryLocationData(MemoryLocationNames.EnableLulu, 0xD3236C);
         public static MemoryLocationData EnableRikku = new MemoryLocationData(MemoryLocationNames.EnableRikku, 0xD32400);
+        public static MemoryLocationData EnableSeymour = new MemoryLocationData(MemoryLocationNames.EnableSeymour, 0xD32494);
         public static MemoryLocationData EnableValefor = new MemoryLocationData(MemoryLocationNames.EnableValefor, 0xD32528);
 
         public static MemoryLocationData BaajFlag1 = new MemoryLocationData(MemoryLocationNames.BaajFlag1, 0xD2CE0C);
@@ -66,7 +67,8 @@
         public static MemoryLocationData MacalaniaFlag = new MemoryLocationData(MemoryLocationNames.MacalaniaFlag, 0xD2CD16);
 
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
-        
+        public static MemoryLocationData RikkuName = new MemoryLocationData(MemoryLocationNames.RikkuName, 0xD32E54);
+
         public static MemoryLocationData ViaPurificoPlatform = new MemoryLocationData(MemoryLocationNames.ViaPurificoPlatform, 0xD2CC84);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         

@@ -49,8 +49,8 @@ namespace FFXCutsceneRemover.Resources
                                             // Tidus bashes the machine + Tros arrives
                                             // They leave the submerged ruins
                                             // Lights come on in submerged ruins
-            { new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, Description = "Airship is shown" } }, 
-            { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, Description = "Tidus gets back onto the boat"} },                                       
+            { new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, Description = "Airship is shown" } },
+            { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, RikkuName = new byte[]{0x61, 0x78, 0x7A, 0x7A, 0x84, 0x0}, Description = "Tidus gets back onto the boat"} },
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110 , Description = "Rikku suggests going to Luca"} },                                     
             // END OF BAAJ TEMPLE
             // START OF BESAID
@@ -184,11 +184,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, Description = "Tidus distrusts Seymour"} },
             { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845, Description = "Preparing for Sin" } },
                                             // Pre-Sinspawn Gui
-                                            // Post-Sinspawn Gui + FMV
-            { new GameState { RoomNumber = 119, Storyline = 860 }, new Transition { RoomNumber = 247, Storyline = 865, EnableTidus = 16, EnableKimahri = 16, EnableLulu = 16, EnableWakka = 16, Description = "Auron Look out + FMV " } },
+            { new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 260 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
+            { new GameState { RoomNumber = 119, Storyline = 860 }, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
                                             // Pre-Sinspawn Gui 2
                                             // Post-Sinspawn Gui 2
-            { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, Description = "Tidus wakes up + sees Gatta"} },
+            { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, EnableSeymour = 16, Formation = new byte[]{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0xFF }, Description = "Tidus wakes up + sees Gatta"} }, // Bug: It sets whatever formation you had on previously back on, we would have to store that in memory to do the same
             { new GameState { RoomNumber = 254, Storyline = 893 }, new Transition { RoomNumber = 247, Storyline = 899, Description = "Sin FMV + Tidus chases after Sin"} },
             { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 218, Storyline = 902, Description = "Yuna tries to summon"} },
             { new GameState { RoomNumber = 218, Storyline = 902 }, new Transition { RoomNumber = 341, Storyline = 910, Description = "Tidus is swimming"} },
@@ -200,8 +200,8 @@ namespace FFXCutsceneRemover.Resources
                                             // Leaving Mushroom Rock Road
             // END OF MRR
             // START OF DJOSE HIGHROAD
-            { new GameState { RoomNumber = 93, Storyline = 960 }, new Transition { RoomNumber = 93, Storyline = 961, SpawnPoint = 0,     Description = "Kimahri speaks"} },
-            { new GameState { RoomNumber = 93, Storyline = 961, State = 0 }, new Transition { RoomNumber = 93, Storyline = 962, SpawnPoint = 1, Description = "Tidus is eager to go to Zanarkand"} },
+            { new GameState { RoomNumber = 93, Storyline = 960 }, new Transition { RoomNumber = 93, Storyline = 961, SpawnPoint = 768, Description = "Kimahri speaks"} },
+            { new GameState { RoomNumber = 93, Storyline = 961, State = 0 }, new Transition { RoomNumber = 76, Storyline = 962, SpawnPoint = 1, Description = "Tidus is eager to go to Zanarkand"} },
             { new GameState { RoomNumber = 76, Storyline = 962 }, new Transition { Storyline = 970, SpawnPoint = 0, Description = "Tidus whoa"} },
             { new GameState { RoomNumber = 82, Storyline = 970 }, new Transition { Storyline = 971, SpawnPoint = 0, Description = "Arrival at Djose Temple"} },
             { new GameState { RoomNumber = 81, Storyline = 971 }, new Transition { Storyline = 985, SpawnPoint = 0, Description = "Meet Isaaru"} },

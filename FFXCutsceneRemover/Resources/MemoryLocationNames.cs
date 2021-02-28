@@ -36,6 +36,7 @@
         public static string EnableWakka = "EnableWakka";
         public static string EnableLulu = "EnableLulu";
         public static string EnableRikku = "EnableRikku";
+        public static string EnableSeymour = "EnableSeymour";
         public static string EnableValefor = "EnableValefor";
 
         public static string BaajFlag1 = "BaajFlag1";
@@ -60,6 +61,7 @@
         public static string MacalaniaFlag = "MacalaniaFlag";
 
         public static string Formation = "Formation";
+        public static string RikkuName = "RikkuName";
 
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
         public static string CalmLandsFlag = "CalmLandsFlag";

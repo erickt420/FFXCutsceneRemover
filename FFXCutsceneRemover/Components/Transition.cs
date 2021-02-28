@@ -46,6 +46,7 @@ namespace FFXCutsceneRemover
         public byte? EnableWakka = null;
         public byte? EnableLulu = null;
         public byte? EnableRikku = null;
+        public byte? EnableSeymour = null;
         public byte? EnableValefor = null;
 
         public byte? BaajFlag1 = null;
@@ -68,7 +69,8 @@ namespace FFXCutsceneRemover
         public byte? MacalaniaFlag = null;
 
         public byte[] Formation = null;
-        
+        public byte[] RikkuName = null;
+
         public byte? ViaPurificoPlatform = null;
         public byte? CalmLandsFlag = null;
 
@@ -106,6 +108,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EnableWakka, EnableWakka);
             WriteValue(memoryWatchers.EnableLulu, EnableLulu);
             WriteValue(memoryWatchers.EnableRikku, EnableRikku);
+            WriteValue(memoryWatchers.EnableSeymour, EnableSeymour);
             WriteValue(memoryWatchers.EnableValefor, EnableValefor);
 
             WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);
@@ -123,6 +126,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteBytes(memoryWatchers.Formation, Formation);
+            WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
 

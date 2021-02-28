@@ -52,6 +52,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EnableWakka;
         public MemoryWatcher<byte> EnableLulu;
         public MemoryWatcher<byte> EnableRikku;
+        public MemoryWatcher<byte> EnableSeymour;
         public MemoryWatcher<byte> EnableValefor;
 
         public MemoryWatcher<byte> BaajFlag1;
@@ -76,7 +77,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MacalaniaFlag;
 
         public MemoryWatcher<byte> Formation;
-        
+        public MemoryWatcher<byte> RikkuName;
+
         public MemoryWatcher<byte> ViaPurificoPlatform;
         
         public MemoryWatcher<byte> CalmLandsFlag;
@@ -136,6 +138,7 @@ namespace FFXCutsceneRemover
             EnableWakka = GetMemoryWatcher<byte>(MemoryLocations.EnableWakka);
             EnableLulu = GetMemoryWatcher<byte>(MemoryLocations.EnableLulu);
             EnableRikku = GetMemoryWatcher<byte>(MemoryLocations.EnableRikku);
+            EnableSeymour = GetMemoryWatcher<byte>(MemoryLocations.EnableSeymour);
             EnableValefor = GetMemoryWatcher<byte>(MemoryLocations.EnableValefor);
 
             BaajFlag1 = GetMemoryWatcher<byte>(MemoryLocations.BaajFlag1);
@@ -160,6 +163,8 @@ namespace FFXCutsceneRemover
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
 
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
+            RikkuName = GetMemoryWatcher<byte>(MemoryLocations.RikkuName);
+
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
             CalmLandsFlag = GetMemoryWatcher<byte>(MemoryLocations.CalmLandsFlag);
 
@@ -196,6 +201,7 @@ namespace FFXCutsceneRemover
                     EnableWakka,
                     EnableLulu,
                     EnableRikku,
+                    EnableSeymour,
                     EnableValefor,
                     BaajFlag1,
                     BesaidFlag1,
