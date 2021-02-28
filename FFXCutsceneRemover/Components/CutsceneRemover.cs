@@ -93,7 +93,7 @@ namespace FFXCutsceneRemover
                             {
                                 InBossFight = true;
                                 PostBossFightTransition = transition.Value;
-                                Console.WriteLine("Entered Boss Fight");
+                                Console.WriteLine("Entered Boss Fight: " + transition.Value.Description);
                             }
                         }
                     }
@@ -135,7 +135,8 @@ namespace FFXCutsceneRemover
                     if (new GameState { RoomNumber = 138, Storyline = 1720, State = 1}.CheckState() && MemoryWatchers.Sandragoras.Current >= 4)
                     {
                         Game.Suspend();
-                        new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, Description = "Sanubia to Home"};
+                        new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0 }.Execute();
+                        Console.WriteLine("Sanubia to Home (Custom skip)");
                         Game.Resume();
                     }
                     
@@ -143,7 +144,8 @@ namespace FFXCutsceneRemover
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
                     {
                         Game.Suspend();
-                        new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"};
+                        new Transition { RoomNumber = 194, Storyline = 2020, SpawnPoint = 1 }.Execute();
+                        Console.WriteLine("Zoom in on Bevelle (Custom skip)");
                         Game.Resume();
                     }
                     
@@ -151,7 +153,9 @@ namespace FFXCutsceneRemover
                     if (new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48}.CheckState() && MemoryWatchers.XCoordinate.Current > 250f)
                     {
                         Game.Suspend();
-                        new Transition {RoomNumber = 259, Storyline = 2510, SpawnPoint = 0, Description = "Yuna looks at Defender X's corpse"};
+                        new Transition { RoomNumber = 259, Storyline = 2510, SpawnPoint = 0 }.Execute();
+                        Console.WriteLine("Yuna looks at Defender X's corpse (Custom skip)");
+                        // Bug: If you enter sunken cave and return to this screen, you will skip to Gagazet (issue with using coords - need to find another method)
                         Game.Resume();
                     }
 
