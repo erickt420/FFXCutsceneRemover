@@ -56,7 +56,7 @@ namespace FFXCutsceneRemover.Resources
             // START OF BESAID
             { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 118, SpawnPoint = 0, Description = "Tidus wakes up in the sea"} },
                                             // Wakka pushes Tidus ( Wakka joins the party)
-            { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 1353 }, new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
+            { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 73 }, new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0, Description = "Wakka explains his life story"} },
             { new GameState { RoomNumber = 133, Storyline = 130, }, new Transition { RoomNumber = 17, Storyline = 134, SpawnPoint = 3, Description = "Tidus arrives at Besaid Village" } },
             { new GameState { RoomNumber = 84, Storyline = 134 }, new Transition { RoomNumber = 84, Storyline = 136, SpawnPoint = 0, Description = "Tidus enters the temple"} },
