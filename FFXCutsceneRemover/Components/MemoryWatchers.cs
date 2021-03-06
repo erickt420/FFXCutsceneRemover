@@ -80,7 +80,6 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> RikkuName;
 
         public MemoryWatcher<byte> ViaPurificoPlatform;
-        
         public MemoryWatcher<byte> CalmLandsFlag;
 
         MemoryWatchers() { }

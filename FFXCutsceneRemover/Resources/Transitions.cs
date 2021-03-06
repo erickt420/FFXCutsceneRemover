@@ -54,7 +54,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110 , Description = "Rikku suggests going to Luca"} },                                     
             // END OF BAAJ TEMPLE
             // START OF BESAID
-            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 118, SpawnPoint = 0, Description = "Tidus wakes up in the sea"} },
+            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 113, SpawnPoint = 0, Description = "Tidus wakes up in the sea"} }, //Bug(Minor): Aurochs don't spawn on the beach
                                             // Wakka pushes Tidus ( Wakka joins the party)
             { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 73 }, new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0, Description = "Wakka explains his life story"} },
@@ -265,6 +265,7 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 221, Storyline = 1413 }, new Transition { RoomNumber = 221, Storyline = 1420, SpawnPoint = 0, Description = "Pre-Spherimorph Auron Smash"} },
 		    { new GameState { RoomNumber = 106, Storyline = 1504 }, new Transition { Storyline = 1530, Description = "Jysscal Skip"} },
 		    { new GameState { RoomNumber = 80, Storyline = 1545 }, new Transition { Storyline = 1557, ForceLoad = false, Description = "Backflip Skip"} },
+		    { new GameState { RoomNumber = 54, Storyline = 1600, State = 0 }, new Transition { Storyline = 1607, Description = "Rikku wants to be like Yuna" } },
 		    
 		    // START OF BIKANEL
 		    { new GameState { RoomNumber = 191, Storyline = 1612 }, new Transition
@@ -292,7 +293,7 @@ namespace FFXCutsceneRemover.Resources
 			    RoomNumber = 198, Storyline = 2220, SpawnPoint = 0, Description = "Bahamut to Via Purifico",
 			    Formation = new byte[]{ 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
 			    EnableTidus = 0, EnableYuna = 17, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0,
-			    ViaPurificoPlatform = 1 //Bug (Minor): Doesn't seem to be working on ASL either. Value should enable the first platform and set direction to North
+			    ViaPurificoPlatform = 1
 		    } },
 		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition
 		    {
@@ -318,7 +319,7 @@ namespace FFXCutsceneRemover.Resources
 		    // START OF SIN
 		    { new GameState { RoomNumber = 211, Storyline = 2900, XCoordinate = -9.918679f}, new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, Description = "Yuna/Kimahri talk about defeating Sin"} },
 		    { new GameState { RoomNumber = 208, Storyline = 2920, CutsceneAlt = 91}, new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AirshipDestinations = 2560, Description = "Return from Highbridge"} },
-		    { new GameState { RoomNumber = 255, Storyline = 2990}, new Transition { RoomNumber = 211, Storyline = 3010, SpawnPoint = 1, Description = "Sin destination cutscene"} }, //Bug (Minor): Wrong area/spawn
+		    { new GameState { RoomNumber = 255, Storyline = 2990}, new Transition { RoomNumber = 211, Storyline = 3010, SpawnPoint = 1, AirshipDestinations = 2048, Description = "Sin destination cutscene"} }, //Bug (Minor): Wrong area/spawn
 		    { new GameState { RoomNumber = 277, Storyline = 3010}, new Transition { RoomNumber = 199, Storyline = 3085, Description = "Left Fin" } },
 		    { new GameState { RoomNumber = 200, Storyline = 3100}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Right Fin death" } },
 		    { new GameState { RoomNumber = 201, Storyline = 3120}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, ForceLoad = false, Description = "Core Death"} },
@@ -333,11 +334,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, EnableTidus = 17, EnableKimahri = 17, EnableLulu = 17, EnableWakka = 17, Description = "Sinspawn Gui 2"} }, // Bug: minor, formation gets set back to whatever it was in Gui 1, would need to store what it was!
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1480, SpawnPoint = 2, Description = "Spherimorph", AuronOverdrives = 11569} },
             { new GameState { HpEnemyA = 16000, Storyline = 1485 }, new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, Description = "Crawler"} },
-            { new GameState { HpEnemyA = 1200, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
+            { new GameState { HpEnemyA = 1200, RoomNumber = 102, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
             { new GameState { HpEnemyA = 12000, Storyline = 1704 }, new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu",
 	            Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0xFF, 0xFF, 0xFF }, EnableWakka = 17} },
             { new GameState { HpEnemyA = 9000, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
-            { new GameState { HpEnemyA = 70000, Storyline = 2555 }, new Transition { RoomNumber = 285, Storyline = 2585, SpawnPoint = 2, Description = "Seymour Flux"} },
+            { new GameState { HpEnemyA = 70000, Storyline = 2530 }, new Transition { RoomNumber = 285, Storyline = 2585, SpawnPoint = 2, Description = "Seymour Flux"} },
             { new GameState { HpEnemyA = 40000, Storyline = 2585 }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, Description = "Sanctuary Keeper"} },
             { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, Description = "Yunalesca"} },
             { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
