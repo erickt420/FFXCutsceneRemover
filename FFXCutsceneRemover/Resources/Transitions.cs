@@ -54,7 +54,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110 , Description = "Rikku suggests going to Luca"} },                                     
             // END OF BAAJ TEMPLE
             // START OF BESAID
-            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 118, SpawnPoint = 0, Description = "Tidus wakes up in the sea"} },
+            { new GameState { RoomNumber = 70, Storyline = 111 }, new Transition { Storyline = 113, SpawnPoint = 0, Description = "Tidus wakes up in the sea"} }, //Bug(Minor): Aurochs don't spawn on the beach
                                             // Wakka pushes Tidus ( Wakka joins the party)
             { new GameState { RoomNumber = 41, Storyline = 119, CutsceneAlt = 1353 }, new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
             { new GameState { RoomNumber = 67, Storyline = 124 }, new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0, Description = "Wakka explains his life story"} },
@@ -293,7 +293,7 @@ namespace FFXCutsceneRemover.Resources
 			    RoomNumber = 198, Storyline = 2220, SpawnPoint = 0, Description = "Bahamut to Via Purifico",
 			    Formation = new byte[]{ 0x1, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF },
 			    EnableTidus = 0, EnableYuna = 17, EnableAuron = 0, EnableKimahri = 0, EnableWakka = 0, EnableLulu = 0, EnableRikku = 0,
-			    ViaPurificoPlatform = 1 //Bug (Minor): Doesn't seem to be working on ASL either. Value should enable the first platform and set direction to North
+			    ViaPurificoPlatform = 1
 		    } },
 		    { new GameState { RoomNumber = 208, Storyline = 2220}, new Transition
 		    {
