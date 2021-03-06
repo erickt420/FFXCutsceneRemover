@@ -21,6 +21,7 @@
         public static string EncounterStatus = "EncounterStatus";
         public static string MovementLock = "MovementLock";
         public static string MusicId = "MusicId";
+        public static string RoomNumberAlt = "RoomNumberAlt";
         public static string CutsceneAlt = "CutsceneAlt";
         public static string AirshipDestinations = "AirshipDestinations";
         public static string AuronOverdrives = "AuronOverdrives";

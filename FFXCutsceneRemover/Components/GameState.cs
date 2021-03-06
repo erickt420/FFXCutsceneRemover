@@ -27,6 +27,7 @@ namespace FFXCutsceneRemover
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
         public byte? MusicId = null;
+        public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
         public short? AuronOverdrives = null;
@@ -71,6 +72,7 @@ namespace FFXCutsceneRemover
                 TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Current) &&
                 TestValue(MovementLock, memoryWatchers.MovementLock.Current) &&
                 TestValue(MusicId, memoryWatchers.MusicId.Current) &&
+                TestValue(RoomNumberAlt, memoryWatchers.RoomNumberAlt.Current) &&
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
