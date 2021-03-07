@@ -76,7 +76,6 @@ namespace FFXCutsceneRemover
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
-                TestValue(PartyMembers, memoryWatchers.PartyMembers.Current) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&

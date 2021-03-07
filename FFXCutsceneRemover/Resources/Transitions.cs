@@ -8,7 +8,9 @@ namespace FFXCutsceneRemover.Resources
         public static readonly Dictionary<IGameState, Transition> StandardTransitions = new Dictionary<IGameState, Transition>()
         {
             // SPECIAL
+#if DEBUG
             { new GameState { Input = 2304, BattleState = 10 },  new Transition { BattleState = 778, ForceLoad = false, Description = "End any battle by holding start + select"} },
+#endif
             { new GameState { RoomNumber = 348 }, new Transition { RoomNumber = 23, Description = "Skip Intro"} },
             { new GameState { RoomNumber = 349 }, new Transition { RoomNumber = 23, Description = "Skip Intro"} },
             // START OF ZANARKAND
@@ -68,8 +70,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 103, Storyline = 164}, new Transition { RoomNumber = 42, Storyline = 170, EnableValefor = 17, Description = "Tidus meets Lulu and Kimahri + FMV "} },
             { new GameState { RoomNumber = 42, Storyline = 170 }, new Transition { RoomNumber = 42, Storyline = 172, SpawnPoint = 0, Description = "The gang leave the cloister of trials"} },
                                             // Valefor summon
-                                            // Tidus monologue after naming
-	        { new GameState { RoomNumber = 68, Storyline = 184 }, new Transition { RoomNumber = 252, Storyline = 190, Description = "Tidus sleeping"} },
+			{ new GameState { RoomNumber = 68, Storyline = 184 }, new Transition { RoomNumber = 252, Storyline = 190, Description = "Tidus sleeping"} },
             { new GameState { RoomNumber = 252, Storyline = 190, State = 1 }, new Transition { RoomNumber = 60, Storyline = 196, Description = "Tidus has a dream about Yuna, Tidus wakes up + FMV" } },
                                             // Tidus wakes up again (Party healed at this point)
             //{ new GameState { RoomNumber = 17, Storyline = 200 }, new Transition { RoomNumber = 69, Storyline = 210, SpawnPoint = 515, Description = "Yuna says goodbye to Besaid" } }, // Bug: Need to Enable + Equip Brotherhood, Lulu, Yuna, lots of things!
@@ -206,7 +207,7 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 90, Storyline = 998, State = 0 }, new Transition { RoomNumber = 90, Storyline = 1000, SpawnPoint = 0, Description = "Yuna enters the chamber"} }, : Bug: Spawned out of the cutscene
                                             // Yuna exits the chamber (name Ixion)
             { new GameState { RoomNumber = 82, Storyline = 1005 }, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, Description = "Tidus wakes up"} },
-            //{ new GameState { RoomNumber = 161, Storyline = 1010 }, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, Description = "Tidus wakes Yuna up"} },
+            { new GameState { RoomNumber = 161, Storyline = 1010, MovementLock = 32}, new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"} },
             { new GameState { RoomNumber = 82, Storyline = 1015, State = 0 }, new Transition { RoomNumber = 82, Storyline = 1020, SpawnPoint = 2, Description = "Yuna has bed hair"} },
             { new GameState { RoomNumber = 76, Storyline = 1020, State = 0 }, new Transition { RoomNumber = 76, Storyline = 1025, SpawnPoint = 0, Description = "Clasko wait for me"} },
             { new GameState { RoomNumber = 93, Storyline = 1028 }, new Transition { RoomNumber = 93, Storyline = 1030, SpawnPoint = 1, Description = "Moonflow here we come"} },
@@ -253,7 +254,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 140, Storyline = 1300}, new Transition { RoomNumber = 140, Storyline = 1310, SpawnPoint = 0, Description = "Map + Rikku afraid + tutorial"} },
             { new GameState { RoomNumber = 140, Storyline = 1310, State = 0}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, Description = "Rikku freaks out"} },
             { new GameState { RoomNumber = 256, Storyline = 1310}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },    
-            { new GameState { RoomNumber = 264, Storyline = 1320}, new Transition { RoomNumber = 263, Storyline = 1325, Description = "Tidus barges in Yuna's room + Sleep"} }, // bug: party not healed
+            { new GameState { RoomNumber = 264, Storyline = 1320}, new Transition { RoomNumber = 263, Storyline = 1325, FullHeal = true, Description = "Tidus barges in Yuna's room + Sleep"} },
             { new GameState { RoomNumber = 263, Storyline = 1335}, new Transition { RoomNumber = 256, Storyline = 1340, Description = "Leaving the agency"} },
             { new GameState { RoomNumber = 162, Storyline = 1340}, new Transition { RoomNumber = 162, Storyline = 1375, Description = "Yuna decides to marry Seymour"} },
             // END OF THUNDER PLAINS
