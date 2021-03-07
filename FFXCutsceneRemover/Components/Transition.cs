@@ -74,6 +74,7 @@ namespace FFXCutsceneRemover
 
         public byte? ViaPurificoPlatform = null;
         public byte? CalmLandsFlag = null;
+        public byte? GagazetCaveFlag = null;
 
         public void Execute()
         {
@@ -131,6 +132,7 @@ namespace FFXCutsceneRemover
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
+            WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
 
             if (ForceLoad)
             {

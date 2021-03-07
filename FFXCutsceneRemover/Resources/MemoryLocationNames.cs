@@ -66,5 +66,6 @@
 
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
         public static string CalmLandsFlag = "CalmLandsFlag";
+        public static string GagazetCaveFlag = "GagazetCaveFlag";
     }
 }
