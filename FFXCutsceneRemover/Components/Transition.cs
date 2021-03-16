@@ -1,6 +1,7 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
 using System;
 using System.Diagnostics;
+using FFXCutsceneRemover.Resources;
 
 namespace FFXCutsceneRemover
 {
@@ -12,6 +13,7 @@ namespace FFXCutsceneRemover
 
         private Process process;
         public bool ForceLoad = true;
+        public bool FullHeal = false;
         public string Description = null;
 
         /* Only add members here for memory addresses that we want to write the value to.
@@ -31,6 +33,7 @@ namespace FFXCutsceneRemover
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
         public byte? MusicId = null;
+        public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
         public short? AuronOverdrives = null;
@@ -73,6 +76,7 @@ namespace FFXCutsceneRemover
 
         public byte? ViaPurificoPlatform = null;
         public byte? CalmLandsFlag = null;
+        public byte? GagazetCaveFlag = null;
 
         public void Execute()
         {
@@ -94,10 +98,10 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EncounterStatus, EncounterStatus);
             WriteValue(memoryWatchers.MovementLock, MovementLock);
             WriteValue(memoryWatchers.MusicId, MusicId);
+            WriteValue(memoryWatchers.RoomNumberAlt, RoomNumberAlt);
             WriteValue(memoryWatchers.CutsceneAlt, CutsceneAlt);
             WriteValue(memoryWatchers.AirshipDestinations, AirshipDestinations);
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
-            WriteValue(memoryWatchers.PartyMembers, PartyMembers);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
@@ -129,10 +133,16 @@ namespace FFXCutsceneRemover
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
+            WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
 
             if (ForceLoad)
             {
                 ForceGameLoad();
+            }
+
+            if (FullHeal)
+            {
+                FullPartyHeal();
             }
         }
 
@@ -170,6 +180,25 @@ namespace FFXCutsceneRemover
         private void ForceGameLoad()
         {
             WriteValue<byte>(memoryWatchers.ForceLoad, 1);
+        }
+
+        private void FullPartyHeal()
+        {
+            WriteValue<int>(memoryWatchers.TidusHP, memoryWatchers.TidusMaxHP.Current);
+            WriteValue<int>(memoryWatchers.YunaHP, memoryWatchers.YunaMaxHP.Current);
+            WriteValue<int>(memoryWatchers.AuronHP, memoryWatchers.AuronMaxHP.Current);
+            WriteValue<int>(memoryWatchers.KimahriHP, memoryWatchers.KimahriMaxHP.Current);
+            WriteValue<int>(memoryWatchers.WakkaHP, memoryWatchers.WakkaMaxHP.Current);
+            WriteValue<int>(memoryWatchers.LuluHP, memoryWatchers.LuluMaxHP.Current);
+            WriteValue<int>(memoryWatchers.RikkuHP, memoryWatchers.RikkuMaxHP.Current);
+            
+            WriteValue<short>(memoryWatchers.TidusMP, memoryWatchers.TidusMaxMP.Current);
+            WriteValue<short>(memoryWatchers.YunaMP, memoryWatchers.YunaMaxMP.Current);
+            WriteValue<short>(memoryWatchers.AuronMP, memoryWatchers.AuronMaxMP.Current);
+            WriteValue<short>(memoryWatchers.WakkaMP, memoryWatchers.WakkaMaxMP.Current);
+            WriteValue<short>(memoryWatchers.KimahriMP, memoryWatchers.KimahriMaxMP.Current);
+            WriteValue<short>(memoryWatchers.LuluMP, memoryWatchers.LuluMaxMP.Current);
+            WriteValue<short>(memoryWatchers.RikkuMP, memoryWatchers.RikkuMaxMP.Current);
         }
     }
 }
