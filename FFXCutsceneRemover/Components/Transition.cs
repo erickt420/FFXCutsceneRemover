@@ -191,6 +191,7 @@ namespace FFXCutsceneRemover
             WriteValue<int>(memoryWatchers.WakkaHP, memoryWatchers.WakkaMaxHP.Current);
             WriteValue<int>(memoryWatchers.LuluHP, memoryWatchers.LuluMaxHP.Current);
             WriteValue<int>(memoryWatchers.RikkuHP, memoryWatchers.RikkuMaxHP.Current);
+            WriteValue<int>(memoryWatchers.ValeforHP, memoryWatchers.ValeforMaxHP.Current);
             
             WriteValue<short>(memoryWatchers.TidusMP, memoryWatchers.TidusMaxMP.Current);
             WriteValue<short>(memoryWatchers.YunaMP, memoryWatchers.YunaMaxMP.Current);
@@ -199,6 +200,7 @@ namespace FFXCutsceneRemover
             WriteValue<short>(memoryWatchers.KimahriMP, memoryWatchers.KimahriMaxMP.Current);
             WriteValue<short>(memoryWatchers.LuluMP, memoryWatchers.LuluMaxMP.Current);
             WriteValue<short>(memoryWatchers.RikkuMP, memoryWatchers.RikkuMaxMP.Current);
+            WriteValue<short>(memoryWatchers.ValeforMP, memoryWatchers.ValeforMaxMP.Current);
         }
     }
 }

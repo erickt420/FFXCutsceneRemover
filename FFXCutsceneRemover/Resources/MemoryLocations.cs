@@ -81,6 +81,13 @@
         public static MemoryLocationData RikkuMaxHP = new MemoryLocationData("RikkuMaxHP", 0xD323F8);
         public static MemoryLocationData RikkuMP = new MemoryLocationData("RikkuMP", 0xD323F4);
         public static MemoryLocationData RikkuMaxMP = new MemoryLocationData("RikkuMaxMP", 0xD323FC);
+        
+        // Aeons
+        // Only adding Valefor (for now?), as this is currently the only aeon that could affect speedruns
+        public static MemoryLocationData ValeforHP = new MemoryLocationData("ValeforHP", 0xD32518);
+        public static MemoryLocationData ValeforMaxHP = new MemoryLocationData("ValeforMaxHP", 0xD32520);
+        public static MemoryLocationData ValeforMP = new MemoryLocationData("ValeforMP", 0xD3251C);
+        public static MemoryLocationData ValeforMaxMP = new MemoryLocationData("ValeforMaxMP", 0xD32524);
 
         // Special Flags
         public static MemoryLocationData FangirlsOrKidsSkip = new MemoryLocationData(MemoryLocationNames.FangirlsOrKidsSkip, 0xD2CE7C);
