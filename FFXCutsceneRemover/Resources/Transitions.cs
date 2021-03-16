@@ -277,7 +277,7 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 0, State = 1 }, new Transition
 			{
 				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17, Description = "Wakka Glare",
-				Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0x6, 0xFF, 0xFF }
+				Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0x3, 0x6, 0xFF }
 			} },
 		    { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
 		    { new GameState { RoomNumber = 261, Storyline = 1940 }, new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, Description = "Home to Airship"} },
