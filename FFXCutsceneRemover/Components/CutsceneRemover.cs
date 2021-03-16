@@ -25,6 +25,9 @@ namespace FFXCutsceneRemover
         private Process Game;
         private bool InBossFight = false;
         private Transition PostBossFightTransition;
+        // Keep track of the previously executed transition
+        // so we don't execute the same transition twice
+        private Transition PreviouslyExecutedTransition;
         private int LoopSleepMillis;
 
         public CutsceneRemover(bool debug, int loopSleepMillis)
@@ -73,11 +76,7 @@ namespace FFXCutsceneRemover
                     {
                         if (transition.Key.CheckState() && MemoryWatchers.ForceLoad.Current == 0)
                         {
-                            Game.Suspend();
-                            transition.Value.Execute();
-                            string output = string.IsNullOrEmpty(transition.Value.Description) ? "Executing Standard Transition - No Description" : transition.Value.Description;
-                            Console.WriteLine(output);
-                            Game.Resume();
+                            ExecuteTransition(transition.Value, "Executing Standard Transition - No Description");
                         }
                     }
 
@@ -103,15 +102,10 @@ namespace FFXCutsceneRemover
                         InBossFight = false;
                     }
                     else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
-                    {
-                        Game.Suspend();
-                        PostBossFightTransition.Execute();
+                    {;
+                        ExecuteTransition(PostBossFightTransition, "Executing Post Boss Fight Transition - No Description");
                         InBossFight = false;
-                        string output = "Executing Post Boss Fight Transition - ";
-                        output += string.IsNullOrEmpty(PostBossFightTransition.Description) ? "No Description" : PostBossFightTransition.Description;
-                        Console.WriteLine(output);
                         PostBossFightTransition = null;
-                        Game.Resume();
                     }
 
                     // SPECIAL CHECKS
@@ -127,36 +121,42 @@ namespace FFXCutsceneRemover
                      *
                      * Rarely there are conditions where the check we want is not equality. In that case you can write your
                      * own condition. An example is below.
+                     * 
+                     * Make sure to call ExecuteTransition() instead of calling the Transition.Execute() method directly.
                      */
                     // Soft reset by holding L1 R1 L2 R2 + Start - Disabled in battle because game crashes
                     if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
                     {
-                        Game.Suspend();
-                        new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" }.Execute();
-                        Game.Resume();
+                        ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" });
                     }
                     
                     // Custom Check #1 - Sandragoras
                     if (new GameState { RoomNumber = 138, Storyline = 1720, State = 1}.CheckState() && MemoryWatchers.Sandragoras.Current >= 4)
                     {
-                        Game.Suspend();
-                        new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0 }.Execute();
-                        Console.WriteLine("Sanubia to Home (Custom skip)");
-                        Game.Resume();
+                        ExecuteTransition(new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, Description = "Sanubia to Home"});
                     }
                     
                     // Custom Check #2 - Airship
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
                     {
-                        Game.Suspend();
-                        new Transition { RoomNumber = 194, Storyline = 2020, SpawnPoint = 1 }.Execute();
-                        Console.WriteLine("Zoom in on Bevelle (Custom skip)");
-                        Game.Resume();
+                        ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"});
                     }
 
                     // Sleep for a bit so we don't destroy CPUs
                     Thread.Sleep(LoopSleepMillis);
                 }
+            }
+        }
+
+        // Save the previous transition so that we don't execute the same transition multiple times in a row.
+        private void ExecuteTransition(Transition transition, string defaultDescription = "")
+        {
+            if (transition != PreviouslyExecutedTransition)
+            {
+                Game.Suspend();
+                transition.Execute(defaultDescription);
+                PreviouslyExecutedTransition = transition;
+                Game.Resume();
             }
         }
 
