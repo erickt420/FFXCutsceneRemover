@@ -97,6 +97,11 @@ namespace FFXCutsceneRemover
                             }
                         }
                     }
+                    else if (InBossFight && new GameState {RoomNumber = 23}.CheckState())
+                    {
+                        Console.WriteLine("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
+                        InBossFight = false;
+                    }
                     else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
                     {
                         Game.Suspend();
