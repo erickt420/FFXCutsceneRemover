@@ -285,7 +285,7 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
 		    // END OF HOME
 		    // START OF BEVELLE
-		    { new GameState { RoomNumber = 205, Storyline = 2060, State = 1}, new Transition { Storyline = 2075, SpawnPoint = 0, Description = "Evrae to Guards"} },
+		    { new GameState { RoomNumber = 205, Storyline = 2060, MusicId = 181 }, new Transition { Storyline = 2075, SpawnPoint = 0, Description = "Evrae to Guards"} },
 		    { new GameState { RoomNumber = 205, Storyline = 2085}, new Transition { RoomNumber = 180, Storyline = 2135, Description = "Bevelle Guards to Trials"} },
 		    { new GameState { RoomNumber = 306, Storyline = 2135}, new Transition { RoomNumber = 226, Storyline = 2150, State = 1, ForceLoad = false, Description = "Trials to Bahamut naming"} }, // TODO: Remove this and skip straight to Via Purifico. Add Bahamut manually
 		    { new GameState { RoomNumber = 226, Storyline = 2155, Menu = 0}, new Transition
