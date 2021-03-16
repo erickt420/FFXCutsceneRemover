@@ -87,6 +87,13 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> RikkuMP;
         public MemoryWatcher<int> RikkuMaxHP;
         public MemoryWatcher<short> RikkuMaxMP;
+        public MemoryWatcher<int> ValeforHP;
+        public MemoryWatcher<short> ValeforMP;
+        public MemoryWatcher<int> ValeforMaxHP;
+        public MemoryWatcher<short> ValeforMaxMP;
+        
+        // HP/MP Aeons
+
 
         // Special Flags
         public MemoryWatcher<short> FangirlsOrKidsSkip;
@@ -199,6 +206,10 @@ namespace FFXCutsceneRemover
             RikkuMP = GetMemoryWatcher<short>(MemoryLocations.RikkuMP);
             RikkuMaxHP = GetMemoryWatcher<int>(MemoryLocations.RikkuMaxHP);
             RikkuMaxMP = GetMemoryWatcher<short>(MemoryLocations.RikkuMaxMP);
+            ValeforHP = GetMemoryWatcher<int>(MemoryLocations.ValeforHP);
+            ValeforMP = GetMemoryWatcher<short>(MemoryLocations.ValeforMP);
+            ValeforMaxHP = GetMemoryWatcher<int>(MemoryLocations.ValeforMaxHP);
+            ValeforMaxMP = GetMemoryWatcher<short>(MemoryLocations.ValeforMaxMP);
 
             // Special Flags
             FangirlsOrKidsSkip = GetMemoryWatcher<short>(MemoryLocations.FangirlsOrKidsSkip);
@@ -263,6 +274,7 @@ namespace FFXCutsceneRemover
                     KimahriHP, KimahriMP, KimahriMaxHP, KimahriMaxMP,
                     LuluHP, LuluMP, LuluMaxHP, LuluMaxMP,
                     RikkuHP, RikkuMP, RikkuMaxHP, RikkuMaxMP,
+                    ValeforHP, ValeforMP, ValeforMaxHP, ValeforMaxMP,
                     BaajFlag1,
                     BesaidFlag1,
                     SSWinnoFlag1,
