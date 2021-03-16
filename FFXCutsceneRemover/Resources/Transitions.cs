@@ -305,7 +305,7 @@ namespace FFXCutsceneRemover.Resources
 		    // END OF BEVELLE
 		    // START OF CALM LANDS & GAGAZET
 		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 3712}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, Description = "Lake Scene"} },
-		    { new GameState { RoomNumber = 223, Storyline = 2385}, new Transition { Storyline = 2400, CalmLandsFlag = 36, ForceLoad = false, Description = "Calm Lands Intro + Gorge flag"} },
+		    { new GameState { RoomNumber = 223, Storyline = 2385}, new Transition { Storyline = 2400, CalmLandsFlag = 548, ForceLoad = false, Description = "Calm Lands Intro + Gorge flag"} },
 		    { new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48, XCoordinate = 265.3771973f }, new Transition { RoomNumber = 259, Storyline = 2510, RoomNumberAlt = 266, SpawnPoint = 0, Description = "Yuna reflects"} },
 	        { new GameState { RoomNumber = 259, Storyline = 2510, CutsceneAlt = 70}, new Transition { Storyline = 2530, SpawnPoint = 1, Description = "Ronso Singing"} },
 		    // TODO: Add back in the flashback

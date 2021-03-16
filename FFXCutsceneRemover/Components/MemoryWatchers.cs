@@ -113,7 +113,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MacalaniaFlag;
         public MemoryWatcher<byte> Sandragoras;
         public MemoryWatcher<byte> ViaPurificoPlatform;
-        public MemoryWatcher<byte> CalmLandsFlag;
+        public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<byte> GagazetCaveFlag;
 
         MemoryWatchers() { }
@@ -229,7 +229,7 @@ namespace FFXCutsceneRemover
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
-            CalmLandsFlag = GetMemoryWatcher<byte>(MemoryLocations.CalmLandsFlag);
+            CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<byte>(MemoryLocations.GagazetCaveFlag);
             
             Watchers.Clear();

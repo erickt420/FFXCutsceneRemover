@@ -75,7 +75,7 @@ namespace FFXCutsceneRemover
         public byte[] RikkuName = null;
 
         public byte? ViaPurificoPlatform = null;
-        public byte? CalmLandsFlag = null;
+        public short? CalmLandsFlag = null;
         public byte? GagazetCaveFlag = null;
 
         public void Execute()
