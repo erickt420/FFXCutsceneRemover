@@ -120,7 +120,7 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 94, Storyline = 385 }, new Transition { RoomNumber = 94, Storyline = 390, Description = "Tidus looks at the blitzball"} },
             //{ new GameState { RoomNumber = 191, Storyline = 387 }, new Transition { RoomNumber = 94, Storyline = 390, Description = "Zanarkand flashback"} }, // Bug: Skips Jecht shot minigame, not sure want to get rid of that
                                             // Tidus fails Jecht shot + Yuna arrives
-            { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 402, Description = "Tidus speaks to Yuna"} },
+            { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 402, FullHeal = true, Description = "Tidus speaks to Yuna"} },
             // END OF WINNO
             // START OF LUCA
             { new GameState { RoomNumber = 267, Storyline = 402 }, new Transition { RoomNumber = 377, Storyline = 404, Description = "Luca FMV + Kilika Beasts undock"} },
