@@ -9,7 +9,7 @@ namespace FFXCutsceneRemover
      * with the values you care about, and Execute() will set the game's state to match this object. */
     class Transition 
     {
-        private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
+        protected readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
 
         private Process process;
         public bool ForceLoad = true;
@@ -78,7 +78,7 @@ namespace FFXCutsceneRemover
         public short? CalmLandsFlag = null;
         public byte? GagazetCaveFlag = null;
 
-        public void Execute()
+        public virtual void Execute()
         {
             // Always update to get the latest process
             process = memoryWatchers.Process;
@@ -146,7 +146,7 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
+        protected void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
         {
             if (value.HasValue)
             {
@@ -168,7 +168,7 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private void WriteBytes(MemoryWatcher watcher, byte[] bytes)
+        protected void WriteBytes(MemoryWatcher watcher, byte[] bytes)
         {
             if (bytes != null)
             {

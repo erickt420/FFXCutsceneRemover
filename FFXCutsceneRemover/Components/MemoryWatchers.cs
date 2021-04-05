@@ -321,5 +321,10 @@ namespace FFXCutsceneRemover
         {
             return new DeepPointer(MODULE, baseAddress, offsets);
         }
+
+        public int GetBaseAddress()
+        {
+            return processBaseAddress;
+        }
     }
 }
