@@ -186,6 +186,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 119, Storyline = 860 }, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
                                             // Pre-Sinspawn Gui 2
                                             // Post-Sinspawn Gui 2
+	        // TODO : Find out which skip fixes the formation issue. Formation fix is higher priority than the skip
             { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, EnableSeymour = 16, Formation = new byte[]{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0xFF }, Description = "Tidus wakes up + sees Gatta"} }, // Bug: It sets whatever formation you had on previously back on, we would have to store that in memory to do the same
             { new GameState { RoomNumber = 254, Storyline = 893 }, new Transition { RoomNumber = 247, Storyline = 899, Description = "Sin FMV + Tidus chases after Sin"} },
             { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 218, Storyline = 902, Description = "Yuna tries to summon"} },
@@ -231,7 +232,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 163, Storyline = 1096, State = 1}, new Transition { RoomNumber = 163, Storyline = 1104, SpawnPoint = 1, Description = "Tromell invites the gang in"} },           
                                             // Tromell gets Seymour
                                             // Speaking to everyone
-                                            // Seymour arrives + FMV
+	        { new GameState { RoomNumber = 141, Storyline = 1104, GuadoCount = 5 }, new Transition { RoomNumber = 163, Storyline = 1126, SpawnPoint = 1, Description = "Seymour + Zanarkand"} },
             { new GameState { RoomNumber = 197, Storyline = 1104}, new Transition { RoomNumber = 217, Storyline = 1118, Description = "Seymour proposes to Yuna"} },
             { new GameState { RoomNumber = 217, Storyline = 1118}, new Transition { RoomNumber = 163, Storyline = 1126, SpawnPoint = 1, Description = "Yuna drinks a glass of water"} },
             { new GameState { RoomNumber = 135, Storyline = 1126, State = 1}, new Transition { RoomNumber = 135, Storyline = 1132, SpawnPoint = 257, Description = "The gang discuss the proposal"} },
@@ -330,7 +331,7 @@ namespace FFXCutsceneRemover.Resources
 
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
-	        { new GameState { RoomNumber = 83, Storyline = 172, State = 1 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
+	        { new GameState { RoomNumber = 83, Storyline = 172, State = 1 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} }, // Faster Valefor naming
             { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, Description = "Oblitzerator"} },
             { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, EnableTidus = 17, EnableKimahri = 17, EnableLulu = 17, EnableWakka = 17, Description = "Sinspawn Gui 2"} }, // Bug: minor, formation gets set back to whatever it was in Gui 1, would need to store what it was!
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1480, SpawnPoint = 2, Description = "Spherimorph", AuronOverdrives = 11569} },
