@@ -1,17 +1,20 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
 using System;
 using System.Diagnostics;
-using FFXCutsceneRemover.Resources;
+using System.Reflection;
 
 namespace FFXCutsceneRemover
 {
     /* Represents a change in current state of the game's memory. Create one of these objects
      * with the values you care about, and Execute() will set the game's state to match this object. */
-    class Transition 
+    public class Transition
     {
+        private static string DEFAULT_DESCRIPTION = "Executing Transition - No Description";
+        private static FieldInfo[] publicFields = typeof(Transition).GetFields(BindingFlags.Public | BindingFlags.Instance);
         protected readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
 
         private Process process;
+
         public bool ForceLoad = true;
         public bool FullHeal = false;
         public string Description = null;
@@ -78,8 +81,13 @@ namespace FFXCutsceneRemover
         public short? CalmLandsFlag = null;
         public byte? GagazetCaveFlag = null;
 
-        public virtual void Execute()
+        public virtual void Execute(string defaultDescription = "")
         {
+            Console.WriteLine(
+                !string.IsNullOrEmpty(Description) ? Description : 
+                !string.IsNullOrEmpty(defaultDescription) ? defaultDescription : 
+                DEFAULT_DESCRIPTION);
+            
             // Always update to get the latest process
             process = memoryWatchers.Process;
 
@@ -146,40 +154,90 @@ namespace FFXCutsceneRemover
             }
         }
 
-        protected void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
-        {
-            if (value.HasValue)
-            {
-                if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
-                {
-                    process.WriteValue(watcher.Address, value.Value);
-                }
-                else
-                {
-                    // To write to a deep pointer we need to dereference its pointer path.
-                    // Then we write to the final pointer.
-                    IntPtr finalPointer;
-                    if (!watcher.DeepPtr.DerefOffsets(process, out finalPointer))
-                    {
-                        Console.WriteLine("Couldn't read the pointer path for: " + watcher.Name);
-                    }
-                    process.WriteValue(finalPointer, value.Value);
-                }
-            }
-        }
-
-        protected void WriteBytes(MemoryWatcher watcher, byte[] bytes)
-        {
-            if (bytes != null)
-            {
-                process.WriteBytes(watcher.Address, bytes);
-            }
-        }
-
         /* Set the force load bit. Will immediately cause a fade and load. */
         private void ForceGameLoad()
         {
             WriteValue<byte>(memoryWatchers.ForceLoad, 1);
+        }
+
+        protected void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
+        {
+            if (value.HasValue)
+            {
+                writeHelper(watcher, () => process.WriteValue(watcher.Address, value.Value),
+                   (pointer) => process.WriteValue(pointer, value.Value));
+            }
+        }
+
+        private void WriteBytes(MemoryWatcher watcher, byte[] bytes)
+        {
+            if (bytes != null)
+            {
+                writeHelper(watcher, () => process.WriteBytes(watcher.Address, bytes),
+                    (pointer) => process.WriteBytes(pointer, bytes));
+            }
+        }
+
+        private void writeHelper(MemoryWatcher watcher, Func<object> basicWriteAction, Func<IntPtr, object> deepPointerWriteAction)
+        {
+            if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
+            {
+                basicWriteAction.Invoke();
+            }
+            else
+            {
+                // To write to a deep pointer we need to dereference its pointer path.
+                // Then we write to the final pointer.
+                IntPtr finalPointer;
+                if (!watcher.DeepPtr.DerefOffsets(process, out finalPointer))
+                {
+                    Console.WriteLine("Couldn't read the pointer path for: " + watcher.Name);
+                }
+                deepPointerWriteAction.Invoke(finalPointer);
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            // If they're the exact same object then we're good.
+            if (Equals(this, obj))
+            {
+                return true;
+            }
+
+            // Otherwise check all of the public fields to verify if they are the same transition
+            return this == (Transition)obj;
+        }
+
+        public static bool operator ==(Transition first, Transition second)
+        {
+            foreach (var property in publicFields)
+            {
+                var thisValue = first is null ? null : property.GetValue(first);
+                var otherValue = second is null ? null : property.GetValue(second);
+                if (!Equals(thisValue, otherValue))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool operator !=(Transition first, Transition second)
+        {
+            return !(first == second);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 3;
+            foreach (var property in publicFields)
+            {
+                // This line *should* be getting the hashcode of the actual property value
+                // NOT the property type.
+                hashCode *= property.GetValue(this).GetHashCode();
+            }
+            return hashCode;
         }
 
         private void FullPartyHeal()

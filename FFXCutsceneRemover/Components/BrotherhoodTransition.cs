@@ -8,7 +8,7 @@ namespace FFXCutsceneRemover
        figured it made more sense to have one special transition here that derives from the Transition class */
     class BrotherhoodTransition : Transition
     {
-        public override void Execute()
+        public override void Execute(string defaultDescription = "")
         {
             base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene + SpawnPoint + EnableYuna + EnableLulu)
             int baseAddress = base.memoryWatchers.GetBaseAddress();

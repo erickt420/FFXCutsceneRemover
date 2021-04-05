@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace FFXCutsceneRemover
 {
     /* This class contains all the memory watchers used in the program. All watchers should be added here. */
-    sealed class MemoryWatchers
+    sealed public class MemoryWatchers
     {
         private static readonly string MODULE = "FFX.exe";
 
