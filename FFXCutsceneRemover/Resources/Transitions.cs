@@ -228,19 +228,14 @@ namespace FFXCutsceneRemover.Resources
             // END OF MOONFLOW
             // START OF GUADOSALAM
             { new GameState { RoomNumber = 135, Storyline = 1085 }, new Transition { RoomNumber = 135, Storyline = 1096, SpawnPoint = 0, Description = "Meet Tromell + Customise tutorial"} },
-            { new GameState { RoomNumber = 163, Storyline = 1096, State = 1}, new Transition { RoomNumber = 163, Storyline = 1104, SpawnPoint = 1, Description = "Tromell invites the gang in"} },           
-                                            // Tromell gets Seymour
-                                            // Speaking to everyone
-                                            // Seymour arrives + FMV
+            { new GameState { RoomNumber = 163, Storyline = 1096, State = 1}, new Transition { RoomNumber = 163, Storyline = 1104, SpawnPoint = 1, Description = "Tromell invites the gang in"} },
+            { new GameState { RoomNumber = 141, Storyline = 1104}, new Transition { RoomNumber = 197, Description = "Seymour's house"} },
             { new GameState { RoomNumber = 197, Storyline = 1104}, new Transition { RoomNumber = 217, Storyline = 1118, Description = "Seymour proposes to Yuna"} },
             { new GameState { RoomNumber = 217, Storyline = 1118}, new Transition { RoomNumber = 163, Storyline = 1126, SpawnPoint = 1, Description = "Yuna drinks a glass of water"} },
             { new GameState { RoomNumber = 135, Storyline = 1126, State = 1}, new Transition { RoomNumber = 135, Storyline = 1132, SpawnPoint = 257, Description = "The gang discuss the proposal"} },
             { new GameState { RoomNumber = 257, Storyline = 1132}, new Transition { RoomNumber = 257, Storyline = 1138, SpawnPoint = 0, Description = "Tidus freaks out about the undead"} },
             { new GameState { RoomNumber = 257, Storyline = 1138}, new Transition { RoomNumber = 257, Storyline = 1154, SpawnPoint = 0, Description = "Auron and Rikku stay behind"} },
-                                            // Tidus enters the Farplane
-            //{ new GameState { RoomNumber = 193, Storyline = 1154}, new Transition { RoomNumber = 193, Storyline = 1156, SpawnPoint = 0, Description = "Farplane FMV"} }, // bug: Characters not loaded in if trying to skip FMV         
-                                            // Wakka speaks to Chappu, Brotherhood gets "buffed" here
-                                            // Tidus speaks to Yuna
+            { new GameState { RoomNumber = 257, Storyline = 1154, XCoordinate = 233.3042755f }, new Transition { RoomNumber = 193, Description = "Tidus enters the Farplane"} },
             { new GameState { RoomNumber = 134, Storyline = 1170}, new Transition { RoomNumber = 193, Storyline = 1172, Description = "Zanarkand flashback"} },
             { new GameState { RoomNumber = 193, Storyline = 1172}, new Transition { RoomNumber = 364, Storyline = 1176, Description = "Tidus is embarrassed"} },
             { new GameState { RoomNumber = 364, Storyline = 1176}, new Transition { RoomNumber = 175, Storyline = 1184, Description = "Jyscal returns"} },
