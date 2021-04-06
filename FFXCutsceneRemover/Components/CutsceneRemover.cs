@@ -142,6 +142,11 @@ namespace FFXCutsceneRemover
                         ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"});
                     }
 
+                    if (new GameState { RoomNumber = 161, Storyline = 1010, MovementLock = 48}.CheckState() && MemoryWatchers.YCoordinate.Current > 10.0f)
+                    {
+                        ExecuteTransition(new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"});
+                    }
+
                     // Custom Check #3 - Buff Brotherhood in Farplane and skip scenes
                     if (new GameState { RoomNumber = 193, Storyline = 1154 }.CheckState())
                     {
