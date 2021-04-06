@@ -117,8 +117,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SSWinnoFlag2 = 1, Description = "Opening scenes"} },
             { new GameState { RoomNumber = 237, Storyline = 372, SSWinnoFlag2 = 1 }, new Transition { RoomNumber = 237, Storyline = 372, SSWinnoFlag1 = 170, SSWinnoFlag2 = 9, Description = "Meet O'aka"} },
             { new GameState { RoomNumber = 94, Storyline = 380, SSWinnoFlag2 = 25 }, new Transition { Storyline = 380, SSWinnoFlag2 = 31, SpawnPoint = 2, Description = "Eavesdropping on Lulu and Wakka"} },
-            //{ new GameState { RoomNumber = 94, Storyline = 385 }, new Transition { RoomNumber = 94, Storyline = 390, Description = "Tidus looks at the blitzball"} },
-            //{ new GameState { RoomNumber = 191, Storyline = 387 }, new Transition { RoomNumber = 94, Storyline = 390, Description = "Zanarkand flashback"} }, // Bug: Skips Jecht shot minigame, not sure want to get rid of that
+            { new GameState { RoomNumber = 94, Storyline = 385 }, new Transition { RoomNumber = 191, SpawnPoint = 256, Description = "Tidus looks at the blitzball"} },
+            { new GameState { RoomNumber = 191, Storyline = 385 }, new Transition { RoomNumber = 94, Storyline = 387, SpawnPoint = 0, Description = "Zanarkand flashback"} },
                                             // Tidus fails Jecht shot + Yuna arrives
             { new GameState { RoomNumber = 94, Storyline = 395, State = 0 }, new Transition { RoomNumber = 267, Storyline = 402, FullHeal = true, Description = "Tidus speaks to Yuna"} },
             // END OF WINNO
