@@ -79,7 +79,7 @@ namespace FFXCutsceneRemover
 
         public byte? ViaPurificoPlatform = null;
         public short? CalmLandsFlag = null;
-        public byte? GagazetCaveFlag = null;
+        public short? GagazetCaveFlag = null;
 
         public virtual void Execute(string defaultDescription = "")
         {

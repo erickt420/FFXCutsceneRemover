@@ -302,8 +302,13 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 223, Storyline = 2385}, new Transition { Storyline = 2400, CalmLandsFlag = 548, ForceLoad = false, Description = "Calm Lands Intro + Gorge flag"} },
 		    { new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48, XCoordinate = 265.3771973f }, new Transition { RoomNumber = 259, Storyline = 2510, RoomNumberAlt = 266, SpawnPoint = 0, Description = "Yuna reflects"} },
 	        { new GameState { RoomNumber = 259, Storyline = 2510, CutsceneAlt = 70}, new Transition { Storyline = 2530, SpawnPoint = 1, Description = "Ronso Singing"} },
-		    // TODO: Add back in the flashback
-		    // TODO: Auron talks to Yuna at the end of the cave
+            { new GameState { RoomNumber = 309, Storyline = 2560}, new Transition { RoomNumber = 134, Storyline = 2585, Description = "Fayth FMV + Tidus collapses"} },
+            { new GameState { RoomNumber = 134, Storyline = 2585}, new Transition { Storyline = 2590, SpawnPoint = 0, Description = "Tidus wakes up in Zanarkand"} },
+            { new GameState { RoomNumber = 165, Storyline = 2595, State = 1 }, new Transition { RoomNumber = 249, Storyline = 2610, Description = "Tidus enters his house"} },
+            //{ new GameState { RoomNumber = 134, Storyline = 2600, State = 1 }, new Transition { RoomNumber = 249, Storyline = 2610, Description = "The fayth asks Tidus to end the dream"} }, // Bug: Game softlocks with Tidus entering house skip, so this little bit of movement is lost for now
+            { new GameState { RoomNumber = 249, Storyline = 2610, }, new Transition { RoomNumber = 309, Storyline = 2610, Description = "The dream disintegrates"} },
+            { new GameState { RoomNumber = 309, Storyline = 2610, }, new Transition { Storyline = 2585, Description = "Tidus wakes up"} },
+            { new GameState { RoomNumber = 272, Storyline = 2585}, new Transition { GagazetCaveFlag = 29120, Description = "Gagazet Cave scenes"} },
 		    // END OF GAGAZET
 		    // START OF ZANARKAND
 		    { new GameState { RoomNumber = 132, Storyline =  2680, State = 0}, new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, Description = "Zanarkand Campfire"} },
@@ -333,7 +338,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 12000, Storyline = 1704 }, new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu",
 	            Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0xFF, 0xFF, 0xFF }, EnableWakka = 17} },
             { new GameState { HpEnemyA = 9000, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
-            { new GameState { HpEnemyA = 70000, Storyline = 2530 }, new Transition { RoomNumber = 285, Storyline = 2585, SpawnPoint = 2, GagazetCaveFlag = 177, Description = "Seymour Flux"} },
+            { new GameState { HpEnemyA = 70000, Storyline = 2530 }, new Transition { RoomNumber = 285, Storyline = 2560, SpawnPoint = 2, Description = "Seymour Flux"} },
             { new GameState { HpEnemyA = 40000, Storyline = 2585 }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, Description = "Sanctuary Keeper"} },
             { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, Description = "Yunalesca"} },
             { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
