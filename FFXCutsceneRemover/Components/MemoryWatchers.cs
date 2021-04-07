@@ -7,7 +7,7 @@ using System.Diagnostics;
 namespace FFXCutsceneRemover
 {
     /* This class contains all the memory watchers used in the program. All watchers should be added here. */
-    sealed class MemoryWatchers
+    sealed public class MemoryWatchers
     {
         private static readonly string MODULE = "FFX.exe";
 
@@ -113,8 +113,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MacalaniaFlag;
         public MemoryWatcher<byte> Sandragoras;
         public MemoryWatcher<byte> ViaPurificoPlatform;
-        public MemoryWatcher<byte> CalmLandsFlag;
-        public MemoryWatcher<byte> GagazetCaveFlag;
+        public MemoryWatcher<short> CalmLandsFlag;
+        public MemoryWatcher<short> GagazetCaveFlag;
 
         MemoryWatchers() { }
 
@@ -229,8 +229,8 @@ namespace FFXCutsceneRemover
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
-            CalmLandsFlag = GetMemoryWatcher<byte>(MemoryLocations.CalmLandsFlag);
-            GagazetCaveFlag = GetMemoryWatcher<byte>(MemoryLocations.GagazetCaveFlag);
+            CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
+            GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
             
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
@@ -320,6 +320,11 @@ namespace FFXCutsceneRemover
         private DeepPointer GetDeepPointer(int baseAddress, int[] offsets)
         {
             return new DeepPointer(MODULE, baseAddress, offsets);
+        }
+
+        public int GetBaseAddress()
+        {
+            return processBaseAddress;
         }
     }
 }

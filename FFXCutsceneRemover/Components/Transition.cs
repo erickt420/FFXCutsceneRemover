@@ -11,7 +11,7 @@ namespace FFXCutsceneRemover
     {
         private static string DEFAULT_DESCRIPTION = "Executing Transition - No Description";
         private static FieldInfo[] publicFields = typeof(Transition).GetFields(BindingFlags.Public | BindingFlags.Instance);
-        private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
+        protected readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
 
         private Process process;
 
@@ -78,10 +78,10 @@ namespace FFXCutsceneRemover
         public byte[] RikkuName = null;
 
         public byte? ViaPurificoPlatform = null;
-        public byte? CalmLandsFlag = null;
-        public byte? GagazetCaveFlag = null;
+        public short? CalmLandsFlag = null;
+        public short? GagazetCaveFlag = null;
 
-        public void Execute(string defaultDescription = "")
+        public virtual void Execute(string defaultDescription = "")
         {
             Console.WriteLine(
                 !string.IsNullOrEmpty(Description) ? Description : 
@@ -160,7 +160,7 @@ namespace FFXCutsceneRemover
             WriteValue<byte>(memoryWatchers.ForceLoad, 1);
         }
 
-        private void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
+        protected void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
         {
             if (value.HasValue)
             {

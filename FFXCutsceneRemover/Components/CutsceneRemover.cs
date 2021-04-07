@@ -142,6 +142,57 @@ namespace FFXCutsceneRemover
                         ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"});
                     }
 
+                    if (new GameState { RoomNumber = 161, Storyline = 1010, MovementLock = 48}.CheckState() && MemoryWatchers.YCoordinate.Current > 10.0f)
+                    {
+                        ExecuteTransition(new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"});
+                    }
+
+                    // Custom Check #3 - Buff Brotherhood in Farplane and skip scenes
+                    if (new GameState { RoomNumber = 193, Storyline = 1154 }.CheckState())
+                    {
+                        Game.Suspend();
+                        IntPtr EquipMenu = new IntPtr(MemoryWatchers.GetBaseAddress() + 0xD30F2C); // Address of beginning of Equipment menu
+                        bool foundBrotherhood = false;
+                        var brotherhood = new byte[2] { 0x1, 0x50 }; // Brotherhood name identifier in hex
+
+                        while (!foundBrotherhood)
+                        {
+                            // Check first two bytes for name identifier and compare against Brotherhood
+                            var equipment = Game.ReadBytes(EquipMenu, 2);
+
+                            if (equipment.SequenceEqual<byte>(brotherhood))
+                            {
+                                // Not sure what this value is, but it does change during the scene, so adding just in case!
+                                IntPtr aNumber = IntPtr.Add(EquipMenu, 3);
+                                Game.WriteBytes(aNumber, new byte[1] { 0x9 });
+
+                                // Second slot for Brotherhood, +10% Strength
+                                IntPtr slot2 = IntPtr.Add(EquipMenu, 16);
+                                Game.WriteBytes(slot2, new byte[2] { 0x64, 0x80 });
+
+                                // Third slot for Brotherhood, Waterstrike
+                                IntPtr slot3 = IntPtr.Add(EquipMenu, 18);
+                                Game.WriteBytes(slot3, new byte[2] { 0x2A, 0x80 });
+
+                                // Fourth slot for Brotherhood, Sensor
+                                IntPtr slot4 = IntPtr.Add(EquipMenu, 20);
+                                Game.WriteBytes(slot4, new byte[2] { 0x00, 0x80 });
+
+                                // Finally skip the Farplane scenes
+                                new Transition { RoomNumber = 134, Storyline = 1170 }.Execute();
+                                Console.WriteLine("Farplane scenes + Brotherhood buff");
+                                foundBrotherhood = true;
+                                Game.Resume();
+                                break;
+                            }
+                            else
+                            {
+                                // Number of bytes for each piece of equipment is 22, so if not found, go to the next piece of equipment
+                                EquipMenu = IntPtr.Add(EquipMenu, 22);
+                            }
+                        }
+                    }
+
                     // Sleep for a bit so we don't destroy CPUs
                     Thread.Sleep(LoopSleepMillis);
                 }
