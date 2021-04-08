@@ -73,7 +73,7 @@ namespace FFXCutsceneRemover.Resources
 			{ new GameState { RoomNumber = 68, Storyline = 184 }, new Transition { RoomNumber = 252, Storyline = 190, Description = "Tidus sleeping"} },
             { new GameState { RoomNumber = 252, Storyline = 190, State = 1 }, new Transition { RoomNumber = 60, Storyline = 196, Description = "Tidus has a dream about Yuna, Tidus wakes up + FMV" } },
                                             // Tidus wakes up again (Party healed at this point)
-            { new GameState { RoomNumber = 17, Storyline = 200 }, new BrotherhoodTransition { RoomNumber = 69, Storyline = 210, SpawnPoint = 515, EnableYuna = 17, EnableLulu = 17, Description = "Yuna says goodbye to Besaid" } },
+            { new GameState { RoomNumber = 17, Storyline = 200 }, new BrotherhoodTransition { RoomNumber = 69, Storyline = 210, SpawnPoint = 515, EnableYuna = 17, EnableLulu = 17, TidusWeaponDamageBoost = 5, Description = "Yuna says goodbye to Besaid" } },
             { new GameState { RoomNumber = 67, Storyline = 210 }, new Transition { RoomNumber = 67, Storyline = 214, SpawnPoint = 3, Description = "Yuna says goodbye to Besaid again"} },
                                             // Kimahri FMV
                                             // Post-Kimahri battle
