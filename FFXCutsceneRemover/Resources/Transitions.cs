@@ -169,7 +169,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 120, Storyline = 734, MiihenFlag1 = 133}, new Transition { MiihenFlag1 = 141, ForceLoad = false, Description = "Meet Calli"} },
             { new GameState { RoomNumber = 127, Storyline = 734, MiihenFlag1 = 141 }, new Transition { MiihenFlag1 = 221, MiihenFlag2 = 148, ForceLoad = false, Description = "Luzzu, Gatta and Shelinda scenes"} },
             { new GameState { RoomNumber = 58, Storyline = 734, State = 0 }, new Transition { RoomNumber = 171, Storyline = 755, Description = "Auron is tired"} },
-            { new GameState { RoomNumber = 112, Storyline = 755 }, new Transition { RoomNumber = 171, Storyline = 760, SpawnPoint = 0, Description = "Tidus chats with Yuna" } },
+            { new GameState { RoomNumber = 112, Storyline = 755 }, new Transition { RoomNumber = 171, Storyline = 760, SpawnPoint = 0, FullHeal = true, Description = "Tidus chats with Yuna" } },
                                             // Tidus chats to a guy
                                             // Meet Rin
             { new GameState { RoomNumber = 58, Storyline = 767, MiihenFlag3 = 0 }, new Transition { MiihenFlag3 = 1 , ForceLoad = false, Description = "To the chocobo corral"} },
