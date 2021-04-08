@@ -142,12 +142,13 @@ namespace FFXCutsceneRemover
                         ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"});
                     }
 
+                    // Custom Check #3 - Djose
                     if (new GameState { RoomNumber = 161, Storyline = 1010, MovementLock = 48}.CheckState() && MemoryWatchers.YCoordinate.Current > 10.0f)
                     {
                         ExecuteTransition(new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"});
                     }
 
-                    // Custom Check #3 - Buff Brotherhood in Farplane and skip scenes
+                    // Custom Check #4 - Buff Brotherhood in Farplane and skip scenes
                     if (new GameState { RoomNumber = 193, Storyline = 1154 }.CheckState())
                     {
                         Game.Suspend();
@@ -179,8 +180,7 @@ namespace FFXCutsceneRemover
                                 Game.WriteBytes(slot4, new byte[2] { 0x00, 0x80 });
 
                                 // Finally skip the Farplane scenes
-                                new Transition { RoomNumber = 134, Storyline = 1170 }.Execute();
-                                Console.WriteLine("Farplane scenes + Brotherhood buff");
+                                new Transition { RoomNumber = 134, Storyline = 1170, TidusWeaponDamageBoost = 15, Description = "Farplane scenes + Brotherhood buff" }.Execute();
                                 foundBrotherhood = true;
                                 Game.Resume();
                                 break;

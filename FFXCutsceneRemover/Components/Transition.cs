@@ -71,6 +71,7 @@ namespace FFXCutsceneRemover
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
         public byte? RikkuOutfit = null;
+        public byte? TidusWeaponDamageBoost = null;
 
         public byte? MacalaniaFlag = null;
 
@@ -136,6 +137,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MoonflowFlag, MoonflowFlag);
             WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
+            WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteBytes(memoryWatchers.Formation, Formation);
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
