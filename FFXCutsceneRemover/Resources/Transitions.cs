@@ -271,7 +271,7 @@ namespace FFXCutsceneRemover.Resources
 		    } },
 		    { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 0, State = 1 }, new Transition
 			{
-				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17, Description = "Wakka Glare",
+				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17, BikanelFlag = 32, Description = "Wakka Glare",
 				Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0x3, 0x6, 0xFF }
 			} },
 		    { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },

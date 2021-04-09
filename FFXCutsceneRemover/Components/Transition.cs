@@ -74,6 +74,7 @@ namespace FFXCutsceneRemover
         public byte? TidusWeaponDamageBoost = null;
 
         public byte? MacalaniaFlag = null;
+        public byte? BikanelFlag = null;
 
         public byte[] Formation = null;
         public byte[] RikkuName = null;
@@ -139,6 +140,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
+            WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
             WriteBytes(memoryWatchers.Formation, Formation);
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
