@@ -171,7 +171,7 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private void WriteBytes(MemoryWatcher watcher, byte[] bytes)
+        protected void WriteBytes(MemoryWatcher watcher, byte[] bytes)
         {
             if (bytes != null)
             {

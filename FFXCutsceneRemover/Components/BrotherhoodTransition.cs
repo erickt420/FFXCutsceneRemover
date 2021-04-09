@@ -1,5 +1,7 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
 using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace FFXCutsceneRemover
 {
@@ -37,6 +39,37 @@ namespace FFXCutsceneRemover
 
             MemoryWatcher<byte> equipBrotherhood = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD32089));
             WriteValue<byte>(equipBrotherhood, 0x22);
+
+            // Adding the map to the first empty slot in the item menu
+            IntPtr ItemMenu = new IntPtr(baseAddress + 0xD3095C); // Address of beginning of Item menu
+            IntPtr ItemCount = IntPtr.Add(ItemMenu, 512); // Total number of bytes of Item menu before the count for each item is stored
+
+            bool foundEmptySlot = false;
+            var emptySlot = new byte[2] { 0xFF, 0x00 }; // How empty slots are represented in hex
+            int count = 0;
+            Process process = memoryWatchers.Process;
+
+            while (!foundEmptySlot)
+            {
+                // Check the two bytes for each item and compare against empty slot representation
+                var item = process.ReadBytes(ItemMenu, 2);
+
+                if (item.SequenceEqual<byte>(emptySlot))
+                {
+                    foundEmptySlot = true;
+                    IntPtr MapCount = IntPtr.Add(ItemCount, count);
+
+                    process.WriteBytes(ItemMenu, new byte[] { 0x64, 0x20 }); // Map location in item menu
+                    process.WriteValue<byte>(MapCount, 1); // Number of maps to add
+                    break;
+                }
+                else
+                {
+                    // Not found an empty slot yet, so advance two bytes to the next item
+                    ItemMenu = IntPtr.Add(ItemMenu, 2);
+                    ++count;
+                }
+            }
         }
     }
 }
