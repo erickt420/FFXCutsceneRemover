@@ -57,7 +57,9 @@
         public static string MoonflowFlag = "MoonflowFlag";
         public static string MoonflowFlag2 = "MoonflowFlag2";
         public static string RikkuOutfit = "RikkuOutfit";
+        public static string TidusWeaponDamageBoost = "TidusWeaponDamageBoost";
         public static string MacalaniaFlag = "MacalaniaFlag";
+        public static string BikanelFlag = "BikanelFlag";
         public static string Sandragoras = "Sandragoras";
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
         public static string CalmLandsFlag = "CalmLandsFlag";
