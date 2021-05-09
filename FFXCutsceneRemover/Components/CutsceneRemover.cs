@@ -194,6 +194,15 @@ namespace FFXCutsceneRemover
                             }
                         }
                     }
+                    
+                    // Custom Check #5 - Baaj Menu patch
+                    // This check disables the menu for the two screens before Geosgaeno. Opening the menu here hardlocks the game
+                    if (new GameState {RoomNumber = 48, MenuLock = 152}.CheckState() ||
+                        new GameState {RoomNumber = 49, MenuLock = 152}.CheckState())
+                    {
+                        Console.WriteLine("Disabling menu temporarily");
+                        Game.WriteValue(MemoryWatchers.MenuLock.Address, 136);
+                    }
 
                     // Sleep for a bit so we don't destroy CPUs
                     Thread.Sleep(LoopSleepMillis);

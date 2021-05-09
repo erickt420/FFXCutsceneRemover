@@ -17,6 +17,7 @@ namespace FFXCutsceneRemover
         public int? BattleState = null;
         public short? Input = null;
         public byte? Menu = null;
+        public short? MenuLock = null;
         public short? Intro = null;
         public sbyte? State = null;
         public float? XCoordinate = null;
@@ -42,6 +43,7 @@ namespace FFXCutsceneRemover
                 TestValue(BattleState, memoryWatchers.BattleState.Old) &&
                 TestValue(Input, memoryWatchers.Input.Old) &&
                 TestValue(Menu, memoryWatchers.Menu.Old) &&
+                TestValue(MenuLock, memoryWatchers.MenuLock.Old) &&
                 TestValue(Intro, memoryWatchers.Intro.Old) &&
                 TestValue(State, memoryWatchers.State.Old) &&
                 TestValue(XCoordinate, memoryWatchers.XCoordinate.Old) &&

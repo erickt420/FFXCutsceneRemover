@@ -15,6 +15,7 @@
         public static MemoryLocationData BattleState = new MemoryLocationData(MemoryLocationNames.BattleState, 0xD2C9F0);
         public static MemoryLocationData Input = new MemoryLocationData(MemoryLocationNames.Input, 0x8CB170);
         public static MemoryLocationData Menu = new MemoryLocationData(MemoryLocationNames.Menu, 0xF407E4);
+        public static MemoryLocationData MenuLock = new MemoryLocationData(MemoryLocationNames.MenuLock, 0xF25B61);
         public static MemoryLocationData Intro = new MemoryLocationData(MemoryLocationNames.Intro, 0x922D64);
         public static MemoryLocationData State = new MemoryLocationData(MemoryLocationNames.State, 0xD381AC);
         public static MemoryLocationData XCoordinate = new MemoryLocationData(MemoryLocationNames.XCoordinate, 0xF25D80);
