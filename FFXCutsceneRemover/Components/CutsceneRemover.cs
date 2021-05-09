@@ -125,10 +125,12 @@ namespace FFXCutsceneRemover
                      * Make sure to call ExecuteTransition() instead of calling the Transition.Execute() method directly.
                      */
                     // Soft reset by holding L1 R1 L2 R2 + Start - Disabled in battle because game crashes
+#if DEBUG
                     if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
                     {
                         ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" });
                     }
+#endif
                     
                     // Custom Check #1 - Sandragoras
                     if (new GameState { RoomNumber = 138, Storyline = 1720, State = 1}.CheckState() && MemoryWatchers.Sandragoras.Current >= 4)
