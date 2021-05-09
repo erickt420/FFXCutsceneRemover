@@ -200,7 +200,6 @@ namespace FFXCutsceneRemover
                     if (new GameState {RoomNumber = 48, MenuLock = 152}.CheckState() ||
                         new GameState {RoomNumber = 49, MenuLock = 152}.CheckState())
                     {
-                        Console.WriteLine("Disabling menu temporarily");
                         Game.WriteValue(MemoryWatchers.MenuLock.Address, 136);
                     }
 
