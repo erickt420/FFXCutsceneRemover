@@ -174,7 +174,8 @@ namespace FFXCutsceneRemover.Resources
                                             // Meet Rin
             { new GameState { RoomNumber = 58, Storyline = 767, MiihenFlag3 = 0 }, new Transition { MiihenFlag3 = 1 , ForceLoad = false, Description = "To the chocobo corral"} },
                                             // Pre-Chocobo Eater
-                                            // Fall down the cliff (MiihenFlag = 3 after)
+            { new GameState { RoomNumber = 58, Storyline = 770, MiihenFlag3 = 3 }, new Transition { RoomNumber = 115, Storyline = 772, SpawnPoint = 515, Description = "Chocobo Eater loss - Fall down the cliff"} },
+            { new GameState { RoomNumber = 58, Storyline = 770, MiihenFlag3 = 5 }, new Transition { Storyline = 772, SpawnPoint = 2, MiihenFlag3 = 13, Description = "Chocobo Eater win - Rin thanks the party"} },
             { new GameState { RoomNumber = 116, Storyline = 772, MiihenFlag4 = 0}, new Transition { MiihenFlag4 = 4 , ForceLoad = false, Description = "Luzzu and Gatta move a cart"} },
             { new GameState { RoomNumber = 59, Storyline = 777, State = 0}, new Transition { Storyline = 787, SpawnPoint = 3, Description = "Seymour helps out"} },
             // END OF MI'IHEN
@@ -182,11 +183,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, Description = "Tidus distrusts Seymour"} },
             { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845, Description = "Preparing for Sin" } },
                                             // Pre-Sinspawn Gui
-            { new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 260 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
-            { new GameState { RoomNumber = 119, Storyline = 860 }, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
+            { new GameState { RoomNumber = 119, Storyline = 857, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
+            { new GameState { RoomNumber = 119, Storyline = 860 }, new SinspawnGuiTransition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
                                             // Pre-Sinspawn Gui 2
                                             // Post-Sinspawn Gui 2
-            { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, EnableSeymour = 16, Formation = new byte[]{0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0xFF }, Description = "Tidus wakes up + sees Gatta"} }, // Bug: It sets whatever formation you had on previously back on, we would have to store that in memory to do the same
+            { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, EnableSeymour = 16, Description = "Tidus wakes up + sees Gatta"} },
             { new GameState { RoomNumber = 254, Storyline = 893 }, new Transition { RoomNumber = 247, Storyline = 899, Description = "Sin FMV + Tidus chases after Sin"} },
             { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 218, Storyline = 902, Description = "Yuna tries to summon"} },
             { new GameState { RoomNumber = 218, Storyline = 902 }, new Transition { RoomNumber = 341, Storyline = 910, Description = "Tidus is swimming"} },
@@ -270,7 +271,7 @@ namespace FFXCutsceneRemover.Resources
 		    } },
 		    { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 0, State = 1 }, new Transition
 			{
-				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17, Description = "Wakka Glare",
+				Storyline = 1720, SpawnPoint = 3, EnableRikku = 17, BikanelFlag = 32, Description = "Wakka Glare",
 				Formation = new byte[]{ 0x0, 0x2, 0x5, 0x4, 0x3, 0x6, 0xFF }
 			} },
 		    { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
@@ -331,7 +332,7 @@ namespace FFXCutsceneRemover.Resources
         {
 	        { new GameState { RoomNumber = 83, Storyline = 172, State = 1 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
             { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, Description = "Oblitzerator"} },
-            { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, EnableTidus = 17, EnableKimahri = 17, EnableLulu = 17, EnableWakka = 17, Description = "Sinspawn Gui 2"} }, // Bug: minor, formation gets set back to whatever it was in Gui 1, would need to store what it was!
+            { new GameState { HpEnemyA = 6000, Storyline = 865 }, new SinspawnGuiTransition { RoomNumber = 254, Storyline = 882, EnableTidus = 17, EnableKimahri = 17, EnableLulu = 17, EnableWakka = 17, Description = "Sinspawn Gui 2"} },
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1480, SpawnPoint = 2, Description = "Spherimorph", AuronOverdrives = 11569} },
             { new GameState { HpEnemyA = 16000, Storyline = 1485 }, new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, Description = "Crawler"} },
             { new GameState { HpEnemyA = 1200, RoomNumber = 102, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
