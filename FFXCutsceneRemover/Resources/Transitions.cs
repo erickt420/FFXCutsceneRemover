@@ -183,7 +183,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, Description = "Tidus distrusts Seymour"} },
             { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845, Description = "Preparing for Sin" } },
                                             // Pre-Sinspawn Gui
-            { new GameState { RoomNumber = 119, Storyline = 857, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
+            { new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
             { new GameState { RoomNumber = 119, Storyline = 860 }, new SinspawnGuiTransition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
                                             // Pre-Sinspawn Gui 2
                                             // Post-Sinspawn Gui 2
