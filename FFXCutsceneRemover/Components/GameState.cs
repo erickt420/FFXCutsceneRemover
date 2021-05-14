@@ -17,6 +17,7 @@ namespace FFXCutsceneRemover
         public int? BattleState = null;
         public short? Input = null;
         public byte? Menu = null;
+        public byte? MenuLock = null;
         public byte? FangirlsOrKidsSkip = null;
         public short? Intro = null;
         public sbyte? State = null;
@@ -62,6 +63,7 @@ namespace FFXCutsceneRemover
                 TestValue(BattleState, memoryWatchers.BattleState.Current) &&
                 TestValue(Input, memoryWatchers.Input.Current) &&
                 TestValue(Menu, memoryWatchers.Menu.Current) &&
+                TestValue(MenuLock, memoryWatchers.MenuLock.Current) &&
                 TestValue(FangirlsOrKidsSkip, memoryWatchers.FangirlsOrKidsSkip.Current) &&
                 TestValue(Intro, memoryWatchers.Intro.Current) &&
                 TestValue(State, memoryWatchers.State.Current) &&

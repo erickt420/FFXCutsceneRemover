@@ -11,6 +11,7 @@
         public static string BattleState = "BattleState";
         public static string Input = "Input";
         public static string Menu = "Menu";
+        public static string MenuLock = "MenuLock";
         public static string Intro = "Intro";
         public static string State = "State";
         public static string XCoordinate = "XCoordinate";

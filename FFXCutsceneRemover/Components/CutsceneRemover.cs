@@ -125,10 +125,12 @@ namespace FFXCutsceneRemover
                      * Make sure to call ExecuteTransition() instead of calling the Transition.Execute() method directly.
                      */
                     // Soft reset by holding L1 R1 L2 R2 + Start - Disabled in battle because game crashes
+#if DEBUG
                     if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
                     {
                         ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" });
                     }
+#endif
                     
                     // Custom Check #1 - Sandragoras
                     if (new GameState { RoomNumber = 138, Storyline = 1720, State = 1}.CheckState() && MemoryWatchers.Sandragoras.Current >= 4)
@@ -191,6 +193,14 @@ namespace FFXCutsceneRemover
                                 EquipMenu = IntPtr.Add(EquipMenu, 22);
                             }
                         }
+                    }
+                    
+                    // Custom Check #5 - Baaj Menu patch
+                    // This check disables the menu for the two screens before Geosgaeno. Opening the menu here hardlocks the game
+                    if (new GameState {RoomNumber = 48, MenuLock = 152}.CheckState() ||
+                        new GameState {RoomNumber = 49, MenuLock = 152}.CheckState())
+                    {
+                        Game.WriteValue(MemoryWatchers.MenuLock.Address, 136);
                     }
 
                     // Sleep for a bit so we don't destroy CPUs

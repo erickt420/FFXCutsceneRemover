@@ -26,6 +26,7 @@ namespace FFXCutsceneRemover
         public short? SpawnPoint = null;
         public int? BattleState = null;
         public byte? Menu = null;
+        public byte? MenuLock = null;
         public short? Intro = null;
         public short? FangirlsOrKidsSkip = null;
         public sbyte? State = null;
@@ -98,6 +99,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.SpawnPoint, SpawnPoint);
             WriteValue(memoryWatchers.BattleState, BattleState);
             WriteValue(memoryWatchers.Menu, Menu);
+            WriteValue(memoryWatchers.MenuLock, MenuLock);
             WriteValue(memoryWatchers.Intro, Intro);
             WriteValue(memoryWatchers.FangirlsOrKidsSkip, FangirlsOrKidsSkip);
             WriteValue(memoryWatchers.State, State);

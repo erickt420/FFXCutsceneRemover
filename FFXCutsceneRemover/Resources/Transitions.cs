@@ -183,7 +183,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, Description = "Tidus distrusts Seymour"} },
             { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845, Description = "Preparing for Sin" } },
                                             // Pre-Sinspawn Gui
-            { new GameState { RoomNumber = 119, Storyline = 857, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
+            { new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
             { new GameState { RoomNumber = 119, Storyline = 860 }, new SinspawnGuiTransition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
                                             // Pre-Sinspawn Gui 2
                                             // Post-Sinspawn Gui 2
@@ -200,7 +200,7 @@ namespace FFXCutsceneRemover.Resources
             // END OF MRR
             // START OF DJOSE HIGHROAD
             { new GameState { RoomNumber = 93, Storyline = 960 }, new Transition { RoomNumber = 93, Storyline = 961, SpawnPoint = 768, Description = "Kimahri speaks"} },
-            { new GameState { RoomNumber = 93, Storyline = 961, State = 0 }, new Transition { RoomNumber = 76, Storyline = 962, SpawnPoint = 1, Description = "Tidus is eager to go to Zanarkand"} },
+            { new GameState { RoomNumber = 93, Storyline = 961, CutsceneAlt = 1678 }, new Transition { RoomNumber = 76, Storyline = 962, SpawnPoint = 1, Description = "Tidus is eager to go to Zanarkand"} },
             { new GameState { RoomNumber = 76, Storyline = 962 }, new Transition { Storyline = 970, SpawnPoint = 0, Description = "Tidus whoa"} },
             { new GameState { RoomNumber = 82, Storyline = 970 }, new Transition { Storyline = 971, SpawnPoint = 0, Description = "Arrival at Djose Temple"} },
             { new GameState { RoomNumber = 81, Storyline = 971 }, new Transition { Storyline = 985, SpawnPoint = 0, Description = "Meet Isaaru"} },
@@ -247,7 +247,7 @@ namespace FFXCutsceneRemover.Resources
             // END OF GUADOSALAM
             // START OF THUNDER PLAINS
             { new GameState { RoomNumber = 140, Storyline = 1300}, new Transition { RoomNumber = 140, Storyline = 1310, SpawnPoint = 0, Description = "Map + Rikku afraid + tutorial"} },
-            { new GameState { RoomNumber = 140, Storyline = 1310, State = 0}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, Description = "Rikku freaks out"} },
+            { new GameState { RoomNumber = 140, Storyline = 1310, CutsceneAlt = 2525}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, Description = "Rikku freaks out"} },
             { new GameState { RoomNumber = 256, Storyline = 1310}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },    
             { new GameState { RoomNumber = 264, Storyline = 1320}, new Transition { RoomNumber = 263, Storyline = 1325, FullHeal = true, Description = "Tidus barges in Yuna's room + Sleep"} },
             { new GameState { RoomNumber = 263, Storyline = 1335}, new Transition { RoomNumber = 256, Storyline = 1340, Description = "Leaving the agency"} },

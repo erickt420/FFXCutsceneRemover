@@ -27,6 +27,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> BattleState;
         public MemoryWatcher<short> Input;
         public MemoryWatcher<byte> Menu;
+        public MemoryWatcher<byte> MenuLock;
         public MemoryWatcher<short> Intro;
         public MemoryWatcher<sbyte> State;
         public MemoryWatcher<float> XCoordinate;
@@ -148,6 +149,7 @@ namespace FFXCutsceneRemover
             BattleState = GetMemoryWatcher<int>(MemoryLocations.BattleState);
             Input = GetMemoryWatcher<short>(MemoryLocations.Input);
             Menu = GetMemoryWatcher<byte>(MemoryLocations.Menu);
+            MenuLock = GetMemoryWatcher<byte>(MemoryLocations.MenuLock);
             Intro = GetMemoryWatcher<short>(MemoryLocations.Intro);
             State = GetMemoryWatcher<sbyte>(MemoryLocations.State);
             XCoordinate = GetMemoryWatcher<float>(MemoryLocations.XCoordinate);
@@ -245,6 +247,7 @@ namespace FFXCutsceneRemover
                     BattleState,
                     Input,
                     Menu,
+                    MenuLock,
                     Intro,
                     FangirlsOrKidsSkip,
                     State,
