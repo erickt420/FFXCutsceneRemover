@@ -45,6 +45,8 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public int? SeymourTransition = null;
+        public int? SeymourTransition2 = null;
 
         public byte? EnableTidus = null;
         public byte? EnableYuna = null;
@@ -117,6 +119,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
+            WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
+            WriteValue(memoryWatchers.SeymourTransition2, SeymourTransition2);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);

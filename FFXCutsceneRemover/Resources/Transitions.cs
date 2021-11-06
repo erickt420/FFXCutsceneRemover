@@ -259,7 +259,9 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 241, Storyline = 1407}, new Transition { RoomNumber = 241, Storyline = 1413, MacalaniaFlag = 32, Description = "Barthello has lost Dona + Butterfly guy"} },
 		    { new GameState { RoomNumber = 221, Storyline = 1413 }, new Transition { RoomNumber = 221, Storyline = 1420, SpawnPoint = 0, Description = "Pre-Spherimorph Auron Smash"} },
 		    { new GameState { RoomNumber = 106, Storyline = 1504 }, new Transition { Storyline = 1530, Description = "Jysscal Skip"} },
-		    { new GameState { RoomNumber = 80, Storyline = 1545 }, new Transition { Storyline = 1557, ForceLoad = false, Description = "Backflip Skip"} },
+            { new GameState { RoomNumber = 80, Storyline = 1530, State = 0}, new SeymourTransition { Storyline = 1540, Formation = new byte[]{0x0, 0x1, 0x3, 0x4, 0x2, 0x6, 0x5, 0xFF}, ForceLoad = false, Description = "Pre-Seymour"} },
+            { new GameState { RoomNumber = 80, Storyline = 1540, CameraRotation = -1.736438155f }, new SeymourTransition { Storyline = 1545, ForceLoad = false, Description = "Post-Seymour"} }, // TO DO: NOT WORKING
+            { new GameState { RoomNumber = 239, Storyline = 1545 }, new Transition { Storyline = 1557, ForceLoad = false, Description = "Backflip Skip"} },
 		    { new GameState { RoomNumber = 54, Storyline = 1600, State = 0 }, new Transition { Storyline = 1607, Description = "Rikku wants to be like Yuna" } },
 		    
 		    // START OF BIKANEL

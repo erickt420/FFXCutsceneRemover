@@ -29,7 +29,9 @@
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
-        
+        public static string SeymourTransition = "SeymourTransition";
+        public static string SeymourTransition2 = "SeymourTransition2";
+
         // Party Configuration
         public static string Formation = "Formation";
         public static string RikkuName = "RikkuName";

@@ -34,7 +34,8 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
-
+        public int? SeymourTransition = null;
+        public int? SeymourTransition2 = null;
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
@@ -58,7 +59,9 @@ namespace FFXCutsceneRemover
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Old) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
-                TestValue(GuadoCount, memoryWatchers.GuadoCount.Old);
+                TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&
+                TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Old);
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old);
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

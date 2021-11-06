@@ -33,6 +33,8 @@
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
         public static MemoryLocationData GuadoCount = new MemoryLocationData(MemoryLocationNames.GuadoCount, 0x00F2FF14, 0x120);
+        public static MemoryLocationData SeymourTransition = new MemoryLocationData(MemoryLocationNames.SeymourTransition, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0xFDC });
+        public static MemoryLocationData SeymourTransition2 = new MemoryLocationData(MemoryLocationNames.SeymourTransition2, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0x1028 });
 
         // Party Configuration
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);

@@ -36,6 +36,8 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public int? SeymourTransition = null;
+        public int? SeymourTransition2 = null;
         public byte? EnableWakka = null;
         public byte? EnableRikku = null;
 
@@ -93,8 +95,9 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
-                TestValue(GuadoCount, memoryWatchers.GuadoCount.Current);
-
+                TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
+                TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current);
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

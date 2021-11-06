@@ -45,6 +45,8 @@ namespace FFXCutsceneRemover
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
+        public MemoryWatcher<int> SeymourTransition;
+        public MemoryWatcher<int> SeymourTransition2;
 
         // Party Configuration
         public MemoryWatcher<byte> Formation;
@@ -167,6 +169,8 @@ namespace FFXCutsceneRemover
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
+            SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
+            SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
 
             // Party Configuration
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
@@ -265,6 +269,8 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
+                    SeymourTransition,
+                    SeymourTransition2,
                     EnableTidus,
                     EnableYuna,
                     EnableAuron,
