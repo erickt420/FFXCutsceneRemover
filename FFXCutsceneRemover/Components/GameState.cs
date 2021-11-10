@@ -27,6 +27,7 @@ namespace FFXCutsceneRemover
         public float? CameraRotation = null;
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
+        public byte? ActiveMusicId = null;
         public byte? MusicId = null;
         public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
@@ -38,6 +39,10 @@ namespace FFXCutsceneRemover
         public byte? GuadoCount = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
+        public int? YunalescaTransition = null;
+        public int? BFATransition = null;
+        public int? BFATransitionAddress = null;
+        public int? AeonTransition = null;
         public byte? EnableWakka = null;
         public byte? EnableRikku = null;
 
@@ -75,6 +80,7 @@ namespace FFXCutsceneRemover
                 TestValue(CameraRotation, memoryWatchers.CameraRotation.Current) &&
                 TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Current) &&
                 TestValue(MovementLock, memoryWatchers.MovementLock.Current) &&
+                TestValue(ActiveMusicId, memoryWatchers.ActiveMusicId.Current) &&
                 TestValue(MusicId, memoryWatchers.MusicId.Current) &&
                 TestValue(RoomNumberAlt, memoryWatchers.RoomNumberAlt.Current) &&
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
@@ -96,8 +102,13 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
-                TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current);
-                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
+                TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current) &&
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current) &&
+                (!YunalescaTransition.HasValue || (memoryWatchers.YunalescaTransition.Current > YunalescaTransition)) &&
+                (!BFATransition.HasValue || (memoryWatchers.BFATransition.Current > BFATransition)) &&
+                (!BFATransitionAddress.HasValue || (memoryWatchers.BFATransitionAddress.Current > BFATransitionAddress)) &&
+                (!AeonTransition.HasValue || (memoryWatchers.AeonTransition.Current > AeonTransition));
+            ;
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

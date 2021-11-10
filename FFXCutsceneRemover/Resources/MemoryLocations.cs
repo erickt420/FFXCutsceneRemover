@@ -24,6 +24,7 @@
         public static MemoryLocationData CameraRotation = new MemoryLocationData(MemoryLocationNames.CameraRotation, 0x8A858C);
         public static MemoryLocationData EncounterStatus = new MemoryLocationData(MemoryLocationNames.EncounterStatus, 0xF25D70);
         public static MemoryLocationData MovementLock = new MemoryLocationData(MemoryLocationNames.MovementLock, 0xF25B63);
+        public static MemoryLocationData ActiveMusicId = new MemoryLocationData(MemoryLocationNames.ActiveMusicId, 0xF270F0);
         public static MemoryLocationData MusicId = new MemoryLocationData(MemoryLocationNames.MusicId, 0xF2FF1C);
         public static MemoryLocationData RoomNumberAlt = new MemoryLocationData(MemoryLocationNames.RoomNumberAlt, 0xD2Ca92);
         public static MemoryLocationData CutsceneAlt = new MemoryLocationData(MemoryLocationNames.CutsceneAlt, 0xD27C88);
@@ -35,6 +36,10 @@
         public static MemoryLocationData GuadoCount = new MemoryLocationData(MemoryLocationNames.GuadoCount, 0x00F2FF14, 0x120);
         public static MemoryLocationData SeymourTransition = new MemoryLocationData(MemoryLocationNames.SeymourTransition, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0xFDC });
         public static MemoryLocationData SeymourTransition2 = new MemoryLocationData(MemoryLocationNames.SeymourTransition2, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0x1028 });
+        public static MemoryLocationData YunalescaTransition = new MemoryLocationData(MemoryLocationNames.YunalescaTransition, 0xD3777C, new int[] { 0x4C, 0x18, 0x0, 0x34, 0x34, 0x0, 0x7C0 });
+        public static MemoryLocationData BFATransition = new MemoryLocationData(MemoryLocationNames.BFATransition, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0xFDC });
+        public static MemoryLocationData BFATransitionAddress = new MemoryLocationData(MemoryLocationNames.BFATransitionAddress, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248});
+        public static MemoryLocationData AeonTransition = new MemoryLocationData(MemoryLocationNames.AeonTransition, 0xD3764C, new int[] { 0x318, 0x18, 0x1C, 0x0, 0x1C, 0x1C, 0x880 });
 
         // Party Configuration
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
@@ -48,7 +53,14 @@
         public static MemoryLocationData EnableRikku = new MemoryLocationData(MemoryLocationNames.EnableRikku, 0xD32400);
         public static MemoryLocationData EnableSeymour = new MemoryLocationData(MemoryLocationNames.EnableSeymour, 0xD32494);
         public static MemoryLocationData EnableValefor = new MemoryLocationData(MemoryLocationNames.EnableValefor, 0xD32528);
-        
+        public static MemoryLocationData EnableIfrit = new MemoryLocationData(MemoryLocationNames.EnableIfrit, 0xD325BC);
+        public static MemoryLocationData EnableIxion = new MemoryLocationData(MemoryLocationNames.EnableIxion, 0xD32650);
+        public static MemoryLocationData EnableShiva = new MemoryLocationData(MemoryLocationNames.EnableShiva, 0xD326E4);
+        public static MemoryLocationData EnableBahamut = new MemoryLocationData(MemoryLocationNames.EnableBahamut, 0xD32778);
+        public static MemoryLocationData EnableYojimbo = new MemoryLocationData(MemoryLocationNames.EnableYojimbo, 0xD3280C);
+        public static MemoryLocationData EnableAnima = new MemoryLocationData(MemoryLocationNames.EnableAnima, 0xD328A0);
+        public static MemoryLocationData EnableMagus = new MemoryLocationData(MemoryLocationNames.EnableMagus, 0xD32934);
+
         // HP/MP TODO: Find a better method for full party restore to clean this up
         public static MemoryLocationData TidusHP = new MemoryLocationData("TidusHP", 0xD32078);
         public static MemoryLocationData TidusMaxHP = new MemoryLocationData("TidusMaxHP", 0xD32080);

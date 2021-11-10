@@ -23,8 +23,6 @@ namespace FFXCutsceneRemover
                 BaseCutsceneValue = base.memoryWatchers.SeymourTransition.Current;
                 BaseCutsceneValue2 = base.memoryWatchers.SeymourTransition2.Current;
 
-                Console.WriteLine(BaseCutsceneValue2);
-
                 WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0xBAF);
             }
             else if (base.memoryWatchers.Storyline.Current == 1540 & base.memoryWatchers.SeymourTransition2.Current > BaseCutsceneValue2)
@@ -33,7 +31,6 @@ namespace FFXCutsceneRemover
                 ForceLoad = false;
                 Description = "Post-Seymour";
                 Formation = null;
-                Console.WriteLine(BaseCutsceneValue2);
                 base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene etc)
                 WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue2 + 0x1703);
             }

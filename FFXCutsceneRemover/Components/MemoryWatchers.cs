@@ -36,17 +36,22 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<float> CameraRotation;
         public MemoryWatcher<byte> EncounterStatus;
         public MemoryWatcher<byte> MovementLock;
+        public MemoryWatcher<byte> ActiveMusicId;
         public MemoryWatcher<byte> MusicId;
         public MemoryWatcher<byte> RoomNumberAlt;
         public MemoryWatcher<short> CutsceneAlt;
         public MemoryWatcher<short> AirshipDestinations;
         public MemoryWatcher<short> AuronOverdrives;
-        
+
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
         public MemoryWatcher<int> SeymourTransition;
         public MemoryWatcher<int> SeymourTransition2;
+        public MemoryWatcher<int> YunalescaTransition;
+        public MemoryWatcher<int> BFATransition;
+        public MemoryWatcher<int> BFATransitionAddress;
+        public MemoryWatcher<int> AeonTransition;
 
         // Party Configuration
         public MemoryWatcher<byte> Formation;
@@ -60,6 +65,13 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EnableRikku;
         public MemoryWatcher<byte> EnableSeymour;
         public MemoryWatcher<byte> EnableValefor;
+        public MemoryWatcher<byte> EnableIfrit;
+        public MemoryWatcher<byte> EnableIxion;
+        public MemoryWatcher<byte> EnableShiva;
+        public MemoryWatcher<byte> EnableBahamut;
+        public MemoryWatcher<byte> EnableYojimbo;
+        public MemoryWatcher<byte> EnableAnima;
+        public MemoryWatcher<byte> EnableMagus;
 
         // HP/MP
         public MemoryWatcher<int> TidusHP;
@@ -160,6 +172,7 @@ namespace FFXCutsceneRemover
             CameraRotation = GetMemoryWatcher<float>(MemoryLocations.CameraRotation);
             EncounterStatus = GetMemoryWatcher<byte>(MemoryLocations.EncounterStatus);
             MovementLock = GetMemoryWatcher<byte>(MemoryLocations.MovementLock);
+            ActiveMusicId = GetMemoryWatcher<byte>(MemoryLocations.ActiveMusicId);
             MusicId = GetMemoryWatcher<byte>(MemoryLocations.MusicId);
             RoomNumberAlt = GetMemoryWatcher<byte>(MemoryLocations.RoomNumberAlt);
             CutsceneAlt = GetMemoryWatcher<short>(MemoryLocations.CutsceneAlt);
@@ -171,6 +184,10 @@ namespace FFXCutsceneRemover
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
             SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
+            YunalescaTransition = GetMemoryWatcher<int>(MemoryLocations.YunalescaTransition);
+            BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
+            BFATransitionAddress = GetMemoryWatcher<int>(MemoryLocations.BFATransitionAddress);
+            AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
 
             // Party Configuration
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
@@ -184,6 +201,13 @@ namespace FFXCutsceneRemover
             EnableRikku = GetMemoryWatcher<byte>(MemoryLocations.EnableRikku);
             EnableSeymour = GetMemoryWatcher<byte>(MemoryLocations.EnableSeymour);
             EnableValefor = GetMemoryWatcher<byte>(MemoryLocations.EnableValefor);
+            EnableIfrit = GetMemoryWatcher<byte>(MemoryLocations.EnableIfrit);
+            EnableIxion = GetMemoryWatcher<byte>(MemoryLocations.EnableIxion);
+            EnableShiva = GetMemoryWatcher<byte>(MemoryLocations.EnableShiva);
+            EnableBahamut = GetMemoryWatcher<byte>(MemoryLocations.EnableBahamut);
+            EnableYojimbo = GetMemoryWatcher<byte>(MemoryLocations.EnableYojimbo);
+            EnableAnima = GetMemoryWatcher<byte>(MemoryLocations.EnableAnima);
+            EnableMagus = GetMemoryWatcher<byte>(MemoryLocations.EnableMagus);
 
             // HP/MP
             TidusHP = GetMemoryWatcher<int>(MemoryLocations.TidusHP);
@@ -261,6 +285,7 @@ namespace FFXCutsceneRemover
                     CameraRotation,
                     EncounterStatus,
                     MovementLock,
+                    ActiveMusicId,
                     MusicId,
                     CutsceneAlt,
                     RoomNumberAlt,
@@ -271,6 +296,10 @@ namespace FFXCutsceneRemover
                     GuadoCount,
                     SeymourTransition,
                     SeymourTransition2,
+                    YunalescaTransition,
+                    BFATransition,
+                    BFATransitionAddress,
+                    AeonTransition,
                     EnableTidus,
                     EnableYuna,
                     EnableAuron,
@@ -280,6 +309,13 @@ namespace FFXCutsceneRemover
                     EnableRikku,
                     EnableSeymour,
                     EnableValefor,
+                    EnableIfrit,
+                    EnableIxion,
+                    EnableShiva,
+                    EnableBahamut,
+                    EnableYojimbo,
+                    EnableAnima,
+                    EnableMagus,
                     TidusHP, TidusMP, TidusMaxHP, TidusMaxMP,
                     YunaHP, YunaMP, YunaMaxHP, YunaMaxMP,
                     AuronHP, AuronMP, AuronMaxHP, AuronMaxMP,

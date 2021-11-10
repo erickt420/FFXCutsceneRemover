@@ -20,6 +20,7 @@
         public static string CameraRotation = "CameraRotation";
         public static string EncounterStatus = "EncounterStatus";
         public static string MovementLock = "MovementLock";
+        public static string ActiveMusicId = "ActiveMusicId";
         public static string MusicId = "MusicId";
         public static string RoomNumberAlt = "RoomNumberAlt";
         public static string CutsceneAlt = "CutsceneAlt";
@@ -31,6 +32,10 @@
         public static string GuadoCount = "GuadoCount";
         public static string SeymourTransition = "SeymourTransition";
         public static string SeymourTransition2 = "SeymourTransition2";
+        public static string YunalescaTransition = "YunalescaTransition";
+        public static string BFATransition = "BFATransition";
+        public static string BFATransitionAddress = "BFATransitionAddress";
+        public static string AeonTransition = "AeonTransition";
 
         // Party Configuration
         public static string Formation = "Formation";
@@ -44,7 +49,14 @@
         public static string EnableRikku = "EnableRikku";
         public static string EnableSeymour = "EnableSeymour";
         public static string EnableValefor = "EnableValefor";
-        
+        public static string EnableIfrit = "EnableIfrit";
+        public static string EnableIxion = "EnableIxion";
+        public static string EnableShiva = "EnableShiva";
+        public static string EnableBahamut = "EnableBahamut";
+        public static string EnableYojimbo = "EnableYojimbo";
+        public static string EnableAnima = "EnableAnima";
+        public static string EnableMagus = "EnableMagus";
+
         // Special Flags
         public static string FangirlsOrKidsSkip = "FangirlsOrKidsSkip";
         public static string BaajFlag1 = "BaajFlag1";
