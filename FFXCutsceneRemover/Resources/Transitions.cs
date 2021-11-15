@@ -285,6 +285,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 261, Storyline = 1940 }, new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, Description = "Home to Airship"} },
             { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, Description = "Airship Bridge Cutscene"} },
             { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
+            { new GameState { RoomNumber = 277, Storyline = 2040 }, new EvraeTransition {ForceLoad = false, Description = "Pre Evrae", Suspendable = false, Repeatable = true} },
 		    // END OF HOME
 		    // START OF BEVELLE
 		    { new GameState { RoomNumber = 205, Storyline = 2060, MusicId = 181 }, new Transition { Storyline = 2075, SpawnPoint = 0, Description = "Evrae to Guards"} },
@@ -309,7 +310,9 @@ namespace FFXCutsceneRemover.Resources
 		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 3712}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, Description = "Lake Scene"} },
             { new GameState { RoomNumber = 223, Storyline = 2385}, new Transition { Storyline = 2400, CalmLandsFlag = 548, ForceLoad = false, Description = "Calm Lands Intro + Gorge flag"} },
             { new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48, XCoordinate = 265.3771973f }, new Transition { RoomNumber = 259, Storyline = 2510, RoomNumberAlt = 266, SpawnPoint = 0, Description = "Yuna reflects"} },
-            { new GameState { RoomNumber = 259, Storyline = 2510, CutsceneAlt = 70}, new Transition { Storyline = 2530, SpawnPoint = 1, Description = "Ronso Singing"} },
+            { new GameState { RoomNumber = 259, Storyline = 2510}, new RonsoTransition {Description = "Biran + Yenke", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 259, Storyline = 2510, CutsceneAlt = 70}, new Transition {ForceLoad = false, Storyline = 2530, SpawnPoint = 1, Description = "Ronso Singing"} },
+            { new GameState { RoomNumber = 285, Storyline = 2530}, new FluxTransition {ForceLoad = false, Description = "Seymour Flux", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 309, Storyline = 2560}, new Transition { RoomNumber = 134, Storyline = 2585, Description = "Fayth FMV + Tidus collapses"} },
             { new GameState { RoomNumber = 134, Storyline = 2585}, new Transition { Storyline = 2590, SpawnPoint = 0, Description = "Tidus wakes up in Zanarkand"} },
             { new GameState { RoomNumber = 165, Storyline = 2595, State = 1 }, new Transition { RoomNumber = 249, Storyline = 2610, Description = "Tidus enters his house"} },
@@ -320,8 +323,10 @@ namespace FFXCutsceneRemover.Resources
 		    // END OF GAGAZET
 		    // START OF ZANARKAND
 		    { new GameState { RoomNumber = 132, Storyline = 2680, State = 0}, new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, Description = "Zanarkand Campfire"} },
+            { new GameState { RoomNumber = 317, Storyline = 2775}, new SpectralKeeperTransition { Description = "Pre Spectral Keeper", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 320, Storyline = 2780, BattleState = 522}, new SpectralKeeperTransition2 { Description = "Post Spectral Keeper", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 318, Storyline = 2790}, new Transition { Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
-            { new GameState { RoomNumber = 270, Storyline = 2815, YunalescaTransition = 0}, new YunalescaTransition {Storyline = 2815, Description = "Pre-Yunalesca", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 270, Storyline = 2815}, new YunalescaTransition {Description = "Pre-Yunalesca", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 315, Storyline = 2850}, new Transition { RoomNumber = 194, Storyline = 2900, SpawnPoint = 2, Description = "End of Zanarkand"} },
 		    // END OF ZANARKAND
 		    // START OF SIN

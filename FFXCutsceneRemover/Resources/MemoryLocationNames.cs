@@ -30,12 +30,22 @@
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
+        public static string EchuillesTransition = "EchuillesTransition";
         public static string SeymourTransition = "SeymourTransition";
         public static string SeymourTransition2 = "SeymourTransition2";
+        public static string EvraeTransition = "EvraeTransition";
+        public static string RonsoTransition = "RonsoTransition";
+        public static string FluxTransition = "FluxTransition";
+        public static string SpectralKeeperTransition = "SpectralKeeperTransition";
+        public static string SpectralKeeperTransition2 = "SpectralKeeperTransition2";
         public static string YunalescaTransition = "YunalescaTransition";
         public static string BFATransition = "BFATransition";
         public static string BFATransitionAddress = "BFATransitionAddress";
         public static string AeonTransition = "AeonTransition";
+        public static string CutsceneProgress_Max = "CutsceneProgress_Max";
+        public static string CutsceneProgress_uVar1 = "CutsceneProgress_uVar1";
+        public static string CutsceneProgress_uVar2 = "CutsceneProgress_uVar2";
+        public static string CutsceneProgress_uVar3 = "CutsceneProgress_uVar3";
 
         // Party Configuration
         public static string Formation = "Formation";

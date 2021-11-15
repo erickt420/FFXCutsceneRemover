@@ -46,12 +46,22 @@ namespace FFXCutsceneRemover
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
+        public MemoryWatcher<int> EchuillesTransition;
         public MemoryWatcher<int> SeymourTransition;
         public MemoryWatcher<int> SeymourTransition2;
+        public MemoryWatcher<int> EvraeTransition;
+        public MemoryWatcher<int> RonsoTransition;
+        public MemoryWatcher<int> FluxTransition;
+        public MemoryWatcher<int> SpectralKeeperTransition;
+        public MemoryWatcher<int> SpectralKeeperTransition2;
         public MemoryWatcher<int> YunalescaTransition;
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> BFATransitionAddress;
         public MemoryWatcher<int> AeonTransition;
+        public MemoryWatcher<int> CutsceneProgress_Max;
+        public MemoryWatcher<int> CutsceneProgress_uVar1;
+        public MemoryWatcher<int> CutsceneProgress_uVar2;
+        public MemoryWatcher<int> CutsceneProgress_uVar3;
 
         // Party Configuration
         public MemoryWatcher<byte> Formation;
@@ -182,12 +192,22 @@ namespace FFXCutsceneRemover
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
+            EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
             SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
+            EvraeTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeTransition);
+            RonsoTransition = GetMemoryWatcher<int>(MemoryLocations.RonsoTransition);
+            FluxTransition = GetMemoryWatcher<int>(MemoryLocations.FluxTransition);
+            SpectralKeeperTransition = GetMemoryWatcher<int>(MemoryLocations.SpectralKeeperTransition);
+            SpectralKeeperTransition2 = GetMemoryWatcher<int>(MemoryLocations.SpectralKeeperTransition2);
             YunalescaTransition = GetMemoryWatcher<int>(MemoryLocations.YunalescaTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             BFATransitionAddress = GetMemoryWatcher<int>(MemoryLocations.BFATransitionAddress);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
+            CutsceneProgress_Max = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_Max);
+            CutsceneProgress_uVar1 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar1);
+            CutsceneProgress_uVar2 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar2);
+            CutsceneProgress_uVar3 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar3);
 
             // Party Configuration
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
@@ -294,12 +314,22 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
+                    EchuillesTransition,
                     SeymourTransition,
                     SeymourTransition2,
+                    EvraeTransition,
+                    RonsoTransition,
+                    FluxTransition,
+                    SpectralKeeperTransition,
+                    SpectralKeeperTransition2,
                     YunalescaTransition,
                     BFATransition,
                     BFATransitionAddress,
                     AeonTransition,
+                    CutsceneProgress_Max,
+                    CutsceneProgress_uVar1,
+                    CutsceneProgress_uVar2,
+                    CutsceneProgress_uVar3,
                     EnableTidus,
                     EnableYuna,
                     EnableAuron,
