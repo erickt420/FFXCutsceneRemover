@@ -24,7 +24,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> Storyline;
         public MemoryWatcher<byte> ForceLoad;
         public MemoryWatcher<short> SpawnPoint;
-        public MemoryWatcher<int> BattleState;
+        public MemoryWatcher<short> BattleState;
         public MemoryWatcher<short> Input;
         public MemoryWatcher<byte> Menu;
         public MemoryWatcher<byte> MenuLock;
@@ -46,10 +46,18 @@ namespace FFXCutsceneRemover
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
+        public MemoryWatcher<int> ValeforTransition;
+        public MemoryWatcher<int> SinFinTransition;
         public MemoryWatcher<int> EchuillesTransition;
+        public MemoryWatcher<int> IfritTransition;
+        public MemoryWatcher<int> IfritTransition2;
+        public MemoryWatcher<int> IxionTransition;
         public MemoryWatcher<int> SeymourTransition;
         public MemoryWatcher<int> SeymourTransition2;
         public MemoryWatcher<int> EvraeTransition;
+        public MemoryWatcher<int> BahamutTransition;
+        public MemoryWatcher<int> IsaaruTransition;
+        public MemoryWatcher<int> DefenderXTransition;
         public MemoryWatcher<int> RonsoTransition;
         public MemoryWatcher<int> FluxTransition;
         public MemoryWatcher<int> SpectralKeeperTransition;
@@ -170,7 +178,7 @@ namespace FFXCutsceneRemover
             Storyline = GetMemoryWatcher<short>(MemoryLocations.Storyline);
             ForceLoad = GetMemoryWatcher<byte>(MemoryLocations.ForceLoad);
             SpawnPoint = GetMemoryWatcher<short>(MemoryLocations.SpawnPoint);
-            BattleState = GetMemoryWatcher<int>(MemoryLocations.BattleState);
+            BattleState = GetMemoryWatcher<short>(MemoryLocations.BattleState);
             Input = GetMemoryWatcher<short>(MemoryLocations.Input);
             Menu = GetMemoryWatcher<byte>(MemoryLocations.Menu);
             MenuLock = GetMemoryWatcher<byte>(MemoryLocations.MenuLock);
@@ -192,10 +200,18 @@ namespace FFXCutsceneRemover
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
+            ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
+            SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
             EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
+            IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
+            IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
+            IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
             SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
             EvraeTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeTransition);
+            BahamutTransition = GetMemoryWatcher<int>(MemoryLocations.BahamutTransition);
+            IsaaruTransition = GetMemoryWatcher<int>(MemoryLocations.IsaaruTransition);
+            DefenderXTransition = GetMemoryWatcher<int>(MemoryLocations.DefenderXTransition);
             RonsoTransition = GetMemoryWatcher<int>(MemoryLocations.RonsoTransition);
             FluxTransition = GetMemoryWatcher<int>(MemoryLocations.FluxTransition);
             SpectralKeeperTransition = GetMemoryWatcher<int>(MemoryLocations.SpectralKeeperTransition);
@@ -314,10 +330,18 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
+                    ValeforTransition,
+                    SinFinTransition,
                     EchuillesTransition,
+                    IfritTransition,
+                    IfritTransition2,
+                    IxionTransition,
                     SeymourTransition,
                     SeymourTransition2,
                     EvraeTransition,
+                    BahamutTransition,
+                    IsaaruTransition,
+                    DefenderXTransition,
                     RonsoTransition,
                     FluxTransition,
                     SpectralKeeperTransition,

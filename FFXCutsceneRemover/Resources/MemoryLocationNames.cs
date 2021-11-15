@@ -30,10 +30,18 @@
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
+        public static string ValeforTransition = "ValeforTransition";
+        public static string SinFinTransition = "SinFinTransition";
         public static string EchuillesTransition = "EchuillesTransition";
+        public static string IfritTransition = "IfritTransition";
+        public static string IfritTransition2 = "IfritTransition2";
+        public static string IxionTransition = "IxionTransition";
         public static string SeymourTransition = "SeymourTransition";
         public static string SeymourTransition2 = "SeymourTransition2";
         public static string EvraeTransition = "EvraeTransition";
+        public static string BahamutTransition = "BahamutTransition";
+        public static string IsaaruTransition = "IsaaruTransition";
+        public static string DefenderXTransition = "DefenderXTransition";
         public static string RonsoTransition = "RonsoTransition";
         public static string FluxTransition = "FluxTransition";
         public static string SpectralKeeperTransition = "SpectralKeeperTransition";

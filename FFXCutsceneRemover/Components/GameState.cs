@@ -14,7 +14,7 @@ namespace FFXCutsceneRemover
         public short? RoomNumber = null;
         public short? Storyline = null;
         public short? SpawnPoint = null;
-        public int? BattleState = null;
+        public short? BattleState = null;
         public short? Input = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
@@ -43,6 +43,7 @@ namespace FFXCutsceneRemover
         public int? BFATransition = null;
         public int? BFATransitionAddress = null;
         public int? AeonTransition = null;
+        public byte? EnableAuron = null;
         public byte? EnableWakka = null;
         public byte? EnableRikku = null;
 
@@ -86,6 +87,7 @@ namespace FFXCutsceneRemover
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
+                TestValue(EnableAuron, memoryWatchers.EnableAuron.Current) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
