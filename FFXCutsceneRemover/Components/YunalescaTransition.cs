@@ -13,8 +13,8 @@ namespace FFXCutsceneRemover
 
             if (base.memoryWatchers.YunalescaTransition.Current > 0)
             {
-
-                if (Stage == 0)
+                //*
+                if (base.memoryWatchers.CutsceneAlt.Current == 70 && Stage == 0)
                 {
                     base.Execute();
 
@@ -34,7 +34,13 @@ namespace FFXCutsceneRemover
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x111E);
                     Stage = 3;
                 }
-
+                //*/
+                /*
+                if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old)
+                {
+                    Console.WriteLine(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.YunalescaTransition.Current.ToString());
+                }
+                //*/
             }
         }
     }

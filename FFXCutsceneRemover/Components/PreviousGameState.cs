@@ -37,10 +37,6 @@ namespace FFXCutsceneRemover
         public byte? GuadoCount = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
-        public int? YunalescaTransition = null;
-        public int? BFATransition = null;
-        public int? BFATransitionAddress = null;
-        public int? AeonTransition = null;
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
@@ -67,11 +63,7 @@ namespace FFXCutsceneRemover
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Old) &&
-                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old) &&
-                (!YunalescaTransition.HasValue || (memoryWatchers.YunalescaTransition.Current > YunalescaTransition)) &&
-                (!BFATransition.HasValue || (memoryWatchers.BFATransition.Current > BFATransition)) &&
-                (!BFATransitionAddress.HasValue || (memoryWatchers.BFATransitionAddress.Current > BFATransitionAddress)) &&
-                (!AeonTransition.HasValue || (memoryWatchers.AeonTransition.Current > AeonTransition));
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old);
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

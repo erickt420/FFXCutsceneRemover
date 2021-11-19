@@ -39,10 +39,6 @@ namespace FFXCutsceneRemover
         public byte? GuadoCount = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
-        public int? YunalescaTransition = null;
-        public int? BFATransition = null;
-        public int? BFATransitionAddress = null;
-        public int? AeonTransition = null;
         public byte? EnableAuron = null;
         public byte? EnableWakka = null;
         public byte? EnableRikku = null;
@@ -105,11 +101,7 @@ namespace FFXCutsceneRemover
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current) &&
-                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current) &&
-                (!YunalescaTransition.HasValue || (memoryWatchers.YunalescaTransition.Current > YunalescaTransition)) &&
-                (!BFATransition.HasValue || (memoryWatchers.BFATransition.Current > BFATransition)) &&
-                (!BFATransitionAddress.HasValue || (memoryWatchers.BFATransitionAddress.Current > BFATransitionAddress)) &&
-                (!AeonTransition.HasValue || (memoryWatchers.AeonTransition.Current > AeonTransition));
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
             ;
         }
 

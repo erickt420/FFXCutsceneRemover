@@ -52,8 +52,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
         public MemoryWatcher<int> IxionTransition;
+        public MemoryWatcher<int> CrawlerTransition;
         public MemoryWatcher<int> SeymourTransition;
         public MemoryWatcher<int> SeymourTransition2;
+        public MemoryWatcher<int> HomeTransition;
         public MemoryWatcher<int> EvraeTransition;
         public MemoryWatcher<int> BahamutTransition;
         public MemoryWatcher<int> IsaaruTransition;
@@ -64,7 +66,6 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> SpectralKeeperTransition2;
         public MemoryWatcher<int> YunalescaTransition;
         public MemoryWatcher<int> BFATransition;
-        public MemoryWatcher<int> BFATransitionAddress;
         public MemoryWatcher<int> AeonTransition;
         public MemoryWatcher<int> CutsceneProgress_Max;
         public MemoryWatcher<int> CutsceneProgress_uVar1;
@@ -206,8 +207,10 @@ namespace FFXCutsceneRemover
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
             IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
+            CrawlerTransition = GetMemoryWatcher<int>(MemoryLocations.CrawlerTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
             SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
+            HomeTransition = GetMemoryWatcher<int>(MemoryLocations.HomeTransition);
             EvraeTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeTransition);
             BahamutTransition = GetMemoryWatcher<int>(MemoryLocations.BahamutTransition);
             IsaaruTransition = GetMemoryWatcher<int>(MemoryLocations.IsaaruTransition);
@@ -218,7 +221,6 @@ namespace FFXCutsceneRemover
             SpectralKeeperTransition2 = GetMemoryWatcher<int>(MemoryLocations.SpectralKeeperTransition2);
             YunalescaTransition = GetMemoryWatcher<int>(MemoryLocations.YunalescaTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
-            BFATransitionAddress = GetMemoryWatcher<int>(MemoryLocations.BFATransitionAddress);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
             CutsceneProgress_Max = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_Max);
             CutsceneProgress_uVar1 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar1);
@@ -336,8 +338,10 @@ namespace FFXCutsceneRemover
                     IfritTransition,
                     IfritTransition2,
                     IxionTransition,
+                    CrawlerTransition,
                     SeymourTransition,
                     SeymourTransition2,
+                    HomeTransition,
                     EvraeTransition,
                     BahamutTransition,
                     IsaaruTransition,
@@ -348,7 +352,6 @@ namespace FFXCutsceneRemover
                     SpectralKeeperTransition2,
                     YunalescaTransition,
                     BFATransition,
-                    BFATransitionAddress,
                     AeonTransition,
                     CutsceneProgress_Max,
                     CutsceneProgress_uVar1,

@@ -57,8 +57,10 @@ namespace FFXCutsceneRemover
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
         public int? IxionTransition = null;
+        public int? CrawlerTransition = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
+        public int? HomeTransition = null;
         public int? EvraeTransition = null;
         public int? BahamutTransition = null;
         public int? IsaaruTransition = null;
@@ -69,7 +71,6 @@ namespace FFXCutsceneRemover
         public int? SpectralKeeperTransition2 = null;
         public int? YunalescaTransition = null;
         public int? BFATransition = null;
-        public int? BFATransitionAddress = null;
         public int? AeonTransition = null;
 
         public byte? EnableTidus = null;
@@ -157,8 +158,10 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
+            WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
             WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
             WriteValue(memoryWatchers.SeymourTransition2, SeymourTransition2);
+            WriteValue(memoryWatchers.HomeTransition, HomeTransition);
             WriteValue(memoryWatchers.EvraeTransition, EvraeTransition);
             WriteValue(memoryWatchers.BahamutTransition, BahamutTransition);
             WriteValue(memoryWatchers.IsaaruTransition, IsaaruTransition);
@@ -169,7 +172,6 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.SpectralKeeperTransition2, SpectralKeeperTransition2);
             WriteValue(memoryWatchers.YunalescaTransition, YunalescaTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
-            WriteValue(memoryWatchers.BFATransitionAddress, BFATransitionAddress);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);

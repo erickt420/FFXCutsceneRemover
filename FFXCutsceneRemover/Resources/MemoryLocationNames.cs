@@ -36,8 +36,10 @@
         public static string IfritTransition = "IfritTransition";
         public static string IfritTransition2 = "IfritTransition2";
         public static string IxionTransition = "IxionTransition";
+        public static string CrawlerTransition = "CrawlerTransition";
         public static string SeymourTransition = "SeymourTransition";
         public static string SeymourTransition2 = "SeymourTransition2";
+        public static string HomeTransition = "HomeTransition";
         public static string EvraeTransition = "EvraeTransition";
         public static string BahamutTransition = "BahamutTransition";
         public static string IsaaruTransition = "IsaaruTransition";
@@ -48,7 +50,6 @@
         public static string SpectralKeeperTransition2 = "SpectralKeeperTransition2";
         public static string YunalescaTransition = "YunalescaTransition";
         public static string BFATransition = "BFATransition";
-        public static string BFATransitionAddress = "BFATransitionAddress";
         public static string AeonTransition = "AeonTransition";
         public static string CutsceneProgress_Max = "CutsceneProgress_Max";
         public static string CutsceneProgress_uVar1 = "CutsceneProgress_uVar1";
