@@ -18,14 +18,12 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.RonsoTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.RonsoTransition.Current >= (BaseCutsceneValue + 0x1345) && Stage == 1)
                 {
-                    Console.WriteLine("Test");
                     WriteValue<int>(base.memoryWatchers.RonsoTransition, BaseCutsceneValue + 0x1698);
                     Stage = 2;
                 }

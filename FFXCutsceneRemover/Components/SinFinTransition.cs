@@ -17,7 +17,6 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.SinFinTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
@@ -37,7 +36,6 @@ namespace FFXCutsceneRemover
                 */
                 else if (base.memoryWatchers.SinFinTransition.Current >= (BaseCutsceneValue + 0xD94) && Stage == 1)
                 {
-                    Console.WriteLine("Test2");
                     Storyline = 272;
                     ForceLoad = false;
                     Description = "Post Sin Fin";

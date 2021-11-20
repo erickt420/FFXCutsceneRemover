@@ -18,14 +18,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.HomeTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
-
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.HomeTransition.Current >= (BaseCutsceneValue + 0x18E) && Stage == 1)
                 {
-                    Console.WriteLine("Test");
                     WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x381);
                     Stage = 3;
                 }
@@ -39,7 +36,6 @@ namespace FFXCutsceneRemover
                 */
                 else if (base.memoryWatchers.HomeTransition.Current >= (BaseCutsceneValue + 0x55D) && Stage == 3)
                 {
-                    Console.WriteLine("Test3");
                     WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x6FE);
                     Stage = 4;
                 }

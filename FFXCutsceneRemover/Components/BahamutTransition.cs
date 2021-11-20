@@ -17,7 +17,6 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.BahamutTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 

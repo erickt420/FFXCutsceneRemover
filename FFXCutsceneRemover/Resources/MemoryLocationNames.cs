@@ -33,8 +33,11 @@
         public static string ValeforTransition = "ValeforTransition";
         public static string SinFinTransition = "SinFinTransition";
         public static string EchuillesTransition = "EchuillesTransition";
+        public static string GeneauxTransition = "GeneauxTransition";
         public static string IfritTransition = "IfritTransition";
         public static string IfritTransition2 = "IfritTransition2";
+        public static string SahaginTransition = "SahaginTransition";
+        public static string GarudaTransition = "GarudaTransition";
         public static string IxionTransition = "IxionTransition";
         public static string CrawlerTransition = "CrawlerTransition";
         public static string SeymourTransition = "SeymourTransition";

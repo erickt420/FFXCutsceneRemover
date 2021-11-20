@@ -110,8 +110,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 16, Storyline = 304, State = 1 }, new Transition { Storyline = 308, SpawnPoint = 2, Description = "Tidus speaks to Wakka"} },
             { new GameState { RoomNumber = 18, Storyline = 308 }, new Transition { RoomNumber = 18, Storyline = 312, SpawnPoint = 0, Description = "Camera pan + Yuna wants a new guardian" } },
             { new GameState { RoomNumber = 65, Storyline = 315 }, new Transition { RoomNumber = 65, Storyline = 322, SpawnPoint = 0, Description = "Race up the stairs"} },
-                                            // Pre-Geneaux?
-                                            // Post-Geneaux?
+            { new GameState { RoomNumber = 65, Storyline = 322}, new GeneauxTransition {ForceLoad = false, Description = "Pre-Geneaux", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 65, Storyline = 326 }, new Transition { SpawnPoint = 1, Description = "Post-Geneaux"} },
                                             // Tidus is tired
             { new GameState { RoomNumber = 65, Storyline = 326, State = 1 }, new Transition { RoomNumber = 78, Storyline = 328, SpawnPoint = 1, Description = "No replacement for Chappu"} },
             { new GameState { RoomNumber = 78, Storyline = 328 }, new Transition { RoomNumber = 78, Storyline = 330, SpawnPoint = 1, Description = "Arrival at temple"} },
@@ -160,19 +160,19 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 72, Storyline = 518, State = 0  }, new Transition { Storyline = 520, Description = "Wakka subs himself"} },
             { new GameState { RoomNumber = 72, Storyline = 520  }, new Transition { RoomNumber = 124, Storyline = 535, Description = "Lulu speaks to Wakka" } },
             //{ new GameState { RoomNumber = 124, Storyline = 535  }, new Transition { RoomNumber = 62, Description = "Pre-Blitzball" } }, // Bug: After the first half, everyone learns loads of techniques for some reason
-            { new GameState { RoomNumber = 72, Storyline = 540  }, new Transition { RoomNumber = 347, Storyline = 560, Description = "Halftime talk"} },
-            { new GameState { RoomNumber = 124, Storyline = 560  }, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
-            { new GameState { RoomNumber = 250, Storyline = 565 }, new Transition { RoomNumber = 124, Storyline = 575, Description = "Wakka chants"} },
+            { new GameState { RoomNumber = 72, Storyline = 540}, new Transition { RoomNumber = 347, Storyline = 560, Description = "Halftime talk"} },
+            { new GameState { RoomNumber = 124, Storyline = 560}, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
+            { new GameState { RoomNumber = 250, Storyline = 565}, new Transition { RoomNumber = 124, Storyline = 575, Description = "Wakka chants"} },
             //{ new GameState { RoomNumber = 124, Storyline = 575 }, new Transition { RoomNumber = 62, Description = "Wakka joins the game"} }, // Bug: Tidus is still in the team, need to sub Wakka in somehow
             { new GameState { RoomNumber = 250, Storyline = 582 }, new Transition { RoomNumber = 125, Storyline = 583, Description = "Aurochs win/lose the game"} },
-                                            // Pre-Sahagin fight
-                                            // Post-Sahagin fight
-            { new GameState { RoomNumber = 57, Storyline = 588 }, new Transition { Storyline = 600, Description = "Lulu what's happening"} },
-                                            // Tidus and Wakka join Auron
+            { new GameState { RoomNumber = 125, Storyline = 583}, new SahaginTransition {ForceLoad = false, Description = "Pre-Sahagins", Formation = new byte[]{0x04, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}, Suspendable = false, Repeatable = true} },
+            //{ new GameState { RoomNumber = 125, Storyline = 583, BattleState = 522}, new Transition {RoomNumber = 57, Storyline = 600, Description = "Post-Sahagins" + "\n" + "Lulu what's happening"} },
+            { new GameState { RoomNumber = 57, Storyline = 588}, new Transition {Storyline = 600, Description = "Lulu what's happening"}},
+            { new GameState { RoomNumber = 57, Storyline = 600}, new GarudaTransition {ForceLoad = false, Description = "Vouivre to Anima", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 57, Storyline = 600, CutsceneAlt = 755 }, new Transition { RoomNumber = 104, Storyline = 610, Description = "Seymour summon Anima + FMV"} }, // Bug: Motion blur is on, need a value to turn off
             { new GameState { RoomNumber = 104, Storyline = 610  }, new Transition { RoomNumber = 107, Storyline = 615, Description = "Wakka quits the Aurochs" } },
             { new GameState { RoomNumber = 107, Storyline = 615  }, new Transition { RoomNumber = 89, Storyline = 616, Description = "Wakka joins Yuna"} },
-            { new GameState { RoomNumber = 89, Storyline = 616  }, new Transition { Storyline = 617, SpawnPoint = 1, EnableAuron = 17, Description = "Tidus shouts at Auron"} },
+            { new GameState { RoomNumber = 89, Storyline = 616  }, new Transition { Storyline = 617, SpawnPoint = 1, EnableAuron = 17, EnableYuna = 17, EnableKimahri = 17, EnableLulu = 17, Formation = new byte[]{0x00, 0x04, 0x01, 0x02, 0x03, 0x05, 0xFF, 0xFF}, FullHeal = true, Description = "Tidus shouts at Auron"} },
             { new GameState { RoomNumber = 107, Storyline = 617 }, new Transition { Storyline = 630, SpawnPoint = 0, LucaFlag = 15, Description = "Tidus and Auron join the group"} },
             { new GameState { RoomNumber = 107, Storyline = 630, State = 0 }, new Transition { RoomNumber = 95, Storyline = 730, SpawnPoint = 256, Description = "HA HA HA HA"} },
             // END OF LUCA
@@ -270,7 +270,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 110, Storyline = 1400, State = 0}, new Transition { RoomNumber = 110, Storyline = 1407, SpawnPoint = 5, Description = "Tidus is worried about Yuna"} },
             { new GameState { RoomNumber = 241, Storyline = 1407}, new Transition { RoomNumber = 241, Storyline = 1413, MacalaniaFlag = 32, Description = "Barthello has lost Dona + Butterfly guy"} },
             { new GameState { RoomNumber = 221, Storyline = 1413 }, new Transition { RoomNumber = 221, Storyline = 1420, SpawnPoint = 0, Description = "Pre-Spherimorph Auron Smash"} },
-            { new GameState { RoomNumber = 102, Storyline = 1485 }, new CrawlerTransition {ForceLoad = false, Description = "Pre Crawler", Suspendable = false, Repeatable = true} },
+            //{ new GameState { RoomNumber = 102, Storyline = 1485 }, new CrawlerTransition {ForceLoad = false, Description = "Pre Crawler", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 106, Storyline = 1504 }, new Transition { Storyline = 1530, Description = "Jysscal Skip"} },
             { new GameState { RoomNumber = 80, Storyline = 1530, State = 0}, SeymourTransition},
             { new GameState { RoomNumber = 80, Storyline = 1540}, SeymourTransition},
@@ -336,7 +336,8 @@ namespace FFXCutsceneRemover.Resources
 		    // END OF GAGAZET
 		    // START OF ZANARKAND
 		    { new GameState { RoomNumber = 132, Storyline = 2680, State = 0}, new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, Description = "Zanarkand Campfire"} },
-            { new GameState { RoomNumber = 317, Storyline = 2775}, new SpectralKeeperTransition {ForceLoad = false, Description = "Pre Spectral Keeper", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 320, Storyline = 2767}, new Transition { SpawnPoint = 0, Description = "Zanarkand Trials Begin"} },
+            //{ new GameState { RoomNumber = 317, Storyline = 2775}, new SpectralKeeperTransition {ForceLoad = false, Description = "Pre Spectral Keeper", Suspendable = false, Repeatable = true} }, //This skip is very unstable and is nigh impossible to implement without crashes. Commented out for now.
             { new GameState { RoomNumber = 320, Storyline = 2780, BattleState = 522}, new SpectralKeeperTransition2 {ForceLoad = false, Description = "Post Spectral Keeper", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 318, Storyline = 2790}, new Transition { Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
             { new GameState { RoomNumber = 270, Storyline = 2815}, new YunalescaTransition {ForceLoad = false, Description = "Pre-Yunalesca", Suspendable = false, Repeatable = true} },

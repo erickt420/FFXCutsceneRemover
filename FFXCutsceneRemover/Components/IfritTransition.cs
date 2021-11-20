@@ -17,8 +17,6 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.IfritTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
-
                     Stage = 1;
 
                 }
@@ -30,7 +28,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.IfritTransition.Current >= (BaseCutsceneValue + 0x1F9) && Stage == 2)
                 {
-                    Console.WriteLine("Test");
                     Storyline = 348;
                     base.Execute();
 

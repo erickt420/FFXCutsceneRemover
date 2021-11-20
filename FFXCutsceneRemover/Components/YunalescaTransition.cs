@@ -2,28 +2,29 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace FFXCutsceneRemover
 {
     class YunalescaTransition : Transition
     {
+        List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
         public override void Execute(string defaultDescription = "")
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();
 
             if (base.memoryWatchers.YunalescaTransition.Current > 0)
             {
-                //*
-                if (base.memoryWatchers.CutsceneAlt.Current == 70 && Stage == 0)
+                
+                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.YunalescaTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
-                }
+                }//*/
                 else if (base.memoryWatchers.YunalescaTransition.Current >= (BaseCutsceneValue + 0x75A) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0xDC4);
@@ -35,7 +36,7 @@ namespace FFXCutsceneRemover
                     Stage = 3;
                 }
                 //*/
-                /*
+                /*/
                 if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old)
                 {
                     Console.WriteLine(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.YunalescaTransition.Current.ToString());

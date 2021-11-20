@@ -49,8 +49,11 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> ValeforTransition;
         public MemoryWatcher<int> SinFinTransition;
         public MemoryWatcher<int> EchuillesTransition;
+        public MemoryWatcher<int> GeneauxTransition;
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
+        public MemoryWatcher<int> SahaginTransition;
+        public MemoryWatcher<int> GarudaTransition;
         public MemoryWatcher<int> IxionTransition;
         public MemoryWatcher<int> CrawlerTransition;
         public MemoryWatcher<int> SeymourTransition;
@@ -204,8 +207,11 @@ namespace FFXCutsceneRemover
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
             SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
             EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
+            GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
+            SahaginTransition = GetMemoryWatcher<int>(MemoryLocations.SahaginTransition);
+            GarudaTransition = GetMemoryWatcher<int>(MemoryLocations.GarudaTransition);
             IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
             CrawlerTransition = GetMemoryWatcher<int>(MemoryLocations.CrawlerTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
@@ -335,8 +341,11 @@ namespace FFXCutsceneRemover
                     ValeforTransition,
                     SinFinTransition,
                     EchuillesTransition,
+                    GeneauxTransition,
                     IfritTransition,
                     IfritTransition2,
+                    SahaginTransition,
+                    GarudaTransition,
                     IxionTransition,
                     CrawlerTransition,
                     SeymourTransition,

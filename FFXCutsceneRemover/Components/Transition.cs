@@ -54,8 +54,11 @@ namespace FFXCutsceneRemover
         public int? ValeforTransition = null;
         public int? SinFinTransition = null;
         public int? EchuillesTransition = null;
+        public int? GeneauxTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
+        public int? SahaginTransition = null;
+        public int? GarudaTransition = null;
         public int? IxionTransition = null;
         public int? CrawlerTransition = null;
         public int? SeymourTransition = null;
@@ -155,8 +158,11 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.SinFinTransition, SinFinTransition);
             WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
+            WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
+            WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
+            WriteValue(memoryWatchers.GarudaTransition, GarudaTransition);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
             WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
             WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);

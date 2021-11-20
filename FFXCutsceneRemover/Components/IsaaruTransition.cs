@@ -18,15 +18,12 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.IsaaruTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.IsaaruTransition.Current >= (BaseCutsceneValue + 0x104) && Stage == 1)
                 {
-                    Console.WriteLine("Pre");
-
                     Formation = new byte[] { 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                     base.Execute();
 
@@ -35,7 +32,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.IsaaruTransition.Current >= (BaseCutsceneValue + 0x3BC) && Stage == 2)
                 {
-                    Console.WriteLine("Post");
                     WriteValue<int>(base.memoryWatchers.IsaaruTransition, BaseCutsceneValue + 0x5C4);
                     Stage = 3;
                 }
