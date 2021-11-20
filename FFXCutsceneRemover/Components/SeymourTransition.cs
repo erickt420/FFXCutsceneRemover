@@ -20,12 +20,22 @@ namespace FFXCutsceneRemover
                 MemoryWatcher<byte> shivaEnabled2 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD326E4));
                 WriteValue<byte>(shivaEnabled2, 0x11);
 
-                WriteValue<int>(base.memoryWatchers.SeymourTransition, base.memoryWatchers.SeymourTransition.Current + 0xBAF);
+                BaseCutsceneValue = base.memoryWatchers.SeymourTransition.Current;
+                BaseCutsceneValue2 = base.memoryWatchers.SeymourTransition2.Current;
+
+                Console.WriteLine(BaseCutsceneValue2);
+
+                WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0xBAF);
             }
-            else if (base.memoryWatchers.Storyline.Current == 1540)
+            else if (base.memoryWatchers.Storyline.Current == 1540 & base.memoryWatchers.SeymourTransition2.Current > BaseCutsceneValue2)
             {
+                Storyline = 1545;
+                ForceLoad = false;
+                Description = "Post-Seymour";
+                Formation = null;
+                Console.WriteLine(BaseCutsceneValue2);
                 base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene etc)
-                WriteValue<int>(base.memoryWatchers.SeymourTransition2, base.memoryWatchers.SeymourTransition2.Current + 0x1703);
+                WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue2 + 0x1703);
             }
         }
     }

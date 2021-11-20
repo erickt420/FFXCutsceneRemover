@@ -216,7 +216,10 @@ namespace FFXCutsceneRemover
             {
                 Game.Suspend();
                 transition.Execute(defaultDescription);
-                PreviouslyExecutedTransition = transition;
+                if (!transition.Repeatable)
+                {
+                    PreviouslyExecutedTransition = transition;
+                }
                 Game.Resume();
             }
         }

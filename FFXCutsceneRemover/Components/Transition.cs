@@ -47,6 +47,9 @@ namespace FFXCutsceneRemover
         public byte? GuadoCount = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
+        public int? BaseCutsceneValue = null;
+        public int? BaseCutsceneValue2 = null;
+        public bool Repeatable = false;
 
         public byte? EnableTidus = null;
         public byte? EnableYuna = null;
