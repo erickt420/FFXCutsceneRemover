@@ -24,6 +24,7 @@
         public static MemoryLocationData CameraRotation = new MemoryLocationData(MemoryLocationNames.CameraRotation, 0x8A858C);
         public static MemoryLocationData EncounterStatus = new MemoryLocationData(MemoryLocationNames.EncounterStatus, 0xF25D70);
         public static MemoryLocationData MovementLock = new MemoryLocationData(MemoryLocationNames.MovementLock, 0xF25B63);
+        public static MemoryLocationData ActiveMusicId = new MemoryLocationData(MemoryLocationNames.ActiveMusicId, 0xF270F0);
         public static MemoryLocationData MusicId = new MemoryLocationData(MemoryLocationNames.MusicId, 0xF2FF1C);
         public static MemoryLocationData RoomNumberAlt = new MemoryLocationData(MemoryLocationNames.RoomNumberAlt, 0xD2Ca92);
         public static MemoryLocationData CutsceneAlt = new MemoryLocationData(MemoryLocationNames.CutsceneAlt, 0xD27C88);
@@ -33,6 +34,36 @@
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
         public static MemoryLocationData GuadoCount = new MemoryLocationData(MemoryLocationNames.GuadoCount, 0x00F2FF14, 0x120);
+
+        //Bespoke Transitions
+        public static MemoryLocationData ValeforTransition = new MemoryLocationData(MemoryLocationNames.ValeforTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x9 - 0x6 - 0x11) + 0x12C + 0x4C + 0x18+ 0x1560 });
+        public static MemoryLocationData SinFinTransition = new MemoryLocationData(MemoryLocationNames.SinFinTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x29 - 0x2 - 0x4 - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
+        public static MemoryLocationData EchuillesTransition = new MemoryLocationData(MemoryLocationNames.EchuillesTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x11 - 0x0 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558});
+        public static MemoryLocationData GeneauxTransition = new MemoryLocationData(MemoryLocationNames.GeneauxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData IfritTransition = new MemoryLocationData(MemoryLocationNames.IfritTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData IfritTransition2 = new MemoryLocationData(MemoryLocationNames.IfritTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
+        public static MemoryLocationData SahaginTransition = new MemoryLocationData(MemoryLocationNames.SahaginTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x10 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
+        public static MemoryLocationData GarudaTransition = new MemoryLocationData(MemoryLocationNames.GarudaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x0 - 0x5 - 0x0) + 0x12C + 0x18 });
+        public static MemoryLocationData IxionTransition = new MemoryLocationData(MemoryLocationNames.IxionTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x2 - 0x7 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData CrawlerTransition = new MemoryLocationData(MemoryLocationNames.CrawlerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData SeymourTransition = new MemoryLocationData(MemoryLocationNames.SeymourTransition, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0xFDC });
+        public static MemoryLocationData SeymourTransition2 = new MemoryLocationData(MemoryLocationNames.SeymourTransition2, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0x1028 });
+        public static MemoryLocationData HomeTransition = new MemoryLocationData(MemoryLocationNames.HomeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x2D - 0x6 - 0x9 - 0xA) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData EvraeTransition = new MemoryLocationData(MemoryLocationNames.EvraeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x26 - 0x2 - 0x6 - 0x1) + 0x12C + 0x18 });
+        public static MemoryLocationData BahamutTransition = new MemoryLocationData(MemoryLocationNames.BahamutTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x1 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x9F1C });
+        public static MemoryLocationData IsaaruTransition = new MemoryLocationData(MemoryLocationNames.IsaaruTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x43 - 0xE - 0x5 - 0x17) + 0x12C + 0x4C + 0x18 + 0x1B9C});
+        public static MemoryLocationData DefenderXTransition = new MemoryLocationData(MemoryLocationNames.DefenderXTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x20 - 0x3 - 0x7 - 0x9) + 0x12C + 0x4C + 0x18 + 0x4C }); //D
+        public static MemoryLocationData RonsoTransition = new MemoryLocationData(MemoryLocationNames.RonsoTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x5 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });//1A
+        public static MemoryLocationData FluxTransition = new MemoryLocationData(MemoryLocationNames.FluxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x15 - 0x2 - 0x6 - 0x1) + 0x12C + 0x4C + 0x18});//C
+        public static MemoryLocationData SpectralKeeperTransition = new MemoryLocationData(MemoryLocationNames.SpectralKeeperTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x11 - 0x0 - 0x6 - 0x0) + 0x12C + 0x4C + 0x18});//B
+        public static MemoryLocationData SpectralKeeperTransition2 = new MemoryLocationData(MemoryLocationNames.SpectralKeeperTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x55 - 0xF - 0x7 - 0x1E) + 0x12C + 0x4C + 0x18});
+        public static MemoryLocationData YunalescaTransition = new MemoryLocationData(MemoryLocationNames.YunalescaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x1 - 0x7 - 0x2) + 0x12C + 0x4C + 0x18});
+        public static MemoryLocationData BFATransition = new MemoryLocationData(MemoryLocationNames.BFATransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x0 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData AeonTransition = new MemoryLocationData(MemoryLocationNames.AeonTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData CutsceneProgress_Max = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xF26AE8, 0xC);
+        public static MemoryLocationData CutsceneProgress_uVar1 = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xF26AE8, 0x14);
+        public static MemoryLocationData CutsceneProgress_uVar2 = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xF26AE8, 0x16);
+        public static MemoryLocationData CutsceneProgress_uVar3 = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xF26AE8, 0x18);
 
         // Party Configuration
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
@@ -46,7 +77,14 @@
         public static MemoryLocationData EnableRikku = new MemoryLocationData(MemoryLocationNames.EnableRikku, 0xD32400);
         public static MemoryLocationData EnableSeymour = new MemoryLocationData(MemoryLocationNames.EnableSeymour, 0xD32494);
         public static MemoryLocationData EnableValefor = new MemoryLocationData(MemoryLocationNames.EnableValefor, 0xD32528);
-        
+        public static MemoryLocationData EnableIfrit = new MemoryLocationData(MemoryLocationNames.EnableIfrit, 0xD325BC);
+        public static MemoryLocationData EnableIxion = new MemoryLocationData(MemoryLocationNames.EnableIxion, 0xD32650);
+        public static MemoryLocationData EnableShiva = new MemoryLocationData(MemoryLocationNames.EnableShiva, 0xD326E4);
+        public static MemoryLocationData EnableBahamut = new MemoryLocationData(MemoryLocationNames.EnableBahamut, 0xD32778);
+        public static MemoryLocationData EnableYojimbo = new MemoryLocationData(MemoryLocationNames.EnableYojimbo, 0xD3280C);
+        public static MemoryLocationData EnableAnima = new MemoryLocationData(MemoryLocationNames.EnableAnima, 0xD328A0);
+        public static MemoryLocationData EnableMagus = new MemoryLocationData(MemoryLocationNames.EnableMagus, 0xD32934);
+
         // HP/MP TODO: Find a better method for full party restore to clean this up
         public static MemoryLocationData TidusHP = new MemoryLocationData("TidusHP", 0xD32078);
         public static MemoryLocationData TidusMaxHP = new MemoryLocationData("TidusMaxHP", 0xD32080);

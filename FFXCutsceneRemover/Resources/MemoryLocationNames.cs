@@ -20,6 +20,7 @@
         public static string CameraRotation = "CameraRotation";
         public static string EncounterStatus = "EncounterStatus";
         public static string MovementLock = "MovementLock";
+        public static string ActiveMusicId = "ActiveMusicId";
         public static string MusicId = "MusicId";
         public static string RoomNumberAlt = "RoomNumberAlt";
         public static string CutsceneAlt = "CutsceneAlt";
@@ -29,7 +30,35 @@
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
-        
+        public static string ValeforTransition = "ValeforTransition";
+        public static string SinFinTransition = "SinFinTransition";
+        public static string EchuillesTransition = "EchuillesTransition";
+        public static string GeneauxTransition = "GeneauxTransition";
+        public static string IfritTransition = "IfritTransition";
+        public static string IfritTransition2 = "IfritTransition2";
+        public static string SahaginTransition = "SahaginTransition";
+        public static string GarudaTransition = "GarudaTransition";
+        public static string IxionTransition = "IxionTransition";
+        public static string CrawlerTransition = "CrawlerTransition";
+        public static string SeymourTransition = "SeymourTransition";
+        public static string SeymourTransition2 = "SeymourTransition2";
+        public static string HomeTransition = "HomeTransition";
+        public static string EvraeTransition = "EvraeTransition";
+        public static string BahamutTransition = "BahamutTransition";
+        public static string IsaaruTransition = "IsaaruTransition";
+        public static string DefenderXTransition = "DefenderXTransition";
+        public static string RonsoTransition = "RonsoTransition";
+        public static string FluxTransition = "FluxTransition";
+        public static string SpectralKeeperTransition = "SpectralKeeperTransition";
+        public static string SpectralKeeperTransition2 = "SpectralKeeperTransition2";
+        public static string YunalescaTransition = "YunalescaTransition";
+        public static string BFATransition = "BFATransition";
+        public static string AeonTransition = "AeonTransition";
+        public static string CutsceneProgress_Max = "CutsceneProgress_Max";
+        public static string CutsceneProgress_uVar1 = "CutsceneProgress_uVar1";
+        public static string CutsceneProgress_uVar2 = "CutsceneProgress_uVar2";
+        public static string CutsceneProgress_uVar3 = "CutsceneProgress_uVar3";
+
         // Party Configuration
         public static string Formation = "Formation";
         public static string RikkuName = "RikkuName";
@@ -42,7 +71,14 @@
         public static string EnableRikku = "EnableRikku";
         public static string EnableSeymour = "EnableSeymour";
         public static string EnableValefor = "EnableValefor";
-        
+        public static string EnableIfrit = "EnableIfrit";
+        public static string EnableIxion = "EnableIxion";
+        public static string EnableShiva = "EnableShiva";
+        public static string EnableBahamut = "EnableBahamut";
+        public static string EnableYojimbo = "EnableYojimbo";
+        public static string EnableAnima = "EnableAnima";
+        public static string EnableMagus = "EnableMagus";
+
         // Special Flags
         public static string FangirlsOrKidsSkip = "FangirlsOrKidsSkip";
         public static string BaajFlag1 = "BaajFlag1";

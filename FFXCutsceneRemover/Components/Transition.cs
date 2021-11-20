@@ -18,6 +18,11 @@ namespace FFXCutsceneRemover
         public bool ForceLoad = true;
         public bool FullHeal = false;
         public string Description = null;
+        public int BaseCutsceneValue = 0;
+        public int BaseCutsceneValue2 = 0;
+        public bool Repeatable = false;
+        public bool Suspendable = true;
+        public int Stage = 0;
 
         /* Only add members here for memory addresses that we want to write the value to.
          * If we only ever read the value then there is no need to add it here. */
@@ -36,6 +41,7 @@ namespace FFXCutsceneRemover
         public float? CameraRotation = null;
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
+        public byte? ActiveMusicId = null;
         public byte? MusicId = null;
         public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
@@ -45,6 +51,30 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public int? ValeforTransition = null;
+        public int? SinFinTransition = null;
+        public int? EchuillesTransition = null;
+        public int? GeneauxTransition = null;
+        public int? IfritTransition = null;
+        public int? IfritTransition2 = null;
+        public int? SahaginTransition = null;
+        public int? GarudaTransition = null;
+        public int? IxionTransition = null;
+        public int? CrawlerTransition = null;
+        public int? SeymourTransition = null;
+        public int? SeymourTransition2 = null;
+        public int? HomeTransition = null;
+        public int? EvraeTransition = null;
+        public int? BahamutTransition = null;
+        public int? IsaaruTransition = null;
+        public int? DefenderXTransition = null;
+        public int? RonsoTransition = null;
+        public int? FluxTransition = null;
+        public int? SpectralKeeperTransition = null;
+        public int? SpectralKeeperTransition2 = null;
+        public int? YunalescaTransition = null;
+        public int? BFATransition = null;
+        public int? AeonTransition = null;
 
         public byte? EnableTidus = null;
         public byte? EnableYuna = null;
@@ -55,6 +85,13 @@ namespace FFXCutsceneRemover
         public byte? EnableRikku = null;
         public byte? EnableSeymour = null;
         public byte? EnableValefor = null;
+        public byte? EnableIfrit = null;
+        public byte? EnableIxion = null;
+        public byte? EnableShiva = null;
+        public byte? EnableBahamut = null;
+        public byte? EnableYojimbo = null;
+        public byte? EnableAnima = null;
+        public byte? EnableMagus = null;
 
         public byte? BaajFlag1 = null;
 
@@ -109,6 +146,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.CameraRotation, CameraRotation);
             WriteValue(memoryWatchers.EncounterStatus, EncounterStatus);
             WriteValue(memoryWatchers.MovementLock, MovementLock);
+            WriteValue(memoryWatchers.ActiveMusicId, ActiveMusicId);
             WriteValue(memoryWatchers.MusicId, MusicId);
             WriteValue(memoryWatchers.RoomNumberAlt, RoomNumberAlt);
             WriteValue(memoryWatchers.CutsceneAlt, CutsceneAlt);
@@ -117,6 +155,30 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
+            WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
+            WriteValue(memoryWatchers.SinFinTransition, SinFinTransition);
+            WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
+            WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
+            WriteValue(memoryWatchers.IfritTransition, IfritTransition);
+            WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
+            WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
+            WriteValue(memoryWatchers.GarudaTransition, GarudaTransition);
+            WriteValue(memoryWatchers.IxionTransition, IxionTransition);
+            WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
+            WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
+            WriteValue(memoryWatchers.SeymourTransition2, SeymourTransition2);
+            WriteValue(memoryWatchers.HomeTransition, HomeTransition);
+            WriteValue(memoryWatchers.EvraeTransition, EvraeTransition);
+            WriteValue(memoryWatchers.BahamutTransition, BahamutTransition);
+            WriteValue(memoryWatchers.IsaaruTransition, IsaaruTransition);
+            WriteValue(memoryWatchers.DefenderXTransition, DefenderXTransition);
+            WriteValue(memoryWatchers.RonsoTransition, RonsoTransition);
+            WriteValue(memoryWatchers.FluxTransition, FluxTransition);
+            WriteValue(memoryWatchers.SpectralKeeperTransition, SpectralKeeperTransition);
+            WriteValue(memoryWatchers.SpectralKeeperTransition2, SpectralKeeperTransition2);
+            WriteValue(memoryWatchers.YunalescaTransition, YunalescaTransition);
+            WriteValue(memoryWatchers.BFATransition, BFATransition);
+            WriteValue(memoryWatchers.AeonTransition, AeonTransition);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
@@ -126,6 +188,13 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EnableRikku, EnableRikku);
             WriteValue(memoryWatchers.EnableSeymour, EnableSeymour);
             WriteValue(memoryWatchers.EnableValefor, EnableValefor);
+            WriteValue(memoryWatchers.EnableIfrit, EnableIfrit);
+            WriteValue(memoryWatchers.EnableIxion, EnableIxion);
+            WriteValue(memoryWatchers.EnableShiva, EnableShiva);
+            WriteValue(memoryWatchers.EnableBahamut, EnableBahamut);
+            WriteValue(memoryWatchers.EnableYojimbo, EnableYojimbo);
+            WriteValue(memoryWatchers.EnableAnima, EnableAnima);
+            WriteValue(memoryWatchers.EnableMagus, EnableMagus);
 
             WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);
             WriteValue(memoryWatchers.SSWinnoFlag1, SSWinnoFlag1);

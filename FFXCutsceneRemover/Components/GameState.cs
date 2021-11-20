@@ -14,7 +14,7 @@ namespace FFXCutsceneRemover
         public short? RoomNumber = null;
         public short? Storyline = null;
         public short? SpawnPoint = null;
-        public int? BattleState = null;
+        public short? BattleState = null;
         public short? Input = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
@@ -27,6 +27,7 @@ namespace FFXCutsceneRemover
         public float? CameraRotation = null;
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
+        public byte? ActiveMusicId = null;
         public byte? MusicId = null;
         public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
@@ -36,6 +37,9 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public int? SeymourTransition = null;
+        public int? SeymourTransition2 = null;
+        public byte? EnableAuron = null;
         public byte? EnableWakka = null;
         public byte? EnableRikku = null;
 
@@ -73,11 +77,13 @@ namespace FFXCutsceneRemover
                 TestValue(CameraRotation, memoryWatchers.CameraRotation.Current) &&
                 TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Current) &&
                 TestValue(MovementLock, memoryWatchers.MovementLock.Current) &&
+                TestValue(ActiveMusicId, memoryWatchers.ActiveMusicId.Current) &&
                 TestValue(MusicId, memoryWatchers.MusicId.Current) &&
                 TestValue(RoomNumberAlt, memoryWatchers.RoomNumberAlt.Current) &&
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
+                TestValue(EnableAuron, memoryWatchers.EnableAuron.Current) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
@@ -93,8 +99,10 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
-                TestValue(GuadoCount, memoryWatchers.GuadoCount.Current);
-
+                TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
+                TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current) &&
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
+            ;
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct
