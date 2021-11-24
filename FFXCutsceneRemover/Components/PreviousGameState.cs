@@ -31,6 +31,8 @@ namespace FFXCutsceneRemover
         public short? CutsceneAlt = null;
         public byte? AirshipDestinations = null;
         public short? AuronOverdrives = null;
+        public int? Gil = null;
+        public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
@@ -59,6 +61,8 @@ namespace FFXCutsceneRemover
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Old) &&
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Old) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Old) &&
+                TestValue(Gil, memoryWatchers.Gil.Old) &&
+                TestValue(TargetFramerate, memoryWatchers.TargetFramerate.Old) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&

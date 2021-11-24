@@ -26,11 +26,14 @@
         public static string CutsceneAlt = "CutsceneAlt";
         public static string AirshipDestinations = "AirshipDestinations";
         public static string AuronOverdrives = "AuronOverdrives";
+        public static string Gil = "Gil";
+        public static string TargetFramerate = "TargetFramerate";
 
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
         public static string GuadoCount = "GuadoCount";
         public static string ValeforTransition = "ValeforTransition";
+        public static string KimahriTransition = "KimahriTransition";
         public static string SinFinTransition = "SinFinTransition";
         public static string EchuillesTransition = "EchuillesTransition";
         public static string GeneauxTransition = "GeneauxTransition";
@@ -38,7 +41,10 @@
         public static string IfritTransition2 = "IfritTransition2";
         public static string SahaginTransition = "SahaginTransition";
         public static string GarudaTransition = "GarudaTransition";
+        public static string GuiTransition = "GuiTransition";
+        public static string Gui2Transition = "Gui2Transition";
         public static string IxionTransition = "IxionTransition";
+        public static string TromellTransition = "TromellTransition";
         public static string CrawlerTransition = "CrawlerTransition";
         public static string SeymourTransition = "SeymourTransition";
         public static string SeymourTransition2 = "SeymourTransition2";
@@ -49,9 +55,12 @@
         public static string DefenderXTransition = "DefenderXTransition";
         public static string RonsoTransition = "RonsoTransition";
         public static string FluxTransition = "FluxTransition";
+        public static string SanctuaryTransition = "SanctuaryTransition";
         public static string SpectralKeeperTransition = "SpectralKeeperTransition";
         public static string SpectralKeeperTransition2 = "SpectralKeeperTransition2";
         public static string YunalescaTransition = "YunalescaTransition";
+        public static string FinsTransition = "FinsTransition";
+        public static string FinsAirshipTransition = "FinsAirshipTransition";
         public static string BFATransition = "BFATransition";
         public static string AeonTransition = "AeonTransition";
         public static string CutsceneProgress_Max = "CutsceneProgress_Max";
@@ -101,6 +110,40 @@
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
+
+        // Battle Rewards
+        public static string GilBattleRewards = "GilBattleRewards";
+        public static string BattleRewardItemCount = "BattleRewardItemCount";
+        public static string BattleRewardItem1 = "BattleRewardItem1";
+        public static string BattleRewardItem2 = "BattleRewardItem2";
+        public static string BattleRewardItem3 = "BattleRewardItem3";
+        public static string BattleRewardItem4 = "BattleRewardItem4";
+        public static string BattleRewardItem5 = "BattleRewardItem5";
+        public static string BattleRewardItem6 = "BattleRewardItem6";
+        public static string BattleRewardItem7 = "BattleRewardItem7";
+        public static string BattleRewardItem8 = "BattleRewardItem8";
+        public static string BattleRewardItemQty1 = "BattleRewardItemQty1";
+        public static string BattleRewardItemQty2 = "BattleRewardItemQty2";
+        public static string BattleRewardItemQty3 = "BattleRewardItemQty3";
+        public static string BattleRewardItemQty4 = "BattleRewardItemQty4";
+        public static string BattleRewardItemQty5 = "BattleRewardItemQty5";
+        public static string BattleRewardItemQty6 = "BattleRewardItemQty6";
+        public static string BattleRewardItemQty7 = "BattleRewardItemQty7";
+        public static string BattleRewardItemQty8 = "BattleRewardItemQty8";
+        public static string BattleRewardEquipCount = "BattleRewardEquipCount";
+        public static string BattleRewardEquip1 = "BattleRewardEquip1";
+        public static string BattleRewardEquip2 = "BattleRewardEquip2";
+        public static string BattleRewardEquip3 = "BattleRewardEquip3";
+        public static string BattleRewardEquip4 = "BattleRewardEquip4";
+        public static string BattleRewardEquip5 = "BattleRewardEquip5";
+        public static string BattleRewardEquip6 = "BattleRewardEquip6";
+        public static string BattleRewardEquip7 = "BattleRewardEquip7";
+        public static string BattleRewardEquip8 = "BattleRewardEquip8";
+
+        public static string MenuValue1 = "MenuValue1";
+        public static string MenuValue2 = "MenuValue2";
+
+        public static string ActorArrayLength = "ActorArrayLength";
 
     }
 }

@@ -30,6 +30,8 @@
         public static MemoryLocationData CutsceneAlt = new MemoryLocationData(MemoryLocationNames.CutsceneAlt, 0xD27C88);
         public static MemoryLocationData AirshipDestinations = new MemoryLocationData(MemoryLocationNames.AirshipDestinations, 0xD2D710);
         public static MemoryLocationData AuronOverdrives = new MemoryLocationData(MemoryLocationNames.AuronOverdrives, 0xD307FC);
+        public static MemoryLocationData Gil = new MemoryLocationData(MemoryLocationNames.Gil, 0xD307D8);
+        public static MemoryLocationData TargetFramerate = new MemoryLocationData(MemoryLocationNames.TargetFramerate, 0x830E88);//I think this is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
 
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
@@ -37,6 +39,7 @@
 
         //Bespoke Transitions
         public static MemoryLocationData ValeforTransition = new MemoryLocationData(MemoryLocationNames.ValeforTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x9 - 0x6 - 0x11) + 0x12C + 0x4C + 0x18+ 0x1560 });
+        public static MemoryLocationData KimahriTransition = new MemoryLocationData(MemoryLocationNames.KimahriTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x17 - 0x4 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x5A28 });
         public static MemoryLocationData SinFinTransition = new MemoryLocationData(MemoryLocationNames.SinFinTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x29 - 0x2 - 0x4 - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
         public static MemoryLocationData EchuillesTransition = new MemoryLocationData(MemoryLocationNames.EchuillesTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x11 - 0x0 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558});
         public static MemoryLocationData GeneauxTransition = new MemoryLocationData(MemoryLocationNames.GeneauxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
@@ -44,20 +47,26 @@
         public static MemoryLocationData IfritTransition2 = new MemoryLocationData(MemoryLocationNames.IfritTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
         public static MemoryLocationData SahaginTransition = new MemoryLocationData(MemoryLocationNames.SahaginTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x10 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
         public static MemoryLocationData GarudaTransition = new MemoryLocationData(MemoryLocationNames.GarudaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x0 - 0x5 - 0x0) + 0x12C + 0x18 });
+        public static MemoryLocationData GuiTransition = new MemoryLocationData(MemoryLocationNames.GuiTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x4 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData Gui2Transition = new MemoryLocationData(MemoryLocationNames.Gui2Transition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x16 - 0x1 - 0x6 - 0x5) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IxionTransition = new MemoryLocationData(MemoryLocationNames.IxionTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x2 - 0x7 - 0x0) + 0x12C + 0x4C + 0x18 });
-        public static MemoryLocationData CrawlerTransition = new MemoryLocationData(MemoryLocationNames.CrawlerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData TromellTransition = new MemoryLocationData(MemoryLocationNames.TromellTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x7 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0xAB0 });
+        public static MemoryLocationData CrawlerTransition = new MemoryLocationData(MemoryLocationNames.CrawlerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC});
         public static MemoryLocationData SeymourTransition = new MemoryLocationData(MemoryLocationNames.SeymourTransition, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0xFDC });
         public static MemoryLocationData SeymourTransition2 = new MemoryLocationData(MemoryLocationNames.SeymourTransition2, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0x1028 });
         public static MemoryLocationData HomeTransition = new MemoryLocationData(MemoryLocationNames.HomeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x2D - 0x6 - 0x9 - 0xA) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData EvraeTransition = new MemoryLocationData(MemoryLocationNames.EvraeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x26 - 0x2 - 0x6 - 0x1) + 0x12C + 0x18 });
         public static MemoryLocationData BahamutTransition = new MemoryLocationData(MemoryLocationNames.BahamutTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x1 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x9F1C });
         public static MemoryLocationData IsaaruTransition = new MemoryLocationData(MemoryLocationNames.IsaaruTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x43 - 0xE - 0x5 - 0x17) + 0x12C + 0x4C + 0x18 + 0x1B9C});
-        public static MemoryLocationData DefenderXTransition = new MemoryLocationData(MemoryLocationNames.DefenderXTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x20 - 0x3 - 0x7 - 0x9) + 0x12C + 0x4C + 0x18 + 0x4C }); //D
-        public static MemoryLocationData RonsoTransition = new MemoryLocationData(MemoryLocationNames.RonsoTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x5 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });//1A
-        public static MemoryLocationData FluxTransition = new MemoryLocationData(MemoryLocationNames.FluxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x15 - 0x2 - 0x6 - 0x1) + 0x12C + 0x4C + 0x18});//C
-        public static MemoryLocationData SpectralKeeperTransition = new MemoryLocationData(MemoryLocationNames.SpectralKeeperTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x11 - 0x0 - 0x6 - 0x0) + 0x12C + 0x4C + 0x18});//B
+        public static MemoryLocationData DefenderXTransition = new MemoryLocationData(MemoryLocationNames.DefenderXTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x20 - 0x3 - 0x7 - 0x9) + 0x12C + 0x4C + 0x18 + 0x4C });
+        public static MemoryLocationData RonsoTransition = new MemoryLocationData(MemoryLocationNames.RonsoTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x5 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData FluxTransition = new MemoryLocationData(MemoryLocationNames.FluxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x15 - 0x2 - 0x6 - 0x1) + 0x12C + 0x4C + 0x18});
+        public static MemoryLocationData SanctuaryTransition = new MemoryLocationData(MemoryLocationNames.SanctuaryTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x15 - 0x2 - 0x7 - 0x1) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData SpectralKeeperTransition = new MemoryLocationData(MemoryLocationNames.SpectralKeeperTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x11 - 0x0 - 0x6 - 0x0) + 0x12C + 0x4C + 0x18});
         public static MemoryLocationData SpectralKeeperTransition2 = new MemoryLocationData(MemoryLocationNames.SpectralKeeperTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x55 - 0xF - 0x7 - 0x1E) + 0x12C + 0x4C + 0x18});
         public static MemoryLocationData YunalescaTransition = new MemoryLocationData(MemoryLocationNames.YunalescaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x1 - 0x7 - 0x2) + 0x12C + 0x4C + 0x18});
+        public static MemoryLocationData FinsTransition = new MemoryLocationData(MemoryLocationNames.FinsTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x12 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
+        public static MemoryLocationData FinsAirshipTransition = new MemoryLocationData(MemoryLocationNames.FinsAirshipTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x3 - 0x5 - 0x5) + 0x12C + 0x18 });
         public static MemoryLocationData BFATransition = new MemoryLocationData(MemoryLocationNames.BFATransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x0 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AeonTransition = new MemoryLocationData(MemoryLocationNames.AeonTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData CutsceneProgress_Max = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xF26AE8, 0xC);
@@ -150,7 +159,44 @@
         public static MemoryLocationData ViaPurificoPlatform = new MemoryLocationData(MemoryLocationNames.ViaPurificoPlatform, 0xD2CC89);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
-        
+
+        // Battle Rewards
+        public static MemoryLocationData GilBattleRewards = new MemoryLocationData(MemoryLocationNames.GilBattleRewards, 0x1F10F6C);
+        public static MemoryLocationData BattleRewardItemCount = new MemoryLocationData(MemoryLocationNames.BattleRewardItemCount, 0x1F10F70);
+        public static MemoryLocationData BattleRewardItem1 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem1, 0x1F10F74);
+        public static MemoryLocationData BattleRewardItem2 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem2, 0x1F10F76);
+        public static MemoryLocationData BattleRewardItem3 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem3, 0x1F10F78);
+        public static MemoryLocationData BattleRewardItem4 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem4, 0x1F10F7A);
+        public static MemoryLocationData BattleRewardItem5 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem5, 0x1F10F7C);
+        public static MemoryLocationData BattleRewardItem6 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem6, 0x1F10F7E);
+        public static MemoryLocationData BattleRewardItem7 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem7, 0x1F10F80);
+        public static MemoryLocationData BattleRewardItem8 = new MemoryLocationData(MemoryLocationNames.BattleRewardItem8, 0x1F10F82);
+        public static MemoryLocationData BattleRewardItemQty1 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty1, 0x1F10F84);
+        public static MemoryLocationData BattleRewardItemQty2 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty2, 0x1F10F85);
+        public static MemoryLocationData BattleRewardItemQty3 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty3, 0x1F10F86);
+        public static MemoryLocationData BattleRewardItemQty4 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty4, 0x1F10F87);
+        public static MemoryLocationData BattleRewardItemQty5 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty5, 0x1F10F88);
+        public static MemoryLocationData BattleRewardItemQty6 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty6, 0x1F10F89);
+        public static MemoryLocationData BattleRewardItemQty7 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty7, 0x1F10F8A);
+        public static MemoryLocationData BattleRewardItemQty8 = new MemoryLocationData(MemoryLocationNames.BattleRewardItemQty8, 0x1F10F8B);
+        public static MemoryLocationData BattleRewardEquipCount = new MemoryLocationData(MemoryLocationNames.BattleRewardItemCount, 0x1F10F72);
+        public static MemoryLocationData BattleRewardEquip1 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip1, 0x1F10F9E);
+        public static MemoryLocationData BattleRewardEquip2 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip2, 0x1F10FC0);
+        public static MemoryLocationData BattleRewardEquip3 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip3, 0x1F10FE2);
+        public static MemoryLocationData BattleRewardEquip4 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip4, 0x1F11004);
+        public static MemoryLocationData BattleRewardEquip5 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip5, 0x1F11026);
+        public static MemoryLocationData BattleRewardEquip6 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip6, 0x1F11048);
+        public static MemoryLocationData BattleRewardEquip7 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip7, 0x1F1106A);
+        public static MemoryLocationData BattleRewardEquip8 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip8, 0x1F1108C);
+
+        // Menu Values - These are values which the game sets during the battle rewards menu which don't get cleaned out properly when we skip straight to the rewards screen.
+        //               We set the values to 0x00000000 to clean these out after some skips
+        public static MemoryLocationData MenuValue1 = new MemoryLocationData(MemoryLocationNames.MenuValue1, 0x14408AC);
+        public static MemoryLocationData MenuValue2 = new MemoryLocationData(MemoryLocationNames.MenuValue2, 0xF27F10);
+
+        // Actor Model Positions
+        public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);
+
     }
 
     public struct MemoryLocationData

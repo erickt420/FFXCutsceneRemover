@@ -8,7 +8,7 @@ namespace FFXCutsceneRemover
 {
     class YunalescaTransition : Transition
     {
-        List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
+        static private List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
         public override void Execute(string defaultDescription = "")
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();

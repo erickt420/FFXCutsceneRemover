@@ -15,8 +15,11 @@ namespace FFXCutsceneRemover
 
         private Process process;
 
+        public bool ConsoleOutput = true;
         public bool ForceLoad = true;
         public bool FullHeal = false;
+        public bool MenuCleanup = false;
+        public bool PositionPartyOffScreen = false;
         public string Description = null;
         public int BaseCutsceneValue = 0;
         public int BaseCutsceneValue2 = 0;
@@ -47,11 +50,13 @@ namespace FFXCutsceneRemover
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
         public short? AuronOverdrives = null;
+        public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public int? ValeforTransition = null;
+        public int? KimahriTransition = null;
         public int? SinFinTransition = null;
         public int? EchuillesTransition = null;
         public int? GeneauxTransition = null;
@@ -59,7 +64,10 @@ namespace FFXCutsceneRemover
         public int? IfritTransition2 = null;
         public int? SahaginTransition = null;
         public int? GarudaTransition = null;
+        public int? GuiTransition = null;
+        public int? Gui2Transition = null;
         public int? IxionTransition = null;
+        public int? TromellTransition = null;
         public int? CrawlerTransition = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
@@ -70,9 +78,12 @@ namespace FFXCutsceneRemover
         public int? DefenderXTransition = null;
         public int? RonsoTransition = null;
         public int? FluxTransition = null;
+        public int? SanctuaryTransition = null;
         public int? SpectralKeeperTransition = null;
         public int? SpectralKeeperTransition2 = null;
         public int? YunalescaTransition = null;
+        public int? FinsTransition = null;
+        public int? FinsAirshipTransition = null;
         public int? BFATransition = null;
         public int? AeonTransition = null;
 
@@ -121,13 +132,55 @@ namespace FFXCutsceneRemover
         public short? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
 
+        public int? GilBattleRewards = null;
+        public byte? BattleRewardItemCount = null;
+        public short? BattleRewardItem1 = null;
+        public short? BattleRewardItem2 = null;
+        public short? BattleRewardItem3 = null;
+        public short? BattleRewardItem4 = null;
+        public short? BattleRewardItem5 = null;
+        public short? BattleRewardItem6 = null;
+        public short? BattleRewardItem7 = null;
+        public short? BattleRewardItem8 = null;
+        public byte? BattleRewardItemQty1 = null;
+        public byte? BattleRewardItemQty2 = null;
+        public byte? BattleRewardItemQty3 = null;
+        public byte? BattleRewardItemQty4 = null;
+        public byte? BattleRewardItemQty5 = null;
+        public byte? BattleRewardItemQty6 = null;
+        public byte? BattleRewardItemQty7 = null;
+        public byte? BattleRewardItemQty8 = null;
+        public byte? BattleRewardEquipCount = null;
+        public byte[] BattleRewardEquip1 = null;
+        public byte[] BattleRewardEquip2 = null;
+        public byte[] BattleRewardEquip3 = null;
+        public byte[] BattleRewardEquip4 = null;
+        public byte[] BattleRewardEquip5 = null;
+        public byte[] BattleRewardEquip6 = null;
+        public byte[] BattleRewardEquip7 = null;
+        public byte[] BattleRewardEquip8 = null;
+
+        public int? MenuValue1 = null;
+        public int? MenuValue2 = null;
+
+        public int? ActorArrayLength = null;
+        public int? TargetActorID = null;
+        public float? Target_x = null;
+        public float? Target_y = null;
+        public float? Target_z = null;
+        public float? PartyTarget_x = null;
+        public float? PartyTarget_y = null;
+        public float? PartyTarget_z = null;
+
         public virtual void Execute(string defaultDescription = "")
         {
-            Console.WriteLine(
-                !string.IsNullOrEmpty(Description) ? Description : 
-                !string.IsNullOrEmpty(defaultDescription) ? defaultDescription : 
-                DEFAULT_DESCRIPTION);
-            
+            if (ConsoleOutput)
+            {
+                Console.WriteLine(
+                    !string.IsNullOrEmpty(Description) ? Description :
+                    !string.IsNullOrEmpty(defaultDescription) ? defaultDescription :
+                    DEFAULT_DESCRIPTION);
+            }
             // Always update to get the latest process
             process = memoryWatchers.Process;
 
@@ -152,10 +205,12 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.CutsceneAlt, CutsceneAlt);
             WriteValue(memoryWatchers.AirshipDestinations, AirshipDestinations);
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
+            WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
+            WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
             WriteValue(memoryWatchers.SinFinTransition, SinFinTransition);
             WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
@@ -163,7 +218,10 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
             WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
             WriteValue(memoryWatchers.GarudaTransition, GarudaTransition);
+            WriteValue(memoryWatchers.GuiTransition, GuiTransition);
+            WriteValue(memoryWatchers.Gui2Transition, Gui2Transition);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
+            WriteValue(memoryWatchers.TromellTransition, TromellTransition);
             WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
             WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
             WriteValue(memoryWatchers.SeymourTransition2, SeymourTransition2);
@@ -174,9 +232,12 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.DefenderXTransition, DefenderXTransition);
             WriteValue(memoryWatchers.RonsoTransition, RonsoTransition);
             WriteValue(memoryWatchers.FluxTransition, FluxTransition);
+            WriteValue(memoryWatchers.SanctuaryTransition, SanctuaryTransition);
             WriteValue(memoryWatchers.SpectralKeeperTransition, SpectralKeeperTransition);
             WriteValue(memoryWatchers.SpectralKeeperTransition2, SpectralKeeperTransition2);
             WriteValue(memoryWatchers.YunalescaTransition, YunalescaTransition);
+            WriteValue(memoryWatchers.FinsTransition, FinsTransition);
+            WriteValue(memoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
@@ -218,6 +279,39 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
 
+            WriteValue(memoryWatchers.GilBattleRewards, GilBattleRewards);
+            WriteValue(memoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
+            WriteValue(memoryWatchers.BattleRewardItem1, BattleRewardItem1);
+            WriteValue(memoryWatchers.BattleRewardItem2, BattleRewardItem2);
+            WriteValue(memoryWatchers.BattleRewardItem3, BattleRewardItem3);
+            WriteValue(memoryWatchers.BattleRewardItem4, BattleRewardItem4);
+            WriteValue(memoryWatchers.BattleRewardItem5, BattleRewardItem5);
+            WriteValue(memoryWatchers.BattleRewardItem6, BattleRewardItem6);
+            WriteValue(memoryWatchers.BattleRewardItem7, BattleRewardItem7);
+            WriteValue(memoryWatchers.BattleRewardItem8, BattleRewardItem8);
+            WriteValue(memoryWatchers.BattleRewardItemQty1, BattleRewardItemQty1);
+            WriteValue(memoryWatchers.BattleRewardItemQty2, BattleRewardItemQty2);
+            WriteValue(memoryWatchers.BattleRewardItemQty3, BattleRewardItemQty3);
+            WriteValue(memoryWatchers.BattleRewardItemQty4, BattleRewardItemQty4);
+            WriteValue(memoryWatchers.BattleRewardItemQty5, BattleRewardItemQty5);
+            WriteValue(memoryWatchers.BattleRewardItemQty6, BattleRewardItemQty6);
+            WriteValue(memoryWatchers.BattleRewardItemQty7, BattleRewardItemQty7);
+            WriteValue(memoryWatchers.BattleRewardItemQty8, BattleRewardItemQty8);
+            WriteValue(memoryWatchers.BattleRewardEquipCount, BattleRewardEquipCount);
+            WriteBytes(memoryWatchers.BattleRewardEquip1, BattleRewardEquip1);
+            WriteBytes(memoryWatchers.BattleRewardEquip2, BattleRewardEquip2);
+            WriteBytes(memoryWatchers.BattleRewardEquip3, BattleRewardEquip3);
+            WriteBytes(memoryWatchers.BattleRewardEquip4, BattleRewardEquip4);
+            WriteBytes(memoryWatchers.BattleRewardEquip5, BattleRewardEquip5);
+            WriteBytes(memoryWatchers.BattleRewardEquip6, BattleRewardEquip6);
+            WriteBytes(memoryWatchers.BattleRewardEquip7, BattleRewardEquip7);
+            WriteBytes(memoryWatchers.BattleRewardEquip8, BattleRewardEquip8);
+
+            WriteValue(memoryWatchers.MenuValue1, MenuValue1);
+            WriteValue(memoryWatchers.MenuValue2, MenuValue2);
+
+            WriteValue(memoryWatchers.ActorArrayLength, ActorArrayLength);
+
             if (ForceLoad)
             {
                 ForceGameLoad();
@@ -227,6 +321,20 @@ namespace FFXCutsceneRemover
             {
                 FullPartyHeal();
             }
+
+            if (MenuCleanup)
+            {
+                CleanMenuValues();
+                ClearAllBattleRewards();
+            }
+
+            if (PositionPartyOffScreen)
+            {
+                PartyOffScreen();
+            }
+
+            SetActorPosition(TargetActorID, Target_x, Target_y, Target_z);
+
         }
 
         /* Set the force load bit. Will immediately cause a fade and load. */
@@ -334,6 +442,124 @@ namespace FFXCutsceneRemover
             WriteValue<short>(memoryWatchers.LuluMP, memoryWatchers.LuluMaxMP.Current);
             WriteValue<short>(memoryWatchers.RikkuMP, memoryWatchers.RikkuMaxMP.Current);
             WriteValue<short>(memoryWatchers.ValeforMP, memoryWatchers.ValeforMaxMP.Current);
+        }
+
+        private void CleanMenuValues()
+        {
+            WriteValue<int>(memoryWatchers.MenuValue1, 0);
+            WriteValue<int>(memoryWatchers.MenuValue2, 0);
+        }
+
+        private void ClearAllBattleRewards()
+        {
+            // Clear Gil
+            WriteValue<int>(memoryWatchers.GilBattleRewards, 0);
+
+            // Clear Items
+            WriteValue<byte>(memoryWatchers.BattleRewardItemCount, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem1, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem2, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem3, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem4, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem5, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem6, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem7, 0);
+            WriteValue<short>(memoryWatchers.BattleRewardItem8, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty1, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty2, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty3, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty4, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty5, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty6, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty7, 0);
+            WriteValue<byte>(memoryWatchers.BattleRewardItemQty8, 0);
+
+            //Clear Equipment -- Equipment Arrays are 22 bytes long
+            WriteValue<byte>(memoryWatchers.BattleRewardEquipCount, 0);
+            WriteBytes(memoryWatchers.BattleRewardEquip1, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip2, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip3, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip4, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip5, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip6, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip7, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+            WriteBytes(memoryWatchers.BattleRewardEquip8, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        }
+
+        private void PartyOffScreen()
+        {
+            if (memoryWatchers.EnableTidus.Current == 17)
+            {
+                SetActorPosition(1, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableYuna.Current == 17)
+            {
+                SetActorPosition(2, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableAuron.Current == 17)
+            {
+                SetActorPosition(3, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableKimahri.Current == 17)
+            {
+                SetActorPosition(4, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableWakka.Current == 17)
+            {
+                SetActorPosition(5, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableLulu.Current == 17)
+            {
+                SetActorPosition(6, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableRikku.Current == 17)
+            {
+                SetActorPosition(7, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+            if (memoryWatchers.EnableSeymour.Current == 17)
+            {
+                SetActorPosition(8, PartyTarget_x, PartyTarget_y, PartyTarget_z);
+            }
+        }
+
+        private void SetActorPosition(int? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null)
+        {
+            Process process = memoryWatchers.Process;
+
+            int ActorCount = memoryWatchers.ActorArrayLength.Current;
+            int baseAddress = memoryWatchers.GetBaseAddress();
+
+            if (!(TargetActorID is null))
+            {
+
+                for (int i = 0; i < ActorCount; i++)
+                {
+                    MemoryWatcher<short> characterIndex = new MemoryWatcher<short>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x00 + 0x880 * i }));
+                    characterIndex.Update(process);
+
+                    short ActorID = characterIndex.Current;
+
+                    if (ActorID == TargetActorID)
+                    {
+                        MemoryWatcher<float> characterPos_x = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x0C + 0x880 * i }));
+                        MemoryWatcher<float> characterPos_y = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x10 + 0x880 * i }));
+                        MemoryWatcher<float> characterPos_z = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x14 + 0x880 * i }));
+
+                        if (!(Target_x is null))
+                        {
+                            WriteValue<float>(characterPos_x, Target_x);
+                        }
+                        if (!(Target_y is null))
+                        {
+                            WriteValue<float>(characterPos_y, Target_y);
+                        }
+                        if (!(Target_z is null))
+                        {
+                            WriteValue<float>(characterPos_z, Target_z);
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -2,32 +2,55 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace FFXCutsceneRemover
 {
     class FluxTransition : Transition
     {
+        static private List<short> CutsceneAltList = new List<short>(new short[] { 710, 975, 5133 });
         public override void Execute(string defaultDescription = "")
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();
 
             if (base.memoryWatchers.FluxTransition.Current > 0)
             {
-                if (Stage == 0)
+                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.FluxTransition.Current;
+                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.FluxTransition.Current >= (BaseCutsceneValue + 0x3CF) && Stage == 1)
                 {
-                    WriteValue<int>(base.memoryWatchers.FluxTransition, BaseCutsceneValue + 0x127A);
+                    Console.WriteLine("Test " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.FluxTransition, BaseCutsceneValue + 0x123A);
                     Stage = 2;
                 }
-
+                else if (base.memoryWatchers.FluxTransition.Current == (BaseCutsceneValue + 0x12AA) && base.memoryWatchers.HpEnemyA.Current == 70000 && Stage == 2)
+                {
+                    Console.WriteLine("Test " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.FluxTransition, BaseCutsceneValue + 0x1496);
+                    Stage = 3;
+                }
+                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 3)
+                {
+                    Console.WriteLine("Test " + Stage.ToString());
+                    Stage = 4;
+                }
+                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 4)
+                {
+                    Console.WriteLine("Test " + Stage.ToString());
+                    Menu = 0;
+                    Description = "Exit Menu";
+                    ForceLoad = false;
+                    base.Execute();
+                    Stage = 5;
+                }
             }
         }
     }

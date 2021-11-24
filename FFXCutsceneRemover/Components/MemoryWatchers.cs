@@ -42,11 +42,14 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> CutsceneAlt;
         public MemoryWatcher<short> AirshipDestinations;
         public MemoryWatcher<short> AuronOverdrives;
+        public MemoryWatcher<int> Gil;
+        public MemoryWatcher<int> TargetFramerate;
 
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
         public MemoryWatcher<int> ValeforTransition;
+        public MemoryWatcher<int> KimahriTransition;
         public MemoryWatcher<int> SinFinTransition;
         public MemoryWatcher<int> EchuillesTransition;
         public MemoryWatcher<int> GeneauxTransition;
@@ -54,7 +57,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> IfritTransition2;
         public MemoryWatcher<int> SahaginTransition;
         public MemoryWatcher<int> GarudaTransition;
+        public MemoryWatcher<int> GuiTransition;
+        public MemoryWatcher<int> Gui2Transition;
         public MemoryWatcher<int> IxionTransition;
+        public MemoryWatcher<int> TromellTransition;
         public MemoryWatcher<int> CrawlerTransition;
         public MemoryWatcher<int> SeymourTransition;
         public MemoryWatcher<int> SeymourTransition2;
@@ -65,9 +71,12 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> DefenderXTransition;
         public MemoryWatcher<int> RonsoTransition;
         public MemoryWatcher<int> FluxTransition;
+        public MemoryWatcher<int> SanctuaryTransition;
         public MemoryWatcher<int> SpectralKeeperTransition;
         public MemoryWatcher<int> SpectralKeeperTransition2;
         public MemoryWatcher<int> YunalescaTransition;
+        public MemoryWatcher<int> FinsTransition;
+        public MemoryWatcher<int> FinsAirshipTransition;
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> AeonTransition;
         public MemoryWatcher<int> CutsceneProgress_Max;
@@ -155,6 +164,41 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
 
+        // Battle Rewards
+        public MemoryWatcher<int> GilBattleRewards;
+        public MemoryWatcher<byte> BattleRewardItemCount;
+        public MemoryWatcher<short> BattleRewardItem1;
+        public MemoryWatcher<short> BattleRewardItem2;
+        public MemoryWatcher<short> BattleRewardItem3;
+        public MemoryWatcher<short> BattleRewardItem4;
+        public MemoryWatcher<short> BattleRewardItem5;
+        public MemoryWatcher<short> BattleRewardItem6;
+        public MemoryWatcher<short> BattleRewardItem7;
+        public MemoryWatcher<short> BattleRewardItem8;
+        public MemoryWatcher<byte> BattleRewardItemQty1;
+        public MemoryWatcher<byte> BattleRewardItemQty2;
+        public MemoryWatcher<byte> BattleRewardItemQty3;
+        public MemoryWatcher<byte> BattleRewardItemQty4;
+        public MemoryWatcher<byte> BattleRewardItemQty5;
+        public MemoryWatcher<byte> BattleRewardItemQty6;
+        public MemoryWatcher<byte> BattleRewardItemQty7;
+        public MemoryWatcher<byte> BattleRewardItemQty8;
+        public MemoryWatcher<byte> BattleRewardEquipCount;
+        public MemoryWatcher<byte> BattleRewardEquip1;
+        public MemoryWatcher<byte> BattleRewardEquip2;
+        public MemoryWatcher<byte> BattleRewardEquip3;
+        public MemoryWatcher<byte> BattleRewardEquip4;
+        public MemoryWatcher<byte> BattleRewardEquip5;
+        public MemoryWatcher<byte> BattleRewardEquip6;
+        public MemoryWatcher<byte> BattleRewardEquip7;
+        public MemoryWatcher<byte> BattleRewardEquip8;
+
+        // Menu Values
+        public MemoryWatcher<int> MenuValue1;
+        public MemoryWatcher<int> MenuValue2;
+
+        public MemoryWatcher<int> ActorArrayLength;
+
         MemoryWatchers() { }
 
         public static MemoryWatchers Instance
@@ -200,11 +244,14 @@ namespace FFXCutsceneRemover
             CutsceneAlt = GetMemoryWatcher<short>(MemoryLocations.CutsceneAlt);
             AirshipDestinations = GetMemoryWatcher<short>(MemoryLocations.AirshipDestinations);
             AuronOverdrives = GetMemoryWatcher<short>(MemoryLocations.AuronOverdrives);
+            Gil = GetMemoryWatcher<int>(MemoryLocations.Gil);
+            TargetFramerate = GetMemoryWatcher<int>(MemoryLocations.TargetFramerate);
 
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
+            KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
             SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
             EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
             GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
@@ -212,7 +259,10 @@ namespace FFXCutsceneRemover
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
             SahaginTransition = GetMemoryWatcher<int>(MemoryLocations.SahaginTransition);
             GarudaTransition = GetMemoryWatcher<int>(MemoryLocations.GarudaTransition);
+            GuiTransition = GetMemoryWatcher<int>(MemoryLocations.GuiTransition);
+            Gui2Transition = GetMemoryWatcher<int>(MemoryLocations.Gui2Transition);
             IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
+            TromellTransition = GetMemoryWatcher<int>(MemoryLocations.TromellTransition);
             CrawlerTransition = GetMemoryWatcher<int>(MemoryLocations.CrawlerTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
             SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
@@ -223,9 +273,12 @@ namespace FFXCutsceneRemover
             DefenderXTransition = GetMemoryWatcher<int>(MemoryLocations.DefenderXTransition);
             RonsoTransition = GetMemoryWatcher<int>(MemoryLocations.RonsoTransition);
             FluxTransition = GetMemoryWatcher<int>(MemoryLocations.FluxTransition);
+            SanctuaryTransition = GetMemoryWatcher<int>(MemoryLocations.SanctuaryTransition);
             SpectralKeeperTransition = GetMemoryWatcher<int>(MemoryLocations.SpectralKeeperTransition);
             SpectralKeeperTransition2 = GetMemoryWatcher<int>(MemoryLocations.SpectralKeeperTransition2);
             YunalescaTransition = GetMemoryWatcher<int>(MemoryLocations.YunalescaTransition);
+            FinsTransition = GetMemoryWatcher<int>(MemoryLocations.FinsTransition);
+            FinsAirshipTransition = GetMemoryWatcher<int>(MemoryLocations.FinsAirshipTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
             CutsceneProgress_Max = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_Max);
@@ -309,7 +362,42 @@ namespace FFXCutsceneRemover
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
-            
+
+            // Battle Rewards
+            GilBattleRewards = GetMemoryWatcher<int>(MemoryLocations.GilBattleRewards);
+            BattleRewardItemCount = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemCount);
+            BattleRewardItem1 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem1);
+            BattleRewardItem2 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem2);
+            BattleRewardItem3 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem3);
+            BattleRewardItem4 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem4);
+            BattleRewardItem5 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem5);
+            BattleRewardItem6 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem6);
+            BattleRewardItem7 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem7);
+            BattleRewardItem8 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem8);
+            BattleRewardItemQty1 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty1);
+            BattleRewardItemQty2 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty2);
+            BattleRewardItemQty3 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty3);
+            BattleRewardItemQty4 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty4);
+            BattleRewardItemQty5 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty5);
+            BattleRewardItemQty6 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty6);
+            BattleRewardItemQty7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty7);
+            BattleRewardItemQty8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty8);
+            BattleRewardEquipCount = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquipCount);
+            BattleRewardEquip1 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip1);
+            BattleRewardEquip2 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip2);
+            BattleRewardEquip3 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip3);
+            BattleRewardEquip4 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip4);
+            BattleRewardEquip5 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip5);
+            BattleRewardEquip6 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip6);
+            BattleRewardEquip7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip7);
+            BattleRewardEquip8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip8);
+
+            // Menu Values
+            MenuValue1 = GetMemoryWatcher<int>(MemoryLocations.MenuValue1);
+            MenuValue2 = GetMemoryWatcher<int>(MemoryLocations.MenuValue2);
+
+            ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
+
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
                     RoomNumber,
@@ -335,10 +423,13 @@ namespace FFXCutsceneRemover
                     RoomNumberAlt,
                     AirshipDestinations,
                     AuronOverdrives,
+                    Gil,
+                    TargetFramerate,
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
                     ValeforTransition,
+                    KimahriTransition,
                     SinFinTransition,
                     EchuillesTransition,
                     GeneauxTransition,
@@ -346,7 +437,10 @@ namespace FFXCutsceneRemover
                     IfritTransition2,
                     SahaginTransition,
                     GarudaTransition,
+                    GuiTransition,
+                    Gui2Transition,
                     IxionTransition,
+                    TromellTransition,
                     CrawlerTransition,
                     SeymourTransition,
                     SeymourTransition2,
@@ -357,9 +451,12 @@ namespace FFXCutsceneRemover
                     DefenderXTransition,
                     RonsoTransition,
                     FluxTransition,
+                    SanctuaryTransition,
                     SpectralKeeperTransition,
                     SpectralKeeperTransition2,
                     YunalescaTransition,
+                    FinsTransition,
+                    FinsAirshipTransition,
                     BFATransition,
                     AeonTransition,
                     CutsceneProgress_Max,
@@ -408,7 +505,37 @@ namespace FFXCutsceneRemover
                     BikanelFlag,
                     ViaPurificoPlatform,
                     CalmLandsFlag,
-                    GagazetCaveFlag
+                    GagazetCaveFlag,
+                    GilBattleRewards,
+                    BattleRewardItemCount,
+                    BattleRewardItem1,
+                    BattleRewardItem2,
+                    BattleRewardItem3,
+                    BattleRewardItem4,
+                    BattleRewardItem5,
+                    BattleRewardItem6,
+                    BattleRewardItem7,
+                    BattleRewardItem8,
+                    BattleRewardItemQty1,
+                    BattleRewardItemQty2,
+                    BattleRewardItemQty3,
+                    BattleRewardItemQty4,
+                    BattleRewardItemQty5,
+                    BattleRewardItemQty6,
+                    BattleRewardItemQty7,
+                    BattleRewardItemQty8,
+                    BattleRewardEquipCount,
+                    BattleRewardEquip1,
+                    BattleRewardEquip2,
+                    BattleRewardEquip3,
+                    BattleRewardEquip4,
+                    BattleRewardEquip5,
+                    BattleRewardEquip6,
+                    BattleRewardEquip7,
+                    BattleRewardEquip8,
+                    MenuValue1,
+                    MenuValue2,
+                    ActorArrayLength
             });
         }
 
