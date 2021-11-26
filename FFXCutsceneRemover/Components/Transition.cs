@@ -57,6 +57,9 @@ namespace FFXCutsceneRemover
         public byte? GuadoCount = null;
         public byte? TidusActionCount = null;
         public int? AlBhedBoatTransition = null;
+        public int? AuronTransition = null;
+        public int? AmmesTransition = null;
+        public int? TankerTransition = null;
         public int? BaajIntTransition = null;
         public int? ValeforTransition = null;
         public int? KimahriTransition = null;
@@ -89,6 +92,7 @@ namespace FFXCutsceneRemover
         public int? YunalescaTransition = null;
         public int? FinsTransition = null;
         public int? FinsAirshipTransition = null;
+        public int? OmnisTransition = null;
         public int? BFATransition = null;
         public int? AeonTransition = null;
 
@@ -216,6 +220,9 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
             WriteValue(memoryWatchers.TidusActionCount, TidusActionCount);
             WriteValue(memoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
+            WriteValue(memoryWatchers.AuronTransition, AuronTransition);
+            WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
+            WriteValue(memoryWatchers.TankerTransition, TankerTransition);
             WriteValue(memoryWatchers.BaajIntTransition, BaajIntTransition);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
@@ -248,6 +255,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.YunalescaTransition, YunalescaTransition);
             WriteValue(memoryWatchers.FinsTransition, FinsTransition);
             WriteValue(memoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
+            WriteValue(memoryWatchers.OmnisTransition, OmnisTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);

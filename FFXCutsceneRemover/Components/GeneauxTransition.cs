@@ -2,34 +2,49 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-
+using System.Collections.Generic;
 namespace FFXCutsceneRemover
 {
     class GeneauxTransition : Transition
     {
+        static private List<short> CutsceneAltList = new List<short>(new short[] { 265, 1173, 1174 });
         public override void Execute(string defaultDescription = "")
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();
             if (base.memoryWatchers.GeneauxTransition.Current > 0)
             {
-                if (Stage == 0)
+                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.GeneauxTransition.Current;
-
+                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x4D8) && Stage == 1)
                 {
+                    Console.WriteLine("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6B8);
-                    Stage = 2;
+                    Stage += 1;
                 }
-                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x6F7) && base.memoryWatchers.HpEnemyA.Current == 0 && Stage == 2)
+                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x6DC) && base.memoryWatchers.HpEnemyA.Current < 3000 && base.memoryWatchers.HpEnemyA.Old == 3000 && Stage == 2)
                 {
-                    WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x946);
-                    Stage = 3;
+                    Console.WriteLine("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x958);
+                    Stage += 1;
+                }
+                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 3)
+                {
+                    Stage += 1;
+                }
+                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 4)
+                {
+                    Menu = 0;
+                    Description = "Exit Menu";
+                    ForceLoad = false;
+                    base.Execute();
+                    Stage = 8;
                 }
             }
         }

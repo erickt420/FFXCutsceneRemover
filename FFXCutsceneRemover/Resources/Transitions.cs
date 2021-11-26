@@ -5,6 +5,7 @@ namespace FFXCutsceneRemover.Resources
     /* This class contains most of the transitions. Transitions added here are automatically evalutated in the main loop. */
     static class Transitions
     {
+        static readonly AmmesTransition AmmesTransition = new AmmesTransition { ForceLoad = false, Description = "Sinspawn Ammes", Suspendable = false, Repeatable = true };
         static readonly BoatTransition BoatTransition = new BoatTransition { ForceLoad = false, Description = "S.S Liki", Suspendable = false, Repeatable = true };
         static readonly SinFinTransition SinFinTransition = new SinFinTransition { ForceLoad = false, Description = "Pre Sin Fin", Suspendable = false, Repeatable = true };
         static readonly EchuillesTransition EchuillesTransition = new EchuillesTransition { ForceLoad = false, EnableYuna = 16, EnableKimahri = 16, EnableLulu = 16, Formation = new byte[] { 0x00, 0x04, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, Description = "Echuilles", Suspendable = false, Repeatable = true };
@@ -30,11 +31,16 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 368, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans"} },
             { new GameState { RoomNumber = 376, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 5, SpawnPoint = 0, Description = "Tidus looks at Jecht sign"} },
             { new GameState { RoomNumber = 371, Storyline = 5 }, new Transition { RoomNumber = 370, Storyline = 7, SpawnPoint = 0, Description = "Tidus navigates through the crowd and Blitzball FMV"} },
-                                                            // Tidus sees Auron
+            { new GameState { RoomNumber = 370, Storyline = 7 }, new AuronTransition {ForceLoad = false, Description = "Tidus wakes up and follows Auron", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 366, Storyline = 8 }, new Transition { RoomNumber = 389, Storyline = 12, SpawnPoint = 0, Description = "Tidus sees the fayth and follows Auron" } },
+
+            { new GameState { RoomNumber = 389, Storyline = 13 }, AmmesTransition },
+            { new GameState { RoomNumber = 389, Storyline = 14 }, AmmesTransition },
+            { new GameState { RoomNumber = 389, Storyline = 15 }, AmmesTransition },
+
             //{ new GameState { RoomNumber = 389, Storyline = 14 }, new Transition { RoomNumber = 389, Storyline = 15, SpawnPoint = 0, Description = "Sinspawn Ammes?" } }, // NOT WORKING - This CS ends with a battle.
             { new GameState { RoomNumber = 367, Storyline = 16 }, new Transition { RoomNumber = 367, Storyline = 18, SpawnPoint = 0, Description = "Tidus sees Jecht sign again" } },
-                                                            // Pre-Tanker
+            { new GameState { RoomNumber = 367, Storyline = 18 }, new TankerTransition {ForceLoad = false, Description = "Tidus wakes up and follows Auron", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 367, Storyline = 19 }, new Transition { RoomNumber = 367, Storyline = 20, SpawnPoint = 0, Description = "Tidus and Auron run as bridge explodes"} },
             { new GameState { RoomNumber = 367, Storyline = 20 }, new Transition { RoomNumber = 384, Storyline = 20, SpawnPoint = 0, Description = "This is your story FMV" } },
                                                             // Tidus wakes up inside Sin
@@ -109,7 +115,6 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 18, Storyline = 308 }, new Transition { RoomNumber = 18, Storyline = 312, SpawnPoint = 0, Description = "Camera pan + Yuna wants a new guardian" } },
             { new GameState { RoomNumber = 65, Storyline = 315 }, new Transition { RoomNumber = 65, Storyline = 322, SpawnPoint = 0, Description = "Race up the stairs"} },
             { new GameState { RoomNumber = 65, Storyline = 322}, new GeneauxTransition {ForceLoad = false, Description = "Pre-Geneaux", Suspendable = false, Repeatable = true} },
-            { new GameState { RoomNumber = 65, Storyline = 326 }, new Transition { SpawnPoint = 1, Description = "Post-Geneaux"} },
                                             // Tidus is tired
             { new GameState { RoomNumber = 65, Storyline = 326, State = 1 }, new Transition { RoomNumber = 78, Storyline = 328, SpawnPoint = 1, Description = "No replacement for Chappu"} },
             { new GameState { RoomNumber = 78, Storyline = 328 }, new Transition { RoomNumber = 78, Storyline = 330, SpawnPoint = 1, Description = "Arrival at temple"} },
@@ -157,7 +162,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 72, Storyline = 514  }, new Transition { Storyline = 518, LucaFlag = 11, SpawnPoint = 1797, Description = "Wakka is injured"} },
             { new GameState { RoomNumber = 72, Storyline = 518, State = 0  }, new Transition { Storyline = 520, Description = "Wakka subs himself"} },
             { new GameState { RoomNumber = 72, Storyline = 520  }, new Transition { RoomNumber = 124, Storyline = 535, Description = "Lulu speaks to Wakka" } },
-            { new GameState { RoomNumber = 124, Storyline = 535}, new BlitzballTransition1 {ForceLoad = false, Description = "Pre-Blitzball", Suspendable = false, Repeatable = true} },
+            //{ new GameState { RoomNumber = 124, Storyline = 535}, new BlitzballTransition1 {ForceLoad = false, Description = "Pre-Blitzball", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 124, Storyline = 535  }, new Transition { RoomNumber = 62, Description = "Pre-Blitzball" } }, // Bug: After the first half, everyone learns loads of techniques for some reason
             { new GameState { RoomNumber = 72, Storyline = 540}, new Transition { RoomNumber = 347, Storyline = 560, Description = "Halftime talk"} },
             { new GameState { RoomNumber = 124, Storyline = 560}, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
@@ -358,6 +363,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 200, Storyline = 3100}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Star Players First!" } },
             { new GameState { RoomNumber = 201, Storyline = 3120}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, ForceLoad = false, Description = "Core Death"} },
             { new GameState { RoomNumber = 202, Storyline = 3125, XCoordinate = 18.58586121f, State = 0}, new Transition { RoomNumber = 374, Storyline = 3135, SpawnPoint = 1, Description = "Yuna monologue"} },
+            { new GameState { RoomNumber = 296, Storyline = 3205}, new OmnisTransition {ForceLoad = false, Description = "Pre-BFA", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 325, Storyline = 3270}, new BFATransition {ForceLoad = false, Description = "Pre-BFA", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 325, Storyline = 3300, CutsceneAlt = 1180}, new Transition { RoomNumber = 326, Storyline = 3360, Description = "BFA Death. GG!"} },
             { new GameState { RoomNumber = 326, Storyline = 3360, HpEnemyA = 0}, new AeonTransition {ForceLoad=false, Description = "Summon Aeon!", Suspendable = false, Repeatable = true} }
@@ -367,7 +373,8 @@ namespace FFXCutsceneRemover.Resources
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
 	        { new GameState { RoomNumber = 83, Storyline = 172, State = 1, CutsceneAlt = 0 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
-            { new GameState { RoomNumber = 282, Storyline = 280}, new Transition { RoomNumber = 220, Storyline = 287, TargetFramerate = 2, MenuCleanup = true, Description = "Echuilles"} },
+            { new GameState { HpEnemyA = 2000, Storyline = 280}, new Transition { RoomNumber = 220, Storyline = 287, TargetFramerate = 2, MenuCleanup = true, Description = "Echuilles"} },
+            { new GameState { HpEnemyA = 3000, Storyline = 322 }, new Transition { SpawnPoint = 1, TargetFramerate = 2, MenuCleanup = true, Description = "Post-Geneaux"} },
             { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, Description = "Oblitzerator"} },
             { new GameState { HpEnemyA = 6000, Storyline = 865 }, new Transition { RoomNumber = 254, Storyline = 882, EnableTidus = 17, EnableKimahri = 17, EnableLulu = 17, EnableWakka = 17,TargetFramerate = 2, MenuCleanup = true, Description = "Sinspawn Gui 2"} },
             { new GameState { HpEnemyA = 12000, Storyline = 1420 }, new Transition { RoomNumber = 221, Storyline = 1470, SpawnPoint = 2, Description = "Spherimorph", AuronOverdrives = 11569} },

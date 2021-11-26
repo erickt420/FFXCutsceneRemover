@@ -35,29 +35,16 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x419) && Stage == 99)
-                {
-                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x43F);
-
-
-
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.HpEnemyA.Current < 2000 && base.memoryWatchers.HpEnemyA.Old == 2000 && Stage == 2)
-                {
-                    Console.WriteLine(base.memoryWatchers.EchuillesTransition.Current.ToString("X2"));
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.EchuillesTransition.Current == (BaseCutsceneValue + 0x4C6) && base.memoryWatchers.HpEnemyA.Current < 2000 && base.memoryWatchers.HpEnemyA.Old == 2000 && Stage == 3)
+                else if (base.memoryWatchers.EchuillesTransition.Current == (BaseCutsceneValue + 0x4C6) && base.memoryWatchers.HpEnemyA.Current < 2000 && base.memoryWatchers.HpEnemyA.Old == 2000 && Stage == 2)
                 {
                     WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x593);
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 4)
+                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 3)
                 {
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 5)
+                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 4)
                 {
                     Menu = 0;
                     Description = "Exit Menu";

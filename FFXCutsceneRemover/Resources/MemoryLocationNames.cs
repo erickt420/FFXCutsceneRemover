@@ -34,6 +34,9 @@
         public static string GuadoCount = "GuadoCount";
         public static string TidusActionCount = "TidusActionCount";
         public static string AlBhedBoatTransition = "AlBhedBoatTransition";
+        public static string AuronTransition = "AuronTransition";
+        public static string AmmesTransition = "AmmesTransition";
+        public static string TankerTransition = "TankerTransition";
         public static string BaajIntTransition = "BaajIntTransition";
         public static string ValeforTransition = "ValeforTransition";
         public static string KimahriTransition = "KimahriTransition";
@@ -66,6 +69,7 @@
         public static string YunalescaTransition = "YunalescaTransition";
         public static string FinsTransition = "FinsTransition";
         public static string FinsAirshipTransition = "FinsAirshipTransition";
+        public static string OmnisTransition = "OmnisTransition";
         public static string BFATransition = "BFATransition";
         public static string AeonTransition = "AeonTransition";
         public static string CutsceneProgress_Max = "CutsceneProgress_Max";

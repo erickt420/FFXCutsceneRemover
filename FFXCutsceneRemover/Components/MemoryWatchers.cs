@@ -50,6 +50,9 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> GuadoCount;
         public MemoryWatcher<byte> TidusActionCount;
         public MemoryWatcher<int> AlBhedBoatTransition;
+        public MemoryWatcher<int> AuronTransition;
+        public MemoryWatcher<int> AmmesTransition;
+        public MemoryWatcher<int> TankerTransition;
         public MemoryWatcher<int> BaajIntTransition;
         public MemoryWatcher<int> ValeforTransition;
         public MemoryWatcher<int> KimahriTransition;
@@ -82,6 +85,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> YunalescaTransition;
         public MemoryWatcher<int> FinsTransition;
         public MemoryWatcher<int> FinsAirshipTransition;
+        public MemoryWatcher<int> OmnisTransition;
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> AeonTransition;
         public MemoryWatcher<int> CutsceneProgress_Max;
@@ -257,6 +261,9 @@ namespace FFXCutsceneRemover
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
             TidusActionCount = GetMemoryWatcher<byte>(MemoryLocations.TidusActionCount);
             AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
+            AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
+            AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
+            TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
             BaajIntTransition = GetMemoryWatcher<int>(MemoryLocations.BaajIntTransition);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
             KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
@@ -289,6 +296,7 @@ namespace FFXCutsceneRemover
             YunalescaTransition = GetMemoryWatcher<int>(MemoryLocations.YunalescaTransition);
             FinsTransition = GetMemoryWatcher<int>(MemoryLocations.FinsTransition);
             FinsAirshipTransition = GetMemoryWatcher<int>(MemoryLocations.FinsAirshipTransition);
+            OmnisTransition = GetMemoryWatcher<int>(MemoryLocations.OmnisTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
             CutsceneProgress_Max = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_Max);
@@ -440,6 +448,9 @@ namespace FFXCutsceneRemover
                     GuadoCount,
                     TidusActionCount,
                     AlBhedBoatTransition,
+                    AuronTransition,
+                    AmmesTransition,
+                    TankerTransition,
                     BaajIntTransition,
                     ValeforTransition,
                     KimahriTransition,
@@ -472,6 +483,7 @@ namespace FFXCutsceneRemover
                     YunalescaTransition,
                     FinsTransition,
                     FinsAirshipTransition,
+                    OmnisTransition,
                     BFATransition,
                     AeonTransition,
                     CutsceneProgress_Max,
