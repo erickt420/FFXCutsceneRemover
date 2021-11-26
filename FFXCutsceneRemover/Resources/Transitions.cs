@@ -157,14 +157,15 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 72, Storyline = 514  }, new Transition { Storyline = 518, LucaFlag = 11, SpawnPoint = 1797, Description = "Wakka is injured"} },
             { new GameState { RoomNumber = 72, Storyline = 518, State = 0  }, new Transition { Storyline = 520, Description = "Wakka subs himself"} },
             { new GameState { RoomNumber = 72, Storyline = 520  }, new Transition { RoomNumber = 124, Storyline = 535, Description = "Lulu speaks to Wakka" } },
+            { new GameState { RoomNumber = 124, Storyline = 535}, new BlitzballTransition1 {ForceLoad = false, Description = "Pre-Blitzball", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 124, Storyline = 535  }, new Transition { RoomNumber = 62, Description = "Pre-Blitzball" } }, // Bug: After the first half, everyone learns loads of techniques for some reason
             { new GameState { RoomNumber = 72, Storyline = 540}, new Transition { RoomNumber = 347, Storyline = 560, Description = "Halftime talk"} },
             { new GameState { RoomNumber = 124, Storyline = 560}, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
             { new GameState { RoomNumber = 250, Storyline = 565}, new Transition { RoomNumber = 124, Storyline = 575, Description = "Wakka chants"} },
+            { new GameState { RoomNumber = 124, Storyline = 575}, new BlitzballTransition2 {ForceLoad = false, Description = "Ah! It's Wakka!", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 124, Storyline = 575 }, new Transition { RoomNumber = 62, Description = "Wakka joins the game"} }, // Bug: Tidus is still in the team, need to sub Wakka in somehow
             { new GameState { RoomNumber = 250, Storyline = 582 }, new Transition { RoomNumber = 125, Storyline = 583, Description = "Aurochs win/lose the game"} },
             { new GameState { RoomNumber = 125, Storyline = 583}, new SahaginTransition {ForceLoad = false, Description = "Pre-Sahagins", Formation = new byte[]{0x04, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}, Suspendable = false, Repeatable = true} },
-            //{ new GameState { RoomNumber = 125, Storyline = 583, BattleState = 522}, new Transition {RoomNumber = 57, Storyline = 600, Description = "Post-Sahagins" + "\n" + "Lulu what's happening"} },
             { new GameState { RoomNumber = 57, Storyline = 588}, new Transition {Storyline = 600, Description = "Lulu what's happening"}},
             { new GameState { RoomNumber = 57, Storyline = 600}, new GarudaTransition {ForceLoad = false, Description = "Vouivre to Anima", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 57, Storyline = 600, CutsceneAlt = 755 }, new Transition { RoomNumber = 104, Storyline = 610, Description = "Seymour summon Anima + FMV"} }, // Bug: Motion blur is on, need a value to turn off

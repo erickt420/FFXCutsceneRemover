@@ -59,6 +59,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> GeneauxTransition;
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
+        public MemoryWatcher<int> BlitzballTransition;
         public MemoryWatcher<int> SahaginTransition;
         public MemoryWatcher<int> GarudaTransition;
         public MemoryWatcher<int> GuiTransition;
@@ -265,6 +266,7 @@ namespace FFXCutsceneRemover
             GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
+            BlitzballTransition = GetMemoryWatcher<int>(MemoryLocations.BlitzballTransition);
             SahaginTransition = GetMemoryWatcher<int>(MemoryLocations.SahaginTransition);
             GarudaTransition = GetMemoryWatcher<int>(MemoryLocations.GarudaTransition);
             GuiTransition = GetMemoryWatcher<int>(MemoryLocations.GuiTransition);
@@ -447,6 +449,7 @@ namespace FFXCutsceneRemover
                     GeneauxTransition,
                     IfritTransition,
                     IfritTransition2,
+                    BlitzballTransition,
                     SahaginTransition,
                     GarudaTransition,
                     GuiTransition,

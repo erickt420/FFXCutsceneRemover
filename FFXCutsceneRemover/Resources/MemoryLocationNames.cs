@@ -43,6 +43,7 @@
         public static string GeneauxTransition = "GeneauxTransition";
         public static string IfritTransition = "IfritTransition";
         public static string IfritTransition2 = "IfritTransition2";
+        public static string BlitzballTransition = "BlitzballTransition";
         public static string SahaginTransition = "SahaginTransition";
         public static string GarudaTransition = "GarudaTransition";
         public static string GuiTransition = "GuiTransition";

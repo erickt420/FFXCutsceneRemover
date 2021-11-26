@@ -66,6 +66,7 @@ namespace FFXCutsceneRemover
         public int? GeneauxTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
+        public int? BlitzballTransition = null;
         public int? SahaginTransition = null;
         public int? GarudaTransition = null;
         public int? GuiTransition = null;
@@ -224,6 +225,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
+            WriteValue(memoryWatchers.BlitzballTransition, BlitzballTransition);
             WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
             WriteValue(memoryWatchers.GarudaTransition, GarudaTransition);
             WriteValue(memoryWatchers.GuiTransition, GuiTransition);

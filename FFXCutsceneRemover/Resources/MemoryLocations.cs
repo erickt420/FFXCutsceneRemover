@@ -49,6 +49,7 @@
         public static MemoryLocationData GeneauxTransition = new MemoryLocationData(MemoryLocationNames.GeneauxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IfritTransition = new MemoryLocationData(MemoryLocationNames.IfritTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IfritTransition2 = new MemoryLocationData(MemoryLocationNames.IfritTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
+        public static MemoryLocationData BlitzballTransition = new MemoryLocationData(MemoryLocationNames.BlitzballTransition, 0xF26AE8, new int[] { 0x1C, 0x144});
         public static MemoryLocationData SahaginTransition = new MemoryLocationData(MemoryLocationNames.SahaginTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x10 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
         public static MemoryLocationData GarudaTransition = new MemoryLocationData(MemoryLocationNames.GarudaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x0 - 0x5 - 0x0) + 0x12C + 0x18 });
         public static MemoryLocationData GuiTransition = new MemoryLocationData(MemoryLocationNames.GuiTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x4 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
