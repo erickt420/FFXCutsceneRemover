@@ -20,20 +20,17 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.KimahriTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.KimahriTransition.Current >= (BaseCutsceneValue + 0x6C) && Stage == 1)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x145);
                     Stage = 2;
                 }
-                else if (base.memoryWatchers.KimahriTransition.Current == (BaseCutsceneValue + 0x178) && base.memoryWatchers.HpEnemyA.Current == 750 && Stage == 2)
+                else if (base.memoryWatchers.KimahriTransition.Current == (BaseCutsceneValue + 0x178) && base.memoryWatchers.HpEnemyA.Current < 750 && base.memoryWatchers.HpEnemyA.Old == 750 && Stage == 2)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x75C);
                     Stage = 3;
                 }

@@ -22,7 +22,7 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.RonsoTransition.Current >= (BaseCutsceneValue + 0x1345) && Stage == 1)
+                else if (base.memoryWatchers.RonsoTransition.Current == (BaseCutsceneValue + 0x123C) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.RonsoTransition, BaseCutsceneValue + 0x1698);
                     Stage = 2;

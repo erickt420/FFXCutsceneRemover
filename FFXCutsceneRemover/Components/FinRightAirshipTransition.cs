@@ -20,14 +20,12 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.FinsAirshipTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.FinsAirshipTransition.Current == (BaseCutsceneValue + 0x1D42) && Stage == 1)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.FinsAirshipTransition, BaseCutsceneValue + 0x21B7);
                     Stage = 2;
                 }

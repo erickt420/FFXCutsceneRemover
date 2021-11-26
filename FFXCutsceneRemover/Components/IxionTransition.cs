@@ -21,7 +21,7 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.IxionTransition.Current >= (BaseCutsceneValue + 0xFC) && Stage == 1)
+                else if (base.memoryWatchers.IxionTransition.Current == (BaseCutsceneValue + 0xFC) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.IxionTransition, BaseCutsceneValue + 0x3DC);
                     Stage = 2;

@@ -48,8 +48,12 @@ namespace FFXCutsceneRemover
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
+        public MemoryWatcher<byte> TidusActionCount;
+        public MemoryWatcher<int> AlBhedBoatTransition;
+        public MemoryWatcher<int> BaajIntTransition;
         public MemoryWatcher<int> ValeforTransition;
         public MemoryWatcher<int> KimahriTransition;
+        public MemoryWatcher<int> YunaBoatTransition;
         public MemoryWatcher<int> SinFinTransition;
         public MemoryWatcher<int> EchuillesTransition;
         public MemoryWatcher<int> GeneauxTransition;
@@ -250,8 +254,12 @@ namespace FFXCutsceneRemover
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
+            TidusActionCount = GetMemoryWatcher<byte>(MemoryLocations.TidusActionCount);
+            AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
+            BaajIntTransition = GetMemoryWatcher<int>(MemoryLocations.BaajIntTransition);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
             KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
+            YunaBoatTransition = GetMemoryWatcher<int>(MemoryLocations.YunaBoatTransition);
             SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
             EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
             GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
@@ -428,8 +436,12 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
+                    TidusActionCount,
+                    AlBhedBoatTransition,
+                    BaajIntTransition,
                     ValeforTransition,
                     KimahriTransition,
+                    YunaBoatTransition,
                     SinFinTransition,
                     EchuillesTransition,
                     GeneauxTransition,

@@ -21,17 +21,20 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.SahaginTransition.Current;
-
+                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.SahaginTransition.Current >= (BaseCutsceneValue + 0xC9) && Stage == 1)
+                else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0xC9) && Stage == 1)
                 {
+                    Console.WriteLine("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x45A);
                     Stage = 2;
                 }
-                else if (base.memoryWatchers.SahaginTransition.Current >= (BaseCutsceneValue + 0x45A) && base.memoryWatchers.HpEnemyA.Current == 170 && Stage == 2) {
-                    WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);//Possibly 0x568
+                else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0x491) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 2)
+                {
+                    Console.WriteLine("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);
                     Stage = 3;
                 }
             }

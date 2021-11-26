@@ -17,14 +17,10 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.ValeforTransition.Current;
+                    WriteValue<int>(base.memoryWatchers.ValeforTransition, BaseCutsceneValue + 0xAA4);
 
                     Stage = 1;
 
-                }
-                else if (base.memoryWatchers.ValeforTransition.Current >= (BaseCutsceneValue + 0x00) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.ValeforTransition, BaseCutsceneValue + 0xAA4);
-                    Stage = 2;
                 }
             }
         }

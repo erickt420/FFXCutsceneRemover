@@ -37,6 +37,7 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public byte? TidusActionCount = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
         public bool CheckState()
@@ -66,6 +67,7 @@ namespace FFXCutsceneRemover
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&
+                TestValue(TidusActionCount, memoryWatchers.TidusActionCount.Old) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Old) &&
                 TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old);
         }

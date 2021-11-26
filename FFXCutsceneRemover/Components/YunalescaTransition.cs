@@ -25,12 +25,12 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }//*/
-                else if (base.memoryWatchers.YunalescaTransition.Current >= (BaseCutsceneValue + 0x75A) && Stage == 1)
+                else if (base.memoryWatchers.YunalescaTransition.Current == (BaseCutsceneValue + 0x75A) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0xDC4);
                     Stage = 2;
                 }
-                else if (base.memoryWatchers.YunalescaTransition.Current >= (BaseCutsceneValue + 0xE24) && Stage == 2)
+                else if (base.memoryWatchers.YunalescaTransition.Current == (BaseCutsceneValue + 0xE24) && Stage == 2)
                 {
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x111E);
                     Stage = 3;

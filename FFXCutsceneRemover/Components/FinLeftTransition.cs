@@ -20,20 +20,17 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.FinsTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.FinsTransition.Current == (BaseCutsceneValue + 0x12C) && Stage == 1)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.FinsTransition, BaseCutsceneValue + 0x4B3);
                     Stage = 2;
                 }
                 else if (base.memoryWatchers.FinsTransition.Current == (BaseCutsceneValue + 0x51E) && Stage == 2)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.FinsTransition, BaseCutsceneValue + 0x54F);
 
                     Transition actorPositions;
@@ -45,8 +42,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.FinsTransition.Current == (BaseCutsceneValue + 0x5D0) && Stage == 3)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
-
                     RoomNumber = 255;
                     ForceLoad = true;
                     base.Execute();

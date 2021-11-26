@@ -23,27 +23,30 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }
-                /* This doesn't seem to work without insane jankiness or crashes (Pre-Boss)
-                else if (base.memoryWatchers.SinFinTransition.Current >= (BaseCutsceneValue + 0x76F) && Stage == 1)
+                else if (base.memoryWatchers.SinFinTransition.Current == (BaseCutsceneValue + 0x76F) && Stage == 1)
                 {
-                    Console.WriteLine("Test");
-                    WriteValue<int>(base.memoryWatchers.SinFinTransition, BaseCutsceneValue + 0xA40);
-                    Stage = 2;
-                } 
-                else if (base.memoryWatchers.SinFinTransition.Current >= (BaseCutsceneValue + 0xB93) && Stage == 99) {
-                    Console.WriteLine("Test");
                     WriteValue<int>(base.memoryWatchers.SinFinTransition, BaseCutsceneValue + 0xBF0);
-                    Stage = 3;
+
+                    Transition actorPositions;
+
+                    //Position Tidus
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = -29.0f, Target_y = -50.0f, Target_z = 131.5f };
+                    actorPositions.Execute();
+
+                    //Position Sin Fin
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4209, Target_x = 1.0f, Target_z = 945.0f};
+                    actorPositions.Execute();
+
+                    Stage += 1;
                 }
-                */
-                else if (base.memoryWatchers.SinFinTransition.Current == (BaseCutsceneValue + 0xCFD) && base.memoryWatchers.HpEnemyA.Current == 200 && Stage == 1) //200 = Sinscale HP
+                else if (base.memoryWatchers.SinFinTransition.Current == (BaseCutsceneValue + 0xCFD) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 2) //200 = Sinscale HP
                 {
                     Storyline = 272;
                     ForceLoad = false;
                     Description = "Post Sin Fin";
                     base.Execute();
                     WriteValue<int>(base.memoryWatchers.SinFinTransition, BaseCutsceneValue + 0x114A);
-                    Stage = 4;
+                    Stage += 1;
                 }
             }
         }

@@ -5,11 +5,12 @@ namespace FFXCutsceneRemover.Resources
     /* This class contains most of the transitions. Transitions added here are automatically evalutated in the main loop. */
     static class Transitions
     {
-        static readonly SeymourTransition SeymourTransition = new SeymourTransition { Storyline = 1540, Formation = new byte[] { 0x0, 0x1, 0x3, 0x4, 0x2, 0x6, 0x5, 0xFF }, ForceLoad = false, Description = "Pre-Seymour", Repeatable = true};
+        static readonly BoatTransition BoatTransition = new BoatTransition { ForceLoad = false, Description = "S.S Liki", Suspendable = false, Repeatable = true };
         static readonly SinFinTransition SinFinTransition = new SinFinTransition { ForceLoad = false, Description = "Pre Sin Fin", Suspendable = false, Repeatable = true };
         static readonly EchuillesTransition EchuillesTransition = new EchuillesTransition { ForceLoad = false, EnableYuna = 16, EnableKimahri = 16, EnableLulu = 16, Formation = new byte[] { 0x00, 0x04, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, Description = "Echuilles", Suspendable = false, Repeatable = true };
-        static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
         static readonly GuiTransition GuiTransition = new GuiTransition { ForceLoad = false, Description = "Sinspawn Gui", Suspendable = false, Repeatable = true };
+        static readonly SeymourTransition SeymourTransition = new SeymourTransition { Storyline = 1540, Formation = new byte[] { 0x0, 0x1, 0x3, 0x4, 0x2, 0x6, 0x5, 0xFF }, ForceLoad = false, Description = "Pre-Seymour", Repeatable = true };
+        static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
 
         public static readonly Dictionary<IGameState, Transition> StandardTransitions = new Dictionary<IGameState, Transition>()
             {
@@ -50,11 +51,10 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 63, Storyline = 50 }, new Transition { RoomNumber = 63, Storyline = 52, SpawnPoint = 1, Description = "Tidus needs fire"} },
             { new GameState { RoomNumber = 63, Storyline = 54 }, new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0, Description = "Tidus makes fire"} },
             { new GameState { RoomNumber = 165, Storyline = 55 }, new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0, Description = "Tidus has a dream about Auron"} },
-                                            // Fire goes out and Klikk arrives
-                                            // Rikku arrives during Klikk fight
+            { new GameState { RoomNumber = 63, Storyline = 55 }, new KlikkTransition {ForceLoad = false, Description = "Klikk", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 63, Storyline = 58 }, new Transition { RoomNumber = 71, Storyline = 60, SpawnPoint = 0, Description = "Rikku punches Tidus"} },
             { new GameState { RoomNumber = 71, Storyline = 60 }, new Transition { RoomNumber = 71, Storyline = 66, SpawnPoint = 0, BaajFlag1 = 1, Description = "Tidus wakes up on boat + Sphere Grid tutorial"} },
-                                            // Rikku explains mission
+            { new GameState { RoomNumber = 71, Storyline = 66 }, new AlBhedBoatTransition {ForceLoad = false, Description = "Rikku explains the mission", Suspendable = false, Repeatable = true} },// Rikku explains mission
             { new GameState { RoomNumber = 64, Storyline = 70 }, new Transition { RoomNumber = 64, Storyline = 74, SpawnPoint = 0, Description = "They enter the submerged ruins" } },
                                             // Tidus bashes the console
                                             // Tidus bashes the machine + Tros arrives
@@ -89,18 +89,14 @@ namespace FFXCutsceneRemover.Resources
             // END OF BESAID
             // START OF SS LIKI
             { new GameState { RoomNumber = 301, Storyline = 220 }, new Transition { RoomNumber = 301, Storyline = 228, SpawnPoint = 256, Description = "Tidus goofing around" } },
-                                           // Tidus learns about Braska
+            //{ new GameState { RoomNumber = 301, Storyline = 228 }, BoatTransition},
+            //{ new GameState { RoomNumber = 301, Storyline = 240 }, BoatTransition},
                                            // Tidus talks to Wakka
             { new GameState { RoomNumber = 61, Storyline = 244  }, new Transition {Storyline = 248, Description = "Tidus talks to Yuna" } },
             { new GameState { RoomNumber = 61, Storyline = 248 }, SinFinTransition},
             { new GameState { RoomNumber = 61, Storyline = 260 }, SinFinTransition},
             { new GameState { RoomNumber = 282, Storyline = 272 }, EchuillesTransition },
             { new GameState { RoomNumber = 282, Storyline = 280 }, EchuillesTransition },
-                                           // Sin arrives
-                                           // Post Sin Fin battle
-                                           // Tidus is gone
-                                           // Tidus gets hit by scales
-                                           // Post Echuilles
             //{ new GameState { RoomNumber = 282, Storyline = 285 }, new Transition { RoomNumber = 220, Storyline = 285, Description = "Kilika FMV"} }, // Party members added back on reward screen - Bug: Need to enable menu to fix
             { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, EnableYuna = 17, EnableKimahri = 17, EnableLulu = 17, Formation = new byte[]{0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF}, Description = "Recovering on the boat" } },
             { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292, Description = "Map shown"} },

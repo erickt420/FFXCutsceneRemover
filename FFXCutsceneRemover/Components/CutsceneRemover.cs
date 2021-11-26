@@ -52,7 +52,6 @@ namespace FFXCutsceneRemover
                 Console.WriteLine("Starting main loop!");
                 while (!Game.HasExited)
                 {
-
                     // Update the values of our memory watchers.
                     // This is really important.
                     MemoryWatchers.Watchers.UpdateAll(Game);

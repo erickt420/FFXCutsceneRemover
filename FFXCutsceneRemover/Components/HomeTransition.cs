@@ -21,7 +21,7 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.HomeTransition.Current >= (BaseCutsceneValue + 0x18E) && Stage == 1)
+                else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x18E) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x381);
                     Stage = 3;
@@ -34,7 +34,7 @@ namespace FFXCutsceneRemover
                     Stage = 3;
                 }
                 */
-                else if (base.memoryWatchers.HomeTransition.Current >= (BaseCutsceneValue + 0x55D) && Stage == 3)
+                else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x55D) && Stage == 3)
                 {
                     WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x6FE);
                     Stage = 4;

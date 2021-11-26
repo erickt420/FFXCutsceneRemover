@@ -20,14 +20,12 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.SanctuaryTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
 
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.SanctuaryTransition.Current == (BaseCutsceneValue + 0x582) && Stage == 1)
                 {
-                    Console.WriteLine("Test " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.SanctuaryTransition, BaseCutsceneValue + 0x698);
                     Stage = 2;
                 }

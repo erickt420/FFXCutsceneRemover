@@ -55,8 +55,12 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public byte? TidusActionCount = null;
+        public int? AlBhedBoatTransition = null;
+        public int? BaajIntTransition = null;
         public int? ValeforTransition = null;
         public int? KimahriTransition = null;
+        public int? YunaBoatTransition = null;
         public int? SinFinTransition = null;
         public int? EchuillesTransition = null;
         public int? GeneauxTransition = null;
@@ -209,8 +213,12 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
+            WriteValue(memoryWatchers.TidusActionCount, TidusActionCount);
+            WriteValue(memoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
+            WriteValue(memoryWatchers.BaajIntTransition, BaajIntTransition);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
+            WriteValue(memoryWatchers.YunaBoatTransition, YunaBoatTransition);
             WriteValue(memoryWatchers.SinFinTransition, SinFinTransition);
             WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
@@ -544,6 +552,7 @@ namespace FFXCutsceneRemover
                         MemoryWatcher<float> characterPos_x = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x0C + 0x880 * i }));
                         MemoryWatcher<float> characterPos_y = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x10 + 0x880 * i }));
                         MemoryWatcher<float> characterPos_z = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x14 + 0x880 * i }));
+                        MemoryWatcher<float> characterPos_floor = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x16C + 0x880 * i }));
 
                         if (!(Target_x is null))
                         {
@@ -551,6 +560,7 @@ namespace FFXCutsceneRemover
                         }
                         if (!(Target_y is null))
                         {
+                            WriteValue<float>(characterPos_floor, Target_y); // Always set floor to be the target y value since we don't want floating characters
                             WriteValue<float>(characterPos_y, Target_y);
                         }
                         if (!(Target_z is null))

@@ -21,12 +21,12 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.GeneauxTransition.Current >= (BaseCutsceneValue + 0x4D8) && Stage == 1)
+                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x4D8) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6B8);
                     Stage = 2;
                 }
-                else if (base.memoryWatchers.GeneauxTransition.Current >= (BaseCutsceneValue + 0x6F7) && base.memoryWatchers.HpEnemyA.Current == 0 && Stage == 2)
+                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x6F7) && base.memoryWatchers.HpEnemyA.Current == 0 && Stage == 2)
                 {
                     WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x946);
                     Stage = 3;
