@@ -31,7 +31,7 @@
         public static MemoryLocationData AirshipDestinations = new MemoryLocationData(MemoryLocationNames.AirshipDestinations, 0xD2D710);
         public static MemoryLocationData AuronOverdrives = new MemoryLocationData(MemoryLocationNames.AuronOverdrives, 0xD307FC);
         public static MemoryLocationData Gil = new MemoryLocationData(MemoryLocationNames.Gil, 0xD307D8);
-        public static MemoryLocationData TargetFramerate = new MemoryLocationData(MemoryLocationNames.TargetFramerate, 0x830E88);//I think this is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
+        public static MemoryLocationData TargetFramerate = new MemoryLocationData(MemoryLocationNames.TargetFramerate, 0x830E88);//This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
 
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);

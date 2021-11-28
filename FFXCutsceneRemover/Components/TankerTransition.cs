@@ -7,13 +7,13 @@ namespace FFXCutsceneRemover
 {
     class TankerTransition : Transition
     {
-        static private List<short> CutsceneAltList = new List<short>(new short[] { 6609, 210, 70 });
+        static private List<short> CutsceneAltList = new List<short>(new short[] { 210 });
         public override void Execute(string defaultDescription = "")
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();
             if (base.memoryWatchers.AmmesTransition.Current > 0)
             {
-                if (base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 0)
+                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
                     base.Execute();
 

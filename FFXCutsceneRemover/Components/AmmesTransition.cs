@@ -24,20 +24,36 @@ namespace FFXCutsceneRemover
                 else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x16F) && Stage == 1)
                 {
                     Console.WriteLine("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.AmmesTransition, BaseCutsceneValue + 0x2B2);
 
                     Transition actorPositions;
                     //Position Ammes
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4255, Target_x = 843.5f, Target_y = -42.0f, Target_z = -126.7f };
                     actorPositions.Execute();
 
+                    WriteValue<int>(base.memoryWatchers.AmmesTransition, BaseCutsceneValue + 0x2AB);// 2AB , 255 , 21A
+
                     Stage += 1;
                 }
-                /*/ Post Ammes skip doesn't seem to work
-                else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x33F) && base.memoryWatchers.HpEnemyA.Current < 2400 && base.memoryWatchers.HpEnemyA.Old == 2400 && Stage == 2)
+                else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x3A1) && Stage == 2)
                 {
                     Console.WriteLine("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.AmmesTransition, BaseCutsceneValue + 0x3FD);
+
+                    ForceLoad = true;
+                    SpawnPoint = 1;
+                    ConsoleOutput = false;
+                    base.Execute();
+
+                    Stage += 1;
+                }
+                else if (Stage == 3)
+                {
+                    Console.WriteLine("Stage: " + Stage.ToString());
+
+                    Transition actorPositions;
+                    //Position Tidus
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = 749.636f, Target_y = -41.589f, Target_z = -71.674f };
+                    actorPositions.Execute();
+
                     Stage += 1;
                 }
                 //*/

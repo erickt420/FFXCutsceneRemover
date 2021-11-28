@@ -30,7 +30,7 @@ namespace FFXCutsceneRemover
                     Stage += 1;
                 }
                 //*/
-                else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x34F) && Stage == 2)
+                else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x34F) && Stage == 1)
                 {
                     Console.WriteLine("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x40A);

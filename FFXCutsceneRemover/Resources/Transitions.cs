@@ -37,6 +37,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 389, Storyline = 13 }, AmmesTransition },
             { new GameState { RoomNumber = 389, Storyline = 14 }, AmmesTransition },
             { new GameState { RoomNumber = 389, Storyline = 15 }, AmmesTransition },
+            { new GameState { RoomNumber = 389, Storyline = 16 }, AmmesTransition },
 
             //{ new GameState { RoomNumber = 389, Storyline = 14 }, new Transition { RoomNumber = 389, Storyline = 15, SpawnPoint = 0, Description = "Sinspawn Ammes?" } }, // NOT WORKING - This CS ends with a battle.
             { new GameState { RoomNumber = 367, Storyline = 16 }, new Transition { RoomNumber = 367, Storyline = 18, SpawnPoint = 0, Description = "Tidus sees Jecht sign again" } },
