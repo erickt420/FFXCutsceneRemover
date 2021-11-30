@@ -37,7 +37,8 @@
         public static string AuronTransition = "AuronTransition";
         public static string AmmesTransition = "AmmesTransition";
         public static string TankerTransition = "TankerTransition";
-        public static string BaajIntTransition = "BaajIntTransition";
+        public static string GeosTransition = "GeosTransition";
+        public static string KlikkTransition = "KlikkTransition";
         public static string ValeforTransition = "ValeforTransition";
         public static string KimahriTransition = "KimahriTransition";
         public static string YunaBoatTransition = "YunaBoatTransition";
@@ -46,11 +47,15 @@
         public static string GeneauxTransition = "GeneauxTransition";
         public static string IfritTransition = "IfritTransition";
         public static string IfritTransition2 = "IfritTransition2";
+        public static string OblitzeratorTransition = "OblitzeratorTransition";
         public static string BlitzballTransition = "BlitzballTransition";
         public static string SahaginTransition = "SahaginTransition";
         public static string GarudaTransition = "GarudaTransition";
+        public static string RinTransition = "RinTransition";
+        public static string ChocoboEaterTransition = "ChocoboEaterTransition";
         public static string GuiTransition = "GuiTransition";
         public static string Gui2Transition = "Gui2Transition";
+        public static string DjoseTransition = "DjoseTransition";
         public static string IxionTransition = "IxionTransition";
         public static string TromellTransition = "TromellTransition";
         public static string CrawlerTransition = "CrawlerTransition";
@@ -148,6 +153,9 @@
         public static string BattleRewardEquip6 = "BattleRewardEquip6";
         public static string BattleRewardEquip7 = "BattleRewardEquip7";
         public static string BattleRewardEquip8 = "BattleRewardEquip8";
+
+        public static string ItemsStart = "ItemsStart";
+        public static string ItemsQtyStart = "ItemsQtyStart";
 
         public static string MenuValue1 = "MenuValue1";
         public static string MenuValue2 = "MenuValue2";

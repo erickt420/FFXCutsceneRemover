@@ -11,27 +11,39 @@ namespace FFXCutsceneRemover
         static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
         public override void Execute(string defaultDescription = "")
         {
-            if (base.memoryWatchers.BaajIntTransition.Current > 0)
+            if (base.memoryWatchers.KlikkTransition.Current > 0)
             {
+
+                if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old || base.memoryWatchers.KlikkTransition.Current != base.memoryWatchers.KlikkTransition.Old)
+                {
+                    Console.WriteLine(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.KlikkTransition.Current.ToString("X2"));
+                }
+
                 if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.BaajIntTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.KlikkTransition.Current;
                     Console.WriteLine(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
-                else if (base.memoryWatchers.BaajIntTransition.Current == (BaseCutsceneValue + 0x675) && Stage == 1)
+                else if (base.memoryWatchers.KlikkTransition.Current == (BaseCutsceneValue + 0x675) && Stage == 1)
                 {
                     Console.WriteLine("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.BaajIntTransition, BaseCutsceneValue + 0x935);//999
+                    WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0x935);//972 , 999
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.BaajIntTransition.Current == (BaseCutsceneValue + 0xA1A) && base.memoryWatchers.HpEnemyA.Current < 1500 && base.memoryWatchers.HpEnemyA.Old == 1500  && Stage == 2)
+                else if (base.memoryWatchers.KlikkTransition.Current >= (BaseCutsceneValue + 0x936) && Stage == 2)
                 {
                     Console.WriteLine("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.BaajIntTransition, BaseCutsceneValue + 0x1079); //104E
+                    WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0x999);//972 , 999
+                    Stage += 1;
+                }
+                else if (base.memoryWatchers.KlikkTransition.Current == (BaseCutsceneValue + 0xA1A) && base.memoryWatchers.HpEnemyA.Current < 1500 && base.memoryWatchers.HpEnemyA.Old == 1500  && Stage == 3)
+                {
+                    Console.WriteLine("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0x1079); //104E
                     Stage += 1;
                 }
             }

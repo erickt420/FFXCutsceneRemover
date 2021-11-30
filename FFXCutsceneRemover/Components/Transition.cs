@@ -19,6 +19,7 @@ namespace FFXCutsceneRemover
         public bool ForceLoad = true;
         public bool FullHeal = false;
         public bool MenuCleanup = false;
+        public bool AddItems = false;
         public bool PositionPartyOffScreen = false;
         public string Description = null;
         public int BaseCutsceneValue = 0;
@@ -60,7 +61,8 @@ namespace FFXCutsceneRemover
         public int? AuronTransition = null;
         public int? AmmesTransition = null;
         public int? TankerTransition = null;
-        public int? BaajIntTransition = null;
+        public int? GeosTransition = null;
+        public int? KlikkTransition = null;
         public int? ValeforTransition = null;
         public int? KimahriTransition = null;
         public int? YunaBoatTransition = null;
@@ -69,11 +71,15 @@ namespace FFXCutsceneRemover
         public int? GeneauxTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
+        public int? OblitzeratorTransition = null;
         public int? BlitzballTransition = null;
         public int? SahaginTransition = null;
         public int? GarudaTransition = null;
+        public int? RinTransition = null;
+        public int? ChocoboEaterTransition = null;
         public int? GuiTransition = null;
         public int? Gui2Transition = null;
+        public int? DjoseTransition = null;
         public int? IxionTransition = null;
         public int? TromellTransition = null;
         public int? CrawlerTransition = null;
@@ -169,6 +175,9 @@ namespace FFXCutsceneRemover
         public byte[] BattleRewardEquip7 = null;
         public byte[] BattleRewardEquip8 = null;
 
+        public byte[] ItemsStart = null;
+        public byte[] ItemsQtyStart = null;
+
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
 
@@ -223,7 +232,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronTransition, AuronTransition);
             WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
             WriteValue(memoryWatchers.TankerTransition, TankerTransition);
-            WriteValue(memoryWatchers.BaajIntTransition, BaajIntTransition);
+            WriteValue(memoryWatchers.GeosTransition, GeosTransition);
+            WriteValue(memoryWatchers.KlikkTransition, KlikkTransition);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
             WriteValue(memoryWatchers.YunaBoatTransition, YunaBoatTransition);
@@ -232,11 +242,15 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
+            WriteValue(memoryWatchers.OblitzeratorTransition, OblitzeratorTransition);
             WriteValue(memoryWatchers.BlitzballTransition, BlitzballTransition);
             WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
             WriteValue(memoryWatchers.GarudaTransition, GarudaTransition);
+            WriteValue(memoryWatchers.RinTransition, RinTransition);
+            WriteValue(memoryWatchers.ChocoboEaterTransition, ChocoboEaterTransition);
             WriteValue(memoryWatchers.GuiTransition, GuiTransition);
             WriteValue(memoryWatchers.Gui2Transition, Gui2Transition);
+            WriteValue(memoryWatchers.DjoseTransition, DjoseTransition);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
             WriteValue(memoryWatchers.TromellTransition, TromellTransition);
             WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
@@ -472,6 +486,57 @@ namespace FFXCutsceneRemover
         {
             // Clear Gil
             WriteValue<int>(memoryWatchers.GilBattleRewards, 0);
+
+            if (AddItems)
+            {
+                byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
+                byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
+                byte[] itemRewards = process.ReadBytes(memoryWatchers.BattleRewardItem1.Address, 16);
+                byte[] itemRewardsQty = process.ReadBytes(memoryWatchers.BattleRewardItemQty1.Address, 8);
+
+                int rewardCount = memoryWatchers.BattleRewardItemCount.Current;
+
+                bool alreadyExists;
+
+                for (int i = 0; i < rewardCount; i++)
+                {
+                    alreadyExists = false;
+
+                    for (int j = 0; j < 112; j++)
+                    {
+                        if (items[2 * j] == itemRewards[2 * i] && itemsQty[j] > 0)
+                        {
+                            alreadyExists = true;
+                            itemsQty[j] += itemRewardsQty[i];
+
+                            Console.WriteLine("Existing Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
+
+                            break;
+                        }
+                    }
+
+                    if (alreadyExists == false)
+                    {
+                        for (int j = 0; j < 112; j++)
+                        {
+                            if (items[2 * j] == 0xFF && itemsQty[j] == 0)
+                            {
+                                alreadyExists = true;
+                                items[2 * j] = itemRewards[2 * i];
+                                items[2 * j + 1] = itemRewards[2 * i + 1];
+                                itemsQty[j] = itemRewardsQty[i];
+
+                                Console.WriteLine("New Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
+
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                WriteBytes(memoryWatchers.ItemsStart, items);
+                WriteBytes(memoryWatchers.ItemsQtyStart, itemsQty);
+            }
 
             // Clear Items
             WriteValue<byte>(memoryWatchers.BattleRewardItemCount, 0);

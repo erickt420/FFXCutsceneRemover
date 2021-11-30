@@ -38,8 +38,9 @@ namespace FFXCutsceneRemover
                 {
                     Console.WriteLine("Stage: " + Stage.ToString());
 
-                    ForceLoad = true;
+                    Storyline = 16;
                     SpawnPoint = 1;
+                    ForceLoad = true;
                     ConsoleOutput = false;
                     base.Execute();
 
@@ -52,6 +53,9 @@ namespace FFXCutsceneRemover
                     Transition actorPositions;
                     //Position Tidus
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = 749.636f, Target_y = -41.589f, Target_z = -71.674f };
+                    actorPositions.Execute();
+                    //Position Ammes
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4255, Target_x = 843.5f, Target_y = -42.0f, Target_z = -126.7f };
                     actorPositions.Execute();
 
                     Stage += 1;

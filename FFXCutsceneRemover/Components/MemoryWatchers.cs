@@ -53,7 +53,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> AuronTransition;
         public MemoryWatcher<int> AmmesTransition;
         public MemoryWatcher<int> TankerTransition;
-        public MemoryWatcher<int> BaajIntTransition;
+        public MemoryWatcher<int> GeosTransition;
+        public MemoryWatcher<int> KlikkTransition;
         public MemoryWatcher<int> ValeforTransition;
         public MemoryWatcher<int> KimahriTransition;
         public MemoryWatcher<int> YunaBoatTransition;
@@ -62,11 +63,15 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> GeneauxTransition;
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
+        public MemoryWatcher<int> OblitzeratorTransition;
         public MemoryWatcher<int> BlitzballTransition;
         public MemoryWatcher<int> SahaginTransition;
         public MemoryWatcher<int> GarudaTransition;
+        public MemoryWatcher<int> RinTransition;
+        public MemoryWatcher<int> ChocoboEaterTransition;
         public MemoryWatcher<int> GuiTransition;
         public MemoryWatcher<int> Gui2Transition;
+        public MemoryWatcher<int> DjoseTransition;
         public MemoryWatcher<int> IxionTransition;
         public MemoryWatcher<int> TromellTransition;
         public MemoryWatcher<int> CrawlerTransition;
@@ -202,6 +207,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> BattleRewardEquip7;
         public MemoryWatcher<byte> BattleRewardEquip8;
 
+        //Items
+        public MemoryWatcher<byte> ItemsStart;
+        public MemoryWatcher<byte> ItemsQtyStart;
+
         // Menu Values
         public MemoryWatcher<int> MenuValue1;
         public MemoryWatcher<int> MenuValue2;
@@ -264,7 +273,8 @@ namespace FFXCutsceneRemover
             AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
             AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
             TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
-            BaajIntTransition = GetMemoryWatcher<int>(MemoryLocations.BaajIntTransition);
+            GeosTransition = GetMemoryWatcher<int>(MemoryLocations.GeosTransition);
+            KlikkTransition = GetMemoryWatcher<int>(MemoryLocations.KlikkTransition);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
             KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
             YunaBoatTransition = GetMemoryWatcher<int>(MemoryLocations.YunaBoatTransition);
@@ -273,11 +283,15 @@ namespace FFXCutsceneRemover
             GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
+            OblitzeratorTransition = GetMemoryWatcher<int>(MemoryLocations.OblitzeratorTransition);
             BlitzballTransition = GetMemoryWatcher<int>(MemoryLocations.BlitzballTransition);
             SahaginTransition = GetMemoryWatcher<int>(MemoryLocations.SahaginTransition);
             GarudaTransition = GetMemoryWatcher<int>(MemoryLocations.GarudaTransition);
+            RinTransition = GetMemoryWatcher<int>(MemoryLocations.RinTransition);
+            ChocoboEaterTransition = GetMemoryWatcher<int>(MemoryLocations.ChocoboEaterTransition);
             GuiTransition = GetMemoryWatcher<int>(MemoryLocations.GuiTransition);
             Gui2Transition = GetMemoryWatcher<int>(MemoryLocations.Gui2Transition);
+            DjoseTransition = GetMemoryWatcher<int>(MemoryLocations.DjoseTransition);
             IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
             TromellTransition = GetMemoryWatcher<int>(MemoryLocations.TromellTransition);
             CrawlerTransition = GetMemoryWatcher<int>(MemoryLocations.CrawlerTransition);
@@ -410,6 +424,10 @@ namespace FFXCutsceneRemover
             BattleRewardEquip7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip7);
             BattleRewardEquip8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip8);
 
+            //Items
+            ItemsStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsStart);
+            ItemsQtyStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsQtyStart);
+
             // Menu Values
             MenuValue1 = GetMemoryWatcher<int>(MemoryLocations.MenuValue1);
             MenuValue2 = GetMemoryWatcher<int>(MemoryLocations.MenuValue2);
@@ -451,7 +469,8 @@ namespace FFXCutsceneRemover
                     AuronTransition,
                     AmmesTransition,
                     TankerTransition,
-                    BaajIntTransition,
+                    GeosTransition,
+                    KlikkTransition,
                     ValeforTransition,
                     KimahriTransition,
                     YunaBoatTransition,
@@ -460,11 +479,15 @@ namespace FFXCutsceneRemover
                     GeneauxTransition,
                     IfritTransition,
                     IfritTransition2,
+                    OblitzeratorTransition,
                     BlitzballTransition,
                     SahaginTransition,
                     GarudaTransition,
+                    RinTransition,
+                    ChocoboEaterTransition,
                     GuiTransition,
                     Gui2Transition,
+                    DjoseTransition,
                     IxionTransition,
                     TromellTransition,
                     CrawlerTransition,
@@ -560,6 +583,8 @@ namespace FFXCutsceneRemover
                     BattleRewardEquip6,
                     BattleRewardEquip7,
                     BattleRewardEquip8,
+                    ItemsStart,
+                    ItemsQtyStart,
                     MenuValue1,
                     MenuValue2,
                     ActorArrayLength

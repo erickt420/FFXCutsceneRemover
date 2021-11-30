@@ -42,7 +42,8 @@
         public static MemoryLocationData AuronTransition = new MemoryLocationData(MemoryLocationNames.AuronTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AmmesTransition = new MemoryLocationData(MemoryLocationNames.AmmesTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x4F - 0x1 - 0x9 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
         public static MemoryLocationData TankerTransition = new MemoryLocationData(MemoryLocationNames.TankerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x38 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
-        public static MemoryLocationData BaajIntTransition = new MemoryLocationData(MemoryLocationNames.BaajIntTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x30 - 0x9 - 0x4 - 0x8) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData GeosTransition = new MemoryLocationData(MemoryLocationNames.GeosTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 + 0x4C });
+        public static MemoryLocationData KlikkTransition = new MemoryLocationData(MemoryLocationNames.KlikkTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x30 - 0x9 - 0x4 - 0x8) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AlBhedBoatTransition = new MemoryLocationData(MemoryLocationNames.AlBhedBoatTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x0 - 0x3 - 0x3) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData ValeforTransition = new MemoryLocationData(MemoryLocationNames.ValeforTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x9 - 0x6 - 0x11) + 0x12C + 0x4C + 0x18 + 0x1560 });
         public static MemoryLocationData KimahriTransition = new MemoryLocationData(MemoryLocationNames.KimahriTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x17 - 0x4 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x5A28 });
@@ -52,11 +53,15 @@
         public static MemoryLocationData GeneauxTransition = new MemoryLocationData(MemoryLocationNames.GeneauxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IfritTransition = new MemoryLocationData(MemoryLocationNames.IfritTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IfritTransition2 = new MemoryLocationData(MemoryLocationNames.IfritTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
+        public static MemoryLocationData OblitzeratorTransition = new MemoryLocationData(MemoryLocationNames.OblitzeratorTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData BlitzballTransition = new MemoryLocationData(MemoryLocationNames.BlitzballTransition, 0xF26AE8, new int[] { 0x1C, 0x144});
         public static MemoryLocationData SahaginTransition = new MemoryLocationData(MemoryLocationNames.SahaginTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x10 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
         public static MemoryLocationData GarudaTransition = new MemoryLocationData(MemoryLocationNames.GarudaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x0 - 0x5 - 0x0) + 0x12C + 0x18 });
+        public static MemoryLocationData RinTransition = new MemoryLocationData(MemoryLocationNames.RinTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x21 - 0x5 - 0x5 - 0x2) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData ChocoboEaterTransition = new MemoryLocationData(MemoryLocationNames.ChocoboEaterTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x35 - 0x3 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData GuiTransition = new MemoryLocationData(MemoryLocationNames.GuiTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x4 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData Gui2Transition = new MemoryLocationData(MemoryLocationNames.Gui2Transition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x16 - 0x1 - 0x6 - 0x5) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData DjoseTransition = new MemoryLocationData(MemoryLocationNames.DjoseTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IxionTransition = new MemoryLocationData(MemoryLocationNames.IxionTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x2 - 0x7 - 0x0) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData TromellTransition = new MemoryLocationData(MemoryLocationNames.TromellTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x7 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0xAB0 });
         public static MemoryLocationData CrawlerTransition = new MemoryLocationData(MemoryLocationNames.CrawlerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC});
@@ -197,6 +202,10 @@
         public static MemoryLocationData BattleRewardEquip6 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip6, 0x1F11048);
         public static MemoryLocationData BattleRewardEquip7 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip7, 0x1F1106A);
         public static MemoryLocationData BattleRewardEquip8 = new MemoryLocationData(MemoryLocationNames.BattleRewardEquip8, 0x1F1108C);
+
+        // Items
+        public static MemoryLocationData ItemsStart = new MemoryLocationData(MemoryLocationNames.ItemsStart, 0xD3095C);
+        public static MemoryLocationData ItemsQtyStart = new MemoryLocationData(MemoryLocationNames.ItemsQtyStart, 0xD30B5C);
 
         // Menu Values - These are values which the game sets during the battle rewards menu which don't get cleaned out properly when we skip straight to the rewards screen.
         //               We set the values to 0x00000000 to clean these out after some skips
