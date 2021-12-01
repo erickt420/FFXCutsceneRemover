@@ -3,6 +3,8 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
+
 namespace FFXCutsceneRemover
 {
     class TankerTransition : Transition
@@ -18,13 +20,13 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.TankerTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.TankerTransition.Current == (BaseCutsceneValue + 0x18D) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.TankerTransition, BaseCutsceneValue + 0x358);
                     Stage += 1;
                 }

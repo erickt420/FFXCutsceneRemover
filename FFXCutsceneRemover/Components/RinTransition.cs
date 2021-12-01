@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -21,27 +22,27 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.RinTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.RinTransition.Current >= (BaseCutsceneValue + 0x271) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x466);
 
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.RinTransition.Current >= (BaseCutsceneValue + 0x49E) && Stage == 2)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x58B);
 
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.RinTransition.Current == (BaseCutsceneValue + 0x5B1) && Stage == 3)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     Storyline = 767;
                     SpawnPoint = 0;

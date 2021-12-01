@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -194,7 +195,7 @@ namespace FFXCutsceneRemover
         {
             if (ConsoleOutput)
             {
-                Console.WriteLine(
+                DiagnosticLog.Information(
                     !string.IsNullOrEmpty(Description) ? Description :
                     !string.IsNullOrEmpty(defaultDescription) ? defaultDescription :
                     DEFAULT_DESCRIPTION);
@@ -406,7 +407,7 @@ namespace FFXCutsceneRemover
                 IntPtr finalPointer;
                 if (!watcher.DeepPtr.DerefOffsets(process, out finalPointer))
                 {
-                    Console.WriteLine("Couldn't read the pointer path for: " + watcher.Name);
+                    DiagnosticLog.Information("Couldn't read the pointer path for: " + watcher.Name);
                 }
                 deepPointerWriteAction.Invoke(finalPointer);
             }
@@ -509,7 +510,7 @@ namespace FFXCutsceneRemover
                             alreadyExists = true;
                             itemsQty[j] += itemRewardsQty[i];
 
-                            Console.WriteLine("Existing Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
+                            DiagnosticLog.Information("Existing Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
 
                             break;
                         }
@@ -526,7 +527,7 @@ namespace FFXCutsceneRemover
                                 items[2 * j + 1] = itemRewards[2 * i + 1];
                                 itemsQty[j] = itemRewardsQty[i];
 
-                                Console.WriteLine("New Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
+                                DiagnosticLog.Information("New Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
 
                                 break;
                             }

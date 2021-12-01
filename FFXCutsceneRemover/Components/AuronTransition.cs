@@ -3,6 +3,8 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
+
 namespace FFXCutsceneRemover
 {
     class AuronTransition : Transition
@@ -18,21 +20,21 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.AuronTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
                 /*/ Skipping Tidus standing up doesn't seem to work
                 else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x271) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x306);
                     Stage += 1;
                 }
                 //*/
                 else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x34F) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x40A);
                     Stage += 1;
                 }

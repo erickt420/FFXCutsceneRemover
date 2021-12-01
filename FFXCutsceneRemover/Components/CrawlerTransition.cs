@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -47,7 +48,7 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0x635) && base.memoryWatchers.HpEnemyA.Current < 16000 && base.memoryWatchers.HpEnemyA.Old == 16000 && Stage == 5)
                 {
-                    Console.WriteLine("HP Check");
+                    DiagnosticLog.Information("HP Check");
                     WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x886);
                     Stage = 6;
                 }

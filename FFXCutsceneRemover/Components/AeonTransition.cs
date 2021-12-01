@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -134,7 +135,7 @@ namespace FFXCutsceneRemover
                          (base.memoryWatchers.EnableAnima.Current == 17) ||
                          (base.memoryWatchers.EnableMagus.Current == 17)) {
                     if (new GameState { HpEnemyA = 0 }.CheckState() && !(new PreviousGameState { HpEnemyA = 0 }.CheckState())) {
-                        Console.WriteLine(activeAeon + " Dead");
+                        DiagnosticLog.Information(activeAeon + " Dead");
                         activeAeon = "";
                         BaseCutsceneValue2 = base.memoryWatchers.AeonTransition.Current;
                         Stage = 4;
@@ -153,7 +154,7 @@ namespace FFXCutsceneRemover
                 else
                 {
                     if (new GameState { HpEnemyA = 0 }.CheckState() && !(new PreviousGameState { HpEnemyA = 0 }.CheckState())) {
-                        Console.WriteLine("This is the last time we fight together");
+                        DiagnosticLog.Information("This is the last time we fight together");
                         BaseCutsceneValue2 = base.memoryWatchers.AeonTransition.Current;
                         Stage = 4;
                     }
@@ -166,7 +167,7 @@ namespace FFXCutsceneRemover
                 /*
                 if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old || base.memoryWatchers.AeonTransition.Current != base.memoryWatchers.AeonTransition.Old)
                 {
-                    Console.WriteLine(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.AeonTransition.Current.ToString());
+                    DiagnosticLog.Information(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.AeonTransition.Current.ToString());
                 }
                 //*/
             }

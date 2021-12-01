@@ -3,6 +3,7 @@ using FFXCutsceneRemover.Resources;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -238,7 +239,7 @@ namespace FFXCutsceneRemover
         {
             Process = process;
             processBaseAddress = process.Modules[0].BaseAddress.ToInt32();
-            Console.WriteLine("Process base address: " + processBaseAddress);
+            DiagnosticLog.Information("Process base address: " + processBaseAddress);
 
             RoomNumber = GetMemoryWatcher<short>(MemoryLocations.RoomNumber);
             Storyline = GetMemoryWatcher<short>(MemoryLocations.Storyline);

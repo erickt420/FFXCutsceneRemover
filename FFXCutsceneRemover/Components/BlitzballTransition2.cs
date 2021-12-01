@@ -1,8 +1,6 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -21,13 +19,13 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.BlitzballTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.BlitzballTransition.Current == (BaseCutsceneValue + 0x2EA1) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.BlitzballTransition, BaseCutsceneValue + 0x301C);
                     Stage = 2;
                 }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using FFXCutsceneRemover.Logging;
 
 /*
  * Main loops for the Cutscene Remover program.
@@ -49,7 +50,7 @@ namespace FFXCutsceneRemover
 
                 MemoryWatchers.Initialize(Game);
 
-                Console.WriteLine("Starting main loop!");
+                DiagnosticLog.Information("Starting main loop!");
                 while (!Game.HasExited)
                 {
                     // Update the values of our memory watchers.
@@ -63,7 +64,7 @@ namespace FFXCutsceneRemover
                         // Report the current status of all of our watched memory. For debug purposes
                         foreach (MemoryWatcher watcher in watchers)
                         {
-                            Console.WriteLine(watcher.Name + ": " + watcher.Current);
+                            DiagnosticLog.Information(watcher.Name + ": " + watcher.Current);
                         }
                         Console.Write("InBossFight: " + InBossFight);
                     }
@@ -91,13 +92,13 @@ namespace FFXCutsceneRemover
                             {
                                 InBossFight = true;
                                 PostBossFightTransition = transition.Value;
-                                Console.WriteLine("Entered Boss Fight: " + transition.Value.Description);
+                                DiagnosticLog.Information("Entered Boss Fight: " + transition.Value.Description);
                             }
                         }
                     }
                     else if (InBossFight && new GameState {RoomNumber = 23}.CheckState())
                     {
-                        Console.WriteLine("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
+                        DiagnosticLog.Information("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
                         InBossFight = false;
                     }
                     else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
@@ -234,7 +235,7 @@ namespace FFXCutsceneRemover
 
         private void ConnectToTarget()
         {
-            Console.WriteLine("Connecting to FFX...");
+            DiagnosticLog.Information("Connecting to FFX...");
             try
             {
                 Game = Process.GetProcessesByName(TARGET_NAME).OrderByDescending(x => x.StartTime)
@@ -242,19 +243,19 @@ namespace FFXCutsceneRemover
             }
             catch (Win32Exception e)
             {
-                Console.WriteLine("Exception: " + e.Message);
+                DiagnosticLog.Information("Exception: " + e.Message);
             }
 
             if (Game == null || Game.HasExited)
             {
                 Game = null;
-                Console.WriteLine("FFX not found! Waiting for 10 seconds.");
+                DiagnosticLog.Information("FFX not found! Waiting for 10 seconds.");
 
                 Thread.Sleep(10 * 1000);
             }
             else
             {
-                Console.WriteLine("Connected to FFX!");
+                DiagnosticLog.Information("Connected to FFX!");
             }
         }
     }
