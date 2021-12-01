@@ -29,7 +29,7 @@ namespace FFXCutsceneRemover
                 /* We can skip post Dual Horns mini cutscene but it spawns us way back in the hall so we don't really save time. Also might impact airship encounters but unsure.
                 else if (base.memoryWatchers.HomeTransition.Current >= (BaseCutsceneValue + 0x427) && Stage == 2)
                 {
-                    Console.WriteLine("Test2");
+                    DiagnosticLog.Information("Test2");
                     WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x439);
                     Stage = 3;
                 }

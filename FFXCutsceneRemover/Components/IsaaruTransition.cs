@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -18,7 +19,7 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.IsaaruTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
 
                     Stage += 1;
 
@@ -32,7 +33,7 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.IsaaruTransition.Current >= (BaseCutsceneValue + 0x104) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     Formation = new byte[] { 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                     base.Execute();
 

@@ -89,7 +89,7 @@ namespace FFXCutsceneRemover
             /*/ Skipping Gui 2 death animation seems to reliably make the game crash
             else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x538) && base.memoryWatchers.HpEnemyA.Current == 6000 && Stage == 5)
             {
-                Console.WriteLine("Test " + Stage.ToString());
+                DiagnosticLog.Information("Test " + Stage.ToString());
 
                 WriteValue<int>(base.memoryWatchers.Gui2Transition, BaseCutsceneValue2 + 0x5E2);
 
@@ -97,12 +97,12 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 5)
             {
-                Console.WriteLine("Test " + Stage.ToString());
+                DiagnosticLog.Information("Test " + Stage.ToString());
                 Stage += 1;
             }
             else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 6)
             {
-                Console.WriteLine("Test " + Stage.ToString());
+                DiagnosticLog.Information("Test " + Stage.ToString());
 
                 Menu = 0;
                 Description = "Exit Menu";

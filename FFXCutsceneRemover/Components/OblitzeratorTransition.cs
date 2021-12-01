@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -19,27 +20,27 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.OblitzeratorTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.OblitzeratorTransition.Current >= (BaseCutsceneValue + 0xEC) && Stage == 1) // 21B , EC
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.OblitzeratorTransition, BaseCutsceneValue + 0x142);// 30A
 
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.OblitzeratorTransition.Current == (BaseCutsceneValue + 0x1A0) && Stage == 2) // 21B , EC
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.OblitzeratorTransition, BaseCutsceneValue + 0x30A);// 30A
 
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.OblitzeratorTransition.Current == (BaseCutsceneValue + 0x31F) && base.memoryWatchers.HpEnemyA.Current < 6000 && base.memoryWatchers.HpEnemyA.Old == 6000 && Stage == 3)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.OblitzeratorTransition, BaseCutsceneValue + 0x655);// 
                     Stage += 1;
                 }

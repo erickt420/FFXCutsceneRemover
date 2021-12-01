@@ -1,8 +1,6 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System;
+using FFXCutsceneRemover.Logging;
+
 namespace FFXCutsceneRemover
 {
     class AmmesTransition : Transition
@@ -17,13 +15,13 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.AmmesTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x16F) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     Transition actorPositions;
                     //Position Ammes
@@ -36,7 +34,7 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x3A1) && Stage == 2)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     Storyline = 16;
                     SpawnPoint = 1;
@@ -48,7 +46,7 @@ namespace FFXCutsceneRemover
                 }
                 else if (Stage == 3)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     Transition actorPositions;
                     //Position Tidus

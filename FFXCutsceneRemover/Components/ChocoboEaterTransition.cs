@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -19,13 +20,13 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.ChocoboEaterTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.ChocoboEaterTransition.Current >= (BaseCutsceneValue + 0x7A5) && Stage == 1) // 21B , EC
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.ChocoboEaterTransition, BaseCutsceneValue + 0xC96);// 30A
 
                     byte[] ActiveParty = process.ReadBytes(base.memoryWatchers.Formation.Address, 3);

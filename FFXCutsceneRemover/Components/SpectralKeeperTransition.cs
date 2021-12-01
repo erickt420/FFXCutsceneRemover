@@ -39,7 +39,7 @@ namespace FFXCutsceneRemover
             /*/
             if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old || base.memoryWatchers.SpectralKeeperTransition.Current != base.memoryWatchers.SpectralKeeperTransition.Old)
             {
-                Console.WriteLine(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.SpectralKeeperTransition.Current.ToString("X2"));
+                DiagnosticLog.Information(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.SpectralKeeperTransition.Current.ToString("X2"));
             }
             //*/
         }

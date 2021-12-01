@@ -3,6 +3,8 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
+
 namespace FFXCutsceneRemover
 {
     class GeneauxTransition : Transition
@@ -18,19 +20,19 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.GeneauxTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x4D8) && Stage == 1)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6B8);
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x6DC) && base.memoryWatchers.HpEnemyA.Current < 3000 && base.memoryWatchers.HpEnemyA.Old == 3000 && Stage == 2)
                 {
-                    Console.WriteLine("Stage: " + Stage.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x958);
                     Stage += 1;
                 }

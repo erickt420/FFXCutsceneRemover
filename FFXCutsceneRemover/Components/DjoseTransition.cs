@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -19,7 +20,7 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.DjoseTransition.Current;
-                    Console.WriteLine(BaseCutsceneValue.ToString("X2"));
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
 
                     Stage += 1;
 
