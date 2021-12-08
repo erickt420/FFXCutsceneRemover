@@ -66,7 +66,7 @@ namespace FFXCutsceneRemover
                         {
                             DiagnosticLog.Information(watcher.Name + ": " + watcher.Current);
                         }
-                        Console.Write("InBossFight: " + InBossFight);
+                        DiagnosticLog.Information("InBossFight: " + InBossFight);
                     }
 
                     /* This loop iterates over the list of standard transitions

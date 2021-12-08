@@ -22,12 +22,23 @@ namespace FFXCutsceneRemover
         public bool MenuCleanup = false;
         public bool AddItems = false;
         public bool PositionPartyOffScreen = false;
+        public bool PositionTidusAfterLoad = false;
         public string Description = null;
         public int BaseCutsceneValue = 0;
         public int BaseCutsceneValue2 = 0;
         public bool Repeatable = false;
         public bool Suspendable = true;
         public int Stage = 0;
+
+        public int? ActorArrayLength = null;
+        public int? TargetActorID = null;
+        public float? Target_x = null;
+        public float? Target_y = null;
+        public float? Target_z = null;
+        public float? Target_rot = null;
+        public float? PartyTarget_x = null;
+        public float? PartyTarget_y = null;
+        public float? PartyTarget_z = null;
 
         /* Only add members here for memory addresses that we want to write the value to.
          * If we only ever read the value then there is no need to add it here. */
@@ -43,6 +54,9 @@ namespace FFXCutsceneRemover
         public float? XCoordinate = null;
         public float? YCoordinate = null;
         public byte? Camera = null;
+        public float? Camera_x = null;
+        public float? Camera_y = null;
+        public float? Camera_z = null;
         public float? CameraRotation = null;
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
@@ -57,19 +71,28 @@ namespace FFXCutsceneRemover
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
-        public byte? TidusActionCount = null;
+        public float? TidusXCoordinate = null;
+        public float? TidusYCoordinate = null;
+        public float? TidusZCoordinate = null;
+        public float? TidusRotation = null;
         public int? AlBhedBoatTransition = null;
+        public int? UnderwaterRuinsTransition = null;
+        public int? UnderwaterRuinsTransition2 = null;
         public int? AuronTransition = null;
         public int? AmmesTransition = null;
         public int? TankerTransition = null;
+        public int? DiveTransition = null;
         public int? GeosTransition = null;
         public int? KlikkTransition = null;
+        public int? BeachTransition = null;
+        public int? LagoonTransition = null;
         public int? ValeforTransition = null;
         public int? KimahriTransition = null;
         public int? YunaBoatTransition = null;
         public int? SinFinTransition = null;
         public int? EchuillesTransition = null;
         public int? GeneauxTransition = null;
+        public int? KilikaTrialsTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
         public int? OblitzeratorTransition = null;
@@ -82,14 +105,21 @@ namespace FFXCutsceneRemover
         public int? Gui2Transition = null;
         public int? DjoseTransition = null;
         public int? IxionTransition = null;
+        public int? ExtractorTransition = null;
         public int? TromellTransition = null;
         public int? CrawlerTransition = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
+        public int? WendigoTransition = null;
+        public int? SpherimorphTransition = null;
+        public int? UnderLakeTransition = null;
+        public int? BikanelTransition = null;
         public int? HomeTransition = null;
         public int? EvraeTransition = null;
         public int? BahamutTransition = null;
         public int? IsaaruTransition = null;
+        public int? AltanaTransition = null;
+        public int? NatusTransition = null;
         public int? DefenderXTransition = null;
         public int? RonsoTransition = null;
         public int? FluxTransition = null;
@@ -123,6 +153,7 @@ namespace FFXCutsceneRemover
         public byte? BaajFlag1 = null;
 
         public byte? SSWinnoFlag1 = null;
+        public byte? KilikaMapFlag = null;
         public byte? SSWinnoFlag2 = null;
 
         public byte? LucaFlag = null;
@@ -132,6 +163,9 @@ namespace FFXCutsceneRemover
         public byte? MiihenFlag2 = null;
         public byte? MiihenFlag3 = null;
         public byte? MiihenFlag4 = null;
+
+        public byte? MRRFlag1 = null;
+        public byte? MRRFlag2 = null;
 
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
@@ -182,15 +216,6 @@ namespace FFXCutsceneRemover
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
 
-        public int? ActorArrayLength = null;
-        public int? TargetActorID = null;
-        public float? Target_x = null;
-        public float? Target_y = null;
-        public float? Target_z = null;
-        public float? PartyTarget_x = null;
-        public float? PartyTarget_y = null;
-        public float? PartyTarget_z = null;
-
         public virtual void Execute(string defaultDescription = "")
         {
             if (ConsoleOutput)
@@ -215,6 +240,9 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.XCoordinate, XCoordinate);
             WriteValue(memoryWatchers.YCoordinate, YCoordinate);
             WriteValue(memoryWatchers.Camera, Camera);
+            WriteValue(memoryWatchers.Camera_x, Camera_x);
+            WriteValue(memoryWatchers.Camera_y, Camera_y);
+            WriteValue(memoryWatchers.Camera_z, Camera_z);
             WriteValue(memoryWatchers.CameraRotation, CameraRotation);
             WriteValue(memoryWatchers.EncounterStatus, EncounterStatus);
             WriteValue(memoryWatchers.MovementLock, MovementLock);
@@ -228,19 +256,28 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
-            WriteValue(memoryWatchers.TidusActionCount, TidusActionCount);
+            WriteValue(memoryWatchers.TidusXCoordinate, TidusXCoordinate);
+            WriteValue(memoryWatchers.TidusYCoordinate, TidusYCoordinate);
+            WriteValue(memoryWatchers.TidusZCoordinate, TidusZCoordinate);
+            WriteValue(memoryWatchers.TidusRotation, TidusRotation);
             WriteValue(memoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
+            WriteValue(memoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
+            WriteValue(memoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
             WriteValue(memoryWatchers.AuronTransition, AuronTransition);
             WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
             WriteValue(memoryWatchers.TankerTransition, TankerTransition);
+            WriteValue(memoryWatchers.DiveTransition, DiveTransition);
             WriteValue(memoryWatchers.GeosTransition, GeosTransition);
             WriteValue(memoryWatchers.KlikkTransition, KlikkTransition);
+            WriteValue(memoryWatchers.BeachTransition, BeachTransition);
+            WriteValue(memoryWatchers.LagoonTransition, LagoonTransition);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
             WriteValue(memoryWatchers.YunaBoatTransition, YunaBoatTransition);
             WriteValue(memoryWatchers.SinFinTransition, SinFinTransition);
             WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
+            WriteValue(memoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
             WriteValue(memoryWatchers.OblitzeratorTransition, OblitzeratorTransition);
@@ -253,14 +290,21 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Gui2Transition, Gui2Transition);
             WriteValue(memoryWatchers.DjoseTransition, DjoseTransition);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
+            WriteValue(memoryWatchers.ExtractorTransition, ExtractorTransition);
             WriteValue(memoryWatchers.TromellTransition, TromellTransition);
             WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
             WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
             WriteValue(memoryWatchers.SeymourTransition2, SeymourTransition2);
+            WriteValue(memoryWatchers.WendigoTransition, WendigoTransition);
+            WriteValue(memoryWatchers.SpherimorphTransition, SpherimorphTransition);
+            WriteValue(memoryWatchers.UnderLakeTransition, UnderLakeTransition);
+            WriteValue(memoryWatchers.BikanelTransition, BikanelTransition);
             WriteValue(memoryWatchers.HomeTransition, HomeTransition);
             WriteValue(memoryWatchers.EvraeTransition, EvraeTransition);
             WriteValue(memoryWatchers.BahamutTransition, BahamutTransition);
             WriteValue(memoryWatchers.IsaaruTransition, IsaaruTransition);
+            WriteValue(memoryWatchers.AltanaTransition, AltanaTransition);
+            WriteValue(memoryWatchers.NatusTransition, NatusTransition);
             WriteValue(memoryWatchers.DefenderXTransition, DefenderXTransition);
             WriteValue(memoryWatchers.RonsoTransition, RonsoTransition);
             WriteValue(memoryWatchers.FluxTransition, FluxTransition);
@@ -292,6 +336,7 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);
             WriteValue(memoryWatchers.SSWinnoFlag1, SSWinnoFlag1);
+            WriteValue(memoryWatchers.KilikaMapFlag, KilikaMapFlag);
             WriteValue(memoryWatchers.SSWinnoFlag2, SSWinnoFlag2);
 
             WriteValue(memoryWatchers.LucaFlag, LucaFlag);
@@ -300,6 +345,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
             WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
             WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
+            WriteValue(memoryWatchers.MRRFlag1, MRRFlag1);
+            WriteValue(memoryWatchers.MRRFlag2, MRRFlag2);
             WriteValue(memoryWatchers.MoonflowFlag, MoonflowFlag);
             WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
@@ -365,15 +412,29 @@ namespace FFXCutsceneRemover
             {
                 PartyOffScreen();
             }
-
-            SetActorPosition(TargetActorID, Target_x, Target_y, Target_z);
-
+            //*/
+            if (PositionTidusAfterLoad)
+            {
+                process.Resume();
+                while(memoryWatchers.ForceLoad.Current == 1 || memoryWatchers.State.Current == -1)
+                {
+                    memoryWatchers.ForceLoad.Update(process);
+                    memoryWatchers.State.Update(process);
+                }
+                process.Suspend();
+                SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot);
+            }
+            else
+            {
+                SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot);
+            }
         }
 
         /* Set the force load bit. Will immediately cause a fade and load. */
         private void ForceGameLoad()
         {
             WriteValue<byte>(memoryWatchers.ForceLoad, 1);
+            memoryWatchers.ForceLoad.Update(process);
         }
 
         protected void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
@@ -454,6 +515,17 @@ namespace FFXCutsceneRemover
                 hashCode *= property.GetValue(this).GetHashCode();
             }
             return hashCode;
+        }
+
+        public byte[] SwapCharacterWithPosition(byte[] formation, byte characterIndex, int newPosition)
+        {
+            int oldposition = Array.IndexOf(formation, characterIndex);
+            
+            byte temp = formation[oldposition];
+            formation[oldposition] = formation[newPosition];
+            formation[newPosition] = temp;
+
+            return formation;
         }
 
         private void FullPartyHeal()
@@ -606,7 +678,7 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private void SetActorPosition(int? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null)
+        private void SetActorPosition(int? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null)
         {
             Process process = memoryWatchers.Process;
 
@@ -629,6 +701,7 @@ namespace FFXCutsceneRemover
                         MemoryWatcher<float> characterPos_y = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x10 + 0x880 * i }));
                         MemoryWatcher<float> characterPos_z = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x14 + 0x880 * i }));
                         MemoryWatcher<float> characterPos_floor = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x16C + 0x880 * i }));
+                        MemoryWatcher<float> characterPos_rot = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x1D0 + 0x880 * i }));
 
                         if (!(Target_x is null))
                         {
@@ -636,12 +709,16 @@ namespace FFXCutsceneRemover
                         }
                         if (!(Target_y is null))
                         {
-                            WriteValue<float>(characterPos_floor, Target_y); // Always set floor to be the target y value since we don't want floating characters
+                            WriteValue<float>(characterPos_floor, Target_y); // Always set floor to be the target y value since this ultimately dictates y
                             WriteValue<float>(characterPos_y, Target_y);
                         }
                         if (!(Target_z is null))
                         {
                             WriteValue<float>(characterPos_z, Target_z);
+                        }
+                        if (!(Target_rot is null))
+                        {
+                            WriteValue<float>(characterPos_rot, Target_rot);
                         }
                     }
                 }

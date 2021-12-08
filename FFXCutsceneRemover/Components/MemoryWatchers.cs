@@ -34,6 +34,9 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<float> XCoordinate;
         public MemoryWatcher<float> YCoordinate;
         public MemoryWatcher<byte> Camera;
+        public MemoryWatcher<float> Camera_x;
+        public MemoryWatcher<float> Camera_y;
+        public MemoryWatcher<float> Camera_z;
         public MemoryWatcher<float> CameraRotation;
         public MemoryWatcher<byte> EncounterStatus;
         public MemoryWatcher<byte> MovementLock;
@@ -49,19 +52,30 @@ namespace FFXCutsceneRemover
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
         public MemoryWatcher<byte> GuadoCount;
+        public MemoryWatcher<short> NPCLastInteraction;
         public MemoryWatcher<byte> TidusActionCount;
+        public MemoryWatcher<float> TidusXCoordinate;
+        public MemoryWatcher<float> TidusYCoordinate;
+        public MemoryWatcher<float> TidusZCoordinate;
+        public MemoryWatcher<float> TidusRotation;
         public MemoryWatcher<int> AlBhedBoatTransition;
+        public MemoryWatcher<int> UnderwaterRuinsTransition;
+        public MemoryWatcher<int> UnderwaterRuinsTransition2;
         public MemoryWatcher<int> AuronTransition;
         public MemoryWatcher<int> AmmesTransition;
         public MemoryWatcher<int> TankerTransition;
+        public MemoryWatcher<int> DiveTransition;
         public MemoryWatcher<int> GeosTransition;
         public MemoryWatcher<int> KlikkTransition;
+        public MemoryWatcher<int> BeachTransition;
+        public MemoryWatcher<int> LagoonTransition;
         public MemoryWatcher<int> ValeforTransition;
         public MemoryWatcher<int> KimahriTransition;
         public MemoryWatcher<int> YunaBoatTransition;
         public MemoryWatcher<int> SinFinTransition;
         public MemoryWatcher<int> EchuillesTransition;
         public MemoryWatcher<int> GeneauxTransition;
+        public MemoryWatcher<int> KilikaTrialsTransition;
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
         public MemoryWatcher<int> OblitzeratorTransition;
@@ -74,14 +88,21 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> Gui2Transition;
         public MemoryWatcher<int> DjoseTransition;
         public MemoryWatcher<int> IxionTransition;
+        public MemoryWatcher<int> ExtractorTransition;
         public MemoryWatcher<int> TromellTransition;
         public MemoryWatcher<int> CrawlerTransition;
         public MemoryWatcher<int> SeymourTransition;
         public MemoryWatcher<int> SeymourTransition2;
+        public MemoryWatcher<int> WendigoTransition;
+        public MemoryWatcher<int> SpherimorphTransition;
+        public MemoryWatcher<int> UnderLakeTransition;
+        public MemoryWatcher<int> BikanelTransition;
         public MemoryWatcher<int> HomeTransition;
         public MemoryWatcher<int> EvraeTransition;
         public MemoryWatcher<int> BahamutTransition;
         public MemoryWatcher<int> IsaaruTransition;
+        public MemoryWatcher<int> AltanaTransition;
+        public MemoryWatcher<int> NatusTransition;
         public MemoryWatcher<int> DefenderXTransition;
         public MemoryWatcher<int> RonsoTransition;
         public MemoryWatcher<int> FluxTransition;
@@ -161,6 +182,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> BaajFlag1;
         public MemoryWatcher<byte> BesaidFlag1;
         public MemoryWatcher<byte> SSWinnoFlag1;
+        public MemoryWatcher<byte> KilikaMapFlag;
         public MemoryWatcher<byte> SSWinnoFlag2;
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
@@ -168,6 +190,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MiihenFlag2;
         public MemoryWatcher<byte> MiihenFlag3;
         public MemoryWatcher<byte> MiihenFlag4;
+        public MemoryWatcher<byte> MRRFlag1;
+        public MemoryWatcher<byte> MRRFlag2;
         public MemoryWatcher<byte> MoonflowFlag;
         public MemoryWatcher<byte> MoonflowFlag2;
         public MemoryWatcher<byte> RikkuOutfit;
@@ -254,6 +278,9 @@ namespace FFXCutsceneRemover
             XCoordinate = GetMemoryWatcher<float>(MemoryLocations.XCoordinate);
             YCoordinate = GetMemoryWatcher<float>(MemoryLocations.YCoordinate);
             Camera = GetMemoryWatcher<byte>(MemoryLocations.Camera);
+            Camera_x = GetMemoryWatcher<float>(MemoryLocations.Camera_x);
+            Camera_y = GetMemoryWatcher<float>(MemoryLocations.Camera_y);
+            Camera_z = GetMemoryWatcher<float>(MemoryLocations.Camera_z);
             CameraRotation = GetMemoryWatcher<float>(MemoryLocations.CameraRotation);
             EncounterStatus = GetMemoryWatcher<byte>(MemoryLocations.EncounterStatus);
             MovementLock = GetMemoryWatcher<byte>(MemoryLocations.MovementLock);
@@ -269,19 +296,30 @@ namespace FFXCutsceneRemover
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
             GuadoCount = GetMemoryWatcher<byte>(MemoryLocations.GuadoCount);
+            NPCLastInteraction = GetMemoryWatcher<short>(MemoryLocations.NPCLastInteraction);
             TidusActionCount = GetMemoryWatcher<byte>(MemoryLocations.TidusActionCount);
+            TidusXCoordinate = GetMemoryWatcher<float>(MemoryLocations.TidusXCoordinate);
+            TidusYCoordinate = GetMemoryWatcher<float>(MemoryLocations.TidusYCoordinate);
+            TidusZCoordinate = GetMemoryWatcher<float>(MemoryLocations.TidusZCoordinate);
+            TidusRotation = GetMemoryWatcher<float>(MemoryLocations.TidusRotation);
             AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
+            UnderwaterRuinsTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition);
+            UnderwaterRuinsTransition2 = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition2);
             AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
             AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
             TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
+            DiveTransition = GetMemoryWatcher<int>(MemoryLocations.DiveTransition);
             GeosTransition = GetMemoryWatcher<int>(MemoryLocations.GeosTransition);
             KlikkTransition = GetMemoryWatcher<int>(MemoryLocations.KlikkTransition);
+            BeachTransition = GetMemoryWatcher<int>(MemoryLocations.BeachTransition);
+            LagoonTransition = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
             KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
             YunaBoatTransition = GetMemoryWatcher<int>(MemoryLocations.YunaBoatTransition);
             SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
             EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
             GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
+            KilikaTrialsTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaTrialsTransition);
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
             OblitzeratorTransition = GetMemoryWatcher<int>(MemoryLocations.OblitzeratorTransition);
@@ -294,14 +332,21 @@ namespace FFXCutsceneRemover
             Gui2Transition = GetMemoryWatcher<int>(MemoryLocations.Gui2Transition);
             DjoseTransition = GetMemoryWatcher<int>(MemoryLocations.DjoseTransition);
             IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
+            ExtractorTransition = GetMemoryWatcher<int>(MemoryLocations.ExtractorTransition);
             TromellTransition = GetMemoryWatcher<int>(MemoryLocations.TromellTransition);
             CrawlerTransition = GetMemoryWatcher<int>(MemoryLocations.CrawlerTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
             SeymourTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition2);
+            WendigoTransition = GetMemoryWatcher<int>(MemoryLocations.WendigoTransition);
+            SpherimorphTransition = GetMemoryWatcher<int>(MemoryLocations.SpherimorphTransition);
+            UnderLakeTransition = GetMemoryWatcher<int>(MemoryLocations.UnderLakeTransition);
+            BikanelTransition = GetMemoryWatcher<int>(MemoryLocations.BikanelTransition);
             HomeTransition = GetMemoryWatcher<int>(MemoryLocations.HomeTransition);
             EvraeTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeTransition);
             BahamutTransition = GetMemoryWatcher<int>(MemoryLocations.BahamutTransition);
             IsaaruTransition = GetMemoryWatcher<int>(MemoryLocations.IsaaruTransition);
+            AltanaTransition = GetMemoryWatcher<int>(MemoryLocations.AltanaTransition);
+            NatusTransition = GetMemoryWatcher<int>(MemoryLocations.NatusTransition);
             DefenderXTransition = GetMemoryWatcher<int>(MemoryLocations.DefenderXTransition);
             RonsoTransition = GetMemoryWatcher<int>(MemoryLocations.RonsoTransition);
             FluxTransition = GetMemoryWatcher<int>(MemoryLocations.FluxTransition);
@@ -378,6 +423,7 @@ namespace FFXCutsceneRemover
             BaajFlag1 = GetMemoryWatcher<byte>(MemoryLocations.BaajFlag1);
             BesaidFlag1 = GetMemoryWatcher<byte>(MemoryLocations.BesaidFlag1);
             SSWinnoFlag1 = GetMemoryWatcher<byte>(MemoryLocations.SSWinnoFlag1);
+            KilikaMapFlag = GetMemoryWatcher<byte>(MemoryLocations.KilikaMapFlag);
             SSWinnoFlag2 = GetMemoryWatcher<byte>(MemoryLocations.SSWinnoFlag2);
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
@@ -385,6 +431,8 @@ namespace FFXCutsceneRemover
             MiihenFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag2);
             MiihenFlag3 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag3);
             MiihenFlag4 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag4);
+            MRRFlag1 = GetMemoryWatcher<byte>(MemoryLocations.MRRFlag1);
+            MRRFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MRRFlag2);
             MoonflowFlag = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag);
             MoonflowFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag2);
             RikkuOutfit = GetMemoryWatcher<byte>(MemoryLocations.RikkuOutfit);
@@ -451,6 +499,9 @@ namespace FFXCutsceneRemover
                     XCoordinate,
                     YCoordinate,
                     Camera,
+                    Camera_x,
+                    Camera_y,
+                    Camera_z,
                     CameraRotation,
                     EncounterStatus,
                     MovementLock,
@@ -465,19 +516,30 @@ namespace FFXCutsceneRemover
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
+                    NPCLastInteraction,
                     TidusActionCount,
+                    TidusXCoordinate,
+                    TidusYCoordinate,
+                    TidusZCoordinate,
+                    TidusRotation,
                     AlBhedBoatTransition,
+                    UnderwaterRuinsTransition,
+                    UnderwaterRuinsTransition2,
                     AuronTransition,
                     AmmesTransition,
                     TankerTransition,
+                    DiveTransition,
                     GeosTransition,
                     KlikkTransition,
+                    BeachTransition,
+                    LagoonTransition,
                     ValeforTransition,
                     KimahriTransition,
                     YunaBoatTransition,
                     SinFinTransition,
                     EchuillesTransition,
                     GeneauxTransition,
+                    KilikaTrialsTransition,
                     IfritTransition,
                     IfritTransition2,
                     OblitzeratorTransition,
@@ -490,14 +552,21 @@ namespace FFXCutsceneRemover
                     Gui2Transition,
                     DjoseTransition,
                     IxionTransition,
+                    ExtractorTransition,
                     TromellTransition,
                     CrawlerTransition,
                     SeymourTransition,
                     SeymourTransition2,
+                    WendigoTransition,
+                    SpherimorphTransition,
+                    UnderLakeTransition,
+                    BikanelTransition,
                     HomeTransition,
                     EvraeTransition,
                     BahamutTransition,
                     IsaaruTransition,
+                    AltanaTransition,
+                    NatusTransition,
                     DefenderXTransition,
                     RonsoTransition,
                     FluxTransition,
@@ -541,6 +610,7 @@ namespace FFXCutsceneRemover
                     BaajFlag1,
                     BesaidFlag1,
                     SSWinnoFlag1,
+                    KilikaMapFlag,
                     SSWinnoFlag2,
                     LucaFlag,
                     LucaFlag2,
@@ -548,6 +618,8 @@ namespace FFXCutsceneRemover
                     MiihenFlag2,
                     MiihenFlag3,
                     MiihenFlag4,
+                    MRRFlag1,
+                    MRRFlag2,
                     MoonflowFlag,
                     MoonflowFlag2,
                     RikkuOutfit,

@@ -26,7 +26,9 @@ namespace FFXCutsceneRemover
             {
 
                 Storyline = 857;
+                ConsoleOutput = false;
                 base.Execute();
+                ConsoleOutput = true;
 
                 WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0x14BA);
 
@@ -53,7 +55,7 @@ namespace FFXCutsceneRemover
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x15B) && Stage == 4)
+            else if (base.memoryWatchers.Gui2Transition.Current >= (BaseCutsceneValue2 + 0x15B) && Stage == 4)
             {
                 Process process = memoryWatchers.Process;
                 GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 7);

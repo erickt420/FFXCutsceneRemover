@@ -31,7 +31,7 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.KimahriTransition.Current == (BaseCutsceneValue + 0x178) && base.memoryWatchers.HpEnemyA.Current < 750 && base.memoryWatchers.HpEnemyA.Old == 750 && Stage == 2)
                 {
-                    WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x75C);
+                    WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x835); // 75C , 77B
                     Stage = 3;
                 }
             }

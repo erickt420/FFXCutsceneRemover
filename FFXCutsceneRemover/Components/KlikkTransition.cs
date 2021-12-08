@@ -14,12 +14,6 @@ namespace FFXCutsceneRemover
         {
             if (base.memoryWatchers.KlikkTransition.Current > 0)
             {
-
-                if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old || base.memoryWatchers.KlikkTransition.Current != base.memoryWatchers.KlikkTransition.Old)
-                {
-                    DiagnosticLog.Information(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.KlikkTransition.Current.ToString("X2"));
-                }
-
                 if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
                     base.Execute();

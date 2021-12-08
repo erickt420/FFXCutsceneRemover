@@ -21,6 +21,9 @@
         public static MemoryLocationData XCoordinate = new MemoryLocationData(MemoryLocationNames.XCoordinate, 0xF25D80);
         public static MemoryLocationData YCoordinate = new MemoryLocationData(MemoryLocationNames.YCoordinate, 0xF25D78);
         public static MemoryLocationData Camera = new MemoryLocationData(MemoryLocationNames.Camera, 0xD3818C);
+        public static MemoryLocationData Camera_x = new MemoryLocationData(MemoryLocationNames.Camera_x, 0xD37B7C);
+        public static MemoryLocationData Camera_y = new MemoryLocationData(MemoryLocationNames.Camera_y, 0xD37B80);
+        public static MemoryLocationData Camera_z = new MemoryLocationData(MemoryLocationNames.Camera_z, 0xD37B84);
         public static MemoryLocationData CameraRotation = new MemoryLocationData(MemoryLocationNames.CameraRotation, 0x8A858C);
         public static MemoryLocationData EncounterStatus = new MemoryLocationData(MemoryLocationNames.EncounterStatus, 0xF25D70);
         public static MemoryLocationData MovementLock = new MemoryLocationData(MemoryLocationNames.MovementLock, 0xF25B63);
@@ -36,21 +39,32 @@
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
         public static MemoryLocationData GuadoCount = new MemoryLocationData(MemoryLocationNames.GuadoCount, 0xF2FF14, 0x120);
+        public static MemoryLocationData NPCLastInteraction = new MemoryLocationData(MemoryLocationNames.NPCLastInteraction, 0xF26AE8, 0x1E8);
         public static MemoryLocationData TidusActionCount = new MemoryLocationData(MemoryLocationNames.TidusActionCount, 0xD334CC, 0x6DF);
+        public static MemoryLocationData TidusXCoordinate = new MemoryLocationData(MemoryLocationNames.TidusXCoordinate, 0x1FC44E4, 0x0C);
+        public static MemoryLocationData TidusYCoordinate = new MemoryLocationData(MemoryLocationNames.TidusYCoordinate, 0x1FC44E4, 0x10);
+        public static MemoryLocationData TidusZCoordinate = new MemoryLocationData(MemoryLocationNames.TidusZCoordinate, 0x1FC44E4, 0x14);
+        public static MemoryLocationData TidusRotation = new MemoryLocationData(MemoryLocationNames.TidusRotation, 0x1FC44E4, 0x1D0);
 
         //Bespoke Transitions
         public static MemoryLocationData AuronTransition = new MemoryLocationData(MemoryLocationNames.AuronTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AmmesTransition = new MemoryLocationData(MemoryLocationNames.AmmesTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x4F - 0x1 - 0x9 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
         public static MemoryLocationData TankerTransition = new MemoryLocationData(MemoryLocationNames.TankerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x38 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
+        public static MemoryLocationData DiveTransition = new MemoryLocationData(MemoryLocationNames.DiveTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData GeosTransition = new MemoryLocationData(MemoryLocationNames.GeosTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 + 0x4C });
         public static MemoryLocationData KlikkTransition = new MemoryLocationData(MemoryLocationNames.KlikkTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x30 - 0x9 - 0x4 - 0x8) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AlBhedBoatTransition = new MemoryLocationData(MemoryLocationNames.AlBhedBoatTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x0 - 0x3 - 0x3) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData UnderwaterRuinsTransition = new MemoryLocationData(MemoryLocationNames.UnderwaterRuinsTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData UnderwaterRuinsTransition2 = new MemoryLocationData(MemoryLocationNames.UnderwaterRuinsTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x0 - 0x0 - 0x0) + 0x12C + 0x18 });
+        public static MemoryLocationData BeachTransition = new MemoryLocationData(MemoryLocationNames.BeachTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x43 - 0x1 - 0xD - 0x22) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData LagoonTransition = new MemoryLocationData(MemoryLocationNames.LagoonTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0xF - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x42E0});
         public static MemoryLocationData ValeforTransition = new MemoryLocationData(MemoryLocationNames.ValeforTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x39 - 0x9 - 0x6 - 0x11) + 0x12C + 0x4C + 0x18 + 0x1560 });
         public static MemoryLocationData KimahriTransition = new MemoryLocationData(MemoryLocationNames.KimahriTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x17 - 0x4 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x5A28 });
         public static MemoryLocationData YunaBoatTransition = new MemoryLocationData(MemoryLocationNames.YunaBoatTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x52 - 0xE - 0xA - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
         public static MemoryLocationData SinFinTransition = new MemoryLocationData(MemoryLocationNames.SinFinTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x29 - 0x2 - 0x4 - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
         public static MemoryLocationData EchuillesTransition = new MemoryLocationData(MemoryLocationNames.EchuillesTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x11 - 0x0 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558});
         public static MemoryLocationData GeneauxTransition = new MemoryLocationData(MemoryLocationNames.GeneauxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData KilikaTrialsTransition = new MemoryLocationData(MemoryLocationNames.KilikaTrialsTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x30 - 0xD - 0xC - 0x7) + 0x12C + 0x18 });
         public static MemoryLocationData IfritTransition = new MemoryLocationData(MemoryLocationNames.IfritTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IfritTransition2 = new MemoryLocationData(MemoryLocationNames.IfritTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
         public static MemoryLocationData OblitzeratorTransition = new MemoryLocationData(MemoryLocationNames.OblitzeratorTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
@@ -63,14 +77,21 @@
         public static MemoryLocationData Gui2Transition = new MemoryLocationData(MemoryLocationNames.Gui2Transition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x16 - 0x1 - 0x6 - 0x5) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData DjoseTransition = new MemoryLocationData(MemoryLocationNames.DjoseTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData IxionTransition = new MemoryLocationData(MemoryLocationNames.IxionTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1E - 0x2 - 0x7 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData ExtractorTransition = new MemoryLocationData(MemoryLocationNames.ExtractorTransition, 0xF26AE8, new int[] { 0x1C, 0x675C });
         public static MemoryLocationData TromellTransition = new MemoryLocationData(MemoryLocationNames.TromellTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x7 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0xAB0 });
         public static MemoryLocationData CrawlerTransition = new MemoryLocationData(MemoryLocationNames.CrawlerTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC});
-        public static MemoryLocationData SeymourTransition = new MemoryLocationData(MemoryLocationNames.SeymourTransition, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0xFDC });
-        public static MemoryLocationData SeymourTransition2 = new MemoryLocationData(MemoryLocationNames.SeymourTransition2, 0xD3777C, new int[] { 0x398, 0x4A8, 0x4A8, 0x4A8, 0x248, 0x1028 });
+        public static MemoryLocationData SeymourTransition = new MemoryLocationData(MemoryLocationNames.SeymourTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x14 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData SeymourTransition2 = new MemoryLocationData(MemoryLocationNames.SeymourTransition2, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x14 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
+        public static MemoryLocationData WendigoTransition = new MemoryLocationData(MemoryLocationNames.WendigoTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC });
+        public static MemoryLocationData SpherimorphTransition = new MemoryLocationData(MemoryLocationNames.SpherimorphTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x14 - 0x1 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData UnderLakeTransition = new MemoryLocationData(MemoryLocationNames.UnderLakeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0xC - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData BikanelTransition = new MemoryLocationData(MemoryLocationNames.BikanelTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x42 - 0x6 - 0xC - 0x18) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData HomeTransition = new MemoryLocationData(MemoryLocationNames.HomeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x2D - 0x6 - 0x9 - 0xA) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData EvraeTransition = new MemoryLocationData(MemoryLocationNames.EvraeTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x26 - 0x2 - 0x6 - 0x1) + 0x12C + 0x18 });
         public static MemoryLocationData BahamutTransition = new MemoryLocationData(MemoryLocationNames.BahamutTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x1 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x9F1C });
         public static MemoryLocationData IsaaruTransition = new MemoryLocationData(MemoryLocationNames.IsaaruTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x43 - 0xE - 0x5 - 0x17) + 0x12C + 0x4C + 0x18 + 0x1B9C});
+        public static MemoryLocationData AltanaTransition = new MemoryLocationData(MemoryLocationNames.AltanaTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x17 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0xB94 });
+        public static MemoryLocationData NatusTransition = new MemoryLocationData(MemoryLocationNames.NatusTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x4378 });
         public static MemoryLocationData DefenderXTransition = new MemoryLocationData(MemoryLocationNames.DefenderXTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x20 - 0x3 - 0x7 - 0x9) + 0x12C + 0x4C + 0x18 + 0x4C });
         public static MemoryLocationData RonsoTransition = new MemoryLocationData(MemoryLocationNames.RonsoTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x27 - 0x5 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData FluxTransition = new MemoryLocationData(MemoryLocationNames.FluxTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x15 - 0x2 - 0x6 - 0x1) + 0x12C + 0x4C + 0x18});
@@ -156,6 +177,7 @@
         public static MemoryLocationData BaajFlag1 = new MemoryLocationData(MemoryLocationNames.BaajFlag1, 0xD2CE0C);
         public static MemoryLocationData BesaidFlag1 = new MemoryLocationData(MemoryLocationNames.BesaidFlag1, 0xF25AB3);
         public static MemoryLocationData SSWinnoFlag1 = new MemoryLocationData(MemoryLocationNames.SSWinnoFlag1, 0xD2CE7D);
+        public static MemoryLocationData KilikaMapFlag = new MemoryLocationData(MemoryLocationNames.KilikaMapFlag, 0xD2CE7E);
         public static MemoryLocationData SSWinnoFlag2 = new MemoryLocationData(MemoryLocationNames.SSWinnoFlag2, 0xD2CE7F);
         public static MemoryLocationData LucaFlag = new MemoryLocationData(MemoryLocationNames.LucaFlag, 0xD2CDE5);
         public static MemoryLocationData LucaFlag2 = new MemoryLocationData(MemoryLocationNames.LucaFlag2, 0xD2CDE4);
@@ -163,6 +185,8 @@
         public static MemoryLocationData MiihenFlag2 = new MemoryLocationData(MemoryLocationNames.MiihenFlag2, 0xD2CCFF);
         public static MemoryLocationData MiihenFlag3 = new MemoryLocationData(MemoryLocationNames.MiihenFlag3, 0xD2CD00);
         public static MemoryLocationData MiihenFlag4 = new MemoryLocationData(MemoryLocationNames.MiihenFlag4, 0xD2CD04);
+        public static MemoryLocationData MRRFlag1 = new MemoryLocationData(MemoryLocationNames.MRRFlag1, 0xD2CD07);
+        public static MemoryLocationData MRRFlag2 = new MemoryLocationData(MemoryLocationNames.MRRFlag2, 0xD2CD08);
         public static MemoryLocationData MoonflowFlag = new MemoryLocationData(MemoryLocationNames.MoonflowFlag, 0xD2CC7F);
         public static MemoryLocationData MoonflowFlag2 = new MemoryLocationData(MemoryLocationNames.MoonflowFlag2, 0xD2CC83);
         public static MemoryLocationData RikkuOutfit = new MemoryLocationData(MemoryLocationNames.RikkuOutfit, 0xD2CB61);
