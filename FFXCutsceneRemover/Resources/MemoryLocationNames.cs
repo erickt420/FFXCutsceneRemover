@@ -31,6 +31,8 @@
         public static string AuronOverdrives = "AuronOverdrives";
         public static string Gil = "Gil";
         public static string TargetFramerate = "TargetFramerate";
+        public static string Dialogue1 = "Dialogue1";
+        public static string DialogueOption = "DialogueOption";
 
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
@@ -146,6 +148,7 @@
         public static string BikanelFlag = "BikanelFlag";
         public static string Sandragoras = "Sandragoras";
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
+        public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
 

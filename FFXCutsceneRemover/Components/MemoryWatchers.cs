@@ -48,6 +48,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> AuronOverdrives;
         public MemoryWatcher<int> Gil;
         public MemoryWatcher<int> TargetFramerate;
+        public MemoryWatcher<int> Dialogue1;
+        public MemoryWatcher<byte> DialogueOption;
 
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
@@ -200,6 +202,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> BikanelFlag;
         public MemoryWatcher<byte> Sandragoras;
         public MemoryWatcher<byte> ViaPurificoPlatform;
+        public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
 
@@ -292,6 +295,8 @@ namespace FFXCutsceneRemover
             AuronOverdrives = GetMemoryWatcher<short>(MemoryLocations.AuronOverdrives);
             Gil = GetMemoryWatcher<int>(MemoryLocations.Gil);
             TargetFramerate = GetMemoryWatcher<int>(MemoryLocations.TargetFramerate);
+            Dialogue1 = GetMemoryWatcher<int>(MemoryLocations.Dialogue1);
+            DialogueOption = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption);
 
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
@@ -441,6 +446,7 @@ namespace FFXCutsceneRemover
             BikanelFlag = GetMemoryWatcher<byte>(MemoryLocations.BikanelFlag);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
+            NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
 
@@ -513,6 +519,8 @@ namespace FFXCutsceneRemover
                     AuronOverdrives,
                     Gil,
                     TargetFramerate,
+                    Dialogue1,
+                    DialogueOption,
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
@@ -627,6 +635,7 @@ namespace FFXCutsceneRemover
                     MacalaniaFlag,
                     BikanelFlag,
                     ViaPurificoPlatform,
+                    NatusFlag,
                     CalmLandsFlag,
                     GagazetCaveFlag,
                     GilBattleRewards,

@@ -57,10 +57,6 @@ namespace FFXCutsceneRemover
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
-                    DiagnosticLog.Information("X: " + TidusXCoordinate);
-                    DiagnosticLog.Information("Y: " + TidusYCoordinate);
-                    DiagnosticLog.Information("Z: " + TidusZCoordinate);
-
                     WriteValue<float>(base.memoryWatchers.TidusXCoordinate, TidusXCoordinate);
                     WriteValue<float>(base.memoryWatchers.TidusYCoordinate, TidusYCoordinate);
                     WriteValue<float>(base.memoryWatchers.TidusZCoordinate, TidusZCoordinate);

@@ -33,7 +33,7 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.RinTransition.Current >= (BaseCutsceneValue + 0x49E) && Stage == 2)
+                else if (base.memoryWatchers.Dialogue1.Current == 92 && Stage == 2)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x58B);

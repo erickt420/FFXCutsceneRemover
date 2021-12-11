@@ -20,7 +20,7 @@ namespace FFXCutsceneRemover
                 else if (base.memoryWatchers.BikanelTransition.Current == (BaseCutsceneValue + 0x11F) && Stage == 1)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.BikanelTransition, BaseCutsceneValue + 0x214); // 1DC
+                    WriteValue<int>(base.memoryWatchers.BikanelTransition, BaseCutsceneValue + 0x1DC); // 1DC
 
                     Transition actorPositions;
                     // After the transition Kimahri's model is still visible so we bin him off to Narnia

@@ -128,7 +128,7 @@ namespace FFXCutsceneRemover
 #if DEBUG
                     if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
                     {
-                        ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" });
+                        ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start", Repeatable = true });
                     }
 #endif
                     

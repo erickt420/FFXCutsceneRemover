@@ -42,8 +42,6 @@ namespace FFXCutsceneRemover
 
                     CurrentWeapon = KimahriWeapon.Current;
                     CurrentArmor = KimahriArmor.Current;
-                    Console.WriteLine(CurrentWeapon);
-                    Console.WriteLine(CurrentArmor);
 
                     WriteValue<int>(base.memoryWatchers.EnableKimahri, 17);
 
@@ -90,7 +88,8 @@ namespace FFXCutsceneRemover
                 else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0x1AA0) && base.memoryWatchers.HpEnemyA.Current < 36000 && base.memoryWatchers.HpEnemyA.Old == 36000 && Stage == 2)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0x1B38); // 1B38
+                    WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0x1B38);
+                    WriteValue<byte>(base.memoryWatchers.NatusTransition, 0x00);
                     Stage += 1;
                 }
             }

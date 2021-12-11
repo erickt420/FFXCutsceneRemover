@@ -51,7 +51,7 @@ namespace FFXCutsceneRemover
                     Description = "Exit Menu";
                     ForceLoad = false;
                     base.Execute();
-                    Stage = 6;
+                    Stage += 1;
                 }
             }
         }

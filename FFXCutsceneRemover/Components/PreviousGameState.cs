@@ -38,6 +38,8 @@ namespace FFXCutsceneRemover
         public short? AuronOverdrives = null;
         public int? Gil = null;
         public int? TargetFramerate = null;
+        public int? Dialogue1 = null;
+        public byte? DialogueOption = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
@@ -103,6 +105,8 @@ namespace FFXCutsceneRemover
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Old) &&
                 TestValue(Gil, memoryWatchers.Gil.Old) &&
                 TestValue(TargetFramerate, memoryWatchers.TargetFramerate.Old) &&
+                TestValue(Dialogue1, memoryWatchers.Dialogue1.Old) &&
+                TestValue(DialogueOption, memoryWatchers.DialogueOption.Old) &&
                 TestValue(EnableAuron, memoryWatchers.EnableAuron.Old) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Old) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Old) &&

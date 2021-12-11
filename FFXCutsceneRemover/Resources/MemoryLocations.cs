@@ -35,6 +35,8 @@
         public static MemoryLocationData AuronOverdrives = new MemoryLocationData(MemoryLocationNames.AuronOverdrives, 0xD307FC);
         public static MemoryLocationData Gil = new MemoryLocationData(MemoryLocationNames.Gil, 0xD307D8);
         public static MemoryLocationData TargetFramerate = new MemoryLocationData(MemoryLocationNames.TargetFramerate, 0x830E88);//This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
+        public static MemoryLocationData Dialogue1 = new MemoryLocationData(MemoryLocationNames.Dialogue1, 0xF25A80);
+        public static MemoryLocationData DialogueOption = new MemoryLocationData(MemoryLocationNames.DialogueOption, 0x146780A);
 
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
@@ -44,7 +46,7 @@
         public static MemoryLocationData TidusXCoordinate = new MemoryLocationData(MemoryLocationNames.TidusXCoordinate, 0x1FC44E4, 0x0C);
         public static MemoryLocationData TidusYCoordinate = new MemoryLocationData(MemoryLocationNames.TidusYCoordinate, 0x1FC44E4, 0x10);
         public static MemoryLocationData TidusZCoordinate = new MemoryLocationData(MemoryLocationNames.TidusZCoordinate, 0x1FC44E4, 0x14);
-        public static MemoryLocationData TidusRotation = new MemoryLocationData(MemoryLocationNames.TidusRotation, 0x1FC44E4, 0x1D0);
+        public static MemoryLocationData TidusRotation = new MemoryLocationData(MemoryLocationNames.TidusRotation, 0x1FC44E4, 0x168);
 
         //Bespoke Transitions
         public static MemoryLocationData AuronTransition = new MemoryLocationData(MemoryLocationNames.AuronTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
@@ -195,6 +197,7 @@
         public static MemoryLocationData BikanelFlag = new MemoryLocationData(MemoryLocationNames.BikanelFlag, 0xD2CD4B);
         public static MemoryLocationData Sandragoras = new MemoryLocationData(MemoryLocationNames.Sandragoras, 0xD2CD4E);
         public static MemoryLocationData ViaPurificoPlatform = new MemoryLocationData(MemoryLocationNames.ViaPurificoPlatform, 0xD2CC89);
+        public static MemoryLocationData NatusFlag = new MemoryLocationData(MemoryLocationNames.NatusFlag, 0xD2CC7C);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
 

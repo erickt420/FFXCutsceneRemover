@@ -10,7 +10,7 @@ namespace FFXCutsceneRemover
         {
             if (base.memoryWatchers.SpherimorphTransition.Current > 0)
             {
-                if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
+                if (base.memoryWatchers.TidusXCoordinate.Current > -100.0f && Stage == 0) // Need to us tidus position as the cutscene value updates on the second frame after entering area
                 {
                     base.Execute();
 

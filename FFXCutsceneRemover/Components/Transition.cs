@@ -179,6 +179,7 @@ namespace FFXCutsceneRemover
         public byte[] RikkuName = null;
 
         public byte? ViaPurificoPlatform = null;
+        public byte? NatusFlag = null;
         public short? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
 
@@ -356,6 +357,7 @@ namespace FFXCutsceneRemover
             WriteBytes(memoryWatchers.Formation, Formation);
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
+            WriteValue(memoryWatchers.NatusFlag, NatusFlag);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
 
@@ -416,13 +418,21 @@ namespace FFXCutsceneRemover
             if (PositionTidusAfterLoad)
             {
                 process.Resume();
-                while(memoryWatchers.ForceLoad.Current == 1 || memoryWatchers.State.Current == -1)
+                while(memoryWatchers.ForceLoad.Current == 1 || memoryWatchers.State.Current == -1) // Wait for loading to start and black screen to end
                 {
                     memoryWatchers.ForceLoad.Update(process);
                     memoryWatchers.State.Update(process);
                 }
+                /*/ This breaks existing skips. If we are to use it we need to add a bool to only use this when needed.
+                bool TidusFound = false;
+                while (!TidusFound) // Keep trying to move Tidus until his character model is in memory
+                {
+                    TidusFound = SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot);
+                    //DiagnosticLog.Information("Waiting...");
+                }
+                //*/
                 process.Suspend();
-                SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot);
+                SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot);
             }
             else
             {
@@ -678,12 +688,13 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private void SetActorPosition(int? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null)
+        private bool SetActorPosition(int? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null)
         {
             Process process = memoryWatchers.Process;
 
             int ActorCount = memoryWatchers.ActorArrayLength.Current;
             int baseAddress = memoryWatchers.GetBaseAddress();
+            bool actorFound = false;
 
             if (!(TargetActorID is null))
             {
@@ -697,11 +708,13 @@ namespace FFXCutsceneRemover
 
                     if (ActorID == TargetActorID)
                     {
+                        actorFound = true;
+
                         MemoryWatcher<float> characterPos_x = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x0C + 0x880 * i }));
                         MemoryWatcher<float> characterPos_y = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x10 + 0x880 * i }));
                         MemoryWatcher<float> characterPos_z = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x14 + 0x880 * i }));
                         MemoryWatcher<float> characterPos_floor = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x16C + 0x880 * i }));
-                        MemoryWatcher<float> characterPos_rot = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x1D0 + 0x880 * i }));
+                        MemoryWatcher<float> characterPos_rot = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x168 + 0x880 * i }));
 
                         if (!(Target_x is null))
                         {
@@ -723,6 +736,7 @@ namespace FFXCutsceneRemover
                     }
                 }
             }
+            return actorFound;
         }
     }
 }
