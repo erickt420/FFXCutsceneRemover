@@ -116,8 +116,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 61, Storyline = 260 }, SinFinTransition},
             { new GameState { RoomNumber = 282, Storyline = 272 }, EchuillesTransition },
             { new GameState { RoomNumber = 282, Storyline = 280 }, EchuillesTransition },
-            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, KilikaMapFlag = 0x01, Description = "Recovering on the boat" } },
-            { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292, Description = "Map shown"} }, //Removed and assimilated into "Undocking in Kilika" due to crashes
+            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, KilikaMapFlag = 0x01, Description = "Recovering on the boat"} },
+            { new GameState { RoomNumber = 139, Storyline = 292 }, new Transition { RoomNumber = 43, Description = "Map shown"} }, //Removed and assimilated into "Undocking in Kilika" due to crashes
             // END OF SS LIKI
             // START OF KILIKA
             { new GameState { RoomNumber = 43, Storyline = 292 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0, EnableYuna = 17, EnableKimahri = 17, EnableLulu = 17, Formation = new byte[]{0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF}, Description = "Undocking in Kilika" } },
