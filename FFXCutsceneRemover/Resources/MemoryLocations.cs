@@ -37,6 +37,8 @@
         public static MemoryLocationData TargetFramerate = new MemoryLocationData(MemoryLocationNames.TargetFramerate, 0x830E88);//This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
         public static MemoryLocationData Dialogue1 = new MemoryLocationData(MemoryLocationNames.Dialogue1, 0xF25A80);
         public static MemoryLocationData DialogueOption = new MemoryLocationData(MemoryLocationNames.DialogueOption, 0x146780A);
+        public static MemoryLocationData DialogueBoxOpen = new MemoryLocationData(MemoryLocationNames.DialogueBoxOpen, 0x1465CC2);
+        public static MemoryLocationData PlayerTurn = new MemoryLocationData(MemoryLocationNames.PlayerTurn, 0xF3F77B);
 
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
@@ -47,6 +49,9 @@
         public static MemoryLocationData TidusYCoordinate = new MemoryLocationData(MemoryLocationNames.TidusYCoordinate, 0x1FC44E4, 0x10);
         public static MemoryLocationData TidusZCoordinate = new MemoryLocationData(MemoryLocationNames.TidusZCoordinate, 0x1FC44E4, 0x14);
         public static MemoryLocationData TidusRotation = new MemoryLocationData(MemoryLocationNames.TidusRotation, 0x1FC44E4, 0x168);
+
+        // Event File
+        public static MemoryLocationData EventFileStart = new MemoryLocationData(MemoryLocationNames.EventFileStart, 0xF270B8);
 
         //Bespoke Transitions
         public static MemoryLocationData AuronTransition = new MemoryLocationData(MemoryLocationNames.AuronTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
@@ -183,6 +188,7 @@
         public static MemoryLocationData SSWinnoFlag2 = new MemoryLocationData(MemoryLocationNames.SSWinnoFlag2, 0xD2CE7F);
         public static MemoryLocationData LucaFlag = new MemoryLocationData(MemoryLocationNames.LucaFlag, 0xD2CDE5);
         public static MemoryLocationData LucaFlag2 = new MemoryLocationData(MemoryLocationNames.LucaFlag2, 0xD2CDE4);
+        public static MemoryLocationData BlitzballFlag = new MemoryLocationData(MemoryLocationNames.BlitzballFlag, 0xD2E10A);
         public static MemoryLocationData MiihenFlag1 = new MemoryLocationData(MemoryLocationNames.MiihenFlag1, 0xD2CCFE);
         public static MemoryLocationData MiihenFlag2 = new MemoryLocationData(MemoryLocationNames.MiihenFlag2, 0xD2CCFF);
         public static MemoryLocationData MiihenFlag3 = new MemoryLocationData(MemoryLocationNames.MiihenFlag3, 0xD2CD00);
@@ -200,6 +206,9 @@
         public static MemoryLocationData NatusFlag = new MemoryLocationData(MemoryLocationNames.NatusFlag, 0xD2CC7C);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
+
+        // Blitzball Abilities
+        public static MemoryLocationData BlitzballAbilities = new MemoryLocationData(MemoryLocationNames.BlitzballAbilities, 0xD2DC7C);
 
         // Battle Rewards
         public static MemoryLocationData GilBattleRewards = new MemoryLocationData(MemoryLocationNames.GilBattleRewards, 0x1F10F6C);

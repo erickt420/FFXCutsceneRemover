@@ -35,7 +35,7 @@ namespace FFXCutsceneRemover
                     WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0x999);//972 , 999
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.KlikkTransition.Current == (BaseCutsceneValue + 0xA1A) && base.memoryWatchers.HpEnemyA.Current < 1500 && base.memoryWatchers.HpEnemyA.Old == 1500  && Stage == 3)
+                else if (base.memoryWatchers.TidusActionCount.Current == 1  && Stage == 3)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0x1079); //104E

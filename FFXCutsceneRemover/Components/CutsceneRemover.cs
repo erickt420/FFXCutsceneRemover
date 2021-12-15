@@ -212,11 +212,15 @@ namespace FFXCutsceneRemover
         // Save the previous transition so that we don't execute the same transition multiple times in a row.
         private void ExecuteTransition(Transition transition, string defaultDescription = "")
         {
+            bool suspended = false;
+
             if (transition != PreviouslyExecutedTransition)
             {
                 if (transition.Suspendable)
                 {
                     Game.Suspend();
+                    suspended = true;
+                    DiagnosticLog.Information("Game Suspended");
                 }
 
                 transition.Execute(defaultDescription);
@@ -226,9 +230,10 @@ namespace FFXCutsceneRemover
                     PreviouslyExecutedTransition = transition;
                 }
 
-                if (transition.Suspendable)
+                if (suspended)
                 {
                     Game.Resume();
+                    DiagnosticLog.Information("Game Resumed");
                 }
             }
         }

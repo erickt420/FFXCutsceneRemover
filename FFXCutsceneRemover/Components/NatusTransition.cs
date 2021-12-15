@@ -79,17 +79,12 @@ namespace FFXCutsceneRemover
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4222, Target_x = 0.0f, Target_y = -29.0f, Target_z = -100.0f };
                     actorPositions.Execute();
 
-                    //Position Mortibody
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4223, Target_x = 0.0f, Target_y = -29.0f, Target_z = -100.0f };
-                    actorPositions.Execute();
-
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0x1AA0) && base.memoryWatchers.HpEnemyA.Current < 36000 && base.memoryWatchers.HpEnemyA.Old == 36000 && Stage == 2)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0x1B38);
-                    WriteValue<byte>(base.memoryWatchers.NatusTransition, 0x00);
                     Stage += 1;
                 }
             }

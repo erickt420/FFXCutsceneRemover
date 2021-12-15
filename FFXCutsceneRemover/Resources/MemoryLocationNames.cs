@@ -33,6 +33,11 @@
         public static string TargetFramerate = "TargetFramerate";
         public static string Dialogue1 = "Dialogue1";
         public static string DialogueOption = "DialogueOption";
+        public static string DialogueBoxOpen = "DialogueBoxOpen";
+        public static string PlayerTurn = "PlayerTurn";
+
+        //Event File
+        public static string EventFileStart = "EventFileStart";
 
         // Deep Pointers
         public static string HpEnemyA = "HpEnemyA";
@@ -43,15 +48,15 @@
         public static string TidusYCoordinate = "TidusYCoordinate";
         public static string TidusZCoordinate = "TidusZCoordinate";
         public static string TidusRotation = "TidusRotation";
-        public static string AlBhedBoatTransition = "AlBhedBoatTransition";
-        public static string UnderwaterRuinsTransition = "UnderwaterRuinsTransition";
-        public static string UnderwaterRuinsTransition2 = "UnderwaterRuinsTransition2";
         public static string AuronTransition = "AuronTransition";
         public static string AmmesTransition = "AmmesTransition";
         public static string TankerTransition = "TankerTransition";
         public static string DiveTransition = "DiveTransition";
         public static string GeosTransition = "GeosTransition";
         public static string KlikkTransition = "KlikkTransition";
+        public static string AlBhedBoatTransition = "AlBhedBoatTransition";
+        public static string UnderwaterRuinsTransition = "UnderwaterRuinsTransition";
+        public static string UnderwaterRuinsTransition2 = "UnderwaterRuinsTransition2";
         public static string BeachTransition = "BeachTransition";
         public static string LagoonTransition = "LagoonTransition";
         public static string ValeforTransition = "ValeforTransition";
@@ -134,6 +139,7 @@
         public static string SSWinnoFlag2 = "SSWinnoFlag2";
         public static string LucaFlag = "LucaFlag";
         public static string LucaFlag2 = "LucaFlag2";
+        public static string BlitzballFlag = "BlitzballFlag";
         public static string MiihenFlag1 = "MiihenFlag1";
         public static string MiihenFlag2 = "MiihenFlag2";
         public static string MiihenFlag3 = "MiihenFlag3";
@@ -151,6 +157,9 @@
         public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
+
+        // Blitzball Abilities
+        public static string BlitzballAbilities = "BlitzballAbilities";
 
         // Battle Rewards
         public static string GilBattleRewards = "GilBattleRewards";

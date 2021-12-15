@@ -50,6 +50,11 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> TargetFramerate;
         public MemoryWatcher<int> Dialogue1;
         public MemoryWatcher<byte> DialogueOption;
+        public MemoryWatcher<byte> DialogueBoxOpen;
+        public MemoryWatcher<byte> PlayerTurn;
+
+        // Event File
+        public MemoryWatcher<int> EventFileStart;
 
         // Deep Pointers
         public MemoryWatcher<int> HpEnemyA;
@@ -60,15 +65,15 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<float> TidusYCoordinate;
         public MemoryWatcher<float> TidusZCoordinate;
         public MemoryWatcher<float> TidusRotation;
-        public MemoryWatcher<int> AlBhedBoatTransition;
-        public MemoryWatcher<int> UnderwaterRuinsTransition;
-        public MemoryWatcher<int> UnderwaterRuinsTransition2;
         public MemoryWatcher<int> AuronTransition;
         public MemoryWatcher<int> AmmesTransition;
         public MemoryWatcher<int> TankerTransition;
         public MemoryWatcher<int> DiveTransition;
         public MemoryWatcher<int> GeosTransition;
         public MemoryWatcher<int> KlikkTransition;
+        public MemoryWatcher<int> AlBhedBoatTransition;
+        public MemoryWatcher<int> UnderwaterRuinsTransition;
+        public MemoryWatcher<int> UnderwaterRuinsTransition2;
         public MemoryWatcher<int> BeachTransition;
         public MemoryWatcher<int> LagoonTransition;
         public MemoryWatcher<int> ValeforTransition;
@@ -188,6 +193,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> SSWinnoFlag2;
         public MemoryWatcher<byte> LucaFlag;
         public MemoryWatcher<byte> LucaFlag2;
+        public MemoryWatcher<byte> BlitzballFlag;
         public MemoryWatcher<byte> MiihenFlag1;
         public MemoryWatcher<byte> MiihenFlag2;
         public MemoryWatcher<byte> MiihenFlag3;
@@ -205,6 +211,9 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
+
+        // Blitzball Abilities
+        public MemoryWatcher<byte> BlitzballAbilities;
 
         // Battle Rewards
         public MemoryWatcher<int> GilBattleRewards;
@@ -297,6 +306,11 @@ namespace FFXCutsceneRemover
             TargetFramerate = GetMemoryWatcher<int>(MemoryLocations.TargetFramerate);
             Dialogue1 = GetMemoryWatcher<int>(MemoryLocations.Dialogue1);
             DialogueOption = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption);
+            DialogueBoxOpen = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen);
+            PlayerTurn = GetMemoryWatcher<byte>(MemoryLocations.PlayerTurn);
+
+            // Event File
+            EventFileStart = GetMemoryWatcher<int>(MemoryLocations.EventFileStart);
 
             // Deep Pointers
             HpEnemyA = GetMemoryWatcher<int>(MemoryLocations.HpEnemyA);
@@ -307,15 +321,15 @@ namespace FFXCutsceneRemover
             TidusYCoordinate = GetMemoryWatcher<float>(MemoryLocations.TidusYCoordinate);
             TidusZCoordinate = GetMemoryWatcher<float>(MemoryLocations.TidusZCoordinate);
             TidusRotation = GetMemoryWatcher<float>(MemoryLocations.TidusRotation);
-            AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
-            UnderwaterRuinsTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition);
-            UnderwaterRuinsTransition2 = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition2);
             AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
             AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
             TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
             DiveTransition = GetMemoryWatcher<int>(MemoryLocations.DiveTransition);
             GeosTransition = GetMemoryWatcher<int>(MemoryLocations.GeosTransition);
             KlikkTransition = GetMemoryWatcher<int>(MemoryLocations.KlikkTransition);
+            AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
+            UnderwaterRuinsTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition);
+            UnderwaterRuinsTransition2 = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition2);
             BeachTransition = GetMemoryWatcher<int>(MemoryLocations.BeachTransition);
             LagoonTransition = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
@@ -432,6 +446,7 @@ namespace FFXCutsceneRemover
             SSWinnoFlag2 = GetMemoryWatcher<byte>(MemoryLocations.SSWinnoFlag2);
             LucaFlag = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag);
             LucaFlag2 = GetMemoryWatcher<byte>(MemoryLocations.LucaFlag2);
+            BlitzballFlag = GetMemoryWatcher<byte>(MemoryLocations.BlitzballFlag);
             MiihenFlag1 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag1);
             MiihenFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag2);
             MiihenFlag3 = GetMemoryWatcher<byte>(MemoryLocations.MiihenFlag3);
@@ -449,6 +464,9 @@ namespace FFXCutsceneRemover
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
+
+            // Blitzball Abilities
+            BlitzballAbilities = GetMemoryWatcher<byte>(MemoryLocations.BlitzballAbilities);
 
             // Battle Rewards
             GilBattleRewards = GetMemoryWatcher<int>(MemoryLocations.GilBattleRewards);
@@ -521,6 +539,8 @@ namespace FFXCutsceneRemover
                     TargetFramerate,
                     Dialogue1,
                     DialogueOption,
+                    DialogueBoxOpen,
+                    PlayerTurn,
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,
@@ -530,15 +550,16 @@ namespace FFXCutsceneRemover
                     TidusYCoordinate,
                     TidusZCoordinate,
                     TidusRotation,
-                    AlBhedBoatTransition,
-                    UnderwaterRuinsTransition,
-                    UnderwaterRuinsTransition2,
+                    EventFileStart,
                     AuronTransition,
                     AmmesTransition,
                     TankerTransition,
                     DiveTransition,
                     GeosTransition,
                     KlikkTransition,
+                    AlBhedBoatTransition,
+                    UnderwaterRuinsTransition,
+                    UnderwaterRuinsTransition2,
                     BeachTransition,
                     LagoonTransition,
                     ValeforTransition,
@@ -622,6 +643,7 @@ namespace FFXCutsceneRemover
                     SSWinnoFlag2,
                     LucaFlag,
                     LucaFlag2,
+                    BlitzballFlag,
                     MiihenFlag1,
                     MiihenFlag2,
                     MiihenFlag3,
@@ -638,6 +660,7 @@ namespace FFXCutsceneRemover
                     NatusFlag,
                     CalmLandsFlag,
                     GagazetCaveFlag,
+                    BlitzballAbilities,
                     GilBattleRewards,
                     BattleRewardItemCount,
                     BattleRewardItem1,

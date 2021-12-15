@@ -18,15 +18,26 @@ namespace FFXCutsceneRemover
                     DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
-                }
-                else if (base.memoryWatchers.ExtractorTransition.Current >= (BaseCutsceneValue + 0x125) && Stage == 1) // 
+                }/*/
+                else if (base.memoryWatchers.ExtractorTransition.Current >= (BaseCutsceneValue + 0x14E) && Stage == 1) // 
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x198);// 
+
+                    Transition actorPositions;
+
+                    //Position Tidus
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = -20.0f, Target_y = -150.0f, Target_z = 70.0f , Target_swimming = true};
+                    actorPositions.Execute();
+
+                    //Position Wakka
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 5, Target_x = 7.560521126f, Target_y = -155.0f, Target_z = 75.40319061f };
+                    actorPositions.Execute();
+
+                    WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x166);// 0x198
 
                     Stage += 1;
-                }
-                else if (base.memoryWatchers.ExtractorTransition.Current == (BaseCutsceneValue + 0x1E3) && base.memoryWatchers.HpEnemyA.Current < 4000 && base.memoryWatchers.HpEnemyA.Old == 4000 && Stage == 2) // 1200 is HP of Guado
+                }//*/
+                else if (base.memoryWatchers.ExtractorTransition.Current == (BaseCutsceneValue + 0x1E3) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 1)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x28B);// 28E

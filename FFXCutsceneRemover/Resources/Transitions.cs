@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover.Resources
 {
@@ -16,7 +20,6 @@ namespace FFXCutsceneRemover.Resources
         static readonly UnderLakeTransition UnderLakeTransition = new UnderLakeTransition { ForceLoad = false, Description = "Under Macalania Lake", Suspendable = false, Repeatable = true };
         static readonly BikanelTransition BikanelTransition = new BikanelTransition {ForceLoad = false, Description = "Bikanel Desert", Suspendable = false, Repeatable = true};
         static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
-        
 
         public static readonly Dictionary<IGameState, Transition> StandardTransitions = new Dictionary<IGameState, Transition>()
             {
@@ -89,7 +92,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 133, Storyline = 130, }, new Transition { RoomNumber = 17, Storyline = 134, SpawnPoint = 3, Description = "Tidus arrives at Besaid Village" } },
             { new GameState { RoomNumber = 84, Storyline = 134 }, new Transition { RoomNumber = 84, Storyline = 136, SpawnPoint = 0, Description = "Tidus enters the temple"} },
             { new GameState { RoomNumber = 84, Storyline = 136, State = 1 }, new Transition { Storyline = 140, Description = "Tidus speaks to the priest" } },
-            //{ new GameState { RoomNumber = 145, Storyline = 140, Dialogue1 = 4, DialogueOption = 0 }, new Transition { Storyline = 154, Description = "Priest enters Wakka's tent" } },
+            { new GameState { RoomNumber = 145, Storyline = 140 }, new WakkaTentTransition { ForceLoad = false, Description = "Priest enters Wakka's tent", Suspendable = false, Repeatable = true } },
             { new GameState { RoomNumber = 191, Storyline = 152 }, new Transition { RoomNumber = 145, Storyline = 154, SpawnPoint = 0, Description = "Tidus dreams about a flashback"} },
             { new GameState { RoomNumber = 42, Storyline = 154, State = 1}, new Transition { RoomNumber = 122, Storyline = 162, Description = "Tidus goes back into the temple"} },
             { new GameState { RoomNumber = 122, Storyline = 162, State = 1, BesaidFlag1 = 8}, new Transition { RoomNumber = 103, Storyline = 164, Description = "Wakka catches up with Tidus in trials"} },
@@ -113,11 +116,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 61, Storyline = 260 }, SinFinTransition},
             { new GameState { RoomNumber = 282, Storyline = 272 }, EchuillesTransition },
             { new GameState { RoomNumber = 282, Storyline = 280 }, EchuillesTransition },
-            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, Description = "Recovering on the boat" } },
-            //{ new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292, KilikaMapFlag = 0x00, Description = "Map shown"} }, Removed and assimilated into "Undocking in Kilika" due to crashes
+            { new GameState { RoomNumber = 220, Storyline = 287 }, new Transition { RoomNumber = 139, Storyline = 290, KilikaMapFlag = 0x01, Description = "Recovering on the boat" } },
+            { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 292, Description = "Map shown"} }, //Removed and assimilated into "Undocking in Kilika" due to crashes
             // END OF SS LIKI
             // START OF KILIKA
-            { new GameState { RoomNumber = 139, Storyline = 290 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0, /*KilikaMapFlag = 0x01,*/ EnableYuna = 17, EnableKimahri = 17, EnableLulu = 17, Formation = new byte[]{0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF}, Description = "Undocking in Kilika" } },
+            { new GameState { RoomNumber = 43, Storyline = 292 }, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0, EnableYuna = 17, EnableKimahri = 17, EnableLulu = 17, Formation = new byte[]{0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF}, Description = "Undocking in Kilika" } },
             { new GameState { RoomNumber = 53, Storyline = 294, State = 0 }, new Transition { RoomNumber = 152, Storyline = 300, Description = "Sending" } },
             { new GameState { RoomNumber = 152, Storyline = 300 }, new Transition { RoomNumber = 152, Storyline = 302, SpawnPoint = 0, FullHeal = true, Description = "Tidus wakes up" } },
             { new GameState { RoomNumber = 16, Storyline = 304, State = 1 }, new Transition { Storyline = 308, SpawnPoint = 2, Description = "Tidus speaks to Wakka"} },
@@ -168,9 +171,10 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 72, Storyline = 518, State = 0  }, new Transition { Storyline = 520, Description = "Wakka subs himself"} },
             { new GameState { RoomNumber = 72, Storyline = 520  }, new Transition { RoomNumber = 124, Storyline = 535, Description = "Lulu speaks to Wakka" } },
             //{ new GameState { RoomNumber = 124, Storyline = 535}, new BlitzballTransition1 {ForceLoad = false, Description = "Pre-Blitzball", Suspendable = false, Repeatable = true} },
-            //{ new GameState { RoomNumber = 124, Storyline = 535  }, new Transition { RoomNumber = 62, Description = "Pre-Blitzball" } }, // Bug: After the first half, everyone learns loads of techniques for some reason
+            { new GameState { RoomNumber = 124, Storyline = 535}, new Transition { RoomNumber = 62, Description = "Pre-Blitzball", BlitzballAbilities = System.IO.File.ReadAllText("./BlitzballBytes.txt").Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray()} },
             { new GameState { RoomNumber = 72, Storyline = 540}, new Transition { RoomNumber = 347, Storyline = 560, Description = "Halftime talk"} },
             { new GameState { RoomNumber = 124, Storyline = 560}, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
+            { new GameState { RoomNumber = 124, Storyline = 562}, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
             { new GameState { RoomNumber = 250, Storyline = 565}, new Transition { RoomNumber = 124, Storyline = 575, Description = "Wakka chants"} },
             { new GameState { RoomNumber = 124, Storyline = 575}, new BlitzballTransition2 {ForceLoad = false, Description = "Ah! It's Wakka!", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 124, Storyline = 575 }, new Transition { RoomNumber = 62, Description = "Wakka joins the game"} }, // Bug: Tidus is still in the team, need to sub Wakka in somehow
@@ -240,10 +244,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 105, Storyline = 1032, State = 0 }, new Transition { RoomNumber = 105, Storyline = 1040, SpawnPoint = 1, Description = "Tidus sees the Moonflow river"} },
             { new GameState { RoomNumber = 105, Storyline = 1040 }, new Transition { RoomNumber = 187, Storyline = 1045, SpawnPoint = 0, Description = "Tidus sees a shoopuf"} },
             { new GameState { RoomNumber = 235, Storyline = 1045, MoonflowFlag = 1}, new Transition { MoonflowFlag = 65, Description = "The chocobos cannot cross"} },
-            { new GameState { RoomNumber = 291, Storyline = 1045}, new Transition { RoomNumber = 99, Storyline = 1045, Description = "Shoopuf launching + map"} },
+            { new GameState { RoomNumber = 188, Storyline = 1045 }, new ShoopufTransition { ForceLoad = false, Description = "All Aboards!", Suspendable = false, Repeatable = true } },
+            //{ new GameState { RoomNumber = 291, Storyline = 1045}, new Transition { RoomNumber = 99, Storyline = 1045, Description = "Shoopuf launching + map"} },
             { new GameState { RoomNumber = 99, Storyline = 1045}, new Transition { RoomNumber = 291, Storyline = 1048, Description = "A sunken city"} },
             { new GameState { RoomNumber = 291, Storyline = 1048}, new Transition { RoomNumber = 99, Storyline = 1060, Description = "A debate about machina"} },
-            //{ new GameState { RoomNumber = 99, Storyline = 1060}, new ExtractorTransition { Description = "Extractor", Suspendable = false, Repeatable = true } },
+            { new GameState { RoomNumber = 99, Storyline = 1060}, new ExtractorTransition {ForceLoad = false, Description = "Extractor", Suspendable = false, Repeatable = true } },
                                             // Post-Extractor
 		    { new GameState { RoomNumber = 291, Storyline = 1060 }, new Transition { RoomNumber = 236, Storyline = 1070, SpawnPoint = 0, Description = "Back on the shoopuf"} },
             { new GameState { RoomNumber = 109, Storyline = 1070 }, new Transition { RoomNumber = 109, Storyline = 1085, SpawnPoint = 0, EnableRikku = 17, MoonflowFlag2 = 36, RikkuOutfit = 0, Description = "Reunite with Rikku + FMV"} },
@@ -329,7 +334,7 @@ namespace FFXCutsceneRemover.Resources
                 EnableLulu = 17, EnableYuna = 17, EnableAuron = 17
             } },
             { new GameState { RoomNumber = 208, Storyline = 2280}, new NatusTransition { ForceLoad = false, Description = "Seymour Natus", Suspendable = false, Repeatable = true } },
-            { new GameState { RoomNumber = 183, Storyline = 2290}, new Transition { RoomNumber = 183, Storyline = 2300, SpawnPoint = 0, ForceLoad = false, Description = "Natus Death"} },
+            { new GameState { RoomNumber = 183, Storyline = 2290}, new Transition { RoomNumber = 183, Storyline = 2300, SpawnPoint = 0, NatusFlag = 0x00, ForceLoad = false, Description = "Natus Death"} },
 		    // END OF BEVELLE
 		    // START OF CALM LANDS & GAGAZET
 		    { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 3712}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, MacalaniaFlag = 162, Description = "Lake Scene"} },
@@ -381,6 +386,8 @@ namespace FFXCutsceneRemover.Resources
         {
             { new GameState { RoomNumber = 83, Storyline = 172, State = 1, CutsceneAlt = 0 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
             { new GameState { HpEnemyA = 2000, Storyline = 280}, new Transition { RoomNumber = 220, Storyline = 287, TargetFramerate = 2, MenuCleanup = true, AddItems = true, Description = "Echuilles"} },
+            //{ new GameState { HpEnemyA = 2000, Storyline = 280}, new Transition { RoomNumber = 43, Storyline = 294, SpawnPoint = 0, KilikaMapFlag = 0x00, TargetFramerate = 2, MenuCleanup = true, AddItems = true,
+            //    EnableYuna = 17, EnableKimahri = 17, EnableLulu = 17, Formation = new byte[]{0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF}, Description = "Echuilles"} },
             { new GameState { HpEnemyA = 3000, Storyline = 322 }, new Transition { SpawnPoint = 1, TargetFramerate = 2, MenuCleanup = true, AddItems = true, Description = "Post-Geneaux"} },
             { new GameState { RoomNumber = 45, Storyline = 346, State = 1 }, new Transition { RoomNumber = 78, Storyline = 348, SpawnPoint = 0, EnableIfrit = 17, Description = "Ifrit"} },
             { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, Description = "Oblitzerator"} },
@@ -394,9 +401,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 36000, Storyline = 2280 }, new Transition { RoomNumber = 183, Storyline = 2290, SpawnPoint = 4, Description = "Seymour Natus"} },
             { new GameState { HpEnemyA = 70000, Storyline = 2530 }, new Transition { RoomNumber = 285, Storyline = 2560, SpawnPoint = 2, TargetFramerate = 2, MenuCleanup = true, AddItems = true, Description = "Seymour Flux"} },
             { new GameState { HpEnemyA = 40000, Storyline = 2585 }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, Description = "Sanctuary Keeper"} },
-            { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, Description = "Yunalesca"} },
+            { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, TargetFramerate = 2, MenuCleanup = true, AddItems = true, Description = "Yunalesca"} },
             { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
-
         };
     }
 }

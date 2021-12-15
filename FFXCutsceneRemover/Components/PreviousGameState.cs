@@ -40,6 +40,8 @@ namespace FFXCutsceneRemover
         public int? TargetFramerate = null;
         public int? Dialogue1 = null;
         public byte? DialogueOption = null;
+        public byte? DialogueBoxOpen = null;
+        public byte? PlayerTurn = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
@@ -107,6 +109,8 @@ namespace FFXCutsceneRemover
                 TestValue(TargetFramerate, memoryWatchers.TargetFramerate.Old) &&
                 TestValue(Dialogue1, memoryWatchers.Dialogue1.Old) &&
                 TestValue(DialogueOption, memoryWatchers.DialogueOption.Old) &&
+                TestValue(DialogueBoxOpen, memoryWatchers.DialogueBoxOpen.Old) &&
+                TestValue(PlayerTurn, memoryWatchers.PlayerTurn.Old) &&
                 TestValue(EnableAuron, memoryWatchers.EnableAuron.Old) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Old) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Old) &&
