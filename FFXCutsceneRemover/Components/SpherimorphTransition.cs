@@ -26,7 +26,7 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Wendigo
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4217, Target_x = 0.0f, Target_y = -14.0f, Target_z = 140.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4217 }, Target_x = 0.0f, Target_y = -14.0f, Target_z = 140.0f };
                     actorPositions.Execute();
 
                     Stage += 1;

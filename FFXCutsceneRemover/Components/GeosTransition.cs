@@ -26,7 +26,7 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Tidus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = 0.0f, Target_y = -50.0f, Target_z = -20.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 0.0f, Target_y = -50.0f, Target_z = -20.0f };
                     actorPositions.Execute();
 
                     Stage += 1;

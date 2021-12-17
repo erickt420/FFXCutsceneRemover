@@ -62,19 +62,19 @@ namespace FFXCutsceneRemover
 
                 Transition actorPositions;
                 //Position Yuna
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 2, Target_x = 225.0f, Target_z = 3140.0f};
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 2 }, Target_x = 225.0f, Target_z = 3140.0f};
                 actorPositions.Execute();
 
                 //Position Auron
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 3, Target_x = 155.0f, Target_z = 3140.0f};
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 3 }, Target_x = 155.0f, Target_z = 3140.0f};
                 actorPositions.Execute();
 
                 //Position Seymour
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 8, Target_x = 190.0f, Target_z = 3150.0f};
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 8 }, Target_x = 190.0f, Target_z = 3150.0f};
                 actorPositions.Execute();
 
                 //Position Gui
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4213, Target_x = 190.0f, Target_z = 3294.0f};
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4213 }, Target_x = 190.0f, Target_z = 3294.0f};
                 actorPositions.Execute();
 
                 WriteValue<int>(base.memoryWatchers.Gui2Transition, BaseCutsceneValue2 + 0x497);

@@ -30,11 +30,11 @@ namespace FFXCutsceneRemover
                     Transition actorPositions;
 
                     //Position Tidus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = -29.0f, Target_y = -50.0f, Target_z = 131.5f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = -29.0f, Target_y = -50.0f, Target_z = 131.5f };
                     actorPositions.Execute();
 
                     //Position Sin Fin
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4209, Target_x = 1.0f, Target_z = 945.0f};
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4209 }, Target_x = 1.0f, Target_z = 945.0f};
                     actorPositions.Execute();
 
                     Stage += 1;

@@ -34,15 +34,15 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Party Member 1
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[0] + 1, Target_x = 998.0f, Target_y = -30.0f, Target_z = -1474.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = 998.0f, Target_y = -30.0f, Target_z = -1474.0f };
                     actorPositions.Execute();
 
                     //Position Party Member 2
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[1] + 1, Target_x = 998.0f, Target_y = -30.0f, Target_z = -1444.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 998.0f, Target_y = -30.0f, Target_z = -1444.0f };
                     actorPositions.Execute();
 
                     //Position Party Member 3
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[2] + 1, Target_x = 998.0f, Target_y = -30.0f, Target_z = -1414.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 998.0f, Target_y = -30.0f, Target_z = -1414.0f };
                     actorPositions.Execute();
 
                     Stage += 1;
@@ -66,27 +66,27 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Party Member 1
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[0] + 1, Target_x = 529.0f, Target_y = -30.0f, Target_z = -828.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = 529.0f, Target_y = -30.0f, Target_z = -828.0f };
                     actorPositions.Execute();
 
                     //Position Party Member 2
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[1] + 1, Target_x = 569.0f, Target_y = -30.0f, Target_z = -828.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 569.0f, Target_y = -30.0f, Target_z = -828.0f };
                     actorPositions.Execute();
 
                     //Position Party Member 3
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[2] + 1, Target_x = 609.0f, Target_y = -30.0f, Target_z = -828.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 609.0f, Target_y = -30.0f, Target_z = -828.0f };
                     actorPositions.Execute();
 
                     //Position Evrae Altana
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4216, Target_x = 569.0f, Target_y = -30.0f, Target_z = -988.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4216 }, Target_x = 569.0f, Target_y = -30.0f, Target_z = -988.0f };
                     actorPositions.Execute();
 
                     //Position Lock Pin Left
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4267, Target_x = 528.7f, Target_y = -10.0f, Target_z = -790.7f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4267 }, Target_x = 528.7f, Target_y = -10.0f, Target_z = -790.7f };
                     actorPositions.Execute();
 
                     //Position Lock Pin Right
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 162, Target_x = 611.3f, Target_y = -10.0f, Target_z = -790.7f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 162 }, Target_x = 611.3f, Target_y = -10.0f, Target_z = -790.7f };
                     actorPositions.Execute();
 
                     Stage += 1;
@@ -105,19 +105,19 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Party Member 1
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[0] + 1, Target_x = 378.582f, Target_y = -43.0f, Target_z = -234.134f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = 378.582f, Target_y = -43.0f, Target_z = -234.134f };
                     actorPositions.Execute();
 
                     //Position Party Member 2
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[1] + 1, Target_x = 368.730f, Target_y = -70.0f, Target_z = -260.191f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 368.730f, Target_y = -70.0f, Target_z = -260.191f };
                     actorPositions.Execute();
 
                     //Position Party Member 3
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[2] + 1, Target_x = 338.239f, Target_y = -37.0f, Target_z = -328.214f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 338.239f, Target_y = -37.0f, Target_z = -328.214f };
                     actorPositions.Execute();
 
                     //Position Evrae Altana
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4216, Target_x = 613.0f, Target_y = -35.0f, Target_z = -281.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4216 }, Target_x = 613.0f, Target_y = -35.0f, Target_z = -281.0f };
                     actorPositions.Execute();
 
                     Stage += 1;
@@ -146,7 +146,7 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Tidus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = 529.320f, Target_y = -30.0f, Target_z = -830.060f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 529.320f, Target_y = -30.0f, Target_z = -830.060f };
                     actorPositions.Execute();
 
                     Stage = 99;

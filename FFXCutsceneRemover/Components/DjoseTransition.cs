@@ -31,7 +31,7 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Echuilles
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = 1.628f, Target_y = 0.0f, Target_z = -6.528f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 1.628f, Target_y = 0.0f, Target_z = -6.528f };
                     actorPositions.Execute();
 
                     Stage += 1;

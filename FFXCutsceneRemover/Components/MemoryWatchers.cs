@@ -68,6 +68,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> AuronTransition;
         public MemoryWatcher<int> AmmesTransition;
         public MemoryWatcher<int> TankerTransition;
+        public MemoryWatcher<int> InsideSinTransition;
         public MemoryWatcher<int> DiveTransition;
         public MemoryWatcher<int> GeosTransition;
         public MemoryWatcher<int> KlikkTransition;
@@ -106,6 +107,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> BikanelTransition;
         public MemoryWatcher<int> HomeTransition;
         public MemoryWatcher<int> EvraeTransition;
+        public MemoryWatcher<int> EvraeAirshipTransition;
         public MemoryWatcher<int> BahamutTransition;
         public MemoryWatcher<int> IsaaruTransition;
         public MemoryWatcher<int> AltanaTransition;
@@ -324,6 +326,7 @@ namespace FFXCutsceneRemover
             AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
             AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
             TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
+            InsideSinTransition = GetMemoryWatcher<int>(MemoryLocations.InsideSinTransition);
             DiveTransition = GetMemoryWatcher<int>(MemoryLocations.DiveTransition);
             GeosTransition = GetMemoryWatcher<int>(MemoryLocations.GeosTransition);
             KlikkTransition = GetMemoryWatcher<int>(MemoryLocations.KlikkTransition);
@@ -362,6 +365,7 @@ namespace FFXCutsceneRemover
             BikanelTransition = GetMemoryWatcher<int>(MemoryLocations.BikanelTransition);
             HomeTransition = GetMemoryWatcher<int>(MemoryLocations.HomeTransition);
             EvraeTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeTransition);
+            EvraeAirshipTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeAirshipTransition);
             BahamutTransition = GetMemoryWatcher<int>(MemoryLocations.BahamutTransition);
             IsaaruTransition = GetMemoryWatcher<int>(MemoryLocations.IsaaruTransition);
             AltanaTransition = GetMemoryWatcher<int>(MemoryLocations.AltanaTransition);
@@ -554,6 +558,7 @@ namespace FFXCutsceneRemover
                     AuronTransition,
                     AmmesTransition,
                     TankerTransition,
+                    InsideSinTransition,
                     DiveTransition,
                     GeosTransition,
                     KlikkTransition,
@@ -592,6 +597,7 @@ namespace FFXCutsceneRemover
                     BikanelTransition,
                     HomeTransition,
                     EvraeTransition,
+                    EvraeAirshipTransition,
                     BahamutTransition,
                     IsaaruTransition,
                     AltanaTransition,

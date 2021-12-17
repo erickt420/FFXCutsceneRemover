@@ -64,19 +64,19 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     //Position Party Member 1
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[0] + 1, Target_x = -31.0f, Target_y = 0.0f, Target_z = -25.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = -31.0f, Target_y = 0.0f, Target_z = -25.0f };
                     actorPositions.Execute();
 
                     //Position Party Member 2
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[1] + 1, Target_x = 0.0f, Target_y = 0.0f, Target_z = -13.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 0.0f, Target_y = 0.0f, Target_z = -13.0f };
                     actorPositions.Execute();
 
                     //Position Party Member 3
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = (int)formation[2] + 1, Target_x = 31.0f, Target_y = 0.0f, Target_z = -25.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 31.0f, Target_y = 0.0f, Target_z = -25.0f };
                     actorPositions.Execute();
 
                     //Position Natus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4222, Target_x = 0.0f, Target_y = -29.0f, Target_z = -100.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4222 }, Target_x = 0.0f, Target_y = -29.0f, Target_z = -100.0f };
                     actorPositions.Execute();
 
                     Stage += 1;

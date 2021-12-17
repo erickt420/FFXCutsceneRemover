@@ -37,7 +37,7 @@ namespace FFXCutsceneRemover
                         {
                             Transition actorPositions;
                             //Position Tidus if he is in the party
-                            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = 100.0f, Target_y = 0.0f, Target_z = 30.0f };
+                            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 100.0f, Target_y = 0.0f, Target_z = 30.0f };
                             actorPositions.Execute();
                         }
                     }

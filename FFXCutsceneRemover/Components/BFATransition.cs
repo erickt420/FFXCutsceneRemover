@@ -1,7 +1,4 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -9,40 +6,44 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-
-            if (base.memoryWatchers.BFATransition.Current > 0)
+            if (base.Stage == 0)
             {
+                base.Execute();
 
-                if (base.memoryWatchers.CutsceneAlt.Current == 71 && base.Stage == 0)
-                {
-                    base.Execute();
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
+                base.Stage += 1;
 
-                    BaseCutsceneValue = base.memoryWatchers.BFATransition.Current;
-
-                    base.Stage = 1;
-
-                }
-                else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0x42) && Stage == 1)
-                {
-                    //WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xE1); //Not currently working as desired
-                    Stage = 2;
-                }
-                else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0x478) && Stage == 2)
-                {
-                    WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xD7F);
-                    Stage = 3;
-                }
-                else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD80) && Stage == 3)
-                {
-                    WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0x10BA);
-                    Stage = 4;
-                }
-                else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0x1135) && Stage == 4)
-                {
-                    WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0x1442);
-                    Stage = 5;
-                }
+            }
+            else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0x42) && Stage == 1)
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                //WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xE1); //Not currently working as desired
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xC310) && Stage == 2) // 0x478
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xCDB2); // 0xD7F
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xCDCA) && Stage == 3) // 0xD80
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xCF98); // 0x10BA
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD00D) && Stage == 4) // 0xD80
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xD126); // 0x10BA
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD150) && Stage == 5) // 0x1135
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xD350); // 0x1442 D31D
+                Stage += 1;
             }
         }
     }

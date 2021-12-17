@@ -31,7 +31,7 @@ namespace FFXCutsceneRemover
         public int Stage = 0;
 
         public int? ActorArrayLength = null;
-        public int? TargetActorID = null;
+        public short[] TargetActorIDs = null;
         public float? Target_x = null;
         public float? Target_y = null;
         public float? Target_z = null;
@@ -79,6 +79,7 @@ namespace FFXCutsceneRemover
         public int? AuronTransition = null;
         public int? AmmesTransition = null;
         public int? TankerTransition = null;
+        public int? InsideSinTransition = null;
         public int? DiveTransition = null;
         public int? GeosTransition = null;
         public int? KlikkTransition = null;
@@ -117,6 +118,7 @@ namespace FFXCutsceneRemover
         public int? BikanelTransition = null;
         public int? HomeTransition = null;
         public int? EvraeTransition = null;
+        public int? EvraeAirshipTransition = null;
         public int? BahamutTransition = null;
         public int? IsaaruTransition = null;
         public int? AltanaTransition = null;
@@ -268,6 +270,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronTransition, AuronTransition);
             WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
             WriteValue(memoryWatchers.TankerTransition, TankerTransition);
+            WriteValue(memoryWatchers.InsideSinTransition, InsideSinTransition);
             WriteValue(memoryWatchers.DiveTransition, DiveTransition);
             WriteValue(memoryWatchers.GeosTransition, GeosTransition);
             WriteValue(memoryWatchers.KlikkTransition, KlikkTransition);
@@ -306,6 +309,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.BikanelTransition, BikanelTransition);
             WriteValue(memoryWatchers.HomeTransition, HomeTransition);
             WriteValue(memoryWatchers.EvraeTransition, EvraeTransition);
+            WriteValue(memoryWatchers.EvraeAirshipTransition, EvraeAirshipTransition);
             WriteValue(memoryWatchers.BahamutTransition, BahamutTransition);
             WriteValue(memoryWatchers.IsaaruTransition, IsaaruTransition);
             WriteValue(memoryWatchers.AltanaTransition, AltanaTransition);
@@ -443,7 +447,13 @@ namespace FFXCutsceneRemover
             }
             else
             {
-                SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot);
+                if (TargetActorIDs != null)
+                {
+                    foreach (short TargetActorID in TargetActorIDs)
+                    {
+                        SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot);
+                    }
+                }
             }
         }
 
@@ -699,7 +709,7 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private bool SetActorPosition(int? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null, bool Target_swimming = false)
+        private bool SetActorPosition(short? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null, bool Target_swimming = false)
         {
             Process process = memoryWatchers.Process;
 

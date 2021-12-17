@@ -30,11 +30,11 @@ namespace FFXCutsceneRemover
                     actorPositions.Execute();
 
                     //Position Guados
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4309, Target_x = -100.0f, Target_z = -350.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4309 }, Target_x = -100.0f, Target_z = -350.0f };
                     actorPositions.Execute();
 
                     //Position Wendigo
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4308, Target_x = -100.0f, Target_z = -350.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4308 }, Target_x = -100.0f, Target_z = -350.0f };
                     actorPositions.Execute();
 
                     Stage += 1;

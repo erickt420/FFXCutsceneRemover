@@ -24,7 +24,7 @@ namespace FFXCutsceneRemover
 
                     Transition actorPositions;
                     // After the transition Kimahri's model is still visible so we bin him off to Narnia
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 4, Target_x = 1000.0f, Target_y = 0.0f, Target_z = -1000.0f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4 }, Target_x = 1000.0f, Target_y = 0.0f, Target_z = -1000.0f };
                     actorPositions.Execute();
 
                     Stage += 1;

@@ -26,11 +26,11 @@ namespace FFXCutsceneRemover
                     Transition actorPositions;
 
                     //Position Tidus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 1, Target_x = -20.0f, Target_y = -150.0f, Target_z = 70.0f , Target_swimming = true};
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = -20.0f, Target_y = -150.0f, Target_z = 70.0f , Target_swimming = true};
                     actorPositions.Execute();
 
                     //Position Wakka
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorID = 5, Target_x = 7.560521126f, Target_y = -155.0f, Target_z = 75.40319061f };
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 5 }, Target_x = 7.560521126f, Target_y = -155.0f, Target_z = 75.40319061f };
                     actorPositions.Execute();
 
                     WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x166);// 0x198

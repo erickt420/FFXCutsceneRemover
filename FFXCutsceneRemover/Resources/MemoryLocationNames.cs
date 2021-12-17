@@ -51,6 +51,7 @@
         public static string AuronTransition = "AuronTransition";
         public static string AmmesTransition = "AmmesTransition";
         public static string TankerTransition = "TankerTransition";
+        public static string InsideSinTransition = "InsideSinTransition";
         public static string DiveTransition = "DiveTransition";
         public static string GeosTransition = "GeosTransition";
         public static string KlikkTransition = "KlikkTransition";
@@ -89,6 +90,7 @@
         public static string BikanelTransition = "BikanelTransition";
         public static string HomeTransition = "HomeTransition";
         public static string EvraeTransition = "EvraeTransition";
+        public static string EvraeAirshipTransition = "EvraeAirshipTransition";
         public static string BahamutTransition = "BahamutTransition";
         public static string IsaaruTransition = "IsaaruTransition";
         public static string AltanaTransition = "AltanaTransition";
