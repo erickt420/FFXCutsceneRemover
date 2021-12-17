@@ -135,6 +135,7 @@ namespace FFXCutsceneRemover
         public int? OmnisTransition = null;
         public int? BFATransition = null;
         public int? AeonTransition = null;
+        public int? YuYevonTransition = null;
 
         public byte? EnableTidus = null;
         public byte? EnableYuna = null;
@@ -149,8 +150,8 @@ namespace FFXCutsceneRemover
         public byte? EnableIxion = null;
         public byte? EnableShiva = null;
         public byte? EnableBahamut = null;
-        public byte? EnableYojimbo = null;
         public byte? EnableAnima = null;
+        public byte? EnableYojimbo = null;
         public byte? EnableMagus = null;
 
         public byte? BaajFlag1 = null;
@@ -326,6 +327,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.OmnisTransition, OmnisTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
+            WriteValue(memoryWatchers.YuYevonTransition, YuYevonTransition);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
@@ -339,8 +341,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EnableIxion, EnableIxion);
             WriteValue(memoryWatchers.EnableShiva, EnableShiva);
             WriteValue(memoryWatchers.EnableBahamut, EnableBahamut);
-            WriteValue(memoryWatchers.EnableYojimbo, EnableYojimbo);
             WriteValue(memoryWatchers.EnableAnima, EnableAnima);
+            WriteValue(memoryWatchers.EnableYojimbo, EnableYojimbo);
             WriteValue(memoryWatchers.EnableMagus, EnableMagus);
 
             WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);

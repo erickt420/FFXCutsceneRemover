@@ -124,6 +124,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> OmnisTransition;
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> AeonTransition;
+        public MemoryWatcher<int> YuYevonTransition;
         public MemoryWatcher<int> CutsceneProgress_Max;
         public MemoryWatcher<int> CutsceneProgress_uVar1;
         public MemoryWatcher<int> CutsceneProgress_uVar2;
@@ -145,8 +146,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EnableIxion;
         public MemoryWatcher<byte> EnableShiva;
         public MemoryWatcher<byte> EnableBahamut;
-        public MemoryWatcher<byte> EnableYojimbo;
         public MemoryWatcher<byte> EnableAnima;
+        public MemoryWatcher<byte> EnableYojimbo;
         public MemoryWatcher<byte> EnableMagus;
 
         // HP/MP
@@ -382,6 +383,7 @@ namespace FFXCutsceneRemover
             OmnisTransition = GetMemoryWatcher<int>(MemoryLocations.OmnisTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
+            YuYevonTransition = GetMemoryWatcher<int>(MemoryLocations.YuYevonTransition);
             CutsceneProgress_Max = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_Max);
             CutsceneProgress_uVar1 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar1);
             CutsceneProgress_uVar2 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar2);
@@ -403,8 +405,8 @@ namespace FFXCutsceneRemover
             EnableIxion = GetMemoryWatcher<byte>(MemoryLocations.EnableIxion);
             EnableShiva = GetMemoryWatcher<byte>(MemoryLocations.EnableShiva);
             EnableBahamut = GetMemoryWatcher<byte>(MemoryLocations.EnableBahamut);
-            EnableYojimbo = GetMemoryWatcher<byte>(MemoryLocations.EnableYojimbo);
             EnableAnima = GetMemoryWatcher<byte>(MemoryLocations.EnableAnima);
+            EnableYojimbo = GetMemoryWatcher<byte>(MemoryLocations.EnableYojimbo);
             EnableMagus = GetMemoryWatcher<byte>(MemoryLocations.EnableMagus);
 
             // HP/MP
@@ -614,6 +616,7 @@ namespace FFXCutsceneRemover
                     OmnisTransition,
                     BFATransition,
                     AeonTransition,
+                    YuYevonTransition,
                     CutsceneProgress_Max,
                     CutsceneProgress_uVar1,
                     CutsceneProgress_uVar2,
@@ -631,8 +634,8 @@ namespace FFXCutsceneRemover
                     EnableIxion,
                     EnableShiva,
                     EnableBahamut,
-                    EnableYojimbo,
                     EnableAnima,
+                    EnableYojimbo,
                     EnableMagus,
                     TidusHP, TidusMP, TidusMaxHP, TidusMaxMP,
                     YunaHP, YunaMP, YunaMaxHP, YunaMaxMP,

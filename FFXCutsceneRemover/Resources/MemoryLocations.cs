@@ -113,6 +113,7 @@
         public static MemoryLocationData OmnisTransition = new MemoryLocationData(MemoryLocationNames.OmnisTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x18 - 0x2 - 0x3 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData BFATransition = new MemoryLocationData(MemoryLocationNames.BFATransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1B - 0x0 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AeonTransition = new MemoryLocationData(MemoryLocationNames.AeonTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
+        public static MemoryLocationData YuYevonTransition = new MemoryLocationData(MemoryLocationNames.YuYevonTransition, 0xF26AE8, new int[] { 0x1C, 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
         public static MemoryLocationData CutsceneProgress_Max = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_Max, 0xF26AE8, 0xC);
         public static MemoryLocationData CutsceneProgress_uVar1 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar1, 0xF26AE8, 0x14);
         public static MemoryLocationData CutsceneProgress_uVar2 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar2, 0xF26AE8, 0x16);
@@ -134,8 +135,8 @@
         public static MemoryLocationData EnableIxion = new MemoryLocationData(MemoryLocationNames.EnableIxion, 0xD32650);
         public static MemoryLocationData EnableShiva = new MemoryLocationData(MemoryLocationNames.EnableShiva, 0xD326E4);
         public static MemoryLocationData EnableBahamut = new MemoryLocationData(MemoryLocationNames.EnableBahamut, 0xD32778);
-        public static MemoryLocationData EnableYojimbo = new MemoryLocationData(MemoryLocationNames.EnableYojimbo, 0xD3280C);
-        public static MemoryLocationData EnableAnima = new MemoryLocationData(MemoryLocationNames.EnableAnima, 0xD328A0);
+        public static MemoryLocationData EnableAnima = new MemoryLocationData(MemoryLocationNames.EnableYojimbo, 0xD3280C);
+        public static MemoryLocationData EnableYojimbo = new MemoryLocationData(MemoryLocationNames.EnableAnima, 0xD328A0);
         public static MemoryLocationData EnableMagus = new MemoryLocationData(MemoryLocationNames.EnableMagus, 0xD32934);
 
         // HP/MP TODO: Find a better method for full party restore to clean this up
