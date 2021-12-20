@@ -12,24 +12,27 @@ namespace FFXCutsceneRemover
 
         public override void Execute(string defaultDescription = "")
         {
-            if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
+            if (Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.YunaBoatTransition.Current;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                WriteValue<int>(base.memoryWatchers.YunaBoatTransition, BaseCutsceneValue + 0xC20D);
+                WriteValue<int>(base.memoryWatchers.Camera, 1);
 
                 Stage += 1;
 
-            }
-            else if (base.memoryWatchers.YunaBoatTransition.Current == (BaseCutsceneValue + 0x2C3) && Stage == 1)
+            }/*/
+            else if (base.memoryWatchers.YunaBoatTransition.Current == (BaseCutsceneValue + 0xBF19) && Stage == 1)
             {
                 Storyline = 857;
                 base.Execute();
 
-                WriteValue<int>(base.memoryWatchers.YunaBoatTransition, BaseCutsceneValue + 0x2F4);
+                WriteValue<int>(base.memoryWatchers.YunaBoatTransition, BaseCutsceneValue + 0xC20D);
+                WriteValue<int>(base.memoryWatchers.Camera, 1);
 
                 Stage += 1;
-            }
+            }//*/
         }
     }
 }

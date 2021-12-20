@@ -33,7 +33,7 @@ namespace FFXCutsceneRemover
                     actorPositions.Execute();
 
                     Stage += 1;
-                }
+                }/*/
                 else if (base.memoryWatchers.EchuillesTransition.Current == (BaseCutsceneValue + 0x2537) && base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
                 {
                     WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x2604);
@@ -50,7 +50,7 @@ namespace FFXCutsceneRemover
                     ForceLoad = false;
                     base.Execute();
                     Stage += 1;
-                }
+                }//*/
             }
         }
     }

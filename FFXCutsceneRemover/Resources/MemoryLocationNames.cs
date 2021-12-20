@@ -35,6 +35,7 @@
         public static string DialogueOption = "DialogueOption";
         public static string DialogueBoxOpen = "DialogueBoxOpen";
         public static string PlayerTurn = "PlayerTurn";
+        public static string FrameCounterFromLoad = "FrameCounterFromLoad";
 
         //Event File
         public static string EventFileStart = "EventFileStart";

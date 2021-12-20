@@ -52,6 +52,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> DialogueOption;
         public MemoryWatcher<byte> DialogueBoxOpen;
         public MemoryWatcher<byte> PlayerTurn;
+        public MemoryWatcher<int> FrameCounterFromLoad;
 
         // Event File
         public MemoryWatcher<int> EventFileStart;
@@ -311,6 +312,7 @@ namespace FFXCutsceneRemover
             DialogueOption = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption);
             DialogueBoxOpen = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen);
             PlayerTurn = GetMemoryWatcher<byte>(MemoryLocations.PlayerTurn);
+            FrameCounterFromLoad = GetMemoryWatcher<int>(MemoryLocations.FrameCounterFromLoad);
 
             // Event File
             EventFileStart = GetMemoryWatcher<int>(MemoryLocations.EventFileStart);
@@ -547,6 +549,7 @@ namespace FFXCutsceneRemover
                     DialogueOption,
                     DialogueBoxOpen,
                     PlayerTurn,
+                    FrameCounterFromLoad,
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,

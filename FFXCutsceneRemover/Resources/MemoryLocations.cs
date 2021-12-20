@@ -39,6 +39,7 @@
         public static MemoryLocationData DialogueOption = new MemoryLocationData(MemoryLocationNames.DialogueOption, 0x146780A);
         public static MemoryLocationData DialogueBoxOpen = new MemoryLocationData(MemoryLocationNames.DialogueBoxOpen, 0x1465CC2);
         public static MemoryLocationData PlayerTurn = new MemoryLocationData(MemoryLocationNames.PlayerTurn, 0xF3F77B);
+        public static MemoryLocationData FrameCounterFromLoad = new MemoryLocationData(MemoryLocationNames.FrameCounterFromLoad, 0xF25D54);
 
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);

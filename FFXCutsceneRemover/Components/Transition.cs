@@ -36,7 +36,7 @@ namespace FFXCutsceneRemover
         public float? Target_y = null;
         public float? Target_z = null;
         public float? Target_rot = null;
-        public bool Target_swimming = false;
+        public short? Target_var1 = null;
         public float? PartyTarget_x = null;
         public float? PartyTarget_y = null;
         public float? PartyTarget_z = null;
@@ -431,21 +431,27 @@ namespace FFXCutsceneRemover
             if (PositionTidusAfterLoad)
             {
                 process.Resume();
-                while(memoryWatchers.ForceLoad.Current == 1 || memoryWatchers.State.Current == -1) // Wait for loading to start and black screen to end
+                memoryWatchers.ForceLoad.Update(process);
+                memoryWatchers.State.Update(process);
+                while (memoryWatchers.ForceLoad.Current == 1 || memoryWatchers.State.Current == -1) // Wait for loading to finish and black screen to end
                 {
                     memoryWatchers.ForceLoad.Update(process);
                     memoryWatchers.State.Update(process);
                 }
-                /*/ This breaks existing skips. If we are to use it we need to add a bool to only use this when needed.
+                memoryWatchers.FrameCounterFromLoad.Update(process);
+                while (memoryWatchers.FrameCounterFromLoad.Current < 5)
+                {
+                    memoryWatchers.FrameCounterFromLoad.Update(process);
+                }
+                process.Suspend();
+                SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
+                /*/
                 bool TidusFound = false;
                 while (!TidusFound) // Keep trying to move Tidus until his character model is in memory
                 {
-                    TidusFound = SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot);
-                    //DiagnosticLog.Information("Waiting...");
+                    TidusFound = SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
                 }
                 //*/
-                process.Suspend();
-                SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot);
             }
             else
             {
@@ -453,7 +459,7 @@ namespace FFXCutsceneRemover
                 {
                     foreach (short TargetActorID in TargetActorIDs)
                     {
-                        SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot);
+                        SetActorPosition(TargetActorID, Target_x, Target_y, Target_z, Target_rot, Target_var1);
                     }
                 }
             }
@@ -711,10 +717,11 @@ namespace FFXCutsceneRemover
             }
         }
 
-        private bool SetActorPosition(short? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null, bool Target_swimming = false)
+        private bool SetActorPosition(short? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null, short? Target_var1 = null)
         {
             Process process = memoryWatchers.Process;
 
+            memoryWatchers.ActorArrayLength.Update(process);
             int ActorCount = memoryWatchers.ActorArrayLength.Current;
             int baseAddress = memoryWatchers.GetBaseAddress();
             bool actorFound = false;
@@ -738,6 +745,7 @@ namespace FFXCutsceneRemover
                         MemoryWatcher<float> characterPos_z = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x14 + 0x880 * i }));
                         MemoryWatcher<float> characterPos_floor = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x16C + 0x880 * i }));
                         MemoryWatcher<float> characterPos_rot = new MemoryWatcher<float>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x168 + 0x880 * i }));
+                        MemoryWatcher<short> characterPos_var1 = new MemoryWatcher<short>(new DeepPointer(new IntPtr(baseAddress + 0x1FC44E4), new int[] { 0x824 + 0x880 * i }));
 
                         if (!(Target_x is null))
                         {
@@ -745,11 +753,7 @@ namespace FFXCutsceneRemover
                         }
                         if (!(Target_y is null))
                         {
-                            if (!Target_swimming)
-                            {
-                                WriteValue<float>(characterPos_floor, Target_y); // Always set floor to be the target y value when not swimming
-                            }
-                            
+                            WriteValue<float>(characterPos_floor, Target_y);
                             WriteValue<float>(characterPos_y, Target_y);
                         }
                         if (!(Target_z is null))
@@ -759,6 +763,10 @@ namespace FFXCutsceneRemover
                         if (!(Target_rot is null))
                         {
                             WriteValue<float>(characterPos_rot, Target_rot);
+                        }
+                        if (!(Target_var1 is null))
+                        {
+                            WriteValue<short>(characterPos_var1, Target_var1);
                         }
                     }
                 }
