@@ -151,6 +151,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EnableYojimbo;
         public MemoryWatcher<byte> EnableMagus;
 
+        // Encounter Rate
+        public MemoryWatcher<float> TotalDistance;
+        public MemoryWatcher<float> CycleDistance;
+
         // HP/MP
         public MemoryWatcher<int> TidusHP;
         public MemoryWatcher<short> TidusMP;
@@ -217,7 +221,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> GagazetCaveFlag;
 
         // Blitzball Abilities
-        public MemoryWatcher<byte> BlitzballAbilities;
+        public MemoryWatcher<byte> AurochsTeamBytes;
+        public MemoryWatcher<byte> BlitzballBytes;
 
         // Battle Rewards
         public MemoryWatcher<int> GilBattleRewards;
@@ -411,6 +416,10 @@ namespace FFXCutsceneRemover
             EnableYojimbo = GetMemoryWatcher<byte>(MemoryLocations.EnableYojimbo);
             EnableMagus = GetMemoryWatcher<byte>(MemoryLocations.EnableMagus);
 
+            // Encounter Rate
+            TotalDistance = GetMemoryWatcher<float>(MemoryLocations.TotalDistance);
+            CycleDistance = GetMemoryWatcher<float>(MemoryLocations.CycleDistance);
+
             // HP/MP
             TidusHP = GetMemoryWatcher<int>(MemoryLocations.TidusHP);
             TidusMP = GetMemoryWatcher<short>(MemoryLocations.TidusMP);
@@ -474,7 +483,8 @@ namespace FFXCutsceneRemover
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
 
             // Blitzball Abilities
-            BlitzballAbilities = GetMemoryWatcher<byte>(MemoryLocations.BlitzballAbilities);
+            AurochsTeamBytes = GetMemoryWatcher<byte>(MemoryLocations.AurochsTeamBytes);
+            BlitzballBytes = GetMemoryWatcher<byte>(MemoryLocations.BlitzballBytes);
 
             // Battle Rewards
             GilBattleRewards = GetMemoryWatcher<int>(MemoryLocations.GilBattleRewards);
@@ -640,6 +650,8 @@ namespace FFXCutsceneRemover
                     EnableAnima,
                     EnableYojimbo,
                     EnableMagus,
+                    TotalDistance,
+                    CycleDistance,
                     TidusHP, TidusMP, TidusMaxHP, TidusMaxMP,
                     YunaHP, YunaMP, YunaMaxHP, YunaMaxMP,
                     AuronHP, AuronMP, AuronMaxHP, AuronMaxMP,
@@ -672,7 +684,8 @@ namespace FFXCutsceneRemover
                     NatusFlag,
                     CalmLandsFlag,
                     GagazetCaveFlag,
-                    BlitzballAbilities,
+                    AurochsTeamBytes,
+                    BlitzballBytes,
                     GilBattleRewards,
                     BattleRewardItemCount,
                     BattleRewardItem1,

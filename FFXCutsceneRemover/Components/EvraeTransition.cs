@@ -1,5 +1,5 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
+using FFXCutsceneRemover.Logging;
 using System.Diagnostics;
 using System.Linq;
 
@@ -17,44 +17,51 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-
+                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
 
             }
             else if (base.memoryWatchers.State.Current == 0 && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7D6C);
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7AEA); // 0x7D6C 0x7C9F
 
                 formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 8);
 
                 Transition actorPositions;
-                //Position backup party members in narnia so they don't appear during transition
-                short partyMember4 = (short)(formation[3] + 1);
-                short partyMember5 = (short)(formation[4] + 1);
-                short partyMember6 = (short)(formation[5] + 1);
-                short partyMember7 = (short)(formation[6] + 1);
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { partyMember4, partyMember5, partyMember6, partyMember7 }, Target_x = 1000.0f, Target_z = 1000.0f };
+                //Position Party Member 1
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = -25.0f, Target_y = -35.53496933f, Target_z = 119.9999924f, Target_var1 = 21};
                 actorPositions.Execute();
 
+                //Position Party Member 2
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = -20.0f, Target_y = -35.85807419f, Target_z = 80.0f, Target_var1 = 19 };
+                actorPositions.Execute();
+
+                //Position Party Member 3
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = -15.00001526f, Target_y = -35.72403336f, Target_z = 40.0f, Target_var1 = 17 };
+                actorPositions.Execute();
+                
                 //Position Evrae
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4215 }, Target_x = -140.0f, Target_y = -35.0f, Target_z = 80.0f };
                 actorPositions.Execute();
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.EvraeTransition.Current >= (BaseCutsceneValue + 0x7DD5) && Stage == 2)
+            else if (base.memoryWatchers.EvraeTransition.Current >= (BaseCutsceneValue + 0x7AEB) && Stage == 2)
             {
-                WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7E0A);
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7D6C);
 
                 Stage += 1;
             }
             else if (base.memoryWatchers.BattleState.Current == 522 && base.memoryWatchers.CutsceneAlt.Current == 420 && Stage == 3)
             {
-                RoomNumber = 194;
-                Storyline = 2050;
-                ConsoleOutput = false;
-                ForceLoad = true;
-                base.Execute();
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                Transition actorPositions;
+                //Position Rikku
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 7 }, Target_x = -20.0f, Target_y = -35.85807419f, Target_z = 80.0f, Target_var1 = 19 };
+                actorPositions.Execute();
+
                 Stage += 1;
             }
         }

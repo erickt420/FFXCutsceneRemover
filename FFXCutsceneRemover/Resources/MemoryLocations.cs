@@ -183,6 +183,10 @@
         public static MemoryLocationData ValeforMP = new MemoryLocationData("ValeforMP", 0xD3251C);
         public static MemoryLocationData ValeforMaxMP = new MemoryLocationData("ValeforMaxMP", 0xD32524);
 
+        // Encounter Rate
+        public static MemoryLocationData TotalDistance = new MemoryLocationData("TotalDistance", 0xD2A9DC);
+        public static MemoryLocationData CycleDistance = new MemoryLocationData("TotalDistance", 0xD2A9D8);
+
         // Special Flags
         public static MemoryLocationData FangirlsOrKidsSkip = new MemoryLocationData(MemoryLocationNames.FangirlsOrKidsSkip, 0xD2CE7C);
         public static MemoryLocationData BaajFlag1 = new MemoryLocationData(MemoryLocationNames.BaajFlag1, 0xD2CE0C);
@@ -211,8 +215,9 @@
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
 
-        // Blitzball Abilities
-        public static MemoryLocationData BlitzballAbilities = new MemoryLocationData(MemoryLocationNames.BlitzballAbilities, 0xD2DC7C);
+        // Blitzball
+        public static MemoryLocationData AurochsTeamBytes = new MemoryLocationData(MemoryLocationNames.AurochsTeamBytes, 0xD2D704);
+        public static MemoryLocationData BlitzballBytes = new MemoryLocationData(MemoryLocationNames.BlitzballBytes, 0xD2DC7C);
 
         // Battle Rewards
         public static MemoryLocationData GilBattleRewards = new MemoryLocationData(MemoryLocationNames.GilBattleRewards, 0x1F10F6C);

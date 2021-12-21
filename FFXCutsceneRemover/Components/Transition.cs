@@ -37,6 +37,7 @@ namespace FFXCutsceneRemover
         public float? Target_z = null;
         public float? Target_rot = null;
         public short? Target_var1 = null;
+        public byte? MoveFrame = 5; // Default to 3 Frames as this seems to work for most transitions
         public float? PartyTarget_x = null;
         public float? PartyTarget_y = null;
         public float? PartyTarget_z = null;
@@ -154,6 +155,9 @@ namespace FFXCutsceneRemover
         public byte? EnableYojimbo = null;
         public byte? EnableMagus = null;
 
+        public float? TotalDistance = null;
+        public float? CycleDistance = null;
+
         public byte? BaajFlag1 = null;
 
         public byte? SSWinnoFlag1 = null;
@@ -188,7 +192,8 @@ namespace FFXCutsceneRemover
         public short? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
 
-        public byte[] BlitzballAbilities = null;
+        public byte[] AurochsTeamBytes = null;
+        public byte[] BlitzballBytes = null;
 
         public int? GilBattleRewards = null;
         public byte? BattleRewardItemCount = null;
@@ -372,7 +377,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
 
-            WriteBytes(memoryWatchers.BlitzballAbilities, BlitzballAbilities);
+            WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
+            WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
 
             WriteValue(memoryWatchers.GilBattleRewards, GilBattleRewards);
             WriteValue(memoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
@@ -439,19 +445,12 @@ namespace FFXCutsceneRemover
                     memoryWatchers.State.Update(process);
                 }
                 memoryWatchers.FrameCounterFromLoad.Update(process);
-                while (memoryWatchers.FrameCounterFromLoad.Current < 5)
+                while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame)
                 {
                     memoryWatchers.FrameCounterFromLoad.Update(process);
                 }
                 process.Suspend();
                 SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
-                /*/
-                bool TidusFound = false;
-                while (!TidusFound) // Keep trying to move Tidus until his character model is in memory
-                {
-                    TidusFound = SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
-                }
-                //*/
             }
             else
             {

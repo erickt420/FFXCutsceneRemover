@@ -134,6 +134,9 @@
         public static string EnableYojimbo = "EnableYojimbo";
         public static string EnableMagus = "EnableMagus";
 
+        public static string TotalDistance = "TotalDistance";
+        public static string CycleDistance = "CycleDistance";
+
         // Special Flags
         public static string FangirlsOrKidsSkip = "FangirlsOrKidsSkip";
         public static string BaajFlag1 = "BaajFlag1";
@@ -162,8 +165,9 @@
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
 
-        // Blitzball Abilities
-        public static string BlitzballAbilities = "BlitzballAbilities";
+        // Blitzball
+        public static string AurochsTeamBytes = "AurochsTeamBytes";
+        public static string BlitzballBytes = "BlitzballBytes";
 
         // Battle Rewards
         public static string GilBattleRewards = "GilBattleRewards";
