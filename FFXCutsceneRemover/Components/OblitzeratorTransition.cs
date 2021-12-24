@@ -1,8 +1,4 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
@@ -16,7 +12,7 @@ namespace FFXCutsceneRemover
             {
                 if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
                 {
-                    Formation = new byte[] { 0x00, 0x05, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                    FormationSwitch = formations.PreOblitzerator;
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.OblitzeratorTransition.Current;
@@ -38,7 +34,7 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.OblitzeratorTransition.Current == (BaseCutsceneValue + 0x31F) && base.memoryWatchers.HpEnemyA.Current < 6000 && base.memoryWatchers.HpEnemyA.Old == 6000 && Stage == 3)
+                else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 3)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.OblitzeratorTransition, BaseCutsceneValue + 0x655);// 

@@ -9,21 +9,12 @@ namespace FFXCutsceneRemover
 {
     class NatusTransition : Transition
     {
-        static private byte[] formation = new byte[] { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0xFF };
+        static private byte[] formation = new byte[] { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0xFF, 0xFF, 0xFF };
 
         static private List<short> CutsceneAltList = new List<short>(new short[] { 3751 });
         public override void Execute(string defaultDescription = "")
         {
             Process process = memoryWatchers.Process;
-
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-            MemoryWatcher<byte> KimahriWeapon = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD32245));
-            MemoryWatcher<byte> KimahriArmor = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD32246));
-            KimahriWeapon.Update(process);
-            KimahriArmor.Update(process);
-
-            byte CurrentWeapon = 0xFF;
-            byte CurrentArmor = 0xFF;
 
             if (base.memoryWatchers.NatusTransition.Current > 0)
             {
@@ -31,36 +22,21 @@ namespace FFXCutsceneRemover
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.NatusTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
                     DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
-                else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0x1893) && Stage == 1) // 1893
+                else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0xE0F0) && Stage == 1) // 1893
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
-                    CurrentWeapon = KimahriWeapon.Current;
-                    CurrentArmor = KimahriArmor.Current;
+                    Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = true, FormationSwitch = Transition.formations.PreNatus, Description = "Fix party before Natus" };
+                    FormationSwitch.Execute();
 
-                    WriteValue<int>(base.memoryWatchers.EnableKimahri, 17);
+                    formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 10);
 
-                    formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 7);
-                    formation[6] = 0x03;
-
-                    byte secondPositionIndex = formation[1];
-
-                    formation = SwapCharacterWithPosition(formation, 0x03, 1);
-                    formation = SwapCharacterWithPosition(formation, secondPositionIndex, 2);
-
-                    Formation = formation;
-                    ConsoleOutput = false;
-                    base.Execute();
-
-                    WriteValue<byte>(KimahriWeapon, CurrentWeapon);
-                    WriteValue<byte>(KimahriArmor, CurrentArmor);
-
-                    WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0x1A85);//
+                    WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0xE2DF);//
 
                     Transition actorPositions;
                     //Position Party Member 1
@@ -81,10 +57,10 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0x1AA0) && base.memoryWatchers.HpEnemyA.Current < 36000 && base.memoryWatchers.HpEnemyA.Old == 36000 && Stage == 2)
+                else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0xE2FD) && base.memoryWatchers.HpEnemyA.Current < 36000 && base.memoryWatchers.HpEnemyA.Old == 36000 && Stage == 2)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0x1B38);
+                    WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0xE395);
                     Stage += 1;
                 }
             }

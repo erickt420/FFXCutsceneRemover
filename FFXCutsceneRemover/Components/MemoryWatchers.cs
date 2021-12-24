@@ -87,6 +87,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> KilikaTrialsTransition;
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
+        public MemoryWatcher<int> JechtShotTransition;
         public MemoryWatcher<int> OblitzeratorTransition;
         public MemoryWatcher<int> BlitzballTransition;
         public MemoryWatcher<int> SahaginTransition;
@@ -109,6 +110,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> HomeTransition;
         public MemoryWatcher<int> EvraeTransition;
         public MemoryWatcher<int> EvraeAirshipTransition;
+        public MemoryWatcher<int> GuardsTransition;
         public MemoryWatcher<int> BahamutTransition;
         public MemoryWatcher<int> IsaaruTransition;
         public MemoryWatcher<int> AltanaTransition;
@@ -122,6 +124,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> YunalescaTransition;
         public MemoryWatcher<int> FinsTransition;
         public MemoryWatcher<int> FinsAirshipTransition;
+        public MemoryWatcher<int> SinCoreTransition;
         public MemoryWatcher<int> OmnisTransition;
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> AeonTransition;
@@ -352,6 +355,7 @@ namespace FFXCutsceneRemover
             KilikaTrialsTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaTrialsTransition);
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
+            JechtShotTransition = GetMemoryWatcher<int>(MemoryLocations.JechtShotTransition);
             OblitzeratorTransition = GetMemoryWatcher<int>(MemoryLocations.OblitzeratorTransition);
             BlitzballTransition = GetMemoryWatcher<int>(MemoryLocations.BlitzballTransition);
             SahaginTransition = GetMemoryWatcher<int>(MemoryLocations.SahaginTransition);
@@ -374,6 +378,7 @@ namespace FFXCutsceneRemover
             HomeTransition = GetMemoryWatcher<int>(MemoryLocations.HomeTransition);
             EvraeTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeTransition);
             EvraeAirshipTransition = GetMemoryWatcher<int>(MemoryLocations.EvraeAirshipTransition);
+            GuardsTransition = GetMemoryWatcher<int>(MemoryLocations.GuardsTransition);
             BahamutTransition = GetMemoryWatcher<int>(MemoryLocations.BahamutTransition);
             IsaaruTransition = GetMemoryWatcher<int>(MemoryLocations.IsaaruTransition);
             AltanaTransition = GetMemoryWatcher<int>(MemoryLocations.AltanaTransition);
@@ -387,6 +392,7 @@ namespace FFXCutsceneRemover
             YunalescaTransition = GetMemoryWatcher<int>(MemoryLocations.YunalescaTransition);
             FinsTransition = GetMemoryWatcher<int>(MemoryLocations.FinsTransition);
             FinsAirshipTransition = GetMemoryWatcher<int>(MemoryLocations.FinsAirshipTransition);
+            SinCoreTransition = GetMemoryWatcher<int>(MemoryLocations.SinCoreTransition);
             OmnisTransition = GetMemoryWatcher<int>(MemoryLocations.OmnisTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
@@ -591,6 +597,7 @@ namespace FFXCutsceneRemover
                     KilikaTrialsTransition,
                     IfritTransition,
                     IfritTransition2,
+                    JechtShotTransition,
                     OblitzeratorTransition,
                     BlitzballTransition,
                     SahaginTransition,
@@ -613,6 +620,7 @@ namespace FFXCutsceneRemover
                     HomeTransition,
                     EvraeTransition,
                     EvraeAirshipTransition,
+                    GuardsTransition,
                     BahamutTransition,
                     IsaaruTransition,
                     AltanaTransition,
@@ -626,6 +634,7 @@ namespace FFXCutsceneRemover
                     YunalescaTransition,
                     FinsTransition,
                     FinsAirshipTransition,
+                    SinCoreTransition,
                     OmnisTransition,
                     BFATransition,
                     AeonTransition,

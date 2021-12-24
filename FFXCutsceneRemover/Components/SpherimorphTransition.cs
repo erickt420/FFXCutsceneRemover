@@ -5,24 +5,23 @@ namespace FFXCutsceneRemover
 {
     class SpherimorphTransition : Transition
     {
-        static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
         public override void Execute(string defaultDescription = "")
         {
             if (base.memoryWatchers.SpherimorphTransition.Current > 0)
             {
-                if (base.memoryWatchers.TidusXCoordinate.Current > -100.0f && Stage == 0) // Need to us tidus position as the cutscene value updates on the second frame after entering area
+                if (base.memoryWatchers.CutsceneAlt.Current == 355 && Stage == 0)
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.SpherimorphTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
                     DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
-                else if (base.memoryWatchers.SpherimorphTransition.Current == (BaseCutsceneValue + 0x3B) && Stage == 1) // 486
+                else if (base.memoryWatchers.SpherimorphTransition.Current == (BaseCutsceneValue + 0x3477) && Stage == 1) // 486
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.SpherimorphTransition, BaseCutsceneValue + 0x169);// 1B44
+                    WriteValue<int>(base.memoryWatchers.SpherimorphTransition, BaseCutsceneValue + 0x35A5);// 1B44
 
                     Transition actorPositions;
                     //Position Wendigo
@@ -31,10 +30,10 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.SpherimorphTransition.Current == (BaseCutsceneValue + 0x1D3) && base.memoryWatchers.HpEnemyA.Current < 12000 && base.memoryWatchers.HpEnemyA.Old == 12000 && Stage == 2) // 1200 is HP of Guado
+                else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2) // 1200 is HP of Guado
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.SpherimorphTransition, BaseCutsceneValue + 0x290);// 1E34
+                    WriteValue<int>(base.memoryWatchers.SpherimorphTransition, BaseCutsceneValue + 0x36CC);// 1E34
                     Stage += 1;
                 }
             }

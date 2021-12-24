@@ -54,13 +54,6 @@ namespace FFXCutsceneRemover
                     base.Execute();
                     Stage += 1;
                 }
-                //*/
-                /*/
-                if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old)
-                {
-                    DiagnosticLog.Information(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.YunalescaTransition.Current.ToString());
-                }
-                //*/
             }
         }
     }

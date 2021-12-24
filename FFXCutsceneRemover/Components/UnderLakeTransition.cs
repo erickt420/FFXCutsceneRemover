@@ -73,14 +73,7 @@ namespace FFXCutsceneRemover
                     Storyline = 1704;
                     SpawnPoint = 0;
                     Description = "Bikanel Intro";
-                    Formation = new byte[] { 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    EnableTidus = 17;
-                    EnableYuna = 0;
-                    EnableAuron = 0;
-                    EnableKimahri = 0;
-                    EnableWakka = 0;
-                    EnableLulu = 0;
-                    EnableRikku = 0;
+                    FormationSwitch = formations.BikanelStart;
 
                     base.Execute();
 

@@ -9,7 +9,7 @@ namespace FFXCutsceneRemover
 {
     class GeneauxTransition : Transition
     {
-        static private byte[] formation = new byte[] { 0x00, 0x01, 0x03, 0x04, 0x05, 0xFF, 0xFF, 0xFF };
+        static private byte[] formation = new byte[] { 0x00, 0x01, 0x03, 0x04, 0x05, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 
         static private List<short> CutsceneAltList = new List<short>(new short[] { 265, 1173, 1174 });
         public override void Execute(string defaultDescription = "")
@@ -19,21 +19,21 @@ namespace FFXCutsceneRemover
             int baseAddress = base.memoryWatchers.GetBaseAddress();
             if (base.memoryWatchers.GeneauxTransition.Current > 0)
             {
-                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
+                if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.GeneauxTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
                     DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x4D8) && Stage == 1)
+                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x65CA) && Stage == 1)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6B8);
+                    WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x67AA);
 
-                    formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 8);
+                    formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 10);
 
                     Transition actorPositions;
                     //Position Party Member 1
@@ -50,10 +50,10 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x6DC) && base.memoryWatchers.HpEnemyA.Current < 3000 && base.memoryWatchers.HpEnemyA.Old == 3000 && Stage == 2)
+                else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x958);
+                    WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6A4A);
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 3)

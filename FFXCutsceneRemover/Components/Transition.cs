@@ -16,6 +16,15 @@ namespace FFXCutsceneRemover
 
         private Process process;
 
+        private const byte Tidus = 0x00;
+        private const byte Yuna = 0x01;
+        private const byte Auron = 0x02;
+        private const byte Kimahri = 0x03;
+        private const byte Wakka = 0x04;
+        private const byte Lulu = 0x05;
+        private const byte Rikku = 0x06;
+        private const byte Empty = 0xFF;
+
         public bool ConsoleOutput = true;
         public bool ForceLoad = true;
         public bool FullHeal = false;
@@ -37,10 +46,12 @@ namespace FFXCutsceneRemover
         public float? Target_z = null;
         public float? Target_rot = null;
         public short? Target_var1 = null;
-        public byte? MoveFrame = 5; // Default to 3 Frames as this seems to work for most transitions
+        public byte? MoveFrame = 5; // Default to 5 Frames as this seems to work for most transitions
         public float? PartyTarget_x = null;
         public float? PartyTarget_y = null;
         public float? PartyTarget_z = null;
+
+        public formations? FormationSwitch = null;
 
         /* Only add members here for memory addresses that we want to write the value to.
          * If we only ever read the value then there is no need to add it here. */
@@ -77,6 +88,8 @@ namespace FFXCutsceneRemover
         public float? TidusYCoordinate = null;
         public float? TidusZCoordinate = null;
         public float? TidusRotation = null;
+
+        // Bespoke Transitions
         public int? AuronTransition = null;
         public int? AmmesTransition = null;
         public int? TankerTransition = null;
@@ -98,6 +111,7 @@ namespace FFXCutsceneRemover
         public int? KilikaTrialsTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
+        public int? JechtShotTransition = null;
         public int? OblitzeratorTransition = null;
         public int? BlitzballTransition = null;
         public int? SahaginTransition = null;
@@ -120,6 +134,7 @@ namespace FFXCutsceneRemover
         public int? HomeTransition = null;
         public int? EvraeTransition = null;
         public int? EvraeAirshipTransition = null;
+        public int? GuardsTransition = null;
         public int? BahamutTransition = null;
         public int? IsaaruTransition = null;
         public int? AltanaTransition = null;
@@ -133,6 +148,7 @@ namespace FFXCutsceneRemover
         public int? YunalescaTransition = null;
         public int? FinsTransition = null;
         public int? FinsAirshipTransition = null;
+        public int? SinCoreTransition = null;
         public int? OmnisTransition = null;
         public int? BFATransition = null;
         public int? AeonTransition = null;
@@ -294,6 +310,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
+            WriteValue(memoryWatchers.JechtShotTransition, JechtShotTransition);
             WriteValue(memoryWatchers.OblitzeratorTransition, OblitzeratorTransition);
             WriteValue(memoryWatchers.BlitzballTransition, BlitzballTransition);
             WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
@@ -316,6 +333,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.HomeTransition, HomeTransition);
             WriteValue(memoryWatchers.EvraeTransition, EvraeTransition);
             WriteValue(memoryWatchers.EvraeAirshipTransition, EvraeAirshipTransition);
+            WriteValue(memoryWatchers.GuardsTransition, GuardsTransition);
             WriteValue(memoryWatchers.BahamutTransition, BahamutTransition);
             WriteValue(memoryWatchers.IsaaruTransition, IsaaruTransition);
             WriteValue(memoryWatchers.AltanaTransition, AltanaTransition);
@@ -329,6 +347,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.YunalescaTransition, YunalescaTransition);
             WriteValue(memoryWatchers.FinsTransition, FinsTransition);
             WriteValue(memoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
+            WriteValue(memoryWatchers.SinCoreTransition, SinCoreTransition);
             WriteValue(memoryWatchers.OmnisTransition, OmnisTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
@@ -370,7 +389,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
-            WriteBytes(memoryWatchers.Formation, Formation);
+            WriteBytes(memoryWatchers.Formation, Formation);// Can be removed once all party swap logic is complete
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
@@ -433,7 +452,9 @@ namespace FFXCutsceneRemover
             {
                 PartyOffScreen();
             }
-            //*/
+
+            UpdateFormation(Formation);
+
             if (PositionTidusAfterLoad)
             {
                 process.Resume();
@@ -451,6 +472,16 @@ namespace FFXCutsceneRemover
                 }
                 process.Suspend();
                 SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
+                SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason
+                process.Resume();
+                while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 3)
+                {
+                    memoryWatchers.FrameCounterFromLoad.Update(process);
+                }
+                process.Suspend();
+                //WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
+                WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
+                process.Resume();
             }
             else
             {
@@ -553,17 +584,6 @@ namespace FFXCutsceneRemover
                 hashCode *= property.GetValue(this).GetHashCode();
             }
             return hashCode;
-        }
-
-        public byte[] SwapCharacterWithPosition(byte[] formation, byte characterIndex, int newPosition)
-        {
-            int oldposition = Array.IndexOf(formation, characterIndex);
-            
-            byte temp = formation[oldposition];
-            formation[oldposition] = formation[newPosition];
-            formation[newPosition] = temp;
-
-            return formation;
         }
 
         private void FullPartyHeal()
@@ -772,5 +792,244 @@ namespace FFXCutsceneRemover
             }
             return actorFound;
         }
+
+        // Formation Functions
+
+        public enum formations
+        {
+            PreKimahri,
+            PostKimahri,
+            BoardingSSLiki,
+            //PostSinFin,
+            PostEchuilles,
+            MachinaFights,
+            PreOblitzerator,
+            PostOblitzerator,
+            PreSahagins,
+            //PreVouivre,
+            //PreGaruda,
+            AuronJoinsTheParty,
+            PostGui,
+            MeetRikku,
+            PostCrawler,
+            PreSeymour,
+            BikanelStart,
+            PostZu,
+            BikanelRikku,
+            ViaPurificoStart,
+            HighbridgeStart,
+            PreNatus
+        }
+
+        private void UpdateFormation(byte[] initialFormation = null)
+        {
+            byte[] formation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
+
+            if (FormationSwitch.HasValue)
+            {
+                switch (FormationSwitch)
+                {
+                    case formations.PreKimahri:
+                        formation = new byte[] { 0x00, 0xFF, 0xFF, 0x01, 0x04, 0x05, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
+                    case formations.PostKimahri:
+                        formation = new byte[] { 0x00, 0x01, 0x04, 0xFF, 0xFF, 0x05, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
+                    case formations.BoardingSSLiki:
+                        formation = AddCharacter(formation, 0x03);
+                        break;
+                    case formations.PostEchuilles:
+                        formation = new byte[] { 0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                        WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                        break;
+                    case formations.MachinaFights:
+                        formation = new byte[] { 0x05, 0x00, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 16);
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 16);
+                        break;
+                    case formations.PreOblitzerator:
+                        formation = new byte[] { 0x00, 0x05, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
+                    case formations.PostOblitzerator:
+                        formation = new byte[] { 0x05, 0x00, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
+                    case formations.PreSahagins:
+                        WriteValue<byte>(memoryWatchers.EnableKimahri, 16);
+                        WriteValue<byte>(memoryWatchers.EnableLulu, 16);
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 17);
+                        formation = new byte[] { 0x04, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
+                    case formations.AuronJoinsTheParty:
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                        WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                        formation = new byte[] { 0x00, 0x04, 0x01, 0x02, 0xFF, 0xFF, 0x05, 0x03, 0xFF, 0xFF };
+                        break;
+                    case formations.PostGui:
+                        byte initialPosition1 = initialFormation[0];
+                        byte initialPosition2 = initialFormation[1];
+                        byte initialPosition3 = initialFormation[2];
+                        WriteValue<byte>(memoryWatchers.EnableTidus, 17);
+                        WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 17);
+                        WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                        byte[] newformation = new byte[] { 0x01, 0xFF, 0x02, 0x00, 0x03, 0x04, 0x05, 0xFF, 0xFF, 0xFF };
+                        newformation = SwapCharacterWithPosition(newformation, initialPosition1, 0);
+                        newformation = SwapCharacterWithPosition(newformation, initialPosition2, 1);
+                        newformation = SwapCharacterWithPosition(newformation, initialPosition3, 2);
+                        formation = newformation;
+                        break;
+                    case formations.MeetRikku:
+                        WriteValue<byte>(memoryWatchers.EnableRikku, 17);
+                        formation = AddCharacter(formation, 0x06);
+                        formation = SwapCharacterWithPosition(formation, 0x06, 3);
+                        break;
+                    case formations.PostCrawler:
+                        formation = RemoveCharacter(formation, 0x01);
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 0);
+                        formation = FillMainPartySlotIfEmpty(formation, 0x00);
+                        break;
+                    case formations.PreSeymour:
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        formation = AddCharacter(formation, 0x01);
+                        formation = SwapCharacterWithPosition(formation, 0x00, 0);
+                        formation = SwapCharacterWithPosition(formation, 0x01, 1);
+                        formation = SwapCharacterWithPosition(formation, 0x03, 2);
+                        break;
+                    case formations.BikanelStart:
+                        formation = RemoveAll(formation);
+                        WriteValue<byte>(memoryWatchers.EnableTidus, 17);
+                        formation = AddCharacter(formation, 0x00);
+                        formation = SwapCharacterWithPosition(formation, 0x00, 0);
+                        break;
+                    case formations.PostZu:
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 17);
+                        formation = AddCharacter(formation, 0x04);
+                        break;
+                    case formations.BikanelRikku:
+                        WriteValue<byte>(memoryWatchers.EnableRikku, 17);
+                        formation = AddCharacter(formation, 0x06);
+                        break;
+                    case formations.ViaPurificoStart:
+                        formation = RemoveAll(formation);
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        formation = AddCharacter(formation, 0x01);
+                        formation = SwapCharacterWithPosition(formation, 0x01, 0);
+                        break;
+                    case formations.HighbridgeStart:
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        WriteValue<byte>(memoryWatchers.EnableAuron, 17);
+                        WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                        formation = AddCharacter(formation, 0x01);
+                        formation = AddCharacter(formation, 0x02);
+                        formation = AddCharacter(formation, 0x05);
+                        formation = SwapCharacterWithPosition(formation, 0x00, 0);
+                        formation = SwapCharacterWithPosition(formation, 0x01, 1);
+                        formation = SwapCharacterWithPosition(formation, 0x04, 2);
+                        break;
+                    case formations.PreNatus:
+                        WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                        formation = AddCharacter(formation, 0x03);
+                        formation = SwapCharacterWithPosition(formation, 0x00, 0);
+                        formation = SwapCharacterWithPosition(formation, 0x01, 2);
+                        formation = SwapCharacterWithPosition(formation, 0x03, 1);
+                        break;
+                }
+                WriteBytes(memoryWatchers.Formation, formation);
+            }
+        }
+
+        public int GetFirstEmptyReservePosition(byte[] formation)
+        {
+            int formationSize = formation.Length;
+
+            for (int i = 3; i < formationSize; i++)
+            {
+                if (formation[i] == 0xFF)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        public byte[] RemoveCharacter(byte[] formation, byte Character)
+        {
+            int formationSize = formation.Length;
+
+            for (int i = 0; i < formationSize; i++)
+            {
+                if (formation[i] == Character)
+                {
+                    formation[i] = 0xFF;
+                }
+            }
+            return formation;
+        }
+
+        public byte[] RemoveAll(byte[] formation)
+        {
+            int formationSize = formation.Length;
+
+            for (int i = 0; i < formationSize; i++)
+            {
+                formation[i] = 0xFF;
+            }
+
+            WriteValue<byte>(memoryWatchers.EnableTidus, 0);
+            WriteValue<byte>(memoryWatchers.EnableYuna, 0);
+            WriteValue<byte>(memoryWatchers.EnableAuron, 0);
+            WriteValue<byte>(memoryWatchers.EnableKimahri, 0);
+            WriteValue<byte>(memoryWatchers.EnableWakka, 0);
+            WriteValue<byte>(memoryWatchers.EnableLulu, 0);
+            WriteValue<byte>(memoryWatchers.EnableRikku, 0);
+
+            return formation;
+        }
+
+        public byte[] AddCharacter(byte[] formation, byte Character)
+        {
+            int Position = GetFirstEmptyReservePosition(formation);
+
+            formation[Position] = Character;
+            return formation;
+        }
+
+        public byte[] SwapCharacterWithPosition(byte[] formation, byte Character, int newPosition)
+        {
+            int oldposition = Array.IndexOf(formation, Character);
+
+            byte temp = formation[oldposition];
+            formation[oldposition] = formation[newPosition];
+            formation[newPosition] = temp;
+
+            return formation;
+        }
+
+        public byte[] SwapPositionWithFirstEmptyReservePosition(byte[] formation, int Position)
+        {
+            int newPosition = GetFirstEmptyReservePosition(formation);
+
+            formation[newPosition] = formation[Position];
+            formation[Position] = 0xFF;
+
+            return formation;
+        }
+
+        public byte[] FillMainPartySlotIfEmpty(byte[] formation, byte Character)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (formation[i] == 0xFF)
+                {
+                    formation = SwapCharacterWithPosition(formation, Character, i);
+                    return formation;
+                }
+            }
+            return formation;
+        }
+
     }
 }

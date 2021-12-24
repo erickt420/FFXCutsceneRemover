@@ -70,6 +70,7 @@
         public static string KilikaTrialsTransition = "KilikaTrialsTransition";
         public static string IfritTransition = "IfritTransition";
         public static string IfritTransition2 = "IfritTransition2";
+        public static string JechtShotTransition = "JechtShotTransition";
         public static string OblitzeratorTransition = "OblitzeratorTransition";
         public static string BlitzballTransition = "BlitzballTransition";
         public static string SahaginTransition = "SahaginTransition";
@@ -92,6 +93,7 @@
         public static string HomeTransition = "HomeTransition";
         public static string EvraeTransition = "EvraeTransition";
         public static string EvraeAirshipTransition = "EvraeAirshipTransition";
+        public static string GuardsTransition = "GuardsTransition";
         public static string BahamutTransition = "BahamutTransition";
         public static string IsaaruTransition = "IsaaruTransition";
         public static string AltanaTransition = "AltanaTransition";
@@ -105,6 +107,7 @@
         public static string YunalescaTransition = "YunalescaTransition";
         public static string FinsTransition = "FinsTransition";
         public static string FinsAirshipTransition = "FinsAirshipTransition";
+        public static string SinCoreTransition = "SinCoreTransition";
         public static string OmnisTransition = "OmnisTransition";
         public static string BFATransition = "BFATransition";
         public static string AeonTransition = "AeonTransition";

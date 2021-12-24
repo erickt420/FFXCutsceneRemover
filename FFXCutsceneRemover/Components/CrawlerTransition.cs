@@ -63,6 +63,9 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 7)
                 {
+                    Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = false, FormationSwitch = Transition.formations.PostCrawler, Description = "Fix party after Crawler" };
+                    FormationSwitch.Execute();
+
                     Menu = 0;
                     Description = "Exit Menu";
                     ForceLoad = false;
