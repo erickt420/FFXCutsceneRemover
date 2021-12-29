@@ -8,32 +8,26 @@ namespace FFXCutsceneRemover
 {
     class KimahriTransition : Transition
     {
-        static private List<short> CutsceneAltList = new List<short>(new short[] { 5, 139, 720 });
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-
-            if (base.memoryWatchers.KimahriTransition.Current > 0)
+            if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
             {
-                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.KimahriTransition.Current;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
 
-                    Stage = 1;
+                Stage += 1;
 
-                }
-                else if (base.memoryWatchers.KimahriTransition.Current >= (BaseCutsceneValue + 0x6C) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x145);
-                    Stage = 2;
-                }
-                else if (base.memoryWatchers.KimahriTransition.Current == (BaseCutsceneValue + 0x178) && base.memoryWatchers.HpEnemyA.Current < 750 && base.memoryWatchers.HpEnemyA.Old == 750 && Stage == 2)
-                {
-                    WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x835); // 75C , 77B
-                    Stage = 3;
-                }
+            }
+            else if (base.memoryWatchers.KimahriTransition.Current >= (BaseCutsceneValue + 0x231A) && Stage == 1)
+            {
+                WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x23F3);
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
+            {
+                WriteValue<int>(base.memoryWatchers.KimahriTransition, BaseCutsceneValue + 0x2AE3);
+                Stage += 1;
             }
         }
     }

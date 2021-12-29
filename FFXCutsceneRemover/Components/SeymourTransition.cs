@@ -69,6 +69,12 @@ namespace FFXCutsceneRemover
                 Formation = null;
                 FormationSwitch = null;
                 ConsoleOutput = false;
+                PositionTidusAfterLoad = true;
+                Target_x = 1.470157981f;
+                Target_y = 0.0f;
+                Target_z = 0.3889299929f;
+                Target_rot = -0.1195230484f;
+                Target_var1 = 53;
                 base.Execute();
 
                 Stage += 1;

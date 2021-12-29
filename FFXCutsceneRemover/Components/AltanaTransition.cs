@@ -52,7 +52,7 @@ namespace FFXCutsceneRemover
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     Stage += 1;
-                }
+                }/*/
                 else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x50E) && Stage == 3)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
@@ -121,7 +121,7 @@ namespace FFXCutsceneRemover
                     actorPositions.Execute();
 
                     Stage += 1;
-                }
+                }//*/
                 else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 7)
                 {
                     DiagnosticLog.Information("Stage: End Fight");
