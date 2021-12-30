@@ -1,11 +1,16 @@
 # FFXCutsceneRemover
 Cutscene skipping program for the Windows version of Final Fantasy X HD Remaster.
-Currently we are in the early stages of development. Most likely you will encounter issues or bugs. If so, please open an issue on GitHub or contact us in the modding channel of the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
+If you encounter any bugs or have any questions, please open an issue on GitHub or contact us in the modding channel of the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
 
 ### Usage:
-Ensure you have .NET Core 3.1 Runtime installed ([download here](https://dotnet.microsoft.com/download/dotnet/3.1/runtime))
 
-Double click the exe, or execute FFXCutsceneRemover.exe from cmd.
+1. Ensure you have .NET Core 3.1 Runtime installed ([download here](https://dotnet.microsoft.com/download/dotnet/3.1/runtime))
+
+2. Download the latest release from the [relases page here](https://github.com/erickt420/FFXCutsceneRemover/releases)
+
+3. Extract all files from the zip into an empty folder
+
+4. Double click FFXCutsceneRemover.exe
 
 ### Arguments:
 You can use multiple arguments by separating them with a space.
