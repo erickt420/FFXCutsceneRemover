@@ -1,7 +1,4 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -22,16 +19,10 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.IfritTransition.Current >= (BaseCutsceneValue + 0x34) && Stage == 1)
                 {
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.IfritTransition, BaseCutsceneValue + 0x1E4);
 
                     Stage = 2;
-                }
-                else if (base.memoryWatchers.IfritTransition.Current >= (BaseCutsceneValue + 0x1F9) && Stage == 2)
-                {
-                    Storyline = 348;
-                    base.Execute();
-
-                    Stage = 3;
                 }
             }
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using FFXCutsceneRemover.Logging;
 
 /* Please don't mess with this. */
 namespace FFX_Cutscene_Remover.ComponentUtil
@@ -46,7 +47,7 @@ namespace FFX_Cutscene_Remover.ComponentUtil
                     }
                     catch (Win32Exception exception)
                     {
-                        Console.WriteLine("Exception: " + exception.Message);
+                        DiagnosticLog.Information("Exception: " + exception.Message);
                     }
                 }
             }

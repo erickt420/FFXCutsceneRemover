@@ -1,14 +1,11 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
+﻿using FFXCutsceneRemover.Logging;
 using System.Collections.Generic;
 
 namespace FFXCutsceneRemover
 {
     class YunalescaTransition : Transition
     {
-        List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
+        static private List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
         public override void Execute(string defaultDescription = "")
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();
@@ -16,32 +13,47 @@ namespace FFXCutsceneRemover
             if (base.memoryWatchers.YunalescaTransition.Current > 0)
             {
                 
-                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
+                if (Stage == 0)
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.YunalescaTransition.Current;
-
-                    Stage = 1;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
+                    Stage += 1;
 
                 }//*/
-                else if (base.memoryWatchers.YunalescaTransition.Current >= (BaseCutsceneValue + 0x75A) && Stage == 1)
+                else if (base.memoryWatchers.YunalescaTransition.Current == (BaseCutsceneValue + 0x5DF0) && Stage == 1)
                 {
-                    WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0xDC4);
-                    Stage = 2;
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x645A);
+                    Stage += 1;
                 }
-                else if (base.memoryWatchers.YunalescaTransition.Current >= (BaseCutsceneValue + 0xE24) && Stage == 2)
+                else if (base.memoryWatchers.YunalescaTransition.Current == (BaseCutsceneValue + 0x64BA) && Stage == 2)
                 {
-                    WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x111E);
-                    Stage = 3;
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x67B4);
+                    Stage += 1;
                 }
-                //*/
-                /*/
-                if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old)
+                else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 3)
                 {
-                    Console.WriteLine(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.YunalescaTransition.Current.ToString());
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x6C8D);
+                    Stage += 1;
                 }
-                //*/
+                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 4)
+                {
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
+                    Stage += 1;
+                }
+                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 5)
+                {
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
+                    Menu = 0;
+                    Description = "Exit Menu";
+                    ForceLoad = false;
+                    base.Execute();
+                    Stage += 1;
+                }
             }
         }
     }

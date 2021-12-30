@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -21,17 +22,34 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.SahaginTransition.Current;
-
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.SahaginTransition.Current >= (BaseCutsceneValue + 0xC9) && Stage == 1)
+                else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0xC9) && Stage == 1)
                 {
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x45A);
+
+                    Transition actorPositions;
+                    //Position Wakka
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 5 }, Target_x = -20.0f, Target_y = -510.0f, Target_z = 0.0f };
+                    actorPositions.Execute();
+
+                    //Position Tidus
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 20.0f, Target_y = -510.0f, Target_z = 0.0f };
+                    actorPositions.Execute();
+
+                    //Position Sahagins
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4252 }, Target_x = 0.0f, Target_y = -510.0f, Target_z = -60.0f };
+                    actorPositions.Execute();
+
                     Stage = 2;
                 }
-                else if (base.memoryWatchers.SahaginTransition.Current >= (BaseCutsceneValue + 0x45A) && base.memoryWatchers.HpEnemyA.Current == 170 && Stage == 2) {
-                    WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);//Possibly 0x568
+                else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0x491) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 2)
+                {
+                    DiagnosticLog.Information("Stage: " + Stage.ToString());
+                    WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);
                     Stage = 3;
                 }
             }

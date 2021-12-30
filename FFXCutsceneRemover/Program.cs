@@ -1,4 +1,5 @@
 ﻿using System;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -9,7 +10,7 @@ namespace FFXCutsceneRemover
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Program starting...");
+            DiagnosticLog.Information("Program starting...");
 
             switch(args.Length)
             {
@@ -25,6 +26,7 @@ namespace FFXCutsceneRemover
                     break;
             }
 
+            DiagnosticLog.ExtraAnnotations = debug;
             CutsceneRemover mainProgram = new CutsceneRemover(debug, loopSleepMillis);
             mainProgram.MainLoop();
         }

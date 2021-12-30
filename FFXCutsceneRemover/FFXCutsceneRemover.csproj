@@ -1,8 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ContentWithTargetPath Include="./Resources/BlitzballBytes.txt" CopyToOutputDirectory="Always" TargetPath="BlitzballBytes.txt" />
+		<ContentWithTargetPath Include="./Resources/NewGameDialogue.txt" CopyToOutputDirectory="Always" TargetPath="NewGameDialogue.txt" />
+		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	</ItemGroup>
 
 </Project>

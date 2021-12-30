@@ -2,6 +2,8 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -9,34 +11,46 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
             if (base.memoryWatchers.EchuillesTransition.Current > 0)
             {
                 if (Stage == 0)
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.EchuillesTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
+                    Stage += 1;
 
-                    Stage = 1;
+                }
+                else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x20D0) && Stage == 1)
+                {
+                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x248A); // 0x2490
 
-                }
-                else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x33) && Stage == 1)
+                    Transition actorPositions;
+
+                    //Position Echuilles
+                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4210 }, Target_x = 0.0f, Target_y = -124.0f, Target_z = -40.0f };
+                    actorPositions.Execute();
+
+                    Stage += 1;
+                }/*/
+                else if (base.memoryWatchers.EchuillesTransition.Current == (BaseCutsceneValue + 0x2537) && base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
                 {
-                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x35E);
-                    Stage = 2;
+                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x2604);
+                    Stage += 1;
                 }
-                else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x413) && Stage == 2)
+                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 3)
                 {
-                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x49A);
-                    Stage = 3;
+                    Stage += 1;
                 }
-                else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x532) && Stage == 3)
+                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 4)
                 {
-                    Console.WriteLine("Rewards Screen");
-                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x593);
-                    Stage = 4;
-                }
+                    Menu = 0;
+                    Description = "Exit Menu";
+                    ForceLoad = false;
+                    base.Execute();
+                    Stage += 1;
+                }//*/
             }
         }
     }

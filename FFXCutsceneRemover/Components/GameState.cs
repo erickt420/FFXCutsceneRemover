@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -24,6 +24,9 @@ namespace FFXCutsceneRemover
         public float? XCoordinate = null;
         public float? YCoordinate = null;
         public byte? Camera = null;
+        public float? Camera_x = null;
+        public float? Camera_y = null;
+        public float? Camera_z = null;
         public float? CameraRotation = null;
         public byte? EncounterStatus = null;
         public byte? MovementLock = null;
@@ -33,10 +36,22 @@ namespace FFXCutsceneRemover
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
         public short? AuronOverdrives = null;
+        public int? Gil = null;
+        public int? TargetFramerate = null;
+        public int? Dialogue1 = null;
+        public byte? DialogueOption = null;
+        public byte? DialogueBoxOpen = null;
+        public byte? PlayerTurn = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
+        public short? NPCLastInteraction = null;
+        public byte? TidusActionCount = null;
+        public float? TidusXCoordinate = null;
+        public float? TidusYCoordinate = null;
+        public float? TidusZCoordinate = null;
+        public float? TidusRotation = null;
         public int? SeymourTransition = null;
         public int? SeymourTransition2 = null;
         public byte? EnableAuron = null;
@@ -46,6 +61,7 @@ namespace FFXCutsceneRemover
         public byte? BesaidFlag1 = null;
 
         public byte? SSWinnoFlag1 = null;
+        public byte? KilikaMapFlag = null;
         public byte? SSWinnoFlag2 = null;
 
         public byte? LucaFlag = null;
@@ -55,6 +71,9 @@ namespace FFXCutsceneRemover
         public byte? MiihenFlag2 = null;
         public byte? MiihenFlag3 = null;
         public byte? MiihenFlag4 = null;
+
+        public byte? MRRFlag1 = null;
+        public byte? MRRFlag2 = null;
 
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
@@ -74,6 +93,9 @@ namespace FFXCutsceneRemover
                 TestValue(XCoordinate, memoryWatchers.XCoordinate.Current) &&
                 TestValue(YCoordinate, memoryWatchers.YCoordinate.Current) &&
                 TestValue(Camera, memoryWatchers.Camera.Current) &&
+                TestValue(Camera_x, memoryWatchers.Camera_x.Current) &&
+                TestValue(Camera_y, memoryWatchers.Camera_y.Current) &&
+                TestValue(Camera_z, memoryWatchers.Camera_z.Current) &&
                 TestValue(CameraRotation, memoryWatchers.CameraRotation.Current) &&
                 TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Current) &&
                 TestValue(MovementLock, memoryWatchers.MovementLock.Current) &&
@@ -83,12 +105,19 @@ namespace FFXCutsceneRemover
                 TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Current) &&
                 TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Current) &&
                 TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Current) &&
+                TestValue(Gil, memoryWatchers.Gil.Current) &&
+                TestValue(TargetFramerate, memoryWatchers.TargetFramerate.Current) &&
+                TestValue(Dialogue1, memoryWatchers.Dialogue1.Current) &&
+                TestValue(DialogueOption, memoryWatchers.DialogueOption.Current) &&
+                TestValue(DialogueBoxOpen, memoryWatchers.DialogueBoxOpen.Current) &&
+                TestValue(PlayerTurn, memoryWatchers.PlayerTurn.Current) &&
                 TestValue(EnableAuron, memoryWatchers.EnableAuron.Current) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Current) &&
                 TestValue(SSWinnoFlag1, memoryWatchers.SSWinnoFlag1.Current) &&
+                TestValue(KilikaMapFlag, memoryWatchers.KilikaMapFlag.Current) &&
                 TestValue(SSWinnoFlag2, memoryWatchers.SSWinnoFlag2.Current) &&
                 TestValue(LucaFlag, memoryWatchers.LucaFlag.Current) &&
                 TestValue(LucaFlag2, memoryWatchers.LucaFlag2.Current) &&
@@ -96,13 +125,17 @@ namespace FFXCutsceneRemover
                 TestValue(MiihenFlag2, memoryWatchers.MiihenFlag2.Current) &&
                 TestValue(MiihenFlag3, memoryWatchers.MiihenFlag3.Current) &&
                 TestValue(MiihenFlag4, memoryWatchers.MiihenFlag4.Current) &&
+                TestValue(MRRFlag1, memoryWatchers.MRRFlag1.Current) &&
+                TestValue(MRRFlag2, memoryWatchers.MRRFlag2.Current) &&
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
+                TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Current) &&
+                TestValue(TidusActionCount, memoryWatchers.TidusActionCount.Current) &&
+                TestValue(TidusXCoordinate, memoryWatchers.TidusXCoordinate.Current) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current) &&
                 TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
-            ;
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

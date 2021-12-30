@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using FFXCutsceneRemover.Logging;
 
 /*
  * Main loops for the Cutscene Remover program.
@@ -49,10 +50,9 @@ namespace FFXCutsceneRemover
 
                 MemoryWatchers.Initialize(Game);
 
-                Console.WriteLine("Starting main loop!");
+                DiagnosticLog.Information("Starting main loop!");
                 while (!Game.HasExited)
                 {
-
                     // Update the values of our memory watchers.
                     // This is really important.
                     MemoryWatchers.Watchers.UpdateAll(Game);
@@ -64,9 +64,9 @@ namespace FFXCutsceneRemover
                         // Report the current status of all of our watched memory. For debug purposes
                         foreach (MemoryWatcher watcher in watchers)
                         {
-                            Console.WriteLine(watcher.Name + ": " + watcher.Current);
+                            DiagnosticLog.Information(watcher.Name + ": " + watcher.Current);
                         }
-                        Console.Write("InBossFight: " + InBossFight);
+                        DiagnosticLog.Information("InBossFight: " + InBossFight);
                     }
 
                     /* This loop iterates over the list of standard transitions
@@ -80,7 +80,14 @@ namespace FFXCutsceneRemover
                         }
                     }
 
-                    
+                    if (new GameState { RoomNumber = 23 }.CheckState())
+                    {
+                        foreach (var transition in standardTransitions)
+                        {
+                            transition.Value.Stage = 0;
+                        }
+                    }
+
                     /* Loop for post boss fights transitions. Once we enter the fight we set the boss bit and the transition
                      * to perform once we exit the AP menu. */
                     Dictionary<IGameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
@@ -92,13 +99,13 @@ namespace FFXCutsceneRemover
                             {
                                 InBossFight = true;
                                 PostBossFightTransition = transition.Value;
-                                Console.WriteLine("Entered Boss Fight: " + transition.Value.Description);
+                                DiagnosticLog.Information("Entered Boss Fight: " + transition.Value.Description);
                             }
                         }
                     }
                     else if (InBossFight && new GameState {RoomNumber = 23}.CheckState())
                     {
-                        Console.WriteLine("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
+                        DiagnosticLog.Information("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
                         InBossFight = false;
                     }
                     else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
@@ -128,20 +135,20 @@ namespace FFXCutsceneRemover
 #if DEBUG
                     if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
                     {
-                        ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start" });
+                        ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start", Repeatable = true });
                     }
 #endif
                     
                     // Custom Check #1 - Sandragoras
                     if (new GameState { RoomNumber = 138, Storyline = 1720, State = 1}.CheckState() && MemoryWatchers.Sandragoras.Current >= 4)
                     {
-                        ExecuteTransition(new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, Description = "Sanubia to Home"});
+                        ExecuteTransition(new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -15.83119202f, Target_y = -0.4932427108f, Target_z = -98.58677673f, Target_rot = 2.518902063f, Target_var1 = 432, Description = "Sanubia to Home"});
                     }
                     
                     // Custom Check #2 - Airship
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
                     {
-                        ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, Description = "Zoom in on Bevelle"});
+                        ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.6673126f, Target_y = 12.51491833f, Target_z = 398.0950317f, Target_rot = -1.659699082f, Target_var1 = 1463, Description = "Zoom in on Bevelle"});
                     }
 
                     // Custom Check #3 - Djose
@@ -212,11 +219,15 @@ namespace FFXCutsceneRemover
         // Save the previous transition so that we don't execute the same transition multiple times in a row.
         private void ExecuteTransition(Transition transition, string defaultDescription = "")
         {
+            bool suspended = false;
+
             if (transition != PreviouslyExecutedTransition)
             {
                 if (transition.Suspendable)
                 {
                     Game.Suspend();
+                    suspended = true;
+                    DiagnosticLog.Information("Game Suspended");
                 }
 
                 transition.Execute(defaultDescription);
@@ -226,16 +237,17 @@ namespace FFXCutsceneRemover
                     PreviouslyExecutedTransition = transition;
                 }
 
-                if (transition.Suspendable)
+                if (suspended)
                 {
                     Game.Resume();
+                    DiagnosticLog.Information("Game Resumed");
                 }
             }
         }
 
         private void ConnectToTarget()
         {
-            Console.WriteLine("Connecting to FFX...");
+            DiagnosticLog.Information("Connecting to FFX...");
             try
             {
                 Game = Process.GetProcessesByName(TARGET_NAME).OrderByDescending(x => x.StartTime)
@@ -243,19 +255,19 @@ namespace FFXCutsceneRemover
             }
             catch (Win32Exception e)
             {
-                Console.WriteLine("Exception: " + e.Message);
+                DiagnosticLog.Information("Exception: " + e.Message);
             }
 
             if (Game == null || Game.HasExited)
             {
                 Game = null;
-                Console.WriteLine("FFX not found! Waiting for 10 seconds.");
+                DiagnosticLog.Information("FFX not found! Waiting for 10 seconds.");
 
                 Thread.Sleep(10 * 1000);
             }
             else
             {
-                Console.WriteLine("Connected to FFX!");
+                DiagnosticLog.Information("Connected to FFX!");
             }
         }
     }
