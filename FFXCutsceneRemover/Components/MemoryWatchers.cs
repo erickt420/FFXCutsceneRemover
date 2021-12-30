@@ -533,6 +533,8 @@ namespace FFXCutsceneRemover
 
             ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
 
+            HpEnemyA.FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
+
             Watchers.Clear();
             Watchers.AddRange(new List<MemoryWatcher>() { 
                     RoomNumber,

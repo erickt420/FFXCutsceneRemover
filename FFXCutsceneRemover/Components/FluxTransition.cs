@@ -16,7 +16,7 @@ namespace FFXCutsceneRemover
 
             if (base.memoryWatchers.FluxTransition.Current > 0)
             {
-                if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
+                if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
                 {
                     base.Execute();
 

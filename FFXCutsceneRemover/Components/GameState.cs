@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -136,7 +136,6 @@ namespace FFXCutsceneRemover
                 TestValue(TidusXCoordinate, memoryWatchers.TidusXCoordinate.Current) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current) &&
                 TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
-            ;
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

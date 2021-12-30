@@ -80,7 +80,14 @@ namespace FFXCutsceneRemover
                         }
                     }
 
-                    
+                    if (new GameState { RoomNumber = 23 }.CheckState())
+                    {
+                        foreach (var transition in standardTransitions)
+                        {
+                            transition.Value.Stage = 0;
+                        }
+                    }
+
                     /* Loop for post boss fights transitions. Once we enter the fight we set the boss bit and the transition
                      * to perform once we exit the AP menu. */
                     Dictionary<IGameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
@@ -102,7 +109,7 @@ namespace FFXCutsceneRemover
                         InBossFight = false;
                     }
                     else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
-                    {
+                    {;
                         ExecuteTransition(PostBossFightTransition, "Executing Post Boss Fight Transition - No Description");
                         InBossFight = false;
                         PostBossFightTransition = null;

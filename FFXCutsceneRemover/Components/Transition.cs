@@ -391,7 +391,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
-            WriteBytes(memoryWatchers.Formation, Formation);// Can be removed once all party swap logic is complete
+            //WriteBytes(memoryWatchers.Formation, Formation);// Can be removed once all party swap logic is complete
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
@@ -820,12 +820,23 @@ namespace FFXCutsceneRemover
             BikanelRikku,
             ViaPurificoStart,
             HighbridgeStart,
-            PreNatus
+            PreNatus,
+            PostBiranYenke
         }
 
         private void UpdateFormation(byte[] initialFormation = null)
         {
             byte[] formation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
+            byte initialPosition1 = 0xFF;
+            byte initialPosition2 = 0xFF;
+            byte initialPosition3 = 0xFF;
+
+            if (!(initialFormation is null))
+            {
+                initialPosition1 = initialFormation[0];
+                initialPosition2 = initialFormation[1];
+                initialPosition3 = initialFormation[2];
+            }
 
             if (FormationSwitch.HasValue)
             {
@@ -870,9 +881,6 @@ namespace FFXCutsceneRemover
                         formation = new byte[] { 0x00, 0x04, 0x01, 0x02, 0xFF, 0xFF, 0x05, 0x03, 0xFF, 0xFF };
                         break;
                     case formations.PostGui:
-                        byte initialPosition1 = initialFormation[0];
-                        byte initialPosition2 = initialFormation[1];
-                        byte initialPosition3 = initialFormation[2];
                         WriteValue<byte>(memoryWatchers.EnableTidus, 17);
                         WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
                         WriteValue<byte>(memoryWatchers.EnableWakka, 17);
@@ -938,6 +946,23 @@ namespace FFXCutsceneRemover
                         formation = SwapCharacterWithPosition(formation, 0x01, 2);
                         formation = SwapCharacterWithPosition(formation, 0x03, 1);
                         break;
+                    case formations.PostBiranYenke:
+                        WriteValue<byte>(memoryWatchers.EnableTidus, 17);
+                        WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        WriteValue<byte>(memoryWatchers.EnableAuron, 17);
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 17);
+                        WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                        WriteValue<byte>(memoryWatchers.EnableRikku, 17);
+                        formation = AddCharacter(formation, 0x00);
+                        formation = AddCharacter(formation, 0x01);
+                        formation = AddCharacter(formation, 0x02);
+                        formation = AddCharacter(formation, 0x04);
+                        formation = AddCharacter(formation, 0x05);
+                        formation = AddCharacter(formation, 0x06);
+                        formation = SwapCharacterWithPosition(formation, initialPosition1, 0);
+                        formation = SwapCharacterWithPosition(formation, initialPosition2, 1);
+                        formation = SwapCharacterWithPosition(formation, initialPosition3, 2);
+                        break;
                 }
                 WriteBytes(memoryWatchers.Formation, formation);
             }
@@ -1002,6 +1027,11 @@ namespace FFXCutsceneRemover
         public byte[] SwapCharacterWithPosition(byte[] formation, byte Character, int newPosition)
         {
             int oldposition = Array.IndexOf(formation, Character);
+
+            foreach(byte Char in formation) { DiagnosticLog.Information(Char.ToString("X2")); }
+
+            DiagnosticLog.Information(Character.ToString("X2"));
+            DiagnosticLog.Information(oldposition.ToString());
 
             byte temp = formation[oldposition];
             formation[oldposition] = formation[newPosition];
