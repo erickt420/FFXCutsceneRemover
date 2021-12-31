@@ -2,7 +2,13 @@
 Cutscene skipping program for the Windows version of Final Fantasy X HD Remaster.
 If you encounter any bugs or have any questions, please open an issue on GitHub or contact us in the cutscene-remover channel of the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
 
-**This mod is only designed and tested to be used for Any% Speedruns. Using this mod for other speedrun categories or normal playthroughs is not currently supported and you will likely encounter game-breaking bugs.**
+### Important
+
+* This mod is designed and tested to be used solely for Any% Speedruns. Using this mod for other speedrun categories or normal playthroughs is not currently supported and you will likely encounter game-breaking bugs.
+
+* Using the speedup booster (F1) with this mod is not supported, and is highly likely to cause crashes when the cutscene skips occur.
+
+* FFX must be set to English in the launcher. Other languages are not yet supported.
 
 ### Usage:
 
@@ -13,8 +19,6 @@ If you encounter any bugs or have any questions, please open an issue on GitHub 
 3. Extract all files from the zip into an empty folder.
 
 4. Double click FFXCutsceneRemover.exe.
-
-5. Ensure FFX is set to English in the launcher. Other languages are not yet supported.
 
 ### Arguments:
 You can use multiple arguments by separating them with a space.
