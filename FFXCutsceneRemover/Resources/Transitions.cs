@@ -110,8 +110,8 @@ namespace FFXCutsceneRemover.Resources
             // END OF BESAID
             // START OF SS LIKI
             { new GameState { RoomNumber = 301, Storyline = 220 }, new Transition { RoomNumber = 301, Storyline = 228, SpawnPoint = 0, SSWinnoFlag1 = 0x56, PositionTidusAfterLoad = true, Target_x = 44.0f, Target_y = -49.99765015f, Target_z = 92.59999847f, Target_rot = 2.722713709f, Target_var1 = 120, Description = "Tidus goofing around" } },
-            { new GameState { RoomNumber = 301, Storyline = 240, SSWinnoFlag1 = 0x5E }, new Transition { RoomNumber = 301, PositionTidusAfterLoad = true, Target_x = 3.932615995f, Target_y = -49.99765015f, Target_z = 189.9013977f, Target_rot = 1.676406384f, Target_var1 = 94, Description = "Lord Braska's daughter?" } },
-            { new GameState { RoomNumber = 301, Storyline = 240, SSWinnoFlag1 = 0x7E }, new Transition { RoomNumber = 301, Storyline = 242, PositionTidusAfterLoad = true, Target_x = -29.5f, Target_y = -49.99765015f, Target_z = 86.0f, Target_rot = -0.2413983196f, Target_var1 = 41, Description = "She's the daughter of High Summoner Braska" } },
+            { new GameState { RoomNumber = 301, Storyline = 240, SSWinnoFlag1 = 0x5E }, new Transition { RoomNumber = 301, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 3.932615995f, Target_y = -49.99765015f, Target_z = 189.9013977f, Target_rot = 1.676406384f, Target_var1 = 94, Description = "Lord Braska's daughter?" } },
+            { new GameState { RoomNumber = 301, Storyline = 240, SSWinnoFlag1 = 0x7E }, new Transition { RoomNumber = 301, Storyline = 242, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -29.5f, Target_y = -49.99765015f, Target_z = 86.0f, Target_rot = -0.2413983196f, Target_var1 = 41, Description = "She's the daughter of High Summoner Braska" } },
             { new GameState { RoomNumber = 61, Storyline = 244, SSWinnoFlag1 = 0xFE }, new Transition {Storyline = 248, Description = "Tidus talks to Yuna" } },
             { new GameState { RoomNumber = 61, Storyline = 248 }, SinFinTransition},
             { new GameState { RoomNumber = 61, Storyline = 260 }, SinFinTransition},
@@ -302,6 +302,7 @@ namespace FFXCutsceneRemover.Resources
 		    // START OF BIKANEL
             { new GameState { RoomNumber = 136, Storyline = 1715 }, BikanelTransition  },
             { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 0, State = 1 }, new Transition { Storyline = 1720, SpawnPoint = 3, FormationSwitch = Transition.formations.BikanelRikku, BikanelFlag = 32, Description = "Wakka Glare" } },
+            { new GameState { RoomNumber = 138, Storyline = 1720, State = 1, MovementLock = 0x30}, new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -15.83119202f, Target_y = -0.4932427108f, Target_z = -98.58677673f, Target_rot = 2.518902063f, Target_var1 = 432, Description = "Sanubia to Home"} },
             { new GameState { RoomNumber = 280, Storyline = 1820}, HomeTransition},
             { new GameState { RoomNumber = 280, Storyline = 1885}, HomeTransition},
             { new GameState { RoomNumber = 280, Storyline = 1885, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
@@ -394,7 +395,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 70000, Storyline = 2530 }, new Transition { RoomNumber = 285, Storyline = 2560, SpawnPoint = 2, TargetFramerate = 2, MenuCleanup = true, AddItems = true, PositionTidusAfterLoad = true, Target_x = 31.58070183f, Target_y = -19.99184036f, Target_z = -202.6745758f, Target_rot = -0.5099999905f, Target_var1 = 662, Description = "Seymour Flux"} },
             { new GameState { HpEnemyA = 40000, Storyline = 2585 }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 1167.63501f, Target_y = -30.03837585f, Target_z = -1127.956787f, Target_rot = -2.844759941f, Target_var1 = 794, Description = "Sanctuary Keeper"} },
             { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, TargetFramerate = 2, MenuCleanup = true, AddItems = true, PositionTidusAfterLoad = true, Target_x = 1.958124876f, Target_y = 0.0f, Target_z = -68.68795013f, Target_rot = -1.438184619f, Target_var1 = 86, Description = "Yunalesca"} },
-            { new GameState { HpEnemyA = 20000, RoomNumber = 201, Storyline = 3120}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -258.47229f, Target_y = 12.31083775f, Target_z = 380.5874939f, Target_rot = -1.021441936f, Target_var1 = 1412, Description = "Sin Core"} },
+            { new GameState { HpEnemyA = 20000, RoomNumber = 201, Storyline = 3105}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -258.47229f, Target_y = 12.31083775f, Target_z = 380.5874939f, Target_rot = -1.021441936f, Target_var1 = 1412, Description = "Sin Core"} },
             { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
         };
     }

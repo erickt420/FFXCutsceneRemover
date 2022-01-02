@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using FFX_Cutscene_Remover.ComponentUtil;
+using System.Diagnostics;
+using System.Collections.Generic;
 using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
@@ -8,35 +10,40 @@ namespace FFXCutsceneRemover
         static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
         public override void Execute(string defaultDescription = "")
         {
-            if (base.memoryWatchers.GeosTransition.Current > 0)
+            Process process = memoryWatchers.Process;
+
+            if (Stage == 0)
             {
-                if (Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.GeosTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
-                    Stage += 1;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
+                Stage += 1;
 
-                }
-                else if (base.memoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0x486) && Stage == 1) // 486
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0x920);// 920
+            }
+            else if (base.memoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0xA4F8) && Stage == 1)
+            {
+                process.Suspend();
+                DiagnosticLog.Information("Game Suspended");
 
-                    Transition actorPositions;
-                    //Position Tidus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 0.0f, Target_y = -50.0f, Target_z = -20.0f };
-                    actorPositions.Execute();
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xA7D5); // 0xA992
 
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0x941) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 2)
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xD90);// D90
-                    Stage += 1;
-                }
+                Transition actorPositions;
+                //Position Tidus
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 0.0f, Target_y = -50.0f, Target_z = -20.0f };
+                actorPositions.Execute();
+
+                Stage += 1;
+
+                process.Resume();
+                DiagnosticLog.Information("Game Resume");
+            }
+            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xAE02);// D90
+                Stage += 1;
             }
         }
     }

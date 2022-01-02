@@ -17,6 +17,8 @@ namespace FFXCutsceneRemover
 
             if (base.memoryWatchers.MovementLock.Current == 0 && Stage == 0)
             {
+                process.Suspend();
+
                 base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene etc)
 
                 MemoryWatcher<byte> shivaEnabled1 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3211C));
@@ -30,10 +32,14 @@ namespace FFXCutsceneRemover
 
                 Stage += 1;
 
+                process.Resume();
             }
             else if (base.memoryWatchers.MovementLock.Current == 0x10 && Stage == 1)
             {
+                process.Suspend();
+
                 DiagnosticLog.Information("Stage: " + Stage.ToString());
+
                 WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
 
                 formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 7);
@@ -52,16 +58,24 @@ namespace FFXCutsceneRemover
                 actorPositions.Execute();
 
                 Stage += 1;
+
+                process.Resume();
             }
             else if (base.memoryWatchers.SeymourTransition2.Current == (BaseCutsceneValue + 0x77D6) && Stage == 2)
             {
+                process.Suspend();
+
                 DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue + 0x7F85);
 
                 Stage += 1;
+
+                process.Resume();
             }
             else if (base.memoryWatchers.Menu.Current == 1 && base.memoryWatchers.CutsceneAlt.Current == 0 && Stage == 3)
             {
+                process.Suspend();
+
                 DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                 Storyline = 1545;
@@ -78,6 +92,8 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 Stage += 1;
+
+                process.Resume();
             }
         }
     }
