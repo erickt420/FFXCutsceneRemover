@@ -4,6 +4,8 @@
      *  that you add. */
     public class MemoryLocationNames
     {
+        public static string Language = "Language";
+
         public static string RoomNumber = "RoomNumber";
         public static string Storyline = "Storyline";
         public static string ForceLoad = "ForceLoad";

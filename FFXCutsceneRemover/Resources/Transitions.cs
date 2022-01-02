@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover.Resources
 {
@@ -33,7 +32,7 @@ namespace FFXCutsceneRemover.Resources
 #endif
             { new GameState { RoomNumber = 348 }, new Transition { RoomNumber = 23, Description = "Skip Intro", Repeatable = true} },
             { new GameState { RoomNumber = 349 }, new Transition { RoomNumber = 23, Description = "Skip Intro", Repeatable = true} },
-            { new GameState { RoomNumber = 0, Storyline = 0, CutsceneAlt = 18, Dialogue1 = 6}, new Transition { ForceLoad = false, Description = "New Game - Version Information", DialogueFile = System.IO.File.ReadAllText("./NewGameDialogue.txt").Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray()} },
+            //{ new GameState { RoomNumber = 0, Storyline = 0, CutsceneAlt = 18, Dialogue1 = 6}, new Transition { ForceLoad = false, Description = "New Game - Version Information", DialogueFile = System.IO.File.ReadAllText("./NewGameDialogue.txt").Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray()} },
             // START OF ZANARKAND
             { new GameState { RoomNumber = 132, Storyline = 0 }, new Transition { RoomNumber = 368, Storyline = 3, SpawnPoint = 0, Description = "Beginning"} },
             { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1, FangirlsOrKidsSkip = 1 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false, Description = "Fangirls or kids, whichever Tidus talks to second"} },

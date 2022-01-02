@@ -21,6 +21,8 @@ namespace FFXCutsceneRemover
         public Process Process;
         public MemoryWatcherList Watchers = new MemoryWatcherList();
 
+        public MemoryWatcher<byte> Language;
+
         public MemoryWatcher<short> RoomNumber;
         public MemoryWatcher<short> Storyline;
         public MemoryWatcher<byte> ForceLoad;
@@ -290,6 +292,8 @@ namespace FFXCutsceneRemover
             processBaseAddress = process.Modules[0].BaseAddress.ToInt32();
             DiagnosticLog.Information("Process base address: " + processBaseAddress);
 
+            Language = GetMemoryWatcher<byte>(MemoryLocations.Language);
+
             RoomNumber = GetMemoryWatcher<short>(MemoryLocations.RoomNumber);
             Storyline = GetMemoryWatcher<short>(MemoryLocations.Storyline);
             ForceLoad = GetMemoryWatcher<byte>(MemoryLocations.ForceLoad);
@@ -536,7 +540,8 @@ namespace FFXCutsceneRemover
             HpEnemyA.FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 
             Watchers.Clear();
-            Watchers.AddRange(new List<MemoryWatcher>() { 
+            Watchers.AddRange(new List<MemoryWatcher>() {
+                    Language,
                     RoomNumber,
                     Storyline,
                     ForceLoad,
