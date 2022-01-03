@@ -8,8 +8,6 @@ If you encounter any bugs or have any questions, please open an issue on GitHub 
 
 * Using the speedup booster (F1) with this mod is not supported, and is highly likely to cause crashes when the cutscene skips occur.
 
-* FFX must be set to English in the launcher. Other languages are not yet supported.
-
 ### Usage:
 
 1. Ensure you have .NET Core 3.1 Runtime installed ([download here](https://dotnet.microsoft.com/download/dotnet/3.1/runtime)).
