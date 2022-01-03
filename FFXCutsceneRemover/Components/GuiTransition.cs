@@ -1,4 +1,5 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
+﻿using FFXCutsceneRemover.Logging;
+using FFX_Cutscene_Remover.ComponentUtil;
 using System.Diagnostics;
 using System.Collections.Generic;
 
@@ -18,29 +19,37 @@ namespace FFXCutsceneRemover
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.GuiTransition.Current;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
 
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xBC1) && Stage == 1)
+            else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xE711) && Stage == 1)
             {
+                process.Suspend();
+                DiagnosticLog.Information("Game Suspended");
 
                 Storyline = 857;
                 ConsoleOutput = false;
                 base.Execute();
                 ConsoleOutput = true;
 
-                WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0x14BA);
+                WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0xF00A);
 
                 // Reposition Party Members just off screen to run into battle
                 Transition actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, PartyTarget_x = 427.0f, PartyTarget_z = 3350.0f, PositionPartyOffScreen = true };
                 actorPositions.Execute();
 
                 Stage += 1;
+
+                process.Resume();
+                DiagnosticLog.Information("Game Resumed");
             }
             else if (base.memoryWatchers.Storyline.Current == 860 && Stage == 2)
             {
+                process.Suspend();
+                DiagnosticLog.Information("Game Suspended");
+
                 GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
 
                 RoomNumber = 247;
@@ -51,18 +60,22 @@ namespace FFXCutsceneRemover
                 ForceLoad = false;
 
                 Stage += 1;
+
+                process.Resume();
+                DiagnosticLog.Information("Game Resumed");
             }
             else if (CutsceneAltList2.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 3)
             {
-                BaseCutsceneValue2 = base.memoryWatchers.Gui2Transition.Current;
+                BaseCutsceneValue2 = base.memoryWatchers.EventFileStart.Current;
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.Gui2Transition.Current >= (BaseCutsceneValue2 + 0x15B) && Stage == 4)
+            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x270B) && Stage == 4)
             {
-                
+                process.Suspend();
+                DiagnosticLog.Information("Game Suspended");
 
-                WriteValue<int>(base.memoryWatchers.Gui2Transition, BaseCutsceneValue2 + 0x497);
+                WriteValue<int>(base.memoryWatchers.Gui2Transition, BaseCutsceneValue2 + 0x29C0);
 
                 Transition actorPositions;
                 //Position Yuna
@@ -82,14 +95,20 @@ namespace FFXCutsceneRemover
                 actorPositions.Execute();
 
                 Stage += 1;
+
+                process.Resume();
+                DiagnosticLog.Information("Game Resumed");
             }
-            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x614) && Stage == 5)
+            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x2B3D) && Stage == 5)
             {
+                process.Suspend();
 
                 Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = true, FormationSwitch = Transition.formations.PostGui, Formation = GuiFormation, Description = "Fix party after Gui" };
                 FormationSwitch.Execute();
 
                 Stage += 1;
+
+                process.Resume();
             }
         }
     }

@@ -12,7 +12,7 @@ namespace FFXCutsceneRemover
         {
             Process process = memoryWatchers.Process;
 
-            if (Stage == 0)
+            if (base.memoryWatchers.FrameCounterFromLoad.Current < 5 && Stage == 0) // Frame counter condition is to make skip work when loading from an autosave
             {
                 base.Execute();
 

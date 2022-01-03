@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using FFXCutsceneRemover.Logging;
@@ -138,13 +139,7 @@ namespace FFXCutsceneRemover
                         ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start", Repeatable = true });
                     }
 #endif
-                    
-                    // Custom Check #1 - Sandragoras
-                    if (new GameState { RoomNumber = 138, Storyline = 1720, State = 1}.CheckState() && MemoryWatchers.Sandragoras.Current >= 4)
-                    {
-                        ExecuteTransition(new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -15.83119202f, Target_y = -0.4932427108f, Target_z = -98.58677673f, Target_rot = 2.518902063f, Target_var1 = 432, Description = "Sanubia to Home"});
-                    }
-                    
+
                     // Custom Check #2 - Airship
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
                     {

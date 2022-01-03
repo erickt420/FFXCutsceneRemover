@@ -84,7 +84,7 @@ namespace FFXCutsceneRemover
             },
 
             {
-                "Magus", new Dictionary<string, int>
+                "Magus Sisters", new Dictionary<string, int>
                 {
                     {"BattleOffset", 0x799B },
                     {"DeathOffset", 0x79D4 },
@@ -135,7 +135,7 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.EnableMagus.Current == 16 & base.memoryWatchers.EnableMagus.Old == 17)
                 {
-                    activeAeon = "Magus";
+                    activeAeon = "Magus Sisters";
                     DiagnosticLog.Information(activeAeon + " Summoned");
                 }
             }
@@ -173,6 +173,7 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.AeonTransition.Current == (BaseCutsceneValue + 0x7B30))
             {
                 WriteValue<int>(base.memoryWatchers.AeonTransition, BaseCutsceneValue + 0x86D0); // 0x85EA
+                WriteValue<short>(base.memoryWatchers.Storyline, 3380);
             }
         }
     }

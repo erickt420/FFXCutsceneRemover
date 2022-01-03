@@ -391,7 +391,6 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
-            //WriteBytes(memoryWatchers.Formation, Formation);// Can be removed once all party swap logic is complete
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
             WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
@@ -474,7 +473,7 @@ namespace FFXCutsceneRemover
                 }
                 process.Suspend();
                 SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
-                SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason
+                SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason, also some other locations.
                 process.Resume();
                 while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 3)
                 {
