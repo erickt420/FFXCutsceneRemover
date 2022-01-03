@@ -30,7 +30,6 @@ namespace FFXCutsceneRemover
         // Keep track of the previously executed transition
         // so we don't execute the same transition twice
         private Transition PreviouslyExecutedTransition;
-        private Transition VersionInfo = new Transition { ForceLoad = false, Description = "New Game - Version Information"};
         private int LoopSleepMillis;
 
         public CutsceneRemover(bool debug, int loopSleepMillis)
@@ -140,14 +139,6 @@ namespace FFXCutsceneRemover
                         ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start", Repeatable = true });
                     }
 #endif
-                    // Custom Check #1 - New Game Version Info
-                    if (new GameState { RoomNumber = 0, Storyline = 0, CutsceneAlt = 18, Dialogue1 = 6 }.CheckState())
-                    {
-                        byte language = MemoryWatchers.Language.Current;
-                        byte[] NewGameBytes = System.IO.File.ReadLines("./NewGameDialogue.txt").ElementAtOrDefault(language).Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray();
-                        VersionInfo.DialogueFile = NewGameBytes;
-                        ExecuteTransition(VersionInfo);
-                    }
 
                     // Custom Check #2 - Airship
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)

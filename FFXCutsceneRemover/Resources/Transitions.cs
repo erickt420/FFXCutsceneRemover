@@ -8,6 +8,8 @@ namespace FFXCutsceneRemover.Resources
     /* This class contains most of the transitions. Transitions added here are automatically evalutated in the main loop. */
     static class Transitions
     {
+        private static readonly MemoryWatchers MemoryWatchers = MemoryWatchers.Instance;
+
         static readonly AmmesTransition AmmesTransition = new AmmesTransition { ForceLoad = false, Description = "Sinspawn Ammes", Suspendable = false, Repeatable = true };
         static readonly DiveTransition DiveTransition = new DiveTransition { ForceLoad = false, Description = "Tidus falls into water", Suspendable = false, Repeatable = true };
         static readonly GeosTransition GeosTransition = new GeosTransition { ForceLoad = false, Description = "Geosgaeno", Suspendable = false, Repeatable = true };
@@ -21,6 +23,10 @@ namespace FFXCutsceneRemover.Resources
         static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
         static readonly EvraeAirshipTransition EvraeAirshipTransition = new EvraeAirshipTransition { ForceLoad = false, Description = "Post Evrae", Suspendable = false, Repeatable = true };
 
+        private static byte language = MemoryWatchers.Language.Current;
+        private static byte[] NewGameBytes = System.IO.File.ReadLines("./NewGameDialogue.txt").ElementAtOrDefault(language).Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray();
+        private static byte[] RikkuNameBytes = System.IO.File.ReadLines("./RikkuName.txt").ElementAtOrDefault(language).Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray();
+
         public static readonly Dictionary<IGameState, Transition> StandardTransitions = new Dictionary<IGameState, Transition>()
             {
             
@@ -32,7 +38,7 @@ namespace FFXCutsceneRemover.Resources
 #endif
             { new GameState { RoomNumber = 348 }, new Transition { RoomNumber = 23, Description = "Skip Intro", Repeatable = true} },
             { new GameState { RoomNumber = 349 }, new Transition { RoomNumber = 23, Description = "Skip Intro", Repeatable = true} },
-            //{ new GameState { RoomNumber = 0, Storyline = 0, CutsceneAlt = 18, Dialogue1 = 6}, new Transition { ForceLoad = false, Description = "New Game - Version Information", DialogueFile = System.IO.File.ReadAllText("./NewGameDialogue.txt").Split(" ").Select(s => Byte.Parse(s, NumberStyles.HexNumber)).ToArray()} },
+            { new GameState { RoomNumber = 0, Storyline = 0, CutsceneAlt = 18, Dialogue1 = 6}, new Transition { ForceLoad = false, Description = "New Game - Version Information", DialogueFile = NewGameBytes} },
             // START OF ZANARKAND
             { new GameState { RoomNumber = 132, Storyline = 0 }, new Transition { RoomNumber = 368, Storyline = 3, SpawnPoint = 0, Description = "Beginning"} },
             { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1, FangirlsOrKidsSkip = 1 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false, Description = "Fangirls or kids, whichever Tidus talks to second"} },
@@ -79,7 +85,7 @@ namespace FFXCutsceneRemover.Resources
                                             // They leave the submerged ruins
             //{ new GameState { RoomNumber = 380, Storyline = 84 }, new UnderwaterRuinsTransition2 {ForceLoad = false, Description = "Underwater Ruins Outside", Suspendable = false, Repeatable = true} }, // Lights come on in submerged ruins
             { new GameState { RoomNumber = 380, Storyline = 84, State = 0 }, new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, Description = "Airship is shown" } },
-            { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -40.77215576f, Target_y = 0.0f, Target_z = -20.17111206f, Target_rot = 0.0f, Target_var1 = 180, RikkuName = new byte[]{0x61, 0x78, 0x7A, 0x7A, 0x84, 0x0}, Description = "Tidus gets back onto the boat"} },
+            { new GameState { RoomNumber = 71, Storyline = 90, State = 1 }, new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -40.77215576f, Target_y = 0.0f, Target_z = -20.17111206f, Target_rot = 0.0f, Target_var1 = 180, RikkuName = RikkuNameBytes, Description = "Tidus gets back onto the boat"} },
             { new GameState { RoomNumber = 71, Storyline = 100, State = 1 }, new Transition { RoomNumber = 70, Storyline = 110, Description = "Rikku suggests going to Luca"} },                                     
             // END OF BAAJ TEMPLE
             // START OF BESAID
@@ -140,7 +146,7 @@ namespace FFXCutsceneRemover.Resources
             // START OF SS WINNO
             { new GameState { RoomNumber = 94, Storyline = 370 }, new Transition { RoomNumber = 167, Storyline = 372, SSWinnoFlag2 = 1, Description = "Opening scenes"} },
             { new GameState { RoomNumber = 237, Storyline = 372, SSWinnoFlag2 = 1 }, new Transition { RoomNumber = 237, Storyline = 372, SSWinnoFlag1 = 170, SSWinnoFlag2 = 9, Description = "Meet O'aka"} },
-            { new GameState { RoomNumber = 94, Storyline = 380, SSWinnoFlag2 = 25 }, new Transition { Storyline = 380, SSWinnoFlag2 = 31, SpawnPoint = 2, Description = "Eavesdropping on Lulu and Wakka"} },
+            { new GameState { RoomNumber = 94, Storyline = 380, SSWinnoFlag2 = 25 }, new Transition { Storyline = 380, SSWinnoFlag2 = 31, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -33.61037827f, Target_y = -49.99626923f, Target_z = -67.55673218f, Target_rot = -3.135152102f, Target_var1 = 278, Description = "Eavesdropping on Lulu and Wakka"} },
             { new GameState { RoomNumber = 94, Storyline = 385 }, new Transition { RoomNumber = 191, SpawnPoint = 256, Description = "Tidus looks at the blitzball"} },
             { new GameState { RoomNumber = 191, Storyline = 385 }, new Transition { RoomNumber = 94, Storyline = 387, SpawnPoint = 0, Description = "Zanarkand flashback"} },
             { new GameState { RoomNumber = 94, Storyline = 390 }, new JechtShotTransition { ForceLoad = false, Description = "Jecht Shot Failed", Suspendable = false, Repeatable = true} },
