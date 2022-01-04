@@ -219,7 +219,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 119, Storyline = 860 }, GuiTransition },
             { new GameState { RoomNumber = 247, Storyline = 865 }, GuiTransition },
                                             // Post-Sinspawn Gui 2
-            { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, EnableSeymour = 16, Description = "Tidus wakes up + sees Gatta"} },
+            { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, Description = "Tidus wakes up + sees Gatta"} },
             { new GameState { RoomNumber = 254, Storyline = 893 }, new Transition { RoomNumber = 247, Storyline = 899, Description = "Sin FMV + Tidus chases after Sin"} },
             { new GameState { RoomNumber = 247, Storyline = 899 }, new Transition { RoomNumber = 218, Storyline = 902, Description = "Yuna tries to summon"} },
             { new GameState { RoomNumber = 218, Storyline = 902 }, new Transition { RoomNumber = 341, Storyline = 910, Description = "Tidus is swimming"} },
