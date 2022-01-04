@@ -52,6 +52,7 @@
         public static string TidusZCoordinate = "TidusZCoordinate";
         public static string TidusRotation = "TidusRotation";
         public static string DialogueFile = "DialogueFile";
+        public static string CutsceneTiming = "CutsceneTiming";
         public static string AuronTransition = "AuronTransition";
         public static string AmmesTransition = "AmmesTransition";
         public static string TankerTransition = "TankerTransition";

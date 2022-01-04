@@ -8,7 +8,7 @@ namespace FFXCutsceneRemover
         static private List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
         public override void Execute(string defaultDescription = "")
         {
-            if (Stage == 0)
+            if (base.memoryWatchers.State.Current == 1 && Stage == 0)
             {
                 base.Execute();
 

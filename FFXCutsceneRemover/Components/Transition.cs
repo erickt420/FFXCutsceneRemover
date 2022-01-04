@@ -89,6 +89,7 @@ namespace FFXCutsceneRemover
         public float? TidusZCoordinate = null;
         public float? TidusRotation = null;
         public byte[] DialogueFile = null;
+        public byte? CutsceneTiming = null;
 
         // Bespoke Transitions
         public int? AuronTransition = null;
@@ -291,6 +292,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TidusZCoordinate, TidusZCoordinate);
             WriteValue(memoryWatchers.TidusRotation, TidusRotation);
             WriteBytes(memoryWatchers.DialogueFile, DialogueFile);
+            WriteValue(memoryWatchers.CutsceneTiming, CutsceneTiming);
             WriteValue(memoryWatchers.AuronTransition, AuronTransition);
             WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
             WriteValue(memoryWatchers.TankerTransition, TankerTransition);

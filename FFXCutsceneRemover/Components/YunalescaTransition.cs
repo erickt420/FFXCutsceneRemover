@@ -32,6 +32,7 @@ namespace FFXCutsceneRemover
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x67B4);
+                    WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 3)

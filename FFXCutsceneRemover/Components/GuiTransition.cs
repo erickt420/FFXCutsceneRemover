@@ -29,6 +29,18 @@ namespace FFXCutsceneRemover
                 process.Suspend();
                 DiagnosticLog.Information("Game Suspended");
 
+                WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0xE978);
+
+                Stage += 1;
+
+                process.Resume();
+                DiagnosticLog.Information("Game Resumed");
+            }
+            else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xEC58) && Stage == 2)
+            {
+                process.Suspend();
+                DiagnosticLog.Information("Game Suspended");
+
                 Storyline = 857;
                 ConsoleOutput = false;
                 base.Execute();
@@ -40,12 +52,16 @@ namespace FFXCutsceneRemover
                 Transition actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, PartyTarget_x = 427.0f, PartyTarget_z = 3350.0f, PositionPartyOffScreen = true };
                 actorPositions.Execute();
 
+                //Position Gui
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4213 }, Target_x = 399.9999695f, Target_z = 3100.0f };
+                actorPositions.Execute();
+
                 Stage += 1;
 
                 process.Resume();
                 DiagnosticLog.Information("Game Resumed");
             }
-            else if (base.memoryWatchers.Storyline.Current == 860 && Stage == 2)
+            else if (base.memoryWatchers.Storyline.Current == 860 && Stage == 3)
             {
                 process.Suspend();
                 DiagnosticLog.Information("Game Suspended");
@@ -64,13 +80,13 @@ namespace FFXCutsceneRemover
                 process.Resume();
                 DiagnosticLog.Information("Game Resumed");
             }
-            else if (CutsceneAltList2.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 3)
+            else if (CutsceneAltList2.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 4)
             {
                 BaseCutsceneValue2 = base.memoryWatchers.EventFileStart.Current;
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x270B) && Stage == 4)
+            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x270B) && Stage == 5)
             {
                 process.Suspend();
                 DiagnosticLog.Information("Game Suspended");
@@ -99,7 +115,7 @@ namespace FFXCutsceneRemover
                 process.Resume();
                 DiagnosticLog.Information("Game Resumed");
             }
-            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x2B3D) && Stage == 5)
+            else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x2B3D) && Stage == 6)
             {
                 process.Suspend();
 
