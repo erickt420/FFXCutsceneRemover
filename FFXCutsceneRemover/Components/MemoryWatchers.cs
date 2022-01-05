@@ -69,6 +69,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<float> TidusZCoordinate;
         public MemoryWatcher<float> TidusRotation;
         public MemoryWatcher<byte> DialogueFile;
+        public MemoryWatcher<byte> CutsceneTiming;
         public MemoryWatcher<int> AuronTransition;
         public MemoryWatcher<int> AmmesTransition;
         public MemoryWatcher<int> TankerTransition;
@@ -340,6 +341,7 @@ namespace FFXCutsceneRemover
             TidusZCoordinate = GetMemoryWatcher<float>(MemoryLocations.TidusZCoordinate);
             TidusRotation = GetMemoryWatcher<float>(MemoryLocations.TidusRotation);
             DialogueFile = GetMemoryWatcher<byte>(MemoryLocations.DialogueFile);
+            CutsceneTiming = GetMemoryWatcher<byte>(MemoryLocations.CutsceneTiming);
             AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
             AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
             TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
@@ -585,6 +587,7 @@ namespace FFXCutsceneRemover
                     TidusZCoordinate,
                     TidusRotation,
                     DialogueFile,
+                    CutsceneTiming,
                     EventFileStart,
                     AuronTransition,
                     AmmesTransition,

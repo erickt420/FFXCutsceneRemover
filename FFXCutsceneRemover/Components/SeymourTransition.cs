@@ -19,7 +19,7 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene etc)
+                base.Execute();
 
                 MemoryWatcher<byte> shivaEnabled1 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3211C));
                 WriteValue<byte>(shivaEnabled1, 0x11);
@@ -41,6 +41,7 @@ namespace FFXCutsceneRemover
                 DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                 WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
+                WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
 
                 formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 7);
 

@@ -89,6 +89,7 @@ namespace FFXCutsceneRemover
         public float? TidusZCoordinate = null;
         public float? TidusRotation = null;
         public byte[] DialogueFile = null;
+        public byte? CutsceneTiming = null;
 
         // Bespoke Transitions
         public int? AuronTransition = null;
@@ -291,6 +292,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TidusZCoordinate, TidusZCoordinate);
             WriteValue(memoryWatchers.TidusRotation, TidusRotation);
             WriteBytes(memoryWatchers.DialogueFile, DialogueFile);
+            WriteValue(memoryWatchers.CutsceneTiming, CutsceneTiming);
             WriteValue(memoryWatchers.AuronTransition, AuronTransition);
             WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
             WriteValue(memoryWatchers.TankerTransition, TankerTransition);
@@ -884,6 +886,7 @@ namespace FFXCutsceneRemover
                         WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
                         WriteValue<byte>(memoryWatchers.EnableWakka, 17);
                         WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                        WriteValue<byte>(memoryWatchers.EnableSeymour, 16);
                         byte[] newformation = new byte[] { 0x01, 0xFF, 0x02, 0x00, 0x03, 0x04, 0x05, 0xFF, 0xFF, 0xFF };
                         newformation = SwapCharacterWithPosition(newformation, initialPosition1, 0);
                         newformation = SwapCharacterWithPosition(newformation, initialPosition2, 1);

@@ -53,6 +53,7 @@
         public static MemoryLocationData TidusZCoordinate = new MemoryLocationData(MemoryLocationNames.TidusZCoordinate, 0x1FC44E4, 0x14);
         public static MemoryLocationData TidusRotation = new MemoryLocationData(MemoryLocationNames.TidusRotation, 0x1FC44E4, 0x168);
         public static MemoryLocationData DialogueFile = new MemoryLocationData(MemoryLocationNames.DialogueFile, 0xF270E8, 0x00);
+        public static MemoryLocationData CutsceneTiming = new MemoryLocationData(MemoryLocationNames.CutsceneTiming, 0x8E9004, 0x1C);
 
         // Event File
         public static MemoryLocationData EventFileStart = new MemoryLocationData(MemoryLocationNames.EventFileStart, 0xF270B8);
