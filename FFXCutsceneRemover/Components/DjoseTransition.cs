@@ -30,7 +30,7 @@ namespace FFXCutsceneRemover
                     WriteValue<int>(base.memoryWatchers.DjoseTransition, BaseCutsceneValue + 0x4ED);
 
                     Transition actorPositions;
-                    //Position Echuilles
+                    //Position Tidus
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 1.628f, Target_y = 0.0f, Target_z = -6.528f };
                     actorPositions.Execute();
 

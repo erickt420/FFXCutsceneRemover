@@ -1,7 +1,5 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Collections.Generic;
 using FFXCutsceneRemover.Logging;
 
@@ -12,7 +10,7 @@ namespace FFXCutsceneRemover
         static private List<short> CutsceneAltList = new List<short>(new short[] { 1839 });
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
+            Process process = memoryWatchers.Process;
 
             if (base.memoryWatchers.CrawlerTransition.Current > 0)
             {
@@ -50,7 +48,7 @@ namespace FFXCutsceneRemover
                 {
                     DiagnosticLog.Information("HP Check");
                     WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x886);
-                    Stage = 6;
+                    Stage += 1;
                 }
 
                 //A value of +0x886 launches the end of the fight straight into results screen which seems to be the only way to not crash the game post battle.
@@ -59,18 +57,21 @@ namespace FFXCutsceneRemover
 
                 else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 6)
                 {
-                    Stage = 7;
+                    Stage += 1;
                 }
                 else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 7)
                 {
+                    process.Suspend();
+
                     Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = false, FormationSwitch = Transition.formations.PostCrawler, Description = "Fix party after Crawler" };
                     FormationSwitch.Execute();
 
-                    Menu = 0;
-                    Description = "Exit Menu";
-                    ForceLoad = false;
-                    base.Execute();
-                    Stage = 8;
+                    Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
+                    ExitMenu.Execute();
+
+                    Stage += 1;
+
+                    process.Resume();
                 }
             }
         }

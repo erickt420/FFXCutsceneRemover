@@ -26,25 +26,25 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xE711) && Stage == 1)
             {
+                /*/
                 process.Suspend();
                 DiagnosticLog.Information("Game Suspended");
 
                 WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0xE978);
 
-                Stage += 1;
-
                 process.Resume();
                 DiagnosticLog.Information("Game Resumed");
+                //*/
+
+                Stage += 1;
             }
             else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xEC58) && Stage == 2)
             {
+                /*/
                 process.Suspend();
                 DiagnosticLog.Information("Game Suspended");
 
-                Storyline = 857;
-                ConsoleOutput = false;
-                base.Execute();
-                ConsoleOutput = true;
+                new Transition { ForceLoad = false, Storyline = 857, ConsoleOutput = false }.Execute();
 
                 WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0xF00A);
 
@@ -56,10 +56,11 @@ namespace FFXCutsceneRemover
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4213 }, Target_x = 399.9999695f, Target_z = 3100.0f };
                 actorPositions.Execute();
 
-                Stage += 1;
-
                 process.Resume();
                 DiagnosticLog.Information("Game Resumed");
+                //*/
+
+                Stage += 1;
             }
             else if (base.memoryWatchers.Storyline.Current == 860 && Stage == 3)
             {
@@ -68,12 +69,7 @@ namespace FFXCutsceneRemover
 
                 GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
 
-                RoomNumber = 247;
-                Storyline = 865;
-                Description = "Auron Look out + FMV ";
-                ForceLoad = true;
-                base.Execute();
-                ForceLoad = false;
+                new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " }.Execute();
 
                 Stage += 1;
 
@@ -88,6 +84,7 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x270B) && Stage == 5)
             {
+                /*/
                 process.Suspend();
                 DiagnosticLog.Information("Game Suspended");
 
@@ -110,10 +107,11 @@ namespace FFXCutsceneRemover
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4213 }, Target_x = 190.0f, Target_z = 3294.0f };
                 actorPositions.Execute();
 
-                Stage += 1;
-
                 process.Resume();
                 DiagnosticLog.Information("Game Resumed");
+                //*/
+
+                Stage += 1;
             }
             else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x2B3D) && Stage == 6)
             {

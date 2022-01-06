@@ -9,7 +9,6 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
             if (base.memoryWatchers.BahamutTransition.Current > 0)
             {
                 if (Stage == 0)

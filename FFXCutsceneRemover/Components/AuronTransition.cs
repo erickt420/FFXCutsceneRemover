@@ -11,32 +11,28 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-            if (base.memoryWatchers.AuronTransition.Current > 0)
+            if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
             {
-                if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
-                    Stage = 1;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
+                Stage = 1;
 
-                }
-                /*/ Skipping Tidus standing up doesn't seem to work
-                else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x271) && Stage == 1)
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x306);
-                    Stage += 1;
-                }
-                //*/
-                else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x4233) && Stage == 1)
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x42EE);
-                    Stage += 1;
-                }
+            }
+            /*/ Skipping Tidus standing up doesn't seem to work
+            else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x271) && Stage == 1)
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x306);
+                Stage += 1;
+            }
+            //*/
+            else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x4233) && Stage == 1)
+            {
+                DiagnosticLog.Information("Stage: " + Stage.ToString());
+                WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x42EE);
+                Stage += 1;
             }
         }
     }

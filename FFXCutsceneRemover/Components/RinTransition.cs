@@ -42,15 +42,15 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.RinTransition.Current == (BaseCutsceneValue + 0x5B1) && Stage == 3)
                 {
+                    process.Suspend();
+
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
-                    Storyline = 767;
-                    SpawnPoint = 0;
-                    ForceLoad = true;
-                    ConsoleOutput = false;
-                    base.Execute();
+                    new Transition { Storyline = 767, SpawnPoint = 0 }.Execute();
 
                     Stage += 1;
+
+                    process.Resume();
                 }
             }
         }

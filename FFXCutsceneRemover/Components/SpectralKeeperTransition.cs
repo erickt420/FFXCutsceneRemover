@@ -22,7 +22,7 @@ namespace FFXCutsceneRemover
 
                     Stage = 1;
 
-                }//*/
+                }
                 else if (base.memoryWatchers.SpectralKeeperTransition.Current >= (BaseCutsceneValue + 0xE4) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.SpectralKeeperTransition, BaseCutsceneValue + 0x197);
@@ -33,15 +33,7 @@ namespace FFXCutsceneRemover
                     WriteValue<int>(base.memoryWatchers.SpectralKeeperTransition, BaseCutsceneValue + 0x194);
                     Stage = 2;
                 }
-                //*/
             }
-
-            /*/
-            if (base.memoryWatchers.CutsceneAlt.Current != base.memoryWatchers.CutsceneAlt.Old || base.memoryWatchers.SpectralKeeperTransition.Current != base.memoryWatchers.SpectralKeeperTransition.Old)
-            {
-                DiagnosticLog.Information(base.memoryWatchers.CutsceneAlt.Current.ToString() + " / " + base.memoryWatchers.SpectralKeeperTransition.Current.ToString("X2"));
-            }
-            //*/
         }
     }
 }

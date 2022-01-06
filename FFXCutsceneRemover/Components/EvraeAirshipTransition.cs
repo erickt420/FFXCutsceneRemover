@@ -1,4 +1,6 @@
-﻿using FFXCutsceneRemover.Logging;
+﻿using System.Diagnostics;
+using FFX_Cutscene_Remover.ComponentUtil;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -6,6 +8,8 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
+            Process process = memoryWatchers.Process;
+
             if (Stage == 0)
             {
                 base.Execute();
@@ -27,11 +31,14 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 3)
             {
-                Menu = 0;
-                Description = "Exit Menu";
-                ForceLoad = false;
-                base.Execute();
+                process.Suspend();
+
+                Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
+                ExitMenu.Execute();
+
                 Stage += 1;
+
+                process.Resume();
             }
         }
     }

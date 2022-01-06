@@ -11,6 +11,8 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
+            Process process = memoryWatchers.Process;
+            
             if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
             {
                 base.Execute();
@@ -36,11 +38,14 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 4)
             {
-                Menu = 0;
-                Description = "Exit Menu";
-                ForceLoad = false;
-                base.Execute();
+                process.Suspend();
+
+                Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
+                ExitMenu.Execute();
+
                 Stage += 1;
+
+                process.Resume();
             }
         }
     }

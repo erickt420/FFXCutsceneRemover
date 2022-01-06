@@ -13,7 +13,6 @@ namespace FFXCutsceneRemover.Resources
         static readonly AmmesTransition AmmesTransition = new AmmesTransition { ForceLoad = false, Description = "Sinspawn Ammes", Suspendable = false, Repeatable = true };
         static readonly DiveTransition DiveTransition = new DiveTransition { ForceLoad = false, Description = "Tidus falls into water", Suspendable = false, Repeatable = true };
         static readonly GeosTransition GeosTransition = new GeosTransition { ForceLoad = false, Description = "Geosgaeno", Suspendable = false, Repeatable = true };
-        static readonly BoatTransition BoatTransition = new BoatTransition { ForceLoad = false, Description = "S.S Liki", Suspendable = false, Repeatable = true };
         static readonly SinFinTransition SinFinTransition = new SinFinTransition { ForceLoad = false, Description = "Pre Sin Fin", Suspendable = false, Repeatable = true };
         static readonly EchuillesTransition EchuillesTransition = new EchuillesTransition { ForceLoad = false, Description = "Echuilles", Suspendable = false, Repeatable = true };
         static readonly GuiTransition GuiTransition = new GuiTransition { ForceLoad = false, Description = "Sinspawn Gui", Suspendable = false, Repeatable = true };
@@ -216,6 +215,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 119, Storyline = 850 }, GuiTransition },
             { new GameState { RoomNumber = 119, Storyline = 857 }, GuiTransition },
             { new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
+            //{ new GameState { RoomNumber = 119, Storyline = 860}, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
             { new GameState { RoomNumber = 119, Storyline = 860 }, GuiTransition },
             { new GameState { RoomNumber = 247, Storyline = 865 }, GuiTransition },
                                             // Post-Sinspawn Gui 2
