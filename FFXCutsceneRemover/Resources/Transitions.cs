@@ -15,7 +15,7 @@ namespace FFXCutsceneRemover.Resources
         static readonly GeosTransition GeosTransition = new GeosTransition { ForceLoad = false, Description = "Geosgaeno", Suspendable = false, Repeatable = true };
         static readonly BoatTransition BoatTransition = new BoatTransition { ForceLoad = false, Description = "S.S Liki", Suspendable = false, Repeatable = true };
         static readonly SinFinTransition SinFinTransition = new SinFinTransition { ForceLoad = false, Description = "Pre Sin Fin", Suspendable = false, Repeatable = true };
-        static readonly EchuillesTransition EchuillesTransition = new EchuillesTransition { ForceLoad = false, /*EnableYuna = 16, EnableKimahri = 16, EnableLulu = 16,*/ Description = "Echuilles", Suspendable = false, Repeatable = true };
+        static readonly EchuillesTransition EchuillesTransition = new EchuillesTransition { ForceLoad = false, Description = "Echuilles", Suspendable = false, Repeatable = true };
         static readonly GuiTransition GuiTransition = new GuiTransition { ForceLoad = false, Description = "Sinspawn Gui", Suspendable = false, Repeatable = true };
         static readonly SeymourTransition SeymourTransition = new SeymourTransition { ForceLoad = false, Description = "Pre-Seymour", FormationSwitch = Transition.formations.PreSeymour, Suspendable = false, Repeatable = true };
         static readonly UnderLakeTransition UnderLakeTransition = new UnderLakeTransition { ForceLoad = false, Description = "Under Macalania Lake", Suspendable = false, Repeatable = true };
@@ -45,7 +45,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 368, Storyline = 3, Menu = 1, FangirlsOrKidsSkip = 2 }, new Transition { FangirlsOrKidsSkip = 3 , ForceLoad = false, Description = "Fangirls or kids, whichever Tidus talks to second"} },
             { new GameState { RoomNumber = 368, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans"} },
             { new GameState { RoomNumber = 376, Storyline = 4 }, new Transition { RoomNumber = 376, Storyline = 5, SpawnPoint = 0, Description = "Tidus looks at Jecht sign"} },
-            { new GameState { RoomNumber = 371, Storyline = 5 }, new Transition { RoomNumber = 370, Storyline = 7, SpawnPoint = 0, Description = "Tidus navigates through the crowd and Blitzball FMV"} },
+            { new GameState { RoomNumber = 371, Storyline = 6 }, new Transition { RoomNumber = 370, Storyline = 7, SpawnPoint = 0, Description = "Blitzball FMV"} },
             { new GameState { RoomNumber = 370, Storyline = 7 }, new AuronTransition {ForceLoad = false, Description = "Tidus wakes up and follows Auron", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 366, Storyline = 8 }, new Transition { RoomNumber = 389, Storyline = 12, SpawnPoint = 0, Description = "Tidus sees the fayth and follows Auron" } },
 
@@ -381,7 +381,7 @@ namespace FFXCutsceneRemover.Resources
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
             { new GameState { RoomNumber = 83, Storyline = 172, State = 1, CutsceneAlt = 0 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
-            { new GameState { HpEnemyA = 3000, Storyline = 322 }, new Transition { SpawnPoint = 1, Storyline = 326, PositionTidusAfterLoad = true, Target_x = -11.76033783f, Target_y = -159.9781189f, Target_z = 541.0011597f, Target_rot = 1.698870897f, Target_var1 = 88, MoveFrame = 3, Description = "Post-Geneaux"} },
+            { new GameState { HpEnemyA = 3000, Storyline = 322 }, new Transition { SpawnPoint = 1, Storyline = 326, PositionTidusAfterLoad = true, Target_x = -11.76033783f, Target_y = -159.9781189f, Target_z = 541.0011597f, Target_rot = 1.698870897f, Target_var1 = 88, MoveFrame = 5, Description = "Post-Geneaux"} },
             { new GameState { RoomNumber = 45, Storyline = 346, State = 1 }, new Transition { RoomNumber = 78, Storyline = 348, SpawnPoint = 0, EnableIfrit = 17, Description = "Ifrit"} },
             { new GameState { HpEnemyA = 300, RoomNumber = 88, Storyline = 492 }, new Transition { RoomNumber = 121, Description = "Machina"} },
             { new GameState { HpEnemyA = 6000, Storyline = 502 }, new Transition { RoomNumber = 121, Storyline = 508, FormationSwitch = Transition.formations.PostOblitzerator, Description = "Oblitzerator"} },

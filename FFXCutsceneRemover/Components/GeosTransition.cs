@@ -41,9 +41,15 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
             {
+                process.Suspend();
+                DiagnosticLog.Information("Game Suspended");
+
                 DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xAE02);// D90
                 Stage += 1;
+
+                process.Resume();
+                DiagnosticLog.Information("Game Resume");
             }
         }
     }

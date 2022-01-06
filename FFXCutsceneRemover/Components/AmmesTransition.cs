@@ -14,12 +14,12 @@ namespace FFXCutsceneRemover
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.AmmesTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
                     DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
-                else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x16F) && Stage == 1)
+                else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x97FA) && Stage == 1)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
@@ -28,11 +28,11 @@ namespace FFXCutsceneRemover
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4255 }, Target_x = 843.5f, Target_y = -42.0f, Target_z = -126.7f };
                     actorPositions.Execute();
 
-                    WriteValue<int>(base.memoryWatchers.AmmesTransition, BaseCutsceneValue + 0x2AB);// 2AB , 255 , 21A
+                    WriteValue<int>(base.memoryWatchers.AmmesTransition, BaseCutsceneValue + 0x9936);// 2AB , 255 , 21A
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x3A1) && Stage == 2)
+                else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x9A2C) && Stage == 2)
                 {
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
