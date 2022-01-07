@@ -865,8 +865,11 @@ namespace FFXCutsceneRemover
                         formation = new byte[] { 0x04, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                         break;
                     case formations.AuronJoinsTheParty:
+                        WriteValue<byte>(memoryWatchers.EnableTidus, 17);
                         WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        WriteValue<byte>(memoryWatchers.EnableAuron, 17);
                         WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 17);
                         WriteValue<byte>(memoryWatchers.EnableLulu, 17);
                         formation = new byte[] { 0x00, 0x04, 0x01, 0x02, 0xFF, 0xFF, 0x05, 0x03, 0xFF, 0xFF };
                         break;
