@@ -6,9 +6,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ContentWithTargetPath Include="./Resources/BlitzballBytes.txt" CopyToOutputDirectory="Always" TargetPath="BlitzballBytes.txt" />
-		<ContentWithTargetPath Include="./Resources/NewGameDialogue.txt" CopyToOutputDirectory="Always" TargetPath="NewGameDialogue.txt" />
-		<ContentWithTargetPath Include="./Resources/RikkuName.txt" CopyToOutputDirectory="Always" TargetPath="RikkuName.txt" />
 		<PackageReference Include="Serilog" Version="2.10.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
