@@ -16,15 +16,6 @@ namespace FFXCutsceneRemover
 
         private Process process;
 
-        private const byte Tidus = 0x00;
-        private const byte Yuna = 0x01;
-        private const byte Auron = 0x02;
-        private const byte Kimahri = 0x03;
-        private const byte Wakka = 0x04;
-        private const byte Lulu = 0x05;
-        private const byte Rikku = 0x06;
-        private const byte Empty = 0xFF;
-
         public bool ConsoleOutput = true;
         public bool ForceLoad = true;
         public bool FullHeal = false;
@@ -46,7 +37,7 @@ namespace FFXCutsceneRemover
         public float? Target_z = null;
         public float? Target_rot = null;
         public short? Target_var1 = null;
-        public byte? MoveFrame = 5; // Default to 5 Frames as this seems to work for most transitions
+        public byte? MoveFrame = 8; // Default to 8 Frames as this seems to work for most transitions
         public float? PartyTarget_x = null;
         public float? PartyTarget_y = null;
         public float? PartyTarget_z = null;
@@ -432,8 +423,6 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.MenuValue1, MenuValue1);
             WriteValue(memoryWatchers.MenuValue2, MenuValue2);
-
-            WriteValue(memoryWatchers.ActorArrayLength, ActorArrayLength);
 
             if (ForceLoad)
             {
@@ -876,8 +865,11 @@ namespace FFXCutsceneRemover
                         formation = new byte[] { 0x04, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                         break;
                     case formations.AuronJoinsTheParty:
+                        WriteValue<byte>(memoryWatchers.EnableTidus, 17);
                         WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                        WriteValue<byte>(memoryWatchers.EnableAuron, 17);
                         WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                        WriteValue<byte>(memoryWatchers.EnableWakka, 17);
                         WriteValue<byte>(memoryWatchers.EnableLulu, 17);
                         formation = new byte[] { 0x00, 0x04, 0x01, 0x02, 0xFF, 0xFF, 0x05, 0x03, 0xFF, 0xFF };
                         break;
@@ -1029,11 +1021,6 @@ namespace FFXCutsceneRemover
         public byte[] SwapCharacterWithPosition(byte[] formation, byte Character, int newPosition)
         {
             int oldposition = Array.IndexOf(formation, Character);
-
-            foreach(byte Char in formation) { DiagnosticLog.Information(Char.ToString("X2")); }
-
-            DiagnosticLog.Information(Character.ToString("X2"));
-            DiagnosticLog.Information(oldposition.ToString());
 
             byte temp = formation[oldposition];
             formation[oldposition] = formation[newPosition];

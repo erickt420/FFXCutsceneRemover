@@ -11,7 +11,8 @@ namespace FFXCutsceneRemover
         static private List<short> CutsceneAltList = new List<short>(new short[] { 205, 195, 16 });
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
+            Process process = memoryWatchers.Process;
+
             if (base.memoryWatchers.SinFinTransition.Current > 0)
             {
                 if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
@@ -41,12 +42,15 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.SinFinTransition.Current == (BaseCutsceneValue + 0xCFD) && base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2) //200 = Sinscale HP
                 {
-                    Storyline = 272;
-                    ForceLoad = false;
-                    Description = "Post Sin Fin";
-                    base.Execute();
+                    process.Suspend();
+
+                    new Transition { ForceLoad = false, Storyline = 272, Description = "Post Sin Fin" }.Execute();
+
                     WriteValue<int>(base.memoryWatchers.SinFinTransition, BaseCutsceneValue + 0x114A);
+
                     Stage += 1;
+
+                    process.Resume();
                 }
             }
         }

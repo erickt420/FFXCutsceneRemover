@@ -11,6 +11,8 @@ namespace FFXCutsceneRemover
         static private List<short> CutsceneAltList = new List<short>(new short[] { 685, 1133, 3603 });
         public override void Execute(string defaultDescription = "")
         {
+            Process process = memoryWatchers.Process;
+
             if (Stage == 0)
             {
                 base.Execute();
@@ -34,13 +36,13 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.FinsTransition.Current == (BaseCutsceneValue + 0x5D0D) && Stage == 3)
             {
-                RoomNumber = 255;
-                Storyline = 3095;
-                ForceLoad = true;
-                base.Execute();
-                ForceLoad = false;
+                process.Suspend();
+
+                new Transition { RoomNumber = 255, Storyline = 3095 }.Execute();
 
                 Stage += 1;
+
+                process.Resume();
             }
         }
     }

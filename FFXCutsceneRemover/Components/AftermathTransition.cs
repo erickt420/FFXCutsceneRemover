@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 using FFXCutsceneRemover.Logging;
 using FFX_Cutscene_Remover.ComponentUtil;
 
@@ -13,12 +11,11 @@ namespace FFXCutsceneRemover
         {
             Process process = memoryWatchers.Process;
 
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-
             if (base.memoryWatchers.DjoseTransition.Current > 0)
             {
                 if (Stage == 0)
                 {
+                    base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.DjoseTransition.Current;
                     DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
@@ -28,17 +25,15 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.DjoseTransition.Current == (BaseCutsceneValue + 0x13D3) && Stage == 1)
                 {
+                    process.Suspend();
+
                     DiagnosticLog.Information("Stage: " + Stage.ToString());
 
-                    RoomNumber = 93;
-                    Storyline = 960;
-                    SpawnPoint = 0;
-                    ForceLoad = true;
-                    base.Execute();
-
+                    new Transition { RoomNumber = 93, Storyline = 960, SpawnPoint = 0, Description = "Tidus talks to Kimahri" }.Execute();
 
                     Stage += 1;
 
+                    process.Resume();
                 }
             }
         }

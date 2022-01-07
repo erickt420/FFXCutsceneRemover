@@ -1,9 +1,4 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
-using FFXCutsceneRemover.Logging;
+﻿using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -33,24 +28,7 @@ namespace FFXCutsceneRemover
                     actorPositions.Execute();
 
                     Stage += 1;
-                }/*/
-                else if (base.memoryWatchers.EchuillesTransition.Current == (BaseCutsceneValue + 0x2537) && base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
-                {
-                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x2604);
-                    Stage += 1;
                 }
-                else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 3)
-                {
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 4)
-                {
-                    Menu = 0;
-                    Description = "Exit Menu";
-                    ForceLoad = false;
-                    base.Execute();
-                    Stage += 1;
-                }//*/
             }
         }
     }

@@ -68,7 +68,7 @@ namespace FFXCutsceneRemover
                 {
                     {"BattleOffset", 0x760D },
                     {"DeathOffset", 0x7646 },
-                    {"NextSummonOffset", 0xCCAB},
+                    {"NextSummonOffset", 0x770B},
                     {"ActorID", 0x10A8 }
                 }
             },

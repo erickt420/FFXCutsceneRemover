@@ -1,4 +1,6 @@
-﻿using FFXCutsceneRemover.Logging;
+﻿using System.Diagnostics;
+using FFX_Cutscene_Remover.ComponentUtil;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -6,6 +8,8 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
+            Process process = memoryWatchers.Process;
+
             if (base.memoryWatchers.Dialogue1.Current == 4 && base.memoryWatchers.DialogueBoxOpen.Current == 1 && Stage == 0)
             {
                 base.Execute();
@@ -14,14 +18,15 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Dialogue1.Current == 4 && base.memoryWatchers.DialogueBoxOpen.Current == 0 && base.memoryWatchers.DialogueOption.Current == 0 && Stage == 1)
             {
+                process.Suspend();
+
                 DiagnosticLog.Information("Stage: " + Stage.ToString());
 
-                Storyline = 154;
-                Description = "Priest enters Wakka's tent";
-                ForceLoad = true;
-                base.Execute();
+                new Transition { Storyline = 154, Description = "Priest enters Wakka's tent" }.Execute();
 
                 Stage += 1;
+
+                process.Resume();
             }
             else if (base.memoryWatchers.Dialogue1.Current == 4 && base.memoryWatchers.DialogueBoxOpen.Current == 0 && base.memoryWatchers.DialogueOption.Current == 1 && Stage == 1)
             {
