@@ -21,32 +21,27 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }//*/
                 else if (base.memoryWatchers.YunalescaTransition.Current == (BaseCutsceneValue + 0x5DF0) && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x645A);
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.YunalescaTransition.Current == (BaseCutsceneValue + 0x64BA) && Stage == 2)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x67B4);
                     WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 3)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x6C8D);
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.Gil.Current > base.memoryWatchers.Gil.Old && Stage == 4)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.Gil.Current == base.memoryWatchers.Gil.Old && Stage == 5)

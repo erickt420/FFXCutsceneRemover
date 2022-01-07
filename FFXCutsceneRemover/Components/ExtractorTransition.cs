@@ -15,14 +15,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.ExtractorTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }/*/
                 else if (base.memoryWatchers.ExtractorTransition.Current >= (BaseCutsceneValue + 0x14E) && Stage == 1) // 
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                     Transition actorPositions;
 
                     //Position Tidus
@@ -39,7 +36,6 @@ namespace FFXCutsceneRemover
                 }//*/
                 else if (base.memoryWatchers.ExtractorTransition.Current == (BaseCutsceneValue + 0x1E3) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x28B);// 28E
                     Stage += 1;
                 }

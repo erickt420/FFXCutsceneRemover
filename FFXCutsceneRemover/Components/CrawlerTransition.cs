@@ -46,7 +46,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0x635) && base.memoryWatchers.HpEnemyA.Current < 16000 && base.memoryWatchers.HpEnemyA.Old == 16000 && Stage == 5)
                 {
-                    DiagnosticLog.Information("HP Check");
                     WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x886);
                     Stage += 1;
                 }

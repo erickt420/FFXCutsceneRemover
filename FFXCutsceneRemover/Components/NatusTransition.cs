@@ -23,13 +23,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0xE0F0) && Stage == 1) // 1893
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = true, FormationSwitch = Transition.formations.PreNatus, Description = "Fix party before Natus" };
                     FormationSwitch.Execute();
@@ -59,7 +57,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0xE2FD) && base.memoryWatchers.HpEnemyA.Current < 36000 && base.memoryWatchers.HpEnemyA.Old == 36000 && Stage == 2)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.NatusTransition, BaseCutsceneValue + 0xE395);
                     Stage += 1;
                 }

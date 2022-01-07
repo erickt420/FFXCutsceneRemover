@@ -13,13 +13,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.BikanelTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.BikanelTransition.Current == (BaseCutsceneValue + 0x11F) && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.BikanelTransition, BaseCutsceneValue + 0x1DC); // 1DC
 
                     Transition actorPositions;

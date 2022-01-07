@@ -18,7 +18,6 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.DjoseTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
 
                     Stage += 1;
 
@@ -26,8 +25,6 @@ namespace FFXCutsceneRemover
                 else if (base.memoryWatchers.DjoseTransition.Current == (BaseCutsceneValue + 0x13D3) && Stage == 1)
                 {
                     process.Suspend();
-
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     new Transition { RoomNumber = 93, Storyline = 960, SpawnPoint = 0, Description = "Tidus talks to Kimahri" }.Execute();
 

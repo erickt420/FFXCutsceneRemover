@@ -15,13 +15,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.WendigoTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.WendigoTransition.Current == (BaseCutsceneValue + 0x19BF) && Stage == 1) // 486
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.WendigoTransition, BaseCutsceneValue + 0x1B1E);// 1B44
 
                     Transition actorPositions;
@@ -41,7 +39,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.WendigoTransition.Current == (BaseCutsceneValue + 0x1B7E) && base.memoryWatchers.HpEnemyA.Current < 1200 && base.memoryWatchers.HpEnemyA.Old == 1200 && Stage == 2) // 1200 is HP of Guado
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.WendigoTransition, BaseCutsceneValue + 0x1E31);// 1E34
                     Stage += 1;
                 }

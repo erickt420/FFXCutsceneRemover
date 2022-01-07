@@ -20,8 +20,6 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 new Transition { Storyline = 154, Description = "Priest enters Wakka's tent" }.Execute();
 
                 Stage += 1;
@@ -30,8 +28,6 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Dialogue1.Current == 4 && base.memoryWatchers.DialogueBoxOpen.Current == 0 && base.memoryWatchers.DialogueOption.Current == 1 && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 Stage = 0;
             }
         }

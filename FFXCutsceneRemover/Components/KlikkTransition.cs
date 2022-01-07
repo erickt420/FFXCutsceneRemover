@@ -13,26 +13,22 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
 
             }
             else if (base.memoryWatchers.KlikkTransition.Current == (BaseCutsceneValue + 0xA523) && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-                WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0xA7E3);//972 , 999
+                WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0xA7E3);
                 Stage += 1;
             }
             else if (base.memoryWatchers.KlikkTransition.Current > (BaseCutsceneValue + 0xA7E3) && Stage == 2)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-                WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0xA847);//972 , 999
+                WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0xA847);
                 Stage += 1;
             }
             else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 3)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-                WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0xAF27); //104E
+                WriteValue<int>(base.memoryWatchers.KlikkTransition, BaseCutsceneValue + 0xAF27);
                 Stage += 1;
             }
         }

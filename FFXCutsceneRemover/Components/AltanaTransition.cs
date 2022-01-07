@@ -21,13 +21,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.AltanaTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x69) && Stage == 1) // CC
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x307);//
 
                     formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 3);
@@ -49,8 +47,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x32C) && Stage == 2) // This is a filler stage which only serves to facilitate fight end logic
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                     Stage += 1;
                 }/*/
                 else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x50E) && Stage == 3)
@@ -124,26 +120,21 @@ namespace FFXCutsceneRemover
                 }//*/
                 else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 7)
                 {
-                    DiagnosticLog.Information("Stage: End Fight");
                     WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0xA7D);// 
                     Stage = 99;
                 }
                 else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 5)
                 {
-                    DiagnosticLog.Information("Stage: End Fight");
                     WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x7A2);// Camera is jank if ending fight in second room. Need to work out how to move camera.
                     Stage = 98;
                 }
                 else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 3)
                 {
-                    DiagnosticLog.Information("Stage: End Fight");
                     WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x3A9);// 
                     Stage = 99;
                 }
                 else if (base.memoryWatchers.Menu.Current == 0 && base.memoryWatchers.Menu.Old == 1 && Stage == 98)
                 {
-                    DiagnosticLog.Information("Stage: Reposition Tidus");
-
                     Transition actorPositions;
                     //Position Tidus
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 529.320f, Target_y = -30.0f, Target_z = -830.060f };

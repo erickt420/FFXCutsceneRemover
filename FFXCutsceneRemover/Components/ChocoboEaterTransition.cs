@@ -20,13 +20,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.ChocoboEaterTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.ChocoboEaterTransition.Current >= (BaseCutsceneValue + 0x7A5) && Stage == 1) // 21B , EC
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.ChocoboEaterTransition, BaseCutsceneValue + 0xC96);// 30A
 
                     byte[] ActiveParty = process.ReadBytes(base.memoryWatchers.Formation.Address, 3);

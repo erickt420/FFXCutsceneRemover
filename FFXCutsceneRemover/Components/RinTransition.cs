@@ -22,20 +22,17 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.RinTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.RinTransition.Current >= (BaseCutsceneValue + 0x271) && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x466);
 
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.Dialogue1.Current == 92 && Stage == 2)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x58B);
 
                     Stage += 1;
@@ -43,8 +40,6 @@ namespace FFXCutsceneRemover
                 else if (base.memoryWatchers.RinTransition.Current == (BaseCutsceneValue + 0x5B1) && Stage == 3)
                 {
                     process.Suspend();
-
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                     new Transition { Storyline = 767, SpawnPoint = 0 }.Execute();
 

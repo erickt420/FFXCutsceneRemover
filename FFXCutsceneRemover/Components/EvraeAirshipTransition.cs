@@ -15,13 +15,11 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
 
             }
             else if (base.memoryWatchers.EvraeAirshipTransition.Current == (BaseCutsceneValue + 0x15FFC) && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.EvraeAirshipTransition, BaseCutsceneValue + 0x16217);
                 Stage += 1;
             }

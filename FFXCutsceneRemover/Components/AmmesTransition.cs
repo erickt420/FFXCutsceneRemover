@@ -14,14 +14,11 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage = 1;
 
             }
             else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x97FA) && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 Transition actorPositions;
                 //Position Ammes
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4255 }, Target_x = 843.5f, Target_y = -42.0f, Target_z = -126.7f };
@@ -35,8 +32,6 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 new Transition{ Storyline = 16, SpawnPoint = 1, Description = "Sinscales to Ammes"}.Execute();
 
                 Stage += 1;
@@ -45,8 +40,6 @@ namespace FFXCutsceneRemover
             }
             else if (Stage == 3)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 Transition actorPositions;
                 //Position Tidus
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 749.636f, Target_y = -41.589f, Target_z = -71.674f };

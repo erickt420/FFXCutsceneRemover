@@ -222,7 +222,6 @@ namespace FFXCutsceneRemover
                 {
                     Game.Suspend();
                     suspended = true;
-                    DiagnosticLog.Information("Game Suspended");
                 }
 
                 transition.Execute(defaultDescription);
@@ -235,7 +234,6 @@ namespace FFXCutsceneRemover
                 if (suspended)
                 {
                     Game.Resume();
-                    DiagnosticLog.Information("Game Resumed");
                 }
             }
         }
