@@ -10,13 +10,14 @@ If you encounter any bugs or have any questions, please open an issue on GitHub 
 
 ### Usage:
 
-1. Ensure you have .NET Core 3.1 Runtime installed ([download here](https://dotnet.microsoft.com/download/dotnet/3.1/runtime)).
+1. Download the latest release (x64 or x86) from the [releases page here](https://github.com/erickt420/FFXCutsceneRemover/releases).
 
-2. Download the latest release from the [releases page here](https://github.com/erickt420/FFXCutsceneRemover/releases).
+2. Extract and launch FFXCutsceneRemove.exe.
 
-3. Extract all files from the zip into an empty folder.
+3. Launch Final Fantasy X.
 
-4. Double click FFXCutsceneRemover.exe.
+The order in which you launch the mod and the game does not matter.
+You do not need to start a new game in order to gain the effects of the mod, however, if you start from a save file you may find that it takes a while before the cutscenes start skipping.
 
 ### Arguments:
 You can use multiple arguments by separating them with a space.
