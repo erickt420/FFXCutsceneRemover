@@ -18,15 +18,12 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
 
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.RonsoTransition.Current > (BaseCutsceneValue + 0x12907) && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                     RonsoFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
 
                     WriteValue<int>(base.memoryWatchers.RonsoTransition, BaseCutsceneValue + 0x13F9F);
@@ -34,8 +31,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.RonsoTransition.Current == (BaseCutsceneValue + 0x14056) && Stage == 2)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                     Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = true, FormationSwitch = Transition.formations.PostBiranYenke, Formation = RonsoFormation, Description = "Fix party after Biran and Yenke" };
                     FormationSwitch.Execute();
 

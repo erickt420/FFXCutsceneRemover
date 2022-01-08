@@ -31,14 +31,11 @@ namespace FFXCutsceneRemover
             if (base.memoryWatchers.Storyline.Current == 1607 && base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
             {
                 BaseCutsceneValue = base.memoryWatchers.UnderLakeTransition.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
             }
             else if (base.memoryWatchers.State.Current == 0 && Stage == 1)
             {
                 process.Suspend();
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                 TidusXCoordinate = base.memoryWatchers.TidusXCoordinate.Current;
                 TidusYCoordinate = base.memoryWatchers.TidusYCoordinate.Current;
@@ -54,8 +51,6 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.State.Current == 0 && base.memoryWatchers.NPCLastInteraction.Current == 5 && Stage == 2) // Auron is character 5 on this screen
             {
                 process.Suspend();
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                 TidusXCoordinate = base.memoryWatchers.TidusXCoordinate.Current;
                 TidusYCoordinate = base.memoryWatchers.TidusYCoordinate.Current;

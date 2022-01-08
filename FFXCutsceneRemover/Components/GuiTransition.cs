@@ -28,12 +28,10 @@ namespace FFXCutsceneRemover
             {
                 /*/
                 process.Suspend();
-                DiagnosticLog.Information("Game Suspended");
 
                 WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0xE978);
 
                 process.Resume();
-                DiagnosticLog.Information("Game Resumed");
                 //*/
 
                 Stage += 1;
@@ -42,7 +40,6 @@ namespace FFXCutsceneRemover
             {
                 /*/
                 process.Suspend();
-                DiagnosticLog.Information("Game Suspended");
 
                 new Transition { ForceLoad = false, Storyline = 857, ConsoleOutput = false }.Execute();
 
@@ -57,7 +54,6 @@ namespace FFXCutsceneRemover
                 actorPositions.Execute();
 
                 process.Resume();
-                DiagnosticLog.Information("Game Resumed");
                 //*/
 
                 Stage += 1;
@@ -65,7 +61,6 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.Storyline.Current == 860 && Stage == 3)
             {
                 process.Suspend();
-                DiagnosticLog.Information("Game Suspended");
 
                 GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
 
@@ -74,7 +69,6 @@ namespace FFXCutsceneRemover
                 Stage += 1;
 
                 process.Resume();
-                DiagnosticLog.Information("Game Resumed");
             }
             else if (CutsceneAltList2.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 4)
             {
@@ -86,7 +80,6 @@ namespace FFXCutsceneRemover
             {
                 /*/
                 process.Suspend();
-                DiagnosticLog.Information("Game Suspended");
 
                 WriteValue<int>(base.memoryWatchers.Gui2Transition, BaseCutsceneValue2 + 0x29C0);
 
@@ -108,7 +101,6 @@ namespace FFXCutsceneRemover
                 actorPositions.Execute();
 
                 process.Resume();
-                DiagnosticLog.Information("Game Resumed");
                 //*/
 
                 Stage += 1;

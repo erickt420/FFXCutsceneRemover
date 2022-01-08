@@ -17,13 +17,11 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
 
             }
             else if (base.memoryWatchers.State.Current == 0 && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7AEA); // 0x7D6C 0x7C9F
 
                 formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 8);
@@ -49,14 +47,12 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.EvraeTransition.Current >= (BaseCutsceneValue + 0x7AEB) && Stage == 2)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7D6C);
 
                 Stage += 1;
             }
             else if (base.memoryWatchers.BattleState.Current == 522 && base.memoryWatchers.CutsceneAlt.Current == 420 && Stage == 3)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 Transition actorPositions;
                 //Position Rikku
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 7 }, Target_x = -20.0f, Target_y = -35.85807419f, Target_z = 80.0f, Target_var1 = 19 };

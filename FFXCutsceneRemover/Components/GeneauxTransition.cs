@@ -21,13 +21,11 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage = 1;
 
             }
             else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x65CA) && Stage == 1) // 0x65CA
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x67AA);
 
                 formation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
@@ -49,7 +47,6 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x67F4) && Stage == 2) // 0x68C3 , 0x67E9
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6A47);
                 Stage += 1;
             }

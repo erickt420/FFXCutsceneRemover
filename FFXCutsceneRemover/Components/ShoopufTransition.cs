@@ -20,8 +20,6 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 new Transition { RoomNumber = 99, Description = "All Aboards!" }.Execute();
 
                 Stage += 1;
@@ -30,19 +28,12 @@ namespace FFXCutsceneRemover
             }/*/
             else if (base.memoryWatchers.Dialogue1.Current == 51 && base.memoryWatchers.DialogueBoxOpen.Current == 0 && base.memoryWatchers.DialogueOption.Current == 1 && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
-                Storyline = 154;
-                Description = "Priest enters Wakka's tent";
-                ForceLoad = true;
-                base.Execute();
+                new Transition { RoomNumber = 99, Description = "All Aboards!" }.Execute();
 
                 Stage += 1;
             }//*/
             else if (base.memoryWatchers.Dialogue1.Current == 2 && base.memoryWatchers.DialogueBoxOpen.Current == 0 && base.memoryWatchers.DialogueOption.Current == 1 && Stage == 1)
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                 Stage = 0;
             }
         }

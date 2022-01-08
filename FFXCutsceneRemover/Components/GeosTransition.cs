@@ -17,16 +17,12 @@ namespace FFXCutsceneRemover
                 base.Execute();
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
 
             }
             else if (base.memoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0xA4F8) && Stage == 1)
             {
                 process.Suspend();
-                DiagnosticLog.Information("Game Suspended");
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xA7D5); // 0xA992
 
                 Transition actorPositions;
@@ -37,19 +33,14 @@ namespace FFXCutsceneRemover
                 Stage += 1;
 
                 process.Resume();
-                DiagnosticLog.Information("Game Resume");
             }
             else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
             {
                 process.Suspend();
-                DiagnosticLog.Information("Game Suspended");
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xAE02);// D90
                 Stage += 1;
 
                 process.Resume();
-                DiagnosticLog.Information("Game Resume");
             }
         }
     }

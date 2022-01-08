@@ -73,6 +73,8 @@ namespace FFXCutsceneRemover
         public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
+        public short? BattleLocationID = null;
+        public byte? BattleEncounterID = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public float? TidusXCoordinate = null;
@@ -276,6 +278,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
             WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
+            WriteValue(memoryWatchers.BattleLocationID, BattleLocationID);
+            WriteValue(memoryWatchers.BattleEncounterID, BattleEncounterID);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
             WriteValue(memoryWatchers.TidusXCoordinate, TidusXCoordinate);
@@ -498,10 +502,8 @@ namespace FFXCutsceneRemover
         {
             if (value.HasValue)
             {
-                DiagnosticLog.Information(watcher.Name + ": Writing " + value.Value.ToString());
                 writeHelper(watcher, () => process.WriteValue(watcher.Address, value.Value),
                    (pointer) => process.WriteValue(pointer, value.Value));
-                DiagnosticLog.Information(watcher.Name + ": Written " + value.Value.ToString());
             }
         }
 
@@ -509,10 +511,8 @@ namespace FFXCutsceneRemover
         {
             if (bytes != null)
             {
-                DiagnosticLog.Information(watcher.Name + ": Writing " + BitConverter.ToString(bytes));
                 writeHelper(watcher, () => process.WriteBytes(watcher.Address, bytes),
                     (pointer) => process.WriteBytes(pointer, bytes));
-                DiagnosticLog.Information(watcher.Name + ": Written " + BitConverter.ToString(bytes));
             }
         }
 
@@ -632,8 +632,6 @@ namespace FFXCutsceneRemover
                             alreadyExists = true;
                             itemsQty[j] += itemRewardsQty[i];
 
-                            DiagnosticLog.Information("Existing Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
-
                             break;
                         }
                     }
@@ -648,8 +646,6 @@ namespace FFXCutsceneRemover
                                 items[2 * j] = itemRewards[2 * i];
                                 items[2 * j + 1] = itemRewards[2 * i + 1];
                                 itemsQty[j] = itemRewardsQty[i];
-
-                                DiagnosticLog.Information("New Item: " + items[2 * j] + " / Position: " + j + " / Qty: " + itemsQty[j]);
 
                                 break;
                             }

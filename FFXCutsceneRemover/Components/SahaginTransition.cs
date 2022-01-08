@@ -22,13 +22,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.SahaginTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage = 1;
 
                 }
                 else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0xC9) && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x45A);
 
                     Transition actorPositions;
@@ -48,7 +46,6 @@ namespace FFXCutsceneRemover
                 }
                 else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0x491) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 2)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);
                     Stage = 3;
                 }

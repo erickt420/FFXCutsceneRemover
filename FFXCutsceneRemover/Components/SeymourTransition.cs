@@ -28,7 +28,6 @@ namespace FFXCutsceneRemover
                 WriteValue<byte>(shivaEnabled2, 0x11);
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X8"));
 
                 Stage += 1;
 
@@ -37,8 +36,6 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.MovementLock.Current == 0x10 && Stage == 1)
             {
                 process.Suspend();
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                 WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
                 WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
@@ -65,8 +62,6 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.SeymourTransition2.Current == (BaseCutsceneValue + 0x77D6) && Stage == 2)
             {
                 process.Suspend();
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue + 0x7F85);
 
                 Stage += 1;
@@ -76,8 +71,6 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.Menu.Current == 1 && base.memoryWatchers.CutsceneAlt.Current == 0 && Stage == 3)
             {
                 process.Suspend();
-
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
 
                 new Transition { Storyline = 1545, ConsoleOutput = false, PositionTidusAfterLoad = true, Target_x = 1.470157981f, Target_y = 0.0f, Target_z = 0.3889299929f, Target_rot = -0.1195230484f, Target_var1 = 53 }.Execute();
 

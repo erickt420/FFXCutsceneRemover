@@ -20,7 +20,6 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.DjoseTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
 
                     Stage += 1;
 

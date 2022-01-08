@@ -145,13 +145,11 @@ namespace FFXCutsceneRemover
             {
                 base.Execute();
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                 Stage += 1;
                     
             }
             else if (base.memoryWatchers.AeonTransition.Current >= (BaseCutsceneValue + 0x69BD) && Stage == 1) // 0x68A4
             {
-                DiagnosticLog.Information("Stage: " + Stage.ToString());
                 WriteValue<int>(base.memoryWatchers.AeonTransition, BaseCutsceneValue + 0x6A9F); // 0x6A90
 
                 Stage += 1;

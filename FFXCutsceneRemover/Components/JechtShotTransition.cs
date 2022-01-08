@@ -18,21 +18,17 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }//*/
                 else if (base.memoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xF3A7) && Stage == 1)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.JechtShotTransition, BaseCutsceneValue + 0xF9E4);
 
                     Stage += 1;
                 }
                 else if (base.memoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xFAAE) && Stage == 2)
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
                     Transition actorPositions;
                     //Position Tidus
                     actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 1.0f, Target_y = -49.99626923f, Target_z = 172.0000153f, Target_var1 = 100 };
