@@ -38,6 +38,8 @@
         public static string DialogueBoxOpen = "DialogueBoxOpen";
         public static string PlayerTurn = "PlayerTurn";
         public static string FrameCounterFromLoad = "FrameCounterFromLoad";
+        public static string BattleLocationID = "BattleLocationID";
+        public static string BattleEncounterID = "BattleEncounterID";
 
         //Event File
         public static string EventFileStart = "EventFileStart";

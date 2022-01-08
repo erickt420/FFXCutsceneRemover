@@ -44,6 +44,8 @@ namespace FFXCutsceneRemover
         public byte? PlayerTurn = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
+        public short? BattleLocationID = null;
+        public byte? BattleEncounterID = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public short? NPCLastInteraction = null;
@@ -115,6 +117,8 @@ namespace FFXCutsceneRemover
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Old) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Old) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
+                TestValue(BattleLocationID, memoryWatchers.BattleLocationID.Old) &&
+                TestValue(BattleEncounterID, memoryWatchers.BattleEncounterID.Old) &&
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Old) &&
                 TestValue(SSWinnoFlag1, memoryWatchers.SSWinnoFlag1.Old) &&
                 TestValue(KilikaMapFlag, memoryWatchers.KilikaMapFlag.Old) &&

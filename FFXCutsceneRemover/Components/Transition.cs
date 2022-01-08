@@ -73,6 +73,8 @@ namespace FFXCutsceneRemover
         public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
+        public short? BattleLocationID = null;
+        public byte? BattleEncounterID = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public float? TidusXCoordinate = null;
@@ -276,6 +278,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
             WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
+            WriteValue(memoryWatchers.BattleLocationID, BattleLocationID);
+            WriteValue(memoryWatchers.BattleEncounterID, BattleEncounterID);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
             WriteValue(memoryWatchers.TidusXCoordinate, TidusXCoordinate);
