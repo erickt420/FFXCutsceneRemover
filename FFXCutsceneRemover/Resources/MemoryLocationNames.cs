@@ -166,6 +166,7 @@
         public static string MoonflowFlag2 = "MoonflowFlag2";
         public static string RikkuOutfit = "RikkuOutfit";
         public static string TidusWeaponDamageBoost = "TidusWeaponDamageBoost";
+        public static string ThunderPlainsFlag = "ThunderPlainsFlag";
         public static string MacalaniaFlag = "MacalaniaFlag";
         public static string BikanelFlag = "BikanelFlag";
         public static string Sandragoras = "Sandragoras";

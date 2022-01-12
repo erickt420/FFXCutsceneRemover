@@ -221,6 +221,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MoonflowFlag2;
         public MemoryWatcher<byte> RikkuOutfit;
         public MemoryWatcher<byte> TidusWeaponDamageBoost;
+        public MemoryWatcher<byte> ThunderPlainsFlag;
         public MemoryWatcher<byte> MacalaniaFlag;
         public MemoryWatcher<byte> BikanelFlag;
         public MemoryWatcher<byte> Sandragoras;
@@ -492,6 +493,7 @@ namespace FFXCutsceneRemover
             MoonflowFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag2);
             RikkuOutfit = GetMemoryWatcher<byte>(MemoryLocations.RikkuOutfit);
             TidusWeaponDamageBoost = GetMemoryWatcher<byte>(MemoryLocations.TidusWeaponDamageBoost);
+            ThunderPlainsFlag = GetMemoryWatcher<byte>(MemoryLocations.ThunderPlainsFlag);
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
             BikanelFlag = GetMemoryWatcher<byte>(MemoryLocations.BikanelFlag);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
@@ -706,6 +708,7 @@ namespace FFXCutsceneRemover
                     MoonflowFlag2,
                     RikkuOutfit,
                     TidusWeaponDamageBoost,
+                    ThunderPlainsFlag,
                     MacalaniaFlag,
                     BikanelFlag,
                     ViaPurificoPlatform,
