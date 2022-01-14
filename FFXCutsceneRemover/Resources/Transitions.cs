@@ -112,6 +112,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 367, Storyline = 19 }, new Transition { RoomNumber = 367, Storyline = 20, SpawnPoint = 0, Description = "Tidus and Auron run as bridge explodes"} },
             { new GameState { RoomNumber = 367, Storyline = 20 }, new Transition { RoomNumber = 384, Storyline = 20, SpawnPoint = 0, Description = "This is your story FMV" } },
             //{ new GameState { RoomNumber = 384, Storyline = 20 }, new InsideSinTransition {ForceLoad = false, Description = "Inside Sin", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 384, Storyline = 20, Dialogue1 = 3 }, new Transition { ForceLoad = false, MenuValue1 = 0, MenuValue2 = 0, Description = "Fix menu bug", ConsoleOutput = false} },
             { new GameState { RoomNumber = 384, Storyline = 20, State = 0 }, new Transition { RoomNumber = 385, Description = "Tidus swimming looking at himself as a child"} },
             { new GameState { RoomNumber = 385, Storyline = 20 }, new Transition { RoomNumber = 48, Storyline = 30, SpawnPoint = 0, Description = "A dream of being alone" } },
             // END OF ZANARKAND
@@ -123,7 +124,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 49, Storyline = 44 }, GeosTransition },
             { new GameState { RoomNumber = 49, Storyline = 46 }, GeosTransition },
             { new GameState { RoomNumber = 49, Storyline = 48 }, new Transition { RoomNumber = 50, Storyline = 48, SpawnPoint = 0, Description = "Escape from Geogaesno "} },
-            { new GameState { RoomNumber = 50, Storyline = 48 }, new Transition { RoomNumber = 50, Storyline = 50, MenuLock = 152, SpawnPoint = 0, Description = "Tidus in a collapsed corridor"} }, // Bug: Boss music still playing
+            { new GameState { RoomNumber = 50, Storyline = 48 }, new Transition { RoomNumber = 50, Storyline = 50, SpawnPoint = 0, Description = "Tidus in a collapsed corridor"} }, // Bug: Boss music still playing
             { new GameState { RoomNumber = 63, Storyline = 50 }, new Transition { RoomNumber = 63, Storyline = 52, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -48.99651718f, Target_y = 0.0f, Target_z = -0.5857821703f, Target_rot = -0.004086574074f, Target_var1 = 127, Description = "Tidus needs fire"} },
             { new GameState { RoomNumber = 63, Storyline = 54 }, new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0, Description = "Tidus makes fire"} },
             { new GameState { RoomNumber = 165, Storyline = 55 }, new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0, Description = "Tidus has a dream about Auron"} },

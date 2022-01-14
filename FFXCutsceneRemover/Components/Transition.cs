@@ -477,7 +477,7 @@ namespace FFXCutsceneRemover
                     memoryWatchers.FrameCounterFromLoad.Update(process);
                 }
                 process.Suspend();
-                //WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
+                WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
                 process.Resume();
             }
