@@ -23,6 +23,8 @@ namespace FFXCutsceneRemover.Resources
         static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
         static readonly EvraeAirshipTransition EvraeAirshipTransition = new EvraeAirshipTransition { ForceLoad = false, Description = "Post Evrae", Suspendable = false, Repeatable = true };
 
+        public static readonly RandoSetupTransition RandoSetupTransition = new RandoSetupTransition { ForceLoad = false, ConsoleOutput = false, Suspendable = false, Description = "Randomising Grid" };
+
         private static byte[] BlitzballBytes = new byte[]
         {
             0x08, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x01, 0x80, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x80, 0x00, 0x20, 0x00, 0x80, 0x04, 0x00, 0x00, 0x00,
@@ -456,6 +458,22 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, TargetFramerate = 2, MenuCleanup = true, AddItems = true, PositionTidusAfterLoad = true, Target_x = 1.958124876f, Target_y = 0.0f, Target_z = -68.68795013f, Target_rot = -1.438184619f, Target_var1 = 86, Description = "Yunalesca"} },
             { new GameState { HpEnemyA = 20000, RoomNumber = 201, Storyline = 3105}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -258.47229f, Target_y = 12.31083775f, Target_z = 380.5874939f, Target_rot = -1.021441936f, Target_var1 = 1412, Description = "Sin Core"} },
             { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
+        };
+
+        public static readonly Dictionary<IGameState, Transition> RandomiserTransitions = new Dictionary<IGameState, Transition>()
+        {
+            { new GameState { RoomNumber = 376, Storyline = 5, MovementLock = 0x20}, new RandoSetupTransition { ForceLoad = false, Description = "Randomiser Setup"} },
+            { new GameState { RoomNumber = 236, Storyline = 1070, MovementLock = 0x20}, new RandoSetupTransition { ForceLoad = false, Description = "Randomiser Setup"} },
+            { new GameState { RoomNumber = 63, Storyline = 52}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
+            { new GameState { RoomNumber = 20, Storyline = 116}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
+            { new GameState { RoomNumber = 69, Storyline = 210}, new AddLuluAbilitiesTransition { ForceLoad = false, Description = "Add Fire, Thunder, Water & Blizzard" } },
+            { new GameState { RoomNumber = 67, Storyline = 214}, new RemoveLuluAbilitiesTransition { ForceLoad = false, Description = "Remove Fire, Thunder, Water & Blizzard" } },
+            { new GameState { RoomNumber = 22, Storyline = 217}, new AddWakkaAbilitiesTransition { ForceLoad = false, Description = "Add Dark Attack" } },
+            { new GameState { RoomNumber = 19, Storyline = 218}, new RemoveWakkaAbilitiesTransition { ForceLoad = false, Description = "Remove Dark Attack" } },
+            { new GameState { RoomNumber = 18, Storyline = 312}, new AddKimahriAbilitiesTransition { ForceLoad = false, Description = "Add Lancet" } },
+            { new GameState { RoomNumber = 18, Storyline = 315}, new RemoveKimahriAbilitiesTransition { ForceLoad = false, Description = "Remove Lancet" } },
+            { new GameState { RoomNumber = 109, Storyline = 1085}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
+            { new GameState { RoomNumber = 97, Storyline = 1085}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, ConsoleOutput = false, Description = "Remove Steal and Use" } },
         };
     }
 }
