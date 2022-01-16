@@ -7,6 +7,7 @@ namespace FFXCutsceneRemover
 {
     class RemoveKimahriAbilitiesTransition : Transition
     {
+        bool KimahriLancet = false;
         public override void Execute(string defaultDescription = "")
         {
             base.Execute();
@@ -20,15 +21,28 @@ namespace FFXCutsceneRemover
             MemoryWatcher<byte> abilities2 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD35E08 + 0x1C * 0x03));
             byte[] abilitiesBytes2 = process.ReadBytes(abilities2.Address, 12);
 
-            if (Transitions.RandoSetupTransition.KimahriLancet == false)
+            int memorySizeBytes = 1714;
+            byte[] SphereGridBytes = process.ReadBytes(memoryWatchers.SphereGrid.Address, memorySizeBytes);
+
+            for (int i = 0; i < memorySizeBytes / 2; i++)
+            {
+                if (SphereGridBytes[2 * i] == 0x44 & (SphereGridBytes[2 * i + 1] & 0x08) == 0x08)
+                {
+                    KimahriLancet = true;
+                }
+            }
+
+            if (KimahriLancet == false)
             {
                 byte nodeID = 0x44;
 
                 int byteNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][0];
                 int bitNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][1];
 
-                abilitiesBytes1[byteNum] -= (byte)Math.Pow(2, bitNum);
-                abilitiesBytes2[byteNum] -= (byte)Math.Pow(2, bitNum);
+                byte bitValue = (byte)Math.Pow(2, bitNum);
+
+                if ((abilitiesBytes1[byteNum] & bitValue) == bitValue) { abilitiesBytes1[byteNum] -= bitValue; }
+                if ((abilitiesBytes2[byteNum] & bitValue) == bitValue) { abilitiesBytes2[byteNum] -= bitValue; }
             }
 
             WriteBytes(abilities1, abilitiesBytes1);

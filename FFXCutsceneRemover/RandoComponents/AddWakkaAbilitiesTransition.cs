@@ -7,6 +7,7 @@ namespace FFXCutsceneRemover
 {
     class AddWakkaAbilitiesTransition : Transition
     {
+        bool WakkaDarkAttack = false;
         public override void Execute(string defaultDescription = "")
         {
             base.Execute();
@@ -20,15 +21,28 @@ namespace FFXCutsceneRemover
             MemoryWatcher<byte> abilities2 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD35E08 + 0x1C * 0x04));
             byte[] abilitiesBytes2 = process.ReadBytes(abilities2.Address, 12);
 
-            if (Transitions.RandoSetupTransition.WakkaDarkAttack == false)
+            int memorySizeBytes = 1714;
+            byte[] SphereGridBytes = process.ReadBytes(memoryWatchers.SphereGrid.Address, memorySizeBytes);
+
+            for (int i = 0; i < memorySizeBytes / 2; i++)
+            {
+                if (SphereGridBytes[2 * i] == 0x2E & (SphereGridBytes[2 * i + 1] & 0x10) == 0x10)
+                {
+                    WakkaDarkAttack = true;
+                }
+            }
+
+            if (WakkaDarkAttack == false)
             {
                 byte nodeID = 0x2E;
 
                 int byteNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][0];
                 int bitNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][1];
 
-                abilitiesBytes1[byteNum] += (byte)Math.Pow(2, bitNum);
-                abilitiesBytes2[byteNum] += (byte)Math.Pow(2, bitNum);
+                byte bitValue = (byte)Math.Pow(2, bitNum);
+
+                if ((abilitiesBytes1[byteNum] & bitValue) == 0x00) { abilitiesBytes1[byteNum] += bitValue; }
+                if ((abilitiesBytes2[byteNum] & bitValue) == 0x00) { abilitiesBytes2[byteNum] += bitValue; }
             }
 
             WriteBytes(abilities1, abilitiesBytes1);

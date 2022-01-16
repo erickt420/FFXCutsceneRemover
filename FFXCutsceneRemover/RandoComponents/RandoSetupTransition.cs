@@ -27,9 +27,9 @@ namespace FFXCutsceneRemover
         private bool RandomiseStats = true;
 
         // Stat data - HP / MP / STR / DEF / MAG / MDEF / AGI / LCK / EVA / ACC(Offsets only)
-        private double[] statMean = new double[] { 585.0f, 56.0f, 12.0f, 10.0f, 12.5f, 11.0f, 8.5f, 18.0f, 14.0f };
-        private double[] statStdDev = new double[] { 232.0f, 18.0f, 5.0f, 4.0f, 6.5f, 10.0f, 4.0f, 1.0f, 14.5f };
-        private double[] statMin = new double[] { 200.0f, 10.0f, 5.0f, 5.0f, 5.0f, 5.0f, 5.0f, 15.0f, 5.0f };
+        private double[] statMean = new double[] { 585.0f, 56.0f, 12.0f, 10.0f, 12.0f, 11.0f, 8.5f, 18.0f, 14.0f };
+        private double[] statStdDev = new double[] { 232.0f, 18.0f, 5.0f, 4.0f, 6.0f, 10.0f, 4.0f, 1.0f, 14.5f };
+        private double[] statMin = new double[] { 360.0f, 10.0f, 5.0f, 5.0f, 5.0f, 5.0f, 5.0f, 15.0f, 5.0f };
         private double[] statTotal = new double[] { 4091.0f, 394.0f, 85.0f, 71.0f, 87.0f, 78.0f, 59.0f, 124.0f, 100.0f };
         private int[] baseStatOffsets = new int[] { 0x04, 0x08, 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13 };
         private int[] currentStatOffsets = new int[] { 0x24, 0x28, 0x2F, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36 };
@@ -61,6 +61,8 @@ namespace FFXCutsceneRemover
             new int[] { 220, 221 },
             new int[] { 449, 450 },
         };
+
+        public readonly int[] startingCharacterNodeLocations = new int[] { 0, 341, 540, 637, 56, 224, 448 };
 
         public Dictionary<byte, byte[]> abilityMemoryLocations = new Dictionary<byte, byte[]>()
         {
@@ -278,7 +280,7 @@ namespace FFXCutsceneRemover
 
             index = 0;
 
-            // Swap each no ability starting node for the next random ability in the shuffled list
+            // Swap each non ability starting node for the next random ability in the shuffled list
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 2; j++)
@@ -294,6 +296,36 @@ namespace FFXCutsceneRemover
                         SphereGridBytes[2 * startingLocation] = newNodeID;
                         SphereGridBytes[2 * newNodeLocation] = nodeID;
                         index += 1;
+                    }
+                }
+            }
+
+            // If any characters are starting on a lock node swap the lock node with the nearest empty node
+            for (int i = 0; i < 7; i++)
+            {
+                int startingLocation = startingCharacterNodeLocations[i];
+
+                byte nodeID = SphereGridBytes[2 * startingLocation];
+
+                if (LockIDs.Contains(nodeID))
+                {
+                    int locationID = startingLocation;
+                    bool foundEmpty = false;
+                    while (!foundEmpty)
+                    {
+                        locationID += 2;
+
+                        if (SphereGridBytes[2 * locationID] == 0x01)
+                        {
+                            foundEmpty = true;
+                            SphereGridBytes[2 * startingLocation] = 0x01;
+                            SphereGridBytes[2 * locationID] = nodeID;
+                        }
+
+                        if (locationID == memorySizeBytes - 2)
+                        {
+                            locationID = 0;
+                        }
                     }
                 }
             }
@@ -318,6 +350,9 @@ namespace FFXCutsceneRemover
                 }
             }
 
+            // Remove Lulu's 2 extra activated nodes (Originally Blizzard and Water)
+            SphereGridBytes[2 * 222 + 1] = 0x00;
+            SphereGridBytes[2 * 223 + 1] = 0x00;
 
             WriteBytes(memoryWatchers.SphereGrid, SphereGridBytes);
 
@@ -378,12 +413,11 @@ namespace FFXCutsceneRemover
                 WriteBytes(abilities1, abilitiesBytes1);
                 WriteBytes(abilities2, abilitiesBytes2);
             }
-            DiagnosticLog.Information(RikkuUse.ToString());
-            DiagnosticLog.Information(RikkuSteal.ToString());
         }
 
         private void RandomiseBaseStats()
         {
+            Process process = memoryWatchers.Process;
             int baseAddress = base.memoryWatchers.GetBaseAddress();
 
             double probability = 0.0f;
@@ -408,6 +442,7 @@ namespace FFXCutsceneRemover
                 for (int j = 0; j < 7; j++)
                 {
                     double statRescaled = statsStage1[j] / statsStage1.Sum() * statTotal[i];
+                    statRescaled = Math.Max(statRescaled, statMin[i]);
                     int statInt = (int)Math.Round(statRescaled);
 
                     MemoryWatcher<byte> baseStat = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3205C + 0x94 * j + baseStatOffsets[i]));
@@ -442,10 +477,30 @@ namespace FFXCutsceneRemover
                 MemoryWatcher<byte> currentStat = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3205C + 0x94 * j + currentStatOffsets[9]));
 
                 double Rank = strengthRanks[j];
-                int statInt = accuracyValues[(int)Math.Abs(Rank - 7)];
+                int statInt = accuracyValues[Math.Abs((int)Rank - 7)];
                 WriteValue<byte>(baseStat, (byte)statInt);
                 WriteValue<byte>(currentStat, (byte)statInt);
             }
+
+            //Update Memory Watchers to get new values and then do a Full Heal
+            memoryWatchers.TidusMaxHP.Update(process);
+            memoryWatchers.YunaMaxHP.Update(process);
+            memoryWatchers.AuronMaxHP.Update(process);
+            memoryWatchers.KimahriMaxHP.Update(process);
+            memoryWatchers.WakkaMaxHP.Update(process);
+            memoryWatchers.LuluMaxHP.Update(process);
+            memoryWatchers.RikkuMaxHP.Update(process);
+            memoryWatchers.ValeforMaxHP.Update(process);
+
+            memoryWatchers.TidusMaxMP.Update(process);
+            memoryWatchers.YunaMaxMP.Update(process);
+            memoryWatchers.AuronMaxMP.Update(process);
+            memoryWatchers.KimahriMaxMP.Update(process);
+            memoryWatchers.WakkaMaxMP.Update(process);
+            memoryWatchers.LuluMaxMP.Update(process);
+            memoryWatchers.RikkuMaxMP.Update(process);
+            memoryWatchers.ValeforMaxMP.Update(process);
+
             new Transition { ForceLoad = false, FullHeal = true, ConsoleOutput = false }.Execute();
         }
 

@@ -23,7 +23,7 @@ namespace FFXCutsceneRemover.Resources
         static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
         static readonly EvraeAirshipTransition EvraeAirshipTransition = new EvraeAirshipTransition { ForceLoad = false, Description = "Post Evrae", Suspendable = false, Repeatable = true };
 
-        public static readonly RandoSetupTransition RandoSetupTransition = new RandoSetupTransition { ForceLoad = false, ConsoleOutput = false, Suspendable = false, Description = "Randomising Grid" };
+        public static readonly RandoSetupTransition RandoSetupTransition = new RandoSetupTransition { ForceLoad = false, Description = "Randomising Grid" };
 
         private static byte[] BlitzballBytes = new byte[]
         {
@@ -463,17 +463,16 @@ namespace FFXCutsceneRemover.Resources
         public static readonly Dictionary<IGameState, Transition> RandomiserTransitions = new Dictionary<IGameState, Transition>()
         {
             { new GameState { RoomNumber = 376, Storyline = 5, MovementLock = 0x20}, new RandoSetupTransition { ForceLoad = false, Description = "Randomiser Setup"} },
-            { new GameState { RoomNumber = 236, Storyline = 1070, MovementLock = 0x20}, new RandoSetupTransition { ForceLoad = false, Description = "Randomiser Setup"} },
-            { new GameState { RoomNumber = 63, Storyline = 52}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
-            { new GameState { RoomNumber = 20, Storyline = 116}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
-            { new GameState { RoomNumber = 69, Storyline = 210}, new AddLuluAbilitiesTransition { ForceLoad = false, Description = "Add Fire, Thunder, Water & Blizzard" } },
-            { new GameState { RoomNumber = 67, Storyline = 214}, new RemoveLuluAbilitiesTransition { ForceLoad = false, Description = "Remove Fire, Thunder, Water & Blizzard" } },
-            { new GameState { RoomNumber = 22, Storyline = 217}, new AddWakkaAbilitiesTransition { ForceLoad = false, Description = "Add Dark Attack" } },
-            { new GameState { RoomNumber = 19, Storyline = 218}, new RemoveWakkaAbilitiesTransition { ForceLoad = false, Description = "Remove Dark Attack" } },
-            { new GameState { RoomNumber = 18, Storyline = 312}, new AddKimahriAbilitiesTransition { ForceLoad = false, Description = "Add Lancet" } },
-            { new GameState { RoomNumber = 18, Storyline = 315}, new RemoveKimahriAbilitiesTransition { ForceLoad = false, Description = "Remove Lancet" } },
-            { new GameState { RoomNumber = 109, Storyline = 1085}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
-            { new GameState { RoomNumber = 97, Storyline = 1085}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, ConsoleOutput = false, Description = "Remove Steal and Use" } },
+            { new GameState { RoomNumber = 63, Storyline = 52, MovementLock = 0x20}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
+            { new GameState { RoomNumber = 20, Storyline = 116, MovementLock = 0x20}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
+            { new GameState { RoomNumber = 69, Storyline = 210, MovementLock = 0x20}, new AddLuluAbilitiesTransition { ForceLoad = false, Description = "Add Fire, Thunder, Water & Blizzard" } },
+            { new GameState { RoomNumber = 67, Storyline = 214, MovementLock = 0x20}, new RemoveLuluAbilitiesTransition { ForceLoad = false, Description = "Remove Fire, Thunder, Water & Blizzard" } },
+            { new GameState { RoomNumber = 22, Storyline = 217, MovementLock = 0x20}, new AddWakkaAbilitiesTransition { ForceLoad = false, Description = "Add Dark Attack" } },
+            { new GameState { RoomNumber = 19, Storyline = 218, MovementLock = 0x20}, new RemoveWakkaAbilitiesTransition { ForceLoad = false, Description = "Remove Dark Attack" } },
+            { new GameState { RoomNumber = 18, Storyline = 312, MovementLock = 0x20}, new AddKimahriAbilitiesTransition { ForceLoad = false, Description = "Add Lancet" } },
+            { new GameState { RoomNumber = 18, Storyline = 315, MovementLock = 0x20}, new RemoveKimahriAbilitiesTransition { ForceLoad = false, Description = "Remove Lancet" } },
+            { new GameState { RoomNumber = 109, Storyline = 1085, MovementLock = 0x20}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
+            { new GameState { RoomNumber = 97, Storyline = 1085, MovementLock = 0x20}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
         };
     }
 }
