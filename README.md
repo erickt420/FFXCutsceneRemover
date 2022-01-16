@@ -14,6 +14,8 @@ Includes a randomiser which will randomise the following aspects of the game (At
 
 * Because this mod randomises the stats of the characters it is possible for some early game fights to become impossible to complete, although this is unlikely to occur. Notable fights which may cause issues are Flan Tutorial (Besaid) and Vouivre (Luca).
 
+* Sphere grid randomisation has been designed for use with the Standard Sphere Grid and no testing has been done on the Expert Sphere Grid.
+
 * This mod is designed and tested to be used solely for Any% Speedruns. Using this mod for other speedrun categories or normal playthroughs is not currently supported and you will likely encounter game-breaking bugs.
 
 * Using the speedup booster (F1) with this mod is not supported, and is highly likely to cause crashes when the cutscene skips occur.
