@@ -2,7 +2,7 @@
 Cutscene skipping program for the Windows version of Final Fantasy X HD Remaster.
 If you encounter any bugs or have any questions, please open an issue on GitHub or contact us in the cutscene-remover channel of the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
 
-Includes a randomiser which will randomise the following aspects of the game:
+Includes a randomiser which will randomise the following aspects of the game (At present these are all locked in but in future releases a number of randomisation aspects will be optional):
 
 * Randomises Sphere Grid including Stat, Ability, Empty and Lock nodes.
 
