@@ -8,5 +8,6 @@ namespace FFXCutsceneRemover
         public int TidusStartWithFlee { get; set; }
         public int RandomiseStats { get; set; }
         public int RandomiseBlitzball { get; set; }
+        public int RandomiseShops { get; set; }
     }
 }

@@ -462,7 +462,10 @@ namespace FFXCutsceneRemover.Resources
 
         public static readonly Dictionary<IGameState, Transition> RandomiserTransitions = new Dictionary<IGameState, Transition>()
         {
+            // Randomise Sphere Grid and Base Stats
             { new GameState { RoomNumber = 376, Storyline = 5, MovementLock = 0x20}, RandoSetupTransition },
+
+            // Tutorial ability addition and removal
             { new GameState { RoomNumber = 63, Storyline = 52, MovementLock = 0x20}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
             { new GameState { RoomNumber = 20, Storyline = 116, MovementLock = 0x20}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
             { new GameState { RoomNumber = 69, Storyline = 210, MovementLock = 0x20}, new AddLuluAbilitiesTransition { ForceLoad = false, Description = "Add Fire, Thunder, Water & Blizzard" } },
@@ -473,6 +476,11 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 18, Storyline = 315, MovementLock = 0x20}, new RemoveKimahriAbilitiesTransition { ForceLoad = false, Description = "Remove Lancet" } },
             { new GameState { RoomNumber = 109, Storyline = 1085, MovementLock = 0x20}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
             { new GameState { RoomNumber = 97, Storyline = 1085, MovementLock = 0x20}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
+
+            // Blitzball Randomisation
+            { new GameState { RoomNumber = 72, Storyline = 518}, new RandoBlitzballTransition { Storyline = 520, Description = "Randomise Blitzball"} },
+
+            // Shop Randomisations
         };
     }
 }
