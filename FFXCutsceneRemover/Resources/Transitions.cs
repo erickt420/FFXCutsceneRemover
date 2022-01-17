@@ -25,7 +25,7 @@ namespace FFXCutsceneRemover.Resources
 
         public static readonly RandoSetupTransition RandoSetupTransition = new RandoSetupTransition { ForceLoad = false, Description = "Randomising Grid" };
 
-        private static byte[] BlitzballBytes = new byte[]
+        public static byte[] BlitzballBytes = new byte[]
         {
             0x08, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x01, 0x80, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x80, 0x00, 0x20, 0x00, 0x80, 0x04, 0x00, 0x00, 0x00,
             0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x80, 0x00, 0x20, 0x08, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
@@ -462,7 +462,7 @@ namespace FFXCutsceneRemover.Resources
 
         public static readonly Dictionary<IGameState, Transition> RandomiserTransitions = new Dictionary<IGameState, Transition>()
         {
-            { new GameState { RoomNumber = 376, Storyline = 5, MovementLock = 0x20}, new RandoSetupTransition { ForceLoad = false, Description = "Randomiser Setup"} },
+            { new GameState { RoomNumber = 376, Storyline = 5, MovementLock = 0x20}, RandoSetupTransition },
             { new GameState { RoomNumber = 63, Storyline = 52, MovementLock = 0x20}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
             { new GameState { RoomNumber = 20, Storyline = 116, MovementLock = 0x20}, new RemoveRikkuAbilitiesTransition { ForceLoad = false, Description = "Remove Steal and Use" } },
             { new GameState { RoomNumber = 69, Storyline = 210, MovementLock = 0x20}, new AddLuluAbilitiesTransition { ForceLoad = false, Description = "Add Fire, Thunder, Water & Blizzard" } },

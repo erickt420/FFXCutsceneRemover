@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -10,6 +10,13 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ContentWithTargetPath Include="RandoComponents\RandomiserOptions.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<TargetPath>RandomiserOptions.json</TargetPath>
+		</ContentWithTargetPath>
 	</ItemGroup>
 
 </Project>

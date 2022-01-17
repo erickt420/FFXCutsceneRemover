@@ -1,10 +1,13 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
 using FFXCutsceneRemover.Logging;
+using FFXCutsceneRemover.Resources;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
+using System.Text.Json;
+using System.IO;
 using MathNet.Numerics.Distributions;
 using MathNet.Numerics.Statistics;
 
@@ -12,23 +15,16 @@ namespace FFXCutsceneRemover
 {
     class RandoSetupTransition : Transition
     {
+        RandoOptions options = JsonSerializer.Deserialize<RandoOptions>(File.ReadAllText(@".\RandomiserOptions.json"));
+
         private byte[] SphereGridBytes;
         private List<byte> validBytes = new List<byte>();
         private List<byte> abilityBytes = new List<byte>();
         private List<byte> shuffleBytes = new List<byte>();
 
-        private bool SwapAbilityNodes = true;
-        private bool SwapStatNodes = true;
-        private bool SwapEmptyNodes = true;
-        private bool SwapLockNodes = true;
-
-        private bool TidusStartWithFlee = true;
-
-        private bool RandomiseStats = true;
-
         // Stat data - HP / MP / STR / DEF / MAG / MDEF / AGI / LCK / EVA / ACC(Offsets only)
         private double[] statMean = new double[] { 585.0f, 56.0f, 12.0f, 10.0f, 12.0f, 11.0f, 8.5f, 18.0f, 14.0f };
-        private double[] statStdDev = new double[] { 232.0f, 18.0f, 5.0f, 4.0f, 6.0f, 10.0f, 4.0f, 1.0f, 14.5f };
+        private double[] statStdDev = new double[] { 232.0f, 18.0f, 6.0f, 4.0f, 5.5f, 10.0f, 4.0f, 1.0f, 14.5f };
         private double[] statMin = new double[] { 360.0f, 10.0f, 5.0f, 5.0f, 5.0f, 5.0f, 5.0f, 15.0f, 5.0f };
         private double[] statTotal = new double[] { 4091.0f, 394.0f, 85.0f, 71.0f, 87.0f, 78.0f, 59.0f, 124.0f, 100.0f };
         private int[] baseStatOffsets = new int[] { 0x04, 0x08, 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13 };
@@ -40,16 +36,6 @@ namespace FFXCutsceneRemover
         private byte[] LockIDs = new byte[] { 0x27, 0x28, 0x00, 0x29 };
 
         private int index = 0;
-
-        public bool KimahriLancet = false;
-        public bool RikkuSteal = false;
-        public bool RikkuUse = false;
-        public bool LuluFire = false;
-        public bool LuluBlizzard = false;
-        public bool LuluThunder = false;
-        public bool LuluWater = false;
-        public bool WakkaDarkAttack = false;
-
 
         public readonly int[][] startingAbilityNodeLocations = new int[][]
         {
@@ -153,15 +139,26 @@ namespace FFXCutsceneRemover
             { 0x7E, new byte[] { 11, 7 } },
         };
 
+        // Blitzball
+        List<byte> blitzballForwards = new List<byte>() { 0x00, 0x02, 0x07, 0x08, 0x0D, 0x0E, 0x13, 0x14, 0x19, 0x1A, 0x1F, 0x20, 0x29, 0x2A, 0x2B, 0x2D, 0x34, 0x35, 0x3A }; // 0x01 (Wakka) intentionally omitted
+        List<byte> blitzballMidfielders = new List<byte>() { 0x03, 0x09, 0x0F, 0x15, 0x1B, 0x21, 0x25, 0x26, 0x28, 0x30, 0x33, 0x36, 0x38, 0x39 };
+        List<byte> blitzballDefenders = new List<byte>() { 0x04, 0x05, 0x0A, 0x0B, 0x10, 0x11, 0x16, 0x17, 0x1C, 0x1D, 0x22, 0x23, 0x27, 0x2C, 0x2E, 0x2F };
+        List<byte> blitzballGoalkeepers = new List<byte>() { 0x06, 0x0C, 0x12, 0x18, 0x1E, 0x24, 0x31, 0x32, 0x37, 0x3B };
+
         public override void Execute(string defaultDescription = "")
         {
             base.Execute();
 
             RandomiseSphereGrid();
 
-            if (RandomiseStats)
+            if (options.RandomiseStats == 1)
             {
                 RandomiseBaseStats();
+            }
+
+            if (options.RandomiseBlitzball == 1)
+            {
+                RandomiseBlitzballTeams();
             }
             
         }
@@ -174,30 +171,28 @@ namespace FFXCutsceneRemover
             int memorySizeBytes = 1714;
             SphereGridBytes = process.ReadBytes(memoryWatchers.SphereGrid.Address, memorySizeBytes);
 
+            validBytes.Clear();
+            abilityBytes.Clear();
+            shuffleBytes.Clear();
+
             // Add node bytes to valid bytes list based on setup parameters
-            if (SwapAbilityNodes)
+            for (byte i = 0x2A; i < 0x7F; i++)
             {
-                for (byte i = 0x2A; i < 0x7F; i++)
-                {
-                    validBytes.Add(i);
-                    abilityBytes.Add(i);
-                }
+                validBytes.Add(i);
+                abilityBytes.Add(i);
             }
 
-            if (SwapStatNodes)
+            for (byte i = 0x02; i < 0x27; i++)
             {
-                for (byte i = 0x02; i < 0x27; i++)
-                {
-                    validBytes.Add(i);
-                }
+                validBytes.Add(i);
             }
 
-            if (SwapEmptyNodes)
+            if (options.SwapEmptyNodes == 1)
             {
                 validBytes.Add(0x01);
             }
 
-            if (SwapLockNodes)
+            if (options.SwapLockNodes == 1)
             {
                 validBytes.Add(0x00); // Lock Lv.3
                 validBytes.Add(0x27); // Lock Lv.1
@@ -256,18 +251,19 @@ namespace FFXCutsceneRemover
                 }
             }
 
-            // Create a new shuffle list of abilities only and remove all abilities currently on a starting location
+            //Create a new shuffle list of abilities only and
+            shuffleBytes.Clear();
+            shuffleBytes = new List<byte>(abilityBytes);
+
+            // Shuffle the nodes
+            shuffleBytes.Shuffle<byte>();
+
+            // Remove all abilities currently on a starting location
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 2; j++)
                 {
                     int startingLocation = startingAbilityNodeLocations[i][j];
-
-                    shuffleBytes.Clear();
-                    shuffleBytes = new List<byte>(abilityBytes);
-
-                    // Shuffle the nodes
-                    shuffleBytes.Shuffle<byte>();
 
                     byte nodeID = SphereGridBytes[2 * startingLocation];
 
@@ -330,7 +326,7 @@ namespace FFXCutsceneRemover
                 }
             }
 
-            if (TidusStartWithFlee)
+            if (options.TidusStartWithFlee == 1)
             {
                 byte nodeID = SphereGridBytes[0];
                 byte newNodeID = 0x3C; // Flee
@@ -374,44 +370,16 @@ namespace FFXCutsceneRemover
                         int bitNum = abilityMemoryLocations[nodeID][1];
                         abilitiesBytes1[byteNum] += (byte)Math.Pow(2, bitNum);
                         abilitiesBytes2[byteNum] += (byte)Math.Pow(2, bitNum);
-
-                        if (i == 3 && nodeID == 0x44)
-                        {
-                            KimahriLancet = true;
-                        }
-                        else if (i == 6 && nodeID == 0x3A)
-                        {
-                            RikkuSteal = true;
-                        }
-                        else if (i == 6 && nodeID == 0x3B)
-                        {
-                            RikkuUse = true;
-                        }
-                        else if (i == 5 && nodeID == 0x64)
-                        {
-                            LuluBlizzard = true;
-                        }
-                        else if (i == 5 && nodeID == 0x65)
-                        {
-                            LuluFire = true;
-                        }
-                        else if (i == 5 && nodeID == 0x66)
-                        {
-                            LuluThunder = true;
-                        }
-                        else if (i == 5 && nodeID == 0x67)
-                        {
-                            LuluWater = true;
-                        }
-                        else if (i == 4 && nodeID == 0x2E)
-                        {
-                            WakkaDarkAttack = true;
-                        }
                     }
                 }
 
                 WriteBytes(abilities1, abilitiesBytes1);
                 WriteBytes(abilities2, abilitiesBytes2);
+
+                abilities1 = null;
+                abilities2 = null;
+                abilitiesBytes1 = null;
+                abilitiesBytes2 = null;
             }
         }
 
@@ -504,6 +472,66 @@ namespace FFXCutsceneRemover
             new Transition { ForceLoad = false, FullHeal = true, ConsoleOutput = false }.Execute();
         }
 
+        private void RandomiseBlitzballTeams()
+        {
+            int teamBytesStartLocation = 1050;
+            int contractedGamesBytesStartLocation = 1322;
+
+            blitzballForwards.Shuffle<byte>();
+            blitzballMidfielders.Shuffle<byte>();
+            blitzballDefenders.Shuffle<byte>();
+            blitzballGoalkeepers.Shuffle<byte>();
+
+            // Set contracted games for all players to 0
+            for (int i = 0; i < 60; i++)
+            {
+                Transitions.BlitzballBytes[contractedGamesBytesStartLocation + i] = 0x00;
+            }
+
+            int forwardCount = 0;
+            int midfielderCount = 0;
+            int defenderCount = 0;
+            int goalkeeperCount = 0;
+
+            // Iterate through teams
+            for (int i = 0; i < 6; i++)
+            {
+                // Iterate through player slots
+                for (int j = 0; j < 8; j++)
+                {
+                    int byteNum = 8 * i + j;
+                    byte player = 0x3C;
+
+                    if (j < 2)
+                    {
+                        player = blitzballForwards[forwardCount];
+                        forwardCount += 1;
+                    }
+                    else if (j < 3)
+                    {
+                        player = blitzballMidfielders[midfielderCount];
+                        midfielderCount += 1;
+                    }
+                    else if (j < 5)
+                    {
+                        player = blitzballDefenders[defenderCount];
+                        defenderCount += 1;
+                    }
+                    else if (j < 6)
+                    {
+                        player = blitzballGoalkeepers[goalkeeperCount];
+                        goalkeeperCount += 1;
+                    }
+
+                    Transitions.BlitzballBytes[teamBytesStartLocation + byteNum] = player;
+
+                    if (player < 0x3C)
+                    {
+                        Transitions.BlitzballBytes[contractedGamesBytesStartLocation + player] = 0x05;
+                    }
+                }
+            }
+        }
     }
 
     public static class ThreadSafeRandom

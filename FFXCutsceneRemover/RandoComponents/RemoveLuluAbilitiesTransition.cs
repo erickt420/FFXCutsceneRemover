@@ -12,6 +12,8 @@ namespace FFXCutsceneRemover
         bool LuluFire = false;
         bool LuluThunder = false;
         bool LuluWater = false;
+        bool LuluThundara = false;
+        bool LuluThundaga = false;
 
         public override void Execute(string defaultDescription = "")
         {
@@ -46,6 +48,14 @@ namespace FFXCutsceneRemover
                 else if (SphereGridBytes[2 * i] == 0x67 & (SphereGridBytes[2 * i + 1] & 0x20) == 0x20)
                 {
                     LuluWater = true;
+                }
+                else if (SphereGridBytes[2 * i] == 0x6A & (SphereGridBytes[2 * i + 1] & 0x20) == 0x20)
+                {
+                    LuluThundara = true;
+                }
+                else if (SphereGridBytes[2 * i] == 0x6E & (SphereGridBytes[2 * i + 1] & 0x20) == 0x20)
+                {
+                    LuluThundaga = true;
                 }
             }
 
@@ -88,6 +98,30 @@ namespace FFXCutsceneRemover
             if (LuluWater == false)
             {
                 byte nodeID = 0x67;
+
+                int byteNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][0];
+                int bitNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][1];
+
+                byte bitValue = (byte)Math.Pow(2, bitNum);
+
+                if ((abilitiesBytes1[byteNum] & bitValue) == bitValue) { abilitiesBytes1[byteNum] -= bitValue; }
+                if ((abilitiesBytes2[byteNum] & bitValue) == bitValue) { abilitiesBytes2[byteNum] -= bitValue; }
+            }
+            if (LuluThundara == false)
+            {
+                byte nodeID = 0x6A;
+
+                int byteNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][0];
+                int bitNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][1];
+
+                byte bitValue = (byte)Math.Pow(2, bitNum);
+
+                if ((abilitiesBytes1[byteNum] & bitValue) == bitValue) { abilitiesBytes1[byteNum] -= bitValue; }
+                if ((abilitiesBytes2[byteNum] & bitValue) == bitValue) { abilitiesBytes2[byteNum] -= bitValue; }
+            }
+            if (LuluThundaga == false)
+            {
+                byte nodeID = 0x6E;
 
                 int byteNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][0];
                 int bitNum = Transitions.RandoSetupTransition.abilityMemoryLocations[nodeID][1];
