@@ -270,7 +270,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 119, Storyline = 845 }, GuiTransition },
             { new GameState { RoomNumber = 119, Storyline = 850 }, GuiTransition },
             { new GameState { RoomNumber = 119, Storyline = 857 }, GuiTransition },
-            { new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
+            //{ new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
             //{ new GameState { RoomNumber = 119, Storyline = 860}, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
             { new GameState { RoomNumber = 119, Storyline = 860 }, GuiTransition },
             { new GameState { RoomNumber = 247, Storyline = 865 }, GuiTransition },
