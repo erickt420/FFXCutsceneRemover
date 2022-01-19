@@ -341,7 +341,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 140, Storyline = 1310, ThunderPlainsFlag = 0x09}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x19, Description = "Rikku freaks out"} },
             { new GameState { RoomNumber = 140, Storyline = 1310, ThunderPlainsFlag = 0x0A}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x1A, Description = "Rikku freaks out"} },
             { new GameState { RoomNumber = 140, Storyline = 1310, ThunderPlainsFlag = 0x0B}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x1B, Description = "Rikku freaks out"} },
-            { new GameState { RoomNumber = 256, Storyline = 1310}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },
+            //{ new GameState { RoomNumber = 256, Storyline = 1310}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },
             { new GameState { RoomNumber = 264, Storyline = 1320}, new Transition { RoomNumber = 263, Storyline = 1325, FullHeal = true, Description = "Tidus barges in Yuna's room + Sleep"} },
             { new GameState { RoomNumber = 263, Storyline = 1335}, new Transition { RoomNumber = 256, Storyline = 1340, Description = "Leaving the agency"} },
             { new GameState { RoomNumber = 162, Storyline = 1340}, new Transition { RoomNumber = 162, Storyline = 1375, Description = "Yuna decides to marry Seymour"} },
