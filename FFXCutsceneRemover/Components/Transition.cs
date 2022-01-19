@@ -144,6 +144,7 @@ namespace FFXCutsceneRemover
         public int? FinsTransition = null;
         public int? FinsAirshipTransition = null;
         public int? SinCoreTransition = null;
+        public int? OverdriveSinTransition = null;
         public int? OmnisTransition = null;
         public int? BFATransition = null;
         public int? AeonTransition = null;
@@ -348,6 +349,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.FinsTransition, FinsTransition);
             WriteValue(memoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
             WriteValue(memoryWatchers.SinCoreTransition, SinCoreTransition);
+            WriteValue(memoryWatchers.OverdriveSinTransition, OverdriveSinTransition);
             WriteValue(memoryWatchers.OmnisTransition, OmnisTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
