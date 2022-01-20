@@ -131,6 +131,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> FinsTransition;
         public MemoryWatcher<int> FinsAirshipTransition;
         public MemoryWatcher<int> SinCoreTransition;
+        public MemoryWatcher<int> OverdriveSinTransition;
         public MemoryWatcher<int> OmnisTransition;
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> AeonTransition;
@@ -139,6 +140,9 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> CutsceneProgress_uVar1;
         public MemoryWatcher<int> CutsceneProgress_uVar2;
         public MemoryWatcher<int> CutsceneProgress_uVar3;
+
+        public MemoryWatcher<byte> ScriptedBattleFlag1;
+        public MemoryWatcher<byte> ScriptedBattleFlag2;
 
         // Party Configuration
         public MemoryWatcher<byte> Formation;
@@ -221,6 +225,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MoonflowFlag2;
         public MemoryWatcher<byte> RikkuOutfit;
         public MemoryWatcher<byte> TidusWeaponDamageBoost;
+        public MemoryWatcher<byte> ThunderPlainsFlag;
         public MemoryWatcher<byte> MacalaniaFlag;
         public MemoryWatcher<byte> BikanelFlag;
         public MemoryWatcher<byte> Sandragoras;
@@ -405,6 +410,7 @@ namespace FFXCutsceneRemover
             FinsTransition = GetMemoryWatcher<int>(MemoryLocations.FinsTransition);
             FinsAirshipTransition = GetMemoryWatcher<int>(MemoryLocations.FinsAirshipTransition);
             SinCoreTransition = GetMemoryWatcher<int>(MemoryLocations.SinCoreTransition);
+            OverdriveSinTransition = GetMemoryWatcher<int>(MemoryLocations.OverdriveSinTransition);
             OmnisTransition = GetMemoryWatcher<int>(MemoryLocations.OmnisTransition);
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
@@ -413,6 +419,9 @@ namespace FFXCutsceneRemover
             CutsceneProgress_uVar1 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar1);
             CutsceneProgress_uVar2 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar2);
             CutsceneProgress_uVar3 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar3);
+
+            ScriptedBattleFlag1 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag1);
+            ScriptedBattleFlag2 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag2);
 
             // Party Configuration
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
@@ -492,6 +501,7 @@ namespace FFXCutsceneRemover
             MoonflowFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag2);
             RikkuOutfit = GetMemoryWatcher<byte>(MemoryLocations.RikkuOutfit);
             TidusWeaponDamageBoost = GetMemoryWatcher<byte>(MemoryLocations.TidusWeaponDamageBoost);
+            ThunderPlainsFlag = GetMemoryWatcher<byte>(MemoryLocations.ThunderPlainsFlag);
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
             BikanelFlag = GetMemoryWatcher<byte>(MemoryLocations.BikanelFlag);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
@@ -654,6 +664,7 @@ namespace FFXCutsceneRemover
                     FinsTransition,
                     FinsAirshipTransition,
                     SinCoreTransition,
+                    OverdriveSinTransition,
                     OmnisTransition,
                     BFATransition,
                     AeonTransition,
@@ -706,6 +717,7 @@ namespace FFXCutsceneRemover
                     MoonflowFlag2,
                     RikkuOutfit,
                     TidusWeaponDamageBoost,
+                    ThunderPlainsFlag,
                     MacalaniaFlag,
                     BikanelFlag,
                     ViaPurificoPlatform,

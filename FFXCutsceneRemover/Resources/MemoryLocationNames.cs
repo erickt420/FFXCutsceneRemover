@@ -114,6 +114,7 @@
         public static string FinsTransition = "FinsTransition";
         public static string FinsAirshipTransition = "FinsAirshipTransition";
         public static string SinCoreTransition = "SinCoreTransition";
+        public static string OverdriveSinTransition = "OverdriveSinTransition";
         public static string OmnisTransition = "OmnisTransition";
         public static string BFATransition = "BFATransition";
         public static string AeonTransition = "AeonTransition";
@@ -122,6 +123,9 @@
         public static string CutsceneProgress_uVar1 = "CutsceneProgress_uVar1";
         public static string CutsceneProgress_uVar2 = "CutsceneProgress_uVar2";
         public static string CutsceneProgress_uVar3 = "CutsceneProgress_uVar3";
+
+        public static string ScriptedBattleFlag1 = "ScriptedBattleFlag1";
+        public static string ScriptedBattleFlag2 = "ScriptedBattleFlag2";
 
         // Party Configuration
         public static string Formation = "Formation";
@@ -166,6 +170,7 @@
         public static string MoonflowFlag2 = "MoonflowFlag2";
         public static string RikkuOutfit = "RikkuOutfit";
         public static string TidusWeaponDamageBoost = "TidusWeaponDamageBoost";
+        public static string ThunderPlainsFlag = "ThunderPlainsFlag";
         public static string MacalaniaFlag = "MacalaniaFlag";
         public static string BikanelFlag = "BikanelFlag";
         public static string Sandragoras = "Sandragoras";

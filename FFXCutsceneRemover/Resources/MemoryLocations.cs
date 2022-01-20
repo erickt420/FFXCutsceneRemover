@@ -121,14 +121,20 @@
         public static MemoryLocationData FinsTransition = new MemoryLocationData(MemoryLocationNames.FinsTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x12 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
         public static MemoryLocationData FinsAirshipTransition = new MemoryLocationData(MemoryLocationNames.FinsAirshipTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1F - 0x3 - 0x5 - 0x5) + 0x12C + 0x18 });
         public static MemoryLocationData SinCoreTransition = new MemoryLocationData(MemoryLocationNames.SinCoreTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xF - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x3904 });
+        public static MemoryLocationData OverdriveSinTransition = new MemoryLocationData(MemoryLocationNames.OverdriveSinTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x22 - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 - 0x4C });
         public static MemoryLocationData OmnisTransition = new MemoryLocationData(MemoryLocationNames.OmnisTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x2 - 0x3 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData BFATransition = new MemoryLocationData(MemoryLocationNames.BFATransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x0 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData AeonTransition = new MemoryLocationData(MemoryLocationNames.AeonTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData YuYevonTransition = new MemoryLocationData(MemoryLocationNames.YuYevonTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
+
         public static MemoryLocationData CutsceneProgress_Max = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_Max, 0xF26AE8, 0xC);
         public static MemoryLocationData CutsceneProgress_uVar1 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar1, 0xF26AE8, 0x14);
         public static MemoryLocationData CutsceneProgress_uVar2 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar2, 0xF26AE8, 0x16);
         public static MemoryLocationData CutsceneProgress_uVar3 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar3, 0xF26AE8, 0x18);
+
+        // Encounters
+        public static MemoryLocationData ScriptedBattleFlag1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag1, 0xD2A9D4);
+        public static MemoryLocationData ScriptedBattleFlag2 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag2, 0xD2A9D4);
 
         // Party Configuration
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
@@ -217,6 +223,7 @@
         public static MemoryLocationData MoonflowFlag2 = new MemoryLocationData(MemoryLocationNames.MoonflowFlag2, 0xD2CC83);
         public static MemoryLocationData RikkuOutfit = new MemoryLocationData(MemoryLocationNames.RikkuOutfit, 0xD2CB61);
         public static MemoryLocationData TidusWeaponDamageBoost = new MemoryLocationData(MemoryLocationNames.TidusWeaponDamageBoost, 0x1F11240);
+        public static MemoryLocationData ThunderPlainsFlag = new MemoryLocationData(MemoryLocationNames.ThunderPlainsFlag, 0xD2CE81);
         public static MemoryLocationData MacalaniaFlag = new MemoryLocationData(MemoryLocationNames.MacalaniaFlag, 0xD2CD16);
         public static MemoryLocationData BikanelFlag = new MemoryLocationData(MemoryLocationNames.BikanelFlag, 0xD2CD4B);
         public static MemoryLocationData Sandragoras = new MemoryLocationData(MemoryLocationNames.Sandragoras, 0xD2CD4E);

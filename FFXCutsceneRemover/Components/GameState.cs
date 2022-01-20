@@ -80,6 +80,8 @@ namespace FFXCutsceneRemover
         public byte? MoonflowFlag = null;
         public byte? MoonflowFlag2 = null;
 
+        public byte? ThunderPlainsFlag = null;
+
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Current) &&
@@ -133,6 +135,7 @@ namespace FFXCutsceneRemover
                 TestValue(MRRFlag2, memoryWatchers.MRRFlag2.Current) &&
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
+                TestValue(ThunderPlainsFlag, memoryWatchers.ThunderPlainsFlag.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
                 TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Current) &&

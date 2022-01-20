@@ -26,7 +26,7 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xE711) && Stage == 1)
             {
-                /*/
+                //*/
                 process.Suspend();
 
                 WriteValue<int>(base.memoryWatchers.GuiTransition, BaseCutsceneValue + 0xE978);
@@ -38,7 +38,7 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.GuiTransition.Current == (BaseCutsceneValue + 0xEC58) && Stage == 2)
             {
-                /*/
+                //*/
                 process.Suspend();
 
                 new Transition { ForceLoad = false, Storyline = 857, ConsoleOutput = false }.Execute();
@@ -64,7 +64,7 @@ namespace FFXCutsceneRemover
 
                 GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
 
-                new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " }.Execute();
+                //new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " }.Execute();
 
                 Stage += 1;
 
@@ -78,7 +78,7 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.Gui2Transition.Current == (BaseCutsceneValue2 + 0x270B) && Stage == 5)
             {
-                /*/
+                //*/
                 process.Suspend();
 
                 WriteValue<int>(base.memoryWatchers.Gui2Transition, BaseCutsceneValue2 + 0x29C0);

@@ -144,6 +144,7 @@ namespace FFXCutsceneRemover
         public int? FinsTransition = null;
         public int? FinsAirshipTransition = null;
         public int? SinCoreTransition = null;
+        public int? OverdriveSinTransition = null;
         public int? OmnisTransition = null;
         public int? BFATransition = null;
         public int? AeonTransition = null;
@@ -192,6 +193,7 @@ namespace FFXCutsceneRemover
         public byte? RikkuOutfit = null;
         public byte? TidusWeaponDamageBoost = null;
 
+        public byte? ThunderPlainsFlag = null;
         public byte? MacalaniaFlag = null;
         public byte? BikanelFlag = null;
 
@@ -347,6 +349,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.FinsTransition, FinsTransition);
             WriteValue(memoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
             WriteValue(memoryWatchers.SinCoreTransition, SinCoreTransition);
+            WriteValue(memoryWatchers.OverdriveSinTransition, OverdriveSinTransition);
             WriteValue(memoryWatchers.OmnisTransition, OmnisTransition);
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
@@ -386,6 +389,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
+            WriteValue(memoryWatchers.ThunderPlainsFlag, ThunderPlainsFlag);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
             WriteBytes(memoryWatchers.RikkuName, RikkuName);
@@ -475,7 +479,7 @@ namespace FFXCutsceneRemover
                     memoryWatchers.FrameCounterFromLoad.Update(process);
                 }
                 process.Suspend();
-                //WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
+                WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
                 process.Resume();
             }
