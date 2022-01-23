@@ -85,6 +85,9 @@ namespace FFXCutsceneRemover
 
         public byte? GagazetCaveFlag = null;
 
+        public int? MenuValue1 = null;
+        public int? MenuValue2 = null;
+
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
@@ -147,7 +150,9 @@ namespace FFXCutsceneRemover
                 TestValue(TidusActionCount, memoryWatchers.TidusActionCount.Old) &&
                 TestValue(TidusXCoordinate, memoryWatchers.TidusXCoordinate.Old) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Old) &&
-                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old);
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old) &&
+                TestValue(MenuValue1, memoryWatchers.MenuValue1.Old) &&
+                TestValue(MenuValue2, memoryWatchers.MenuValue2.Old);
             ;
         }
 
