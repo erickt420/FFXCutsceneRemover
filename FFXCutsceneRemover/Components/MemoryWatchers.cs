@@ -237,7 +237,6 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
-        public MemoryWatcher<byte> AirshipFlag;
 
         // Blitzball Abilities
         public MemoryWatcher<byte> AurochsTeamBytes;
@@ -521,7 +520,6 @@ namespace FFXCutsceneRemover
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
-            AirshipFlag = GetMemoryWatcher<byte>(MemoryLocations.AirshipFlag);
 
             // Blitzball Abilities
             AurochsTeamBytes = GetMemoryWatcher<byte>(MemoryLocations.AurochsTeamBytes);
@@ -742,7 +740,6 @@ namespace FFXCutsceneRemover
                     NatusFlag,
                     CalmLandsFlag,
                     GagazetCaveFlag,
-                    AirshipFlag,
                     AurochsTeamBytes,
                     BlitzballBytes,
                     GilBattleRewards,

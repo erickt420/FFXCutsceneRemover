@@ -85,8 +85,6 @@ namespace FFXCutsceneRemover
 
         public byte? GagazetCaveFlag = null;
 
-        public byte? AirshipFlag = null;
-
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
 
@@ -146,7 +144,6 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Old) &&
                 TestValue(ThunderPlainsFlag, memoryWatchers.ThunderPlainsFlag.Old) &&
                 TestValue(GagazetCaveFlag, memoryWatchers.GagazetCaveFlag.Current) &&
-                TestValue(AirshipFlag, memoryWatchers.AirshipFlag.Old) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&
                 TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Old) &&
