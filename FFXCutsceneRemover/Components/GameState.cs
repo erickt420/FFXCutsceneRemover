@@ -15,6 +15,7 @@ namespace FFXCutsceneRemover
         public short? Storyline = null;
         public short? SpawnPoint = null;
         public short? BattleState = null;
+        public short? BattleState2 = null;
         public short? Input = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
@@ -82,12 +83,15 @@ namespace FFXCutsceneRemover
 
         public byte? ThunderPlainsFlag = null;
 
+        public byte? GagazetCaveFlag = null;
+
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Current) &&
                 TestValue(Storyline, memoryWatchers.Storyline.Current) &&
                 TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Current) &&
                 TestValue(BattleState, memoryWatchers.BattleState.Current) &&
+                TestValue(BattleState2, memoryWatchers.BattleState2.Current) &&
                 TestValue(Input, memoryWatchers.Input.Current) &&
                 TestValue(Menu, memoryWatchers.Menu.Current) &&
                 TestValue(MenuLock, memoryWatchers.MenuLock.Current) &&
@@ -136,6 +140,7 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
                 TestValue(ThunderPlainsFlag, memoryWatchers.ThunderPlainsFlag.Current) &&
+                TestValue(GagazetCaveFlag, memoryWatchers.GagazetCaveFlag.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
                 TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Current) &&

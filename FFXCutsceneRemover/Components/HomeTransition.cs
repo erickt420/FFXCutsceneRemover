@@ -9,34 +9,39 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-
-            if (base.memoryWatchers.HomeTransition.Current > 0)
+            if (Stage == 0 && base.memoryWatchers.CutsceneAlt.Current == 5043)
             {
-                if (Stage == 0 && base.memoryWatchers.CutsceneAlt.Current == 5043)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.HomeTransition.Current;
-                    Stage += 1;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                Stage += 1;
 
-                }
-                else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x18E) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x381);
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
-                {
-                    WriteValue<int>(base.memoryWatchers.Camera, 0);
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x55D) && Stage == 3)
-                {
-                    WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x6FE);
-                    WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
-                    Stage += 1;
-                }
+            }
+            else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x5FDB) && Stage == 1)
+            {
+                WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x61CE);
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
+            {
+                WriteValue<int>(base.memoryWatchers.Camera, 0);
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x63AA) && Stage == 3)
+            {
+                WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x654B);
+                WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
+                Stage += 1;
+            }
+
+            if (base.memoryWatchers.RoomNumber.Current == 275 || base.memoryWatchers.RoomNumber.Current == 286)
+            {
+                Stage = 99;
+            }
+            else if (base.memoryWatchers.RoomNumber.Current == 280 && Stage == 99)
+            {
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                Stage = 3;
             }
         }
     }
