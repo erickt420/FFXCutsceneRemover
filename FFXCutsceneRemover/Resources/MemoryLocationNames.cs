@@ -151,6 +151,9 @@
         public static string TotalDistance = "TotalDistance";
         public static string CycleDistance = "CycleDistance";
 
+        // Character Stat Struct
+        public static string CharacterStats = "CharacterStats";
+
         // Special Flags
         public static string FangirlsOrKidsSkip = "FangirlsOrKidsSkip";
         public static string BaajFlag1 = "BaajFlag1";
@@ -222,6 +225,8 @@
         public static string MenuValue2 = "MenuValue2";
 
         public static string ActorArrayLength = "ActorArrayLength";
+
+        public static string SphereGrid = "SphereGrid";
 
     }
 }

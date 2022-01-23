@@ -157,6 +157,9 @@
         public static MemoryLocationData EnableYojimbo = new MemoryLocationData(MemoryLocationNames.EnableAnima, 0xD328A0);
         public static MemoryLocationData EnableMagus = new MemoryLocationData(MemoryLocationNames.EnableMagus, 0xD32934);
 
+        // Character Stat Struct
+        public static MemoryLocationData CharacterStats = new MemoryLocationData(MemoryLocationNames.CharacterStats, 0xD3205C);
+
         // HP/MP TODO: Find a better method for full party restore to clean this up
         public static MemoryLocationData TidusHP = new MemoryLocationData("TidusHP", 0xD32078);
         public static MemoryLocationData TidusMaxHP = new MemoryLocationData("TidusMaxHP", 0xD32080);
@@ -280,6 +283,9 @@
 
         // Actor Model Positions
         public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);
+
+        // Rando Specific Addresses
+        public static MemoryLocationData SphereGrid = new MemoryLocationData(MemoryLocationNames.SphereGrid, 0xD2EC7C);
 
     }
 

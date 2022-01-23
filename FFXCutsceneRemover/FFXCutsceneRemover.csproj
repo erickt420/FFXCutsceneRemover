@@ -4,12 +4,21 @@
 		<OutputType>Exe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>FFXCSR_icon.ico</ApplicationIcon>
+    <AssemblyName>FFXRandomiser</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Serilog" Version="2.10.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ContentWithTargetPath Include="RandoComponents\RandomiserOptions.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<TargetPath>RandomiserOptions.json</TargetPath>
+		</ContentWithTargetPath>
 	</ItemGroup>
 
 </Project>
