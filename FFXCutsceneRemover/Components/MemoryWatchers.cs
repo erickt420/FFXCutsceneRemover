@@ -169,9 +169,6 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<float> TotalDistance;
         public MemoryWatcher<float> CycleDistance;
 
-        // Character Stat Struct
-        public MemoryWatcher<byte> CharacterStats;
-
         // HP/MP
         public MemoryWatcher<int> TidusHP;
         public MemoryWatcher<short> TidusMP;
@@ -283,9 +280,6 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> MenuValue2;
 
         public MemoryWatcher<int> ActorArrayLength;
-
-        // Rando Specific
-        public MemoryWatcher<byte> SphereGrid;
 
         MemoryWatchers() { }
 
@@ -458,9 +452,6 @@ namespace FFXCutsceneRemover
             TotalDistance = GetMemoryWatcher<float>(MemoryLocations.TotalDistance);
             CycleDistance = GetMemoryWatcher<float>(MemoryLocations.CycleDistance);
 
-            // Character Stat Struct
-            CharacterStats = GetMemoryWatcher<byte>(MemoryLocations.CharacterStats);
-
             // HP/MP
             TidusHP = GetMemoryWatcher<int>(MemoryLocations.TidusHP);
             TidusMP = GetMemoryWatcher<short>(MemoryLocations.TidusMP);
@@ -569,9 +560,6 @@ namespace FFXCutsceneRemover
             MenuValue2 = GetMemoryWatcher<int>(MemoryLocations.MenuValue2);
 
             ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
-
-            // Rando Specific
-            SphereGrid = GetMemoryWatcher<byte>(MemoryLocations.SphereGrid);
 
             HpEnemyA.FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 
@@ -712,7 +700,6 @@ namespace FFXCutsceneRemover
                     EnableMagus,
                     TotalDistance,
                     CycleDistance,
-                    CharacterStats,
                     TidusHP, TidusMP, TidusMaxHP, TidusMaxMP,
                     YunaHP, YunaMP, YunaMaxHP, YunaMaxMP,
                     AuronHP, AuronMP, AuronMaxHP, AuronMaxMP,
@@ -780,8 +767,7 @@ namespace FFXCutsceneRemover
                     CharacterAPFlags,
                     MenuValue1,
                     MenuValue2,
-                    ActorArrayLength,
-                    SphereGrid
+                    ActorArrayLength
             });
         }
 

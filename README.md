@@ -1,20 +1,8 @@
-# FFXCutsceneRemover w/ Randomiser
+# FFXCutsceneRemover
 Cutscene skipping program for the Windows version of Final Fantasy X HD Remaster.
 If you encounter any bugs or have any questions, please open an issue on GitHub or contact us in the cutscene-remover channel of the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
 
-Includes a randomiser which will randomise the following aspects of the game (At present these are all locked in but in future releases a number of randomisation aspects will be optional):
-
-* Randomises Sphere Grid including Stat, Ability, Empty and Lock nodes.
-
-* Randomises Base stats of the 7 main characters
-
-* Tidus will always start with Flee
-
 ### Important
-
-* Because this mod randomises the stats of the characters it is possible for some early game fights to become impossible to complete, although this is unlikely to occur. Notable fights which may cause issues are Flan Tutorial (Besaid) and Vouivre (Luca).
-
-* Sphere grid randomisation has been designed for use with the Standard Sphere Grid and no testing has been done on the Expert Sphere Grid.
 
 * This mod is designed and tested to be used solely for Any% Speedruns. Using this mod for other speedrun categories or normal playthroughs is not currently supported and you will likely encounter game-breaking bugs.
 

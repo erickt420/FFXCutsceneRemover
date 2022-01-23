@@ -245,8 +245,6 @@ namespace FFXCutsceneRemover
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
 
-        public byte[] SphereGrid = null;
-
         public virtual void Execute(string defaultDescription = "")
         {
             if (ConsoleOutput)
@@ -437,8 +435,6 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.MenuValue1, MenuValue1);
             WriteValue(memoryWatchers.MenuValue2, MenuValue2);
-
-            WriteBytes(memoryWatchers.SphereGrid, SphereGrid);
 
             if (ForceLoad)
             {
