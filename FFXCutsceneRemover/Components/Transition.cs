@@ -50,6 +50,7 @@ namespace FFXCutsceneRemover
         public short? Storyline = null;
         public short? SpawnPoint = null;
         public int? BattleState = null;
+        public short? BattleState2 = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
         public short? Intro = null;
@@ -204,6 +205,7 @@ namespace FFXCutsceneRemover
         public byte? NatusFlag = null;
         public short? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
+        public short? AirshipFlag = null;
 
         public byte[] AurochsTeamBytes = null;
         public byte[] BlitzballBytes = null;
@@ -260,6 +262,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.Storyline, Storyline);
             WriteValue(memoryWatchers.SpawnPoint, SpawnPoint);
             WriteValue(memoryWatchers.BattleState, BattleState);
+            WriteValue(memoryWatchers.BattleState2, BattleState2);
             WriteValue(memoryWatchers.Menu, Menu);
             WriteValue(memoryWatchers.MenuLock, MenuLock);
             WriteValue(memoryWatchers.Intro, Intro);
@@ -399,6 +402,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
+            WriteValue(memoryWatchers.AirshipFlag, AirshipFlag);
 
             WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
             WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);

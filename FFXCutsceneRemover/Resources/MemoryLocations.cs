@@ -15,6 +15,7 @@
         public static MemoryLocationData ForceLoad = new MemoryLocationData(MemoryLocationNames.ForceLoad, 0xF3080C);
         public static MemoryLocationData SpawnPoint = new MemoryLocationData(MemoryLocationNames.SpawnPoint, 0xD2CA9C);
         public static MemoryLocationData BattleState = new MemoryLocationData(MemoryLocationNames.BattleState, 0xD2C9F0);
+        public static MemoryLocationData BattleState2 = new MemoryLocationData(MemoryLocationNames.BattleState2, 0xD2A8E0);
         public static MemoryLocationData Input = new MemoryLocationData(MemoryLocationNames.Input, 0x8CB170);
         public static MemoryLocationData Menu = new MemoryLocationData(MemoryLocationNames.Menu, 0xF407E4);
         public static MemoryLocationData MenuLock = new MemoryLocationData(MemoryLocationNames.MenuLock, 0xF25B61);
@@ -234,6 +235,7 @@
         public static MemoryLocationData NatusFlag = new MemoryLocationData(MemoryLocationNames.NatusFlag, 0xD2CC7C);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
+        public static MemoryLocationData AirshipFlag = new MemoryLocationData(MemoryLocationNames.AirshipFlag, 0xD2D6F0);
 
         // Blitzball
         public static MemoryLocationData AurochsTeamBytes = new MemoryLocationData(MemoryLocationNames.AurochsTeamBytes, 0xD2D704);

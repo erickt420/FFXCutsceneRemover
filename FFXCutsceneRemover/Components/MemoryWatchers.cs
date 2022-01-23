@@ -28,6 +28,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> ForceLoad;
         public MemoryWatcher<short> SpawnPoint;
         public MemoryWatcher<short> BattleState;
+        public MemoryWatcher<short> BattleState2;
         public MemoryWatcher<short> Input;
         public MemoryWatcher<byte> Menu;
         public MemoryWatcher<byte> MenuLock;
@@ -236,6 +237,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
+        public MemoryWatcher<byte> AirshipFlag;
 
         // Blitzball Abilities
         public MemoryWatcher<byte> AurochsTeamBytes;
@@ -313,6 +315,7 @@ namespace FFXCutsceneRemover
             ForceLoad = GetMemoryWatcher<byte>(MemoryLocations.ForceLoad);
             SpawnPoint = GetMemoryWatcher<short>(MemoryLocations.SpawnPoint);
             BattleState = GetMemoryWatcher<short>(MemoryLocations.BattleState);
+            BattleState2 = GetMemoryWatcher<short>(MemoryLocations.BattleState2);
             Input = GetMemoryWatcher<short>(MemoryLocations.Input);
             Menu = GetMemoryWatcher<byte>(MemoryLocations.Menu);
             MenuLock = GetMemoryWatcher<byte>(MemoryLocations.MenuLock);
@@ -518,6 +521,7 @@ namespace FFXCutsceneRemover
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
+            AirshipFlag = GetMemoryWatcher<byte>(MemoryLocations.AirshipFlag);
 
             // Blitzball Abilities
             AurochsTeamBytes = GetMemoryWatcher<byte>(MemoryLocations.AurochsTeamBytes);
@@ -575,6 +579,7 @@ namespace FFXCutsceneRemover
                     ForceLoad,
                     SpawnPoint,
                     BattleState,
+                    BattleState2,
                     Input,
                     Menu,
                     MenuLock,
@@ -737,6 +742,7 @@ namespace FFXCutsceneRemover
                     NatusFlag,
                     CalmLandsFlag,
                     GagazetCaveFlag,
+                    AirshipFlag,
                     AurochsTeamBytes,
                     BlitzballBytes,
                     GilBattleRewards,

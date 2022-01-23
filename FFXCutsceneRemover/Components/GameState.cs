@@ -15,6 +15,7 @@ namespace FFXCutsceneRemover
         public short? Storyline = null;
         public short? SpawnPoint = null;
         public short? BattleState = null;
+        public short? BattleState2 = null;
         public short? Input = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
@@ -82,12 +83,20 @@ namespace FFXCutsceneRemover
 
         public byte? ThunderPlainsFlag = null;
 
+        public byte? GagazetCaveFlag = null;
+
+        public byte? AirshipFlag = null;
+
+        public int? MenuValue1 = null;
+        public int? MenuValue2 = null;
+
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Current) &&
                 TestValue(Storyline, memoryWatchers.Storyline.Current) &&
                 TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Current) &&
                 TestValue(BattleState, memoryWatchers.BattleState.Current) &&
+                TestValue(BattleState2, memoryWatchers.BattleState2.Current) &&
                 TestValue(Input, memoryWatchers.Input.Current) &&
                 TestValue(Menu, memoryWatchers.Menu.Current) &&
                 TestValue(MenuLock, memoryWatchers.MenuLock.Current) &&
@@ -136,13 +145,17 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Current) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Current) &&
                 TestValue(ThunderPlainsFlag, memoryWatchers.ThunderPlainsFlag.Current) &&
+                TestValue(GagazetCaveFlag, memoryWatchers.GagazetCaveFlag.Current) &&
+                TestValue(AirshipFlag, memoryWatchers.AirshipFlag.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Current) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Current) &&
                 TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Current) &&
                 TestValue(TidusActionCount, memoryWatchers.TidusActionCount.Current) &&
                 TestValue(TidusXCoordinate, memoryWatchers.TidusXCoordinate.Current) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Current) &&
-                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current);
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Current) &&
+                TestValue(MenuValue1, memoryWatchers.MenuValue1.Current) &&
+                TestValue(MenuValue2, memoryWatchers.MenuValue2.Current);
         }
 
         private bool TestValue<T>(T? expected, T actual) where T : struct

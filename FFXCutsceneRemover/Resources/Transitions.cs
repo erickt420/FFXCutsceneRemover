@@ -23,7 +23,10 @@ namespace FFXCutsceneRemover.Resources
         static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
         static readonly EvraeAirshipTransition EvraeAirshipTransition = new EvraeAirshipTransition { ForceLoad = false, Description = "Post Evrae", Suspendable = false, Repeatable = true };
 
-        public static readonly RandoSetupTransition RandoSetupTransition = new RandoSetupTransition { ForceLoad = false, Description = "Randomising Grid" };
+        public static readonly RandoSetupTransition RandoSetupTransition = new RandoSetupTransition { ForceLoad = false, Description = "Running Randomisation" };
+
+        static readonly RandoShopTransition OakaMacalaniaShopTransition = new RandoShopTransition { ForceLoad = false, Description = "O'aka Lake Macalania", ConsoleOutput = false, shopID = 18, shopSize = 8, shopTier = 2, Repeatable = true };
+        static readonly RandoShopTransition LucaShopsTransition = new RandoShopTransition { ForceLoad = false, Description = "Luca (Pre-Airship)", ConsoleOutput = false, shopID = 02, shopSize = 12, shopTier = 0, Repeatable = true };
 
         public static byte[] BlitzballBytes = new byte[]
         {
@@ -407,7 +410,7 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 134, Storyline = 2600, State = 1 }, new Transition { RoomNumber = 249, Storyline = 2610, Description = "The fayth asks Tidus to end the dream"} }, // Bug: Game softlocks with Tidus entering house skip, so this little bit of movement is lost for now
             { new GameState { RoomNumber = 249, Storyline = 2610}, new Transition { RoomNumber = 309, Storyline = 2610, Description = "The dream disintegrates"} },
             { new GameState { RoomNumber = 309, Storyline = 2610}, new Transition { Storyline = 2585, Description = "Tidus wakes up"} },
-            { new GameState { RoomNumber = 272, Storyline = 2585}, new Transition { GagazetCaveFlag = 29120, Description = "Gagazet Cave scenes"} },
+            { new GameState { RoomNumber = 272, Storyline = 2585, GagazetCaveFlag = 0}, new Transition { GagazetCaveFlag = 29120, Description = "Gagazet Cave scenes"} },
             { new GameState { RoomNumber = 311, Storyline = 2585}, new SanctuaryTransition {ForceLoad = false, Description = "Sanctuary Keeper", Suspendable = false, Repeatable = true} },
 		    // END OF GAGAZET
 		    // START OF ZANARKAND
@@ -431,7 +434,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 200, Storyline = 3100}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Star Players First!" } },
             { new GameState { RoomNumber = 201, Storyline = 3105}, new SinCoreTransition {ForceLoad = false, Description = "Sin Core", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 202, Storyline = 3125, XCoordinate = 18.58586121f, State = 0}, new Transition { RoomNumber = 374, Storyline = 3135, SpawnPoint = 0, Description = "Yuna monologue"} },
-            { new GameState { RoomNumber = 202, Storyline = 3135}, new OverdriveSinTransition {ForceLoad = false, Description = "Overdrive Sin", Suspendable = false, Repeatable = true} }, // Doesn't work yet
+            { new GameState { RoomNumber = 202, Storyline = 3135}, new OverdriveSinTransition {ForceLoad = false, Description = "Overdrive Sin", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 296, Storyline = 3205}, new OmnisTransition {ForceLoad = false, Description = "Pre-BFA", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 327, Storyline = 3250, CutsceneAlt = 5889}, new Transition { RoomNumber = 324, Storyline = 3250, SpawnPoint = 0, Description = "Enter Tower of the Dead"} },
             { new GameState { RoomNumber = 325, Storyline = 3270}, new BFATransition {ForceLoad = false, Description = "Pre-BFA", Suspendable = false, Repeatable = true} },
@@ -453,8 +456,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 1200, RoomNumber = 102, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
             { new GameState { HpEnemyA = 12000, Storyline = 1704 }, new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu", FormationSwitch = Transition.formations.PostZu, PositionTidusAfterLoad = true, Target_x = -20.05244827f, Target_y = -2.300839186f, Target_z = -247.0119934f, Target_rot = -1.57079649f, Target_var1 = 1819 } },
             { new GameState { HpEnemyA = 2600, Storyline = 1820 }, new Transition { RoomNumber = 276, Storyline = 1820, SpawnPoint = 0, Description = "Home Bombs", PositionTidusAfterLoad = true, Target_x = -0.037395183f, Target_y = 0.3992187381f, Target_z = -5.576078415f, Target_rot = -1.884988785f, Target_var1 = 7} },
-            { new GameState { HpEnemyA = 3795, Storyline = 1820 }, new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
-            { new GameState { BattleLocationID = 87, BattleEncounterID = 3, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
+            { new GameState { BattleLocationID = 87, BattleEncounterID = 2, RoomNumber = 280, Storyline = 1820 }, new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
+            { new GameState { BattleLocationID = 87, BattleEncounterID = 3, RoomNumber = 280, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
             { new GameState { HpEnemyA = 32000, Storyline = 2040}, new Transition { RoomNumber = 205, Storyline = 2080, TargetFramerate = 2, MenuCleanup = true, AddItems = true, Description = "Evrae"} },
             { new GameState { HpEnemyA = 36000, Storyline = 2280 }, new Transition { RoomNumber = 183, Storyline = 2290, SpawnPoint = 4, Description = "Seymour Natus"} },
             { new GameState { RoomNumber = 259, Storyline = 2510, State = 2 }, new Transition { RoomNumber = 259, Storyline = 2528, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 53.67576218f, Target_y = -36.2708931f, Target_z = 316.892395f, Target_rot = 1.570796371f, Target_var1 = 475, Description = "Biran + Yenke"} },
@@ -469,6 +472,9 @@ namespace FFXCutsceneRemover.Resources
         {
             // Randomise Sphere Grid and Base Stats
             { new GameState { RoomNumber = 376, Storyline = 5, MovementLock = 0x20}, RandoSetupTransition },
+
+            // Edit Quick Hit to be rank 1
+            { new GameState { BattleState2 = 1 }, new  RandoAbilityBalance { ForceLoad = false, Description = "Rebalancing Abilities"} },
 
             // Tutorial ability addition and removal
             { new GameState { RoomNumber = 63, Storyline = 52, MovementLock = 0x20}, new AddRikkuAbilitiesTransition { ForceLoad = false, Description = "Add Steal and Use" } },
@@ -486,6 +492,46 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 72, Storyline = 518}, new RandoBlitzballTransition { Storyline = 520, Description = "Randomise Blitzball"} },
 
             // Shop Randomisations
+            { new GameState { RoomNumber = 144, NPCLastInteraction = 39, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Besaid (Pre-Airship)", ConsoleOutput = false, shopID = 00, shopSize = 8, shopTier = 0, Repeatable = true} },
+            { new GameState { RoomNumber = 16, NPCLastInteraction = 18, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Kilika (Pre-Airship)", ConsoleOutput = false, shopID = 01, shopSize = 10, shopTier = 0, Repeatable = true} },
+            { new GameState { RoomNumber = 123, NPCLastInteraction = 27, MenuValue1 = 0x1000}, LucaShopsTransition},
+            { new GameState { RoomNumber = 104, NPCLastInteraction = 13, MenuValue1 = 0x1000}, LucaShopsTransition},
+            { new GameState { RoomNumber = 85, NPCLastInteraction = 3, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "O'aka Luca", ConsoleOutput = false, shopID = 03, shopSize = 6, shopTier = 0, Repeatable = true} },
+            { new GameState { RoomNumber = 171, NPCLastInteraction = 27, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Mi'ihen Agency (Pre-Airship)", ConsoleOutput = false, shopID = 04, shopSize = 12, shopTier = 0, Repeatable = true} },
+            { new GameState { RoomNumber = 79, NPCLastInteraction = 23, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "O'aka MRR Entrance", ConsoleOutput = false, shopID = 05, shopSize = 7, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 119, NPCLastInteraction = 15, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "O'aka MRR Command", ConsoleOutput = false, shopID = 06, shopSize = 9, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 210, NPCLastInteraction = 20, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Djose Temple (Pre-Airship)", ConsoleOutput = false, shopID = 07, shopSize = 12, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 235, NPCLastInteraction = 14, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Moonflow South - Thin Man (Before Airship)", ConsoleOutput = false, shopID = 08, shopSize = 5, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 235, NPCLastInteraction = 15, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Moonflow South - Woman in white strapless (Before Airship)", ConsoleOutput = false, shopID = 09, shopSize = 5, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 188, NPCLastInteraction = 10, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Moonflow South - Woman in green (Before Airship)", ConsoleOutput = false, shopID = 10, shopSize = 6, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 188, NPCLastInteraction = 11, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Moonflow South - Fat Man (Before Airship)", ConsoleOutput = false, shopID = 11, shopSize = 6, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 187, NPCLastInteraction = 9, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "O'aka Moonflow South", ConsoleOutput = false, shopID = 12, shopSize = 6, shopTier = 1, Repeatable = true} },
+            { new GameState { RoomNumber = 172, NPCLastInteraction = 7, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "O'aka Guadosalam", ConsoleOutput = false, shopID = 13, shopSize = 13, shopTier = 2, Repeatable = true} },
+            { new GameState { RoomNumber = 172, NPCLastInteraction = 16, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Guadosalam Shop (Pre-Airship)", ConsoleOutput = false, shopID = 14, shopSize = 14, shopTier = 2, Repeatable = true} },
+            { new GameState { RoomNumber = 263, NPCLastInteraction = 22, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Thunder Plains Agency (Pre-Airship)", ConsoleOutput = false, shopID = 15, shopSize = 14, shopTier = 2, Repeatable = true} },
+            { new GameState { RoomNumber = 221, NPCLastInteraction = 8, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "O'aka Macalania Woods", ConsoleOutput = false, shopID = 16, shopSize = 7, shopTier = 2, Repeatable = true} },
+            { new GameState { RoomNumber = 215, NPCLastInteraction = 25, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Lake Macalania Agency (Pre-Airship)", ConsoleOutput = false, shopID = 17, shopSize = 14, shopTier = 2, Repeatable = true} },
+            { new GameState { RoomNumber = 164, NPCLastInteraction = 8, MenuValue1 = 0x1000}, OakaMacalaniaShopTransition},
+            { new GameState { RoomNumber = 106, NPCLastInteraction = 12, MenuValue1 = 0x1000}, OakaMacalaniaShopTransition},
+            { new GameState { RoomNumber = 211, NPCLastInteraction = 12, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Rin Airship Lift (Escaping Home)", ConsoleOutput = false, shopID = 19, shopSize = 12, shopTier = 2, Repeatable = true} },
+            { new GameState { RoomNumber = 223, NPCLastInteraction = 23, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Rin's Mobile Agency", ConsoleOutput = false, shopID = 20, shopSize = 7, shopTier = 3, Repeatable = true} },
+            { new GameState { RoomNumber = 223, NPCLastInteraction = 94, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Calm Lands Agency (Pre-Airship)", ConsoleOutput = false, shopID = 21, shopSize = 14, shopTier = 3, Repeatable = true} },
+            { new GameState { RoomNumber = 259, NPCLastInteraction = 10, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Gagazet Mountain Gate (Pre-Airship)", ConsoleOutput = false, shopID = 22, shopSize = 14, shopTier = 3, Repeatable = true} },
+            { new GameState { RoomNumber = 244, NPCLastInteraction = 13, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Wantz Gagazet", ConsoleOutput = false, shopID = 23, shopSize = 14, shopTier = 3, Repeatable = true} },
+            { new GameState { RoomNumber = 110, NPCLastInteraction = 15, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Wantz Macalania", ConsoleOutput = false, shopID = 24, shopSize = 14, shopTier = 4, Repeatable = true} },
+            //{ new GameState { RoomNumber = 144, NPCLastInteraction = 39, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Besaid (Post-Airship)", ConsoleOutput = false, shopID = 25, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 98, NPCLastInteraction = 6, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Kilika (Post-Airship)", ConsoleOutput = false, shopID = 26, shopSize = 14, shopTier = 4, Repeatable = true} },
+            //{ new GameState { RoomNumber = 104, NPCLastInteraction = 13, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Luca Square (Post-Airship)", ConsoleOutput = false, shopID = 27, shopSize = 14, shopTier = 4, Repeatable = true} },
+            //{ new GameState { RoomNumber = 123, NPCLastInteraction = 27, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Luca Stadium (Post-Airship)", ConsoleOutput = false, shopID = 28, shopSize = 14, shopTier = 4, Repeatable = true} },
+            //{ new GameState { RoomNumber = 171, NPCLastInteraction = 27, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Mi'ihen Agency (Post-Airship)", ConsoleOutput = false, shopID = 29, shopSize = 14, shopTier = 4, Repeatable = true} },
+            //{ new GameState { RoomNumber = 210, NPCLastInteraction = 20, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Djose Temple (Post-Airship)", ConsoleOutput = false, shopID = 30, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 172, NPCLastInteraction = 16, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Guadosalam Shop (Post-Airship)", ConsoleOutput = false, shopID = 31, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 263, NPCLastInteraction = 22, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Thunder Plains Agency (Post-Airship)", ConsoleOutput = false, shopID = 32, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 215, NPCLastInteraction = 25, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Lake Macalania Agency (Post-Airship)", ConsoleOutput = false, shopID = 33, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 265, NPCLastInteraction = 9, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Rin (Post-Airship)", ConsoleOutput = false, shopID = 34, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 223, NPCLastInteraction = 94, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Calm Lands Agency (Post-Airship)", ConsoleOutput = false, shopID = 35, shopSize = 14, shopTier = 4, Repeatable = true} },
+            { new GameState { RoomNumber = 259, NPCLastInteraction = 10, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Gagazet Mountain Gate (Post-Airship)", ConsoleOutput = false, shopID = 36, shopSize = 14, shopTier = 4, Repeatable = true} },
+            //{ new GameState { RoomNumber = 265, NPCLastInteraction = 9, MenuValue1 = 0x1000}, new RandoShopTransition { ForceLoad = false, Description = "Monster Arena", ConsoleOutput = false, shopID = 37, shopSize = 7, shopTier = 4, Repeatable = true} }, // Not randomising monster arena
         };
     }
 }

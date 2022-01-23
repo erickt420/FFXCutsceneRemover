@@ -4,6 +4,7 @@
 		<OutputType>Exe</OutputType>
 		<TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>FFXCSR_icon.ico</ApplicationIcon>
+    <AssemblyName>FFXRandomiser</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

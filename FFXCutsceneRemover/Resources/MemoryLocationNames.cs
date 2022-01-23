@@ -11,6 +11,7 @@
         public static string ForceLoad = "ForceLoad";
         public static string SpawnPoint = "SpawnPoint";
         public static string BattleState = "BattleState";
+        public static string BattleState2 = "BattleState2";
         public static string Input = "Input";
         public static string Menu = "Menu";
         public static string MenuLock = "MenuLock";
@@ -181,6 +182,7 @@
         public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
+        public static string AirshipFlag = "AirshipFlag";
 
         // Blitzball
         public static string AurochsTeamBytes = "AurochsTeamBytes";
