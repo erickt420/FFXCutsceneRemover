@@ -15,6 +15,7 @@
         public static MemoryLocationData ForceLoad = new MemoryLocationData(MemoryLocationNames.ForceLoad, 0xF3080C);
         public static MemoryLocationData SpawnPoint = new MemoryLocationData(MemoryLocationNames.SpawnPoint, 0xD2CA9C);
         public static MemoryLocationData BattleState = new MemoryLocationData(MemoryLocationNames.BattleState, 0xD2C9F0);
+        public static MemoryLocationData BattleState2 = new MemoryLocationData(MemoryLocationNames.BattleState2, 0xD2A8E0);
         public static MemoryLocationData Input = new MemoryLocationData(MemoryLocationNames.Input, 0x8CB170);
         public static MemoryLocationData Menu = new MemoryLocationData(MemoryLocationNames.Menu, 0xF407E4);
         public static MemoryLocationData MenuLock = new MemoryLocationData(MemoryLocationNames.MenuLock, 0xF25B61);
@@ -268,6 +269,9 @@
         // Items
         public static MemoryLocationData ItemsStart = new MemoryLocationData(MemoryLocationNames.ItemsStart, 0xD3095C);
         public static MemoryLocationData ItemsQtyStart = new MemoryLocationData(MemoryLocationNames.ItemsQtyStart, 0xD30B5C);
+
+        // AP
+        public static MemoryLocationData CharacterAPFlags = new MemoryLocationData(MemoryLocationNames.CharacterAPFlags, 0x1F10EC4);
 
         // Menu Values - These are values which the game sets during the battle rewards menu which don't get cleaned out properly when we skip straight to the rewards screen.
         //               We set the values to 0x00000000 to clean these out after some skips

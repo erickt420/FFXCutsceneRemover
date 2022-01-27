@@ -15,6 +15,7 @@ namespace FFXCutsceneRemover
         public short? Storyline = null;
         public short? SpawnPoint = null;
         public short? BattleState = null;
+        public short? BattleState2 = null;
         public short? Input = null;
         public byte? Menu = null;
         public byte? MenuLock = null;
@@ -82,12 +83,18 @@ namespace FFXCutsceneRemover
 
         public byte? ThunderPlainsFlag = null;
 
+        public byte? GagazetCaveFlag = null;
+
+        public int? MenuValue1 = null;
+        public int? MenuValue2 = null;
+
         public bool CheckState()
         {
             return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
                 TestValue(Storyline, memoryWatchers.Storyline.Old) &&
                 TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Old) &&
                 TestValue(BattleState, memoryWatchers.BattleState.Old) &&
+                TestValue(BattleState2, memoryWatchers.BattleState2.Old) &&
                 TestValue(Input, memoryWatchers.Input.Old) &&
                 TestValue(Menu, memoryWatchers.Menu.Old) &&
                 TestValue(MenuLock, memoryWatchers.MenuLock.Old) &&
@@ -136,13 +143,16 @@ namespace FFXCutsceneRemover
                 TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Old) &&
                 TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Old) &&
                 TestValue(ThunderPlainsFlag, memoryWatchers.ThunderPlainsFlag.Old) &&
+                TestValue(GagazetCaveFlag, memoryWatchers.GagazetCaveFlag.Current) &&
                 TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
                 TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&
                 TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Old) &&
                 TestValue(TidusActionCount, memoryWatchers.TidusActionCount.Old) &&
                 TestValue(TidusXCoordinate, memoryWatchers.TidusXCoordinate.Old) &&
                 TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Old) &&
-                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old);
+                TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old) &&
+                TestValue(MenuValue1, memoryWatchers.MenuValue1.Old) &&
+                TestValue(MenuValue2, memoryWatchers.MenuValue2.Old);
             ;
         }
 

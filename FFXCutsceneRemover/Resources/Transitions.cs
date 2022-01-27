@@ -261,7 +261,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 58, Storyline = 767, MiihenFlag3 = 1 }, new ChocoboEaterTransition {ForceLoad = false, Description = "Chocobo Eater", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 58, Storyline = 770, MiihenFlag3 = 3 }, new Transition { RoomNumber = 115, Storyline = 772, SpawnPoint = 515, Description = "Chocobo Eater loss - Fall down the cliff"} },
             { new GameState { RoomNumber = 58, Storyline = 770, MiihenFlag3 = 5 }, new Transition { Storyline = 772, SpawnPoint = 2, MiihenFlag3 = 13, Description = "Chocobo Eater win - Rin thanks the party"} },
-            { new GameState { RoomNumber = 116, Storyline = 772, MiihenFlag4 = 0}, new Transition { MiihenFlag4 = 4 , ForceLoad = false, Description = "Luzzu and Gatta move a cart"} },
+            { new GameState { RoomNumber = 116, Storyline = 772, MiihenFlag4 = 0}, new Transition { MiihenFlag4 = 7 , ForceLoad = false, Description = "Luzzu and Gatta move a cart"} },
             { new GameState { RoomNumber = 59, Storyline = 777, State = 0}, new Transition { Storyline = 787, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = -42.82675171f, Target_y = 0.9690397978f, Target_z = 204.8426361f, Target_rot = 1.250270844f, Target_var1 = 4, Description = "Seymour helps out"} },
             // END OF MI'IHEN
             // START OF MUSHROOM ROCK ROAD
@@ -341,7 +341,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 140, Storyline = 1310, ThunderPlainsFlag = 0x09}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x19, Description = "Rikku freaks out"} },
             { new GameState { RoomNumber = 140, Storyline = 1310, ThunderPlainsFlag = 0x0A}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x1A, Description = "Rikku freaks out"} },
             { new GameState { RoomNumber = 140, Storyline = 1310, ThunderPlainsFlag = 0x0B}, new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x1B, Description = "Rikku freaks out"} },
-            //{ new GameState { RoomNumber = 256, Storyline = 1310}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },
+            { new GameState { RoomNumber = 263, Storyline = 1315}, new Transition { RoomNumber = 263, Storyline = 1315, SpawnPoint = 0, Description = "Rikku asks to go to the agency"} },
             { new GameState { RoomNumber = 264, Storyline = 1320}, new Transition { RoomNumber = 263, Storyline = 1325, FullHeal = true, Description = "Tidus barges in Yuna's room + Sleep"} },
             { new GameState { RoomNumber = 263, Storyline = 1335}, new Transition { RoomNumber = 256, Storyline = 1340, Description = "Leaving the agency"} },
             { new GameState { RoomNumber = 162, Storyline = 1340}, new Transition { RoomNumber = 162, Storyline = 1375, Description = "Yuna decides to marry Seymour"} },
@@ -367,8 +367,10 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 136, Storyline = 1715 }, BikanelTransition  },
             { new GameState { RoomNumber = 136, Storyline = 1718, EnableRikku = 0, State = 1 }, new Transition { Storyline = 1720, SpawnPoint = 3, FormationSwitch = Transition.formations.BikanelRikku, BikanelFlag = 32, Description = "Wakka Glare" } },
             { new GameState { RoomNumber = 138, Storyline = 1720, State = 1, MovementLock = 0x30}, new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -15.83119202f, Target_y = -0.4932427108f, Target_z = -98.58677673f, Target_rot = 2.518902063f, Target_var1 = 432, Description = "Sanubia to Home"} },
-            { new GameState { RoomNumber = 280, Storyline = 1820}, HomeTransition},
-            { new GameState { RoomNumber = 280, Storyline = 1885}, HomeTransition},
+            { new GameState { RoomNumber = 280, Storyline = 1820 }, HomeTransition},
+            { new GameState { RoomNumber = 280, Storyline = 1885 }, HomeTransition},
+            { new GameState { RoomNumber = 275 }, HomeTransition},
+            { new GameState { RoomNumber = 286 }, HomeTransition},
             { new GameState { Storyline = 1940, EncounterStatus = 89 }, new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
             { new GameState { RoomNumber = 261, Storyline = 1940 }, new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -228.5708008f, Target_y = 12.30214691f, Target_z = 363.2492676f, Target_rot = -2.72271347f, Target_var1 = 1251, Description = "Home to Airship"} },
             { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.4903412f, Target_y = 12.11019516f, Target_z = 290.9462891f, Target_rot = 1.592885971f, Target_var1 = 1302, Description = "Airship Bridge Cutscene"} },
@@ -405,7 +407,7 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 134, Storyline = 2600, State = 1 }, new Transition { RoomNumber = 249, Storyline = 2610, Description = "The fayth asks Tidus to end the dream"} }, // Bug: Game softlocks with Tidus entering house skip, so this little bit of movement is lost for now
             { new GameState { RoomNumber = 249, Storyline = 2610}, new Transition { RoomNumber = 309, Storyline = 2610, Description = "The dream disintegrates"} },
             { new GameState { RoomNumber = 309, Storyline = 2610}, new Transition { Storyline = 2585, Description = "Tidus wakes up"} },
-            { new GameState { RoomNumber = 272, Storyline = 2585}, new Transition { GagazetCaveFlag = 29120, Description = "Gagazet Cave scenes"} },
+            { new GameState { RoomNumber = 272, Storyline = 2585, GagazetCaveFlag = 0}, new Transition { GagazetCaveFlag = 29120, Description = "Gagazet Cave scenes"} },
             { new GameState { RoomNumber = 311, Storyline = 2585}, new SanctuaryTransition {ForceLoad = false, Description = "Sanctuary Keeper", Suspendable = false, Repeatable = true} },
 		    // END OF GAGAZET
 		    // START OF ZANARKAND
@@ -451,8 +453,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 1200, RoomNumber = 102, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
             { new GameState { HpEnemyA = 12000, Storyline = 1704 }, new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu", FormationSwitch = Transition.formations.PostZu, PositionTidusAfterLoad = true, Target_x = -20.05244827f, Target_y = -2.300839186f, Target_z = -247.0119934f, Target_rot = -1.57079649f, Target_var1 = 1819 } },
             { new GameState { HpEnemyA = 2600, Storyline = 1820 }, new Transition { RoomNumber = 276, Storyline = 1820, SpawnPoint = 0, Description = "Home Bombs", PositionTidusAfterLoad = true, Target_x = -0.037395183f, Target_y = 0.3992187381f, Target_z = -5.576078415f, Target_rot = -1.884988785f, Target_var1 = 7} },
-            { new GameState { HpEnemyA = 3795, Storyline = 1820 }, new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
-            { new GameState { BattleLocationID = 87, BattleEncounterID = 3, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
+            { new GameState { BattleLocationID = 87, BattleEncounterID = 2, RoomNumber = 280, Storyline = 1820 }, new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
+            { new GameState { BattleLocationID = 87, BattleEncounterID = 3, RoomNumber = 280, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
             { new GameState { HpEnemyA = 32000, Storyline = 2040}, new Transition { RoomNumber = 205, Storyline = 2080, TargetFramerate = 2, MenuCleanup = true, AddItems = true, Description = "Evrae"} },
             { new GameState { HpEnemyA = 36000, Storyline = 2280 }, new Transition { RoomNumber = 183, Storyline = 2290, SpawnPoint = 4, Description = "Seymour Natus"} },
             { new GameState { RoomNumber = 259, Storyline = 2510, State = 2 }, new Transition { RoomNumber = 259, Storyline = 2528, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 53.67576218f, Target_y = -36.2708931f, Target_z = 316.892395f, Target_rot = 1.570796371f, Target_var1 = 475, Description = "Biran + Yenke"} },
