@@ -221,6 +221,12 @@
         public static string MenuValue1 = "MenuValue1";
         public static string MenuValue2 = "MenuValue2";
 
+        public static string MenuValue3 = "MenuValue3";
+        public static string MenuValue4 = "MenuValue4";
+        public static string MenuValue5 = "MenuValue5";
+        public static string MenuValue6 = "MenuValue6";
+        public static string MenuValue7 = "MenuValue7";
+
         public static string ActorArrayLength = "ActorArrayLength";
 
     }

@@ -439,6 +439,7 @@ namespace FFXCutsceneRemover
             if (ForceLoad)
             {
                 ForceGameLoad();
+                FixMenuBug();
             }
 
             if (FullHeal)
@@ -611,6 +612,15 @@ namespace FFXCutsceneRemover
         {
             WriteValue<int>(memoryWatchers.MenuValue1, 0);
             WriteValue<int>(memoryWatchers.MenuValue2, 0);
+        }
+
+        private void FixMenuBug()
+        {
+            WriteValue<int>(memoryWatchers.MenuValue3, unchecked((int)0xFFFFFFFF));
+            WriteValue<int>(memoryWatchers.MenuValue4, 0x00000000);
+            WriteValue<byte>(memoryWatchers.MenuValue5, 0x00);
+            WriteValue<int>(memoryWatchers.MenuValue6, 0x00000001);
+            WriteValue<byte>(memoryWatchers.MenuValue7, 0x00);
         }
 
         private void ClearAllBattleRewards()
