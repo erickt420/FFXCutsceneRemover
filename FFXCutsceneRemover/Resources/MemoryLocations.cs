@@ -278,6 +278,13 @@
         public static MemoryLocationData MenuValue1 = new MemoryLocationData(MemoryLocationNames.MenuValue1, 0x14408AC);
         public static MemoryLocationData MenuValue2 = new MemoryLocationData(MemoryLocationNames.MenuValue2, 0xF27F10);
 
+        // Menu Values - These are values which need to be set correctly to avoid menu bug where the menu can't open
+        public static MemoryLocationData MenuValue3 = new MemoryLocationData(MemoryLocationNames.MenuValue3, 0x840E18);
+        public static MemoryLocationData MenuValue4 = new MemoryLocationData(MemoryLocationNames.MenuValue4, 0xD2A00C);
+        public static MemoryLocationData MenuValue5 = new MemoryLocationData(MemoryLocationNames.MenuValue5, 0x8DED2C, 0x6D0);
+        public static MemoryLocationData MenuValue6 = new MemoryLocationData(MemoryLocationNames.MenuValue6, 0x8DED2C, 0x704);
+        public static MemoryLocationData MenuValue7 = new MemoryLocationData(MemoryLocationNames.MenuValue7, 0x8CB9D8, 0x10D2E);
+
         // Actor Model Positions
         public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);
 
