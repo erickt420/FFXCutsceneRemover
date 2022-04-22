@@ -37,10 +37,10 @@
         public static string Dialogue1 = "Dialogue1";
         public static string DialogueOption = "DialogueOption";
         public static string DialogueBoxOpen = "DialogueBoxOpen";
+        public static string DialogueOption_Gui = "DialogueOption_Gui";
+        public static string DialogueBoxOpen_Gui = "DialogueBoxOpen_Gui";
         public static string PlayerTurn = "PlayerTurn";
         public static string FrameCounterFromLoad = "FrameCounterFromLoad";
-        public static string BattleLocationID = "BattleLocationID";
-        public static string BattleEncounterID = "BattleEncounterID";
 
         //Event File
         public static string EventFileStart = "EventFileStart";
@@ -125,8 +125,12 @@
         public static string CutsceneProgress_uVar2 = "CutsceneProgress_uVar2";
         public static string CutsceneProgress_uVar3 = "CutsceneProgress_uVar3";
 
+        //Encounters
+        public static string EncounterMapID = "EncounterMapID";
+        public static string EncounterFormationID = "EncounterFormationID";
         public static string ScriptedBattleFlag1 = "ScriptedBattleFlag1";
         public static string ScriptedBattleFlag2 = "ScriptedBattleFlag2";
+        public static string EncounterTrigger = "EncounterTrigger";
 
         // Party Configuration
         public static string Formation = "Formation";
