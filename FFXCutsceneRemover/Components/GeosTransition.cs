@@ -23,7 +23,8 @@ namespace FFXCutsceneRemover
             else if (base.memoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0xA4F8) && Stage == 1)
             {
                 process.Suspend();
-                WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xA7D5); // 0xA992
+
+                new Transition { EncounterMapID = 1, EncounterFormationID = 0, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, EncounterTrigger = 2, Description = "Sahagins", ForceLoad = false }.Execute();
 
                 Transition actorPositions;
                 //Position Tidus
@@ -34,10 +35,35 @@ namespace FFXCutsceneRemover
 
                 process.Resume();
             }
-            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
+            else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 2)
+            {
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 3)
             {
                 process.Suspend();
-                WriteValue<int>(base.memoryWatchers.GeosTransition, BaseCutsceneValue + 0xAE02);// D90
+
+                new Transition { EncounterMapID = 1, EncounterFormationID = 1, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, EncounterTrigger = 2, Description = "Geosgaeno", ForceLoad = false }.Execute();
+
+                Stage += 1;
+
+                process.Resume();
+            }
+            else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 4)
+            {
+                Transition actorPositions;
+                //Position Tidus
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 0.0f, Target_y = -50.0f, Target_z = -20.0f };
+                actorPositions.Execute();
+
+                Stage += 1;
+            }
+            else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 5)
+            {
+                process.Suspend();
+
+                new Transition { RoomNumber = 50, Storyline = 48, SpawnPoint = 0, Description = "Escape from Geogaesno" }.Execute();
+
                 Stage += 1;
 
                 process.Resume();
