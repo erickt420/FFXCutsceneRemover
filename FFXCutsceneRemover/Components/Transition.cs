@@ -74,8 +74,12 @@ namespace FFXCutsceneRemover
         public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
-        public short? BattleLocationID = null;
-        public byte? BattleEncounterID = null;
+        public short? EncounterMapID = null;
+        public byte? EncounterFormationID = null;
+        public byte? ScriptedBattleFlag1 = null;
+        public byte? ScriptedBattleFlag2 = null;
+        public int? ScriptedBattleVar1 = null;
+        public byte? EncounterTrigger = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public float? TidusXCoordinate = null;
@@ -284,8 +288,12 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
             WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
-            WriteValue(memoryWatchers.BattleLocationID, BattleLocationID);
-            WriteValue(memoryWatchers.BattleEncounterID, BattleEncounterID);
+            WriteValue(memoryWatchers.EncounterMapID, EncounterMapID);
+            WriteValue(memoryWatchers.EncounterFormationID, EncounterFormationID);
+            WriteValue(memoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
+            WriteValue(memoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
+            WriteValue(memoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
+            WriteValue(memoryWatchers.EncounterTrigger, EncounterTrigger);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
             WriteValue(memoryWatchers.TidusXCoordinate, TidusXCoordinate);
@@ -818,6 +826,7 @@ namespace FFXCutsceneRemover
             //PreVouivre,
             //PreGaruda,
             AuronJoinsTheParty,
+            PreGui2,
             PostGui,
             MeetRikku,
             PostCrawler,
@@ -889,6 +898,23 @@ namespace FFXCutsceneRemover
                         WriteValue<byte>(memoryWatchers.EnableWakka, 17);
                         WriteValue<byte>(memoryWatchers.EnableLulu, 17);
                         formation = new byte[] { 0x00, 0x04, 0x01, 0x02, 0xFF, 0xFF, 0x05, 0x03, 0xFF, 0xFF };
+                        break;
+                    case formations.PreGui2:
+                        formation = SwapPositionWithFirstEmptyReservePosition(formation, 0);
+                        formation = SwapPositionWithFirstEmptyReservePosition(formation, 1);
+                        formation = SwapPositionWithFirstEmptyReservePosition(formation, 2);
+                        formation = RemoveCharacter(formation, 0);
+                        formation = RemoveCharacter(formation, 1);
+                        formation = RemoveCharacter(formation, 4);
+                        formation = RemoveCharacter(formation, 3);
+                        formation = RemoveCharacter(formation, 5);
+                        formation = RemoveCharacter(formation, 2);
+                        formation = AddCharacter(formation, 7);
+                        formation = AddCharacter(formation, 1);
+                        formation = AddCharacter(formation, 2);
+                        formation = SwapCharacterWithPosition(formation, 1, 0);
+                        formation = SwapCharacterWithPosition(formation, 7, 1);
+                        formation = SwapCharacterWithPosition(formation, 2, 2);
                         break;
                     case formations.PostGui:
                         WriteValue<byte>(memoryWatchers.EnableTidus, 17);

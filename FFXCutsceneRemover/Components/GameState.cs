@@ -42,11 +42,13 @@ namespace FFXCutsceneRemover
         public int? Dialogue1 = null;
         public byte? DialogueOption = null;
         public byte? DialogueBoxOpen = null;
+        public byte? DialogueOption_Gui = null;
+        public byte? DialogueBoxOpen_Gui = null;
         public byte? PlayerTurn = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
-        public short? BattleLocationID = null;
-        public byte? BattleEncounterID = null;
+        public short? EncounterMapID = null;
+        public byte? EncounterFormationID = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public short? NPCLastInteraction = null;
@@ -121,13 +123,15 @@ namespace FFXCutsceneRemover
                 TestValue(Dialogue1, memoryWatchers.Dialogue1.Current) &&
                 TestValue(DialogueOption, memoryWatchers.DialogueOption.Current) &&
                 TestValue(DialogueBoxOpen, memoryWatchers.DialogueBoxOpen.Current) &&
+                TestValue(DialogueOption_Gui, memoryWatchers.DialogueOption_Gui.Current) &&
+                TestValue(DialogueBoxOpen_Gui, memoryWatchers.DialogueBoxOpen_Gui.Current) &&
                 TestValue(PlayerTurn, memoryWatchers.PlayerTurn.Current) &&
                 TestValue(EnableAuron, memoryWatchers.EnableAuron.Current) &&
                 TestValue(EnableWakka, memoryWatchers.EnableWakka.Current) &&
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Current) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Current) &&
-                TestValue(BattleLocationID, memoryWatchers.BattleLocationID.Current) &&
-                TestValue(BattleEncounterID, memoryWatchers.BattleEncounterID.Current) &&
+                TestValue(EncounterMapID, memoryWatchers.EncounterMapID.Current) &&
+                TestValue(EncounterFormationID, memoryWatchers.EncounterFormationID.Current) &&
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Current) &&
                 TestValue(SSWinnoFlag1, memoryWatchers.SSWinnoFlag1.Current) &&
                 TestValue(KilikaMapFlag, memoryWatchers.KilikaMapFlag.Current) &&

@@ -54,10 +54,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> Dialogue1;
         public MemoryWatcher<byte> DialogueOption;
         public MemoryWatcher<byte> DialogueBoxOpen;
+        public MemoryWatcher<byte> DialogueOption_Gui;
+        public MemoryWatcher<byte> DialogueBoxOpen_Gui;
         public MemoryWatcher<byte> PlayerTurn;
         public MemoryWatcher<int> FrameCounterFromLoad;
-        public MemoryWatcher<short> BattleLocationID;
-        public MemoryWatcher<byte> BattleEncounterID;
 
         // Event File
         public MemoryWatcher<int> EventFileStart;
@@ -142,8 +142,13 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> CutsceneProgress_uVar2;
         public MemoryWatcher<int> CutsceneProgress_uVar3;
 
+        // Encounters
+        public MemoryWatcher<byte> EncounterMapID;
+        public MemoryWatcher<byte> EncounterFormationID;
         public MemoryWatcher<byte> ScriptedBattleFlag1;
         public MemoryWatcher<byte> ScriptedBattleFlag2;
+        public MemoryWatcher<int> ScriptedBattleVar1;
+        public MemoryWatcher<byte> EncounterTrigger;
 
         // Party Configuration
         public MemoryWatcher<byte> Formation;
@@ -343,10 +348,10 @@ namespace FFXCutsceneRemover
             Dialogue1 = GetMemoryWatcher<int>(MemoryLocations.Dialogue1);
             DialogueOption = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption);
             DialogueBoxOpen = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen);
+            DialogueOption_Gui = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption_Gui);
+            DialogueBoxOpen_Gui = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen_Gui);
             PlayerTurn = GetMemoryWatcher<byte>(MemoryLocations.PlayerTurn);
             FrameCounterFromLoad = GetMemoryWatcher<int>(MemoryLocations.FrameCounterFromLoad);
-            BattleLocationID = GetMemoryWatcher<short>(MemoryLocations.BattleLocationID);
-            BattleEncounterID = GetMemoryWatcher<byte>(MemoryLocations.BattleEncounterID);
 
             // Event File
             EventFileStart = GetMemoryWatcher<int>(MemoryLocations.EventFileStart);
@@ -431,8 +436,14 @@ namespace FFXCutsceneRemover
             CutsceneProgress_uVar2 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar2);
             CutsceneProgress_uVar3 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar3);
 
+
+            //Encounters
+            EncounterMapID = GetMemoryWatcher<byte>(MemoryLocations.EncounterMapID);
+            EncounterFormationID = GetMemoryWatcher<byte>(MemoryLocations.EncounterFormationID);
             ScriptedBattleFlag1 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag1);
             ScriptedBattleFlag2 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag2);
+            ScriptedBattleVar1 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar1);
+            EncounterTrigger = GetMemoryWatcher<byte>(MemoryLocations.EncounterTrigger);
 
             // Party Configuration
             Formation = GetMemoryWatcher<byte>(MemoryLocations.Formation);
@@ -610,10 +621,16 @@ namespace FFXCutsceneRemover
                     Dialogue1,
                     DialogueOption,
                     DialogueBoxOpen,
+                    DialogueOption_Gui,
+                    DialogueBoxOpen_Gui,
                     PlayerTurn,
                     FrameCounterFromLoad,
-                    BattleLocationID,
-                    BattleEncounterID,
+                    EncounterMapID,
+                    EncounterFormationID,
+                    ScriptedBattleFlag1,
+                    ScriptedBattleFlag2,
+                    ScriptedBattleVar1,
+                    EncounterTrigger,
                     Sandragoras,
                     HpEnemyA,
                     GuadoCount,

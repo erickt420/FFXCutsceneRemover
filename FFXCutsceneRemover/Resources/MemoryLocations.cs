@@ -38,14 +38,15 @@
         public static MemoryLocationData AuronOverdrives = new MemoryLocationData(MemoryLocationNames.AuronOverdrives, 0xD307FC);
         public static MemoryLocationData Gil = new MemoryLocationData(MemoryLocationNames.Gil, 0xD307D8);
         public static MemoryLocationData TargetFramerate = new MemoryLocationData(MemoryLocationNames.TargetFramerate, 0x830E88);//This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
+        public static MemoryLocationData PlayerTurn = new MemoryLocationData(MemoryLocationNames.PlayerTurn, 0xF3F77B);
+        public static MemoryLocationData FrameCounterFromLoad = new MemoryLocationData(MemoryLocationNames.FrameCounterFromLoad, 0xF25D54);
+
+        // Dialogue
         public static MemoryLocationData Dialogue1 = new MemoryLocationData(MemoryLocationNames.Dialogue1, 0xF25A80);
         public static MemoryLocationData DialogueOption = new MemoryLocationData(MemoryLocationNames.DialogueOption, 0x146780A);
         public static MemoryLocationData DialogueBoxOpen = new MemoryLocationData(MemoryLocationNames.DialogueBoxOpen, 0x1465CC2);
-        public static MemoryLocationData PlayerTurn = new MemoryLocationData(MemoryLocationNames.PlayerTurn, 0xF3F77B);
-        public static MemoryLocationData FrameCounterFromLoad = new MemoryLocationData(MemoryLocationNames.FrameCounterFromLoad, 0xF25D54);
-        public static MemoryLocationData BattleLocationID = new MemoryLocationData(MemoryLocationNames.BattleLocationID, 0xD2C256);
-        public static MemoryLocationData BattleEncounterID = new MemoryLocationData(MemoryLocationNames.BattleEncounterID, 0xD2C259);
-
+        public static MemoryLocationData DialogueOption_Gui = new MemoryLocationData(MemoryLocationNames.DialogueOption_Gui, 0x1467942);
+        public static MemoryLocationData DialogueBoxOpen_Gui = new MemoryLocationData(MemoryLocationNames.DialogueBoxOpen_Gui, 0x1465CDE);
 
         // Deep Pointers
         public static MemoryLocationData HpEnemyA = new MemoryLocationData(MemoryLocationNames.HpEnemyA, 0xD34460, 0x5D0);
@@ -134,8 +135,12 @@
         public static MemoryLocationData CutsceneProgress_uVar3 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar3, 0xF26AE8, 0x18);
 
         // Encounters
-        public static MemoryLocationData ScriptedBattleFlag1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag1, 0xD2A9D4);
-        public static MemoryLocationData ScriptedBattleFlag2 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag2, 0xD2A9D4);
+        public static MemoryLocationData EncounterMapID = new MemoryLocationData(MemoryLocationNames.EncounterMapID, 0xD2C256);
+        public static MemoryLocationData EncounterFormationID = new MemoryLocationData(MemoryLocationNames.EncounterFormationID, 0xD2C259);
+        public static MemoryLocationData ScriptedBattleFlag1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag1, 0xD2A9D4); // Setting to 0 triggers post battle rewards screen
+        public static MemoryLocationData ScriptedBattleFlag2 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag2, 0xD2A9D5); // 0 = Screen crack effect, 1 = Boss transition effect
+        public static MemoryLocationData ScriptedBattleVar1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleVar1, 0xF26B08); // Set to the right value to make the game recognise battle as scripted and not random
+        public static MemoryLocationData EncounterTrigger = new MemoryLocationData(MemoryLocationNames.EncounterTrigger, 0xD2A8E2); // Set to 2 to trigger boss encounter
 
         // Party Configuration
         public static MemoryLocationData Formation = new MemoryLocationData(MemoryLocationNames.Formation, 0xD307E8);
