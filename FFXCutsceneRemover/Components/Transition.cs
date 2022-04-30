@@ -78,6 +78,7 @@ namespace FFXCutsceneRemover
         public byte? EncounterFormationID = null;
         public byte? ScriptedBattleFlag1 = null;
         public byte? ScriptedBattleFlag2 = null;
+        public int? ScriptedBattleVar1 = null;
         public byte? EncounterTrigger = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
@@ -291,6 +292,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EncounterFormationID, EncounterFormationID);
             WriteValue(memoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
             WriteValue(memoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
+            WriteValue(memoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
             WriteValue(memoryWatchers.EncounterTrigger, EncounterTrigger);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);

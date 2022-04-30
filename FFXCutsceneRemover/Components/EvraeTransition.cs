@@ -12,55 +12,37 @@ namespace FFXCutsceneRemover
         {
             Process process = memoryWatchers.Process;
 
-            if (base.memoryWatchers.FrameCounterFromLoad.Current < 5 && Stage == 0) // Frame counter condition is to make skip work when loading from an autosave
+            if (base.memoryWatchers.FrameCounterFromLoad.Current < 5 && base.memoryWatchers.State.Current == 0 && Stage == 0)
             {
-                base.Execute();
+                process.Suspend();
 
-                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                Stage += 1;
-
-            }
-            else if (base.memoryWatchers.EvraeTransition.Current == (BaseCutsceneValue + 0x7899) && Stage == 1)
-            //else if (base.memoryWatchers.State.Current == 0 && Stage == 1)
-            {
-                WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7AEA); // 0x7D6C 0x7C9F
-
-                Stage += 1;
-            }
-            else if (base.memoryWatchers.EvraeTransition.Current >= (BaseCutsceneValue + 0x7AEB) && Stage == 2)
-            {
-                WriteValue<int>(base.memoryWatchers.EvraeTransition, BaseCutsceneValue + 0x7D6C);
-
-                formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 8);
+                new Transition { EncounterMapID = 52, EncounterFormationID = 0, ScriptedBattleFlag1 = 0, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00014503, EncounterTrigger = 2, Description = "Evrae", ForceLoad = false }.Execute();
 
                 Transition actorPositions;
-                //Position Party Member 1
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = -25.0f, Target_y = -35.53496933f, Target_z = 119.9999924f, Target_var1 = 21 };
-                actorPositions.Execute();
-
-                //Position Party Member 2
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = -20.0f, Target_y = -35.85807419f, Target_z = 80.0f, Target_var1 = 19 };
-                actorPositions.Execute();
-
-                //Position Party Member 3
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = -15.00001526f, Target_y = -35.72403336f, Target_z = 40.0f, Target_var1 = 17 };
-                actorPositions.Execute();
-
-                //Position Evrae
+                //Position Tidus
                 actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4215 }, Target_x = -140.0f, Target_y = -35.0f, Target_z = 80.0f };
                 actorPositions.Execute();
 
                 Stage += 1;
-            }
-            else if (base.memoryWatchers.BattleState.Current == 522 && base.memoryWatchers.CutsceneAlt.Current == 420 && Stage == 3)
-            {
-                Transition actorPositions;
-                //Position Rikku
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 7 }, Target_x = -20.0f, Target_y = -35.85807419f, Target_z = 80.0f, Target_var1 = 19 };
-                actorPositions.Execute();
 
+                process.Resume();
+            }
+            /*
+            else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 1)
+            {
                 Stage += 1;
             }
+            else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 2)
+            {
+                process.Suspend();
+
+                new Transition { RoomNumber = 367, Storyline = 20, Description = "Post Tanker" }.Execute();
+
+                Stage += 1;
+
+                process.Resume();
+            }
+            */
         }
     }
 }

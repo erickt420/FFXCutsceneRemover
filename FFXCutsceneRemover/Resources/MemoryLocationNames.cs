@@ -130,6 +130,7 @@
         public static string EncounterFormationID = "EncounterFormationID";
         public static string ScriptedBattleFlag1 = "ScriptedBattleFlag1";
         public static string ScriptedBattleFlag2 = "ScriptedBattleFlag2";
+        public static string ScriptedBattleVar1 = "ScriptedBattleVar1";
         public static string EncounterTrigger = "EncounterTrigger";
 
         // Party Configuration

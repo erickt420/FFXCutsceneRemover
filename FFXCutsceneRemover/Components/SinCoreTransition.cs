@@ -10,24 +10,17 @@ namespace FFXCutsceneRemover
     {
         public override void Execute(string defaultDescription = "")
         {
+            Process process = memoryWatchers.Process;
+
             if (Stage == 0)
             {
-                base.Execute();
+                process.Suspend();
 
-                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                new Transition { EncounterMapID = 75, EncounterFormationID = 0, ScriptedBattleFlag1 = 0, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00010501, EncounterTrigger = 2, Description = "Sin Core", ForceLoad = false }.Execute();
 
                 Stage += 1;
 
-            }
-            else if (base.memoryWatchers.SinCoreTransition.Current == (BaseCutsceneValue + 0x185F) && Stage == 1)
-            {
-                WriteValue<int>(base.memoryWatchers.SinCoreTransition, BaseCutsceneValue + 0x1A37);
-                Stage += 1;
-            }
-            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
-            {
-                WriteValue<int>(base.memoryWatchers.SinCoreTransition, BaseCutsceneValue + 0x1B0D);
-                Stage += 1;
+                process.Resume();
             }
         }
     }
