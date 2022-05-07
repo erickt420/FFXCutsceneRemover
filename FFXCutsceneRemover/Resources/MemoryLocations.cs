@@ -239,6 +239,7 @@
         public static MemoryLocationData NatusFlag = new MemoryLocationData(MemoryLocationNames.NatusFlag, 0xD2CC7C);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
+        public static MemoryLocationData OmegaRuinsFlag = new MemoryLocationData(MemoryLocationNames.OmegaRuinsFlag, 0xD2CE4E);
 
         // Blitzball
         public static MemoryLocationData AurochsTeamBytes = new MemoryLocationData(MemoryLocationNames.AurochsTeamBytes, 0xD2D704);

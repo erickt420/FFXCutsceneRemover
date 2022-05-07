@@ -186,6 +186,7 @@
         public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
+        public static string OmegaRuinsFlag = "OmegaRuinsFlag";
 
         // Blitzball
         public static string AurochsTeamBytes = "AurochsTeamBytes";

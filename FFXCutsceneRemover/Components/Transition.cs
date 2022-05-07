@@ -211,6 +211,7 @@ namespace FFXCutsceneRemover
         public byte? NatusFlag = null;
         public short? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
+        public byte? OmegaRuinsFlag = null;
 
         public byte[] AurochsTeamBytes = null;
         public byte[] BlitzballBytes = null;
@@ -413,6 +414,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
+            WriteValue(memoryWatchers.OmegaRuinsFlag, OmegaRuinsFlag);
 
             WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
             WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
