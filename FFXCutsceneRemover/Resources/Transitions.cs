@@ -379,8 +379,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.4903412f, Target_y = 12.11019516f, Target_z = 290.9462891f, Target_rot = 1.592885971f, Target_var1 = 1302, Description = "Airship Bridge Cutscene"} },
             { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
             { new GameState { RoomNumber = 277, Storyline = 2040 }, new EvraeTransition {ForceLoad = false, Description = "Pre Evrae", Suspendable = false, Repeatable = true} },
-            { new GameState { RoomNumber = 194, Storyline = 2050 }, EvraeAirshipTransition },
-            { new GameState { RoomNumber = 194, Storyline = 2055 }, EvraeAirshipTransition },
+            //{ new GameState { RoomNumber = 194, Storyline = 2050 }, EvraeAirshipTransition },
+            //{ new GameState { RoomNumber = 194, Storyline = 2055 }, EvraeAirshipTransition },
 
 		    // END OF HOME
 		    // START OF BEVELLE

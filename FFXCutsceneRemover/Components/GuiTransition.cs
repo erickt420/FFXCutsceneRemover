@@ -27,7 +27,19 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
                 
-                new Transition { EncounterMapID = 27, EncounterFormationID = 0, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00004501, EncounterTrigger = 2, Description = "Sinspawn Gui 1", ForceLoad = false }.Execute();
+                new Transition
+                {
+                    EncounterMapID = 27,
+                    EncounterFormationID = 0,
+                    ScriptedBattleFlag1 = 1,
+                    ScriptedBattleFlag2 = 1,
+                    ScriptedBattleVar1 = 0x00004501,
+                    ScriptedBattleVar3 = 0x00000000,
+                    ScriptedBattleVar4 = 0x00000000,
+                    EncounterTrigger = 2,
+                    Description = "Sinspawn Gui 1",
+                    ForceLoad = false
+                }.Execute();
 
                 // Reposition Party Members just off screen to run into battle
                 Transition actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, PartyTarget_x = 427.0f, PartyTarget_z = 3350.0f, PositionPartyOffScreen = true };
@@ -48,7 +60,22 @@ namespace FFXCutsceneRemover
 
                 GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
 
-                new Transition { RoomNumber = 247, Storyline = 865, EncounterMapID = 29, EncounterFormationID = 0, ScriptedBattleFlag1 = 0, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00014504, EncounterTrigger = 2, FormationSwitch = formations.PreGui2, Description = "Sinspawn Gui 2", ForceLoad = false }.Execute();
+                new Transition
+                {
+                    RoomNumber = 247,
+                    Storyline = 865,
+                    EncounterMapID = 29,
+                    EncounterFormationID = 0,
+                    ScriptedBattleFlag1 = 0,
+                    ScriptedBattleFlag2 = 1,
+                    ScriptedBattleVar1 = 0x00014504,
+                    ScriptedBattleVar3 = 0x00000129,
+                    ScriptedBattleVar4 = 0x00000014,
+                    EncounterTrigger = 2,
+                    FormationSwitch = formations.PreGui2,
+                    Description = "Sinspawn Gui 2",
+                    ForceLoad = false
+                }.Execute();
 
                 Stage += 1;
 

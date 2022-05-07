@@ -131,6 +131,8 @@
         public static string ScriptedBattleFlag1 = "ScriptedBattleFlag1";
         public static string ScriptedBattleFlag2 = "ScriptedBattleFlag2";
         public static string ScriptedBattleVar1 = "ScriptedBattleVar1";
+        public static string ScriptedBattleVar3 = "ScriptedBattleVar3";
+        public static string ScriptedBattleVar4 = "ScriptedBattleVar4";
         public static string EncounterTrigger = "EncounterTrigger";
 
         // Party Configuration

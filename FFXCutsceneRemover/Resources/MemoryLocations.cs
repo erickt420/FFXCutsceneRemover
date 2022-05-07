@@ -140,6 +140,8 @@
         public static MemoryLocationData ScriptedBattleFlag1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag1, 0xD2A9D4); // Setting to 0 triggers post battle rewards screen
         public static MemoryLocationData ScriptedBattleFlag2 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag2, 0xD2A9D5); // 0 = Screen crack effect, 1 = Boss transition effect
         public static MemoryLocationData ScriptedBattleVar1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleVar1, 0xF26B08); // Set to the right value to make the game recognise battle as scripted and not random
+        public static MemoryLocationData ScriptedBattleVar3 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleVar3, 0xF26B10); // Set at the start of a scripted battle
+        public static MemoryLocationData ScriptedBattleVar4 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleVar4, 0xF26B14); // Set at the start of a scripted battle
         public static MemoryLocationData EncounterTrigger = new MemoryLocationData(MemoryLocationNames.EncounterTrigger, 0xD2A8E2); // Set to 2 to trigger boss encounter
 
         // Party Configuration

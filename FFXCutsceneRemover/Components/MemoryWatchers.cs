@@ -148,6 +148,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> ScriptedBattleFlag1;
         public MemoryWatcher<byte> ScriptedBattleFlag2;
         public MemoryWatcher<int> ScriptedBattleVar1;
+        public MemoryWatcher<int> ScriptedBattleVar3;
+        public MemoryWatcher<int> ScriptedBattleVar4;
         public MemoryWatcher<byte> EncounterTrigger;
 
         // Party Configuration
@@ -443,6 +445,8 @@ namespace FFXCutsceneRemover
             ScriptedBattleFlag1 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag1);
             ScriptedBattleFlag2 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag2);
             ScriptedBattleVar1 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar1);
+            ScriptedBattleVar3 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar3);
+            ScriptedBattleVar4 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar4);
             EncounterTrigger = GetMemoryWatcher<byte>(MemoryLocations.EncounterTrigger);
 
             // Party Configuration
@@ -630,6 +634,8 @@ namespace FFXCutsceneRemover
                     ScriptedBattleFlag1,
                     ScriptedBattleFlag2,
                     ScriptedBattleVar1,
+                    ScriptedBattleVar3,
+                    ScriptedBattleVar4,
                     EncounterTrigger,
                     Sandragoras,
                     HpEnemyA,
