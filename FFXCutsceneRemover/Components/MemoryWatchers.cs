@@ -148,6 +148,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> ScriptedBattleFlag1;
         public MemoryWatcher<byte> ScriptedBattleFlag2;
         public MemoryWatcher<int> ScriptedBattleVar1;
+        public MemoryWatcher<int> ScriptedBattleVar3;
+        public MemoryWatcher<int> ScriptedBattleVar4;
         public MemoryWatcher<byte> EncounterTrigger;
 
         // Party Configuration
@@ -239,6 +241,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
+        public MemoryWatcher<byte> OmegaRuinsFlag;
 
         // Blitzball Abilities
         public MemoryWatcher<byte> AurochsTeamBytes;
@@ -443,6 +446,8 @@ namespace FFXCutsceneRemover
             ScriptedBattleFlag1 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag1);
             ScriptedBattleFlag2 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag2);
             ScriptedBattleVar1 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar1);
+            ScriptedBattleVar3 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar3);
+            ScriptedBattleVar4 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar4);
             EncounterTrigger = GetMemoryWatcher<byte>(MemoryLocations.EncounterTrigger);
 
             // Party Configuration
@@ -531,6 +536,7 @@ namespace FFXCutsceneRemover
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
+            OmegaRuinsFlag = GetMemoryWatcher<byte>(MemoryLocations.OmegaRuinsFlag);
 
             // Blitzball Abilities
             AurochsTeamBytes = GetMemoryWatcher<byte>(MemoryLocations.AurochsTeamBytes);
@@ -630,6 +636,8 @@ namespace FFXCutsceneRemover
                     ScriptedBattleFlag1,
                     ScriptedBattleFlag2,
                     ScriptedBattleVar1,
+                    ScriptedBattleVar3,
+                    ScriptedBattleVar4,
                     EncounterTrigger,
                     Sandragoras,
                     HpEnemyA,
@@ -762,6 +770,7 @@ namespace FFXCutsceneRemover
                     NatusFlag,
                     CalmLandsFlag,
                     GagazetCaveFlag,
+                    OmegaRuinsFlag,
                     AurochsTeamBytes,
                     BlitzballBytes,
                     GilBattleRewards,

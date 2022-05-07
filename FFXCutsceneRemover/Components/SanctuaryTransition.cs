@@ -22,7 +22,19 @@ namespace FFXCutsceneRemover
                 {
                     process.Suspend();
 
-                    new Transition { EncounterMapID = 68, EncounterFormationID = 0, ScriptedBattleFlag1 = 0, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00010504, EncounterTrigger = 2, Description = "Sanctuary Keeper", ForceLoad = false }.Execute();
+                    new Transition
+                    {
+                        EncounterMapID = 68,
+                        EncounterFormationID = 0,
+                        ScriptedBattleFlag1 = 0,
+                        ScriptedBattleFlag2 = 1,
+                        ScriptedBattleVar1 = 0x00010504,
+                        ScriptedBattleVar3 = 0x0000013C,
+                        ScriptedBattleVar4 = 0x00000014,
+                        EncounterTrigger = 2,
+                        Description = "Sanctuary Keeper",
+                        ForceLoad = false
+                    }.Execute();
 
                     Stage += 1;
 

@@ -40,6 +40,7 @@ namespace FFXCutsceneRemover
                 {
                     Formation = new byte[] { 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                     ConsoleOutput = false;
+                    FullHeal = true;
                     base.Execute();
 
                     WriteValue<int>(base.memoryWatchers.IsaaruTransition, BaseCutsceneValue2 + 0x2F8);

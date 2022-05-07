@@ -379,8 +379,8 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.4903412f, Target_y = 12.11019516f, Target_z = 290.9462891f, Target_rot = 1.592885971f, Target_var1 = 1302, Description = "Airship Bridge Cutscene"} },
             { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
             { new GameState { RoomNumber = 277, Storyline = 2040 }, new EvraeTransition {ForceLoad = false, Description = "Pre Evrae", Suspendable = false, Repeatable = true} },
-            { new GameState { RoomNumber = 194, Storyline = 2050 }, EvraeAirshipTransition },
-            { new GameState { RoomNumber = 194, Storyline = 2055 }, EvraeAirshipTransition },
+            //{ new GameState { RoomNumber = 194, Storyline = 2050 }, EvraeAirshipTransition },
+            //{ new GameState { RoomNumber = 194, Storyline = 2055 }, EvraeAirshipTransition },
 
 		    // END OF HOME
 		    // START OF BEVELLE
@@ -423,7 +423,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 315, Storyline = 2850}, new Transition { RoomNumber = 194, Storyline = 2900, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -264.3361816f, Target_y = 12.16300488f, Target_z = 365.0055237f, Target_rot = -0.663225174f, Target_var1 = 1230, Description = "End of Zanarkand"} },
 		    // END OF ZANARKAND
 		    // START OF SIN
-		    { new GameState { RoomNumber = 211, Storyline = 2900, XCoordinate = -9.918679f}, new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, PositionTidusAfterLoad = true, Target_x = -30.52597618f, Target_y = 0.0f, Target_z = 39.00003433f, Target_rot = -0.8664481044f, Target_var1 = 82, Description = "Yuna/Kimahri talk about defeating Sin"} },
+		    { new GameState { RoomNumber = 211, Storyline = 2900, XCoordinate = -9.918679f}, new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, OmegaRuinsFlag = 0x01, PositionTidusAfterLoad = true, Target_x = -30.52597618f, Target_y = 0.0f, Target_z = 39.00003433f, Target_rot = -0.8664481044f, Target_var1 = 82, Description = "Yuna/Kimahri talk about defeating Sin"} },
             { new GameState { RoomNumber = 208, Storyline = 2920, CutsceneAlt = 91}, new Transition { RoomNumber = 227, Storyline = 2945, SpawnPoint = 0, Description = "Shelinda + Mika"} },
             { new GameState { RoomNumber = 227, Storyline = 2945}, new BahamutFaythTransition2 { ForceLoad=false, Description = "Bahamut Fayth", Suspendable = false, Repeatable = true } },
             //{ new GameState { RoomNumber = 208, Storyline = 2920, CutsceneAlt = 91}, new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AirshipDestinations = 2560, PositionTidusAfterLoad = true, Target_x = -242.8587952f, Target_y = 12.12630653f, Target_z = 160.4484863f, Target_rot = 1.556545019f, Target_var1 = 1390, Description = "Return from Highbridge"} },

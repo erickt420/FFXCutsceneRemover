@@ -79,6 +79,8 @@ namespace FFXCutsceneRemover
         public byte? ScriptedBattleFlag1 = null;
         public byte? ScriptedBattleFlag2 = null;
         public int? ScriptedBattleVar1 = null;
+        public int? ScriptedBattleVar3 = null;
+        public int? ScriptedBattleVar4 = null;
         public byte? EncounterTrigger = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
@@ -209,6 +211,7 @@ namespace FFXCutsceneRemover
         public byte? NatusFlag = null;
         public short? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
+        public byte? OmegaRuinsFlag = null;
 
         public byte[] AurochsTeamBytes = null;
         public byte[] BlitzballBytes = null;
@@ -293,6 +296,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
             WriteValue(memoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
             WriteValue(memoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
+            WriteValue(memoryWatchers.ScriptedBattleVar3, ScriptedBattleVar3);
+            WriteValue(memoryWatchers.ScriptedBattleVar4, ScriptedBattleVar4);
             WriteValue(memoryWatchers.EncounterTrigger, EncounterTrigger);
             WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
             WriteValue(memoryWatchers.GuadoCount, GuadoCount);
@@ -409,6 +414,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.NatusFlag, NatusFlag);
             WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
+            WriteValue(memoryWatchers.OmegaRuinsFlag, OmegaRuinsFlag);
 
             WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
             WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
@@ -597,23 +603,28 @@ namespace FFXCutsceneRemover
 
         private void FullPartyHeal()
         {
-            WriteValue<int>(memoryWatchers.TidusHP, memoryWatchers.TidusMaxHP.Current);
-            WriteValue<int>(memoryWatchers.YunaHP, memoryWatchers.YunaMaxHP.Current);
-            WriteValue<int>(memoryWatchers.AuronHP, memoryWatchers.AuronMaxHP.Current);
-            WriteValue<int>(memoryWatchers.KimahriHP, memoryWatchers.KimahriMaxHP.Current);
-            WriteValue<int>(memoryWatchers.WakkaHP, memoryWatchers.WakkaMaxHP.Current);
-            WriteValue<int>(memoryWatchers.LuluHP, memoryWatchers.LuluMaxHP.Current);
-            WriteValue<int>(memoryWatchers.RikkuHP, memoryWatchers.RikkuMaxHP.Current);
-            WriteValue<int>(memoryWatchers.ValeforHP, memoryWatchers.ValeforMaxHP.Current);
-            
-            WriteValue<short>(memoryWatchers.TidusMP, memoryWatchers.TidusMaxMP.Current);
-            WriteValue<short>(memoryWatchers.YunaMP, memoryWatchers.YunaMaxMP.Current);
-            WriteValue<short>(memoryWatchers.AuronMP, memoryWatchers.AuronMaxMP.Current);
-            WriteValue<short>(memoryWatchers.WakkaMP, memoryWatchers.WakkaMaxMP.Current);
-            WriteValue<short>(memoryWatchers.KimahriMP, memoryWatchers.KimahriMaxMP.Current);
-            WriteValue<short>(memoryWatchers.LuluMP, memoryWatchers.LuluMaxMP.Current);
-            WriteValue<short>(memoryWatchers.RikkuMP, memoryWatchers.RikkuMaxMP.Current);
-            WriteValue<short>(memoryWatchers.ValeforMP, memoryWatchers.ValeforMaxMP.Current);
+            Process process = memoryWatchers.Process;
+
+            int baseAddress = memoryWatchers.GetBaseAddress();
+
+            for (int i = 0; i < 18; i++)
+            {
+                MemoryWatcher<int> CharacterHP_Current = new MemoryWatcher<int>(new IntPtr(baseAddress + 0xD32078 + 0x94 * i));
+                MemoryWatcher<int> CharacterHP_Max = new MemoryWatcher<int>(new IntPtr(baseAddress + 0xD32080 + 0x94 * i));
+                MemoryWatcher<int> CharacterMP_Current = new MemoryWatcher<int>(new IntPtr(baseAddress + 0xD3207C + 0x94 * i));
+                MemoryWatcher<int> CharacterMP_Max = new MemoryWatcher<int>(new IntPtr(baseAddress + 0xD32084 + 0x94 * i));
+                MemoryWatcher<byte> BattlesUntilReady = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD32099 + 0x94 * i)); // Reset battles until ready counter for aeons
+
+                CharacterHP_Current.Update(process);
+                CharacterHP_Max.Update(process);
+                CharacterMP_Current.Update(process);
+                CharacterMP_Max.Update(process);
+                BattlesUntilReady.Update(process);
+
+                WriteValue<int>(CharacterHP_Current, CharacterHP_Max.Current);
+                WriteValue<int>(CharacterMP_Current, CharacterMP_Max.Current);
+                WriteValue<byte>(BattlesUntilReady, 0);
+            }
         }
 
         private void CleanMenuValues()

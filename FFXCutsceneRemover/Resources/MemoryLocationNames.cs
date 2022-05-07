@@ -131,6 +131,8 @@
         public static string ScriptedBattleFlag1 = "ScriptedBattleFlag1";
         public static string ScriptedBattleFlag2 = "ScriptedBattleFlag2";
         public static string ScriptedBattleVar1 = "ScriptedBattleVar1";
+        public static string ScriptedBattleVar3 = "ScriptedBattleVar3";
+        public static string ScriptedBattleVar4 = "ScriptedBattleVar4";
         public static string EncounterTrigger = "EncounterTrigger";
 
         // Party Configuration
@@ -184,6 +186,7 @@
         public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
+        public static string OmegaRuinsFlag = "OmegaRuinsFlag";
 
         // Blitzball
         public static string AurochsTeamBytes = "AurochsTeamBytes";
