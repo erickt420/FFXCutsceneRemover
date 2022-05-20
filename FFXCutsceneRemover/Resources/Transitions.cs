@@ -379,8 +379,6 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 194, Storyline = 1990 }, new Transition { Storyline = 2000, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.4903412f, Target_y = 12.11019516f, Target_z = 290.9462891f, Target_rot = 1.592885971f, Target_var1 = 1302, Description = "Airship Bridge Cutscene"} },
             { new GameState { RoomNumber = 351, Storyline = 2020 }, new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
             { new GameState { RoomNumber = 277, Storyline = 2040 }, new EvraeTransition {ForceLoad = false, Description = "Pre Evrae", Suspendable = false, Repeatable = true} },
-            //{ new GameState { RoomNumber = 194, Storyline = 2050 }, EvraeAirshipTransition },
-            //{ new GameState { RoomNumber = 194, Storyline = 2055 }, EvraeAirshipTransition },
 
 		    // END OF HOME
 		    // START OF BEVELLE
@@ -416,8 +414,7 @@ namespace FFXCutsceneRemover.Resources
 		    // START OF ZANARKAND
 		    { new GameState { RoomNumber = 132, Storyline = 2680, State = 0}, new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 48.32572556f, Target_y = -2.791494608f, Target_z = 40.53089905f, Target_rot = -2.217551947f, Target_var1 = 364, Description = "Zanarkand Campfire"} },
             { new GameState { RoomNumber = 320, Storyline = 2767}, new Transition { SpawnPoint = 0, Description = "Zanarkand Trials Begin"} },
-            { new GameState { RoomNumber = 317, Storyline = 2775}, new SpectralKeeperTransition {ForceLoad = false, Description = "Pre Spectral Keeper", Suspendable = false, Repeatable = true} }, //This skip is very unstable and is seemingly impossible to implement without crashes. Commented out for now.
-            //{ new GameState { RoomNumber = 320, Storyline = 2780, BattleState = 522}, new SpectralKeeperTransition2 {ForceLoad = false, Description = "Post Spectral Keeper", Suspendable = false, Repeatable = true} },
+            { new GameState { RoomNumber = 317, Storyline = 2775}, new SpectralKeeperTransition {ForceLoad = false, Description = "Pre Spectral Keeper", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 318, Storyline = 2790}, new Transition { Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
             { new GameState { RoomNumber = 270, Storyline = 2815}, new YunalescaTransition {ForceLoad = false, Description = "Pre-Yunalesca", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 315, Storyline = 2850}, new Transition { RoomNumber = 194, Storyline = 2900, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -264.3361816f, Target_y = 12.16300488f, Target_z = 365.0055237f, Target_rot = -0.663225174f, Target_var1 = 1230, Description = "End of Zanarkand"} },
@@ -430,9 +427,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 255, Storyline = 2990}, new Transition { RoomNumber = 255, Storyline = 3010, SpawnPoint = 0, AirshipDestinations = (short?)(MemoryWatchers.AirshipDestinations.Current - 512), Description = "Sin destination cutscene"} }, //Bug (Minor): Wrong area/spawn
 		    { new GameState { RoomNumber = 277, Storyline = 3010}, new Transition { RoomNumber = 199, Storyline = 3085, Description = "Left Fin" } },
             { new GameState { RoomNumber = 199, Storyline = 3085}, new FinLeftTransition {ForceLoad=false, Description = "Left fin Pre-Boss", Suspendable = false, Repeatable = true} },
-            //{ new GameState { RoomNumber = 255, Storyline = 3085}, new FinLeftAirshipTransition {ForceLoad=false, Description = "Left Fin Dead", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 200, Storyline = 3085}, new FinRightTransition {ForceLoad=false, Description = "Right Fin Pre-Boss", Suspendable = false, Repeatable = true} },
-            //{ new GameState { RoomNumber = 255, Storyline = 3095}, new FinRightAirshipTransition {ForceLoad=false, Description = "Right Fin Dead", Suspendable = false, Repeatable = true} },
             //{ new GameState { RoomNumber = 200, Storyline = 3100}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Star Players First!" } },
             { new GameState { RoomNumber = 201, Storyline = 3105}, new SinCoreTransition {ForceLoad = false, Description = "Sin Core", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 202, Storyline = 3125, XCoordinate = 18.58586121f, State = 0}, new Transition { RoomNumber = 374, Storyline = 3135, SpawnPoint = 0, Description = "Yuna monologue"} },

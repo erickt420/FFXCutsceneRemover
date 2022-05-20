@@ -27,22 +27,6 @@ namespace FFXCutsceneRemover
 
                 process.Resume();
             }
-            /*
-            else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 1)
-            {
-                Stage += 1;
-            }
-            else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 2)
-            {
-                process.Suspend();
-
-                new Transition { RoomNumber = 367, Storyline = 20, Description = "Post Tanker" }.Execute();
-
-                Stage += 1;
-
-                process.Resume();
-            }
-            */
         }
     }
 }

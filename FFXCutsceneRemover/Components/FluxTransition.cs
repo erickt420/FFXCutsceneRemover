@@ -27,7 +27,7 @@ namespace FFXCutsceneRemover
                 WriteValue<int>(base.memoryWatchers.FluxTransition, BaseCutsceneValue + 0x6BC7);
                 Stage += 1;
             }
-            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
+            else if (base.memoryWatchers.BattleState2.Current == 1 && Stage == 2)
             {
                 WriteValue<int>(base.memoryWatchers.FluxTransition, BaseCutsceneValue + 0x6E23);
                 Stage += 1;

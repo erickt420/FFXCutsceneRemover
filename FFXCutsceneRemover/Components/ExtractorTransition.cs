@@ -34,7 +34,7 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }//*/
-                else if (base.memoryWatchers.ExtractorTransition.Current == (BaseCutsceneValue + 0x1E3) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 1)
+                else if (base.memoryWatchers.ExtractorTransition.Current == (BaseCutsceneValue + 0x1E3) && base.memoryWatchers.BattleState2.Current == 1 && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x28B);// 28E
                     Stage += 1;
