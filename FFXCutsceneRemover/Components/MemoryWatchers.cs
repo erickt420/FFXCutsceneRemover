@@ -240,6 +240,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> ViaPurificoPlatform;
         public MemoryWatcher<byte> NatusFlag;
         public MemoryWatcher<short> CalmLandsFlag;
+        public MemoryWatcher<byte> WantzFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
         public MemoryWatcher<byte> OmegaRuinsFlag;
 
@@ -535,6 +536,7 @@ namespace FFXCutsceneRemover
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
             CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
+            WantzFlag = GetMemoryWatcher<byte>(MemoryLocations.WantzFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
             OmegaRuinsFlag = GetMemoryWatcher<byte>(MemoryLocations.OmegaRuinsFlag);
 
@@ -769,6 +771,7 @@ namespace FFXCutsceneRemover
                     ViaPurificoPlatform,
                     NatusFlag,
                     CalmLandsFlag,
+                    WantzFlag,
                     GagazetCaveFlag,
                     OmegaRuinsFlag,
                     AurochsTeamBytes,

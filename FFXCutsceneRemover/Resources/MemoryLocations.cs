@@ -238,6 +238,7 @@
         public static MemoryLocationData ViaPurificoPlatform = new MemoryLocationData(MemoryLocationNames.ViaPurificoPlatform, 0xD2CC89);
         public static MemoryLocationData NatusFlag = new MemoryLocationData(MemoryLocationNames.NatusFlag, 0xD2CC7C);
         public static MemoryLocationData CalmLandsFlag = new MemoryLocationData(MemoryLocationNames.CalmLandsFlag, 0xD2CD09);
+        public static MemoryLocationData WantzFlag = new MemoryLocationData(MemoryLocationNames.WantzFlag, 0xD2CF06);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
         public static MemoryLocationData OmegaRuinsFlag = new MemoryLocationData(MemoryLocationNames.OmegaRuinsFlag, 0xD2CE4E);
 

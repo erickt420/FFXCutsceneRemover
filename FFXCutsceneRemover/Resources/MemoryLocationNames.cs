@@ -185,6 +185,7 @@
         public static string ViaPurificoPlatform = "ViaPurificoPlatform";
         public static string NatusFlag = "NatusFlag";
         public static string CalmLandsFlag = "CalmLandsFlag";
+        public static string WantzFlag = "WantzFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
         public static string OmegaRuinsFlag = "OmegaRuinsFlag";
 
