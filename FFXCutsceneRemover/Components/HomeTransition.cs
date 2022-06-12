@@ -22,7 +22,7 @@ namespace FFXCutsceneRemover
                 WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x61CE);
                 Stage += 1;
             }
-            else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2)
+            else if (base.memoryWatchers.BattleState2.Current == 1 && Stage == 2)
             {
                 WriteValue<int>(base.memoryWatchers.Camera, 0);
                 Stage += 1;

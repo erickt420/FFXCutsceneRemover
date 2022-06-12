@@ -40,7 +40,7 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.SinFinTransition.Current == (BaseCutsceneValue + 0xCFD) && base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2) //200 = Sinscale HP
+                else if (base.memoryWatchers.SinFinTransition.Current == (BaseCutsceneValue + 0xCFD) && base.memoryWatchers.BattleState2.Current == 1 && Stage == 2) //200 = Sinscale HP
                 {
                     process.Suspend();
 

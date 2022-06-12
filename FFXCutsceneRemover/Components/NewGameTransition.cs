@@ -11,7 +11,7 @@ namespace FFXCutsceneRemover
         // Version Number, 0x30 - 0x39 = 0 - 9, 0x48 = decimal point
         private const byte majorID = 0x31;
         private const byte minorID = 0x32;
-        private const byte patchID = 0x31;
+        private const byte patchID = 0x32;
 
         private byte[][] NewGameText = new byte[][]
         {

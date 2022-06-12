@@ -294,6 +294,10 @@
         public static MemoryLocationData MenuValue6 = new MemoryLocationData(MemoryLocationNames.MenuValue6, 0x8DED2C, 0x704);
         public static MemoryLocationData MenuValue7 = new MemoryLocationData(MemoryLocationNames.MenuValue7, 0x8CB9D8, 0x10D2E);
 
+        // Booster Values
+        public static MemoryLocationData SpeedBoostAmount = new MemoryLocationData(MemoryLocationNames.SpeedBoostAmount, 0x8E82A4);
+        public static MemoryLocationData SpeedBoostVar1 = new MemoryLocationData(MemoryLocationNames.SpeedBoostVar1, 0x85A068);
+
         // Actor Model Positions
         public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);
 
