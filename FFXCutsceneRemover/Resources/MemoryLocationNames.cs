@@ -236,6 +236,9 @@
         public static string MenuValue6 = "MenuValue6";
         public static string MenuValue7 = "MenuValue7";
 
+        public static string SpeedBoostAmount = "SpeedBoostAmount";
+        public static string SpeedBoostVar1 = "SpeedBoostVar1";
+
         public static string ActorArrayLength = "ActorArrayLength";
 
     }

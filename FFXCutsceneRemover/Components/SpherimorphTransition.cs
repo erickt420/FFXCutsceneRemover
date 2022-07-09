@@ -28,7 +28,7 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.PlayerTurn.Current == 1 && Stage == 2) // 1200 is HP of Guado
+                else if (base.memoryWatchers.BattleState2.Current == 1 && Stage == 2)
                 {
                     WriteValue<int>(base.memoryWatchers.SpherimorphTransition, BaseCutsceneValue + 0x36CC);// 1E34
                     Stage += 1;
