@@ -10,7 +10,7 @@ namespace FFXCutsceneRemover
 
         static void Main(string[] args)
         {
-            DiagnosticLog.Information("Program starting...");
+            DiagnosticLog.Information("FFX Cutscene Remover Version " + NewGameTransition.GetVersion());
 
             switch(args.Length)
             {

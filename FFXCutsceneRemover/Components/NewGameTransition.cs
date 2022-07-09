@@ -1,5 +1,6 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
 using System;
+using System.Text;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace FFXCutsceneRemover
         private const byte majorID = 0x31;
         private const byte minorID = 0x32;
         private const byte patchID = 0x32;
+
+        public static string GetVersion()
+        {
+            return Encoding.UTF8.GetString(new byte[] { majorID, 0x2E, minorID, 0x2E, patchID });
+        }
 
         private byte[][] NewGameText = new byte[][]
         {
