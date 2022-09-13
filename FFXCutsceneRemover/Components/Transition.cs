@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 using FFXCutsceneRemover.Logging;
+using System.ComponentModel;
 
 namespace FFXCutsceneRemover
 {
@@ -20,7 +21,9 @@ namespace FFXCutsceneRemover
         public bool ForceLoad = true;
         public bool FullHeal = false;
         public bool MenuCleanup = false;
-        public bool AddItems = false;
+        public bool AddRewardItems = false;
+        public bool AddSinLocation = false;
+        public bool RemoveSinLocation = false;
         public bool PositionPartyOffScreen = false;
         public bool PositionTidusAfterLoad = false;
         public string Description = null;
@@ -29,6 +32,7 @@ namespace FFXCutsceneRemover
         public bool Repeatable = false;
         public bool Suspendable = true;
         public int Stage = 0;
+        public (byte itemref, byte itemqty)[] AddItemsToInventory = null;
 
         public int? ActorArrayLength = null;
         public short[] TargetActorIDs = null;
@@ -70,6 +74,7 @@ namespace FFXCutsceneRemover
         public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
+        public short? AirshipDestinationChange = null;
         public short? AuronOverdrives = null;
         public int? TargetFramerate = null;
         public byte? PartyMembers = null;
@@ -470,10 +475,27 @@ namespace FFXCutsceneRemover
                 ClearAllBattleRewards();
             }
 
+            if (AddSinLocation)
+            {
+                AddSin();
+            }
+
+            if (RemoveSinLocation)
+            {
+                RemoveSin();
+            }
+
             if (PositionPartyOffScreen)
             {
                 PartyOffScreen();
             }
+
+            if (!(AddItemsToInventory is null))
+            {
+                DiagnosticLog.Information(AddItemsToInventory[0].itemref.ToString());
+                DiagnosticLog.Information(AddItemsToInventory[0].itemqty.ToString());
+                AddItems(AddItemsToInventory);
+            }    
 
             UpdateFormation(Formation);
 
@@ -655,7 +677,7 @@ namespace FFXCutsceneRemover
             // Clear Gil
             WriteValue<int>(memoryWatchers.GilBattleRewards, 0);
 
-            if (AddItems)
+            if (AddRewardItems)
             {
                 byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
                 byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
@@ -734,6 +756,59 @@ namespace FFXCutsceneRemover
 
             // Clear AP Flags
             WriteBytes(memoryWatchers.CharacterAPFlags, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        }
+
+        private void AddItems((byte itemref, byte itemqty)[] AddItemsToInventory)
+        {
+            byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
+            byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
+
+            bool alreadyExists;
+
+            for (int i = 0; i < AddItemsToInventory.Length; i++)
+            {
+                alreadyExists = false;
+
+                for (int j = 0; j < 112; j++)
+                {
+                    if (items[2 * j] == AddItemsToInventory[i].itemref)
+                    {
+                        alreadyExists = true;
+                        itemsQty[j] += AddItemsToInventory[i].itemqty;
+
+                        break;
+                    }
+                }
+
+                if (alreadyExists == false)
+                {
+                    for (int j = 0; j < 112; j++)
+                    {
+                        if (items[2 * j] == 0xFF && itemsQty[j] == 0)
+                        {
+                            DiagnosticLog.Information($"Adding Item: {AddItemsToInventory[i].itemref}");
+                            items[2 * j] = AddItemsToInventory[i].itemref;
+                            items[2 * j + 1] = 0x20;
+                            itemsQty[j] = AddItemsToInventory[i].itemqty;
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+            WriteBytes(memoryWatchers.ItemsStart, items);
+            WriteBytes(memoryWatchers.ItemsQtyStart, itemsQty);
+        }
+
+        private void AddSin()
+        {
+            WriteValue<short>(memoryWatchers.AirshipDestinations, (short)(memoryWatchers.AirshipDestinations.Current + 512));
+        }
+
+        private void RemoveSin()
+        {
+            WriteValue<short>(memoryWatchers.AirshipDestinations, (short)(memoryWatchers.AirshipDestinations.Current - 512));
         }
 
         private void PartyOffScreen()
@@ -833,6 +908,7 @@ namespace FFXCutsceneRemover
 
         public enum formations
         {
+            Klikk2,
             PreKimahri,
             PostKimahri,
             BoardingSSLiki,
@@ -877,6 +953,9 @@ namespace FFXCutsceneRemover
             {
                 switch (FormationSwitch)
                 {
+                    case formations.Klikk2:
+                        formation = new byte[] { 0x00, 0x06, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+                        break;
                     case formations.PreKimahri:
                         formation = new byte[] { 0x00, 0xFF, 0xFF, 0x01, 0x04, 0x05, 0xFF, 0xFF, 0xFF, 0xFF };
                         break;
