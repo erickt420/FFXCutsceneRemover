@@ -110,7 +110,7 @@ namespace FFXCutsceneRemover
                         InBossFight = false;
                     }
                     else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
-                    {;
+                    {
                         ExecuteTransition(PostBossFightTransition, "Executing Post Boss Fight Transition - No Description");
                         InBossFight = false;
                         PostBossFightTransition = null;
@@ -208,7 +208,7 @@ namespace FFXCutsceneRemover
         {
             bool suspended = false;
 
-            if (transition != PreviouslyExecutedTransition)
+            if (transition != PreviouslyExecutedTransition || transition.Repeatable)
             {
                 if (transition.Suspendable)
                 {
@@ -218,10 +218,7 @@ namespace FFXCutsceneRemover
 
                 transition.Execute(defaultDescription);
 
-                if (!transition.Repeatable)
-                {
-                    PreviouslyExecutedTransition = transition;
-                }
+                PreviouslyExecutedTransition = transition;
 
                 if (suspended)
                 {

@@ -51,7 +51,6 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.HpEnemyA.Current == 12000 && Stage == 2)
             {
-                DiagnosticLog.Information("Test");
                 Stage += 1;
             }
             else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 3)
