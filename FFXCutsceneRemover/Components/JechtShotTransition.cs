@@ -20,7 +20,7 @@ namespace FFXCutsceneRemover
                     BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
                     Stage += 1;
 
-                }//*/
+                }
                 else if (base.memoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xF3A7) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.JechtShotTransition, BaseCutsceneValue + 0xF9E4);

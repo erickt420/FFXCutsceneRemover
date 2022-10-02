@@ -18,8 +18,6 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                //base.Execute();
-
                 new Transition
                 {
                     EncounterMapID = 86,

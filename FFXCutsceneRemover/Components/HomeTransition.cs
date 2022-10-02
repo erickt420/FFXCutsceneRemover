@@ -29,7 +29,6 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x63AA) && Stage == 3)
             {
-                //WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x654B);
                 WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
 
                 new Transition

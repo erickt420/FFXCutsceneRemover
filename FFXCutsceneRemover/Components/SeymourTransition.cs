@@ -19,14 +19,6 @@ namespace FFXCutsceneRemover
 
                 base.Execute();
 
-                //new Transition { EnableYuna = 0x11, EnableShiva = 0x11, ForceLoad = false }.Execute();
-
-                //MemoryWatcher<byte> shivaEnabled1 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3211C));
-                //WriteValue<byte>(shivaEnabled1, 0x11);
-
-                //MemoryWatcher<byte> shivaEnabled2 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD326E4));
-                //WriteValue<byte>(shivaEnabled2, 0x11);
-
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
 
                 Stage += 1;
@@ -74,25 +66,6 @@ namespace FFXCutsceneRemover
 
                 process.Resume();
             }
-            //else if (base.memoryWatchers.SeymourTransition2.Current == (BaseCutsceneValue + 0x77D6) && Stage == 2)
-            //{
-            //    process.Suspend();
-            //    WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue + 0x7F85);
-
-            //    Stage += 1;
-
-            //    process.Resume();
-            //}
-            //else if (base.memoryWatchers.Menu.Current == 1 && base.memoryWatchers.CutsceneAlt.Current == 0 && Stage == 3)
-            //{
-            //    process.Suspend();
-
-            //    new Transition { Storyline = 1545, ConsoleOutput = false, PositionTidusAfterLoad = true, Target_x = 1.470157981f, Target_y = 0.0f, Target_z = 0.3889299929f, Target_rot = -0.1195230484f, Target_var1 = 53 }.Execute();
-
-            //    Stage += 1;
-
-            //    process.Resume();
-            //}
         }
     }
 }

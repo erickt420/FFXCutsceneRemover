@@ -24,18 +24,6 @@ namespace FFXCutsceneRemover
                     Stage = 1;
 
                 }
-                /*/
-                else if (base.memoryWatchers.SpectralKeeperTransition.Current >= (BaseCutsceneValue + 0xE4) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.SpectralKeeperTransition, BaseCutsceneValue + 0x197);
-                    Stage = 2;
-                }
-                else if (base.memoryWatchers.SpectralKeeperTransition.Current >= (BaseCutsceneValue + 0xE1) && Stage == 1) //Edge case when the first calue on CutsceneAlt 355 is missed due to timing
-                {
-                    WriteValue<int>(base.memoryWatchers.SpectralKeeperTransition, BaseCutsceneValue + 0x194);
-                    Stage = 2;
-                }
-                //*/
             }
         }
     }
