@@ -84,7 +84,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> UnderwaterRuinsTransition;
         public MemoryWatcher<int> UnderwaterRuinsTransition2;
         public MemoryWatcher<int> BeachTransition;
-        public MemoryWatcher<int> LagoonTransition;
+        public MemoryWatcher<int> LagoonTransition1;
+        public MemoryWatcher<int> LagoonTransition2;
         public MemoryWatcher<int> ValeforTransition;
         public MemoryWatcher<int> KimahriTransition;
         public MemoryWatcher<int> YunaBoatTransition;
@@ -92,6 +93,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> EchuillesTransition;
         public MemoryWatcher<int> GeneauxTransition;
         public MemoryWatcher<int> KilikaTrialsTransition;
+        public MemoryWatcher<int> KilikaAntechamberTransition;
         public MemoryWatcher<int> IfritTransition;
         public MemoryWatcher<int> IfritTransition2;
         public MemoryWatcher<int> JechtShotTransition;
@@ -106,6 +108,10 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> DjoseTransition;
         public MemoryWatcher<int> IxionTransition;
         public MemoryWatcher<int> ExtractorTransition;
+        public MemoryWatcher<int> SeymoursHouseTransition1;
+        public MemoryWatcher<int> SeymoursHouseTransition2;
+        public MemoryWatcher<int> FarplaneTransition1;
+        public MemoryWatcher<int> FarplaneTransition2;
         public MemoryWatcher<int> TromellTransition;
         public MemoryWatcher<int> CrawlerTransition;
         public MemoryWatcher<int> SeymourTransition;
@@ -285,6 +291,8 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> CharacterAPFlags;
 
         // Menu Values
+        public MemoryWatcher<int> MenuTriggerValue;
+
         public MemoryWatcher<int> MenuValue1;
         public MemoryWatcher<int> MenuValue2;
 
@@ -385,7 +393,8 @@ namespace FFXCutsceneRemover
             UnderwaterRuinsTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition);
             UnderwaterRuinsTransition2 = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition2);
             BeachTransition = GetMemoryWatcher<int>(MemoryLocations.BeachTransition);
-            LagoonTransition = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition);
+            LagoonTransition1 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition1);
+            LagoonTransition2 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition2);
             ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
             KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
             YunaBoatTransition = GetMemoryWatcher<int>(MemoryLocations.YunaBoatTransition);
@@ -393,6 +402,7 @@ namespace FFXCutsceneRemover
             EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
             GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
             KilikaTrialsTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaTrialsTransition);
+            KilikaAntechamberTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaAntechamberTransition);
             IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
             IfritTransition2 = GetMemoryWatcher<int>(MemoryLocations.IfritTransition2);
             JechtShotTransition = GetMemoryWatcher<int>(MemoryLocations.JechtShotTransition);
@@ -407,6 +417,10 @@ namespace FFXCutsceneRemover
             DjoseTransition = GetMemoryWatcher<int>(MemoryLocations.DjoseTransition);
             IxionTransition = GetMemoryWatcher<int>(MemoryLocations.IxionTransition);
             ExtractorTransition = GetMemoryWatcher<int>(MemoryLocations.ExtractorTransition);
+            SeymoursHouseTransition1 = GetMemoryWatcher<int>(MemoryLocations.SeymoursHouseTransition1);
+            SeymoursHouseTransition2 = GetMemoryWatcher<int>(MemoryLocations.SeymoursHouseTransition2);
+            FarplaneTransition1 = GetMemoryWatcher<int>(MemoryLocations.FarplaneTransition1);
+            FarplaneTransition2 = GetMemoryWatcher<int>(MemoryLocations.FarplaneTransition2);
             TromellTransition = GetMemoryWatcher<int>(MemoryLocations.TromellTransition);
             CrawlerTransition = GetMemoryWatcher<int>(MemoryLocations.CrawlerTransition);
             SeymourTransition = GetMemoryWatcher<int>(MemoryLocations.SeymourTransition);
@@ -584,6 +598,8 @@ namespace FFXCutsceneRemover
             CharacterAPFlags = GetMemoryWatcher<byte>(MemoryLocations.CharacterAPFlags);
 
             // Menu Values
+            MenuTriggerValue = GetMemoryWatcher<int>(MemoryLocations.MenuTriggerValue);
+
             MenuValue1 = GetMemoryWatcher<int>(MemoryLocations.MenuValue1);
             MenuValue2 = GetMemoryWatcher<int>(MemoryLocations.MenuValue2);
 
@@ -670,7 +686,8 @@ namespace FFXCutsceneRemover
                     UnderwaterRuinsTransition,
                     UnderwaterRuinsTransition2,
                     BeachTransition,
-                    LagoonTransition,
+                    LagoonTransition1,
+                    LagoonTransition2,
                     ValeforTransition,
                     KimahriTransition,
                     YunaBoatTransition,
@@ -678,6 +695,7 @@ namespace FFXCutsceneRemover
                     EchuillesTransition,
                     GeneauxTransition,
                     KilikaTrialsTransition,
+                    KilikaAntechamberTransition,
                     IfritTransition,
                     IfritTransition2,
                     JechtShotTransition,
@@ -692,6 +710,10 @@ namespace FFXCutsceneRemover
                     DjoseTransition,
                     IxionTransition,
                     ExtractorTransition,
+                    SeymoursHouseTransition1,
+                    SeymoursHouseTransition2,
+                    FarplaneTransition1,
+                    FarplaneTransition2,
                     TromellTransition,
                     CrawlerTransition,
                     SeymourTransition,
@@ -812,6 +834,7 @@ namespace FFXCutsceneRemover
                     ItemsStart,
                     ItemsQtyStart,
                     CharacterAPFlags,
+                    MenuTriggerValue,
                     MenuValue1,
                     MenuValue2,
                     MenuValue3,

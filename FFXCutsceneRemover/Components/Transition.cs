@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Reflection;
 using FFXCutsceneRemover.Logging;
 using System.ComponentModel;
+using System.Linq;
 
 namespace FFXCutsceneRemover
 {
@@ -108,7 +109,8 @@ namespace FFXCutsceneRemover
         public int? UnderwaterRuinsTransition = null;
         public int? UnderwaterRuinsTransition2 = null;
         public int? BeachTransition = null;
-        public int? LagoonTransition = null;
+        public int? LagoonTransition1 = null;
+        public int? LagoonTransition2 = null;
         public int? ValeforTransition = null;
         public int? KimahriTransition = null;
         public int? YunaBoatTransition = null;
@@ -116,6 +118,7 @@ namespace FFXCutsceneRemover
         public int? EchuillesTransition = null;
         public int? GeneauxTransition = null;
         public int? KilikaTrialsTransition = null;
+        public int? KilikaAntechamberTransition = null;
         public int? IfritTransition = null;
         public int? IfritTransition2 = null;
         public int? JechtShotTransition = null;
@@ -130,6 +133,10 @@ namespace FFXCutsceneRemover
         public int? DjoseTransition = null;
         public int? IxionTransition = null;
         public int? ExtractorTransition = null;
+        public int? SeymoursHouseTransition1 = null;
+        public int? SeymoursHouseTransition2 = null;
+        public int? FarplaneTransition1 = null;
+        public int? FarplaneTransition2 = null;
         public int? TromellTransition = null;
         public int? CrawlerTransition = null;
         public int? SeymourTransition = null;
@@ -257,6 +264,7 @@ namespace FFXCutsceneRemover
 
         public int? MenuValue1 = null;
         public int? MenuValue2 = null;
+        public int? MenuTriggerValue = null;
 
         public virtual void Execute(string defaultDescription = "")
         {
@@ -324,7 +332,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
             WriteValue(memoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
             WriteValue(memoryWatchers.BeachTransition, BeachTransition);
-            WriteValue(memoryWatchers.LagoonTransition, LagoonTransition);
+            WriteValue(memoryWatchers.LagoonTransition1, LagoonTransition1);
+            WriteValue(memoryWatchers.LagoonTransition2, LagoonTransition2);
             WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
             WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
             WriteValue(memoryWatchers.YunaBoatTransition, YunaBoatTransition);
@@ -332,6 +341,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
             WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
             WriteValue(memoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
+            WriteValue(memoryWatchers.KilikaAntechamberTransition, KilikaAntechamberTransition);
             WriteValue(memoryWatchers.IfritTransition, IfritTransition);
             WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
             WriteValue(memoryWatchers.JechtShotTransition, JechtShotTransition);
@@ -346,6 +356,10 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.DjoseTransition, DjoseTransition);
             WriteValue(memoryWatchers.IxionTransition, IxionTransition);
             WriteValue(memoryWatchers.ExtractorTransition, ExtractorTransition);
+            WriteValue(memoryWatchers.SeymoursHouseTransition1, SeymoursHouseTransition1);
+            WriteValue(memoryWatchers.SeymoursHouseTransition2, SeymoursHouseTransition2);
+            WriteValue(memoryWatchers.FarplaneTransition1, FarplaneTransition1);
+            WriteValue(memoryWatchers.FarplaneTransition2, FarplaneTransition2);
             WriteValue(memoryWatchers.TromellTransition, TromellTransition);
             WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
             WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
@@ -456,6 +470,7 @@ namespace FFXCutsceneRemover
 
             WriteValue(memoryWatchers.MenuValue1, MenuValue1);
             WriteValue(memoryWatchers.MenuValue2, MenuValue2);
+            WriteValue(memoryWatchers.MenuTriggerValue, MenuTriggerValue);
 
             if (ForceLoad)
             {
@@ -1153,9 +1168,12 @@ namespace FFXCutsceneRemover
 
         public byte[] AddCharacter(byte[] formation, byte Character)
         {
-            int Position = GetFirstEmptyReservePosition(formation);
+            if (Array.IndexOf(formation,0x01) == -1)
+            {
+                int Position = GetFirstEmptyReservePosition(formation);
 
-            formation[Position] = Character;
+                formation[Position] = Character;
+            }
             return formation;
         }
 
