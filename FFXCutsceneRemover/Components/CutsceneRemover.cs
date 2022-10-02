@@ -140,72 +140,25 @@ namespace FFXCutsceneRemover
                     }
 #endif
 
-                    // Custom Check #2 - Airship
+                    // Custom Check - Airship
                     if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
                     {
                         ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.6673126f, Target_y = 12.51491833f, Target_z = 398.0950317f, Target_rot = -1.659699082f, Target_var1 = 1463, Description = "Zoom in on Bevelle"});
                     }
 
-                    // Custom Check #3 - Djose
+                    // Custom Check - Djose
                     if (new GameState { RoomNumber = 161, Storyline = 1010, MovementLock = 48}.CheckState() && MemoryWatchers.YCoordinate.Current > 10.0f)
                     {
                         ExecuteTransition(new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"});
                     }
 
-                    // Custom Check #4 - Buff Brotherhood in Farplane and skip scenes
-                    //if (new GameState { RoomNumber = 193, Storyline = 1154 }.CheckState())
-                    //{
-                    //    Game.Suspend();
-                    //    IntPtr EquipMenu = new IntPtr(MemoryWatchers.GetBaseAddress() + 0xD30F2C); // Address of beginning of Equipment menu
-                    //    bool foundBrotherhood = false;
-                    //    var brotherhood = new byte[2] { 0x1, 0x50 }; // Brotherhood name identifier in hex
-
-                    //    while (!foundBrotherhood)
-                    //    {
-                    //        // Check first two bytes for name identifier and compare against Brotherhood
-                    //        var equipment = Game.ReadBytes(EquipMenu, 2);
-
-                    //        if (equipment.SequenceEqual<byte>(brotherhood))
-                    //        {
-                    //            // Not sure what this value is, but it does change during the scene, so adding just in case!
-                    //            IntPtr aNumber = IntPtr.Add(EquipMenu, 3);
-                    //            Game.WriteBytes(aNumber, new byte[1] { 0x9 });
-
-                    //            // Second slot for Brotherhood, +10% Strength
-                    //            IntPtr slot2 = IntPtr.Add(EquipMenu, 16);
-                    //            Game.WriteBytes(slot2, new byte[2] { 0x64, 0x80 });
-
-                    //            // Third slot for Brotherhood, Waterstrike
-                    //            IntPtr slot3 = IntPtr.Add(EquipMenu, 18);
-                    //            Game.WriteBytes(slot3, new byte[2] { 0x2A, 0x80 });
-
-                    //            // Fourth slot for Brotherhood, Sensor
-                    //            IntPtr slot4 = IntPtr.Add(EquipMenu, 20);
-                    //            Game.WriteBytes(slot4, new byte[2] { 0x00, 0x80 });
-
-                    //            // Finally skip the Farplane scenes
-                    //            new Transition { RoomNumber = 134, Storyline = 1170, TidusWeaponDamageBoost = 15, Description = "Farplane scenes + Brotherhood buff" }.Execute();
-                    //            foundBrotherhood = true;
-                    //            Game.Resume();
-                    //            break;
-                    //        }
-                    //        else
-                    //        {
-                    //            // Number of bytes for each piece of equipment is 22, so if not found, go to the next piece of equipment
-                    //            EquipMenu = IntPtr.Add(EquipMenu, 22);
-                    //        }
-                    //    }
-                    //}
-
-                    // Custom Check #6 - Zanarkand 
-
+                    // Custom Check - Zanarkand 
                     if (new GameState { RoomNumber = 368, Storyline = 3, FangirlsOrKidsSkip = 3 }.CheckState())
                     {
                         if (MemoryWatchers.TidusXCoordinate.Current < 5.0f && MemoryWatchers.TidusZCoordinate.Current < 8.0f && MemoryWatchers.TidusZCoordinate.Current > -8.0f)
                         {
                             ExecuteTransition(new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans" });
                         }
-
                     }
 
                     // Sleep for a bit so we don't destroy CPUs
