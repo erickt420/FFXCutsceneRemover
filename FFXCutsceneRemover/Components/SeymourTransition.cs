@@ -13,19 +13,19 @@ namespace FFXCutsceneRemover
         {
             Process process = memoryWatchers.Process;
 
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-
             if (base.memoryWatchers.MovementLock.Current == 0 && Stage == 0)
             {
                 process.Suspend();
 
                 base.Execute();
 
-                MemoryWatcher<byte> shivaEnabled1 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3211C));
-                WriteValue<byte>(shivaEnabled1, 0x11);
+                //new Transition { EnableYuna = 0x11, EnableShiva = 0x11, ForceLoad = false }.Execute();
 
-                MemoryWatcher<byte> shivaEnabled2 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD326E4));
-                WriteValue<byte>(shivaEnabled2, 0x11);
+                //MemoryWatcher<byte> shivaEnabled1 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3211C));
+                //WriteValue<byte>(shivaEnabled1, 0x11);
+
+                //MemoryWatcher<byte> shivaEnabled2 = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD326E4));
+                //WriteValue<byte>(shivaEnabled2, 0x11);
 
                 BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
 
@@ -37,10 +37,25 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
+                //WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
                 WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
 
                 formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 7);
+
+                new Transition
+                {
+                    EncounterMapID = 41,
+                    EncounterFormationID = 0,
+                    ScriptedBattleFlag1 = 0,
+                    ScriptedBattleFlag2 = 1,
+                    ScriptedBattleVar1 = 0x00000501,
+                    ScriptedBattleVar3 = 0x00000000,
+                    ScriptedBattleVar4 = 0x00000000,
+                    EncounterTrigger = 2,
+                    EnableShiva = 0x11,
+                    Description = "Seymour",
+                    ForceLoad = false
+                }.Execute();
 
                 Transition actorPositions;
                 //Position Party Member 1
@@ -59,25 +74,25 @@ namespace FFXCutsceneRemover
 
                 process.Resume();
             }
-            else if (base.memoryWatchers.SeymourTransition2.Current == (BaseCutsceneValue + 0x77D6) && Stage == 2)
-            {
-                process.Suspend();
-                WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue + 0x7F85);
+            //else if (base.memoryWatchers.SeymourTransition2.Current == (BaseCutsceneValue + 0x77D6) && Stage == 2)
+            //{
+            //    process.Suspend();
+            //    WriteValue<int>(base.memoryWatchers.SeymourTransition2, BaseCutsceneValue + 0x7F85);
 
-                Stage += 1;
+            //    Stage += 1;
 
-                process.Resume();
-            }
-            else if (base.memoryWatchers.Menu.Current == 1 && base.memoryWatchers.CutsceneAlt.Current == 0 && Stage == 3)
-            {
-                process.Suspend();
+            //    process.Resume();
+            //}
+            //else if (base.memoryWatchers.Menu.Current == 1 && base.memoryWatchers.CutsceneAlt.Current == 0 && Stage == 3)
+            //{
+            //    process.Suspend();
 
-                new Transition { Storyline = 1545, ConsoleOutput = false, PositionTidusAfterLoad = true, Target_x = 1.470157981f, Target_y = 0.0f, Target_z = 0.3889299929f, Target_rot = -0.1195230484f, Target_var1 = 53 }.Execute();
+            //    new Transition { Storyline = 1545, ConsoleOutput = false, PositionTidusAfterLoad = true, Target_x = 1.470157981f, Target_y = 0.0f, Target_z = 0.3889299929f, Target_rot = -0.1195230484f, Target_var1 = 53 }.Execute();
 
-                Stage += 1;
+            //    Stage += 1;
 
-                process.Resume();
-            }
+            //    process.Resume();
+            //}
         }
     }
 }

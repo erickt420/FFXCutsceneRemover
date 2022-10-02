@@ -29,8 +29,23 @@ namespace FFXCutsceneRemover
             }
             else if (base.memoryWatchers.HomeTransition.Current == (BaseCutsceneValue + 0x63AA) && Stage == 3)
             {
-                WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x654B);
+                //WriteValue<int>(base.memoryWatchers.HomeTransition, BaseCutsceneValue + 0x654B);
                 WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
+
+                new Transition
+                {
+                    EncounterMapID = 87,
+                    EncounterFormationID = 3,
+                    ScriptedBattleFlag1 = 0,
+                    ScriptedBattleFlag2 = 0,
+                    ScriptedBattleVar1 = 0x00000500,
+                    ScriptedBattleVar3 = 0x00000000,
+                    ScriptedBattleVar4 = 0x00000000,
+                    EncounterTrigger = 1,
+                    Description = "Home Chimeras",
+                    ForceLoad = false
+                }.Execute();
+
                 Stage += 1;
             }
 

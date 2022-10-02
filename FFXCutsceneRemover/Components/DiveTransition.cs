@@ -16,10 +16,10 @@ namespace FFXCutsceneRemover
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.DiveTransition.Current >= (BaseCutsceneValue + 0xA25E) && Stage == 1)
+            else if (base.memoryWatchers.DiveTransition.Current >= (BaseCutsceneValue + 0xA208) && Stage == 1)
             {
                 DiagnosticLog.Information("Test");
-                WriteValue<int>(base.memoryWatchers.DiveTransition, BaseCutsceneValue + 0xA4E8);
+                WriteValue<int>(base.memoryWatchers.DiveTransition, BaseCutsceneValue + 0xA493);
 
                 Stage += 1;
             }
