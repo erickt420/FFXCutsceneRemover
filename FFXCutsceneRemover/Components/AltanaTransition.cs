@@ -48,76 +48,7 @@ namespace FFXCutsceneRemover
                 else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x32C) && Stage == 2) // This is a filler stage which only serves to facilitate fight end logic
                 {
                     Stage += 1;
-                }/*/
-                else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x50E) && Stage == 3)
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x709);
-
-                    Stage += 1;
                 }
-                else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x72B) && Stage == 4)
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
-                    Transition actorPositions;
-                    //Position Party Member 1
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = 529.0f, Target_y = -30.0f, Target_z = -828.0f };
-                    actorPositions.Execute();
-
-                    //Position Party Member 2
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 569.0f, Target_y = -30.0f, Target_z = -828.0f };
-                    actorPositions.Execute();
-
-                    //Position Party Member 3
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 609.0f, Target_y = -30.0f, Target_z = -828.0f };
-                    actorPositions.Execute();
-
-                    //Position Evrae Altana
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4216 }, Target_x = 569.0f, Target_y = -30.0f, Target_z = -988.0f };
-                    actorPositions.Execute();
-
-                    //Position Lock Pin Left
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4267 }, Target_x = 528.7f, Target_y = -10.0f, Target_z = -790.7f };
-                    actorPositions.Execute();
-
-                    //Position Lock Pin Right
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 162 }, Target_x = 611.3f, Target_y = -10.0f, Target_z = -790.7f };
-                    actorPositions.Execute();
-
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x8EE) && Stage == 5) // 50E
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-                    WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x94A);// 96B
-
-                    WriteValue<int>(base.memoryWatchers.Camera, 0);
-                    Stage += 1;
-                }
-                else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0xA16) && Stage == 6)
-                {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
-
-                    Transition actorPositions;
-                    //Position Party Member 1
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = 378.582f, Target_y = -43.0f, Target_z = -234.134f };
-                    actorPositions.Execute();
-
-                    //Position Party Member 2
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 368.730f, Target_y = -70.0f, Target_z = -260.191f };
-                    actorPositions.Execute();
-
-                    //Position Party Member 3
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 338.239f, Target_y = -37.0f, Target_z = -328.214f };
-                    actorPositions.Execute();
-
-                    //Position Evrae Altana
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4216 }, Target_x = 613.0f, Target_y = -35.0f, Target_z = -281.0f };
-                    actorPositions.Execute();
-
-                    Stage += 1;
-                }//*/
                 else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 7)
                 {
                     WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0xA7D);// 

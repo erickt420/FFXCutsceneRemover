@@ -20,13 +20,7 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
 
-                }/*/ Skipping piranhas pre fight causes a lot of jankiness - Probably not worth it
-                else if (base.memoryWatchers.UnderwaterRuinsTransition.Current == (BaseCutsceneValue + 0x219) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.UnderwaterRuinsTransition, BaseCutsceneValue + 0x2B7);// 2B7
-                    Stage += 1;
-                }//*/
-                // To Do: Work out how to skip Tidus bashing the machine leading into Tros appearing
+                }
                 else if (base.memoryWatchers.UnderwaterRuinsTransition.Current == (BaseCutsceneValue + 0x584) && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.UnderwaterRuinsTransition, BaseCutsceneValue + 0x636);

@@ -17,23 +17,7 @@ namespace FFXCutsceneRemover
                     BaseCutsceneValue = base.memoryWatchers.ExtractorTransition.Current;
                     Stage += 1;
 
-                }/*/
-                else if (base.memoryWatchers.ExtractorTransition.Current >= (BaseCutsceneValue + 0x14E) && Stage == 1) // 
-                {
-                    Transition actorPositions;
-
-                    //Position Tidus
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = -20.0f, Target_y = -150.0f, Target_z = 70.0f , Target_swimming = true};
-                    actorPositions.Execute();
-
-                    //Position Wakka
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 5 }, Target_x = 7.560521126f, Target_y = -155.0f, Target_z = 75.40319061f };
-                    actorPositions.Execute();
-
-                    WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x166);// 0x198
-
-                    Stage += 1;
-                }//*/
+                }
                 else if (base.memoryWatchers.ExtractorTransition.Current == (BaseCutsceneValue + 0x1E3) && base.memoryWatchers.BattleState2.Current == 1 && Stage == 1)
                 {
                     WriteValue<int>(base.memoryWatchers.ExtractorTransition, BaseCutsceneValue + 0x28B);// 28E

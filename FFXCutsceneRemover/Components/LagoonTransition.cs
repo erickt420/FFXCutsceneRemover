@@ -23,12 +23,6 @@ namespace FFXCutsceneRemover
 
                     Stage += 1;
                 }
-                //else if (base.memoryWatchers.LagoonTransition1.Current == (BaseCutsceneValue + 0x2D76) && Stage == 2)
-                //{
-                //    WriteValue<int>(base.memoryWatchers.LagoonTransition1, BaseCutsceneValue + 0x2E44);
-
-                //    Stage += 1;
-                //}
             }
         }
     }
