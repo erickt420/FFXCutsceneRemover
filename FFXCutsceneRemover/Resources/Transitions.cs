@@ -306,7 +306,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 81, Storyline = 971 }, new Transition { Storyline = 985, SpawnPoint = 0, Description = "Meet Isaaru"} },
             { new GameState { RoomNumber = 214, Storyline = 990 }, new Transition { RoomNumber = 214, Storyline = 995, SpawnPoint = 0, Description = "Entering the Djose trials"} },
             { new GameState { RoomNumber = 90, Storyline = 998}, new Transition { MenuTriggerValue = 0x4008000A, EnableIxion = 0x11, ForceLoad = false, Description = "Naming Ixion"} },
-            { new GameState { RoomNumber = 90, Storyline = 998, Menu = 1, MenuValue1 = 0x4000}, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, Description = "Tidus wakes up"} },
+            { new GameState { RoomNumber = 90, Storyline = 998, Menu = 1, MenuValue1 = 0x4000}, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, FullHeal = true, Description = "Tidus wakes up"} },
             //{ new GameState { RoomNumber = 90, Storyline = 998}, new Transition { RoomNumber = 91, Storyline = 1003, SpawnPoint = 0, Description = "Djose - AnteChamber"} },
             //{ new GameState { RoomNumber = 90, Storyline = 998}, new DjoseTransition {ForceLoad = false, Description = "Djose - Antechamber", Suspendable = false, Repeatable = true } },
             //{ new GameState { RoomNumber = 91, Storyline = 1003}, new IxionTransition { Description = "Naming Ixion", Suspendable = false, Repeatable = true } },
