@@ -16,7 +16,7 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                new Transition { EncounterMapID = 52, EncounterFormationID = 0, ScriptedBattleFlag1 = 0, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00014503, EncounterTrigger = 2, Description = "Evrae", ForceLoad = false }.Execute();
+                new Transition { EncounterMapID = 52, EncounterFormationID2 = 0, ScriptedBattleFlag1 = 0, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00014503, EncounterTrigger = 2, Description = "Evrae", ForceLoad = false }.Execute();
 
                 Transition actorPositions;
                 //Position Tidus

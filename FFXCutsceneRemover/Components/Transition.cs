@@ -81,7 +81,8 @@ namespace FFXCutsceneRemover
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public short? EncounterMapID = null;
-        public byte? EncounterFormationID = null;
+        public byte? EncounterFormationID1 = null;
+        public byte? EncounterFormationID2 = null;
         public byte? ScriptedBattleFlag1 = null;
         public byte? ScriptedBattleFlag2 = null;
         public int? ScriptedBattleVar1 = null;
@@ -211,7 +212,7 @@ namespace FFXCutsceneRemover
         public byte? MoonflowFlag2 = null;
         public byte? RikkuOutfit = null;
         public byte? TidusWeaponDamageBoost = null;
-
+        public byte? GuadosalamShopFlag = null;
         public byte? ThunderPlainsFlag = null;
         public byte? MacalaniaFlag = null;
         public byte? BikanelFlag = null;
@@ -221,13 +222,14 @@ namespace FFXCutsceneRemover
 
         public byte? ViaPurificoPlatform = null;
         public byte? NatusFlag = null;
-        public short? CalmLandsFlag = null;
+        public ushort? CalmLandsFlag = null;
         public short? GagazetCaveFlag = null;
         public byte? WantzFlag = null;
         public byte? OmegaRuinsFlag = null;
 
         public byte[] AurochsTeamBytes = null;
         public byte[] BlitzballBytes = null;
+        public byte? AurochsPlayer1 = null;
 
         public int? GilBattleRewards = null;
         public byte? BattleRewardItemCount = null;
@@ -306,7 +308,8 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
             WriteValue(memoryWatchers.Sandragoras, Sandragoras);
             WriteValue(memoryWatchers.EncounterMapID, EncounterMapID);
-            WriteValue(memoryWatchers.EncounterFormationID, EncounterFormationID);
+            WriteValue(memoryWatchers.EncounterFormationID1, EncounterFormationID1);
+            WriteValue(memoryWatchers.EncounterFormationID2, EncounterFormationID2);
             WriteValue(memoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
             WriteValue(memoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
             WriteValue(memoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
@@ -426,6 +429,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
             WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
             WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
+            WriteValue(memoryWatchers.GuadosalamShopFlag, GuadosalamShopFlag);
             WriteValue(memoryWatchers.ThunderPlainsFlag, ThunderPlainsFlag);
             WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
             WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
@@ -439,6 +443,7 @@ namespace FFXCutsceneRemover
 
             WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
             WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
+            WriteValue(memoryWatchers.AurochsPlayer1, AurochsPlayer1);
 
             WriteValue(memoryWatchers.GilBattleRewards, GilBattleRewards);
             WriteValue(memoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
@@ -541,6 +546,11 @@ namespace FFXCutsceneRemover
                 WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
                 process.Resume();
+                while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 30)
+                {
+                    memoryWatchers.FrameCounterFromLoad.Update(process);
+                }
+                SetActorPosition(TargetActorID: 1, Target_var1: -1);
             }
             else
             {

@@ -34,7 +34,7 @@ namespace FFXCutsceneRemover
                 new Transition
                 {
                     EncounterMapID = 87,
-                    EncounterFormationID = 3,
+                    EncounterFormationID2 = 3,
                     ScriptedBattleFlag1 = 0,
                     ScriptedBattleFlag2 = 0,
                     ScriptedBattleVar1 = 0x00000500,

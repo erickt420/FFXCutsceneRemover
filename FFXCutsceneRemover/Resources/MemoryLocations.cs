@@ -142,8 +142,9 @@
 
         // Encounters
         public static MemoryLocationData EncounterMapID = new MemoryLocationData(MemoryLocationNames.EncounterMapID, 0xD2C256);
-        public static MemoryLocationData EncounterFormationID = new MemoryLocationData(MemoryLocationNames.EncounterFormationID, 0xD2C259);
-        public static MemoryLocationData ScriptedBattleFlag1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag1, 0xD2A9D4); // Setting to 0 triggers post battle rewards screen
+        public static MemoryLocationData EncounterFormationID1 = new MemoryLocationData(MemoryLocationNames.EncounterFormationID1, 0xD2C258);
+        public static MemoryLocationData EncounterFormationID2 = new MemoryLocationData(MemoryLocationNames.EncounterFormationID2, 0xD2C259);
+        public static MemoryLocationData ScriptedBattleFlag1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag1, 0xD2A9D4); // Setting to 0 triggers a post battle rewards screen
         public static MemoryLocationData ScriptedBattleFlag2 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleFlag2, 0xD2A9D5); // 0 = Screen crack effect, 1 = Boss transition effect
         public static MemoryLocationData ScriptedBattleVar1 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleVar1, 0xF26B08); // Set to the right value to make the game recognise battle as scripted and not random
         public static MemoryLocationData ScriptedBattleVar3 = new MemoryLocationData(MemoryLocationNames.ScriptedBattleVar3, 0xF26B10); // Set at the start of a scripted battle
@@ -237,6 +238,7 @@
         public static MemoryLocationData MoonflowFlag2 = new MemoryLocationData(MemoryLocationNames.MoonflowFlag2, 0xD2CC83);
         public static MemoryLocationData RikkuOutfit = new MemoryLocationData(MemoryLocationNames.RikkuOutfit, 0xD2CB61);
         public static MemoryLocationData TidusWeaponDamageBoost = new MemoryLocationData(MemoryLocationNames.TidusWeaponDamageBoost, 0x1F11240);
+        public static MemoryLocationData GuadosalamShopFlag = new MemoryLocationData(MemoryLocationNames.GuadosalamShopFlag, 0xD2CD84);
         public static MemoryLocationData ThunderPlainsFlag = new MemoryLocationData(MemoryLocationNames.ThunderPlainsFlag, 0xD2CE81);
         public static MemoryLocationData MacalaniaFlag = new MemoryLocationData(MemoryLocationNames.MacalaniaFlag, 0xD2CD16);
         public static MemoryLocationData BikanelFlag = new MemoryLocationData(MemoryLocationNames.BikanelFlag, 0xD2CD4B);
@@ -251,6 +253,7 @@
         // Blitzball
         public static MemoryLocationData AurochsTeamBytes = new MemoryLocationData(MemoryLocationNames.AurochsTeamBytes, 0xD2D704);
         public static MemoryLocationData BlitzballBytes = new MemoryLocationData(MemoryLocationNames.BlitzballBytes, 0xD2DC7C);
+        public static MemoryLocationData AurochsPlayer1 = new MemoryLocationData(MemoryLocationNames.AurochsPlayer1, 0xD2E0BE);
 
         // Battle Rewards
         public static MemoryLocationData GilBattleRewards = new MemoryLocationData(MemoryLocationNames.GilBattleRewards, 0x1F10F6C);
