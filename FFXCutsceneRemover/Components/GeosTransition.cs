@@ -24,7 +24,7 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                new Transition { EncounterMapID = 1, EncounterFormationID = 0, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00014501, EncounterTrigger = 2, Description = "Sahagins", ForceLoad = false }.Execute();
+                new Transition { EncounterMapID = 1, EncounterFormationID2 = 0, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00014501, EncounterTrigger = 2, Description = "Sahagins", ForceLoad = false }.Execute();
 
                 Transition actorPositions;
                 //Position Tidus
@@ -43,7 +43,7 @@ namespace FFXCutsceneRemover
             {
                 process.Suspend();
 
-                new Transition { EncounterMapID = 1, EncounterFormationID = 1, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00010501, EncounterTrigger = 2, Description = "Geosgaeno", ForceLoad = false }.Execute();
+                new Transition { EncounterMapID = 1, EncounterFormationID2 = 1, ScriptedBattleFlag1 = 1, ScriptedBattleFlag2 = 1, ScriptedBattleVar1 = 0x00010501, EncounterTrigger = 2, Description = "Geosgaeno", ForceLoad = false }.Execute();
 
                 Stage += 1;
 

@@ -207,7 +207,7 @@ namespace FFXCutsceneRemover
             if (Game == null || Game.HasExited)
             {
                 Game = null;
-                DiagnosticLog.Information("FFX not found! Waiting for 10 seconds.");
+                DiagnosticLog.Information("FFX not found! Please launch the game. Waiting for 10 seconds before checking again.");
 
                 Thread.Sleep(10 * 1000);
             }

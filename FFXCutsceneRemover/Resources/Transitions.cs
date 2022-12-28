@@ -202,7 +202,6 @@ namespace FFXCutsceneRemover.Resources
             //{ new GameState { RoomNumber = 108, Storyline = 340}, new KilikaTrialsTransition {ForceLoad = false, ConsoleOutput = false, Description = "Camera Pan", Suspendable = false, Repeatable = true} }, // Camera pan inside the trials -Doesn't work yet
             { new GameState { RoomNumber = 45, Storyline = 340}, new KilikaAntechamberTransition { ForceLoad = false, Description = "Guardians are annoyed at Tidus", Suspendable = false, Repeatable = true }  },
             { new GameState { RoomNumber = 45, Storyline = 344, State = 1 }, new Transition { Storyline = 346, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -12.83946609f, Target_y = 0.0f, Target_z = -5.327582836f, Target_var1 = 31, Description = "Fayth explanation"} },
-            //{ new GameState { RoomNumber = 45, Storyline = 346, State = 1 }, new IfritTransition {ForceLoad = false, Description = "Naming Ifrit", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 45, Storyline = 346, State = 1 }, new Transition { MenuTriggerValue = 0x40080009, EnableIfrit = 0x11, ForceLoad = false, Description = "Naming Ifrit"} },
             { new GameState { RoomNumber = 45, Storyline = 346, Menu = 1, MenuValue1 = 0x4000 }, new Transition { RoomNumber = 78, Storyline = 348, Description = "Exit Temple"} },
             { new GameState { RoomNumber = 78, Storyline = 348, State = 1 }, new Transition { RoomNumber = 18, Storyline = 360, SpawnPoint = 1, Description = "Tidus misses home" } },
@@ -249,7 +248,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 124, Storyline = 562}, new Transition { RoomNumber = 250, Storyline = 565, Description = "Fans are getting impatient"} },
             { new GameState { RoomNumber = 250, Storyline = 565}, new Transition { RoomNumber = 124, Storyline = 575, Description = "Wakka chants"} },
             { new GameState { RoomNumber = 124, Storyline = 575}, new BlitzballTransition2 {ForceLoad = false, Description = "Ah! It's Wakka!", Suspendable = false, Repeatable = true} },
-            { new GameState { RoomNumber = 250, Storyline = 582 }, new Transition { RoomNumber = 125, Storyline = 583, Description = "Aurochs win/lose the game"} },
+            { new GameState { RoomNumber = 250, Storyline = 582 }, new Transition { RoomNumber = 125, Storyline = 583, AurochsPlayer1 = 0, Description = "Aurochs win/lose the game"} },
             { new GameState { RoomNumber = 125, Storyline = 583}, new SahaginTransition {ForceLoad = false, Description = "Pre-Sahagins", FormationSwitch = Transition.formations.PreSahagins, Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 57, Storyline = 588}, new Transition {Storyline = 600, Description = "Lulu what's happening"}},
             { new GameState { RoomNumber = 57, Storyline = 600}, new GarudaTransition {ForceLoad = false, Description = "Vouivre to Anima", Suspendable = false, Repeatable = true} },
@@ -278,13 +277,6 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -60.82686996f, Target_y = -6.881165981f, Target_z = -837.5621948f, Target_rot = 1.245915651f, Target_var1 = 979, MoveFrame = 8, Description = "Tidus distrusts Seymour"} },
             { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845, MRRFlag1 = 0x02, MRRFlag2 = 0x01, Description = "Preparing for Sin" } },
             { new GameState { RoomNumber = 119, Storyline = 845 }, GuiTransition },
-            /*/
-            { new GameState { RoomNumber = 119, Storyline = 850 }, GuiTransition },
-            { new GameState { RoomNumber = 119, Storyline = 857 }, GuiTransition },
-            //{ new GameState { RoomNumber = 119, Storyline = 857, BattleState = 522, CutsceneAlt = 1 }, new Transition { Storyline = 860, Description = "Post-Sinspawn Gui + FMV" } },
-            //{ new GameState { RoomNumber = 119, Storyline = 860}, new Transition { RoomNumber = 247, Storyline = 865, Description = "Auron Look out + FMV " } },
-            { new GameState { RoomNumber = 119, Storyline = 860 }, GuiTransition },
-            //*/
             { new GameState { RoomNumber = 247, Storyline = 865 }, GuiTransition },
                                             // Post-Sinspawn Gui 2
             { new GameState { RoomNumber = 254, Storyline = 882 }, new Transition { RoomNumber = 254, Storyline = 893, Description = "Tidus wakes up + sees Gatta"} },
@@ -307,10 +299,6 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 214, Storyline = 990 }, new Transition { RoomNumber = 214, Storyline = 995, SpawnPoint = 0, Description = "Entering the Djose trials"} },
             { new GameState { RoomNumber = 90, Storyline = 998}, new Transition { MenuTriggerValue = 0x4008000A, EnableIxion = 0x11, ForceLoad = false, Description = "Naming Ixion"} },
             { new GameState { RoomNumber = 90, Storyline = 998, Menu = 1, MenuValue1 = 0x4000}, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, FullHeal = true, Description = "Tidus wakes up"} },
-            //{ new GameState { RoomNumber = 90, Storyline = 998}, new Transition { RoomNumber = 91, Storyline = 1003, SpawnPoint = 0, Description = "Djose - AnteChamber"} },
-            //{ new GameState { RoomNumber = 90, Storyline = 998}, new DjoseTransition {ForceLoad = false, Description = "Djose - Antechamber", Suspendable = false, Repeatable = true } },
-            //{ new GameState { RoomNumber = 91, Storyline = 1003}, new IxionTransition { Description = "Naming Ixion", Suspendable = false, Repeatable = true } },
-            //{ new GameState { RoomNumber = 82, Storyline = 1005 }, new Transition { RoomNumber = 82, Storyline = 1010, SpawnPoint = 4, FullHeal = true, Description = "Tidus wakes up"} },
             { new GameState { RoomNumber = 82, Storyline = 1015, State = 0 }, new Transition { RoomNumber = 82, Storyline = 1020, SpawnPoint = 2, Description = "Yuna has bed hair"} },
             { new GameState { RoomNumber = 76, Storyline = 1020, State = 0 }, new Transition { RoomNumber = 76, Storyline = 1025, SpawnPoint = 0, Description = "Clasko wait for me"} },
             { new GameState { RoomNumber = 93, Storyline = 1028 }, new Transition { RoomNumber = 93, Storyline = 1030, SpawnPoint = 1, Description = "Moonflow here we come"} },
@@ -346,7 +334,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 193, Storyline = 1172}, new Transition { RoomNumber = 364, Storyline = 1176, Description = "Tidus is embarrassed"} },
             { new GameState { RoomNumber = 364, Storyline = 1176}, new Transition { RoomNumber = 175, Storyline = 1184, Description = "Jyscal returns"} },
             { new GameState { RoomNumber = 175, Storyline = 1184}, new Transition { RoomNumber = 135, Storyline = 1190, SpawnPoint = 258, Description = "Tidus asks about Jyscal"} },
-            { new GameState { RoomNumber = 135, Storyline = 1190, State = 1}, new Transition { RoomNumber = 135, Storyline = 1194, SpawnPoint = 258, PositionTidusAfterLoad = true, Target_x = 9.35662365f, Target_y = -79.88565826f, Target_z = 32.47581863f, Target_rot = 1.640607119f, Target_var1 = 174, Description = "Affection scene"} },
+            { new GameState { RoomNumber = 135, Storyline = 1190, State = 1}, new Transition { RoomNumber = 135, Storyline = 1194, SpawnPoint = 258, GuadosalamShopFlag = 16, PositionTidusAfterLoad = true, Target_x = 9.35662365f, Target_y = -79.88565826f, Target_z = 32.47581863f, Target_rot = 1.640607119f, Target_var1 = 174, Description = "Affection scene"} },
             { new GameState { RoomNumber = 135, Storyline = 1194, State = 1}, new Transition { RoomNumber = 135, Storyline = 1196, SpawnPoint = 4, PositionTidusAfterLoad = true, Target_x = -16.08917809f, Target_y = -0.1143999547f, Target_z = -9.910492897f, Target_rot = 1.728837013f, Target_var1 = 341, Description = "Tidus speaks to Shelinda"} },
             { new GameState { RoomNumber = 135, Storyline = 1196, State = 1}, new Transition { RoomNumber = 135, Storyline = 1200, Description = "Yuna asks Jyscal what she can do"} },
             { new GameState { RoomNumber = 135, Storyline = 1200}, new Transition { RoomNumber = 135, Storyline = 1210, SpawnPoint = 257, PositionTidusAfterLoad = true, Target_x = -9.995750427f, Target_y = -6.983668327f, Target_z = 135.7639771f, Target_rot = 0.5563229918f, Target_var1 = 267, Description = "Macarena Temple"} },       
@@ -413,7 +401,8 @@ namespace FFXCutsceneRemover.Resources
 		    // END OF BEVELLE
 		    // START OF CALM LANDS & GAGAZET
             { new GameState { RoomNumber = 206, Storyline = 2300, CutsceneAlt = 3712}, new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, MacalaniaFlag = 162, Description = "Lake Scene"} },
-            { new GameState { RoomNumber = 223, Storyline = 2385, State = 0/*, TidusZCoordinate = -1856.596069f*/}, new Transition { Storyline = 2400, CalmLandsFlag = 548, PositionTidusAfterLoad = true, Target_x = 342.0474243f, Target_y = -162.136322f, Target_z = -1589.26123f, Target_rot = -3.089118004f, Target_var1 = 494, Description = "Calm Lands Intro + Gorge flag"} },
+            { new GameState { RoomNumber = 223, Storyline = 2385, State = 0/*, TidusZCoordinate = -1856.596069f*/}, new Transition { Storyline = 2400, CalmLandsFlag = 33572, PositionTidusAfterLoad = true, Target_x = 342.0474243f, Target_y = -162.136322f, Target_z = -1589.26123f, Target_rot = -3.089118004f, Target_var1 = 494, Description = "Calm Lands Intro + Gorge flag"} },
+            { new GameState { RoomNumber = 223, Storyline = 2400, CutsceneAlt = 885}, new Transition { SpawnPoint = 0, CalmLandsFlag = 33580, PositionTidusAfterLoad = true, Target_x = -656.6414185f, Target_y = 40.62506866f, Target_z = -122.8440933f, Target_rot = 1.060740948f, Target_var1 = 7179, Description = "Father Zuke"} },
             { new GameState { RoomNumber = 279, Storyline = 2400}, new DefenderXTransition {ForceLoad = false, Description = "Defender X", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 279, Storyline = 2420, MovementLock = 48, XCoordinate = 265.3771973f }, new Transition { RoomNumber = 259, Storyline = 2510, RoomNumberAlt = 266, SpawnPoint = 0, Description = "Yuna reflects"} },
             { new GameState { RoomNumber = 259, Storyline = 2510}, new RonsoTransition {ForceLoad = false, Description = "Biran + Yenke", Suspendable = false, Repeatable = true} },
@@ -453,13 +442,16 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 327, Storyline = 3250, CutsceneAlt = 5889}, new Transition { RoomNumber = 324, Storyline = 3250, SpawnPoint = 0, Description = "Enter Tower of the Dead"} },
             { new GameState { RoomNumber = 325, Storyline = 3270}, new BFATransition {ForceLoad = false, Description = "Pre-BFA", Suspendable = false, Repeatable = true} },
             { new GameState { RoomNumber = 325, Storyline = 3300, CutsceneAlt = 1180}, new Transition { RoomNumber = 326, Storyline = 3360, Description = "BFA Death. GG!"} },
-            { new GameState { RoomNumber = 326, Storyline = 3360, HpEnemyA = 0}, new YuYevonTransition {ForceLoad=false, Description = "Contest of Aeons!", Suspendable = false, Repeatable = true} }
+            { new GameState { RoomNumber = 326, Storyline = 3360, HpEnemyA = 0}, new YuYevonTransition {ForceLoad=false, Description = "Contest of Aeons!", Suspendable = false, Repeatable = true} },
 
+            // Miscellaneous transitions
+
+            { new GameState { RoomNumber = 56 }, new YojimboTransition {ForceLoad=false, Description = "Lady Ginnem Attacks", Suspendable = false, Repeatable = true} }
         };
 
         public static readonly Dictionary<IGameState, Transition> PostBossBattleTransitions = new Dictionary<IGameState, Transition>()
         {
-            { new GameState { EncounterMapID = 2, EncounterFormationID = 1, RoomNumber = 63, Storyline = 55 }, new Transition { RoomNumber = 71, Storyline = 60, Description = "Klikk"} },
+            { new GameState { EncounterMapID = 2, EncounterFormationID2 = 1, RoomNumber = 63, Storyline = 55 }, new Transition { RoomNumber = 71, Storyline = 60, Description = "Klikk"} },
             { new GameState { RoomNumber = 83, Storyline = 172, State = 1, CutsceneAlt = 0 }, new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
             { new GameState { HpEnemyA = 3000, Storyline = 322 }, new Transition { SpawnPoint = 1, Storyline = 326, PositionTidusAfterLoad = true, Target_x = -11.76033783f, Target_y = -159.9781189f, Target_z = 541.0011597f, Target_rot = 1.698870897f, Target_var1 = 88, MoveFrame = 5, Description = "Post-Geneaux"} },
             { new GameState { RoomNumber = 45, Storyline = 346, State = 1 }, new Transition { RoomNumber = 78, Storyline = 348, SpawnPoint = 0, EnableIfrit = 17, Description = "Ifrit"} },
@@ -471,19 +463,24 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { HpEnemyA = 1200, RoomNumber = 102, Storyline = 1570 }, new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
             { new GameState { HpEnemyA = 12000, Storyline = 1704 }, new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu", FormationSwitch = Transition.formations.PostZu, PositionTidusAfterLoad = true, Target_x = -20.05244827f, Target_y = -2.300839186f, Target_z = -247.0119934f, Target_rot = -1.57079649f, Target_var1 = 1819 } },
             { new GameState { HpEnemyA = 2600, Storyline = 1820 }, new Transition { RoomNumber = 276, Storyline = 1820, SpawnPoint = 0, Description = "Home Bombs", PositionTidusAfterLoad = true, Target_x = -0.037395183f, Target_y = 0.3992187381f, Target_z = -5.576078415f, Target_rot = -1.884988785f, Target_var1 = 7} },
-            { new GameState { EncounterMapID = 87, EncounterFormationID = 2, RoomNumber = 280, Storyline = 1820 }, new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
-            { new GameState { EncounterMapID = 87, EncounterFormationID = 3, RoomNumber = 280, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
-            { new GameState { EncounterMapID = 52, EncounterFormationID = 0, RoomNumber = 277, Storyline = 2040 }, new Transition { RoomNumber = 205, Storyline = 2080, TargetFramerate = 2, Description = "Evrae"} },
+            { new GameState { EncounterMapID = 87, EncounterFormationID2 = 2, RoomNumber = 280, Storyline = 1820 }, new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
+            { new GameState { EncounterMapID = 87, EncounterFormationID2 = 3, RoomNumber = 280, Storyline = 1885 }, new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
+            { new GameState { EncounterMapID = 52, EncounterFormationID2 = 0, RoomNumber = 277, Storyline = 2040 }, new Transition { RoomNumber = 205, Storyline = 2080, TargetFramerate = 2, Description = "Evrae"} },
             { new GameState { HpEnemyA = 36000, Storyline = 2280 }, new Transition { RoomNumber = 183, Storyline = 2290, SpawnPoint = 4, Description = "Seymour Natus"} },
+            { new GameState { EncounterMapID = 61, EncounterFormationID1 = 0, EncounterFormationID2 = 0, Storyline = 2400}, new Transition { ForceLoad = false, Storyline = 2420, CalmLandsFlag = 33583, Description = "Defender X"} },
             { new GameState { RoomNumber = 259, Storyline = 2510, State = 2 }, new Transition { RoomNumber = 259, Storyline = 2528, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 53.67576218f, Target_y = -36.2708931f, Target_z = 316.892395f, Target_rot = 1.570796371f, Target_var1 = 475, Description = "Biran + Yenke"} },
             { new GameState { HpEnemyA = 70000, Storyline = 2530 }, new Transition { RoomNumber = 285, Storyline = 2560, SpawnPoint = 2, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, PositionTidusAfterLoad = true, Target_x = 31.58070183f, Target_y = -19.99184036f, Target_z = -202.6745758f, Target_rot = -0.5099999905f, Target_var1 = 662, Description = "Seymour Flux"} },
-            { new GameState { EncounterMapID = 68, EncounterFormationID = 0, RoomNumber = 311, Storyline = 2585  }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 1167.63501f, Target_y = -30.03837585f, Target_z = -1127.956787f, Target_rot = -2.844759941f, Target_var1 = 794, Description = "Sanctuary Keeper"} },
-            { new GameState { EncounterMapID = 71, EncounterFormationID = 0, RoomNumber = 317, Storyline = 2775 }, new Transition { RoomNumber = 318, Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
+            { new GameState { EncounterMapID = 68, EncounterFormationID2 = 0, RoomNumber = 311, Storyline = 2585  }, new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 1167.63501f, Target_y = -30.03837585f, Target_z = -1127.956787f, Target_rot = -2.844759941f, Target_var1 = 794, Description = "Sanctuary Keeper"} },
+            { new GameState { EncounterMapID = 71, EncounterFormationID2 = 0, RoomNumber = 317, Storyline = 2775 }, new Transition { RoomNumber = 318, Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
             { new GameState { HpEnemyA = 24000, Storyline = 2815 }, new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, PositionTidusAfterLoad = true, Target_x = 1.958124876f, Target_y = 0.0f, Target_z = -68.68795013f, Target_rot = -1.438184619f, Target_var1 = 86, Description = "Yunalesca"} },
-            { new GameState { EncounterMapID = 73, EncounterFormationID = 0, RoomNumber = 199, Storyline = 3085}, new Transition { RoomNumber = 200, Storyline = 3085, Description = "Left Fin"} },
-            { new GameState { EncounterMapID = 74, EncounterFormationID = 0, RoomNumber = 200, Storyline = 3085}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Right Fin"} },
+            { new GameState { EncounterMapID = 73, EncounterFormationID2 = 0, RoomNumber = 199, Storyline = 3085}, new Transition { RoomNumber = 200, Storyline = 3085, Description = "Left Fin"} },
+            { new GameState { EncounterMapID = 74, EncounterFormationID2 = 0, RoomNumber = 200, Storyline = 3085}, new Transition { RoomNumber = 201, Storyline = 3105, Description = "Right Fin"} },
             { new GameState { HpEnemyA = 20000, RoomNumber = 201, Storyline = 3105}, new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -258.47229f, Target_y = 12.31083775f, Target_z = 380.5874939f, Target_rot = -1.021441936f, Target_var1 = 1412, Description = "Sin Core"} },
-            { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} }
+            { new GameState { HpEnemyA = 80000, Storyline = 3205 }, new  Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} },
+
+            // Miscellaneous
+
+            { new GameState { EncounterMapID = 63, EncounterFormationID1 = 1, EncounterFormationID2 = 0}, new Transition { EncounterFormationID1 = 2, RoomNumber = 56, SpawnPoint = 4, CalmLandsFlag = 33711, PositionTidusAfterLoad = true, Target_x = 94.66707611f, Target_y = 141.1475677f, Target_z = 1928.194214f, Target_rot = 1.568045974f, Target_var1 = 80, Description = "Yojimbo"} }
         };
     }
 }

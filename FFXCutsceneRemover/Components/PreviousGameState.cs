@@ -48,7 +48,8 @@ namespace FFXCutsceneRemover
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;
         public short? EncounterMapID = null;
-        public byte? EncounterFormationID = null;
+        public byte? EncounterFormationID1 = null;
+        public byte? EncounterFormationID2 = null;
         public int? HpEnemyA = null;
         public byte? GuadoCount = null;
         public short? NPCLastInteraction = null;
@@ -132,7 +133,8 @@ namespace FFXCutsceneRemover
                 TestValue(EnableRikku, memoryWatchers.EnableRikku.Old) &&
                 TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
                 TestValue(EncounterMapID, memoryWatchers.EncounterMapID.Old) &&
-                TestValue(EncounterFormationID, memoryWatchers.EncounterFormationID.Old) &&
+                TestValue(EncounterFormationID1, memoryWatchers.EncounterFormationID1.Old) &&
+                TestValue(EncounterFormationID2, memoryWatchers.EncounterFormationID2.Old) &&
                 TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Old) &&
                 TestValue(SSWinnoFlag1, memoryWatchers.SSWinnoFlag1.Old) &&
                 TestValue(KilikaMapFlag, memoryWatchers.KilikaMapFlag.Old) &&

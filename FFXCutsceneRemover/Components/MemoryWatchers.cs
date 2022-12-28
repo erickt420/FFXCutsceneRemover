@@ -150,7 +150,8 @@ namespace FFXCutsceneRemover
 
         // Encounters
         public MemoryWatcher<byte> EncounterMapID;
-        public MemoryWatcher<byte> EncounterFormationID;
+        public MemoryWatcher<byte> EncounterFormationID1;
+        public MemoryWatcher<byte> EncounterFormationID2;
         public MemoryWatcher<byte> ScriptedBattleFlag1;
         public MemoryWatcher<byte> ScriptedBattleFlag2;
         public MemoryWatcher<int> ScriptedBattleVar1;
@@ -239,13 +240,14 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> MoonflowFlag2;
         public MemoryWatcher<byte> RikkuOutfit;
         public MemoryWatcher<byte> TidusWeaponDamageBoost;
+        public MemoryWatcher<byte> GuadosalamShopFlag;
         public MemoryWatcher<byte> ThunderPlainsFlag;
         public MemoryWatcher<byte> MacalaniaFlag;
         public MemoryWatcher<byte> BikanelFlag;
         public MemoryWatcher<byte> Sandragoras;
         public MemoryWatcher<byte> ViaPurificoPlatform;
         public MemoryWatcher<byte> NatusFlag;
-        public MemoryWatcher<short> CalmLandsFlag;
+        public MemoryWatcher<ushort> CalmLandsFlag;
         public MemoryWatcher<byte> WantzFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
         public MemoryWatcher<byte> OmegaRuinsFlag;
@@ -253,6 +255,7 @@ namespace FFXCutsceneRemover
         // Blitzball Abilities
         public MemoryWatcher<byte> AurochsTeamBytes;
         public MemoryWatcher<byte> BlitzballBytes;
+        public MemoryWatcher<byte> AurochsPlayer1;
 
         // Battle Rewards
         public MemoryWatcher<int> GilBattleRewards;
@@ -460,7 +463,8 @@ namespace FFXCutsceneRemover
 
             //Encounters
             EncounterMapID = GetMemoryWatcher<byte>(MemoryLocations.EncounterMapID);
-            EncounterFormationID = GetMemoryWatcher<byte>(MemoryLocations.EncounterFormationID);
+            EncounterFormationID1 = GetMemoryWatcher<byte>(MemoryLocations.EncounterFormationID1);
+            EncounterFormationID2 = GetMemoryWatcher<byte>(MemoryLocations.EncounterFormationID2);
             ScriptedBattleFlag1 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag1);
             ScriptedBattleFlag2 = GetMemoryWatcher<byte>(MemoryLocations.ScriptedBattleFlag2);
             ScriptedBattleVar1 = GetMemoryWatcher<int>(MemoryLocations.ScriptedBattleVar1);
@@ -546,13 +550,14 @@ namespace FFXCutsceneRemover
             MoonflowFlag2 = GetMemoryWatcher<byte>(MemoryLocations.MoonflowFlag2);
             RikkuOutfit = GetMemoryWatcher<byte>(MemoryLocations.RikkuOutfit);
             TidusWeaponDamageBoost = GetMemoryWatcher<byte>(MemoryLocations.TidusWeaponDamageBoost);
+            GuadosalamShopFlag = GetMemoryWatcher<byte>(MemoryLocations.GuadosalamShopFlag);
             ThunderPlainsFlag = GetMemoryWatcher<byte>(MemoryLocations.ThunderPlainsFlag);
             MacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.MacalaniaFlag);
             BikanelFlag = GetMemoryWatcher<byte>(MemoryLocations.BikanelFlag);
             Sandragoras = GetMemoryWatcher<byte>(MemoryLocations.Sandragoras);
             ViaPurificoPlatform = GetMemoryWatcher<byte>(MemoryLocations.ViaPurificoPlatform);
             NatusFlag = GetMemoryWatcher<byte>(MemoryLocations.NatusFlag);
-            CalmLandsFlag = GetMemoryWatcher<short>(MemoryLocations.CalmLandsFlag);
+            CalmLandsFlag = GetMemoryWatcher<ushort>(MemoryLocations.CalmLandsFlag);
             WantzFlag = GetMemoryWatcher<byte>(MemoryLocations.WantzFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
             OmegaRuinsFlag = GetMemoryWatcher<byte>(MemoryLocations.OmegaRuinsFlag);
@@ -560,6 +565,7 @@ namespace FFXCutsceneRemover
             // Blitzball Abilities
             AurochsTeamBytes = GetMemoryWatcher<byte>(MemoryLocations.AurochsTeamBytes);
             BlitzballBytes = GetMemoryWatcher<byte>(MemoryLocations.BlitzballBytes);
+            AurochsPlayer1 = GetMemoryWatcher<byte>(MemoryLocations.AurochsPlayer1);
 
             // Battle Rewards
             GilBattleRewards = GetMemoryWatcher<int>(MemoryLocations.GilBattleRewards);
@@ -656,7 +662,8 @@ namespace FFXCutsceneRemover
                     PlayerTurn,
                     FrameCounterFromLoad,
                     EncounterMapID,
-                    EncounterFormationID,
+                    EncounterFormationID1,
+                    EncounterFormationID2,
                     ScriptedBattleFlag1,
                     ScriptedBattleFlag2,
                     ScriptedBattleVar1,
@@ -793,6 +800,7 @@ namespace FFXCutsceneRemover
                     MoonflowFlag2,
                     RikkuOutfit,
                     TidusWeaponDamageBoost,
+                    GuadosalamShopFlag,
                     ThunderPlainsFlag,
                     MacalaniaFlag,
                     BikanelFlag,
@@ -804,6 +812,7 @@ namespace FFXCutsceneRemover
                     OmegaRuinsFlag,
                     AurochsTeamBytes,
                     BlitzballBytes,
+                    AurochsPlayer1,
                     GilBattleRewards,
                     BattleRewardItemCount,
                     BattleRewardItem1,
