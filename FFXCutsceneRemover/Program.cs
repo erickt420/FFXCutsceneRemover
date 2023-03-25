@@ -97,6 +97,10 @@ namespace FFXCutsceneRemover
                         new NewGameTransition { ForceLoad = false, ConsoleOutput = false, startGameText = startGameText }.Execute();
                         newGameMenuUpdated = true;
                     }
+                    if (newGameMenuUpdated && new GameState { RoomNumber = 23 }.CheckState())
+                    {
+                        newGameMenuUpdated = false;
+                    }
 
                     if (removeCutscenes)
                     {
