@@ -15,13 +15,11 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.KilikaTrialsTransition.Current;
-                    DiagnosticLog.Information(BaseCutsceneValue.ToString("X2"));
                     Stage += 1;
 
                 }
                 else if (base.memoryWatchers.KilikaTrialsTransition.Current == (BaseCutsceneValue + 0x61) && Stage == 1) // 486
                 {
-                    DiagnosticLog.Information("Stage: " + Stage.ToString());
                     WriteValue<int>(base.memoryWatchers.KilikaTrialsTransition, BaseCutsceneValue + 0x108);
 
                     Stage += 1;

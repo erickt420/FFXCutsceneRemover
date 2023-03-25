@@ -92,7 +92,6 @@ namespace FFXCutsceneRemover.Resources
 #endif
             { new GameState { RoomNumber = 348 }, new Transition { RoomNumber = 23, Description = "Skip Intro", Repeatable = true} },
             { new GameState { RoomNumber = 349 }, new Transition { RoomNumber = 23, Description = "Skip Intro", Repeatable = true} },
-            { new GameState { RoomNumber = 0, Storyline = 0, Dialogue1 = 6}, new NewGameTransition { ForceLoad = false, ConsoleOutput = false } },
             // START OF ZANARKAND
             { new GameState { RoomNumber = 132, Storyline = 0 }, new Transition { RoomNumber = 368, Storyline = 3, SpawnPoint = 0, Description = "Beginning"} },
             { new GameState { RoomNumber = 368, Storyline = 3, FangirlsOrKidsSkip = 0, NPCLastInteraction = 29 }, new Transition { MenuTriggerValue = 0x40080000, ForceLoad = false, Description = "Naming Tidus"} },

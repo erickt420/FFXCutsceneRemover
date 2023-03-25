@@ -18,35 +18,36 @@ namespace FFXCutsceneRemover
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.CrawlerTransition.Current;
+                    //BaseCutsceneValue = base.memoryWatchers.CrawlerTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
 
                     Stage += 1;
 
                 }
                 //First 4 stages are an attempt to emulate the logic from the PS2 Pnach. Values don't line up perfectly but it works.
-                else if (base.memoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0x11) && Stage == 1)
+                else if (base.memoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0xEBC2) && Stage == 1)
                 {
-                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x466);
+                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF017);
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0x47C) && Stage == 2)
+                else if (base.memoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF02D) && Stage == 2)
                 {
-                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x542);
+                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF0F3);
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0x54B) && Stage == 3)
+                else if (base.memoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF0FC) && Stage == 3)
                 {
-                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x562);
+                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF113);
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0x562) && Stage == 4)
+                else if (base.memoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF113) && Stage == 4)
                 {
-                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x5ED);
+                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF19E);
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0x635) && base.memoryWatchers.HpEnemyA.Current < 16000 && base.memoryWatchers.HpEnemyA.Old == 16000 && Stage == 5)
+                else if (base.memoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0xF1E6) && base.memoryWatchers.HpEnemyA.Current < 16000 && base.memoryWatchers.HpEnemyA.Old == 16000 && Stage == 5)
                 {
-                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0x886);
+                    WriteValue<int>(base.memoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF437);
                     Stage += 1;
                 }
 

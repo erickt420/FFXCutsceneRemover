@@ -310,6 +310,8 @@ namespace FFXCutsceneRemover
 
         public MemoryWatcher<int> ActorArrayLength;
 
+        public MemoryWatcher<byte> RNGArrayOpBytes;
+
         MemoryWatchers() { }
 
         public static MemoryWatchers Instance
@@ -620,6 +622,9 @@ namespace FFXCutsceneRemover
 
             ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
 
+            // RNGMod
+            RNGArrayOpBytes = GetMemoryWatcher<byte>(MemoryLocations.RNGArrayOpBytes);
+
             HpEnemyA.FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 
             Watchers.Clear();
@@ -853,7 +858,8 @@ namespace FFXCutsceneRemover
                     MenuValue7,
                     SpeedBoostAmount,
                     SpeedBoostVar1,
-                    ActorArrayLength
+                    ActorArrayLength,
+                    RNGArrayOpBytes
             });
         }
 
