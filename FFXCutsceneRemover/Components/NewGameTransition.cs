@@ -12,7 +12,7 @@ namespace FFXCutsceneRemover
     {
         public List<(string, byte)> startGameText = null;
 
-        private byte textColour = 0x07;
+        private byte textColour = 0x08;
 
         private Dictionary<char, (byte?, byte)> characterEncodingLatin = new Dictionary<char, (byte?, byte)>()
         {
