@@ -50,13 +50,24 @@ namespace FFXCutsceneRemover
 
             DiagnosticLog.ExtraAnnotations = debug;
 
-            DiagnosticLog.Information("Turn on cutscene removal Y/N?");
+            DiagnosticLog.Information("Turn on Cutscene Remover? (Y/N)");
             removeCutscenes = Console.ReadLine().ToUpper() == "Y";
-            DiagnosticLog.Information($"Remove Cutscenes set to {removeCutscenes}");
+            if(removeCutscenes)
+            {
+                DiagnosticLog.Information(
+                    "Cutscene Remover Enabled.\n" +
+                    "Please submit runs to the Cutscene Remover platform.");
+            }
 
-            DiagnosticLog.Information("Turn on rngFix Y/N?");
+            DiagnosticLog.Information("Turn on RNG Fix? (Y/N)");
             fixRNG = Console.ReadLine().ToUpper() == "Y";
-            DiagnosticLog.Information($"RNG fix set to {fixRNG}");
+            if(fixRNG)
+            {
+                DiagnosticLog.Information(
+                    "RNG Fix Enabled.\n" +
+                    "This setting modifies how RNG works to prevent RNG Manipulation.\n" +
+                    "Please submit runs to the RNG Fix category.");
+            }
 
             while (true)
             {
@@ -80,7 +91,7 @@ namespace FFXCutsceneRemover
                 {
                     rngMod = new RNGMod();
                     rngMod.Game = Game;
-                    startGameText.Add(($"[rngFix Mod Applied]", 0x45));
+                    startGameText.Add(($"[RNG Fix Mod Enabled]", 0x45));
                 }
 
                 startGameText.Add(($"Start Game?", 0x49));
