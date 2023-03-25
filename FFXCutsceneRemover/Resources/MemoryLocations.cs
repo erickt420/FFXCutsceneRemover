@@ -313,6 +313,9 @@
         // Actor Model Positions
         public static MemoryLocationData ActorArrayLength = new MemoryLocationData(MemoryLocationNames.ActorArrayLength, 0x1FC44E0);
 
+        // RNGmod
+        public static MemoryLocationData RNGArrayOpBytes = new MemoryLocationData(MemoryLocationNames.RNGArrayOpBytes, 0x398903);
+
     }
 
     public struct MemoryLocationData

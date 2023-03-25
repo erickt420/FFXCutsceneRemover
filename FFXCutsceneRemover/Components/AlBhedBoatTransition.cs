@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover
 {
@@ -17,14 +18,14 @@ namespace FFXCutsceneRemover
                 {
                     base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.AlBhedBoatTransition.Current;
+                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
 
                     Stage += 1;
 
                 }
-                else if (base.memoryWatchers.AlBhedBoatTransition.Current == (BaseCutsceneValue + 0x97F) && Stage == 1)
+                else if (base.memoryWatchers.AlBhedBoatTransition.Current == (BaseCutsceneValue + 0xEF32) && Stage == 1)
                 {
-                    WriteValue<int>(base.memoryWatchers.AlBhedBoatTransition, BaseCutsceneValue + 0xB74);
+                    WriteValue<int>(base.memoryWatchers.AlBhedBoatTransition, BaseCutsceneValue + 0xF127);
                     Stage += 1;
                 }
             }

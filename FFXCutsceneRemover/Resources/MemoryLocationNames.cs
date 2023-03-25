@@ -252,5 +252,6 @@
 
         public static string ActorArrayLength = "ActorArrayLength";
 
+        public static string RNGArrayOpBytes = "RNGArrayOpBytes";
     }
 }

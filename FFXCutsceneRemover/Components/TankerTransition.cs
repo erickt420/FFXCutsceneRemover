@@ -61,8 +61,6 @@ namespace FFXCutsceneRemover
 
                 process.Resume();
 
-                DiagnosticLog.Information("Test");
-
             }
         }
     }
