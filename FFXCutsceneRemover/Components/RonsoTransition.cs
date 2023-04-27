@@ -10,6 +10,7 @@ namespace FFXCutsceneRemover
         public override void Execute(string defaultDescription = "")
         {
             Process process = memoryWatchers.Process;
+            byte EncountersActive = 0x01;
 
             if (base.memoryWatchers.RonsoTransition.Current > 0)
             {
@@ -18,6 +19,7 @@ namespace FFXCutsceneRemover
                     base.Execute();
 
                     BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                    EncountersActive = base.memoryWatchers.EncountersActiveFlag.Current;
 
                     Stage += 1;
 
@@ -29,9 +31,9 @@ namespace FFXCutsceneRemover
                     WriteValue<int>(base.memoryWatchers.RonsoTransition, BaseCutsceneValue + 0x13F9F);
                     Stage += 1;
                 }
-                else if (base.memoryWatchers.RonsoTransition.Current == (BaseCutsceneValue + 0x14056) && Stage == 2)
+                else if (base.memoryWatchers.RonsoTransition.Current == (BaseCutsceneValue + 0x14056) && base.memoryWatchers.Menu.Current == 1 && Stage == 2)
                 {
-                    Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = true, FormationSwitch = Transition.formations.PostBiranYenke, Formation = RonsoFormation, Description = "Fix party after Biran and Yenke" };
+                    Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = true, EncountersActiveFlag = EncountersActive, FormationSwitch = Transition.formations.PostBiranYenke, Formation = RonsoFormation, Description = "Fix party after Biran and Yenke" };
                     FormationSwitch.Execute();
 
                     Stage += 1;

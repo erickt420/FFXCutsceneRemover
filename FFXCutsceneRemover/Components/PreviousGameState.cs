@@ -13,7 +13,7 @@ namespace FFXCutsceneRemover
          * If we only ever write the value then there is no need to add it here. */
         public short? RoomNumber = null;
         public short? Storyline = null;
-        public short? SpawnPoint = null;
+        public byte? SpawnPoint = null;
         public short? BattleState = null;
         public short? BattleState2 = null;
         public short? Input = null;

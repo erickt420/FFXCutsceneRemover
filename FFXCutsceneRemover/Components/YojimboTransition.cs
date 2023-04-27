@@ -11,7 +11,7 @@ namespace FFXCutsceneRemover
         {
             Process process = memoryWatchers.Process;
 
-            if (base.memoryWatchers.TidusZCoordinate.Current > 1655.0f && Stage == 0)
+            if ((base.memoryWatchers.CalmLandsFlag.Current & 0x02) == 0x00 && base.memoryWatchers.TidusZCoordinate.Current > 1655.0f && Stage == 0)
             {
                 process.Suspend();
 

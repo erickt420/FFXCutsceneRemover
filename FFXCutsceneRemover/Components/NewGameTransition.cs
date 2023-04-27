@@ -435,7 +435,7 @@ namespace FFXCutsceneRemover
 
             newOriginalBoxLength = modDialogueBytes.Count - newArrangedBoxLength;
 
-            // Add lines for reminaing bytes after original soundtrack message box
+            // Add lines for remaining bytes after original soundtrack message box
             for (int i = 0; i < originalRemainingBytes.Count; i++)
             {
                 modDialogueBytes.Add(originalRemainingBytes[i]);

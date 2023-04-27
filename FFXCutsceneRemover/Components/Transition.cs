@@ -53,7 +53,7 @@ namespace FFXCutsceneRemover
          * If we only ever read the value then there is no need to add it here. */
         public short? RoomNumber = null;
         public short? Storyline = null;
-        public short? SpawnPoint = null;
+        public byte? SpawnPoint = null;
         public short? BattleState = null;
         public short? BattleState2 = null;
         public byte? Menu = null;
@@ -169,6 +169,7 @@ namespace FFXCutsceneRemover
         public int? BFATransition = null;
         public int? AeonTransition = null;
         public int? YuYevonTransition = null;
+        public int? YojimboFaythTransition = null;
 
         public byte? EnableTidus = null;
         public byte? EnableYuna = null;
@@ -187,6 +188,7 @@ namespace FFXCutsceneRemover
         public byte? EnableYojimbo = null;
         public byte? EnableMagus = null;
 
+        public byte? EncountersActiveFlag = null;
         public float? TotalDistance = null;
         public float? CycleDistance = null;
 
@@ -226,6 +228,7 @@ namespace FFXCutsceneRemover
         public short? GagazetCaveFlag = null;
         public byte? WantzFlag = null;
         public byte? OmegaRuinsFlag = null;
+        public byte? WantzMacalaniaFlag = null;
 
         public byte[] AurochsTeamBytes = null;
         public byte[] BlitzballBytes = null;
@@ -269,6 +272,9 @@ namespace FFXCutsceneRemover
         public int? MenuTriggerValue = null;
 
         public byte[] RNGArrayOpBytes = null;
+
+        // Bitmask Addition
+        public int? AddCalmLandsBitmask = null;
 
         public virtual void Execute(string defaultDescription = "")
         {
@@ -396,6 +402,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.BFATransition, BFATransition);
             WriteValue(memoryWatchers.AeonTransition, AeonTransition);
             WriteValue(memoryWatchers.YuYevonTransition, YuYevonTransition);
+            WriteValue(memoryWatchers.YojimboFaythTransition, YojimboFaythTransition);
             WriteValue(memoryWatchers.EnableTidus, EnableTidus);
             WriteValue(memoryWatchers.EnableYuna, EnableYuna);
             WriteValue(memoryWatchers.EnableAuron, EnableAuron);
@@ -442,6 +449,7 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.WantzFlag, WantzFlag);
             WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
             WriteValue(memoryWatchers.OmegaRuinsFlag, OmegaRuinsFlag);
+            WriteValue(memoryWatchers.WantzMacalaniaFlag, WantzMacalaniaFlag);
 
             WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
             WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
@@ -480,6 +488,9 @@ namespace FFXCutsceneRemover
             WriteValue(memoryWatchers.MenuTriggerValue, MenuTriggerValue);
 
             WriteBytes(memoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
+
+            // Update Bitmasks
+            WriteValue(memoryWatchers.CalmLandsFlag, memoryWatchers.CalmLandsFlag.Current | AddCalmLandsBitmask);
 
             if (ForceLoad)
             {

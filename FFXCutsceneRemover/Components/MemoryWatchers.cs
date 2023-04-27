@@ -26,7 +26,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<short> RoomNumber;
         public MemoryWatcher<short> Storyline;
         public MemoryWatcher<byte> ForceLoad;
-        public MemoryWatcher<short> SpawnPoint;
+        public MemoryWatcher<byte> SpawnPoint;
         public MemoryWatcher<short> BattleState;
         public MemoryWatcher<short> BattleState2;
         public MemoryWatcher<short> Input;
@@ -143,6 +143,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<int> BFATransition;
         public MemoryWatcher<int> AeonTransition;
         public MemoryWatcher<int> YuYevonTransition;
+        public MemoryWatcher<int> YojimboFaythTransition;
         public MemoryWatcher<int> CutsceneProgress_Max;
         public MemoryWatcher<int> CutsceneProgress_uVar1;
         public MemoryWatcher<int> CutsceneProgress_uVar2;
@@ -180,6 +181,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> EnableMagus;
 
         // Encounter Rate
+        public MemoryWatcher<byte> EncountersActiveFlag;
         public MemoryWatcher<float> TotalDistance;
         public MemoryWatcher<float> CycleDistance;
 
@@ -251,6 +253,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> WantzFlag;
         public MemoryWatcher<short> GagazetCaveFlag;
         public MemoryWatcher<byte> OmegaRuinsFlag;
+        public MemoryWatcher<byte> WantzMacalaniaFlag;
 
         // Blitzball Abilities
         public MemoryWatcher<byte> AurochsTeamBytes;
@@ -340,7 +343,7 @@ namespace FFXCutsceneRemover
             RoomNumber = GetMemoryWatcher<short>(MemoryLocations.RoomNumber);
             Storyline = GetMemoryWatcher<short>(MemoryLocations.Storyline);
             ForceLoad = GetMemoryWatcher<byte>(MemoryLocations.ForceLoad);
-            SpawnPoint = GetMemoryWatcher<short>(MemoryLocations.SpawnPoint);
+            SpawnPoint = GetMemoryWatcher<byte>(MemoryLocations.SpawnPoint);
             BattleState = GetMemoryWatcher<short>(MemoryLocations.BattleState);
             BattleState2 = GetMemoryWatcher<short>(MemoryLocations.BattleState2);
             Input = GetMemoryWatcher<short>(MemoryLocations.Input);
@@ -457,6 +460,7 @@ namespace FFXCutsceneRemover
             BFATransition = GetMemoryWatcher<int>(MemoryLocations.BFATransition);
             AeonTransition = GetMemoryWatcher<int>(MemoryLocations.AeonTransition);
             YuYevonTransition = GetMemoryWatcher<int>(MemoryLocations.YuYevonTransition);
+            YojimboFaythTransition = GetMemoryWatcher<int>(MemoryLocations.YojimboFaythTransition);
             CutsceneProgress_Max = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_Max);
             CutsceneProgress_uVar1 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar1);
             CutsceneProgress_uVar2 = GetMemoryWatcher<int>(MemoryLocations.CutsceneProgress_uVar2);
@@ -495,6 +499,7 @@ namespace FFXCutsceneRemover
             EnableMagus = GetMemoryWatcher<byte>(MemoryLocations.EnableMagus);
 
             // Encounter Rate
+            EncountersActiveFlag = GetMemoryWatcher<byte>(MemoryLocations.EncountersActiveFlag);
             TotalDistance = GetMemoryWatcher<float>(MemoryLocations.TotalDistance);
             CycleDistance = GetMemoryWatcher<float>(MemoryLocations.CycleDistance);
 
@@ -563,6 +568,7 @@ namespace FFXCutsceneRemover
             WantzFlag = GetMemoryWatcher<byte>(MemoryLocations.WantzFlag);
             GagazetCaveFlag = GetMemoryWatcher<short>(MemoryLocations.GagazetCaveFlag);
             OmegaRuinsFlag = GetMemoryWatcher<byte>(MemoryLocations.OmegaRuinsFlag);
+            WantzMacalaniaFlag = GetMemoryWatcher<byte>(MemoryLocations.WantzMacalaniaFlag);
 
             // Blitzball Abilities
             AurochsTeamBytes = GetMemoryWatcher<byte>(MemoryLocations.AurochsTeamBytes);
@@ -757,6 +763,7 @@ namespace FFXCutsceneRemover
                     BFATransition,
                     AeonTransition,
                     YuYevonTransition,
+                    YojimboFaythTransition,
                     CutsceneProgress_Max,
                     CutsceneProgress_uVar1,
                     CutsceneProgress_uVar2,
@@ -777,6 +784,7 @@ namespace FFXCutsceneRemover
                     EnableAnima,
                     EnableYojimbo,
                     EnableMagus,
+                    EncountersActiveFlag,
                     TotalDistance,
                     CycleDistance,
                     TidusHP, TidusMP, TidusMaxHP, TidusMaxMP,
@@ -815,6 +823,7 @@ namespace FFXCutsceneRemover
                     WantzFlag,
                     GagazetCaveFlag,
                     OmegaRuinsFlag,
+                    WantzMacalaniaFlag,
                     AurochsTeamBytes,
                     BlitzballBytes,
                     AurochsPlayer1,
