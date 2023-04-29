@@ -135,6 +135,8 @@
         public static MemoryLocationData AeonTransition = new MemoryLocationData(MemoryLocationNames.AeonTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
         public static MemoryLocationData YuYevonTransition = new MemoryLocationData(MemoryLocationNames.YuYevonTransition, 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
 
+        public static MemoryLocationData YojimboFaythTransition = new MemoryLocationData(MemoryLocationNames.YojimboFaythTransition, 0xF25B60 + 0x1C, new int[] { 0x9508 });
+
         public static MemoryLocationData CutsceneProgress_Max = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_Max, 0xF26AE8, 0xC);
         public static MemoryLocationData CutsceneProgress_uVar1 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar1, 0xF26AE8, 0x14);
         public static MemoryLocationData CutsceneProgress_uVar2 = new MemoryLocationData(MemoryLocationNames.CutsceneProgress_uVar2, 0xF26AE8, 0x16);
@@ -215,8 +217,9 @@
         public static MemoryLocationData ValeforMaxMP = new MemoryLocationData("ValeforMaxMP", 0xD32524);
 
         // Encounter Rate
+        public static MemoryLocationData EncountersActiveFlag = new MemoryLocationData("EncountersActiveFlag", 0xD2A9D7);
         public static MemoryLocationData TotalDistance = new MemoryLocationData("TotalDistance", 0xD2A9DC);
-        public static MemoryLocationData CycleDistance = new MemoryLocationData("TotalDistance", 0xD2A9D8);
+        public static MemoryLocationData CycleDistance = new MemoryLocationData("CycleDistance", 0xD2A9D8);
 
         // Special Flags
         public static MemoryLocationData FangirlsOrKidsSkip = new MemoryLocationData(MemoryLocationNames.FangirlsOrKidsSkip, 0xD2CE7C);
@@ -249,6 +252,8 @@
         public static MemoryLocationData WantzFlag = new MemoryLocationData(MemoryLocationNames.WantzFlag, 0xD2CF06);
         public static MemoryLocationData GagazetCaveFlag = new MemoryLocationData(MemoryLocationNames.GagazetCaveFlag, 0xD2CD55);
         public static MemoryLocationData OmegaRuinsFlag = new MemoryLocationData(MemoryLocationNames.OmegaRuinsFlag, 0xD2CE4E);
+        public static MemoryLocationData WantzMacalaniaFlag = new MemoryLocationData(MemoryLocationNames.WantzMacalaniaFlag, 0xD2D6E1);
+
 
         // Blitzball
         public static MemoryLocationData AurochsTeamBytes = new MemoryLocationData(MemoryLocationNames.AurochsTeamBytes, 0xD2D704);

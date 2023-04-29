@@ -126,6 +126,7 @@
         public static string BFATransition = "BFATransition";
         public static string AeonTransition = "AeonTransition";
         public static string YuYevonTransition = "YuYevonTransition";
+        public static string YojimboFaythTransition = "YojimboFaythTransition";
         public static string CutsceneProgress_Max = "CutsceneProgress_Max";
         public static string CutsceneProgress_uVar1 = "CutsceneProgress_uVar1";
         public static string CutsceneProgress_uVar2 = "CutsceneProgress_uVar2";
@@ -162,6 +163,7 @@
         public static string EnableYojimbo = "EnableYojimbo";
         public static string EnableMagus = "EnableMagus";
 
+        public static string EncountersActiveFlag = "EncountersActiveFlag";
         public static string TotalDistance = "TotalDistance";
         public static string CycleDistance = "CycleDistance";
 
@@ -196,6 +198,7 @@
         public static string WantzFlag = "WantzFlag";
         public static string GagazetCaveFlag = "GagazetCaveFlag";
         public static string OmegaRuinsFlag = "OmegaRuinsFlag";
+        public static string WantzMacalaniaFlag = "WantzMacalaniaFlag";
 
         // Blitzball
         public static string AurochsTeamBytes = "AurochsTeamBytes";
