@@ -1,4 +1,5 @@
 ﻿using FFX_Cutscene_Remover.ComponentUtil;
+using FFXCutsceneRemover.Logging;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -11,22 +12,19 @@ namespace FFXCutsceneRemover
         {
             int baseAddress = base.memoryWatchers.GetBaseAddress();
 
-            if (base.memoryWatchers.DefenderXTransition.Current > 0)
+            if (Stage == 0 && base.memoryWatchers.FrameCounterFromLoad.Current < 10)
             {
-                if (Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.DefenderXTransition.Current;
+                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                DiagnosticLog.Information(BaseCutsceneValue.ToString("X8"));
+                Stage = 1;
 
-                    Stage = 1;
-
-                }
-                else if (base.memoryWatchers.DefenderXTransition.Current >= (BaseCutsceneValue + 0x424) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.DefenderXTransition, BaseCutsceneValue + 0x842);
-                    Stage = 2;
-                }
+            }
+            else if (base.memoryWatchers.DefenderXTransition.Current >= (BaseCutsceneValue + 0x5451) && Stage == 1)
+            {
+                WriteValue<int>(base.memoryWatchers.DefenderXTransition, BaseCutsceneValue + 0x586F);
+                Stage = 2;
             }
         }
     }
