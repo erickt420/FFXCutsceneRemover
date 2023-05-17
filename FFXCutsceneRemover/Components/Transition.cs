@@ -76,7 +76,7 @@ namespace FFXCutsceneRemover
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
         public short? AirshipDestinationChange = null;
-        public short? AuronOverdrives = null;
+        public byte? AuronOverdrives = null;
         public int? TargetFramerate = null;
         public byte? PartyMembers = null;
         public byte? Sandragoras = null;

@@ -48,7 +48,7 @@ namespace FFXCutsceneRemover
         public MemoryWatcher<byte> RoomNumberAlt;
         public MemoryWatcher<short> CutsceneAlt;
         public MemoryWatcher<short> AirshipDestinations;
-        public MemoryWatcher<short> AuronOverdrives;
+        public MemoryWatcher<byte> AuronOverdrives;
         public MemoryWatcher<int> Gil;
         public MemoryWatcher<int> TargetFramerate;
         public MemoryWatcher<int> Dialogue1;
@@ -365,7 +365,7 @@ namespace FFXCutsceneRemover
             RoomNumberAlt = GetMemoryWatcher<byte>(MemoryLocations.RoomNumberAlt);
             CutsceneAlt = GetMemoryWatcher<short>(MemoryLocations.CutsceneAlt);
             AirshipDestinations = GetMemoryWatcher<short>(MemoryLocations.AirshipDestinations);
-            AuronOverdrives = GetMemoryWatcher<short>(MemoryLocations.AuronOverdrives);
+            AuronOverdrives = GetMemoryWatcher<byte>(MemoryLocations.AuronOverdrives);
             Gil = GetMemoryWatcher<int>(MemoryLocations.Gil);
             TargetFramerate = GetMemoryWatcher<int>(MemoryLocations.TargetFramerate);
             Dialogue1 = GetMemoryWatcher<int>(MemoryLocations.Dialogue1);

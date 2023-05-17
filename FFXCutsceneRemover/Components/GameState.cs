@@ -36,7 +36,7 @@ namespace FFXCutsceneRemover
         public short? RoomNumberAlt = null;
         public short? CutsceneAlt = null;
         public short? AirshipDestinations = null;
-        public short? AuronOverdrives = null;
+        public byte? AuronOverdrives = null;
         public int? Gil = null;
         public int? TargetFramerate = null;
         public int? Dialogue1 = null;
