@@ -274,7 +274,8 @@ namespace FFXCutsceneRemover.Resources
             // END OF MI'IHEN
             // START OF MUSHROOM ROCK ROAD
             { new GameState { RoomNumber = 79, Storyline = 787 }, new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -60.82686996f, Target_y = -6.881165981f, Target_z = -837.5621948f, Target_rot = 1.245915651f, Target_var1 = 979, MoveFrame = 8, Description = "Tidus distrusts Seymour"} },
-            { new GameState { RoomNumber = 119, Storyline = 825 }, new Transition { Storyline = 845, MRRFlag1 = 0x02, MRRFlag2 = 0x01, Description = "Preparing for Sin" } },
+            { new GameState { RoomNumber = 92, Storyline = 825 }, new Transition { Storyline = 802, Description = "Send Clasko to the shadow realm"} },
+            { new GameState { RoomNumber = 119, Storyline = 802 }, new Transition { Storyline = 845, MRRFlag1 = 0x02, MRRFlag2 = 0x01, Description = "Preparing for Sin" } },
             { new GameState { RoomNumber = 119, Storyline = 845 }, GuiTransition },
             { new GameState { RoomNumber = 247, Storyline = 865 }, GuiTransition },
                                             // Post-Sinspawn Gui 2
@@ -284,6 +285,7 @@ namespace FFXCutsceneRemover.Resources
             { new GameState { RoomNumber = 218, Storyline = 902 }, new Transition { RoomNumber = 341, Storyline = 910, Description = "Tidus is swimming"} },
             { new GameState { RoomNumber = 341, Storyline = 910 }, new Transition { RoomNumber = 134, Storyline = 910, Description = "Nucleus"} },
             { new GameState { RoomNumber = 134, Storyline = 910 }, new Transition { RoomNumber = 131, Storyline = 910, Description = "Zanarkand flashback"} },
+            { new GameState { RoomNumber = 131, Storyline = 802 }, new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 783.6201172f, Target_y = -2.361909866f, Target_z = -132.7236023f, Target_rot = -2.00543189f, Target_var1 = 161, Description = "Tidus monologue on beach (Terra Skip)"} },
             { new GameState { RoomNumber = 131, Storyline = 910 }, new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 783.6201172f, Target_y = -2.361909866f, Target_z = -132.7236023f, Target_rot = -2.00543189f, Target_var1 = 161, Description = "Tidus monologue on beach"} },
             { new GameState { RoomNumber = 131, Storyline = 922, State = 0 }, new Transition { RoomNumber = 131, Storyline = 928, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 493.2272034f, Target_y = -15.79727077f, Target_z = -190.388382f, Target_rot = 1.981455684f, Target_var1 = 94, Description = "Kinoc retreats"} },
             { new GameState { RoomNumber = 131, Storyline = 928, State = 0 }, new Transition { RoomNumber = 131, Storyline = 938, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 371.6022644f, Target_y = -22.7253685f, Target_z = -167.7940369f, Target_rot = 0.507765293f, Target_var1 = 88, Description = "Tidus speaks to Auron"} },
