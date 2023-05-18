@@ -1,28 +1,27 @@
-﻿using FFXCutsceneRemover.Logging;
-using FFXCutsceneRemover.ComponentUtil;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Collections.Generic;
 
-namespace FFXCutsceneRemover
+using FFXCutsceneRemover.ComponentUtil;
+
+namespace FFXCutsceneRemover;
+
+class BahamutFaythTransition2 : Transition
 {
-    class BahamutFaythTransition2 : Transition
+    static private List<short> CutsceneAltList2 = new List<short>(new short[] { 4449, 4450 });
+
+    public override void Execute(string defaultDescription = "")
     {
-        static private List<short> CutsceneAltList2 = new List<short>(new short[] { 4449, 4450 });
+        Process process = memoryWatchers.Process;
 
-        public override void Execute(string defaultDescription = "")
+        if (base.memoryWatchers.Dialogue1.Current == 30 && Stage == 0)
         {
-            Process process = memoryWatchers.Process;
+            process.Suspend();
 
-            if (base.memoryWatchers.Dialogue1.Current == 30 && Stage == 0)
-            {
-                process.Suspend();
+            new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AddSinLocation = true, PositionTidusAfterLoad = true, Target_x = -242.8587952f, Target_y = 12.12630653f, Target_z = 160.4484863f, Target_rot = 1.556545019f, Target_var1 = 1390, Description = "Return from Highbridge" }.Execute();
 
-                new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AddSinLocation = true, PositionTidusAfterLoad = true, Target_x = -242.8587952f, Target_y = 12.12630653f, Target_z = 160.4484863f, Target_rot = 1.556545019f, Target_var1 = 1390, Description = "Return from Highbridge" }.Execute();
+            Stage += 1;
 
-                Stage += 1;
-
-                process.Resume();
-            }
+            process.Resume();
         }
     }
 }

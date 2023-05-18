@@ -1,7 +1,6 @@
-﻿namespace FFXCutsceneRemover
+﻿namespace FFXCutsceneRemover;
+
+interface IGameState
 {
-    interface IGameState
-    {
-        bool CheckState();
-    }
+    bool CheckState();
 }

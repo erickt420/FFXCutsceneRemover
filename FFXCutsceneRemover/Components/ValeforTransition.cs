@@ -1,27 +1,21 @@
-﻿using FFXCutsceneRemover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
+﻿namespace FFXCutsceneRemover;
 
-namespace FFXCutsceneRemover
+class ValeforTransition : Transition
 {
-    class ValeforTransition : Transition
+    public override void Execute(string defaultDescription = "")
     {
-        public override void Execute(string defaultDescription = "")
+        int baseAddress = base.memoryWatchers.GetBaseAddress();
+        if (base.memoryWatchers.ValeforTransition.Current > 0)
         {
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
-            if (base.memoryWatchers.ValeforTransition.Current > 0)
+            if (Stage == 0)
             {
-                if (Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.ValeforTransition.Current;
-                    WriteValue<int>(base.memoryWatchers.ValeforTransition, BaseCutsceneValue + 0xAA4);
+                BaseCutsceneValue = base.memoryWatchers.ValeforTransition.Current;
+                WriteValue<int>(base.memoryWatchers.ValeforTransition, BaseCutsceneValue + 0xAA4);
 
-                    Stage = 1;
+                Stage = 1;
 
-                }
             }
         }
     }
