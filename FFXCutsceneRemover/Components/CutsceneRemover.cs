@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 using FFXCutsceneRemover.ComponentUtil;
@@ -50,16 +51,17 @@ class CutsceneRemover
 
         /* This loop iterates over the list of standard transitions
             * and applies them when necessary. Most transitions can be performed here.*/
-        Dictionary<IGameState, Transition> standardTransitions = Transitions.StandardTransitions;
+        Dictionary<Func<bool>, Transition> standardTransitions = Transitions.StandardTransitions;
+        
         foreach (var transition in standardTransitions)
         {
-            if (transition.Key.CheckState() && MemoryWatchers.ForceLoad.Current == 0)
+            if (transition.Key.Invoke() && MemoryWatchers.ForceLoad.Current == 0)
             {
                 ExecuteTransition(transition.Value, "Executing Standard Transition - No Description");
             }
         }
 
-        if (new GameState { RoomNumber = 23 }.CheckState())
+        if (MemoryWatchers.RoomNumber.Current == 23)
         {
             foreach (var transition in standardTransitions)
             {
@@ -69,12 +71,13 @@ class CutsceneRemover
 
         /* Loop for post boss fights transitions. Once we enter the fight we set the boss bit and the transition
             * to perform once we exit the AP menu. */
-        Dictionary<IGameState, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
+        Dictionary<Func<bool>, Transition> postBossBattleTransitions = Transitions.PostBossBattleTransitions;
+        
         if (!InBossFight)
         {
             foreach (var transition in postBossBattleTransitions)
             {
-                if (transition.Key.CheckState())
+                if (transition.Key.Invoke())
                 {
                     InBossFight = true;
                     PostBossFightTransition = transition.Value;
@@ -82,12 +85,12 @@ class CutsceneRemover
                 }
             }
         }
-        else if (InBossFight && new GameState {RoomNumber = 23}.CheckState())
+        else if (InBossFight && MemoryWatchers.RoomNumber.Current == 23)
         {
             DiagnosticLog.Information("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
             InBossFight = false;
         }
-        else if (new GameState { Menu = 0 }.CheckState() && new PreviousGameState { Menu = 1 }.CheckState())
+        else if (MemoryWatchers.Menu.Current == 0 && MemoryWatchers.Menu.Old == 1)
         {
             ExecuteTransition(PostBossFightTransition, "Executing Post Boss Fight Transition - No Description");
             DiagnosticLog.Information("Post Boss Fight");
@@ -113,26 +116,26 @@ class CutsceneRemover
             */
         // Soft reset by holding L1 R1 L2 R2 + Start - Disabled in battle because game crashes
 #if DEBUG
-        if (new GameState { Input = 2063 }.CheckState() && MemoryWatchers.BattleState.Current != 10)
+        if (MemoryWatchers.Input.Current == 2063 && MemoryWatchers.BattleState.Current != 10)
         {
             ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start", Repeatable = true });
         }
 #endif
 
         // Custom Check - Airship
-        if (new GameState { RoomNumber = 194, Storyline = 2000, State = 0}.CheckState() && MemoryWatchers.XCoordinate.Current > 300f)
+        if (MemoryWatchers.RoomNumber.Current == 194 && MemoryWatchers.Storyline.Current == 2000 && MemoryWatchers.State.Current == 0 && MemoryWatchers.XCoordinate.Current > 300f)
         {
             ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.6673126f, Target_y = 12.51491833f, Target_z = 398.0950317f, Target_rot = -1.659699082f, Target_var1 = 1463, Description = "Zoom in on Bevelle"});
         }
 
         // Custom Check - Djose
-        if (new GameState { RoomNumber = 161, Storyline = 1010, MovementLock = 48}.CheckState() && MemoryWatchers.YCoordinate.Current > 10.0f)
+        if (MemoryWatchers.RoomNumber.Current == 161 && MemoryWatchers.Storyline.Current == 1010 && MemoryWatchers.MovementLock.Current == 48 && MemoryWatchers.YCoordinate.Current > 10.0f)
         {
             ExecuteTransition(new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"});
         }
 
         // Custom Check - Zanarkand 
-        if (new GameState { RoomNumber = 368, Storyline = 3, FangirlsOrKidsSkip = 3 }.CheckState())
+        if (MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.FangirlsOrKidsSkip.Current == 3)
         {
             if (MemoryWatchers.TidusXCoordinate.Current < 5.0f && MemoryWatchers.TidusZCoordinate.Current < 8.0f && MemoryWatchers.TidusZCoordinate.Current > -8.0f)
             {

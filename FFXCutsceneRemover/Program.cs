@@ -100,12 +100,11 @@ class Program
             {
                 MemoryWatchers.Watchers.UpdateAll(Game);
 
-                if (!newGameMenuUpdated && new GameState { RoomNumber = 0, Storyline = 0, Dialogue1 = 6 }.CheckState())
-                {
+                if (!newGameMenuUpdated && MemoryWatchers.RoomNumber.Current == 0 && MemoryWatchers.Storyline.Current == 0 && MemoryWatchers.Dialogue1.Current == 6) {
                     new NewGameTransition { ForceLoad = false, ConsoleOutput = false, startGameText = startGameText }.Execute();
                     newGameMenuUpdated = true;
                 }
-                if (newGameMenuUpdated && new GameState { RoomNumber = 23 }.CheckState())
+                if (newGameMenuUpdated && MemoryWatchers.RoomNumber.Current == 23)
                 {
                     newGameMenuUpdated = false;
                 }

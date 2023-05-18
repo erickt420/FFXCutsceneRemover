@@ -23,7 +23,7 @@ class RNGMod
     {
         if (!rngPatched)
         {
-            if (new GameState { RoomNumber = 23 }.CheckState())
+            if (MemoryWatchers.RoomNumber.Current == 23)
             {
                 new Transition { ForceLoad = false, RNGArrayOpBytes = new byte[] { 0x31, 0xD2, 0x90 } , Description = "RNG patch applied!" }.Execute();
                 rngPatched = true;

@@ -153,7 +153,7 @@ class YuYevonTransition : Transition
         }
         else if (activeAeon != "")
         {
-            if (new GameState { HpEnemyA = 0 }.CheckState() && !(new PreviousGameState { HpEnemyA = 0 }.CheckState()))
+            if (MemoryWatchers.HpEnemyA.Current == 0 && MemoryWatchers.HpEnemyA.Old != 0)
             {
                 DiagnosticLog.Information(activeAeon + " Dead");
                 Stage += 1;
