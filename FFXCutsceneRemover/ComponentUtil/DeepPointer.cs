@@ -53,62 +53,36 @@ namespace FFX_Cutscene_Remover.ComponentUtil
             InitializeOffsets(offsets);
         }
 
-        public T Deref<T>(Process process, T default_ = default(T)) where T : struct // all value types including structs
+        public T Deref<T>(Process process, T defval = default) where T : struct // all value types including structs
         {
-            T val;
-            if (!Deref(process, out val))
-                val = default_;
-            return val;
+            return Deref(process, out T val) ? val : defval;
         }
 
         public bool Deref<T>(Process process, out T value) where T : struct
         {
-            IntPtr ptr;
-            if (!DerefOffsets(process, out ptr)
-                || !process.ReadValue(ptr, out value))
-            {
-                value = default(T);
-                return false;
-            }
-
-            return true;
+            value = default;
+            return DerefOffsets(process, out nint ptr) && process.ReadValue(ptr, out value);
         }
 
         public byte[] DerefBytes(Process process, int count)
         {
-            byte[] bytes;
-            if (!DerefBytes(process, count, out bytes))
-                bytes = null;
-            return bytes;
+            return DerefBytes(process, count, out byte[] bytes) ? bytes : null;
         }
 
         public bool DerefBytes(Process process, int count, out byte[] value)
         {
-            IntPtr ptr;
-            if (!DerefOffsets(process, out ptr)
-                || !process.ReadBytes(ptr, count, out value))
-            {
-                value = null;
-                return false;
-            }
-
-            return true;
+            value = null;
+            return DerefOffsets(process, out nint ptr) && process.ReadBytes(ptr, count, out value);
         }
 
-        public string DerefString(Process process, int numBytes, string default_ = null)
+        public string DerefString(Process process, int numBytes, string defval = null)
         {
-            string str;
-            if (!DerefString(process, ReadStringType.AutoDetect, numBytes, out str))
-                str = default_;
-            return str;
+            return DerefString(process, ReadStringType.AutoDetect, numBytes, out string str) ? str : defval;
         }
 
-        public string DerefString(Process process, ReadStringType type, int numBytes, string default_ = null)
+        public string DerefString(Process process, ReadStringType type, int numBytes, string defval = null)
         {
-            string str;
-            if (!DerefString(process, type, numBytes, out str))
-                str = default_;
-            return str;
+            return DerefString(process, type, numBytes, out string str) ? str : defval;
         }
 
         public bool DerefString(Process process, int numBytes, out string str)
@@ -135,13 +109,7 @@ namespace FFX_Cutscene_Remover.ComponentUtil
 
         public bool DerefString(Process process, ReadStringType type, StringBuilder sb)
         {
-            IntPtr ptr;
-            if (!DerefOffsets(process, out ptr)
-                || !process.ReadString(ptr, type, sb))
-            {
-                return false;
-            }
-            return true;
+            return DerefOffsets(process, out nint ptr) && process.ReadString(ptr, type, sb);
         }
 
         public bool DerefOffsets(Process process, out IntPtr ptr)
@@ -188,8 +156,7 @@ namespace FFX_Cutscene_Remover.ComponentUtil
 
         private void InitializeOffsets(params OffsetT[] offsets)
         {
-            _offsets = new List<OffsetT>();
-            _offsets.Add(0); // deref base first
+            _offsets = new List<OffsetT> { 0 }; // deref base first
             _offsets.AddRange(offsets);
         }
     }

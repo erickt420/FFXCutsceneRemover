@@ -1,11 +1,13 @@
-﻿using FFXCutsceneRemover.ComponentUtil;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+
+using FFXCutsceneRemover.ComponentUtil;
 
 /* Please don't mess with this. */
 namespace FFX_Cutscene_Remover.ComponentUtil
@@ -57,9 +59,8 @@ namespace FFX_Cutscene_Remover.ComponentUtil
             var hModules = new IntPtr[1024];
 
             uint cb = (uint)IntPtr.Size * (uint)hModules.Length;
-            uint cbNeeded;
 
-            if (!WinAPI.EnumProcessModulesEx(p.Handle, hModules, cb, out cbNeeded, LIST_MODULES_ALL))
+            if (!WinAPI.EnumProcessModulesEx(p.Handle, hModules, cb, out uint cbNeeded, LIST_MODULES_ALL))
                 throw new Win32Exception();
             uint numMods = cbNeeded / (uint)IntPtr.Size;
 
@@ -102,90 +103,29 @@ namespace FFX_Cutscene_Remover.ComponentUtil
             return ret.ToArray();
         }
 
-        public static IEnumerable<MemoryBasicInformation> MemoryPages(this Process process, bool all = false)
-        {
-            // hardcoded values because GetSystemInfo / GetNativeSystemInfo can't return info for remote process
-            var min = 0x10000L;
-            var max = process.Is64Bit() ? 0x00007FFFFFFEFFFFL : 0x7FFEFFFFL;
-
-            var mbiSize = (SizeT)Marshal.SizeOf(typeof(MemoryBasicInformation));
-
-            var addr = min;
-            do
-            {
-                MemoryBasicInformation mbi;
-                if (WinAPI.VirtualQueryEx(process.Handle, (IntPtr)addr, out mbi, mbiSize) == (SizeT)0)
-                    break;
-                addr += (long)mbi.RegionSize;
-
-                // don't care about reserved/free pages
-                if (mbi.State != MemPageState.MEM_COMMIT)
-                    continue;
-
-                // probably don't care about guarded pages
-                if (!all && (mbi.Protect & MemPageProtect.PAGE_GUARD) != 0)
-                    continue;
-
-                // probably don't care about image/file maps
-                if (!all && mbi.Type != MemPageType.MEM_PRIVATE)
-                    continue;
-
-                yield return mbi;
-
-            } while (addr < max);
-        }
-
         public static bool Is64Bit(this Process process)
         {
-            bool procWow64;
-            WinAPI.IsWow64Process(process.Handle, out procWow64);
-            if (Environment.Is64BitOperatingSystem && !procWow64)
-                return true;
-            return false;
+            WinAPI.IsWow64Process(process.Handle, out bool procWow64);
+            return Environment.Is64BitOperatingSystem && !procWow64;
         }
 
-        public static bool ReadValue<T>(this Process process, IntPtr addr, out T val) where T : struct
+        public static bool ReadValue<T>(this Process process, IntPtr addr, out T val)
         {
-            var type = typeof(T);
-            type = type.IsEnum ? Enum.GetUnderlyingType(type) : type;
+            val = default;
+            int size = Unsafe.SizeOf<T>();
 
-            val = default(T);
-            object val2;
-            if (!ReadValue(process, addr, type, out val2))
+            if (!ReadBytes(process, addr, size, out byte[] bytes))
                 return false;
 
-            val = (T)val2;
-
-            return true;
-        }
-
-        public static bool ReadValue(Process process, IntPtr addr, Type type, out object val)
-        {
-            byte[] bytes;
-
-            val = null;
-            int size = type == typeof(bool) ? 1 : Marshal.SizeOf(type);
-            if (!ReadBytes(process, addr, size, out bytes))
-                return false;
-
-            val = ResolveToType(bytes, type);
-
+            val = ResolveToType<T>(bytes);
             return true;
         }
 
         public static bool ReadBytes(this Process process, IntPtr addr, int count, out byte[] val)
         {
             var bytes = new byte[count];
-
-            SizeT read;
-            val = null;
-            if (!WinAPI.ReadProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out read)
-                || read != (SizeT)bytes.Length)
-                return false;
-
-            val = bytes;
-
-            return true;
+            val = WinAPI.ReadProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out SizeT read) ? bytes : null;
+            return val != null;
         }
 
         public static bool ReadPointer(this Process process, IntPtr addr, out IntPtr val)
@@ -197,9 +137,8 @@ namespace FFX_Cutscene_Remover.ComponentUtil
         {
             var bytes = new byte[is64Bit ? 8 : 4];
 
-            SizeT read;
             val = IntPtr.Zero;
-            if (!WinAPI.ReadProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out read)
+            if (!WinAPI.ReadProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out SizeT read)
                 || read != (SizeT)bytes.Length)
                 return false;
 
@@ -216,15 +155,8 @@ namespace FFX_Cutscene_Remover.ComponentUtil
         public static bool ReadString(this Process process, IntPtr addr, ReadStringType type, int numBytes, out string str)
         {
             var sb = new StringBuilder(numBytes);
-            if (!ReadString(process, addr, type, sb))
-            {
-                str = string.Empty;
-                return false;
-            }
-
-            str = sb.ToString();
-
-            return true;
+            str = ReadString(process, addr, type, sb) ? sb.ToString() : string.Empty;
+            return str != string.Empty;
         }
 
         public static bool ReadString(this Process process, IntPtr addr, StringBuilder sb)
@@ -235,24 +167,19 @@ namespace FFX_Cutscene_Remover.ComponentUtil
         public static bool ReadString(this Process process, IntPtr addr, ReadStringType type, StringBuilder sb)
         {
             var bytes = new byte[sb.Capacity];
-            SizeT read;
-            if (!WinAPI.ReadProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out read)
+            if (!WinAPI.ReadProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out SizeT read)
                 || read != (SizeT)bytes.Length)
                 return false;
 
-            if (type == ReadStringType.AutoDetect)
+            sb.Append(type switch
             {
-                if (read.ToUInt64() >= 2 && bytes[1] == '\x0')
-                    sb.Append(Encoding.Unicode.GetString(bytes));
-                else
-                    sb.Append(Encoding.UTF8.GetString(bytes));
-            }
-            else if (type == ReadStringType.UTF8)
-                sb.Append(Encoding.UTF8.GetString(bytes));
-            else if (type == ReadStringType.UTF16)
-                sb.Append(Encoding.Unicode.GetString(bytes));
-            else
-                sb.Append(Encoding.ASCII.GetString(bytes));
+                ReadStringType.AutoDetect => read.ToUInt64() >= 2 && bytes[1] == '\x0' 
+                    ? Encoding.Unicode.GetString(bytes) 
+                    : Encoding.UTF8.GetString(bytes),
+                ReadStringType.UTF8       => Encoding.UTF8.GetString(bytes),
+                ReadStringType.UTF16      => Encoding.Unicode.GetString(bytes),
+                _                         => Encoding.ASCII.GetString(bytes)
+            });
 
             for (int i = 0; i < sb.Length; i++)
             {
@@ -266,44 +193,29 @@ namespace FFX_Cutscene_Remover.ComponentUtil
             return true;
         }
 
-        public static T ReadValue<T>(this Process process, IntPtr addr, T default_ = default(T)) where T : struct
+        public static T ReadValue<T>(this Process process, IntPtr addr, T defval = default) where T : struct
         {
-            T val;
-            if (!process.ReadValue(addr, out val))
-                val = default_;
-            return val;
+            return process.ReadValue(addr, out T val) ? val : defval;
         }
 
         public static byte[] ReadBytes(this Process process, IntPtr addr, int count)
         {
-            byte[] bytes;
-            if (!process.ReadBytes(addr, count, out bytes))
-                return null;
-            return bytes;
+            return process.ReadBytes(addr, count, out byte[] bytes) ? bytes : null;
         }
 
-        public static IntPtr ReadPointer(this Process process, IntPtr addr, IntPtr default_ = default(IntPtr))
+        public static IntPtr ReadPointer(this Process process, IntPtr addr, IntPtr defval = default)
         {
-            IntPtr ptr;
-            if (!process.ReadPointer(addr, out ptr))
-                return default_;
-            return ptr;
+            return process.ReadPointer(addr, out nint ptr) ? ptr : defval;
         }
 
-        public static string ReadString(this Process process, IntPtr addr, int numBytes, string default_ = null)
+        public static string ReadString(this Process process, IntPtr addr, int numBytes, string defval = null)
         {
-            string str;
-            if (!process.ReadString(addr, numBytes, out str))
-                return default_;
-            return str;
+            return process.ReadString(addr, numBytes, out string str) ? str : defval;
         }
 
-        public static string ReadString(this Process process, IntPtr addr, ReadStringType type, int numBytes, string default_ = null)
+        public static string ReadString(this Process process, IntPtr addr, ReadStringType type, int numBytes, string defval = null)
         {
-            string str;
-            if (!process.ReadString(addr, type, numBytes, out str))
-                return default_;
-            return str;
+            return process.ReadString(addr, type, numBytes, out string str) ? str : defval;
         }
 
         public static bool WriteValue<T>(this Process process, IntPtr addr, T obj) where T : struct
@@ -321,156 +233,13 @@ namespace FFX_Cutscene_Remover.ComponentUtil
 
         public static bool WriteBytes(this Process process, IntPtr addr, byte[] bytes)
         {
-            SizeT written;
-            if (!WinAPI.WriteProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out written)
-                || written != (SizeT)bytes.Length)
-                return false;
-
-            return true;
+            return WinAPI.WriteProcessMemory(process.Handle, addr, bytes, (SizeT)bytes.Length, out SizeT written)
+                   && written == (SizeT)bytes.Length;
         }
 
-        private static bool WriteJumpOrCall(Process process, IntPtr addr, IntPtr dest, bool call)
+        static T ResolveToType<T>(ReadOnlySpan<byte> bytes)
         {
-            var x64 = process.Is64Bit();
-
-            int jmpLen = x64 ? 12 : 5;
-
-            var instruction = new List<byte>(jmpLen);
-            if (x64)
-            {
-                instruction.AddRange(new byte[] { 0x48, 0xB8 }); // mov rax immediate
-                instruction.AddRange(BitConverter.GetBytes((long)dest));
-                instruction.AddRange(new byte[] { 0xFF, call ? (byte)0xD0 : (byte)0xE0 }); // jmp/call rax
-            }
-            else
-            {
-                int offset = unchecked((int)dest - (int)(addr + jmpLen));
-                instruction.AddRange(new byte[] { call ? (byte)0xE8 : (byte)0xE9 }); // jmp/call immediate
-                instruction.AddRange(BitConverter.GetBytes(offset));
-            }
-
-            MemPageProtect oldProtect;
-            process.VirtualProtect(addr, jmpLen, MemPageProtect.PAGE_EXECUTE_READWRITE, out oldProtect);
-            bool success = process.WriteBytes(addr, instruction.ToArray());
-            process.VirtualProtect(addr, jmpLen, oldProtect);
-
-            return success;
-        }
-
-        public static bool WriteJumpInstruction(this Process process, IntPtr addr, IntPtr dest)
-        {
-            return WriteJumpOrCall(process, addr, dest, false);
-        }
-
-        public static bool WriteCallInstruction(this Process process, IntPtr addr, IntPtr dest)
-        {
-            return WriteJumpOrCall(process, addr, dest, true);
-        }
-
-        public static IntPtr WriteDetour(this Process process, IntPtr src, int overwrittenBytes, IntPtr dest)
-        {
-            int jmpLen = process.Is64Bit() ? 12 : 5;
-            if (overwrittenBytes < jmpLen)
-                throw new ArgumentOutOfRangeException(nameof(overwrittenBytes),
-                    $"must be >= length of jmp instruction ({jmpLen})");
-
-            // allocate memory to store the original src prologue bytes we overwrite with jump to dest
-            // along with the jump back to src
-            IntPtr gate;
-            if ((gate = process.AllocateMemory(jmpLen + overwrittenBytes)) == IntPtr.Zero)
-                throw new Win32Exception();
-
-            try
-            {
-                // read the original bytes from the prologue of src
-                var origSrcBytes = process.ReadBytes(src, overwrittenBytes);
-                if (origSrcBytes == null)
-                    throw new Win32Exception();
-
-                // write the original prologue of src into the start of gate
-                if (!process.WriteBytes(gate, origSrcBytes))
-                    throw new Win32Exception();
-
-                // write the jump from the end of the gate back to src
-                if (!process.WriteJumpInstruction(gate + overwrittenBytes, src + overwrittenBytes))
-                    throw new Win32Exception();
-
-                // finally write the jump from src to dest
-                if (!process.WriteJumpInstruction(src, dest))
-                    throw new Win32Exception();
-
-                // nop the leftover bytes in the src prologue
-                int extraBytes = overwrittenBytes - jmpLen;
-                if (extraBytes > 0)
-                {
-                    var nops = Enumerable.Repeat((byte)0x90, extraBytes).ToArray();
-                    MemPageProtect oldProtect;
-                    if (!process.VirtualProtect(src + jmpLen, nops.Length, MemPageProtect.PAGE_EXECUTE_READWRITE,
-                        out oldProtect))
-                        throw new Win32Exception();
-                    if (!process.WriteBytes(src + jmpLen, nops))
-                        throw new Win32Exception();
-                    process.VirtualProtect(src + jmpLen, nops.Length, oldProtect);
-                }
-            }
-            catch
-            {
-                process.FreeMemory(gate);
-                throw;
-            }
-
-            return gate;
-        }
-
-        static object ResolveToType(byte[] bytes, Type type)
-        {
-            object val;
-
-            if (type == typeof(int))
-            {
-                val = BitConverter.ToInt32(bytes, 0);
-            }
-            else if (type == typeof(uint))
-            {
-                val = BitConverter.ToUInt32(bytes, 0);
-            }
-            else if (type == typeof(float))
-            {
-                val = BitConverter.ToSingle(bytes, 0);
-            }
-            else if (type == typeof(double))
-            {
-                val = BitConverter.ToDouble(bytes, 0);
-            }
-            else if (type == typeof(byte))
-            {
-                val = bytes[0];
-            }
-            else if (type == typeof(bool))
-            {
-                if (bytes == null)
-                    val = false;
-                else
-                    val = (bytes[0] != 0);
-            }
-            else if (type == typeof(short))
-            {
-                val = BitConverter.ToInt16(bytes, 0);
-            }
-            else // probably a struct
-            {
-                var handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-                try
-                {
-                    val = Marshal.PtrToStructure(handle.AddrOfPinnedObject(), type);
-                }
-                finally
-                {
-                    handle.Free();
-                }
-            }
-
-            return val;
+            return Unsafe.As<byte, T>(ref MemoryMarshal.GetReference(bytes));
         }
 
         public static IntPtr AllocateMemory(this Process process, int size)
@@ -493,15 +262,12 @@ namespace FFX_Cutscene_Remover.ComponentUtil
 
         public static bool VirtualProtect(this Process process, IntPtr addr, int size, MemPageProtect protect)
         {
-            MemPageProtect oldProtect;
-            return WinAPI.VirtualProtectEx(process.Handle, addr, (SizeT)size, protect, out oldProtect);
+            return WinAPI.VirtualProtectEx(process.Handle, addr, (SizeT)size, protect, out MemPageProtect oldProtect);
         }
 
         public static IntPtr CreateThread(this Process process, IntPtr startAddress, IntPtr parameter)
         {
-            IntPtr threadId;
-            return WinAPI.CreateRemoteThread(process.Handle, IntPtr.Zero, (SizeT)0, startAddress, parameter, 0,
-                out threadId);
+            return WinAPI.CreateRemoteThread(process.Handle, IntPtr.Zero, (SizeT)0, startAddress, parameter, 0, out nint threadId);
         }
 
         public static IntPtr CreateThread(this Process process, IntPtr startAddress)
