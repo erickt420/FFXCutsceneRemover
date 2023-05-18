@@ -6,7 +6,7 @@ using System.Linq;
 using FFXCutsceneRemover.Logging;
 
 /* Please don't mess with this. */
-namespace FFX_Cutscene_Remover.ComponentUtil
+namespace FFXCutsceneRemover.ComponentUtil
 {
     public class MemoryWatcherList : List<MemoryWatcher>
     {

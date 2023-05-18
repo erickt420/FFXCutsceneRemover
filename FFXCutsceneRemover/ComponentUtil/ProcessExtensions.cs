@@ -10,7 +10,7 @@ using System.Text;
 using FFXCutsceneRemover.ComponentUtil;
 
 /* Please don't mess with this. */
-namespace FFX_Cutscene_Remover.ComponentUtil
+namespace FFXCutsceneRemover.ComponentUtil
 {
     using SizeT = UIntPtr;
 

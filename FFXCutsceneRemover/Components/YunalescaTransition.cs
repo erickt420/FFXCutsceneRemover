@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using FFX_Cutscene_Remover.ComponentUtil;
+using FFXCutsceneRemover.ComponentUtil;
 using FFXCutsceneRemover.Logging;
 using System.Collections.Generic;
 

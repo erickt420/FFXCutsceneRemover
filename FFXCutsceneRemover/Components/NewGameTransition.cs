@@ -1,4 +1,4 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
+﻿using FFXCutsceneRemover.ComponentUtil;
 using System;
 using System.Text;
 using System.Diagnostics;

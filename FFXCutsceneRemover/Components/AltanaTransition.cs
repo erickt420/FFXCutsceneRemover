@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Collections.Generic;
-using FFX_Cutscene_Remover.ComponentUtil;
+using FFXCutsceneRemover.ComponentUtil;
 using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover

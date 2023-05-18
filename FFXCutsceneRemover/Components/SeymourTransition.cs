@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using FFXCutsceneRemover.Logging;
-using FFX_Cutscene_Remover.ComponentUtil;
+using FFXCutsceneRemover.ComponentUtil;
 
 namespace FFXCutsceneRemover
 {
