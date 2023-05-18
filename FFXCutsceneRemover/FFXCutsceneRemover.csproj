@@ -6,13 +6,6 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 	</PropertyGroup>
 
-	<!-- ASSEMBLY STRONG-NAMING -->
-	<PropertyGroup>
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>FFXCSR.snk</AssemblyOriginatorKeyFile>
-		<DelaySign>false</DelaySign>
-	</PropertyGroup>
-
 	<!-- ADDITIONAL PROPERTIES -->
 	<PropertyGroup>
 		<Version>1.4.2</Version>
