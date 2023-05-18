@@ -11,9 +11,9 @@ class BahamutFaythTransition2 : Transition
 
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.Dialogue1.Current == 30 && Stage == 0)
+        if (MemoryWatchers.Dialogue1.Current == 30 && Stage == 0)
         {
             process.Suspend();
 

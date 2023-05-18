@@ -11,13 +11,13 @@ class DiveTransition : Transition
         {
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage += 1;
 
         }
-        else if (base.memoryWatchers.DiveTransition.Current >= (BaseCutsceneValue + 0xA208) && Stage == 1)
+        else if (MemoryWatchers.DiveTransition.Current >= (BaseCutsceneValue + 0xA208) && Stage == 1)
         {
-            WriteValue<int>(base.memoryWatchers.DiveTransition, BaseCutsceneValue + 0xA493);
+            WriteValue<int>(MemoryWatchers.DiveTransition, BaseCutsceneValue + 0xA493);
 
             Stage += 1;
         }

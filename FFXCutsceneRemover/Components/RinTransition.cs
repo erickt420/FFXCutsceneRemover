@@ -11,31 +11,31 @@ class RinTransition : Transition
 
     public override void Execute(string defaultDescription = "")
     {
-        Process process = base.memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.RinTransition.Current > 0)
+        if (MemoryWatchers.RinTransition.Current > 0)
         {
-            if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
+            if (MemoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.RinTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.RinTransition.Current;
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.RinTransition.Current >= (BaseCutsceneValue + 0x271) && Stage == 1)
+            else if (MemoryWatchers.RinTransition.Current >= (BaseCutsceneValue + 0x271) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x466);
+                WriteValue<int>(MemoryWatchers.RinTransition, BaseCutsceneValue + 0x466);
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.Dialogue1.Current == 92 && Stage == 2)
+            else if (MemoryWatchers.Dialogue1.Current == 92 && Stage == 2)
             {
-                WriteValue<int>(base.memoryWatchers.RinTransition, BaseCutsceneValue + 0x58B);
+                WriteValue<int>(MemoryWatchers.RinTransition, BaseCutsceneValue + 0x58B);
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.RinTransition.Current == (BaseCutsceneValue + 0x5B1) && Stage == 3)
+            else if (MemoryWatchers.RinTransition.Current == (BaseCutsceneValue + 0x5B1) && Stage == 3)
             {
                 process.Suspend();
 

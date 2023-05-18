@@ -19,7 +19,7 @@ class RNGMod
     private byte[] patchBytes = new byte[] { 0x31, 0xD2, 0x90 };
     private byte[] currentBytes;
 
-    public void MainLoop(MemoryWatchers MemoryWatchers)
+    public void MainLoop()
     {
         if (!rngPatched)
         {

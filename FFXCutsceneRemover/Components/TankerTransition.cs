@@ -10,9 +10,9 @@ class TankerTransition : Transition
     static private List<short> CutsceneAltList = new List<short>(new short[] { 6609 });
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.FrameCounterFromLoad.Current > 10 && Stage == 0)
+        if (MemoryWatchers.FrameCounterFromLoad.Current > 10 && Stage == 0)
         {
             process.Suspend();
 
@@ -41,15 +41,15 @@ class TankerTransition : Transition
 
             process.Resume();
         }
-        else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 1)
+        else if (MemoryWatchers.BattleState2.Current == 22 && Stage == 1)
         {
             Stage += 1;
         }
-        else if (base.memoryWatchers.BattleState2.Current == 1 && Stage == 2)
+        else if (MemoryWatchers.BattleState2.Current == 1 && Stage == 2)
         {
             Stage += 1;
         }
-        else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 3)
+        else if (MemoryWatchers.BattleState2.Current == 0 && Stage == 3)
         {
             process.Suspend();
 

@@ -8,7 +8,7 @@ class SinCoreTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
         if (Stage == 0)
         {

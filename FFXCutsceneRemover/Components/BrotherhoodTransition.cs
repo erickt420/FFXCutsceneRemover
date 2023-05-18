@@ -14,7 +14,7 @@ class BrotherhoodTransition : Transition
     public override void Execute(string defaultDescription = "")
     {
         base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene + SpawnPoint + EnableYuna + EnableLulu)
-        int baseAddress = base.memoryWatchers.GetBaseAddress();
+        int baseAddress = MemoryWatchers.GetBaseAddress();
 
         MemoryWatcher<byte> unequipLongsword = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD30F32));
         WriteValue<byte>(unequipLongsword, 0xFF);
@@ -48,7 +48,7 @@ class BrotherhoodTransition : Transition
         bool foundEmptySlot = false;
         var emptySlot = new byte[2] { 0xFF, 0x00 }; // How empty slots are represented in hex
         int count = 0;
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
         while (!foundEmptySlot)
         {

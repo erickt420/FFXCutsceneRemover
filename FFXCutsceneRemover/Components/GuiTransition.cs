@@ -13,17 +13,17 @@ class GuiTransition : Transition
 
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.Dialogue1.Current == 95 && base.memoryWatchers.DialogueBoxOpen_Gui.Current == 1 && Stage == 0)
+        if (MemoryWatchers.Dialogue1.Current == 95 && MemoryWatchers.DialogueBoxOpen_Gui.Current == 1 && Stage == 0)
         {
             Stage += 1;
         }
-        else if (base.memoryWatchers.DialogueOption_Gui.Current == 0 && base.memoryWatchers.DialogueBoxOpen_Gui.Current == 0 && Stage == 1)
+        else if (MemoryWatchers.DialogueOption_Gui.Current == 0 && MemoryWatchers.DialogueBoxOpen_Gui.Current == 0 && Stage == 1)
         {
             Stage -= 1;
         }
-        else if (base.memoryWatchers.DialogueOption_Gui.Current == 1 && base.memoryWatchers.DialogueBoxOpen_Gui.Current == 0 && Stage == 1)
+        else if (MemoryWatchers.DialogueOption_Gui.Current == 1 && MemoryWatchers.DialogueBoxOpen_Gui.Current == 0 && Stage == 1)
         {
             process.Suspend();
             
@@ -49,15 +49,15 @@ class GuiTransition : Transition
 
             process.Resume();
         }
-        else if (base.memoryWatchers.HpEnemyA.Current == 12000 && Stage == 2)
+        else if (MemoryWatchers.HpEnemyA.Current == 12000 && Stage == 2)
         {
             Stage += 1;
         }
-        else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 3)
+        else if (MemoryWatchers.BattleState2.Current == 0 && Stage == 3)
         {
             process.Suspend();
 
-            GuiFormation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
+            GuiFormation = process.ReadBytes(MemoryWatchers.Formation.Address, 10);
 
             new Transition
             {
@@ -80,7 +80,7 @@ class GuiTransition : Transition
 
             process.Resume();
         }
-        else if (base.memoryWatchers.Menu.Current == 1 && Stage == 4)
+        else if (MemoryWatchers.Menu.Current == 1 && Stage == 4)
         {
             process.Suspend();
 

@@ -4,19 +4,19 @@ class EchuillesTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        if (base.memoryWatchers.EchuillesTransition.Current > 0)
+        if (MemoryWatchers.EchuillesTransition.Current > 0)
         {
             if (Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x20D0) && Stage == 1)
+            else if (MemoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x20D0) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x248A); // 0x2490
+                WriteValue<int>(MemoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x248A); // 0x2490
 
                 Transition actorPositions;
 

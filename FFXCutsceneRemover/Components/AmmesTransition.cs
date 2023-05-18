@@ -8,27 +8,27 @@ class AmmesTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
-        if (base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 0)
+        Process process = MemoryWatchers.Process;
+        if (MemoryWatchers.TidusActionCount.Current == 1 && Stage == 0)
         {
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage = 1;
 
         }
-        else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x97FA) && Stage == 1)
+        else if (MemoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x97FA) && Stage == 1)
         {
             Transition actorPositions;
             //Position Ammes
             actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4255 }, Target_x = 843.5f, Target_y = -42.0f, Target_z = -126.7f };
             actorPositions.Execute();
 
-            WriteValue<int>(base.memoryWatchers.AmmesTransition, BaseCutsceneValue + 0x9936);// 2AB , 255 , 21A
+            WriteValue<int>(MemoryWatchers.AmmesTransition, BaseCutsceneValue + 0x9936);// 2AB , 255 , 21A
 
             Stage += 1;
         }
-        else if (base.memoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x9A2C) && Stage == 2)
+        else if (MemoryWatchers.AmmesTransition.Current == (BaseCutsceneValue + 0x9A2C) && Stage == 2)
         {
             process.Suspend();
 

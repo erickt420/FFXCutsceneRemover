@@ -18,7 +18,7 @@ class RikkuNameTransition : Transition
     };
     public override void Execute(string defaultDescription = "")
     {
-        byte language = base.memoryWatchers.Language.Current;
+        byte language = MemoryWatchers.Language.Current;
         byte[] RikkuNameBytes = RikkuName[language];
 
         new Transition { ForceLoad = false, ConsoleOutput = false, Description = "Naming Rikku", RikkuName = RikkuNameBytes }.Execute();

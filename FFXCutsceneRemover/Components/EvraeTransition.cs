@@ -9,9 +9,9 @@ class EvraeTransition : Transition
     static private byte[] formation = new byte[] { 0x00, 0x02, 0x03, 0x04, 0x05, 0x06, 0xFF, 0xFF };
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.FrameCounterFromLoad.Current < 5 && base.memoryWatchers.State.Current == 0 && Stage == 0)
+        if (MemoryWatchers.FrameCounterFromLoad.Current < 5 && MemoryWatchers.State.Current == 0 && Stage == 0)
         {
             process.Suspend();
 

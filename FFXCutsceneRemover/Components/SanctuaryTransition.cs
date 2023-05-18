@@ -10,11 +10,11 @@ class SanctuaryTransition : Transition
 
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.SanctuaryTransition.Current > 0)
+        if (MemoryWatchers.SanctuaryTransition.Current > 0)
         {
-            formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 7);
+            formation = process.ReadBytes(MemoryWatchers.Formation.Address, 7);
 
             if (Stage == 0)
             {
@@ -38,7 +38,7 @@ class SanctuaryTransition : Transition
 
                 process.Resume();
             }
-            else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 1)
+            else if (MemoryWatchers.BattleState2.Current == 22 && Stage == 1)
             {
                 Transition actorPositions;
                 //Position Party Member 1

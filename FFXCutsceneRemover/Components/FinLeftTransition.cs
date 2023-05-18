@@ -8,9 +8,9 @@ class FinLeftTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.FinsTransition.Current > 0)
+        if (MemoryWatchers.FinsTransition.Current > 0)
         {
             if (Stage == 0)
             {
@@ -22,7 +22,7 @@ class FinLeftTransition : Transition
 
                 process.Resume();
             }
-            else if (base.memoryWatchers.BattleState2.Current > 0 && Stage == 1)
+            else if (MemoryWatchers.BattleState2.Current > 0 && Stage == 1)
             {
                 Transition actorPositions;
                 //Position Sin

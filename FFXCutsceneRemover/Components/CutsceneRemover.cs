@@ -31,7 +31,7 @@ class CutsceneRemover
         LoopSleepMillis = loopSleepMillis;
     }
 
-    public void MainLoop(MemoryWatchers MemoryWatchers)
+    public void MainLoop()
     {
         // Update the values of our memory watchers.
         // This is really important.

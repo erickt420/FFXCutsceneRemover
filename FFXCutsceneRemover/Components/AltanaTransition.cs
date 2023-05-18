@@ -12,23 +12,23 @@ class AltanaTransition : Transition
     static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.AltanaTransition.Current > 0)
+        if (MemoryWatchers.AltanaTransition.Current > 0)
         {
             if (Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.AltanaTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.AltanaTransition.Current;
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x69) && Stage == 1) // CC
+            else if (MemoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x69) && Stage == 1) // CC
             {
-                WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x307);//
+                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0x307);//
 
-                formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 3);
+                formation = process.ReadBytes(MemoryWatchers.Formation.Address, 3);
 
                 Transition actorPositions;
                 //Position Party Member 1
@@ -45,26 +45,26 @@ class AltanaTransition : Transition
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x32C) && Stage == 2) // This is a filler stage which only serves to facilitate fight end logic
+            else if (MemoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x32C) && Stage == 2) // This is a filler stage which only serves to facilitate fight end logic
             {
                 Stage += 1;
             }
-            else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 7)
+            else if (MemoryWatchers.BattleState.Current == 522 && Stage == 7)
             {
-                WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0xA7D);// 
+                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0xA7D);// 
                 Stage = 99;
             }
-            else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 5)
+            else if (MemoryWatchers.BattleState.Current == 522 && Stage == 5)
             {
-                WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x7A2);// Camera is jank if ending fight in second room. Need to work out how to move camera.
+                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0x7A2);// Camera is jank if ending fight in second room. Need to work out how to move camera.
                 Stage = 98;
             }
-            else if (base.memoryWatchers.BattleState.Current == 522 && Stage == 3)
+            else if (MemoryWatchers.BattleState.Current == 522 && Stage == 3)
             {
-                WriteValue<int>(base.memoryWatchers.AltanaTransition, BaseCutsceneValue + 0x3A9);// 
+                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0x3A9);// 
                 Stage = 99;
             }
-            else if (base.memoryWatchers.Menu.Current == 0 && base.memoryWatchers.Menu.Old == 1 && Stage == 98)
+            else if (MemoryWatchers.Menu.Current == 0 && MemoryWatchers.Menu.Old == 1 && Stage == 98)
             {
                 Transition actorPositions;
                 //Position Tidus

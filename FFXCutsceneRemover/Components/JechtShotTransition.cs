@@ -7,26 +7,26 @@ class JechtShotTransition : Transition
     static private List<short> CutsceneAltList = new List<short>(new short[] { 70, 71, 75, 76 });
     public override void Execute(string defaultDescription = "")
     {
-        int baseAddress = base.memoryWatchers.GetBaseAddress();
+        int baseAddress = MemoryWatchers.GetBaseAddress();
 
-        if (base.memoryWatchers.JechtShotTransition.Current > 0)
+        if (MemoryWatchers.JechtShotTransition.Current > 0)
         {
             
             if (Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+                BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xF3A7) && Stage == 1)
+            else if (MemoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xF3A7) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.JechtShotTransition, BaseCutsceneValue + 0xF9E4);
+                WriteValue<int>(MemoryWatchers.JechtShotTransition, BaseCutsceneValue + 0xF9E4);
 
                 Stage += 1;
             }
-            else if (base.memoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xFAAE) && Stage == 2)
+            else if (MemoryWatchers.JechtShotTransition.Current == (BaseCutsceneValue + 0xFAAE) && Stage == 2)
             {
                 Transition actorPositions;
                 //Position Tidus

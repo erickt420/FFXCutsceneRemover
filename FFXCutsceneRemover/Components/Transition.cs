@@ -13,7 +13,6 @@ public class Transition
 {
     private static string DEFAULT_DESCRIPTION = "Executing Transition - No Description";
     private static FieldInfo[] publicFields = typeof(Transition).GetFields(BindingFlags.Public | BindingFlags.Instance);
-    protected readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
 
     private Process process;
 
@@ -285,211 +284,211 @@ public class Transition
                 DEFAULT_DESCRIPTION);
         }
         // Always update to get the latest process
-        process = memoryWatchers.Process;
+        process = MemoryWatchers.Process;
 
-        WriteValue(memoryWatchers.RoomNumber, RoomNumber);
-        WriteValue(memoryWatchers.Storyline, Storyline);
-        WriteValue(memoryWatchers.SpawnPoint, SpawnPoint);
-        WriteValue(memoryWatchers.BattleState, BattleState);
-        WriteValue(memoryWatchers.BattleState2, BattleState2);
-        WriteValue(memoryWatchers.Menu, Menu);
-        WriteValue(memoryWatchers.MenuLock, MenuLock);
-        WriteValue(memoryWatchers.Intro, Intro);
-        WriteValue(memoryWatchers.FangirlsOrKidsSkip, FangirlsOrKidsSkip);
-        WriteValue(memoryWatchers.State, State);
-        WriteValue(memoryWatchers.XCoordinate, XCoordinate);
-        WriteValue(memoryWatchers.YCoordinate, YCoordinate);
-        WriteValue(memoryWatchers.Camera, Camera);
-        WriteValue(memoryWatchers.Camera_x, Camera_x);
-        WriteValue(memoryWatchers.Camera_y, Camera_y);
-        WriteValue(memoryWatchers.Camera_z, Camera_z);
-        WriteValue(memoryWatchers.CameraRotation, CameraRotation);
-        WriteValue(memoryWatchers.EncounterStatus, EncounterStatus);
-        WriteValue(memoryWatchers.MovementLock, MovementLock);
-        WriteValue(memoryWatchers.ActiveMusicId, ActiveMusicId);
-        WriteValue(memoryWatchers.MusicId, MusicId);
-        WriteValue(memoryWatchers.RoomNumberAlt, RoomNumberAlt);
-        WriteValue(memoryWatchers.CutsceneAlt, CutsceneAlt);
-        WriteValue(memoryWatchers.AirshipDestinations, AirshipDestinations);
-        WriteValue(memoryWatchers.AuronOverdrives, AuronOverdrives);
-        WriteValue(memoryWatchers.TargetFramerate, TargetFramerate);
-        WriteValue(memoryWatchers.Sandragoras, Sandragoras);
-        WriteValue(memoryWatchers.EncounterMapID, EncounterMapID);
-        WriteValue(memoryWatchers.EncounterFormationID1, EncounterFormationID1);
-        WriteValue(memoryWatchers.EncounterFormationID2, EncounterFormationID2);
-        WriteValue(memoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
-        WriteValue(memoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
-        WriteValue(memoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
-        WriteValue(memoryWatchers.ScriptedBattleVar3, ScriptedBattleVar3);
-        WriteValue(memoryWatchers.ScriptedBattleVar4, ScriptedBattleVar4);
-        WriteValue(memoryWatchers.EncounterTrigger, EncounterTrigger);
-        WriteValue(memoryWatchers.HpEnemyA, HpEnemyA);
-        WriteValue(memoryWatchers.GuadoCount, GuadoCount);
-        WriteValue(memoryWatchers.TidusXCoordinate, TidusXCoordinate);
-        WriteValue(memoryWatchers.TidusYCoordinate, TidusYCoordinate);
-        WriteValue(memoryWatchers.TidusZCoordinate, TidusZCoordinate);
-        WriteValue(memoryWatchers.TidusRotation, TidusRotation);
-        WriteBytes(memoryWatchers.DialogueFile, DialogueFile);
-        WriteValue(memoryWatchers.CutsceneTiming, CutsceneTiming);
-        WriteValue(memoryWatchers.AuronTransition, AuronTransition);
-        WriteValue(memoryWatchers.AmmesTransition, AmmesTransition);
-        WriteValue(memoryWatchers.TankerTransition, TankerTransition);
-        WriteValue(memoryWatchers.InsideSinTransition, InsideSinTransition);
-        WriteValue(memoryWatchers.DiveTransition, DiveTransition);
-        WriteValue(memoryWatchers.GeosTransition, GeosTransition);
-        WriteValue(memoryWatchers.KlikkTransition, KlikkTransition);
-        WriteValue(memoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
-        WriteValue(memoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
-        WriteValue(memoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
-        WriteValue(memoryWatchers.BeachTransition, BeachTransition);
-        WriteValue(memoryWatchers.LagoonTransition1, LagoonTransition1);
-        WriteValue(memoryWatchers.LagoonTransition2, LagoonTransition2);
-        WriteValue(memoryWatchers.ValeforTransition, ValeforTransition);
-        WriteValue(memoryWatchers.KimahriTransition, KimahriTransition);
-        WriteValue(memoryWatchers.YunaBoatTransition, YunaBoatTransition);
-        WriteValue(memoryWatchers.SinFinTransition, SinFinTransition);
-        WriteValue(memoryWatchers.EchuillesTransition, EchuillesTransition);
-        WriteValue(memoryWatchers.GeneauxTransition, GeneauxTransition);
-        WriteValue(memoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
-        WriteValue(memoryWatchers.KilikaAntechamberTransition, KilikaAntechamberTransition);
-        WriteValue(memoryWatchers.IfritTransition, IfritTransition);
-        WriteValue(memoryWatchers.IfritTransition2, IfritTransition2);
-        WriteValue(memoryWatchers.JechtShotTransition, JechtShotTransition);
-        WriteValue(memoryWatchers.OblitzeratorTransition, OblitzeratorTransition);
-        WriteValue(memoryWatchers.BlitzballTransition, BlitzballTransition);
-        WriteValue(memoryWatchers.SahaginTransition, SahaginTransition);
-        WriteValue(memoryWatchers.GarudaTransition, GarudaTransition);
-        WriteValue(memoryWatchers.RinTransition, RinTransition);
-        WriteValue(memoryWatchers.ChocoboEaterTransition, ChocoboEaterTransition);
-        WriteValue(memoryWatchers.GuiTransition, GuiTransition);
-        WriteValue(memoryWatchers.Gui2Transition, Gui2Transition);
-        WriteValue(memoryWatchers.DjoseTransition, DjoseTransition);
-        WriteValue(memoryWatchers.IxionTransition, IxionTransition);
-        WriteValue(memoryWatchers.ExtractorTransition, ExtractorTransition);
-        WriteValue(memoryWatchers.SeymoursHouseTransition1, SeymoursHouseTransition1);
-        WriteValue(memoryWatchers.SeymoursHouseTransition2, SeymoursHouseTransition2);
-        WriteValue(memoryWatchers.FarplaneTransition1, FarplaneTransition1);
-        WriteValue(memoryWatchers.FarplaneTransition2, FarplaneTransition2);
-        WriteValue(memoryWatchers.TromellTransition, TromellTransition);
-        WriteValue(memoryWatchers.CrawlerTransition, CrawlerTransition);
-        WriteValue(memoryWatchers.SeymourTransition, SeymourTransition);
-        WriteValue(memoryWatchers.SeymourTransition2, SeymourTransition2);
-        WriteValue(memoryWatchers.WendigoTransition, WendigoTransition);
-        WriteValue(memoryWatchers.SpherimorphTransition, SpherimorphTransition);
-        WriteValue(memoryWatchers.UnderLakeTransition, UnderLakeTransition);
-        WriteValue(memoryWatchers.BikanelTransition, BikanelTransition);
-        WriteValue(memoryWatchers.HomeTransition, HomeTransition);
-        WriteValue(memoryWatchers.EvraeTransition, EvraeTransition);
-        WriteValue(memoryWatchers.EvraeAirshipTransition, EvraeAirshipTransition);
-        WriteValue(memoryWatchers.GuardsTransition, GuardsTransition);
-        WriteValue(memoryWatchers.BahamutTransition, BahamutTransition);
-        WriteValue(memoryWatchers.IsaaruTransition, IsaaruTransition);
-        WriteValue(memoryWatchers.AltanaTransition, AltanaTransition);
-        WriteValue(memoryWatchers.NatusTransition, NatusTransition);
-        WriteValue(memoryWatchers.DefenderXTransition, DefenderXTransition);
-        WriteValue(memoryWatchers.RonsoTransition, RonsoTransition);
-        WriteValue(memoryWatchers.FluxTransition, FluxTransition);
-        WriteValue(memoryWatchers.SanctuaryTransition, SanctuaryTransition);
-        WriteValue(memoryWatchers.SpectralKeeperTransition, SpectralKeeperTransition);
-        WriteValue(memoryWatchers.SpectralKeeperTransition2, SpectralKeeperTransition2);
-        WriteValue(memoryWatchers.YunalescaTransition, YunalescaTransition);
-        WriteValue(memoryWatchers.FinsTransition, FinsTransition);
-        WriteValue(memoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
-        WriteValue(memoryWatchers.SinCoreTransition, SinCoreTransition);
-        WriteValue(memoryWatchers.OverdriveSinTransition, OverdriveSinTransition);
-        WriteValue(memoryWatchers.OmnisTransition, OmnisTransition);
-        WriteValue(memoryWatchers.BFATransition, BFATransition);
-        WriteValue(memoryWatchers.AeonTransition, AeonTransition);
-        WriteValue(memoryWatchers.YuYevonTransition, YuYevonTransition);
-        WriteValue(memoryWatchers.YojimboFaythTransition, YojimboFaythTransition);
-        WriteValue(memoryWatchers.EnableTidus, EnableTidus);
-        WriteValue(memoryWatchers.EnableYuna, EnableYuna);
-        WriteValue(memoryWatchers.EnableAuron, EnableAuron);
-        WriteValue(memoryWatchers.EnableKimahri, EnableKimahri);
-        WriteValue(memoryWatchers.EnableWakka, EnableWakka);
-        WriteValue(memoryWatchers.EnableLulu, EnableLulu);
-        WriteValue(memoryWatchers.EnableRikku, EnableRikku);
-        WriteValue(memoryWatchers.EnableSeymour, EnableSeymour);
-        WriteValue(memoryWatchers.EnableValefor, EnableValefor);
-        WriteValue(memoryWatchers.EnableIfrit, EnableIfrit);
-        WriteValue(memoryWatchers.EnableIxion, EnableIxion);
-        WriteValue(memoryWatchers.EnableShiva, EnableShiva);
-        WriteValue(memoryWatchers.EnableBahamut, EnableBahamut);
-        WriteValue(memoryWatchers.EnableAnima, EnableAnima);
-        WriteValue(memoryWatchers.EnableYojimbo, EnableYojimbo);
-        WriteValue(memoryWatchers.EnableMagus, EnableMagus);
+        WriteValue(MemoryWatchers.RoomNumber, RoomNumber);
+        WriteValue(MemoryWatchers.Storyline, Storyline);
+        WriteValue(MemoryWatchers.SpawnPoint, SpawnPoint);
+        WriteValue(MemoryWatchers.BattleState, BattleState);
+        WriteValue(MemoryWatchers.BattleState2, BattleState2);
+        WriteValue(MemoryWatchers.Menu, Menu);
+        WriteValue(MemoryWatchers.MenuLock, MenuLock);
+        WriteValue(MemoryWatchers.Intro, Intro);
+        WriteValue(MemoryWatchers.FangirlsOrKidsSkip, FangirlsOrKidsSkip);
+        WriteValue(MemoryWatchers.State, State);
+        WriteValue(MemoryWatchers.XCoordinate, XCoordinate);
+        WriteValue(MemoryWatchers.YCoordinate, YCoordinate);
+        WriteValue(MemoryWatchers.Camera, Camera);
+        WriteValue(MemoryWatchers.Camera_x, Camera_x);
+        WriteValue(MemoryWatchers.Camera_y, Camera_y);
+        WriteValue(MemoryWatchers.Camera_z, Camera_z);
+        WriteValue(MemoryWatchers.CameraRotation, CameraRotation);
+        WriteValue(MemoryWatchers.EncounterStatus, EncounterStatus);
+        WriteValue(MemoryWatchers.MovementLock, MovementLock);
+        WriteValue(MemoryWatchers.ActiveMusicId, ActiveMusicId);
+        WriteValue(MemoryWatchers.MusicId, MusicId);
+        WriteValue(MemoryWatchers.RoomNumberAlt, RoomNumberAlt);
+        WriteValue(MemoryWatchers.CutsceneAlt, CutsceneAlt);
+        WriteValue(MemoryWatchers.AirshipDestinations, AirshipDestinations);
+        WriteValue(MemoryWatchers.AuronOverdrives, AuronOverdrives);
+        WriteValue(MemoryWatchers.TargetFramerate, TargetFramerate);
+        WriteValue(MemoryWatchers.Sandragoras, Sandragoras);
+        WriteValue(MemoryWatchers.EncounterMapID, EncounterMapID);
+        WriteValue(MemoryWatchers.EncounterFormationID1, EncounterFormationID1);
+        WriteValue(MemoryWatchers.EncounterFormationID2, EncounterFormationID2);
+        WriteValue(MemoryWatchers.ScriptedBattleFlag1, ScriptedBattleFlag1);
+        WriteValue(MemoryWatchers.ScriptedBattleFlag2, ScriptedBattleFlag2);
+        WriteValue(MemoryWatchers.ScriptedBattleVar1, ScriptedBattleVar1);
+        WriteValue(MemoryWatchers.ScriptedBattleVar3, ScriptedBattleVar3);
+        WriteValue(MemoryWatchers.ScriptedBattleVar4, ScriptedBattleVar4);
+        WriteValue(MemoryWatchers.EncounterTrigger, EncounterTrigger);
+        WriteValue(MemoryWatchers.HpEnemyA, HpEnemyA);
+        WriteValue(MemoryWatchers.GuadoCount, GuadoCount);
+        WriteValue(MemoryWatchers.TidusXCoordinate, TidusXCoordinate);
+        WriteValue(MemoryWatchers.TidusYCoordinate, TidusYCoordinate);
+        WriteValue(MemoryWatchers.TidusZCoordinate, TidusZCoordinate);
+        WriteValue(MemoryWatchers.TidusRotation, TidusRotation);
+        WriteBytes(MemoryWatchers.DialogueFile, DialogueFile);
+        WriteValue(MemoryWatchers.CutsceneTiming, CutsceneTiming);
+        WriteValue(MemoryWatchers.AuronTransition, AuronTransition);
+        WriteValue(MemoryWatchers.AmmesTransition, AmmesTransition);
+        WriteValue(MemoryWatchers.TankerTransition, TankerTransition);
+        WriteValue(MemoryWatchers.InsideSinTransition, InsideSinTransition);
+        WriteValue(MemoryWatchers.DiveTransition, DiveTransition);
+        WriteValue(MemoryWatchers.GeosTransition, GeosTransition);
+        WriteValue(MemoryWatchers.KlikkTransition, KlikkTransition);
+        WriteValue(MemoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
+        WriteValue(MemoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
+        WriteValue(MemoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
+        WriteValue(MemoryWatchers.BeachTransition, BeachTransition);
+        WriteValue(MemoryWatchers.LagoonTransition1, LagoonTransition1);
+        WriteValue(MemoryWatchers.LagoonTransition2, LagoonTransition2);
+        WriteValue(MemoryWatchers.ValeforTransition, ValeforTransition);
+        WriteValue(MemoryWatchers.KimahriTransition, KimahriTransition);
+        WriteValue(MemoryWatchers.YunaBoatTransition, YunaBoatTransition);
+        WriteValue(MemoryWatchers.SinFinTransition, SinFinTransition);
+        WriteValue(MemoryWatchers.EchuillesTransition, EchuillesTransition);
+        WriteValue(MemoryWatchers.GeneauxTransition, GeneauxTransition);
+        WriteValue(MemoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
+        WriteValue(MemoryWatchers.KilikaAntechamberTransition, KilikaAntechamberTransition);
+        WriteValue(MemoryWatchers.IfritTransition, IfritTransition);
+        WriteValue(MemoryWatchers.IfritTransition2, IfritTransition2);
+        WriteValue(MemoryWatchers.JechtShotTransition, JechtShotTransition);
+        WriteValue(MemoryWatchers.OblitzeratorTransition, OblitzeratorTransition);
+        WriteValue(MemoryWatchers.BlitzballTransition, BlitzballTransition);
+        WriteValue(MemoryWatchers.SahaginTransition, SahaginTransition);
+        WriteValue(MemoryWatchers.GarudaTransition, GarudaTransition);
+        WriteValue(MemoryWatchers.RinTransition, RinTransition);
+        WriteValue(MemoryWatchers.ChocoboEaterTransition, ChocoboEaterTransition);
+        WriteValue(MemoryWatchers.GuiTransition, GuiTransition);
+        WriteValue(MemoryWatchers.Gui2Transition, Gui2Transition);
+        WriteValue(MemoryWatchers.DjoseTransition, DjoseTransition);
+        WriteValue(MemoryWatchers.IxionTransition, IxionTransition);
+        WriteValue(MemoryWatchers.ExtractorTransition, ExtractorTransition);
+        WriteValue(MemoryWatchers.SeymoursHouseTransition1, SeymoursHouseTransition1);
+        WriteValue(MemoryWatchers.SeymoursHouseTransition2, SeymoursHouseTransition2);
+        WriteValue(MemoryWatchers.FarplaneTransition1, FarplaneTransition1);
+        WriteValue(MemoryWatchers.FarplaneTransition2, FarplaneTransition2);
+        WriteValue(MemoryWatchers.TromellTransition, TromellTransition);
+        WriteValue(MemoryWatchers.CrawlerTransition, CrawlerTransition);
+        WriteValue(MemoryWatchers.SeymourTransition, SeymourTransition);
+        WriteValue(MemoryWatchers.SeymourTransition2, SeymourTransition2);
+        WriteValue(MemoryWatchers.WendigoTransition, WendigoTransition);
+        WriteValue(MemoryWatchers.SpherimorphTransition, SpherimorphTransition);
+        WriteValue(MemoryWatchers.UnderLakeTransition, UnderLakeTransition);
+        WriteValue(MemoryWatchers.BikanelTransition, BikanelTransition);
+        WriteValue(MemoryWatchers.HomeTransition, HomeTransition);
+        WriteValue(MemoryWatchers.EvraeTransition, EvraeTransition);
+        WriteValue(MemoryWatchers.EvraeAirshipTransition, EvraeAirshipTransition);
+        WriteValue(MemoryWatchers.GuardsTransition, GuardsTransition);
+        WriteValue(MemoryWatchers.BahamutTransition, BahamutTransition);
+        WriteValue(MemoryWatchers.IsaaruTransition, IsaaruTransition);
+        WriteValue(MemoryWatchers.AltanaTransition, AltanaTransition);
+        WriteValue(MemoryWatchers.NatusTransition, NatusTransition);
+        WriteValue(MemoryWatchers.DefenderXTransition, DefenderXTransition);
+        WriteValue(MemoryWatchers.RonsoTransition, RonsoTransition);
+        WriteValue(MemoryWatchers.FluxTransition, FluxTransition);
+        WriteValue(MemoryWatchers.SanctuaryTransition, SanctuaryTransition);
+        WriteValue(MemoryWatchers.SpectralKeeperTransition, SpectralKeeperTransition);
+        WriteValue(MemoryWatchers.SpectralKeeperTransition2, SpectralKeeperTransition2);
+        WriteValue(MemoryWatchers.YunalescaTransition, YunalescaTransition);
+        WriteValue(MemoryWatchers.FinsTransition, FinsTransition);
+        WriteValue(MemoryWatchers.FinsAirshipTransition, FinsAirshipTransition);
+        WriteValue(MemoryWatchers.SinCoreTransition, SinCoreTransition);
+        WriteValue(MemoryWatchers.OverdriveSinTransition, OverdriveSinTransition);
+        WriteValue(MemoryWatchers.OmnisTransition, OmnisTransition);
+        WriteValue(MemoryWatchers.BFATransition, BFATransition);
+        WriteValue(MemoryWatchers.AeonTransition, AeonTransition);
+        WriteValue(MemoryWatchers.YuYevonTransition, YuYevonTransition);
+        WriteValue(MemoryWatchers.YojimboFaythTransition, YojimboFaythTransition);
+        WriteValue(MemoryWatchers.EnableTidus, EnableTidus);
+        WriteValue(MemoryWatchers.EnableYuna, EnableYuna);
+        WriteValue(MemoryWatchers.EnableAuron, EnableAuron);
+        WriteValue(MemoryWatchers.EnableKimahri, EnableKimahri);
+        WriteValue(MemoryWatchers.EnableWakka, EnableWakka);
+        WriteValue(MemoryWatchers.EnableLulu, EnableLulu);
+        WriteValue(MemoryWatchers.EnableRikku, EnableRikku);
+        WriteValue(MemoryWatchers.EnableSeymour, EnableSeymour);
+        WriteValue(MemoryWatchers.EnableValefor, EnableValefor);
+        WriteValue(MemoryWatchers.EnableIfrit, EnableIfrit);
+        WriteValue(MemoryWatchers.EnableIxion, EnableIxion);
+        WriteValue(MemoryWatchers.EnableShiva, EnableShiva);
+        WriteValue(MemoryWatchers.EnableBahamut, EnableBahamut);
+        WriteValue(MemoryWatchers.EnableAnima, EnableAnima);
+        WriteValue(MemoryWatchers.EnableYojimbo, EnableYojimbo);
+        WriteValue(MemoryWatchers.EnableMagus, EnableMagus);
 
-        WriteValue(memoryWatchers.BaajFlag1, BaajFlag1);
-        WriteValue(memoryWatchers.SSWinnoFlag1, SSWinnoFlag1);
-        WriteValue(memoryWatchers.KilikaMapFlag, KilikaMapFlag);
-        WriteValue(memoryWatchers.SSWinnoFlag2, SSWinnoFlag2);
+        WriteValue(MemoryWatchers.BaajFlag1, BaajFlag1);
+        WriteValue(MemoryWatchers.SSWinnoFlag1, SSWinnoFlag1);
+        WriteValue(MemoryWatchers.KilikaMapFlag, KilikaMapFlag);
+        WriteValue(MemoryWatchers.SSWinnoFlag2, SSWinnoFlag2);
 
-        WriteValue(memoryWatchers.LucaFlag, LucaFlag);
-        WriteValue(memoryWatchers.LucaFlag2, LucaFlag2);
-        WriteValue(memoryWatchers.BlitzballFlag, BlitzballFlag);
-        WriteValue(memoryWatchers.MiihenFlag1, MiihenFlag1);
-        WriteValue(memoryWatchers.MiihenFlag2, MiihenFlag2);
-        WriteValue(memoryWatchers.MiihenFlag3, MiihenFlag3);
-        WriteValue(memoryWatchers.MiihenFlag4, MiihenFlag4);
-        WriteValue(memoryWatchers.MRRFlag1, MRRFlag1);
-        WriteValue(memoryWatchers.MRRFlag2, MRRFlag2);
-        WriteValue(memoryWatchers.MoonflowFlag, MoonflowFlag);
-        WriteValue(memoryWatchers.MoonflowFlag2, MoonflowFlag2);
-        WriteValue(memoryWatchers.RikkuOutfit, RikkuOutfit);
-        WriteValue(memoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
-        WriteValue(memoryWatchers.GuadosalamShopFlag, GuadosalamShopFlag);
-        WriteValue(memoryWatchers.ThunderPlainsFlag, ThunderPlainsFlag);
-        WriteValue(memoryWatchers.MacalaniaFlag, MacalaniaFlag);
-        WriteValue(memoryWatchers.BikanelFlag, BikanelFlag);
-        WriteBytes(memoryWatchers.RikkuName, RikkuName);
-        WriteValue(memoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
-        WriteValue(memoryWatchers.NatusFlag, NatusFlag);
-        WriteValue(memoryWatchers.CalmLandsFlag, CalmLandsFlag);
-        WriteValue(memoryWatchers.WantzFlag, WantzFlag);
-        WriteValue(memoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
-        WriteValue(memoryWatchers.OmegaRuinsFlag, OmegaRuinsFlag);
-        WriteValue(memoryWatchers.WantzMacalaniaFlag, WantzMacalaniaFlag);
+        WriteValue(MemoryWatchers.LucaFlag, LucaFlag);
+        WriteValue(MemoryWatchers.LucaFlag2, LucaFlag2);
+        WriteValue(MemoryWatchers.BlitzballFlag, BlitzballFlag);
+        WriteValue(MemoryWatchers.MiihenFlag1, MiihenFlag1);
+        WriteValue(MemoryWatchers.MiihenFlag2, MiihenFlag2);
+        WriteValue(MemoryWatchers.MiihenFlag3, MiihenFlag3);
+        WriteValue(MemoryWatchers.MiihenFlag4, MiihenFlag4);
+        WriteValue(MemoryWatchers.MRRFlag1, MRRFlag1);
+        WriteValue(MemoryWatchers.MRRFlag2, MRRFlag2);
+        WriteValue(MemoryWatchers.MoonflowFlag, MoonflowFlag);
+        WriteValue(MemoryWatchers.MoonflowFlag2, MoonflowFlag2);
+        WriteValue(MemoryWatchers.RikkuOutfit, RikkuOutfit);
+        WriteValue(MemoryWatchers.TidusWeaponDamageBoost, TidusWeaponDamageBoost);
+        WriteValue(MemoryWatchers.GuadosalamShopFlag, GuadosalamShopFlag);
+        WriteValue(MemoryWatchers.ThunderPlainsFlag, ThunderPlainsFlag);
+        WriteValue(MemoryWatchers.MacalaniaFlag, MacalaniaFlag);
+        WriteValue(MemoryWatchers.BikanelFlag, BikanelFlag);
+        WriteBytes(MemoryWatchers.RikkuName, RikkuName);
+        WriteValue(MemoryWatchers.ViaPurificoPlatform, ViaPurificoPlatform);
+        WriteValue(MemoryWatchers.NatusFlag, NatusFlag);
+        WriteValue(MemoryWatchers.CalmLandsFlag, CalmLandsFlag);
+        WriteValue(MemoryWatchers.WantzFlag, WantzFlag);
+        WriteValue(MemoryWatchers.GagazetCaveFlag, GagazetCaveFlag);
+        WriteValue(MemoryWatchers.OmegaRuinsFlag, OmegaRuinsFlag);
+        WriteValue(MemoryWatchers.WantzMacalaniaFlag, WantzMacalaniaFlag);
 
-        WriteBytes(memoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
-        WriteBytes(memoryWatchers.BlitzballBytes, BlitzballBytes);
-        WriteValue(memoryWatchers.AurochsPlayer1, AurochsPlayer1);
+        WriteBytes(MemoryWatchers.AurochsTeamBytes, AurochsTeamBytes);
+        WriteBytes(MemoryWatchers.BlitzballBytes, BlitzballBytes);
+        WriteValue(MemoryWatchers.AurochsPlayer1, AurochsPlayer1);
 
-        WriteValue(memoryWatchers.GilBattleRewards, GilBattleRewards);
-        WriteValue(memoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
-        WriteValue(memoryWatchers.BattleRewardItem1, BattleRewardItem1);
-        WriteValue(memoryWatchers.BattleRewardItem2, BattleRewardItem2);
-        WriteValue(memoryWatchers.BattleRewardItem3, BattleRewardItem3);
-        WriteValue(memoryWatchers.BattleRewardItem4, BattleRewardItem4);
-        WriteValue(memoryWatchers.BattleRewardItem5, BattleRewardItem5);
-        WriteValue(memoryWatchers.BattleRewardItem6, BattleRewardItem6);
-        WriteValue(memoryWatchers.BattleRewardItem7, BattleRewardItem7);
-        WriteValue(memoryWatchers.BattleRewardItem8, BattleRewardItem8);
-        WriteValue(memoryWatchers.BattleRewardItemQty1, BattleRewardItemQty1);
-        WriteValue(memoryWatchers.BattleRewardItemQty2, BattleRewardItemQty2);
-        WriteValue(memoryWatchers.BattleRewardItemQty3, BattleRewardItemQty3);
-        WriteValue(memoryWatchers.BattleRewardItemQty4, BattleRewardItemQty4);
-        WriteValue(memoryWatchers.BattleRewardItemQty5, BattleRewardItemQty5);
-        WriteValue(memoryWatchers.BattleRewardItemQty6, BattleRewardItemQty6);
-        WriteValue(memoryWatchers.BattleRewardItemQty7, BattleRewardItemQty7);
-        WriteValue(memoryWatchers.BattleRewardItemQty8, BattleRewardItemQty8);
-        WriteValue(memoryWatchers.BattleRewardEquipCount, BattleRewardEquipCount);
-        WriteBytes(memoryWatchers.BattleRewardEquip1, BattleRewardEquip1);
-        WriteBytes(memoryWatchers.BattleRewardEquip2, BattleRewardEquip2);
-        WriteBytes(memoryWatchers.BattleRewardEquip3, BattleRewardEquip3);
-        WriteBytes(memoryWatchers.BattleRewardEquip4, BattleRewardEquip4);
-        WriteBytes(memoryWatchers.BattleRewardEquip5, BattleRewardEquip5);
-        WriteBytes(memoryWatchers.BattleRewardEquip6, BattleRewardEquip6);
-        WriteBytes(memoryWatchers.BattleRewardEquip7, BattleRewardEquip7);
-        WriteBytes(memoryWatchers.BattleRewardEquip8, BattleRewardEquip8);
+        WriteValue(MemoryWatchers.GilBattleRewards, GilBattleRewards);
+        WriteValue(MemoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
+        WriteValue(MemoryWatchers.BattleRewardItem1, BattleRewardItem1);
+        WriteValue(MemoryWatchers.BattleRewardItem2, BattleRewardItem2);
+        WriteValue(MemoryWatchers.BattleRewardItem3, BattleRewardItem3);
+        WriteValue(MemoryWatchers.BattleRewardItem4, BattleRewardItem4);
+        WriteValue(MemoryWatchers.BattleRewardItem5, BattleRewardItem5);
+        WriteValue(MemoryWatchers.BattleRewardItem6, BattleRewardItem6);
+        WriteValue(MemoryWatchers.BattleRewardItem7, BattleRewardItem7);
+        WriteValue(MemoryWatchers.BattleRewardItem8, BattleRewardItem8);
+        WriteValue(MemoryWatchers.BattleRewardItemQty1, BattleRewardItemQty1);
+        WriteValue(MemoryWatchers.BattleRewardItemQty2, BattleRewardItemQty2);
+        WriteValue(MemoryWatchers.BattleRewardItemQty3, BattleRewardItemQty3);
+        WriteValue(MemoryWatchers.BattleRewardItemQty4, BattleRewardItemQty4);
+        WriteValue(MemoryWatchers.BattleRewardItemQty5, BattleRewardItemQty5);
+        WriteValue(MemoryWatchers.BattleRewardItemQty6, BattleRewardItemQty6);
+        WriteValue(MemoryWatchers.BattleRewardItemQty7, BattleRewardItemQty7);
+        WriteValue(MemoryWatchers.BattleRewardItemQty8, BattleRewardItemQty8);
+        WriteValue(MemoryWatchers.BattleRewardEquipCount, BattleRewardEquipCount);
+        WriteBytes(MemoryWatchers.BattleRewardEquip1, BattleRewardEquip1);
+        WriteBytes(MemoryWatchers.BattleRewardEquip2, BattleRewardEquip2);
+        WriteBytes(MemoryWatchers.BattleRewardEquip3, BattleRewardEquip3);
+        WriteBytes(MemoryWatchers.BattleRewardEquip4, BattleRewardEquip4);
+        WriteBytes(MemoryWatchers.BattleRewardEquip5, BattleRewardEquip5);
+        WriteBytes(MemoryWatchers.BattleRewardEquip6, BattleRewardEquip6);
+        WriteBytes(MemoryWatchers.BattleRewardEquip7, BattleRewardEquip7);
+        WriteBytes(MemoryWatchers.BattleRewardEquip8, BattleRewardEquip8);
 
-        WriteValue(memoryWatchers.MenuValue1, MenuValue1);
-        WriteValue(memoryWatchers.MenuValue2, MenuValue2);
-        WriteValue(memoryWatchers.MenuTriggerValue, MenuTriggerValue);
+        WriteValue(MemoryWatchers.MenuValue1, MenuValue1);
+        WriteValue(MemoryWatchers.MenuValue2, MenuValue2);
+        WriteValue(MemoryWatchers.MenuTriggerValue, MenuTriggerValue);
 
-        WriteBytes(memoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
+        WriteBytes(MemoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
 
         // Update Bitmasks
-        WriteValue(memoryWatchers.CalmLandsFlag, memoryWatchers.CalmLandsFlag.Current | AddCalmLandsBitmask);
+        WriteValue(MemoryWatchers.CalmLandsFlag, MemoryWatchers.CalmLandsFlag.Current | AddCalmLandsBitmask);
 
         if (ForceLoad)
         {
@@ -534,29 +533,29 @@ public class Transition
         if (PositionTidusAfterLoad)
         {
             process.Resume();
-            memoryWatchers.ForceLoad.Update(process);
-            memoryWatchers.State.Update(process);
-            while (memoryWatchers.ForceLoad.Current == 1 || memoryWatchers.State.Current == -1) // Wait for loading to finish and black screen to end
+            MemoryWatchers.ForceLoad.Update(process);
+            MemoryWatchers.State.Update(process);
+            while (MemoryWatchers.ForceLoad.Current == 1 || MemoryWatchers.State.Current == -1) // Wait for loading to finish and black screen to end
             {
-                memoryWatchers.ForceLoad.Update(process);
-                memoryWatchers.State.Update(process);
+                MemoryWatchers.ForceLoad.Update(process);
+                MemoryWatchers.State.Update(process);
             }
-            memoryWatchers.FrameCounterFromLoad.Update(process);
-            while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame)
+            MemoryWatchers.FrameCounterFromLoad.Update(process);
+            while (MemoryWatchers.FrameCounterFromLoad.Current < MoveFrame)
             {
-                memoryWatchers.FrameCounterFromLoad.Update(process);
+                MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
             SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
             SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason, also some other locations.
             process.Resume();
-            while (memoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 3)
+            while (MemoryWatchers.FrameCounterFromLoad.Current < MoveFrame + 3)
             {
-                memoryWatchers.FrameCounterFromLoad.Update(process);
+                MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
-            WriteValue<float>(memoryWatchers.TotalDistance, 0.0f);
-            WriteValue<float>(memoryWatchers.CycleDistance, 0.0f);
+            WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
+            WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
             process.Resume();
         }
         else
@@ -574,15 +573,15 @@ public class Transition
     /* Set the force load bit. Will immediately cause a fade and load. */
     private void ForceGameLoad()
     {
-        WriteValue<byte>(memoryWatchers.ForceLoad, 1);
-        memoryWatchers.ForceLoad.Update(process);
+        WriteValue<byte>(MemoryWatchers.ForceLoad, 1);
+        MemoryWatchers.ForceLoad.Update(process);
     }
 
     protected void WriteValue<T>(MemoryWatcher watcher, T? value) where T : struct
     {
         if (value.HasValue)
         {
-            var dbgAddr = watcher.Address - memoryWatchers.GetBaseAddress();
+            var dbgAddr = watcher.Address - MemoryWatchers.GetBaseAddress();
 
             if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
             {
@@ -610,7 +609,7 @@ public class Transition
         if (bytes != null)
         {
             var hexstring = Convert.ToHexString(bytes);
-            var dbgAddr   = watcher.Address - memoryWatchers.GetBaseAddress();
+            var dbgAddr   = watcher.Address - MemoryWatchers.GetBaseAddress();
 
             if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
             {
@@ -678,9 +677,9 @@ public class Transition
 
     private void FullPartyHeal()
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        int baseAddress = memoryWatchers.GetBaseAddress();
+        int baseAddress = MemoryWatchers.GetBaseAddress();
 
         for (int i = 0; i < 18; i++)
         {
@@ -704,37 +703,37 @@ public class Transition
 
     private void CleanMenuValues()
     {
-        WriteValue<int>(memoryWatchers.MenuValue1, 0);
-        WriteValue<int>(memoryWatchers.MenuValue2, 0);
+        WriteValue<int>(MemoryWatchers.MenuValue1, 0);
+        WriteValue<int>(MemoryWatchers.MenuValue2, 0);
     }
 
     private void FixMenuBug()
     {
-        WriteValue<int>(memoryWatchers.MenuValue3, unchecked((int)0xFFFFFFFF));
-        WriteValue<int>(memoryWatchers.MenuValue4, 0x00000000);
-        WriteValue<byte>(memoryWatchers.MenuValue5, 0x00);
-        WriteValue<int>(memoryWatchers.MenuValue6, 0x00000001);
-        WriteValue<byte>(memoryWatchers.MenuValue7, 0x00);
+        WriteValue<int>(MemoryWatchers.MenuValue3, unchecked((int)0xFFFFFFFF));
+        WriteValue<int>(MemoryWatchers.MenuValue4, 0x00000000);
+        WriteValue<byte>(MemoryWatchers.MenuValue5, 0x00);
+        WriteValue<int>(MemoryWatchers.MenuValue6, 0x00000001);
+        WriteValue<byte>(MemoryWatchers.MenuValue7, 0x00);
     }
 
     private void FixSpeedBoosterBug()
     {
-        WriteValue<int>(memoryWatchers.SpeedBoostVar1, 1);
+        WriteValue<int>(MemoryWatchers.SpeedBoostVar1, 1);
     }
 
     private void ClearAllBattleRewards()
     {
         // Clear Gil
-        WriteValue<int>(memoryWatchers.GilBattleRewards, 0);
+        WriteValue<int>(MemoryWatchers.GilBattleRewards, 0);
 
         if (AddRewardItems)
         {
-            byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
-            byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
-            byte[] itemRewards = process.ReadBytes(memoryWatchers.BattleRewardItem1.Address, 16);
-            byte[] itemRewardsQty = process.ReadBytes(memoryWatchers.BattleRewardItemQty1.Address, 8);
+            byte[] items = process.ReadBytes(MemoryWatchers.ItemsStart.Address, 224);
+            byte[] itemsQty = process.ReadBytes(MemoryWatchers.ItemsQtyStart.Address, 112);
+            byte[] itemRewards = process.ReadBytes(MemoryWatchers.BattleRewardItem1.Address, 16);
+            byte[] itemRewardsQty = process.ReadBytes(MemoryWatchers.BattleRewardItemQty1.Address, 8);
 
-            int rewardCount = memoryWatchers.BattleRewardItemCount.Current;
+            int rewardCount = MemoryWatchers.BattleRewardItemCount.Current;
 
             bool alreadyExists;
 
@@ -770,48 +769,48 @@ public class Transition
                 }
             }
 
-            WriteBytes(memoryWatchers.ItemsStart, items);
-            WriteBytes(memoryWatchers.ItemsQtyStart, itemsQty);
+            WriteBytes(MemoryWatchers.ItemsStart, items);
+            WriteBytes(MemoryWatchers.ItemsQtyStart, itemsQty);
         }
 
         // Clear Items
-        WriteValue<byte>(memoryWatchers.BattleRewardItemCount, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem1, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem2, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem3, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem4, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem5, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem6, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem7, 0);
-        WriteValue<short>(memoryWatchers.BattleRewardItem8, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty1, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty2, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty3, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty4, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty5, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty6, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty7, 0);
-        WriteValue<byte>(memoryWatchers.BattleRewardItemQty8, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemCount, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem1, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem2, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem3, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem4, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem5, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem6, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem7, 0);
+        WriteValue<short>(MemoryWatchers.BattleRewardItem8, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty1, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty2, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty3, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty4, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty5, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty6, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty7, 0);
+        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty8, 0);
 
         //Clear Equipment -- Equipment Arrays are 22 bytes long
-        WriteValue<byte>(memoryWatchers.BattleRewardEquipCount, 0);
-        WriteBytes(memoryWatchers.BattleRewardEquip1, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip2, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip3, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip4, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip5, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip6, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip7, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(memoryWatchers.BattleRewardEquip8, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteValue<byte>(MemoryWatchers.BattleRewardEquipCount, 0);
+        WriteBytes(MemoryWatchers.BattleRewardEquip1, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip2, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip3, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip4, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip5, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip6, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip7, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.BattleRewardEquip8, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
 
         // Clear AP Flags
-        WriteBytes(memoryWatchers.CharacterAPFlags, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        WriteBytes(MemoryWatchers.CharacterAPFlags, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
     }
 
     private void AddItems((byte itemref, byte itemqty)[] AddItemsToInventory)
     {
-        byte[] items = process.ReadBytes(memoryWatchers.ItemsStart.Address, 224);
-        byte[] itemsQty = process.ReadBytes(memoryWatchers.ItemsQtyStart.Address, 112);
+        byte[] items = process.ReadBytes(MemoryWatchers.ItemsStart.Address, 224);
+        byte[] itemsQty = process.ReadBytes(MemoryWatchers.ItemsQtyStart.Address, 112);
 
         bool alreadyExists;
 
@@ -847,51 +846,51 @@ public class Transition
             }
         }
 
-        WriteBytes(memoryWatchers.ItemsStart, items);
-        WriteBytes(memoryWatchers.ItemsQtyStart, itemsQty);
+        WriteBytes(MemoryWatchers.ItemsStart, items);
+        WriteBytes(MemoryWatchers.ItemsQtyStart, itemsQty);
     }
 
     private void AddSin()
     {
-        WriteValue<short>(memoryWatchers.AirshipDestinations, (short)(memoryWatchers.AirshipDestinations.Current + 512));
+        WriteValue<short>(MemoryWatchers.AirshipDestinations, (short)(MemoryWatchers.AirshipDestinations.Current + 512));
     }
 
     private void RemoveSin()
     {
-        WriteValue<short>(memoryWatchers.AirshipDestinations, (short)(memoryWatchers.AirshipDestinations.Current - 512));
+        WriteValue<short>(MemoryWatchers.AirshipDestinations, (short)(MemoryWatchers.AirshipDestinations.Current - 512));
     }
 
     private void PartyOffScreen()
     {
-        if (memoryWatchers.EnableTidus.Current == 17)
+        if (MemoryWatchers.EnableTidus.Current == 17)
         {
             SetActorPosition(1, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableYuna.Current == 17)
+        if (MemoryWatchers.EnableYuna.Current == 17)
         {
             SetActorPosition(2, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableAuron.Current == 17)
+        if (MemoryWatchers.EnableAuron.Current == 17)
         {
             SetActorPosition(3, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableKimahri.Current == 17)
+        if (MemoryWatchers.EnableKimahri.Current == 17)
         {
             SetActorPosition(4, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableWakka.Current == 17)
+        if (MemoryWatchers.EnableWakka.Current == 17)
         {
             SetActorPosition(5, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableLulu.Current == 17)
+        if (MemoryWatchers.EnableLulu.Current == 17)
         {
             SetActorPosition(6, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableRikku.Current == 17)
+        if (MemoryWatchers.EnableRikku.Current == 17)
         {
             SetActorPosition(7, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
-        if (memoryWatchers.EnableSeymour.Current == 17)
+        if (MemoryWatchers.EnableSeymour.Current == 17)
         {
             SetActorPosition(8, PartyTarget_x, PartyTarget_y, PartyTarget_z);
         }
@@ -899,11 +898,11 @@ public class Transition
 
     private bool SetActorPosition(short? TargetActorID = null, float? Target_x = null, float? Target_y = null, float? Target_z = null, float? Target_rot = null, short? Target_var1 = null)
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        memoryWatchers.ActorArrayLength.Update(process);
-        int ActorCount = memoryWatchers.ActorArrayLength.Current;
-        int baseAddress = memoryWatchers.GetBaseAddress();
+        MemoryWatchers.ActorArrayLength.Update(process);
+        int ActorCount = MemoryWatchers.ActorArrayLength.Current;
+        int baseAddress = MemoryWatchers.GetBaseAddress();
         bool actorFound = false;
 
         if (!(TargetActorID is null))
@@ -984,7 +983,7 @@ public class Transition
 
     private void UpdateFormation(byte[] initialFormation = null)
     {
-        byte[] formation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
+        byte[] formation = process.ReadBytes(MemoryWatchers.Formation.Address, 10);
         byte initialPosition1 = 0xFF;
         byte initialPosition2 = 0xFF;
         byte initialPosition3 = 0xFF;
@@ -1014,14 +1013,14 @@ public class Transition
                     break;
                 case formations.PostEchuilles:
                     formation = new byte[] { 0x05, 0x04, 0x00, 0x01, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 17);
-                    WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
-                    WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableKimahri, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableLulu, 17);
                     break;
                 case formations.MachinaFights:
                     formation = new byte[] { 0x05, 0x00, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 16);
-                    WriteValue<byte>(memoryWatchers.EnableWakka, 16);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 16);
+                    WriteValue<byte>(MemoryWatchers.EnableWakka, 16);
                     break;
                 case formations.PreOblitzerator:
                     formation = new byte[] { 0x00, 0x05, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
@@ -1030,18 +1029,18 @@ public class Transition
                     formation = new byte[] { 0x05, 0x00, 0x03, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                     break;
                 case formations.PreSahagins:
-                    WriteValue<byte>(memoryWatchers.EnableKimahri, 16);
-                    WriteValue<byte>(memoryWatchers.EnableLulu, 16);
-                    WriteValue<byte>(memoryWatchers.EnableWakka, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableKimahri, 16);
+                    WriteValue<byte>(MemoryWatchers.EnableLulu, 16);
+                    WriteValue<byte>(MemoryWatchers.EnableWakka, 17);
                     formation = new byte[] { 0x04, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
                     break;
                 case formations.AuronJoinsTheParty:
-                    WriteValue<byte>(memoryWatchers.EnableTidus, 17);
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 17);
-                    WriteValue<byte>(memoryWatchers.EnableAuron, 17);
-                    WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
-                    WriteValue<byte>(memoryWatchers.EnableWakka, 17);
-                    WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableTidus, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableAuron, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableKimahri, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableWakka, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableLulu, 17);
                     formation = new byte[] { 0x00, 0x04, 0x01, 0x02, 0xFF, 0xFF, 0x05, 0x03, 0xFF, 0xFF };
                     break;
                 case formations.PreGui2:
@@ -1062,11 +1061,11 @@ public class Transition
                     formation = SwapCharacterWithPosition(formation, 2, 2);
                     break;
                 case formations.PostGui:
-                    WriteValue<byte>(memoryWatchers.EnableTidus, 17);
-                    WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
-                    WriteValue<byte>(memoryWatchers.EnableWakka, 17);
-                    WriteValue<byte>(memoryWatchers.EnableLulu, 17);
-                    WriteValue<byte>(memoryWatchers.EnableSeymour, 16);
+                    WriteValue<byte>(MemoryWatchers.EnableTidus, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableKimahri, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableWakka, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableLulu, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableSeymour, 16);
                     byte[] newformation = new byte[] { 0x01, 0xFF, 0x02, 0x00, 0x03, 0x04, 0x05, 0xFF, 0xFF, 0xFF };
                     newformation = SwapCharacterWithPosition(newformation, initialPosition1, 0);
                     newformation = SwapCharacterWithPosition(newformation, initialPosition2, 1);
@@ -1074,17 +1073,17 @@ public class Transition
                     formation = newformation;
                     break;
                 case formations.MeetRikku:
-                    WriteValue<byte>(memoryWatchers.EnableRikku, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableRikku, 17);
                     formation = AddCharacter(formation, 0x06);
                     formation = SwapCharacterWithPosition(formation, 0x06, 3);
                     break;
                 case formations.PostCrawler:
                     formation = RemoveCharacter(formation, 0x01);
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 0);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 0);
                     formation = FillMainPartySlotIfEmpty(formation, 0x00);
                     break;
                 case formations.PreSeymour:
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 17);
                     formation = AddCharacter(formation, 0x01);
                     formation = SwapCharacterWithPosition(formation, 0x00, 0);
                     formation = SwapCharacterWithPosition(formation, 0x01, 1);
@@ -1092,28 +1091,28 @@ public class Transition
                     break;
                 case formations.BikanelStart:
                     formation = RemoveAll(formation);
-                    WriteValue<byte>(memoryWatchers.EnableTidus, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableTidus, 17);
                     formation = AddCharacter(formation, 0x00);
                     formation = SwapCharacterWithPosition(formation, 0x00, 0);
                     break;
                 case formations.PostZu:
-                    WriteValue<byte>(memoryWatchers.EnableWakka, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableWakka, 17);
                     formation = AddCharacter(formation, 0x04);
                     break;
                 case formations.BikanelRikku:
-                    WriteValue<byte>(memoryWatchers.EnableRikku, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableRikku, 17);
                     formation = AddCharacter(formation, 0x06);
                     break;
                 case formations.ViaPurificoStart:
                     formation = RemoveAll(formation);
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 17);
                     formation = AddCharacter(formation, 0x01);
                     formation = SwapCharacterWithPosition(formation, 0x01, 0);
                     break;
                 case formations.HighbridgeStart:
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 17);
-                    WriteValue<byte>(memoryWatchers.EnableAuron, 17);
-                    WriteValue<byte>(memoryWatchers.EnableLulu, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableAuron, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableLulu, 17);
                     formation = AddCharacter(formation, 0x01);
                     formation = AddCharacter(formation, 0x02);
                     formation = AddCharacter(formation, 0x05);
@@ -1122,19 +1121,19 @@ public class Transition
                     formation = SwapCharacterWithPosition(formation, 0x04, 2);
                     break;
                 case formations.PreNatus:
-                    WriteValue<byte>(memoryWatchers.EnableKimahri, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableKimahri, 17);
                     formation = AddCharacter(formation, 0x03);
                     formation = SwapCharacterWithPosition(formation, 0x00, 0);
                     formation = SwapCharacterWithPosition(formation, 0x01, 2);
                     formation = SwapCharacterWithPosition(formation, 0x03, 1);
                     break;
                 case formations.PostBiranYenke:
-                    WriteValue<byte>(memoryWatchers.EnableTidus, 17);
-                    WriteValue<byte>(memoryWatchers.EnableYuna, 17);
-                    WriteValue<byte>(memoryWatchers.EnableAuron, 17);
-                    WriteValue<byte>(memoryWatchers.EnableWakka, 17);
-                    WriteValue<byte>(memoryWatchers.EnableLulu, 17);
-                    WriteValue<byte>(memoryWatchers.EnableRikku, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableTidus, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableYuna, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableAuron, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableWakka, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableLulu, 17);
+                    WriteValue<byte>(MemoryWatchers.EnableRikku, 17);
                     formation = AddCharacter(formation, 0x00);
                     formation = AddCharacter(formation, 0x01);
                     formation = AddCharacter(formation, 0x02);
@@ -1146,7 +1145,7 @@ public class Transition
                     formation = SwapCharacterWithPosition(formation, initialPosition3, 2);
                     break;
             }
-            WriteBytes(memoryWatchers.Formation, formation);
+            WriteBytes(MemoryWatchers.Formation, formation);
         }
     }
 
@@ -1187,13 +1186,13 @@ public class Transition
             formation[i] = 0xFF;
         }
 
-        WriteValue<byte>(memoryWatchers.EnableTidus, 0);
-        WriteValue<byte>(memoryWatchers.EnableYuna, 0);
-        WriteValue<byte>(memoryWatchers.EnableAuron, 0);
-        WriteValue<byte>(memoryWatchers.EnableKimahri, 0);
-        WriteValue<byte>(memoryWatchers.EnableWakka, 0);
-        WriteValue<byte>(memoryWatchers.EnableLulu, 0);
-        WriteValue<byte>(memoryWatchers.EnableRikku, 0);
+        WriteValue<byte>(MemoryWatchers.EnableTidus, 0);
+        WriteValue<byte>(MemoryWatchers.EnableYuna, 0);
+        WriteValue<byte>(MemoryWatchers.EnableAuron, 0);
+        WriteValue<byte>(MemoryWatchers.EnableKimahri, 0);
+        WriteValue<byte>(MemoryWatchers.EnableWakka, 0);
+        WriteValue<byte>(MemoryWatchers.EnableLulu, 0);
+        WriteValue<byte>(MemoryWatchers.EnableRikku, 0);
 
         return formation;
     }

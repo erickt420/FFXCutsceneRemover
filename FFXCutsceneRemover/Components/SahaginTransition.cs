@@ -6,23 +6,23 @@ class SahaginTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        int baseAddress = base.memoryWatchers.GetBaseAddress();
+        int baseAddress = MemoryWatchers.GetBaseAddress();
 
         List<short> CutsceneAltList = new List<short>(new short[] { 780, 347, 2253 });
 
-        if (base.memoryWatchers.SahaginTransition.Current > 0)
+        if (MemoryWatchers.SahaginTransition.Current > 0)
         {
-            if (CutsceneAltList.Contains(base.memoryWatchers.CutsceneAlt.Current) && Stage == 0)
+            if (CutsceneAltList.Contains(MemoryWatchers.CutsceneAlt.Current) && Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.SahaginTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.SahaginTransition.Current;
                 Stage = 1;
 
             }
-            else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0xC9) && Stage == 1)
+            else if (MemoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0xC9) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x45A);
+                WriteValue<int>(MemoryWatchers.SahaginTransition, BaseCutsceneValue + 0x45A);
 
                 Transition actorPositions;
                 //Position Wakka
@@ -39,9 +39,9 @@ class SahaginTransition : Transition
 
                 Stage = 2;
             }
-            else if (base.memoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0x491) && base.memoryWatchers.TidusActionCount.Current == 1 && Stage == 2)
+            else if (MemoryWatchers.SahaginTransition.Current == (BaseCutsceneValue + 0x491) && MemoryWatchers.TidusActionCount.Current == 1 && Stage == 2)
             {
-                WriteValue<int>(base.memoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);
+                WriteValue<int>(MemoryWatchers.SahaginTransition, BaseCutsceneValue + 0x556);
                 Stage = 3;
             }
         }

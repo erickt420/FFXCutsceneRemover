@@ -8,9 +8,9 @@ class YojimboTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if ((base.memoryWatchers.CalmLandsFlag.Current & 0x02) == 0x00 && base.memoryWatchers.TidusZCoordinate.Current > 1655.0f && Stage == 0)
+        if ((MemoryWatchers.CalmLandsFlag.Current & 0x02) == 0x00 && MemoryWatchers.TidusZCoordinate.Current > 1655.0f && Stage == 0)
         {
             process.Suspend();
 

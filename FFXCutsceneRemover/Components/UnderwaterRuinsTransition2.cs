@@ -8,13 +8,13 @@ class UnderwaterRuinsTransition2 : Transition
         {
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage += 1;
 
         }
-        else if (base.memoryWatchers.UnderwaterRuinsTransition2.Current >= (BaseCutsceneValue + 0x3870) && Stage == 1)
+        else if (MemoryWatchers.UnderwaterRuinsTransition2.Current >= (BaseCutsceneValue + 0x3870) && Stage == 1)
         {
-            WriteValue<int>(base.memoryWatchers.UnderwaterRuinsTransition2, BaseCutsceneValue + 0x3AB2);
+            WriteValue<int>(MemoryWatchers.UnderwaterRuinsTransition2, BaseCutsceneValue + 0x3AB2);
             Stage += 1;
         }
     }

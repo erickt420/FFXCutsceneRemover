@@ -5,8 +5,6 @@ namespace FFXCutsceneRemover.Resources;
 /* This class contains most of the transitions. Transitions added here are automatically evalutated in the main loop. */
 static class Transitions
 {
-    private static readonly MemoryWatchers MemoryWatchers = MemoryWatchers.Instance;
-
     static readonly AmmesTransition AmmesTransition = new AmmesTransition { ForceLoad = false, Description = "Sinspawn Ammes", Suspendable = false, Repeatable = true };
     static readonly DiveTransition DiveTransition = new DiveTransition { ForceLoad = false, Description = "Tidus falls into water", Suspendable = false, Repeatable = true };
     static readonly GeosTransition GeosTransition = new GeosTransition { ForceLoad = false, Description = "Geosgaeno", Suspendable = false, Repeatable = true };

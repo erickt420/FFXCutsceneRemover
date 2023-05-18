@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 
 using FFXCutsceneRemover.ComponentUtil;
 using FFXCutsceneRemover.Logging;
@@ -9,335 +9,314 @@ using FFXCutsceneRemover.Resources;
 namespace FFXCutsceneRemover;
 
 /* This class contains all the memory watchers used in the program. All watchers should be added here. */
-sealed public class MemoryWatchers
+public static class MemoryWatchers
 {
-    private static readonly string MODULE = "FFX.exe";
+    private const string MODULE = "FFX.exe";
 
-    private static readonly object padlock = new object();
+    private static int processBaseAddress;
 
-    private static MemoryWatchers instance = null;
+    public static Process Process;
+    public static MemoryWatcherList Watchers = new MemoryWatcherList();
 
-    private int processBaseAddress;
-    
-    public Process Process;
-    public MemoryWatcherList Watchers = new MemoryWatcherList();
+    public static MemoryWatcher<byte> Language;
 
-    public MemoryWatcher<byte> Language;
-
-    public MemoryWatcher<short> RoomNumber;
-    public MemoryWatcher<short> Storyline;
-    public MemoryWatcher<byte> ForceLoad;
-    public MemoryWatcher<byte> SpawnPoint;
-    public MemoryWatcher<short> BattleState;
-    public MemoryWatcher<short> BattleState2;
-    public MemoryWatcher<short> Input;
-    public MemoryWatcher<byte> Menu;
-    public MemoryWatcher<byte> MenuLock;
-    public MemoryWatcher<short> Intro;
-    public MemoryWatcher<sbyte> State;
-    public MemoryWatcher<float> XCoordinate;
-    public MemoryWatcher<float> YCoordinate;
-    public MemoryWatcher<byte> Camera;
-    public MemoryWatcher<float> Camera_x;
-    public MemoryWatcher<float> Camera_y;
-    public MemoryWatcher<float> Camera_z;
-    public MemoryWatcher<float> CameraRotation;
-    public MemoryWatcher<byte> EncounterStatus;
-    public MemoryWatcher<byte> MovementLock;
-    public MemoryWatcher<byte> ActiveMusicId;
-    public MemoryWatcher<byte> MusicId;
-    public MemoryWatcher<byte> RoomNumberAlt;
-    public MemoryWatcher<short> CutsceneAlt;
-    public MemoryWatcher<short> AirshipDestinations;
-    public MemoryWatcher<byte> AuronOverdrives;
-    public MemoryWatcher<int> Gil;
-    public MemoryWatcher<int> TargetFramerate;
-    public MemoryWatcher<int> Dialogue1;
-    public MemoryWatcher<byte> DialogueOption;
-    public MemoryWatcher<byte> DialogueBoxOpen;
-    public MemoryWatcher<byte> DialogueOption_Gui;
-    public MemoryWatcher<byte> DialogueBoxOpen_Gui;
-    public MemoryWatcher<byte> PlayerTurn;
-    public MemoryWatcher<int> FrameCounterFromLoad;
+    public static MemoryWatcher<short> RoomNumber;
+    public static MemoryWatcher<short> Storyline;
+    public static MemoryWatcher<byte> ForceLoad;
+    public static MemoryWatcher<byte> SpawnPoint;
+    public static MemoryWatcher<short> BattleState;
+    public static MemoryWatcher<short> BattleState2;
+    public static MemoryWatcher<short> Input;
+    public static MemoryWatcher<byte> Menu;
+    public static MemoryWatcher<byte> MenuLock;
+    public static MemoryWatcher<short> Intro;
+    public static MemoryWatcher<sbyte> State;
+    public static MemoryWatcher<float> XCoordinate;
+    public static MemoryWatcher<float> YCoordinate;
+    public static MemoryWatcher<byte> Camera;
+    public static MemoryWatcher<float> Camera_x;
+    public static MemoryWatcher<float> Camera_y;
+    public static MemoryWatcher<float> Camera_z;
+    public static MemoryWatcher<float> CameraRotation;
+    public static MemoryWatcher<byte> EncounterStatus;
+    public static MemoryWatcher<byte> MovementLock;
+    public static MemoryWatcher<byte> ActiveMusicId;
+    public static MemoryWatcher<byte> MusicId;
+    public static MemoryWatcher<byte> RoomNumberAlt;
+    public static MemoryWatcher<short> CutsceneAlt;
+    public static MemoryWatcher<short> AirshipDestinations;
+    public static MemoryWatcher<byte> AuronOverdrives;
+    public static MemoryWatcher<int> Gil;
+    public static MemoryWatcher<int> TargetFramerate;
+    public static MemoryWatcher<int> Dialogue1;
+    public static MemoryWatcher<byte> DialogueOption;
+    public static MemoryWatcher<byte> DialogueBoxOpen;
+    public static MemoryWatcher<byte> DialogueOption_Gui;
+    public static MemoryWatcher<byte> DialogueBoxOpen_Gui;
+    public static MemoryWatcher<byte> PlayerTurn;
+    public static MemoryWatcher<int> FrameCounterFromLoad;
 
     // Event File
-    public MemoryWatcher<int> EventFileStart;
+    public static MemoryWatcher<int> EventFileStart;
 
     // Deep Pointers
-    public MemoryWatcher<int> HpEnemyA;
-    public MemoryWatcher<byte> GuadoCount;
-    public MemoryWatcher<short> NPCLastInteraction;
-    public MemoryWatcher<byte> TidusActionCount;
-    public MemoryWatcher<float> TidusXCoordinate;
-    public MemoryWatcher<float> TidusYCoordinate;
-    public MemoryWatcher<float> TidusZCoordinate;
-    public MemoryWatcher<float> TidusRotation;
-    public MemoryWatcher<byte> DialogueFile;
-    public MemoryWatcher<byte> CutsceneTiming;
-    public MemoryWatcher<int> AuronTransition;
-    public MemoryWatcher<int> AmmesTransition;
-    public MemoryWatcher<int> TankerTransition;
-    public MemoryWatcher<int> InsideSinTransition;
-    public MemoryWatcher<int> DiveTransition;
-    public MemoryWatcher<int> GeosTransition;
-    public MemoryWatcher<int> KlikkTransition;
-    public MemoryWatcher<int> AlBhedBoatTransition;
-    public MemoryWatcher<int> UnderwaterRuinsTransition;
-    public MemoryWatcher<int> UnderwaterRuinsTransition2;
-    public MemoryWatcher<int> BeachTransition;
-    public MemoryWatcher<int> LagoonTransition1;
-    public MemoryWatcher<int> LagoonTransition2;
-    public MemoryWatcher<int> ValeforTransition;
-    public MemoryWatcher<int> KimahriTransition;
-    public MemoryWatcher<int> YunaBoatTransition;
-    public MemoryWatcher<int> SinFinTransition;
-    public MemoryWatcher<int> EchuillesTransition;
-    public MemoryWatcher<int> GeneauxTransition;
-    public MemoryWatcher<int> KilikaTrialsTransition;
-    public MemoryWatcher<int> KilikaAntechamberTransition;
-    public MemoryWatcher<int> IfritTransition;
-    public MemoryWatcher<int> IfritTransition2;
-    public MemoryWatcher<int> JechtShotTransition;
-    public MemoryWatcher<int> OblitzeratorTransition;
-    public MemoryWatcher<int> BlitzballTransition;
-    public MemoryWatcher<int> SahaginTransition;
-    public MemoryWatcher<int> GarudaTransition;
-    public MemoryWatcher<int> RinTransition;
-    public MemoryWatcher<int> ChocoboEaterTransition;
-    public MemoryWatcher<int> GuiTransition;
-    public MemoryWatcher<int> Gui2Transition;
-    public MemoryWatcher<int> DjoseTransition;
-    public MemoryWatcher<int> IxionTransition;
-    public MemoryWatcher<int> ExtractorTransition;
-    public MemoryWatcher<int> SeymoursHouseTransition1;
-    public MemoryWatcher<int> SeymoursHouseTransition2;
-    public MemoryWatcher<int> FarplaneTransition1;
-    public MemoryWatcher<int> FarplaneTransition2;
-    public MemoryWatcher<int> TromellTransition;
-    public MemoryWatcher<int> CrawlerTransition;
-    public MemoryWatcher<int> SeymourTransition;
-    public MemoryWatcher<int> SeymourTransition2;
-    public MemoryWatcher<int> WendigoTransition;
-    public MemoryWatcher<int> SpherimorphTransition;
-    public MemoryWatcher<int> UnderLakeTransition;
-    public MemoryWatcher<int> BikanelTransition;
-    public MemoryWatcher<int> HomeTransition;
-    public MemoryWatcher<int> EvraeTransition;
-    public MemoryWatcher<int> EvraeAirshipTransition;
-    public MemoryWatcher<int> GuardsTransition;
-    public MemoryWatcher<int> BahamutTransition;
-    public MemoryWatcher<int> IsaaruTransition;
-    public MemoryWatcher<int> AltanaTransition;
-    public MemoryWatcher<int> NatusTransition;
-    public MemoryWatcher<int> DefenderXTransition;
-    public MemoryWatcher<int> RonsoTransition;
-    public MemoryWatcher<int> FluxTransition;
-    public MemoryWatcher<int> SanctuaryTransition;
-    public MemoryWatcher<int> SpectralKeeperTransition;
-    public MemoryWatcher<int> SpectralKeeperTransition2;
-    public MemoryWatcher<int> YunalescaTransition;
-    public MemoryWatcher<int> FinsTransition;
-    public MemoryWatcher<int> FinsAirshipTransition;
-    public MemoryWatcher<int> SinCoreTransition;
-    public MemoryWatcher<int> OverdriveSinTransition;
-    public MemoryWatcher<int> OmnisTransition;
-    public MemoryWatcher<int> BFATransition;
-    public MemoryWatcher<int> AeonTransition;
-    public MemoryWatcher<int> YuYevonTransition;
-    public MemoryWatcher<int> YojimboFaythTransition;
-    public MemoryWatcher<int> CutsceneProgress_Max;
-    public MemoryWatcher<int> CutsceneProgress_uVar1;
-    public MemoryWatcher<int> CutsceneProgress_uVar2;
-    public MemoryWatcher<int> CutsceneProgress_uVar3;
+    public static MemoryWatcher<int> HpEnemyA;
+    public static MemoryWatcher<byte> GuadoCount;
+    public static MemoryWatcher<short> NPCLastInteraction;
+    public static MemoryWatcher<byte> TidusActionCount;
+    public static MemoryWatcher<float> TidusXCoordinate;
+    public static MemoryWatcher<float> TidusYCoordinate;
+    public static MemoryWatcher<float> TidusZCoordinate;
+    public static MemoryWatcher<float> TidusRotation;
+    public static MemoryWatcher<byte> DialogueFile;
+    public static MemoryWatcher<byte> CutsceneTiming;
+    public static MemoryWatcher<int> AuronTransition;
+    public static MemoryWatcher<int> AmmesTransition;
+    public static MemoryWatcher<int> TankerTransition;
+    public static MemoryWatcher<int> InsideSinTransition;
+    public static MemoryWatcher<int> DiveTransition;
+    public static MemoryWatcher<int> GeosTransition;
+    public static MemoryWatcher<int> KlikkTransition;
+    public static MemoryWatcher<int> AlBhedBoatTransition;
+    public static MemoryWatcher<int> UnderwaterRuinsTransition;
+    public static MemoryWatcher<int> UnderwaterRuinsTransition2;
+    public static MemoryWatcher<int> BeachTransition;
+    public static MemoryWatcher<int> LagoonTransition1;
+    public static MemoryWatcher<int> LagoonTransition2;
+    public static MemoryWatcher<int> ValeforTransition;
+    public static MemoryWatcher<int> KimahriTransition;
+    public static MemoryWatcher<int> YunaBoatTransition;
+    public static MemoryWatcher<int> SinFinTransition;
+    public static MemoryWatcher<int> EchuillesTransition;
+    public static MemoryWatcher<int> GeneauxTransition;
+    public static MemoryWatcher<int> KilikaTrialsTransition;
+    public static MemoryWatcher<int> KilikaAntechamberTransition;
+    public static MemoryWatcher<int> IfritTransition;
+    public static MemoryWatcher<int> IfritTransition2;
+    public static MemoryWatcher<int> JechtShotTransition;
+    public static MemoryWatcher<int> OblitzeratorTransition;
+    public static MemoryWatcher<int> BlitzballTransition;
+    public static MemoryWatcher<int> SahaginTransition;
+    public static MemoryWatcher<int> GarudaTransition;
+    public static MemoryWatcher<int> RinTransition;
+    public static MemoryWatcher<int> ChocoboEaterTransition;
+    public static MemoryWatcher<int> GuiTransition;
+    public static MemoryWatcher<int> Gui2Transition;
+    public static MemoryWatcher<int> DjoseTransition;
+    public static MemoryWatcher<int> IxionTransition;
+    public static MemoryWatcher<int> ExtractorTransition;
+    public static MemoryWatcher<int> SeymoursHouseTransition1;
+    public static MemoryWatcher<int> SeymoursHouseTransition2;
+    public static MemoryWatcher<int> FarplaneTransition1;
+    public static MemoryWatcher<int> FarplaneTransition2;
+    public static MemoryWatcher<int> TromellTransition;
+    public static MemoryWatcher<int> CrawlerTransition;
+    public static MemoryWatcher<int> SeymourTransition;
+    public static MemoryWatcher<int> SeymourTransition2;
+    public static MemoryWatcher<int> WendigoTransition;
+    public static MemoryWatcher<int> SpherimorphTransition;
+    public static MemoryWatcher<int> UnderLakeTransition;
+    public static MemoryWatcher<int> BikanelTransition;
+    public static MemoryWatcher<int> HomeTransition;
+    public static MemoryWatcher<int> EvraeTransition;
+    public static MemoryWatcher<int> EvraeAirshipTransition;
+    public static MemoryWatcher<int> GuardsTransition;
+    public static MemoryWatcher<int> BahamutTransition;
+    public static MemoryWatcher<int> IsaaruTransition;
+    public static MemoryWatcher<int> AltanaTransition;
+    public static MemoryWatcher<int> NatusTransition;
+    public static MemoryWatcher<int> DefenderXTransition;
+    public static MemoryWatcher<int> RonsoTransition;
+    public static MemoryWatcher<int> FluxTransition;
+    public static MemoryWatcher<int> SanctuaryTransition;
+    public static MemoryWatcher<int> SpectralKeeperTransition;
+    public static MemoryWatcher<int> SpectralKeeperTransition2;
+    public static MemoryWatcher<int> YunalescaTransition;
+    public static MemoryWatcher<int> FinsTransition;
+    public static MemoryWatcher<int> FinsAirshipTransition;
+    public static MemoryWatcher<int> SinCoreTransition;
+    public static MemoryWatcher<int> OverdriveSinTransition;
+    public static MemoryWatcher<int> OmnisTransition;
+    public static MemoryWatcher<int> BFATransition;
+    public static MemoryWatcher<int> AeonTransition;
+    public static MemoryWatcher<int> YuYevonTransition;
+    public static MemoryWatcher<int> YojimboFaythTransition;
+    public static MemoryWatcher<int> CutsceneProgress_Max;
+    public static MemoryWatcher<int> CutsceneProgress_uVar1;
+    public static MemoryWatcher<int> CutsceneProgress_uVar2;
+    public static MemoryWatcher<int> CutsceneProgress_uVar3;
 
     // Encounters
-    public MemoryWatcher<byte> EncounterMapID;
-    public MemoryWatcher<byte> EncounterFormationID1;
-    public MemoryWatcher<byte> EncounterFormationID2;
-    public MemoryWatcher<byte> ScriptedBattleFlag1;
-    public MemoryWatcher<byte> ScriptedBattleFlag2;
-    public MemoryWatcher<int> ScriptedBattleVar1;
-    public MemoryWatcher<int> ScriptedBattleVar3;
-    public MemoryWatcher<int> ScriptedBattleVar4;
-    public MemoryWatcher<byte> EncounterTrigger;
+    public static MemoryWatcher<byte> EncounterMapID;
+    public static MemoryWatcher<byte> EncounterFormationID1;
+    public static MemoryWatcher<byte> EncounterFormationID2;
+    public static MemoryWatcher<byte> ScriptedBattleFlag1;
+    public static MemoryWatcher<byte> ScriptedBattleFlag2;
+    public static MemoryWatcher<int> ScriptedBattleVar1;
+    public static MemoryWatcher<int> ScriptedBattleVar3;
+    public static MemoryWatcher<int> ScriptedBattleVar4;
+    public static MemoryWatcher<byte> EncounterTrigger;
 
     // Party Configuration
-    public MemoryWatcher<byte> Formation;
-    public MemoryWatcher<byte> RikkuName;
-    public MemoryWatcher<byte> EnableTidus;
-    public MemoryWatcher<byte> EnableYuna;
-    public MemoryWatcher<byte> EnableAuron;
-    public MemoryWatcher<byte> EnableKimahri;
-    public MemoryWatcher<byte> EnableWakka;
-    public MemoryWatcher<byte> EnableLulu;
-    public MemoryWatcher<byte> EnableRikku;
-    public MemoryWatcher<byte> EnableSeymour;
-    public MemoryWatcher<byte> EnableValefor;
-    public MemoryWatcher<byte> EnableIfrit;
-    public MemoryWatcher<byte> EnableIxion;
-    public MemoryWatcher<byte> EnableShiva;
-    public MemoryWatcher<byte> EnableBahamut;
-    public MemoryWatcher<byte> EnableAnima;
-    public MemoryWatcher<byte> EnableYojimbo;
-    public MemoryWatcher<byte> EnableMagus;
+    public static MemoryWatcher<byte> Formation;
+    public static MemoryWatcher<byte> RikkuName;
+    public static MemoryWatcher<byte> EnableTidus;
+    public static MemoryWatcher<byte> EnableYuna;
+    public static MemoryWatcher<byte> EnableAuron;
+    public static MemoryWatcher<byte> EnableKimahri;
+    public static MemoryWatcher<byte> EnableWakka;
+    public static MemoryWatcher<byte> EnableLulu;
+    public static MemoryWatcher<byte> EnableRikku;
+    public static MemoryWatcher<byte> EnableSeymour;
+    public static MemoryWatcher<byte> EnableValefor;
+    public static MemoryWatcher<byte> EnableIfrit;
+    public static MemoryWatcher<byte> EnableIxion;
+    public static MemoryWatcher<byte> EnableShiva;
+    public static MemoryWatcher<byte> EnableBahamut;
+    public static MemoryWatcher<byte> EnableAnima;
+    public static MemoryWatcher<byte> EnableYojimbo;
+    public static MemoryWatcher<byte> EnableMagus;
 
     // Encounter Rate
-    public MemoryWatcher<byte> EncountersActiveFlag;
-    public MemoryWatcher<float> TotalDistance;
-    public MemoryWatcher<float> CycleDistance;
+    public static MemoryWatcher<byte> EncountersActiveFlag;
+    public static MemoryWatcher<float> TotalDistance;
+    public static MemoryWatcher<float> CycleDistance;
 
     // HP/MP
-    public MemoryWatcher<int> TidusHP;
-    public MemoryWatcher<short> TidusMP;
-    public MemoryWatcher<int> TidusMaxHP;
-    public MemoryWatcher<short> TidusMaxMP;
-    public MemoryWatcher<int> YunaHP;
-    public MemoryWatcher<short> YunaMP;
-    public MemoryWatcher<int> YunaMaxHP;
-    public MemoryWatcher<short> YunaMaxMP;
-    public MemoryWatcher<int> AuronHP;
-    public MemoryWatcher<short> AuronMP;
-    public MemoryWatcher<int> AuronMaxHP;
-    public MemoryWatcher<short> AuronMaxMP;
-    public MemoryWatcher<int> WakkaHP;
-    public MemoryWatcher<short> WakkaMP;
-    public MemoryWatcher<int> WakkaMaxHP;
-    public MemoryWatcher<short> WakkaMaxMP;
-    public MemoryWatcher<int> KimahriHP;
-    public MemoryWatcher<short> KimahriMP;
-    public MemoryWatcher<int> KimahriMaxHP;
-    public MemoryWatcher<short> KimahriMaxMP;
-    public MemoryWatcher<int> LuluHP;
-    public MemoryWatcher<short> LuluMP;
-    public MemoryWatcher<int> LuluMaxHP;
-    public MemoryWatcher<short> LuluMaxMP;
-    public MemoryWatcher<int> RikkuHP;
-    public MemoryWatcher<short> RikkuMP;
-    public MemoryWatcher<int> RikkuMaxHP;
-    public MemoryWatcher<short> RikkuMaxMP;
-    public MemoryWatcher<int> ValeforHP;
-    public MemoryWatcher<short> ValeforMP;
-    public MemoryWatcher<int> ValeforMaxHP;
-    public MemoryWatcher<short> ValeforMaxMP;
-    
+    public static MemoryWatcher<int> TidusHP;
+    public static MemoryWatcher<short> TidusMP;
+    public static MemoryWatcher<int> TidusMaxHP;
+    public static MemoryWatcher<short> TidusMaxMP;
+    public static MemoryWatcher<int> YunaHP;
+    public static MemoryWatcher<short> YunaMP;
+    public static MemoryWatcher<int> YunaMaxHP;
+    public static MemoryWatcher<short> YunaMaxMP;
+    public static MemoryWatcher<int> AuronHP;
+    public static MemoryWatcher<short> AuronMP;
+    public static MemoryWatcher<int> AuronMaxHP;
+    public static MemoryWatcher<short> AuronMaxMP;
+    public static MemoryWatcher<int> WakkaHP;
+    public static MemoryWatcher<short> WakkaMP;
+    public static MemoryWatcher<int> WakkaMaxHP;
+    public static MemoryWatcher<short> WakkaMaxMP;
+    public static MemoryWatcher<int> KimahriHP;
+    public static MemoryWatcher<short> KimahriMP;
+    public static MemoryWatcher<int> KimahriMaxHP;
+    public static MemoryWatcher<short> KimahriMaxMP;
+    public static MemoryWatcher<int> LuluHP;
+    public static MemoryWatcher<short> LuluMP;
+    public static MemoryWatcher<int> LuluMaxHP;
+    public static MemoryWatcher<short> LuluMaxMP;
+    public static MemoryWatcher<int> RikkuHP;
+    public static MemoryWatcher<short> RikkuMP;
+    public static MemoryWatcher<int> RikkuMaxHP;
+    public static MemoryWatcher<short> RikkuMaxMP;
+    public static MemoryWatcher<int> ValeforHP;
+    public static MemoryWatcher<short> ValeforMP;
+    public static MemoryWatcher<int> ValeforMaxHP;
+    public static MemoryWatcher<short> ValeforMaxMP;
+
     // HP/MP Aeons
 
 
     // Special Flags
-    public MemoryWatcher<short> FangirlsOrKidsSkip;
-    public MemoryWatcher<byte> BaajFlag1;
-    public MemoryWatcher<byte> BesaidFlag1;
-    public MemoryWatcher<byte> SSWinnoFlag1;
-    public MemoryWatcher<byte> KilikaMapFlag;
-    public MemoryWatcher<byte> SSWinnoFlag2;
-    public MemoryWatcher<byte> LucaFlag;
-    public MemoryWatcher<byte> LucaFlag2;
-    public MemoryWatcher<byte> BlitzballFlag;
-    public MemoryWatcher<byte> MiihenFlag1;
-    public MemoryWatcher<byte> MiihenFlag2;
-    public MemoryWatcher<byte> MiihenFlag3;
-    public MemoryWatcher<byte> MiihenFlag4;
-    public MemoryWatcher<byte> MRRFlag1;
-    public MemoryWatcher<byte> MRRFlag2;
-    public MemoryWatcher<byte> MoonflowFlag;
-    public MemoryWatcher<byte> MoonflowFlag2;
-    public MemoryWatcher<byte> RikkuOutfit;
-    public MemoryWatcher<byte> TidusWeaponDamageBoost;
-    public MemoryWatcher<byte> GuadosalamShopFlag;
-    public MemoryWatcher<byte> ThunderPlainsFlag;
-    public MemoryWatcher<byte> MacalaniaFlag;
-    public MemoryWatcher<byte> BikanelFlag;
-    public MemoryWatcher<byte> Sandragoras;
-    public MemoryWatcher<byte> ViaPurificoPlatform;
-    public MemoryWatcher<byte> NatusFlag;
-    public MemoryWatcher<ushort> CalmLandsFlag;
-    public MemoryWatcher<byte> WantzFlag;
-    public MemoryWatcher<short> GagazetCaveFlag;
-    public MemoryWatcher<byte> OmegaRuinsFlag;
-    public MemoryWatcher<byte> WantzMacalaniaFlag;
+    public static MemoryWatcher<short> FangirlsOrKidsSkip;
+    public static MemoryWatcher<byte> BaajFlag1;
+    public static MemoryWatcher<byte> BesaidFlag1;
+    public static MemoryWatcher<byte> SSWinnoFlag1;
+    public static MemoryWatcher<byte> KilikaMapFlag;
+    public static MemoryWatcher<byte> SSWinnoFlag2;
+    public static MemoryWatcher<byte> LucaFlag;
+    public static MemoryWatcher<byte> LucaFlag2;
+    public static MemoryWatcher<byte> BlitzballFlag;
+    public static MemoryWatcher<byte> MiihenFlag1;
+    public static MemoryWatcher<byte> MiihenFlag2;
+    public static MemoryWatcher<byte> MiihenFlag3;
+    public static MemoryWatcher<byte> MiihenFlag4;
+    public static MemoryWatcher<byte> MRRFlag1;
+    public static MemoryWatcher<byte> MRRFlag2;
+    public static MemoryWatcher<byte> MoonflowFlag;
+    public static MemoryWatcher<byte> MoonflowFlag2;
+    public static MemoryWatcher<byte> RikkuOutfit;
+    public static MemoryWatcher<byte> TidusWeaponDamageBoost;
+    public static MemoryWatcher<byte> GuadosalamShopFlag;
+    public static MemoryWatcher<byte> ThunderPlainsFlag;
+    public static MemoryWatcher<byte> MacalaniaFlag;
+    public static MemoryWatcher<byte> BikanelFlag;
+    public static MemoryWatcher<byte> Sandragoras;
+    public static MemoryWatcher<byte> ViaPurificoPlatform;
+    public static MemoryWatcher<byte> NatusFlag;
+    public static MemoryWatcher<ushort> CalmLandsFlag;
+    public static MemoryWatcher<byte> WantzFlag;
+    public static MemoryWatcher<short> GagazetCaveFlag;
+    public static MemoryWatcher<byte> OmegaRuinsFlag;
+    public static MemoryWatcher<byte> WantzMacalaniaFlag;
 
     // Blitzball Abilities
-    public MemoryWatcher<byte> AurochsTeamBytes;
-    public MemoryWatcher<byte> BlitzballBytes;
-    public MemoryWatcher<byte> AurochsPlayer1;
+    public static MemoryWatcher<byte> AurochsTeamBytes;
+    public static MemoryWatcher<byte> BlitzballBytes;
+    public static MemoryWatcher<byte> AurochsPlayer1;
 
     // Battle Rewards
-    public MemoryWatcher<int> GilBattleRewards;
-    public MemoryWatcher<byte> BattleRewardItemCount;
-    public MemoryWatcher<short> BattleRewardItem1;
-    public MemoryWatcher<short> BattleRewardItem2;
-    public MemoryWatcher<short> BattleRewardItem3;
-    public MemoryWatcher<short> BattleRewardItem4;
-    public MemoryWatcher<short> BattleRewardItem5;
-    public MemoryWatcher<short> BattleRewardItem6;
-    public MemoryWatcher<short> BattleRewardItem7;
-    public MemoryWatcher<short> BattleRewardItem8;
-    public MemoryWatcher<byte> BattleRewardItemQty1;
-    public MemoryWatcher<byte> BattleRewardItemQty2;
-    public MemoryWatcher<byte> BattleRewardItemQty3;
-    public MemoryWatcher<byte> BattleRewardItemQty4;
-    public MemoryWatcher<byte> BattleRewardItemQty5;
-    public MemoryWatcher<byte> BattleRewardItemQty6;
-    public MemoryWatcher<byte> BattleRewardItemQty7;
-    public MemoryWatcher<byte> BattleRewardItemQty8;
-    public MemoryWatcher<byte> BattleRewardEquipCount;
-    public MemoryWatcher<byte> BattleRewardEquip1;
-    public MemoryWatcher<byte> BattleRewardEquip2;
-    public MemoryWatcher<byte> BattleRewardEquip3;
-    public MemoryWatcher<byte> BattleRewardEquip4;
-    public MemoryWatcher<byte> BattleRewardEquip5;
-    public MemoryWatcher<byte> BattleRewardEquip6;
-    public MemoryWatcher<byte> BattleRewardEquip7;
-    public MemoryWatcher<byte> BattleRewardEquip8;
+    public static MemoryWatcher<int> GilBattleRewards;
+    public static MemoryWatcher<byte> BattleRewardItemCount;
+    public static MemoryWatcher<short> BattleRewardItem1;
+    public static MemoryWatcher<short> BattleRewardItem2;
+    public static MemoryWatcher<short> BattleRewardItem3;
+    public static MemoryWatcher<short> BattleRewardItem4;
+    public static MemoryWatcher<short> BattleRewardItem5;
+    public static MemoryWatcher<short> BattleRewardItem6;
+    public static MemoryWatcher<short> BattleRewardItem7;
+    public static MemoryWatcher<short> BattleRewardItem8;
+    public static MemoryWatcher<byte> BattleRewardItemQty1;
+    public static MemoryWatcher<byte> BattleRewardItemQty2;
+    public static MemoryWatcher<byte> BattleRewardItemQty3;
+    public static MemoryWatcher<byte> BattleRewardItemQty4;
+    public static MemoryWatcher<byte> BattleRewardItemQty5;
+    public static MemoryWatcher<byte> BattleRewardItemQty6;
+    public static MemoryWatcher<byte> BattleRewardItemQty7;
+    public static MemoryWatcher<byte> BattleRewardItemQty8;
+    public static MemoryWatcher<byte> BattleRewardEquipCount;
+    public static MemoryWatcher<byte> BattleRewardEquip1;
+    public static MemoryWatcher<byte> BattleRewardEquip2;
+    public static MemoryWatcher<byte> BattleRewardEquip3;
+    public static MemoryWatcher<byte> BattleRewardEquip4;
+    public static MemoryWatcher<byte> BattleRewardEquip5;
+    public static MemoryWatcher<byte> BattleRewardEquip6;
+    public static MemoryWatcher<byte> BattleRewardEquip7;
+    public static MemoryWatcher<byte> BattleRewardEquip8;
 
     // Items
-    public MemoryWatcher<byte> ItemsStart;
-    public MemoryWatcher<byte> ItemsQtyStart;
+    public static MemoryWatcher<byte> ItemsStart;
+    public static MemoryWatcher<byte> ItemsQtyStart;
 
     // AP
-    public MemoryWatcher<byte> CharacterAPFlags;
+    public static MemoryWatcher<byte> CharacterAPFlags;
 
     // Menu Values
-    public MemoryWatcher<int> MenuTriggerValue;
+    public static MemoryWatcher<int> MenuTriggerValue;
 
-    public MemoryWatcher<int> MenuValue1;
-    public MemoryWatcher<int> MenuValue2;
+    public static MemoryWatcher<int> MenuValue1;
+    public static MemoryWatcher<int> MenuValue2;
 
-    public MemoryWatcher<int> MenuValue3;
-    public MemoryWatcher<int> MenuValue4;
-    public MemoryWatcher<byte> MenuValue5;
-    public MemoryWatcher<int> MenuValue6;
-    public MemoryWatcher<byte> MenuValue7;
+    public static MemoryWatcher<int> MenuValue3;
+    public static MemoryWatcher<int> MenuValue4;
+    public static MemoryWatcher<byte> MenuValue5;
+    public static MemoryWatcher<int> MenuValue6;
+    public static MemoryWatcher<byte> MenuValue7;
 
-    public MemoryWatcher<int> SpeedBoostAmount;
-    public MemoryWatcher<int> SpeedBoostVar1;
+    public static MemoryWatcher<int> SpeedBoostAmount;
+    public static MemoryWatcher<int> SpeedBoostVar1;
 
-    public MemoryWatcher<int> ActorArrayLength;
+    public static MemoryWatcher<int> ActorArrayLength;
 
-    public MemoryWatcher<byte> RNGArrayOpBytes;
+    public static MemoryWatcher<byte> RNGArrayOpBytes;
 
-    MemoryWatchers() { }
-
-    public static MemoryWatchers Instance
-    {
-        get
-        {
-            lock(padlock)
-            {
-                if(instance == null)
-                {
-                    instance = new MemoryWatchers();
-                }
-                return instance;
-            }
-        }
-    }
-
-    public void Initialize(Process process)
+    public static void Initialize(Process process)
     {
         Process = process;
         processBaseAddress = process.Modules[0].BaseAddress.ToInt32();
-        DiagnosticLog.Information("Process base address: " + processBaseAddress);
+        DiagnosticLog.Information($"Process base address: {processBaseAddress:X8}");
 
         Language = GetMemoryWatcher<byte>(MemoryLocations.Language);
 
@@ -635,272 +614,37 @@ sealed public class MemoryWatchers
         HpEnemyA.FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 
         Watchers.Clear();
-        Watchers.AddRange(new List<MemoryWatcher>() {
-                Language,
-                RoomNumber,
-                Storyline,
-                ForceLoad,
-                SpawnPoint,
-                BattleState,
-                BattleState2,
-                Input,
-                Menu,
-                MenuLock,
-                Intro,
-                FangirlsOrKidsSkip,
-                State,
-                XCoordinate,
-                YCoordinate,
-                Camera,
-                Camera_x,
-                Camera_y,
-                Camera_z,
-                CameraRotation,
-                EncounterStatus,
-                MovementLock,
-                ActiveMusicId,
-                MusicId,
-                CutsceneAlt,
-                RoomNumberAlt,
-                AirshipDestinations,
-                AuronOverdrives,
-                Gil,
-                TargetFramerate,
-                Dialogue1,
-                DialogueOption,
-                DialogueBoxOpen,
-                DialogueOption_Gui,
-                DialogueBoxOpen_Gui,
-                PlayerTurn,
-                FrameCounterFromLoad,
-                EncounterMapID,
-                EncounterFormationID1,
-                EncounterFormationID2,
-                ScriptedBattleFlag1,
-                ScriptedBattleFlag2,
-                ScriptedBattleVar1,
-                ScriptedBattleVar3,
-                ScriptedBattleVar4,
-                EncounterTrigger,
-                Sandragoras,
-                HpEnemyA,
-                GuadoCount,
-                NPCLastInteraction,
-                TidusActionCount,
-                TidusXCoordinate,
-                TidusYCoordinate,
-                TidusZCoordinate,
-                TidusRotation,
-                DialogueFile,
-                CutsceneTiming,
-                EventFileStart,
-                AuronTransition,
-                AmmesTransition,
-                TankerTransition,
-                InsideSinTransition,
-                DiveTransition,
-                GeosTransition,
-                KlikkTransition,
-                AlBhedBoatTransition,
-                UnderwaterRuinsTransition,
-                UnderwaterRuinsTransition2,
-                BeachTransition,
-                LagoonTransition1,
-                LagoonTransition2,
-                ValeforTransition,
-                KimahriTransition,
-                YunaBoatTransition,
-                SinFinTransition,
-                EchuillesTransition,
-                GeneauxTransition,
-                KilikaTrialsTransition,
-                KilikaAntechamberTransition,
-                IfritTransition,
-                IfritTransition2,
-                JechtShotTransition,
-                OblitzeratorTransition,
-                BlitzballTransition,
-                SahaginTransition,
-                GarudaTransition,
-                RinTransition,
-                ChocoboEaterTransition,
-                GuiTransition,
-                Gui2Transition,
-                DjoseTransition,
-                IxionTransition,
-                ExtractorTransition,
-                SeymoursHouseTransition1,
-                SeymoursHouseTransition2,
-                FarplaneTransition1,
-                FarplaneTransition2,
-                TromellTransition,
-                CrawlerTransition,
-                SeymourTransition,
-                SeymourTransition2,
-                WendigoTransition,
-                SpherimorphTransition,
-                UnderLakeTransition,
-                BikanelTransition,
-                HomeTransition,
-                EvraeTransition,
-                EvraeAirshipTransition,
-                GuardsTransition,
-                BahamutTransition,
-                IsaaruTransition,
-                AltanaTransition,
-                NatusTransition,
-                DefenderXTransition,
-                RonsoTransition,
-                FluxTransition,
-                SanctuaryTransition,
-                SpectralKeeperTransition,
-                SpectralKeeperTransition2,
-                YunalescaTransition,
-                FinsTransition,
-                FinsAirshipTransition,
-                SinCoreTransition,
-                OverdriveSinTransition,
-                OmnisTransition,
-                BFATransition,
-                AeonTransition,
-                YuYevonTransition,
-                YojimboFaythTransition,
-                CutsceneProgress_Max,
-                CutsceneProgress_uVar1,
-                CutsceneProgress_uVar2,
-                CutsceneProgress_uVar3,
-                EnableTidus,
-                EnableYuna,
-                EnableAuron,
-                EnableKimahri,
-                EnableWakka,
-                EnableLulu,
-                EnableRikku,
-                EnableSeymour,
-                EnableValefor,
-                EnableIfrit,
-                EnableIxion,
-                EnableShiva,
-                EnableBahamut,
-                EnableAnima,
-                EnableYojimbo,
-                EnableMagus,
-                EncountersActiveFlag,
-                TotalDistance,
-                CycleDistance,
-                TidusHP, TidusMP, TidusMaxHP, TidusMaxMP,
-                YunaHP, YunaMP, YunaMaxHP, YunaMaxMP,
-                AuronHP, AuronMP, AuronMaxHP, AuronMaxMP,
-                WakkaHP, WakkaMP, WakkaMaxHP, WakkaMaxMP,
-                KimahriHP, KimahriMP, KimahriMaxHP, KimahriMaxMP,
-                LuluHP, LuluMP, LuluMaxHP, LuluMaxMP,
-                RikkuHP, RikkuMP, RikkuMaxHP, RikkuMaxMP,
-                ValeforHP, ValeforMP, ValeforMaxHP, ValeforMaxMP,
-                BaajFlag1,
-                BesaidFlag1,
-                SSWinnoFlag1,
-                KilikaMapFlag,
-                SSWinnoFlag2,
-                LucaFlag,
-                LucaFlag2,
-                BlitzballFlag,
-                MiihenFlag1,
-                MiihenFlag2,
-                MiihenFlag3,
-                MiihenFlag4,
-                MRRFlag1,
-                MRRFlag2,
-                MoonflowFlag,
-                MoonflowFlag2,
-                RikkuOutfit,
-                TidusWeaponDamageBoost,
-                GuadosalamShopFlag,
-                ThunderPlainsFlag,
-                MacalaniaFlag,
-                BikanelFlag,
-                ViaPurificoPlatform,
-                NatusFlag,
-                CalmLandsFlag,
-                WantzFlag,
-                GagazetCaveFlag,
-                OmegaRuinsFlag,
-                WantzMacalaniaFlag,
-                AurochsTeamBytes,
-                BlitzballBytes,
-                AurochsPlayer1,
-                GilBattleRewards,
-                BattleRewardItemCount,
-                BattleRewardItem1,
-                BattleRewardItem2,
-                BattleRewardItem3,
-                BattleRewardItem4,
-                BattleRewardItem5,
-                BattleRewardItem6,
-                BattleRewardItem7,
-                BattleRewardItem8,
-                BattleRewardItemQty1,
-                BattleRewardItemQty2,
-                BattleRewardItemQty3,
-                BattleRewardItemQty4,
-                BattleRewardItemQty5,
-                BattleRewardItemQty6,
-                BattleRewardItemQty7,
-                BattleRewardItemQty8,
-                BattleRewardEquipCount,
-                BattleRewardEquip1,
-                BattleRewardEquip2,
-                BattleRewardEquip3,
-                BattleRewardEquip4,
-                BattleRewardEquip5,
-                BattleRewardEquip6,
-                BattleRewardEquip7,
-                BattleRewardEquip8,
-                ItemsStart,
-                ItemsQtyStart,
-                CharacterAPFlags,
-                MenuTriggerValue,
-                MenuValue1,
-                MenuValue2,
-                MenuValue3,
-                MenuValue4,
-                MenuValue5,
-                MenuValue6,
-                MenuValue7,
-                SpeedBoostAmount,
-                SpeedBoostVar1,
-                ActorArrayLength,
-                RNGArrayOpBytes
-        });
+
+        foreach (FieldInfo field in typeof(MemoryWatchers).GetFields(BindingFlags.Public | BindingFlags.Static))
+        {
+            if (field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(MemoryWatcher<>))
+            {
+                Watchers.Add(field.GetValue(null) as MemoryWatcher);
+            }
+        }
     }
 
-    private MemoryWatcher<T> GetMemoryWatcher<T>(MemoryLocation data) where T : struct
+    private static MemoryWatcher<T> GetMemoryWatcher<T>(MemoryLocation data) where T : struct
     {
-        MemoryWatcher<T> watcher;
+        MemoryWatcher<T> watcher = data.Offsets.Length == 0
+            ? new MemoryWatcher<T>(GetPointerAddress(data.BaseAddress))
+            : new MemoryWatcher<T>(GetDeepPointer(data.BaseAddress, data.Offsets));
 
-        if (data.Offsets.Length == 0)
-        {
-            watcher = new MemoryWatcher<T>(GetPointerAddress(data.BaseAddress));
-        }
-        else
-        {
-            watcher = new MemoryWatcher<T>(GetDeepPointer(data.BaseAddress, data.Offsets));
-        }
         watcher.Name = data.Name;
-
         return watcher;
     }
 
-    private IntPtr GetPointerAddress(int offset)
+    private static IntPtr GetPointerAddress(int offset)
     {
         return new IntPtr(processBaseAddress + offset);
     }
 
-    private DeepPointer GetDeepPointer(int baseAddress, int[] offsets)
+    private static DeepPointer GetDeepPointer(int baseAddress, int[] offsets)
     {
         return new DeepPointer(MODULE, baseAddress, offsets);
     }
 
-    public int GetBaseAddress()
+    public static int GetBaseAddress()
     {
         return processBaseAddress;
     }

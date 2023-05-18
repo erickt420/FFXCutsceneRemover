@@ -264,7 +264,7 @@ class NewGameTransition : Transition
 
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
         int newLineCount;
         
@@ -280,9 +280,9 @@ class NewGameTransition : Transition
         Dictionary<char, (byte?, byte)> characterEncoding;
 
         int bytesToRead = 2048;
-        dialogueBoxBytes = base.memoryWatchers.DialogueFile.DeepPtr.DerefBytes(process, bytesToRead);
+        dialogueBoxBytes = MemoryWatchers.DialogueFile.DeepPtr.DerefBytes(process, bytesToRead);
 
-        byte language = base.memoryWatchers.Language.Current;
+        byte language = MemoryWatchers.Language.Current;
 
         switch(language)
         {

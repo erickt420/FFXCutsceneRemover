@@ -4,20 +4,20 @@ class IfritTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        int baseAddress = base.memoryWatchers.GetBaseAddress();
-        if (base.memoryWatchers.IfritTransition.Current > 0)
+        int baseAddress = MemoryWatchers.GetBaseAddress();
+        if (MemoryWatchers.IfritTransition.Current > 0)
         {
             if (Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.IfritTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.IfritTransition.Current;
                 Stage = 1;
 
             }
-            else if (base.memoryWatchers.IfritTransition.Current >= (BaseCutsceneValue + 0x34) && Stage == 1)
+            else if (MemoryWatchers.IfritTransition.Current >= (BaseCutsceneValue + 0x34) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.IfritTransition, BaseCutsceneValue + 0x1E4);
+                WriteValue<int>(MemoryWatchers.IfritTransition, BaseCutsceneValue + 0x1E4);
 
                 Stage = 2;
             }

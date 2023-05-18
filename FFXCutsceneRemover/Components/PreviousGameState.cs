@@ -5,8 +5,6 @@
  * the game state matches this object. */
 class PreviousGameState : IGameState
 {
-    private readonly MemoryWatchers memoryWatchers = MemoryWatchers.Instance;
-
     /* Only add members here for memory addresses that we want to read the value of.
      * If we only ever write the value then there is no need to add it here. */
     public short? RoomNumber = null;
@@ -92,73 +90,73 @@ class PreviousGameState : IGameState
 
     public bool CheckState()
     {
-        return TestValue(RoomNumber, memoryWatchers.RoomNumber.Old) &&
-            TestValue(Storyline, memoryWatchers.Storyline.Old) &&
-            TestValue(SpawnPoint, memoryWatchers.SpawnPoint.Old) &&
-            TestValue(BattleState, memoryWatchers.BattleState.Old) &&
-            TestValue(BattleState2, memoryWatchers.BattleState2.Old) &&
-            TestValue(Input, memoryWatchers.Input.Old) &&
-            TestValue(Menu, memoryWatchers.Menu.Old) &&
-            TestValue(MenuLock, memoryWatchers.MenuLock.Old) &&
-            TestValue(FangirlsOrKidsSkip, memoryWatchers.FangirlsOrKidsSkip.Old) &&
-            TestValue(Intro, memoryWatchers.Intro.Old) &&
-            TestValue(State, memoryWatchers.State.Old) &&
-            TestValue(XCoordinate, memoryWatchers.XCoordinate.Old) &&
-            TestValue(YCoordinate, memoryWatchers.YCoordinate.Old) &&
-            TestValue(Camera, memoryWatchers.Camera.Old) &&
-            TestValue(Camera_x, memoryWatchers.Camera_x.Old) &&
-            TestValue(Camera_y, memoryWatchers.Camera_y.Old) &&
-            TestValue(Camera_z, memoryWatchers.Camera_z.Old) &&
-            TestValue(CameraRotation, memoryWatchers.CameraRotation.Old) &&
-            TestValue(EncounterStatus, memoryWatchers.EncounterStatus.Old) &&
-            TestValue(MovementLock, memoryWatchers.MovementLock.Old) &&
-            TestValue(ActiveMusicId, memoryWatchers.ActiveMusicId.Old) &&
-            TestValue(MusicId, memoryWatchers.MusicId.Old) &&
-            TestValue(RoomNumberAlt, memoryWatchers.RoomNumberAlt.Old) &&
-            TestValue(CutsceneAlt, memoryWatchers.CutsceneAlt.Old) &&
-            TestValue(AirshipDestinations, memoryWatchers.AirshipDestinations.Old) &&
-            TestValue(AuronOverdrives, memoryWatchers.AuronOverdrives.Old) &&
-            TestValue(Gil, memoryWatchers.Gil.Old) &&
-            TestValue(TargetFramerate, memoryWatchers.TargetFramerate.Old) &&
-            TestValue(Dialogue1, memoryWatchers.Dialogue1.Old) &&
-            TestValue(DialogueOption, memoryWatchers.DialogueOption.Old) &&
-            TestValue(DialogueBoxOpen, memoryWatchers.DialogueBoxOpen.Old) &&
-            TestValue(DialogueOption_Gui, memoryWatchers.DialogueOption_Gui.Old) &&
-            TestValue(DialogueBoxOpen_Gui, memoryWatchers.DialogueBoxOpen_Gui.Old) &&
-            TestValue(PlayerTurn, memoryWatchers.PlayerTurn.Old) &&
-            TestValue(EnableAuron, memoryWatchers.EnableAuron.Old) &&
-            TestValue(EnableWakka, memoryWatchers.EnableWakka.Old) &&
-            TestValue(EnableRikku, memoryWatchers.EnableRikku.Old) &&
-            TestValue(Sandragoras, memoryWatchers.Sandragoras.Old) &&
-            TestValue(EncounterMapID, memoryWatchers.EncounterMapID.Old) &&
-            TestValue(EncounterFormationID1, memoryWatchers.EncounterFormationID1.Old) &&
-            TestValue(EncounterFormationID2, memoryWatchers.EncounterFormationID2.Old) &&
-            TestValue(BesaidFlag1, memoryWatchers.BesaidFlag1.Old) &&
-            TestValue(SSWinnoFlag1, memoryWatchers.SSWinnoFlag1.Old) &&
-            TestValue(KilikaMapFlag, memoryWatchers.KilikaMapFlag.Old) &&
-            TestValue(SSWinnoFlag2, memoryWatchers.SSWinnoFlag2.Old) &&
-            TestValue(LucaFlag, memoryWatchers.LucaFlag.Old) &&
-            TestValue(LucaFlag2, memoryWatchers.LucaFlag2.Old) &&
-            TestValue(MiihenFlag1, memoryWatchers.MiihenFlag1.Old) &&
-            TestValue(MiihenFlag2, memoryWatchers.MiihenFlag2.Old) &&
-            TestValue(MiihenFlag3, memoryWatchers.MiihenFlag3.Old) &&
-            TestValue(MiihenFlag4, memoryWatchers.MiihenFlag4.Old) &&
-            TestValue(MRRFlag1, memoryWatchers.MRRFlag1.Old) &&
-            TestValue(MRRFlag2, memoryWatchers.MRRFlag2.Old) &&
-            TestValue(MoonflowFlag, memoryWatchers.MoonflowFlag.Old) &&
-            TestValue(MoonflowFlag2, memoryWatchers.MoonflowFlag2.Old) &&
-            TestValue(ThunderPlainsFlag, memoryWatchers.ThunderPlainsFlag.Old) &&
-            TestValue(GagazetCaveFlag, memoryWatchers.GagazetCaveFlag.Current) &&
-            TestValue(OmegaRuinsFlag, memoryWatchers.OmegaRuinsFlag.Current) &&
-            TestValue(HpEnemyA, memoryWatchers.HpEnemyA.Old) &&
-            TestValue(GuadoCount, memoryWatchers.GuadoCount.Old) &&
-            TestValue(NPCLastInteraction, memoryWatchers.NPCLastInteraction.Old) &&
-            TestValue(TidusActionCount, memoryWatchers.TidusActionCount.Old) &&
-            TestValue(TidusXCoordinate, memoryWatchers.TidusXCoordinate.Old) &&
-            TestValue(SeymourTransition, memoryWatchers.SeymourTransition.Old) &&
-            TestValue(SeymourTransition2, memoryWatchers.SeymourTransition2.Old) &&
-            TestValue(MenuValue1, memoryWatchers.MenuValue1.Old) &&
-            TestValue(MenuValue2, memoryWatchers.MenuValue2.Old);
+        return TestValue(RoomNumber, MemoryWatchers.RoomNumber.Old) &&
+            TestValue(Storyline, MemoryWatchers.Storyline.Old) &&
+            TestValue(SpawnPoint, MemoryWatchers.SpawnPoint.Old) &&
+            TestValue(BattleState, MemoryWatchers.BattleState.Old) &&
+            TestValue(BattleState2, MemoryWatchers.BattleState2.Old) &&
+            TestValue(Input, MemoryWatchers.Input.Old) &&
+            TestValue(Menu, MemoryWatchers.Menu.Old) &&
+            TestValue(MenuLock, MemoryWatchers.MenuLock.Old) &&
+            TestValue(FangirlsOrKidsSkip, MemoryWatchers.FangirlsOrKidsSkip.Old) &&
+            TestValue(Intro, MemoryWatchers.Intro.Old) &&
+            TestValue(State, MemoryWatchers.State.Old) &&
+            TestValue(XCoordinate, MemoryWatchers.XCoordinate.Old) &&
+            TestValue(YCoordinate, MemoryWatchers.YCoordinate.Old) &&
+            TestValue(Camera, MemoryWatchers.Camera.Old) &&
+            TestValue(Camera_x, MemoryWatchers.Camera_x.Old) &&
+            TestValue(Camera_y, MemoryWatchers.Camera_y.Old) &&
+            TestValue(Camera_z, MemoryWatchers.Camera_z.Old) &&
+            TestValue(CameraRotation, MemoryWatchers.CameraRotation.Old) &&
+            TestValue(EncounterStatus, MemoryWatchers.EncounterStatus.Old) &&
+            TestValue(MovementLock, MemoryWatchers.MovementLock.Old) &&
+            TestValue(ActiveMusicId, MemoryWatchers.ActiveMusicId.Old) &&
+            TestValue(MusicId, MemoryWatchers.MusicId.Old) &&
+            TestValue(RoomNumberAlt, MemoryWatchers.RoomNumberAlt.Old) &&
+            TestValue(CutsceneAlt, MemoryWatchers.CutsceneAlt.Old) &&
+            TestValue(AirshipDestinations, MemoryWatchers.AirshipDestinations.Old) &&
+            TestValue(AuronOverdrives, MemoryWatchers.AuronOverdrives.Old) &&
+            TestValue(Gil, MemoryWatchers.Gil.Old) &&
+            TestValue(TargetFramerate, MemoryWatchers.TargetFramerate.Old) &&
+            TestValue(Dialogue1, MemoryWatchers.Dialogue1.Old) &&
+            TestValue(DialogueOption, MemoryWatchers.DialogueOption.Old) &&
+            TestValue(DialogueBoxOpen, MemoryWatchers.DialogueBoxOpen.Old) &&
+            TestValue(DialogueOption_Gui, MemoryWatchers.DialogueOption_Gui.Old) &&
+            TestValue(DialogueBoxOpen_Gui, MemoryWatchers.DialogueBoxOpen_Gui.Old) &&
+            TestValue(PlayerTurn, MemoryWatchers.PlayerTurn.Old) &&
+            TestValue(EnableAuron, MemoryWatchers.EnableAuron.Old) &&
+            TestValue(EnableWakka, MemoryWatchers.EnableWakka.Old) &&
+            TestValue(EnableRikku, MemoryWatchers.EnableRikku.Old) &&
+            TestValue(Sandragoras, MemoryWatchers.Sandragoras.Old) &&
+            TestValue(EncounterMapID, MemoryWatchers.EncounterMapID.Old) &&
+            TestValue(EncounterFormationID1, MemoryWatchers.EncounterFormationID1.Old) &&
+            TestValue(EncounterFormationID2, MemoryWatchers.EncounterFormationID2.Old) &&
+            TestValue(BesaidFlag1, MemoryWatchers.BesaidFlag1.Old) &&
+            TestValue(SSWinnoFlag1, MemoryWatchers.SSWinnoFlag1.Old) &&
+            TestValue(KilikaMapFlag, MemoryWatchers.KilikaMapFlag.Old) &&
+            TestValue(SSWinnoFlag2, MemoryWatchers.SSWinnoFlag2.Old) &&
+            TestValue(LucaFlag, MemoryWatchers.LucaFlag.Old) &&
+            TestValue(LucaFlag2, MemoryWatchers.LucaFlag2.Old) &&
+            TestValue(MiihenFlag1, MemoryWatchers.MiihenFlag1.Old) &&
+            TestValue(MiihenFlag2, MemoryWatchers.MiihenFlag2.Old) &&
+            TestValue(MiihenFlag3, MemoryWatchers.MiihenFlag3.Old) &&
+            TestValue(MiihenFlag4, MemoryWatchers.MiihenFlag4.Old) &&
+            TestValue(MRRFlag1, MemoryWatchers.MRRFlag1.Old) &&
+            TestValue(MRRFlag2, MemoryWatchers.MRRFlag2.Old) &&
+            TestValue(MoonflowFlag, MemoryWatchers.MoonflowFlag.Old) &&
+            TestValue(MoonflowFlag2, MemoryWatchers.MoonflowFlag2.Old) &&
+            TestValue(ThunderPlainsFlag, MemoryWatchers.ThunderPlainsFlag.Old) &&
+            TestValue(GagazetCaveFlag, MemoryWatchers.GagazetCaveFlag.Current) &&
+            TestValue(OmegaRuinsFlag, MemoryWatchers.OmegaRuinsFlag.Current) &&
+            TestValue(HpEnemyA, MemoryWatchers.HpEnemyA.Old) &&
+            TestValue(GuadoCount, MemoryWatchers.GuadoCount.Old) &&
+            TestValue(NPCLastInteraction, MemoryWatchers.NPCLastInteraction.Old) &&
+            TestValue(TidusActionCount, MemoryWatchers.TidusActionCount.Old) &&
+            TestValue(TidusXCoordinate, MemoryWatchers.TidusXCoordinate.Old) &&
+            TestValue(SeymourTransition, MemoryWatchers.SeymourTransition.Old) &&
+            TestValue(SeymourTransition2, MemoryWatchers.SeymourTransition2.Old) &&
+            TestValue(MenuValue1, MemoryWatchers.MenuValue1.Old) &&
+            TestValue(MenuValue2, MemoryWatchers.MenuValue2.Old);
         ;
     }
 

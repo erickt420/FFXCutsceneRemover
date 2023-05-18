@@ -4,20 +4,20 @@ class BahamutTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        if (base.memoryWatchers.BahamutTransition.Current > 0)
+        if (MemoryWatchers.BahamutTransition.Current > 0)
         {
             if (Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.BahamutTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.BahamutTransition.Current;
 
                 Stage = 1;
 
             }
-            else if (base.memoryWatchers.BahamutTransition.Current >= (BaseCutsceneValue + 0x680) && Stage == 1)
+            else if (MemoryWatchers.BahamutTransition.Current >= (BaseCutsceneValue + 0x680) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.BahamutTransition, BaseCutsceneValue + 0x86E);
+                WriteValue<int>(MemoryWatchers.BahamutTransition, BaseCutsceneValue + 0x86E);
                 Stage = 2;
             }
         }

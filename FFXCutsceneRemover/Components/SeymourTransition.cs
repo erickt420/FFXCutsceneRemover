@@ -9,28 +9,28 @@ class SeymourTransition : Transition
     static private byte[] formation = new byte[] { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0xFF };
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.MovementLock.Current == 0 && Stage == 0)
+        if (MemoryWatchers.MovementLock.Current == 0 && Stage == 0)
         {
             process.Suspend();
 
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
 
             Stage += 1;
 
             process.Resume();
         }
-        else if (base.memoryWatchers.MovementLock.Current == 0x10 && Stage == 1)
+        else if (MemoryWatchers.MovementLock.Current == 0x10 && Stage == 1)
         {
             process.Suspend();
 
-            //WriteValue<int>(base.memoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
-            WriteValue<byte>(base.memoryWatchers.CutsceneTiming, 0);
+            //WriteValue<int>(MemoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
+            WriteValue<byte>(MemoryWatchers.CutsceneTiming, 0);
 
-            formation = process.ReadBytes(base.memoryWatchers.Formation.Address, 7);
+            formation = process.ReadBytes(MemoryWatchers.Formation.Address, 7);
 
             new Transition
             {

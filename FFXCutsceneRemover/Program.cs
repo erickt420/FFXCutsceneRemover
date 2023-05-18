@@ -17,8 +17,6 @@ class Program
     private static CutsceneRemover cutsceneRemover = null;
     private static RNGMod rngMod = null;
 
-    private static readonly MemoryWatchers MemoryWatchers = MemoryWatchers.Instance;
-
     private static Process Game = null;
 
     private static bool removeCutscenes = false;
@@ -114,12 +112,12 @@ class Program
 
                 if (removeCutscenes)
                 {
-                    cutsceneRemover.MainLoop(MemoryWatchers);
+                    cutsceneRemover.MainLoop();
                 }
 
                 if (fixRNG)
                 {
-                    rngMod.MainLoop(MemoryWatchers);
+                    rngMod.MainLoop();
                 }
 
                 // Sleep for a bit so we don't destroy CPUs

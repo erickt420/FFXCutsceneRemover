@@ -10,17 +10,17 @@ class GeosTransition : Transition
     static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
         if (Stage == 0)
         {
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage += 1;
 
         }
-        else if (base.memoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0xA4F8) && Stage == 1)
+        else if (MemoryWatchers.GeosTransition.Current == (BaseCutsceneValue + 0xA4F8) && Stage == 1)
         {
             process.Suspend();
 
@@ -35,11 +35,11 @@ class GeosTransition : Transition
 
             process.Resume();
         }
-        else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 2)
+        else if (MemoryWatchers.BattleState2.Current == 22 && Stage == 2)
         {
             Stage += 1;
         }
-        else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 3)
+        else if (MemoryWatchers.BattleState2.Current == 0 && Stage == 3)
         {
             process.Suspend();
 
@@ -49,7 +49,7 @@ class GeosTransition : Transition
 
             process.Resume();
         }
-        else if (base.memoryWatchers.BattleState2.Current == 22 && Stage == 4)
+        else if (MemoryWatchers.BattleState2.Current == 22 && Stage == 4)
         {
             Transition actorPositions;
             //Position Tidus
@@ -58,7 +58,7 @@ class GeosTransition : Transition
 
             Stage += 1;
         }
-        else if (base.memoryWatchers.BattleState2.Current == 0 && Stage == 5)
+        else if (MemoryWatchers.BattleState2.Current == 0 && Stage == 5)
         {
             process.Suspend();
 

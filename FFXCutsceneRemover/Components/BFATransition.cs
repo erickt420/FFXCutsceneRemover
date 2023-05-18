@@ -8,33 +8,33 @@ class BFATransition : Transition
         {
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             base.Stage += 1;
 
         }
-        else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0x42) && Stage == 1)
+        else if (MemoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0x42) && Stage == 1)
         {
-            //WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xE1); //Not currently working as desired
+            //WriteValue<int>(MemoryWatchers.BFATransition, BaseCutsceneValue + 0xE1); //Not currently working as desired
             Stage += 1;
         }
-        else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xC310) && Stage == 2) // 0x478
+        else if (MemoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xC310) && Stage == 2) // 0x478
         {
-            WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xCDB2); // 0xD7F
+            WriteValue<int>(MemoryWatchers.BFATransition, BaseCutsceneValue + 0xCDB2); // 0xD7F
             Stage += 1;
         }
-        else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xCDCA) && Stage == 3) // 0xD80
+        else if (MemoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xCDCA) && Stage == 3) // 0xD80
         {
-            WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xCF98); // 0x10BA
+            WriteValue<int>(MemoryWatchers.BFATransition, BaseCutsceneValue + 0xCF98); // 0x10BA
             Stage += 1;
         }
-        else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD00D) && Stage == 4) // 0xD80
+        else if (MemoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD00D) && Stage == 4) // 0xD80
         {
-            WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xD126); // 0x10BA
+            WriteValue<int>(MemoryWatchers.BFATransition, BaseCutsceneValue + 0xD126); // 0x10BA
             Stage += 1;
         }
-        else if (base.memoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD150) && Stage == 5) // 0x1135
+        else if (MemoryWatchers.BFATransition.Current >= (BaseCutsceneValue + 0xD150) && Stage == 5) // 0x1135
         {
-            WriteValue<int>(base.memoryWatchers.BFATransition, BaseCutsceneValue + 0xD350); // 0x1442 D31D
+            WriteValue<int>(MemoryWatchers.BFATransition, BaseCutsceneValue + 0xD350); // 0x1442 D31D
             Stage += 1;
         }
     }

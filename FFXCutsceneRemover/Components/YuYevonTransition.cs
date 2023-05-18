@@ -95,42 +95,42 @@ class YuYevonTransition : Transition
     {
         if (activeAeon == "")
         {
-            if (base.memoryWatchers.EnableValefor.Current == 16 & base.memoryWatchers.EnableValefor.Old == 17)
+            if (MemoryWatchers.EnableValefor.Current == 16 & MemoryWatchers.EnableValefor.Old == 17)
             {
                 activeAeon = "Valefor";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableIfrit.Current == 16 & base.memoryWatchers.EnableIfrit.Old == 17)
+            else if (MemoryWatchers.EnableIfrit.Current == 16 & MemoryWatchers.EnableIfrit.Old == 17)
             {
                 activeAeon = "Ifrit";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableIxion.Current == 16 & base.memoryWatchers.EnableIxion.Old == 17)
+            else if (MemoryWatchers.EnableIxion.Current == 16 & MemoryWatchers.EnableIxion.Old == 17)
             {
                 activeAeon = "Ixion";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableShiva.Current == 16 & base.memoryWatchers.EnableShiva.Old == 17)
+            else if (MemoryWatchers.EnableShiva.Current == 16 & MemoryWatchers.EnableShiva.Old == 17)
             {
                 activeAeon = "Shiva";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableBahamut.Current == 16 & base.memoryWatchers.EnableBahamut.Old == 17)
+            else if (MemoryWatchers.EnableBahamut.Current == 16 & MemoryWatchers.EnableBahamut.Old == 17)
             {
                 activeAeon = "Bahamut";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableAnima.Current == 16 & base.memoryWatchers.EnableAnima.Old == 17)
+            else if (MemoryWatchers.EnableAnima.Current == 16 & MemoryWatchers.EnableAnima.Old == 17)
             {
                 activeAeon = "Anima";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableYojimbo.Current == 16 & base.memoryWatchers.EnableYojimbo.Old == 17)
+            else if (MemoryWatchers.EnableYojimbo.Current == 16 & MemoryWatchers.EnableYojimbo.Old == 17)
             {
                 activeAeon = "Yojimbo";
                 DiagnosticLog.Information(activeAeon + " Summoned");
             }
-            else if (base.memoryWatchers.EnableMagus.Current == 16 & base.memoryWatchers.EnableMagus.Old == 17)
+            else if (MemoryWatchers.EnableMagus.Current == 16 & MemoryWatchers.EnableMagus.Old == 17)
             {
                 activeAeon = "Magus Sisters";
                 DiagnosticLog.Information(activeAeon + " Summoned");
@@ -141,13 +141,13 @@ class YuYevonTransition : Transition
         if (Stage == 0)
         {
             base.Execute();
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage += 1;
                 
         }
-        else if (base.memoryWatchers.AeonTransition.Current >= (BaseCutsceneValue + 0x69BD) && Stage == 1) // 0x68A4
+        else if (MemoryWatchers.AeonTransition.Current >= (BaseCutsceneValue + 0x69BD) && Stage == 1) // 0x68A4
         {
-            WriteValue<int>(base.memoryWatchers.AeonTransition, BaseCutsceneValue + 0x6A9F); // 0x6A90
+            WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + 0x6A9F); // 0x6A90
 
             Stage += 1;
         }
@@ -158,17 +158,17 @@ class YuYevonTransition : Transition
                 DiagnosticLog.Information(activeAeon + " Dead");
                 Stage += 1;
             }
-            else if (Stage == 3 && base.memoryWatchers.AeonTransition.Current == BaseCutsceneValue + AeonOffsets[activeAeon]["DeathOffset"])
+            else if (Stage == 3 && MemoryWatchers.AeonTransition.Current == BaseCutsceneValue + AeonOffsets[activeAeon]["DeathOffset"])
             {
-                WriteValue<int>(base.memoryWatchers.AeonTransition, BaseCutsceneValue + AeonOffsets[activeAeon]["NextSummonOffset"]);
+                WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + AeonOffsets[activeAeon]["NextSummonOffset"]);
                 activeAeon = "";
                 Stage -= 1;
             }
         }
-        else if (base.memoryWatchers.AeonTransition.Current == (BaseCutsceneValue + 0x7B30))
+        else if (MemoryWatchers.AeonTransition.Current == (BaseCutsceneValue + 0x7B30))
         {
-            WriteValue<int>(base.memoryWatchers.AeonTransition, BaseCutsceneValue + 0x86D0); // 0x85EA
-            WriteValue<short>(base.memoryWatchers.Storyline, 3380);
+            WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + 0x86D0); // 0x85EA
+            WriteValue<short>(MemoryWatchers.Storyline, 3380);
         }
     }
 }

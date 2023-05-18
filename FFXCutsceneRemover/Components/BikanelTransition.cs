@@ -4,19 +4,19 @@ class BikanelTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
-        if (base.memoryWatchers.BikanelTransition.Current > 0)
+        if (MemoryWatchers.BikanelTransition.Current > 0)
         {
-            if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
+            if (MemoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
             {
                 base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.BikanelTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.BikanelTransition.Current;
                 Stage += 1;
 
             }
-            else if (base.memoryWatchers.BikanelTransition.Current == (BaseCutsceneValue + 0x11F) && Stage == 1)
+            else if (MemoryWatchers.BikanelTransition.Current == (BaseCutsceneValue + 0x11F) && Stage == 1)
             {
-                WriteValue<int>(base.memoryWatchers.BikanelTransition, BaseCutsceneValue + 0x1DC); // 1DC
+                WriteValue<int>(MemoryWatchers.BikanelTransition, BaseCutsceneValue + 0x1DC); // 1DC
 
                 Transition actorPositions;
                 // After the transition Kimahri's model is still visible so we bin him off to Narnia

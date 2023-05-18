@@ -12,21 +12,21 @@ class GeneauxTransition : Transition
     static private List<short> CutsceneAltList = new List<short>(new short[] { 265, 1173, 1174 });
     public override void Execute(string defaultDescription = "")
     {
-        Process process = memoryWatchers.Process;
+        Process process = MemoryWatchers.Process;
 
-        if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
+        if (MemoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
         {
             base.Execute();
 
-            BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage = 1;
 
         }
-        else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x65CA) && Stage == 1) // 0x65CA
+        else if (MemoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x65CA) && Stage == 1) // 0x65CA
         {
-            WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x67AA);
+            WriteValue<int>(MemoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x67AA);
 
-            formation = process.ReadBytes(memoryWatchers.Formation.Address, 10);
+            formation = process.ReadBytes(MemoryWatchers.Formation.Address, 10);
 
             Transition actorPositions;
             //Position Party Member 1
@@ -43,9 +43,9 @@ class GeneauxTransition : Transition
                 
             Stage += 1;
         }
-        else if (base.memoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x67F4) && Stage == 2) // 0x68C3 , 0x67E9
+        else if (MemoryWatchers.GeneauxTransition.Current == (BaseCutsceneValue + 0x67F4) && Stage == 2) // 0x68C3 , 0x67E9
         {
-            WriteValue<int>(base.memoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6A47);
+            WriteValue<int>(MemoryWatchers.GeneauxTransition, BaseCutsceneValue + 0x6A47);
             Stage += 1;
         }
     }
