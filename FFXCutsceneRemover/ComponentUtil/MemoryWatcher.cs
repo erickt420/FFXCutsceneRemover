@@ -167,29 +167,19 @@ public class StringWatcher : MemoryWatcher
     {
         Changed = false;
 
-        if (!Enabled)
+        if (!Enabled || !CheckInterval())
             return false;
 
-        if (!CheckInterval())
-            return false;
+        bool success = AddrType == AddressType.DeepPointer 
+            ? DeepPtr.DerefString(process, _stringType, _numBytes, out string str)
+            : process.ReadString(Address, _stringType, _numBytes, out str);
 
-        string str;
-        bool success;
-        if (AddrType == AddressType.DeepPointer)
-            success = DeepPtr.DerefString(process, _stringType, _numBytes, out str);
-        else
-            success = process.ReadString(Address, _stringType, _numBytes, out str);
-
-        if (success)
+        if (!success && FailAction == ReadFailAction.DontUpdate)
         {
-            base.Old = base.Current;
-            base.Current = str;
+            return false;
         }
         else
         {
-            if (FailAction == ReadFailAction.DontUpdate)
-                return false;
-
             base.Old = base.Current;
             base.Current = str;
         }
@@ -243,31 +233,21 @@ public class MemoryWatcher<T> : MemoryWatcher where T : struct
     {
         Changed = false;
 
-        if (!Enabled)
-            return false;
-
-        if (!CheckInterval())
+        if (!Enabled || !CheckInterval())
             return false;
 
         base.Old = Current;
 
-        T val;
-        bool success;
-        if (AddrType == AddressType.DeepPointer)
-            success = DeepPtr.Deref(process, out val);
-        else
-            success = process.ReadValue(Address, out val);
+        bool success = AddrType == AddressType.DeepPointer
+            ? DeepPtr.Deref(process, out T val)
+            : process.ReadValue(Address, out val);
 
-        if (success)
+        if (!success && FailAction == ReadFailAction.DontUpdate)
         {
-            base.Old = base.Current;
-            base.Current = val;
+            return false;
         }
         else
         {
-            if (FailAction == ReadFailAction.DontUpdate)
-                return false;
-
             base.Old = base.Current;
             base.Current = val;
         }
