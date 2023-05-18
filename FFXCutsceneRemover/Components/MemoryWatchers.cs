@@ -872,7 +872,7 @@ namespace FFXCutsceneRemover
             });
         }
 
-        private MemoryWatcher<T> GetMemoryWatcher<T>(MemoryLocationData data) where T : struct
+        private MemoryWatcher<T> GetMemoryWatcher<T>(MemoryLocation data) where T : struct
         {
             MemoryWatcher<T> watcher;
 
