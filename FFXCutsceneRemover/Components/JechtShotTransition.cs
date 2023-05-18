@@ -30,11 +30,11 @@ class JechtShotTransition : Transition
             {
                 Transition actorPositions;
                 //Position Tidus
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 1.0f, Target_y = -49.99626923f, Target_z = 172.0000153f, Target_var1 = 100 };
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 1.0f, Target_y = -49.996f, Target_z = 172.000f, Target_var1 = 100 };
                 actorPositions.Execute();
 
                 //Position Yuna
-                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 2 }, Target_x = 22.70000076f, Target_y = -49.99626923f, Target_z = 104.5999985f, Target_var1 = 120 };
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 2 }, Target_x = 22.700f, Target_y = -49.996f, Target_z = 104.599f, Target_var1 = 120 };
                 actorPositions.Execute();
 
                 Stage += 1;

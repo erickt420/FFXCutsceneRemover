@@ -30,15 +30,15 @@ class GeneauxTransition : Transition
 
             Transition actorPositions;
             //Position Party Member 1
-            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1)}, Target_x = -6.565776825f, Target_y = -159.9975586f, Target_z = 551.0246582f };
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1)}, Target_x = -6.565f, Target_y = -159.997f, Target_z = 551.024f };
             actorPositions.Execute();
 
             //Position Party Member 2
-            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 31.14787483f, Target_y = -159.9975586f, Target_z = 514.7622681f };
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 31.147f, Target_y = -159.997f, Target_z = 514.762f };
             actorPositions.Execute();
 
             //Position Party Member 3
-            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 43.50946045f, Target_y = -159.9975586f, Target_z = 571.7218628f };
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 43.509f, Target_y = -159.997f, Target_z = 571.721f };
             actorPositions.Execute();
                 
             Stage += 1;

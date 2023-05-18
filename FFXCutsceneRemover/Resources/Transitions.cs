@@ -105,19 +105,19 @@ static class Transitions
             new Transition { MenuTriggerValue = 0x40080000, ForceLoad = false, Description = "Naming Tidus"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.NPCLastInteraction.Current == 29 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x4000; },
-            new Transition {FangirlsOrKidsSkip = 1, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.96066666f, Target_z = 12.0f, Target_var1 = 127, Description = "Kids"} },
+            new Transition {FangirlsOrKidsSkip = 1, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.960f, Target_z = 12.0f, Target_var1 = 127, Description = "Kids"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.NPCLastInteraction.Current == 30 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x4000; },
-            new Transition {FangirlsOrKidsSkip = 2, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.96066666f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
+            new Transition {FangirlsOrKidsSkip = 2, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.960f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.FangirlsOrKidsSkip.Current == 2 && MemoryWatchers.NPCLastInteraction.Current == 29; },
-            new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.96066666f, Target_z = 12.0f, Target_var1 = 127, Description = "Kids"} },
+            new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.960f, Target_z = 12.0f, Target_var1 = 127, Description = "Kids"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.FangirlsOrKidsSkip.Current == 1 && MemoryWatchers.NPCLastInteraction.Current == 30; },
-            new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.96066666f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
+            new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.960f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.FangirlsOrKidsSkip.Current == 1 && MemoryWatchers.NPCLastInteraction.Current == 8; },
-            new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.96066666f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
+            new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.960f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
         //{ () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 4; },
         //  new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans"} }, // Removed and replaced with custom check in cutsceneremover.cs
         {
@@ -171,10 +171,10 @@ static class Transitions
         // START OF BAAJ TEMPLE
         {
             () => { return MemoryWatchers.RoomNumber.Current == 48 && MemoryWatchers.Storyline.Current == 30; },
-            new Transition { RoomNumber = 48, Storyline = 42, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 116.0633011f, Target_y = -92.49741364f, Target_z = -448.5929565f, Target_var1 = 43, Description = "Tidus wakes up"} },
+            new Transition { RoomNumber = 48, Storyline = 42, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 116.063f, Target_y = -92.497f, Target_z = -448.592f, Target_var1 = 43, Description = "Tidus wakes up"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 48 && MemoryWatchers.Storyline.Current == 42; },
-            new Transition { ForceLoad = false, TargetActorIDs = new short[] { 0x01 }, Target_x = 57.64275742f, Target_z = -480.248291f, Target_var1 = 810, ConsoleOutput = false, Description = "Tidus wakes up - Reposition"} },
+            new Transition { ForceLoad = false, TargetActorIDs = new short[] { 0x01 }, Target_x = 57.642f, Target_z = -480.248f, Target_var1 = 810, ConsoleOutput = false, Description = "Tidus wakes up - Reposition"} },
         //{ () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 42; },
         //  DiveTransition }, // Currently doesn't work because Tidus is unable to move after the skip. Need a way to change movement lock value.
         //{ () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 44; },
@@ -193,7 +193,7 @@ static class Transitions
             new Transition { RoomNumber = 50, Storyline = 50, SpawnPoint = 0, Description = "Tidus in a collapsed corridor"} }, // Bug: Boss music still playing
         {
             () => { return MemoryWatchers.RoomNumber.Current == 63 && MemoryWatchers.Storyline.Current == 50; },
-            new Transition { RoomNumber = 63, Storyline = 52, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -48.99651718f, Target_y = 0.0f, Target_z = -0.5857821703f, Target_rot = -0.004086574074f, Target_var1 = 127, Description = "Tidus needs fire"} },
+            new Transition { RoomNumber = 63, Storyline = 52, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -48.996f, Target_y = 0.0f, Target_z = -0.585f, Target_rot = -0.004f, Target_var1 = 127, Description = "Tidus needs fire"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 63 && MemoryWatchers.Storyline.Current == 54; },
             new Transition { RoomNumber = 63, Storyline = 55, SpawnPoint = 0, Description = "Tidus makes fire"} },
@@ -207,7 +207,7 @@ static class Transitions
         //  new Transition { RoomNumber = 71, Storyline = 60, SpawnPoint = 0, Description = "Rikku punches Tidus"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 71 && MemoryWatchers.Storyline.Current == 60; },
-            new Transition { RoomNumber = 71, Storyline = 66, SpawnPoint = 0, BaajFlag1 = 1, PositionTidusAfterLoad = true, Target_x = -34.56164169f, Target_y = 0.0f, Target_z = -34.23129272f, Target_rot = 2.268928051f, Target_var1 = 180, Description = "Tidus wakes up on boat + Sphere Grid tutorial"} },
+            new Transition { RoomNumber = 71, Storyline = 66, SpawnPoint = 0, BaajFlag1 = 1, PositionTidusAfterLoad = true, Target_x = -34.561f, Target_y = 0.0f, Target_z = -34.231f, Target_rot = 2.268f, Target_var1 = 180, Description = "Tidus wakes up on boat + Sphere Grid tutorial"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 71 && MemoryWatchers.Storyline.Current == 66; },
             new AlBhedBoatTransition {ForceLoad = false, Description = "Rikku explains the mission", Suspendable = false, Repeatable = true} },
@@ -228,7 +228,7 @@ static class Transitions
             new Transition { RoomNumber = 71, Storyline = 90, SpawnPoint = 0, Description = "Airship is shown" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 71 && MemoryWatchers.Storyline.Current == 90 && MemoryWatchers.State.Current == 1; },
-            new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -40.77215576f, Target_y = 0.0f, Target_z = -20.17111206f, Target_rot = 0.0f, Target_var1 = 180, Description = "Tidus gets back onto the boat"} },
+            new Transition { RoomNumber = 71, Storyline = 100, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -40.772f, Target_y = 0.0f, Target_z = -20.171f, Target_rot = 0.0f, Target_var1 = 180, Description = "Tidus gets back onto the boat"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 71 && MemoryWatchers.Storyline.Current == 100; },
             new RikkuNameTransition { ForceLoad = false, ConsoleOutput = false } },
@@ -239,10 +239,10 @@ static class Transitions
         // START OF BESAID
         {
             () => { return MemoryWatchers.RoomNumber.Current == 70 && MemoryWatchers.Storyline.Current == 111; },
-            new Transition { Storyline = 116, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 64.78547668f, Target_y = -5.037782192f, Target_z = -73.6652832f, Target_var1 = 86, Description = "Tidus wakes up in the sea"} },
+            new Transition { Storyline = 116, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 64.785f, Target_y = -5.037f, Target_z = -73.665f, Target_var1 = 86, Description = "Tidus wakes up in the sea"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 70 && MemoryWatchers.Storyline.Current == 116; },
-            new Transition { ForceLoad = false, PositionTidusAfterLoad = true, Target_x = -184.7542267f, Target_y = 26.5f, Target_z = -46.69951248f, Target_rot = -1.821117401f, Target_var1 = 393, ConsoleOutput = false, Description = "Tidus wakes up in the sea - Reposition"} },
+            new Transition { ForceLoad = false, PositionTidusAfterLoad = true, Target_x = -184.754f, Target_y = 26.5f, Target_z = -46.699f, Target_rot = -1.821f, Target_var1 = 393, ConsoleOutput = false, Description = "Tidus wakes up in the sea - Reposition"} },
         //{ () => { return MemoryWatchers.RoomNumber.Current == 41 && MemoryWatchers.Storyline.Current == 119; },
         //  new LagoonTransition {ForceLoad = false, Description = "Lagoon", Suspendable = false, Repeatable = true} }, // Causes menu to be unable to open and menu crashing
         {
@@ -250,16 +250,16 @@ static class Transitions
             new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 67 && MemoryWatchers.Storyline.Current == 124; },
-            new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 116.2254257f, Target_y = -94.28871155f, Target_z = 34.44130707f, Target_rot = -0.2812042832f, Target_var1 = 591, Description = "Wakka explains his life story"} },
+            new Transition { RoomNumber = 69, Storyline = 130, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 116.225f, Target_y = -94.288f, Target_z = 34.441f, Target_rot = -0.281f, Target_var1 = 591, Description = "Wakka explains his life story"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 133 && MemoryWatchers.Storyline.Current == 130; },
-            new Transition { RoomNumber = 17, Storyline = 134, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = -18.20000076f, Target_y = -9.553631783f, Target_z = 462.0f, Target_rot = -1.570796013f, Target_var1 = 714, Description = "Tidus arrives at Besaid Village" } },
+            new Transition { RoomNumber = 17, Storyline = 134, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = -18.200f, Target_y = -9.553f, Target_z = 462.0f, Target_rot = -1.570f, Target_var1 = 714, Description = "Tidus arrives at Besaid Village" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 84 && MemoryWatchers.Storyline.Current == 134; },
-            new Transition { RoomNumber = 84, Storyline = 136, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -7.442417145f, Target_y = 0.0f, Target_z = -56.7833786f, Target_rot = 1.570795059f, Target_var1 = 229, Description = "Tidus enters the temple"} },
+            new Transition { RoomNumber = 84, Storyline = 136, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -7.442f, Target_y = 0.0f, Target_z = -56.783f, Target_rot = 1.570f, Target_var1 = 229, Description = "Tidus enters the temple"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 84 && MemoryWatchers.Storyline.Current == 136 && MemoryWatchers.State.Current == 1; },
-            new Transition { RoomNumber = 42, Storyline = 140, PositionTidusAfterLoad = true, Target_x = 38.06856537f, Target_y = 0.0f, Target_z = 27.89954185f, Target_rot = 0.6878920197f, Target_var1 = 247, Description = "Tidus speaks to the priest" } },
+            new Transition { RoomNumber = 42, Storyline = 140, PositionTidusAfterLoad = true, Target_x = 38.068f, Target_y = 0.0f, Target_z = 27.899f, Target_rot = 0.687f, Target_var1 = 247, Description = "Tidus speaks to the priest" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 145 && MemoryWatchers.Storyline.Current == 140; },
             new WakkaTentTransition { ForceLoad = false, Description = "Priest enters Wakka's tent", Suspendable = false, Repeatable = true } },
@@ -277,7 +277,7 @@ static class Transitions
             new Transition { RoomNumber = 42, Storyline = 170, EnableValefor = 17, Description = "Tidus meets Lulu and Kimahri + FMV "} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 42 && MemoryWatchers.Storyline.Current == 170; },
-            new Transition { RoomNumber = 42, Storyline = 172, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -0.000002698629942f, Target_y = 0.0f, Target_z = 57.36748505f, Target_rot = -1.570797086f, Target_var1 = 170, Description = "The gang leave the cloister of trials"} },
+            new Transition { RoomNumber = 42, Storyline = 172, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -0.000f, Target_y = 0.0f, Target_z = 57.367f, Target_rot = -1.570f, Target_var1 = 170, Description = "The gang leave the cloister of trials"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 83 && MemoryWatchers.Storyline.Current == 172 && MemoryWatchers.State.Current == 1; },
             new ValeforTransition {ForceLoad = false, Description = "Naming Valefor", Suspendable = false, Repeatable = true} },
@@ -307,13 +307,13 @@ static class Transitions
         // START OF SS LIKI
         {
             () => { return MemoryWatchers.RoomNumber.Current == 301 && MemoryWatchers.Storyline.Current == 220; },
-            new Transition { RoomNumber = 301, Storyline = 228, SpawnPoint = 0, SSWinnoFlag1 = 0x56, PositionTidusAfterLoad = true, Target_x = 44.0f, Target_y = -49.99765015f, Target_z = 92.59999847f, Target_rot = 2.722713709f, Target_var1 = 120, Description = "Tidus goofing around" } },
+            new Transition { RoomNumber = 301, Storyline = 228, SpawnPoint = 0, SSWinnoFlag1 = 0x56, PositionTidusAfterLoad = true, Target_x = 44.0f, Target_y = -49.997f, Target_z = 92.599f, Target_rot = 2.722f, Target_var1 = 120, Description = "Tidus goofing around" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 301 && MemoryWatchers.Storyline.Current == 240 && MemoryWatchers.SSWinnoFlag1.Current == 0x5E; },
-            new Transition { RoomNumber = 301, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 3.932615995f, Target_y = -49.99765015f, Target_z = 189.9013977f, Target_rot = 1.676406384f, Target_var1 = 94, Description = "Lord Braska's daughter?" } },
+            new Transition { RoomNumber = 301, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 3.932f, Target_y = -49.997f, Target_z = 189.901f, Target_rot = 1.676f, Target_var1 = 94, Description = "Lord Braska's daughter?" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 301 && MemoryWatchers.Storyline.Current == 240 && MemoryWatchers.SSWinnoFlag1.Current == 0x7E; },
-            new Transition { RoomNumber = 301, Storyline = 242, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -29.5f, Target_y = -49.99765015f, Target_z = 86.0f, Target_rot = -0.2413983196f, Target_var1 = 41, Description = "She's the daughter of High Summoner Braska" } },
+            new Transition { RoomNumber = 301, Storyline = 242, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -29.5f, Target_y = -49.997f, Target_z = 86.0f, Target_rot = -0.241f, Target_var1 = 41, Description = "She's the daughter of High Summoner Braska" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 61 && MemoryWatchers.Storyline.Current == 244 && MemoryWatchers.SSWinnoFlag1.Current == 0xFE; },
             new Transition {Storyline = 248, Description = "Tidus talks to Yuna" } },
@@ -348,7 +348,7 @@ static class Transitions
             new Transition { RoomNumber = 152, Storyline = 304, SpawnPoint = 0, FullHeal = true, Description = "Tidus wakes up" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 16 && MemoryWatchers.Storyline.Current == 304 && MemoryWatchers.State.Current == 1; },
-            new Transition { Storyline = 308, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -39.44216156f, Target_y = -17.89863205f, Target_z = -206.4467621f, Target_rot = 1.618136168f, Target_var1 = 2, Description = "Tidus speaks to Wakka"} },
+            new Transition { Storyline = 308, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -39.442f, Target_y = -17.898f, Target_z = -206.446f, Target_rot = 1.618f, Target_var1 = 2, Description = "Tidus speaks to Wakka"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 18 && MemoryWatchers.Storyline.Current == 308; },
             new Transition { RoomNumber = 18, Storyline = 312, SpawnPoint = 0, Description = "Camera pan + Yuna wants a new guardian" } },
@@ -363,7 +363,7 @@ static class Transitions
             new Transition { RoomNumber = 78, Storyline = 328, SpawnPoint = 1, Description = "No replacement for Chappu"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 78 && MemoryWatchers.Storyline.Current == 328; },
-            new Transition { RoomNumber = 78, Storyline = 330, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -0.361537993f, Target_y = 5.801517963f, Target_z = -91.04965973f, Target_rot = 1.558700681f, Target_var1 = 287, Description = "Arrival at temple"} },
+            new Transition { RoomNumber = 78, Storyline = 330, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -0.361f, Target_y = 5.801f, Target_z = -91.049f, Target_rot = 1.558f, Target_var1 = 287, Description = "Arrival at temple"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 96 && MemoryWatchers.Storyline.Current == 330; },
             new Transition { RoomNumber = 96, Storyline = 333, SpawnPoint = 0, Description = "Camera pan in Kilika Temple" } },
@@ -380,7 +380,7 @@ static class Transitions
             new KilikaAntechamberTransition { ForceLoad = false, Description = "Guardians are annoyed at Tidus", Suspendable = false, Repeatable = true }  },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 45 && MemoryWatchers.Storyline.Current == 344 && MemoryWatchers.State.Current == 1; },
-            new Transition { Storyline = 346, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -12.83946609f, Target_y = 0.0f, Target_z = -5.327582836f, Target_var1 = 31, Description = "Fayth explanation"} },
+            new Transition { Storyline = 346, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -12.839f, Target_y = 0.0f, Target_z = -5.327f, Target_var1 = 31, Description = "Fayth explanation"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 45 && MemoryWatchers.Storyline.Current == 346 && MemoryWatchers.State.Current == 1; },
             new Transition { MenuTriggerValue = 0x40080009, EnableIfrit = 0x11, ForceLoad = false, Description = "Naming Ifrit"} },
@@ -403,7 +403,7 @@ static class Transitions
             new Transition { RoomNumber = 237, Storyline = 372, SSWinnoFlag1 = 170, SSWinnoFlag2 = 9, Description = "Meet O'aka"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 94 && MemoryWatchers.Storyline.Current == 380 && MemoryWatchers.SSWinnoFlag2.Current == 25; },
-            new Transition { Storyline = 380, SSWinnoFlag2 = 31, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -33.61037827f, Target_y = -49.99626923f, Target_z = -67.55673218f, Target_rot = -3.135152102f, Target_var1 = 278, Description = "Eavesdropping on Lulu and Wakka"} },
+            new Transition { Storyline = 380, SSWinnoFlag2 = 31, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -33.610f, Target_y = -49.996f, Target_z = -67.556f, Target_rot = -3.135f, Target_var1 = 278, Description = "Eavesdropping on Lulu and Wakka"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 94 && MemoryWatchers.Storyline.Current == 385; },
             new Transition { RoomNumber = 191, SpawnPoint = 0, Description = "Tidus looks at the blitzball"} },
@@ -426,13 +426,13 @@ static class Transitions
             new Transition { RoomNumber = 267, Storyline = 405, Description = "Inside the Cafe"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 267 && MemoryWatchers.Storyline.Current == 405; },
-            new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = 135.1100311f, Target_y = 0.3485371768f, Target_z = 419.4575195f, Target_rot = 2.094395161f, Target_var1 = 307, Description = "Besaid Aurochs undock"} },
+            new Transition { RoomNumber = 267, Storyline = 425, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = 135.110f, Target_y = 0.348f, Target_z = 419.457f, Target_rot = 2.094f, Target_var1 = 307, Description = "Besaid Aurochs undock"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 268 && MemoryWatchers.Storyline.Current == 427 && MemoryWatchers.State.Current == 0; },
             new Transition { RoomNumber = 355, Storyline = 430, Description = "Seymour arrives" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 72 && MemoryWatchers.Storyline.Current == 430 && MemoryWatchers.State.Current == 0; },
-            new Transition { Storyline = 440, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -0.8960809112f, Target_y = -0.2973306179f, Target_z = -2.731173992f, Target_rot = -1.504200697f, Target_var1 = 33, Description = "Yuna enters the changing room"} },
+            new Transition { Storyline = 440, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -0.896f, Target_y = -0.297f, Target_z = -2.731f, Target_rot = -1.504f, Target_var1 = 33, Description = "Yuna enters the changing room"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 72 && MemoryWatchers.Storyline.Current == 440 && MemoryWatchers.State.Current == 0; },
             new Transition { RoomNumber = 123, Storyline = 450, SpawnPoint = 4, Description = "Speaking to the Al Bhed"} },
@@ -441,16 +441,16 @@ static class Transitions
             new Transition { LucaFlag = 8, ForceLoad = false, Description = "Camera pan"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 77 && MemoryWatchers.Storyline.Current == 450; },
-            new Transition { Storyline = 455, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 74.37870789f, Target_y = -49.98482895f, Target_z = 10.6256237f, Target_rot = 0.0f, Target_var1 = 98, Description = "Crowd mob Yuna"} },
+            new Transition { Storyline = 455, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 74.378f, Target_y = -49.984f, Target_z = 10.625f, Target_rot = 0.0f, Target_var1 = 98, Description = "Crowd mob Yuna"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 77 && MemoryWatchers.Storyline.Current == 455; },
-            new Transition { ForceLoad = false, TargetActorIDs = new short[] { 2 }, Target_x = 81.46914673f, Target_y = -49.98482895f, Target_z = 10.77977276f, Target_rot = 3.054326296f, Target_var1 = 98, ConsoleOutput = false, Description = "Crowd mob Yuna"} },
+            new Transition { ForceLoad = false, TargetActorIDs = new short[] { 2 }, Target_x = 81.469f, Target_y = -49.984f, Target_z = 10.779f, Target_rot = 3.054f, Target_var1 = 98, ConsoleOutput = false, Description = "Crowd mob Yuna"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 104 && MemoryWatchers.Storyline.Current == 455 && MemoryWatchers.LucaFlag2.Current == 0; },
-            new Transition { LucaFlag2 = 2, ForceLoad = false, PositionTidusAfterLoad = true, Target_x = 18.98141479f, Target_y = 4.984027386f, Target_z = -76.611503600f, Target_rot = 2.764465094f, Target_var1 = 299, Description = "Tidus and Yuna talk about Luca"} },
+            new Transition { LucaFlag2 = 2, ForceLoad = false, PositionTidusAfterLoad = true, Target_x = 18.981f, Target_y = 4.984f, Target_z = -76.611f, Target_rot = 2.764f, Target_var1 = 299, Description = "Tidus and Yuna talk about Luca"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 104 && MemoryWatchers.Storyline.Current == 455 && MemoryWatchers.LucaFlag2.Current == 0; },
-            new Transition { LucaFlag2 = 2, ForceLoad = false, TargetActorIDs = new short[] { 2 }, Target_x = 6.618843079f, Target_y = 4.576398849f, Target_z = -71.714881900f, Target_rot = -0.377126187f, Target_var1 = 301, Description = "Tidus and Yuna talk about Luca"} },
+            new Transition { LucaFlag2 = 2, ForceLoad = false, TargetActorIDs = new short[] { 2 }, Target_x = 6.618f, Target_y = 4.576f, Target_z = -71.714f, Target_rot = -0.377f, Target_var1 = 301, Description = "Tidus and Yuna talk about Luca"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 159 && MemoryWatchers.Storyline.Current == 455; },
             new Transition { RoomNumber = 57, Storyline = 484, Description = "Tidus and Yuna at the cafe"} },
@@ -469,7 +469,7 @@ static class Transitions
                                         // Machina fights
         {
             () => { return MemoryWatchers.RoomNumber.Current == 121 && MemoryWatchers.Storyline.Current == 492; },
-            new Transition { RoomNumber = 88, Storyline = 500, LucaFlag = 9, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = 35.23579407f, Target_y = 0.3634410501f, Target_z = -312.1585693f, Target_rot = 0.5235987902f, Target_var1 = 3, Description = "Wakka takes a beating"} },
+            new Transition { RoomNumber = 88, Storyline = 500, LucaFlag = 9, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = 35.235f, Target_y = 0.363f, Target_z = -312.158f, Target_rot = 0.523f, Target_var1 = 3, Description = "Wakka takes a beating"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 88 && MemoryWatchers.Storyline.Current == 500; },
             new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] {0x04, 0x06}, Target_x = 0, Target_y = 0, Target_z = 0} }, // Hide Kimahri and Lulu Models
@@ -481,10 +481,10 @@ static class Transitions
             new OblitzeratorTransition {ForceLoad = false, Description = "Oblitzerator", Suspendable = false, Repeatable = true} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 121 && MemoryWatchers.Storyline.Current == 508; },
-            new Transition { RoomNumber = 88, Storyline = 514, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 36.66876984f, Target_y = 0.3634410501f, Target_z = -316.2733765f, Target_rot = -3.054326296f, Target_var1 = 3, Description = "Aurochs win the game" } },
+            new Transition { RoomNumber = 88, Storyline = 514, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 36.668f, Target_y = 0.363f, Target_z = -316.273f, Target_rot = -3.054f, Target_var1 = 3, Description = "Aurochs win the game" } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 72 && MemoryWatchers.Storyline.Current == 514; },
-            new Transition { Storyline = 518, LucaFlag = 11, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -4.458963871f, Target_y = -0.2973306179f, Target_z = -11.09086037f, Target_rot = -1.396263123f, Target_var1 = 33, Description = "Wakka is injured"} },
+            new Transition { Storyline = 518, LucaFlag = 11, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -4.458f, Target_y = -0.297f, Target_z = -11.090f, Target_rot = -1.396f, Target_var1 = 33, Description = "Wakka is injured"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 72 && MemoryWatchers.Storyline.Current == 518 && MemoryWatchers.State.Current == 0; },
             new Transition { Storyline = 520, Description = "Wakka subs himself"} },
@@ -529,10 +529,10 @@ static class Transitions
             new Transition { RoomNumber = 89, Storyline = 616, Description = "Wakka joins Yuna"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 89 && MemoryWatchers.Storyline.Current == 616; },
-            new Transition { Storyline = 617, SpawnPoint = 1, FullHeal = true, FormationSwitch = Transition.formations.AuronJoinsTheParty, PositionTidusAfterLoad = true, Target_x = -454.9636536f, Target_y = 0.0f, Target_z = -321.9638367f, Target_rot = 0.6108652949f, Target_var1 = 189, Description = "Tidus shouts at Auron"} },
+            new Transition { Storyline = 617, SpawnPoint = 1, FullHeal = true, FormationSwitch = Transition.formations.AuronJoinsTheParty, PositionTidusAfterLoad = true, Target_x = -454.963f, Target_y = 0.0f, Target_z = -321.963f, Target_rot = 0.610f, Target_var1 = 189, Description = "Tidus shouts at Auron"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 107 && MemoryWatchers.Storyline.Current == 617; },
-            new Transition { Storyline = 630, SpawnPoint = 1, LucaFlag = 15, PositionTidusAfterLoad = true, Target_x = -84.94490814f, Target_y = -159.9979401f, Target_z = -3.714470863f, Target_rot = -2.635447264f, Target_var1 = 50, Description = "Tidus and Auron join the group"} },
+            new Transition { Storyline = 630, SpawnPoint = 1, LucaFlag = 15, PositionTidusAfterLoad = true, Target_x = -84.944f, Target_y = -159.997f, Target_z = -3.714f, Target_rot = -2.635f, Target_var1 = 50, Description = "Tidus and Auron join the group"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 107 && MemoryWatchers.Storyline.Current == 630 && MemoryWatchers.State.Current == 0; },
             new Transition { RoomNumber = 95, Storyline = 730, SpawnPoint = 0, Description = "HA HA HA HA"} },
@@ -540,7 +540,7 @@ static class Transitions
         // START OF MI'IHEN
         {
             () => { return MemoryWatchers.RoomNumber.Current == 95 && MemoryWatchers.Storyline.Current == 730; },
-            new Transition { Storyline = 734, MiihenFlag1 = 5, MiihenFlag2 = 4, PositionTidusAfterLoad = true, Target_x = -3.003187895f, Target_y = 0.0f, Target_z = -8.161786079f, Target_rot = 1.576849937f, Target_var1 = 235, Description = "Tidus runs up the stairs"} },
+            new Transition { Storyline = 734, MiihenFlag1 = 5, MiihenFlag2 = 4, PositionTidusAfterLoad = true, Target_x = -3.003f, Target_y = 0.0f, Target_z = -8.161f, Target_rot = 1.576f, Target_var1 = 235, Description = "Tidus runs up the stairs"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 120 && MemoryWatchers.Storyline.Current == 734 && MemoryWatchers.MiihenFlag1.Current == 133; },
             new Transition { MiihenFlag1 = 141, ForceLoad = false, Description = "Meet Calli"} },
@@ -559,7 +559,7 @@ static class Transitions
             new RinTransition {ForceLoad = false, Description = "Meet Rin", Suspendable = false, Repeatable = true} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 58 && MemoryWatchers.Storyline.Current == 767 && MemoryWatchers.MiihenFlag3.Current == 0; },
-            new Transition { MiihenFlag3 = 1 , ForceLoad = false, PositionTidusAfterLoad = true, Target_x = 0.1372044683f, Target_y = 0.0f, Target_z = -227.5530548f, Target_rot = -2.772904158f, Target_var1 = 195, Description = "To the chocobo corral"} },
+            new Transition { MiihenFlag3 = 1 , ForceLoad = false, PositionTidusAfterLoad = true, Target_x = 0.137f, Target_y = 0.0f, Target_z = -227.553f, Target_rot = -2.772f, Target_var1 = 195, Description = "To the chocobo corral"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 58 && MemoryWatchers.Storyline.Current == 767 && MemoryWatchers.MiihenFlag3.Current == 1; },
             new ChocoboEaterTransition {ForceLoad = false, Description = "Chocobo Eater", Suspendable = false, Repeatable = true} },
@@ -574,12 +574,12 @@ static class Transitions
             new Transition { MiihenFlag4 = 7 , ForceLoad = false, Description = "Luzzu and Gatta move a cart"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 59 && MemoryWatchers.Storyline.Current == 777 && MemoryWatchers.State.Current == 0; },
-            new Transition { Storyline = 787, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = -42.82675171f, Target_y = 0.9690397978f, Target_z = 204.8426361f, Target_rot = 1.250270844f, Target_var1 = 4, Description = "Seymour helps out"} },
+            new Transition { Storyline = 787, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = -42.826f, Target_y = 0.969f, Target_z = 204.842f, Target_rot = 1.250f, Target_var1 = 4, Description = "Seymour helps out"} },
         // END OF MI'IHEN
         // START OF MUSHROOM ROCK ROAD
         {
             () => { return MemoryWatchers.RoomNumber.Current == 79 && MemoryWatchers.Storyline.Current == 787; },
-            new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -60.82686996f, Target_y = -6.881165981f, Target_z = -837.5621948f, Target_rot = 1.245915651f, Target_var1 = 979, MoveFrame = 8, Description = "Tidus distrusts Seymour"} },
+            new Transition { RoomNumber = 79, Storyline = 825, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -60.826f, Target_y = -6.881f, Target_z = -837.562f, Target_rot = 1.245f, Target_var1 = 979, MoveFrame = 8, Description = "Tidus distrusts Seymour"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 92 && MemoryWatchers.Storyline.Current == 825; },
             new Transition { Storyline = 802, Description = "Send Clasko to the shadow realm"} },
@@ -613,16 +613,16 @@ static class Transitions
             new Transition { RoomNumber = 131, Storyline = 910, Description = "Zanarkand flashback"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 131 && MemoryWatchers.Storyline.Current == 802; },
-            new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 783.6201172f, Target_y = -2.361909866f, Target_z = -132.7236023f, Target_rot = -2.00543189f, Target_var1 = 161, Description = "Tidus monologue on beach (Terra Skip)"} },
+            new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 783.620f, Target_y = -2.361f, Target_z = -132.723f, Target_rot = -2.005f, Target_var1 = 161, Description = "Tidus monologue on beach (Terra Skip)"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 131 && MemoryWatchers.Storyline.Current == 910; },
-            new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 783.6201172f, Target_y = -2.361909866f, Target_z = -132.7236023f, Target_rot = -2.00543189f, Target_var1 = 161, Description = "Tidus monologue on beach"} },
+            new Transition { RoomNumber = 131, Storyline = 922, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 783.620f, Target_y = -2.361f, Target_z = -132.723f, Target_rot = -2.005f, Target_var1 = 161, Description = "Tidus monologue on beach"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 131 && MemoryWatchers.Storyline.Current == 922 && MemoryWatchers.State.Current == 0; },
-            new Transition { RoomNumber = 131, Storyline = 928, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 493.2272034f, Target_y = -15.79727077f, Target_z = -190.388382f, Target_rot = 1.981455684f, Target_var1 = 94, Description = "Kinoc retreats"} },
+            new Transition { RoomNumber = 131, Storyline = 928, SpawnPoint = 3, PositionTidusAfterLoad = true, Target_x = 493.227f, Target_y = -15.797f, Target_z = -190.388f, Target_rot = 1.981f, Target_var1 = 94, Description = "Kinoc retreats"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 131 && MemoryWatchers.Storyline.Current == 928 && MemoryWatchers.State.Current == 0; },
-            new Transition { RoomNumber = 131, Storyline = 938, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 371.6022644f, Target_y = -22.7253685f, Target_z = -167.7940369f, Target_rot = 0.507765293f, Target_var1 = 88, Description = "Tidus speaks to Auron"} },
+            new Transition { RoomNumber = 131, Storyline = 938, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 371.602f, Target_y = -22.725f, Target_z = -167.794f, Target_rot = 0.507f, Target_var1 = 88, Description = "Tidus speaks to Auron"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 131 && MemoryWatchers.Storyline.Current == 938; },
             new AftermathTransition {ForceLoad = false, Description = "Leaving Mushroom Rock Road", Suspendable = false, Repeatable = true } },
@@ -630,7 +630,7 @@ static class Transitions
         // START OF DJOSE HIGHROAD
         {
             () => { return MemoryWatchers.RoomNumber.Current == 93 && MemoryWatchers.Storyline.Current == 960; },
-            new Transition { RoomNumber = 93, Storyline = 961, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -244.6946259f, Target_y = -56.46194458f, Target_z = -810.1467285f, Target_rot = 1.698619962f, Target_var1 = 190, Description = "Kimahri speaks"} },
+            new Transition { RoomNumber = 93, Storyline = 961, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -244.694f, Target_y = -56.461f, Target_z = -810.146f, Target_rot = 1.698f, Target_var1 = 190, Description = "Kimahri speaks"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 93 && MemoryWatchers.Storyline.Current == 961 && MemoryWatchers.CutsceneAlt.Current == 1678; },
             new Transition { RoomNumber = 76, Storyline = 962, SpawnPoint = 1, Description = "Tidus is eager to go to Zanarkand"} },
@@ -703,10 +703,10 @@ static class Transitions
         // START OF GUADOSALAM
         {
             () => { return MemoryWatchers.RoomNumber.Current == 135 && MemoryWatchers.Storyline.Current == 1085; },
-            new Transition { RoomNumber = 135, Storyline = 1096, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 13.50145912f, Target_y = 0.1195827052f, Target_z = -49.98101425f, Target_rot = 2.705604076f, Target_var1 = 306, Description = "Meet Tromell + Customise tutorial"} },
+            new Transition { RoomNumber = 135, Storyline = 1096, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 13.501f, Target_y = 0.119f, Target_z = -49.981f, Target_rot = 2.705f, Target_var1 = 306, Description = "Meet Tromell + Customise tutorial"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 163 && MemoryWatchers.Storyline.Current == 1096 && MemoryWatchers.State.Current == 1; },
-            new Transition { RoomNumber = 163, Storyline = 1104, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 11.14498615f, Target_y = 3.620577812f, Target_z = 4.971858978f, Target_rot = 1.576181054f, Target_var1 = 21, Description = "Tromell invites the gang in"} },
+            new Transition { RoomNumber = 163, Storyline = 1104, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 11.144f, Target_y = 3.620f, Target_z = 4.971f, Target_rot = 1.576f, Target_var1 = 21, Description = "Tromell invites the gang in"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 141 && MemoryWatchers.Storyline.Current == 1104; },
             new SeymoursHouseTransition {ForceLoad = false, Description = "Seymour's House", Suspendable = false, Repeatable = true } },
@@ -718,7 +718,7 @@ static class Transitions
             new Transition { RoomNumber = 163, Storyline = 1126, SpawnPoint = 1, Description = "Yuna drinks a glass of water"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 135 && MemoryWatchers.Storyline.Current == 1126 && MemoryWatchers.State.Current == 1; },
-            new Transition { RoomNumber = 135, Storyline = 1132, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 8.317605019f, Target_y = -7.668166637f, Target_z = 107.4091187f, Target_rot = -1.360913038f, Target_var1 = 265, Description = "The gang discuss the proposal"} },
+            new Transition { RoomNumber = 135, Storyline = 1132, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 8.317f, Target_y = -7.668f, Target_z = 107.409f, Target_rot = -1.360f, Target_var1 = 265, Description = "The gang discuss the proposal"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 257 && MemoryWatchers.Storyline.Current == 1132; }, 
             new Transition { RoomNumber = 257, Storyline = 1138, SpawnPoint = 0, Description = "Tidus freaks out about the undead"} },
@@ -726,7 +726,7 @@ static class Transitions
             () => { return MemoryWatchers.RoomNumber.Current == 257 && MemoryWatchers.Storyline.Current == 1138; }, 
             new Transition { RoomNumber = 257, Storyline = 1154, SpawnPoint = 0, Description = "Auron and Rikku stay behind"} },
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 257 && MemoryWatchers.Storyline.Current == 1154 && MemoryWatchers.XCoordinate.Current == 233.3042755f; }, 
+            () => { return MemoryWatchers.RoomNumber.Current == 257 && MemoryWatchers.Storyline.Current == 1154 && Math.Abs(MemoryWatchers.XCoordinate.Current - 233.304f) < 0.5f; }, 
             new Transition { RoomNumber = 193, Description = "Tidus enters the Farplane"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 193 && MemoryWatchers.Storyline.Current == 1154; },
@@ -748,16 +748,16 @@ static class Transitions
             new Transition { RoomNumber = 135, Storyline = 1190, SpawnPoint = 2, Description = "Tidus asks about Jyscal"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 135 && MemoryWatchers.Storyline.Current == 1190 && MemoryWatchers.State.Current == 1; }, 
-            new Transition { RoomNumber = 135, Storyline = 1194, SpawnPoint = 2, GuadosalamShopFlag = 16, PositionTidusAfterLoad = true, Target_x = 9.35662365f, Target_y = -79.88565826f, Target_z = 32.47581863f, Target_rot = 1.640607119f, Target_var1 = 174, Description = "Affection scene"} },
+            new Transition { RoomNumber = 135, Storyline = 1194, SpawnPoint = 2, GuadosalamShopFlag = 16, PositionTidusAfterLoad = true, Target_x = 9.356f, Target_y = -79.885f, Target_z = 32.475f, Target_rot = 1.640f, Target_var1 = 174, Description = "Affection scene"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 135 && MemoryWatchers.Storyline.Current == 1194 && MemoryWatchers.State.Current == 1; }, 
-            new Transition { RoomNumber = 135, Storyline = 1196, SpawnPoint = 4, PositionTidusAfterLoad = true, Target_x = -16.08917809f, Target_y = -0.1143999547f, Target_z = -9.910492897f, Target_rot = 1.728837013f, Target_var1 = 341, Description = "Tidus speaks to Shelinda"} },
+            new Transition { RoomNumber = 135, Storyline = 1196, SpawnPoint = 4, PositionTidusAfterLoad = true, Target_x = -16.089f, Target_y = -0.114f, Target_z = -9.910f, Target_rot = 1.728f, Target_var1 = 341, Description = "Tidus speaks to Shelinda"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 135 && MemoryWatchers.Storyline.Current == 1196 && MemoryWatchers.State.Current == 1; }, 
             new Transition { RoomNumber = 135, Storyline = 1200, Description = "Yuna asks Jyscal what she can do"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 135 && MemoryWatchers.Storyline.Current == 1200; },
-            new Transition { RoomNumber = 135, Storyline = 1210, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -9.995750427f, Target_y = -6.983668327f, Target_z = 135.7639771f, Target_rot = 0.5563229918f, Target_var1 = 267, Description = "Macarena Temple"} },       
+            new Transition { RoomNumber = 135, Storyline = 1210, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -9.995f, Target_y = -6.983f, Target_z = 135.763f, Target_rot = 0.556f, Target_var1 = 267, Description = "Macarena Temple"} },       
         // END OF GUADOSALAM
         // START OF THUNDER PLAINS
         { 
@@ -822,7 +822,7 @@ static class Transitions
             new Transition { MenuTriggerValue = 0x4008000B, ForceLoad = false, Description = "Naming Shiva"}},
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 80 && MemoryWatchers.Storyline.Current == 1530 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x4000; },
-            new Transition { ConsoleOutput = false, Storyline = 1545, PositionTidusAfterLoad = true, Target_x = 1.470157981f, Target_y = 0.0f, Target_z = 0.3889299929f, Target_rot = -0.1195230484f, Target_var1 = 53}},
+            new Transition { ConsoleOutput = false, Storyline = 1545, PositionTidusAfterLoad = true, Target_x = 1.470f, Target_y = 0.0f, Target_z = 0.388f, Target_rot = -0.119f, Target_var1 = 53}},
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 239 && MemoryWatchers.Storyline.Current == 1545; }, 
             new Transition { Storyline = 1557, CutsceneTiming = 1, /*ForceLoad = false,*/ Description = "Backflip Skip"} },
@@ -848,7 +848,7 @@ static class Transitions
             new Transition { Storyline = 1720, SpawnPoint = 3, FormationSwitch = Transition.formations.BikanelRikku, BikanelFlag = 32, Description = "Wakka Glare" } },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 138 && MemoryWatchers.Storyline.Current == 1720 && MemoryWatchers.State.Current == 1 && MemoryWatchers.MovementLock.Current == 0x30; }, 
-            new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -15.83119202f, Target_y = -0.4932427108f, Target_z = -98.58677673f, Target_rot = 2.518902063f, Target_var1 = 432, Description = "Sanubia to Home"} },
+            new Transition { RoomNumber = 130, Storyline = 1800, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = -15.831f, Target_y = -0.493f, Target_z = -98.586f, Target_rot = 2.518f, Target_var1 = 432, Description = "Sanubia to Home"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 280 && MemoryWatchers.Storyline.Current == 1820; },
             HomeTransition},
@@ -866,10 +866,10 @@ static class Transitions
             new Transition { EncounterStatus = 88, ForceLoad = false, Description = "Disabling Encounters"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 261 && MemoryWatchers.Storyline.Current == 1940; }, 
-            new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -228.5708008f, Target_y = 12.30214691f, Target_z = 363.2492676f, Target_rot = -2.72271347f, Target_var1 = 1251, Description = "Home to Airship"} },
+            new Transition { RoomNumber = 194, Storyline = 1950, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -228.570f, Target_y = 12.302f, Target_z = 363.249f, Target_rot = -2.722f, Target_var1 = 1251, Description = "Home to Airship"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 194 && MemoryWatchers.Storyline.Current == 1990; },
-            new Transition { Storyline = 2000, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.4903412f, Target_y = 12.11019516f, Target_z = 290.9462891f, Target_rot = 1.592885971f, Target_var1 = 1302, Description = "Airship Bridge Cutscene"} },
+            new Transition { Storyline = 2000, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.490f, Target_y = 12.110f, Target_z = 290.946f, Target_rot = 1.592f, Target_var1 = 1302, Description = "Airship Bridge Cutscene"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 351 && MemoryWatchers.Storyline.Current == 2020; }, 
             new Transition { Storyline = 2040, ForceLoad = false, Description = "Red carpet has teeth"} },
@@ -921,23 +921,23 @@ static class Transitions
             () => { return MemoryWatchers.RoomNumber.Current == 206 && MemoryWatchers.Storyline.Current == 2300 && MemoryWatchers.CutsceneAlt.Current == 3712; }, 
             new Transition { RoomNumber = 177, Storyline = 2385, SpawnPoint = 1, MacalaniaFlag = 162, Description = "Lake Scene"} },
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 223 && MemoryWatchers.Storyline.Current == 2385 && MemoryWatchers.State.Current == 0;/* && TidusZCoordinate = -1856.596069f*/},
-            new Transition { Storyline = 2400, CalmLandsFlag = 33572, PositionTidusAfterLoad = true, Target_x = 342.0474243f, Target_y = -162.136322f, Target_z = -1589.26123f, Target_rot = -3.089118004f, Target_var1 = 494, Description = "Calm Lands Intro + Gorge flag"} },
+            () => { return MemoryWatchers.RoomNumber.Current == 223 && MemoryWatchers.Storyline.Current == 2385 && MemoryWatchers.State.Current == 0;/* && TidusZCoordinate = -1856.596f*/},
+            new Transition { Storyline = 2400, CalmLandsFlag = 33572, PositionTidusAfterLoad = true, Target_x = 342.047f, Target_y = -162.136f, Target_z = -1589.261f, Target_rot = -3.089f, Target_var1 = 494, Description = "Calm Lands Intro + Gorge flag"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 223 && MemoryWatchers.Storyline.Current == 2400 && MemoryWatchers.CutsceneAlt.Current == 885; }, 
-            new Transition { SpawnPoint = 0, AddCalmLandsBitmask = 0x08, PositionTidusAfterLoad = true, Target_x = -656.6414185f, Target_y = 40.62506866f, Target_z = -122.8440933f, Target_rot = 1.060740948f, Target_var1 = 7179, Description = "Father Zuke"} },
+            new Transition { SpawnPoint = 0, AddCalmLandsBitmask = 0x08, PositionTidusAfterLoad = true, Target_x = -656.641f, Target_y = 40.625f, Target_z = -122.844f, Target_rot = 1.060f, Target_var1 = 7179, Description = "Father Zuke"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 279 && MemoryWatchers.Storyline.Current == 2400; },
             new DefenderXTransition {ForceLoad = false, Description = "Defender X", Suspendable = false, Repeatable = true} },
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 279 && MemoryWatchers.Storyline.Current == 2420 && MemoryWatchers.MovementLock.Current == 48 && MemoryWatchers.XCoordinate.Current == 265.3771973f; },
+            () => { return MemoryWatchers.RoomNumber.Current == 279 && MemoryWatchers.Storyline.Current == 2420 && MemoryWatchers.MovementLock.Current == 48 && Math.Abs(MemoryWatchers.XCoordinate.Current - 265.377f) < 0.5f; },
             new Transition { RoomNumber = 259, Storyline = 2510, RoomNumberAlt = 266, SpawnPoint = 0, Description = "Yuna reflects"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 259 && MemoryWatchers.Storyline.Current == 2510; },
             new RonsoTransition {ForceLoad = false, Description = "Biran + Yenke", Suspendable = false, Repeatable = true} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 244 && MemoryWatchers.Storyline.Current == 2528 && MemoryWatchers.State.Current == 1; },
-            new Transition {Storyline = 2530, SpawnPoint = 0, WantzFlag = 1, WantzMacalaniaFlag = 1, PositionTidusAfterLoad = true, Target_x = 13.49532509f, Target_y = -3.161082983f, Target_z = 19.21344376f, Target_rot = 1.570796371f, Target_var1 = 1243, Description = "Ronso Singing"} },
+            new Transition {Storyline = 2530, SpawnPoint = 0, WantzFlag = 1, WantzMacalaniaFlag = 1, PositionTidusAfterLoad = true, Target_x = 13.495f, Target_y = -3.161f, Target_z = 19.213f, Target_rot = 1.570f, Target_var1 = 1243, Description = "Ronso Singing"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 285 && MemoryWatchers.Storyline.Current == 2530; },
             new FluxTransition {ForceLoad = false, Description = "Seymour Flux", Suspendable = false, Repeatable = true} },
@@ -968,7 +968,7 @@ static class Transitions
             // START OF ZANARKAND
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 132 && MemoryWatchers.Storyline.Current == 2680 && MemoryWatchers.State.Current == 0; }, 
-            new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 48.32572556f, Target_y = -2.791494608f, Target_z = 40.53089905f, Target_rot = -2.217551947f, Target_var1 = 364, Description = "Zanarkand Campfire"} },
+            new Transition { RoomNumber = 363, Storyline = 2767, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 48.325f, Target_y = -2.791f, Target_z = 40.530f, Target_rot = -2.217f, Target_var1 = 364, Description = "Zanarkand Campfire"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 320 && MemoryWatchers.Storyline.Current == 2767; }, 
             new Transition { SpawnPoint = 0, Description = "Zanarkand Trials Begin"} },
@@ -983,12 +983,12 @@ static class Transitions
             new YunalescaTransition {ForceLoad = false, Description = "Pre-Yunalesca", Suspendable = false, Repeatable = true} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 315 && MemoryWatchers.Storyline.Current == 2850; }, 
-            new Transition { RoomNumber = 194, Storyline = 2900, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -264.3361816f, Target_y = 12.16300488f, Target_z = 365.0055237f, Target_rot = -0.663225174f, Target_var1 = 1230, Description = "End of Zanarkand"} },
+            new Transition { RoomNumber = 194, Storyline = 2900, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -264.336f, Target_y = 12.163f, Target_z = 365.005f, Target_rot = -0.663f, Target_var1 = 1230, Description = "End of Zanarkand"} },
             // END OF ZANARKAND
             // START OF SIN
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 211 && MemoryWatchers.Storyline.Current == 2900 && MemoryWatchers.XCoordinate.Current == -9.918679f; },
-            new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, OmegaRuinsFlag = 0x01, PositionTidusAfterLoad = true, Target_x = -30.52597618f, Target_y = 0.0f, Target_z = 39.00003433f, Target_rot = -0.8664481044f, Target_var1 = 82, Description = "Yuna/Kimahri talk about defeating Sin"} },
+            () => { return MemoryWatchers.RoomNumber.Current == 211 && MemoryWatchers.Storyline.Current == 2900 && Math.Abs(MemoryWatchers.XCoordinate.Current - (-9.918f)) < 0.5f; },
+            new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, OmegaRuinsFlag = 0x01, PositionTidusAfterLoad = true, Target_x = -30.525f, Target_y = 0.0f, Target_z = 39.000f, Target_rot = -0.866f, Target_var1 = 82, Description = "Yuna/Kimahri talk about defeating Sin"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 208 && MemoryWatchers.Storyline.Current == 2920 && MemoryWatchers.CutsceneAlt.Current == 91; }, 
             new Transition { RoomNumber = 227, Storyline = 2945, SpawnPoint = 0, Description = "Shelinda + Mika"} },
@@ -996,7 +996,7 @@ static class Transitions
             () => { return MemoryWatchers.RoomNumber.Current == 227 && MemoryWatchers.Storyline.Current == 2945; }, 
             new BahamutFaythTransition2 { ForceLoad=false, Description = "Bahamut Fayth", Suspendable = false, Repeatable = true } },
         //{ () => { return MemoryWatchers.RoomNumber.Current == 208 && MemoryWatchers.Storyline.Current == 2920 && MemoryWatchers.CutsceneAlt.Current == 91},
-        //  new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AirshipDestinations = 2560, PositionTidusAfterLoad = true, Target_x = -242.8587952f, Target_y = 12.12630653f, Target_z = 160.4484863f, Target_rot = 1.556545019f, Target_var1 = 1390, Description = "Return from Highbridge"} },
+        //  new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AirshipDestinations = 2560, PositionTidusAfterLoad = true, Target_x = -242.858f, Target_y = 12.126f, Target_z = 160.448f, Target_rot = 1.556f, Target_var1 = 1390, Description = "Return from Highbridge"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 255 && MemoryWatchers.Storyline.Current == 2990; }, 
             new Transition { RoomNumber = 255, Storyline = 3010, SpawnPoint = 0, RemoveSinLocation = true, Description = "Sin destination cutscene"} }, //Bug (Minor): Wrong area/spawn
@@ -1015,7 +1015,7 @@ static class Transitions
             () => { return MemoryWatchers.RoomNumber.Current == 201 && MemoryWatchers.Storyline.Current == 3105; }, 
             new SinCoreTransition {ForceLoad = false, Description = "Sin Core", Suspendable = false, Repeatable = true} },
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 202 && MemoryWatchers.Storyline.Current == 3125 && MemoryWatchers.XCoordinate.Current == 18.58586121f && MemoryWatchers.State.Current == 0; }, 
+            () => { return MemoryWatchers.RoomNumber.Current == 202 && MemoryWatchers.Storyline.Current == 3125 && Math.Abs(MemoryWatchers.XCoordinate.Current - 18.585f) < 0.5f && MemoryWatchers.State.Current == 0; }, 
             new Transition { RoomNumber = 374, Storyline = 3135, SpawnPoint = 0, Description = "Yuna monologue"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 202 && MemoryWatchers.Storyline.Current == 3135; }, 
@@ -1054,7 +1054,7 @@ static class Transitions
             new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 3000 && MemoryWatchers.Storyline.Current == 322; }, 
-            new Transition { SpawnPoint = 1, Storyline = 326, PositionTidusAfterLoad = true, Target_x = -11.76033783f, Target_y = -159.9781189f, Target_z = 541.0011597f, Target_rot = 1.698870897f, Target_var1 = 88, MoveFrame = 5, Description = "Post-Geneaux"} },
+            new Transition { SpawnPoint = 1, Storyline = 326, PositionTidusAfterLoad = true, Target_x = -11.760f, Target_y = -159.978f, Target_z = 541.001f, Target_rot = 1.698f, Target_var1 = 88, MoveFrame = 5, Description = "Post-Geneaux"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 45 && MemoryWatchers.Storyline.Current == 346 && MemoryWatchers.State.Current == 1; }, 
             new Transition { RoomNumber = 78, Storyline = 348, SpawnPoint = 0, EnableIfrit = 17, Description = "Ifrit"} },
@@ -1069,7 +1069,7 @@ static class Transitions
             new Transition { RoomNumber = 254, Storyline = 882, Description = "Sinspawn Gui 2"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 12000 && MemoryWatchers.Storyline.Current == 1420; }, 
-            new Transition { RoomNumber = 248, Storyline = 1470, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -12.1630888f, Target_y = 0.8164763451f, Target_z = 34.41093445f, Target_rot = -1.454847217f, Target_var1 = 135, Description = "Spherimorph", AuronOverdrives = 49 } },
+            new Transition { RoomNumber = 248, Storyline = 1470, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -12.163f, Target_y = 0.816f, Target_z = 34.410f, Target_rot = -1.454f, Target_var1 = 135, Description = "Spherimorph", AuronOverdrives = 49 } },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 16000 && MemoryWatchers.Storyline.Current == 1485; }, 
             new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, Description = "Crawler"} },
@@ -1078,13 +1078,13 @@ static class Transitions
             new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 12000 && MemoryWatchers.Storyline.Current == 1704; }, 
-            new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu", FormationSwitch = Transition.formations.PostZu, PositionTidusAfterLoad = true, Target_x = -20.05244827f, Target_y = -2.300839186f, Target_z = -247.0119934f, Target_rot = -1.57079649f, Target_var1 = 1819 } },
+            new Transition { RoomNumber = 129, Storyline = 1715, SpawnPoint = 0, Description = "Bikanel Zu", FormationSwitch = Transition.formations.PostZu, PositionTidusAfterLoad = true, Target_x = -20.052f, Target_y = -2.300f, Target_z = -247.011f, Target_rot = -1.570f, Target_var1 = 1819 } },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 2600 && MemoryWatchers.Storyline.Current == 1820; }, 
-            new Transition { RoomNumber = 276, Storyline = 1820, SpawnPoint = 0, Description = "Home Bombs", PositionTidusAfterLoad = true, Target_x = -0.037395183f, Target_y = 0.3992187381f, Target_z = -5.576078415f, Target_rot = -1.884988785f, Target_var1 = 7} },
+            new Transition { RoomNumber = 276, Storyline = 1820, SpawnPoint = 0, Description = "Home Bombs", PositionTidusAfterLoad = true, Target_x = -0.037f, Target_y = 0.399f, Target_z = -5.576f, Target_rot = -1.884f, Target_var1 = 7} },
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 87 && MemoryWatchers.EncounterFormationID2.Current == 2 && MemoryWatchers.RoomNumber.Current == 280 && MemoryWatchers.Storyline.Current == 1820; },
-            new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414047003f, Target_y = 0.0f, Target_z = 76.49511719f, Target_rot = -4.692546844f, Target_var1 = 243} },
+            new Transition { ForceLoad = false, RoomNumber = 280, Storyline = 1885, SpawnPoint = 0, Description = "Home Dual Horns", PositionTidusAfterLoad = true, Target_x = -2.414f, Target_y = 0.0f, Target_z = 76.495f, Target_rot = -4.692f, Target_var1 = 243} },
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 87 && MemoryWatchers.EncounterFormationID2.Current == 3 && MemoryWatchers.RoomNumber.Current == 280 && MemoryWatchers.Storyline.Current == 1885; }, 
             new Transition { RoomNumber = 280, Storyline = 1940, SpawnPoint = 4, Description = "Home Chimera"} },
@@ -1099,19 +1099,19 @@ static class Transitions
             new Transition { ForceLoad = false, Storyline = 2420, AddCalmLandsBitmask = 0x01, Description = "Defender X"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 259 && MemoryWatchers.Storyline.Current == 2510 && MemoryWatchers.State.Current == 2; }, 
-            new Transition { RoomNumber = 259, Storyline = 2528, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 53.67576218f, Target_y = -36.2708931f, Target_z = 316.892395f, Target_rot = 1.570796371f, Target_var1 = 475, Description = "Biran + Yenke"} },
+            new Transition { RoomNumber = 259, Storyline = 2528, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = 53.675f, Target_y = -36.270f, Target_z = 316.892f, Target_rot = 1.570f, Target_var1 = 475, Description = "Biran + Yenke"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 70000 && MemoryWatchers.Storyline.Current == 2530; }, 
-            new Transition { RoomNumber = 285, Storyline = 2560, SpawnPoint = 2, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, PositionTidusAfterLoad = true, Target_x = 31.58070183f, Target_y = -19.99184036f, Target_z = -202.6745758f, Target_rot = -0.5099999905f, Target_var1 = 662, Description = "Seymour Flux"} },
+            new Transition { RoomNumber = 285, Storyline = 2560, SpawnPoint = 2, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, PositionTidusAfterLoad = true, Target_x = 31.580f, Target_y = -19.991f, Target_z = -202.674f, Target_rot = -0.509f, Target_var1 = 662, Description = "Seymour Flux"} },
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 68 && MemoryWatchers.EncounterFormationID2.Current == 0 && MemoryWatchers.RoomNumber.Current == 311 && MemoryWatchers.Storyline.Current == 2585; }, 
-            new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 1167.63501f, Target_y = -30.03837585f, Target_z = -1127.956787f, Target_rot = -2.844759941f, Target_var1 = 794, Description = "Sanctuary Keeper"} },
+            new Transition { RoomNumber = 311, Storyline = 2680, SpawnPoint = 0, PositionTidusAfterLoad = true, Target_x = 1167.635f, Target_y = -30.038f, Target_z = -1127.956f, Target_rot = -2.844f, Target_var1 = 794, Description = "Sanctuary Keeper"} },
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 71 && MemoryWatchers.EncounterFormationID2.Current == 0 && MemoryWatchers.RoomNumber.Current == 317 && MemoryWatchers.Storyline.Current == 2775; }, 
             new Transition { RoomNumber = 318, Storyline = 2815, Description = "Spectral Keeper to Yunalesca"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 24000 && MemoryWatchers.Storyline.Current == 2815; }, 
-            new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, PositionTidusAfterLoad = true, Target_x = 1.958124876f, Target_y = 0.0f, Target_z = -68.68795013f, Target_rot = -1.438184619f, Target_var1 = 86, Description = "Yunalesca"} },
+            new Transition { RoomNumber = 270, Storyline = 2850, SpawnPoint = 0, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, PositionTidusAfterLoad = true, Target_x = 1.958f, Target_y = 0.0f, Target_z = -68.687f, Target_rot = -1.438f, Target_var1 = 86, Description = "Yunalesca"} },
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 73 && MemoryWatchers.EncounterFormationID2.Current == 0 && MemoryWatchers.RoomNumber.Current == 199 && MemoryWatchers.Storyline.Current == 3085; }, 
             new Transition { RoomNumber = 200, Storyline = 3085, Description = "Left Fin"} },
@@ -1120,7 +1120,7 @@ static class Transitions
             new Transition { RoomNumber = 201, Storyline = 3105, Description = "Right Fin"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 20000 && MemoryWatchers.RoomNumber.Current == 201 && MemoryWatchers.Storyline.Current == 3105; }, 
-            new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -258.47229f, Target_y = 12.31083775f, Target_z = 380.5874939f, Target_rot = -1.021441936f, Target_var1 = 1412, Description = "Sin Core"} },
+            new Transition { RoomNumber = 374, Storyline = 3125, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -258.472f, Target_y = 12.310f, Target_z = 380.587f, Target_rot = -1.021f, Target_var1 = 1412, Description = "Sin Core"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 80000 && MemoryWatchers.Storyline.Current == 3205; }, 
             new Transition { Storyline = 3250, ForceLoad = false, Description = "Seymour Omnis"} },
@@ -1128,6 +1128,6 @@ static class Transitions
         // Miscellaneous
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 63 && MemoryWatchers.EncounterFormationID1.Current == 1 && MemoryWatchers.EncounterFormationID2.Current == 0; },
-            new Transition { EncounterFormationID1 = 2, RoomNumber = 56, SpawnPoint = 4, AddCalmLandsBitmask = 0x02, PositionTidusAfterLoad = true, Target_x = 94.66707611f, Target_y = 141.1475677f, Target_z = 1928.194214f, Target_rot = 1.568045974f, Target_var1 = 80, Description = "Yojimbo"} }
+            new Transition { EncounterFormationID1 = 2, RoomNumber = 56, SpawnPoint = 4, AddCalmLandsBitmask = 0x02, PositionTidusAfterLoad = true, Target_x = 94.667f, Target_y = 141.147f, Target_z = 1928.194f, Target_rot = 1.568f, Target_var1 = 80, Description = "Yojimbo"} }
     };
 }

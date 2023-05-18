@@ -31,10 +31,10 @@ class TankerTransition : Transition
             }.Execute();
 
             Transition actorPositions;
-            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 251.9134674f, Target_y = 0.005895767361f, Target_z = -24.76922226f };
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 1 }, Target_x = 251.913f, Target_y = 0.005f, Target_z = -24.769f };
             actorPositions.Execute();
 
-            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 3 }, Target_x = 251.2454987f, Target_y = 0.005895767361f, Target_z = 20.62436295f };
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 3 }, Target_x = 251.245f, Target_y = 0.005f, Target_z = 20.624f };
             actorPositions.Execute();
 
             Stage += 1;

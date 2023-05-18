@@ -125,7 +125,7 @@ class CutsceneRemover
         // Custom Check - Airship
         if (MemoryWatchers.RoomNumber.Current == 194 && MemoryWatchers.Storyline.Current == 2000 && MemoryWatchers.State.Current == 0 && MemoryWatchers.XCoordinate.Current > 300f)
         {
-            ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.6673126f, Target_y = 12.51491833f, Target_z = 398.0950317f, Target_rot = -1.659699082f, Target_var1 = 1463, Description = "Zoom in on Bevelle"});
+            ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.667f, Target_y = 12.514f, Target_z = 398.095f, Target_rot = -1.659f, Target_var1 = 1463, Description = "Zoom in on Bevelle"});
         }
 
         // Custom Check - Djose

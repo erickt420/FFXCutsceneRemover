@@ -17,7 +17,7 @@ class BahamutFaythTransition2 : Transition
         {
             process.Suspend();
 
-            new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AddSinLocation = true, PositionTidusAfterLoad = true, Target_x = -242.8587952f, Target_y = 12.12630653f, Target_z = 160.4484863f, Target_rot = 1.556545019f, Target_var1 = 1390, Description = "Return from Highbridge" }.Execute();
+            new Transition { RoomNumber = 255, Storyline = 2970, SpawnPoint = 0, AddSinLocation = true, PositionTidusAfterLoad = true, Target_x = -242.858f, Target_y = 12.126f, Target_z = 160.448f, Target_rot = 1.556f, Target_var1 = 1390, Description = "Return from Highbridge" }.Execute();
 
             Stage += 1;
 
