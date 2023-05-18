@@ -582,8 +582,26 @@ public class Transition
     {
         if (value.HasValue)
         {
-            writeHelper(watcher, () => process.WriteValue(watcher.Address, value.Value),
-               (pointer) => process.WriteValue(pointer, value.Value));
+            var dbgAddr = watcher.Address - memoryWatchers.GetBaseAddress();
+
+            if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
+            {
+                DiagnosticLog.Debug($"w {watcher.Name}: write {value.Value} to addr {dbgAddr:X8}.");
+                process.WriteValue(watcher.Address, value.Value);
+                return;
+            }
+            else
+            {
+                // To write to a deep pointer we need to dereference its pointer path.
+                // Then we write to the final pointer.
+                if (!watcher.DeepPtr.DerefOffsets(process, out IntPtr finalPointer))
+                {
+                    DiagnosticLog.Information("Couldn't read the pointer path for: " + watcher.Name);
+                }
+
+                DiagnosticLog.Debug($"w {watcher.Name}: write {value.Value} to addr {finalPointer:X8}.");
+                process.WriteValue(finalPointer, value.Value);
+            }
         }
     }
 
@@ -591,27 +609,27 @@ public class Transition
     {
         if (bytes != null)
         {
-            writeHelper(watcher, () => process.WriteBytes(watcher.Address, bytes),
-                (pointer) => process.WriteBytes(pointer, bytes));
-        }
-    }
+            var hexstring = Convert.ToHexString(bytes);
+            var dbgAddr   = watcher.Address - memoryWatchers.GetBaseAddress();
 
-    private void writeHelper(MemoryWatcher watcher, Func<object> basicWriteAction, Func<IntPtr, object> deepPointerWriteAction)
-    {
-        if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
-        {
-            basicWriteAction.Invoke();
-        }
-        else
-        {
-            // To write to a deep pointer we need to dereference its pointer path.
-            // Then we write to the final pointer.
-            IntPtr finalPointer;
-            if (!watcher.DeepPtr.DerefOffsets(process, out finalPointer))
+            if (watcher.AddrType == MemoryWatcher.AddressType.Absolute)
             {
-                DiagnosticLog.Information("Couldn't read the pointer path for: " + watcher.Name);
+                DiagnosticLog.Debug($"w {watcher.Name}: write {hexstring} to addr {dbgAddr:X8}.");
+                process.WriteBytes(watcher.Address, bytes);
+                return;
             }
-            deepPointerWriteAction.Invoke(finalPointer);
+            else
+            {
+                // To write to a deep pointer we need to dereference its pointer path.
+                // Then we write to the final pointer.
+                if (!watcher.DeepPtr.DerefOffsets(process, out IntPtr finalPointer))
+                {
+                    DiagnosticLog.Information("Couldn't read the pointer path for: " + watcher.Name);
+                }
+
+                DiagnosticLog.Debug($"w {watcher.Name}: write {hexstring} to addr {finalPointer:X8}.");
+                process.WriteBytes(finalPointer, bytes);
+            }
         }
     }
 

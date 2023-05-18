@@ -49,8 +49,6 @@ class Program
                 break;
         }
 
-        DiagnosticLog.ExtraAnnotations = debug;
-
         DiagnosticLog.Information("Turn on Cutscene Remover? (Y/N)");
         removeCutscenes = Console.ReadLine().ToUpper() == "Y";
         if(removeCutscenes)
