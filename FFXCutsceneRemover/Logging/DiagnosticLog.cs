@@ -19,6 +19,7 @@ public static class DiagnosticLog
                           Environment.ExpandEnvironmentVariables("%APPDATA%/FFXCutsceneRemover/Logs");
 
         Log.Logger = new LoggerConfiguration().
+                     MinimumLevel.Debug().
                      WriteTo.Console(LogEventLevel.Information).
                      WriteTo.File(Path.Combine(rootPath, "debug.log"),
                                   LogEventLevel.Debug).

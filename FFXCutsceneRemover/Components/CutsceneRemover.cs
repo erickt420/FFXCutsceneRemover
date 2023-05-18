@@ -13,10 +13,6 @@ namespace FFXCutsceneRemover;
 
 class CutsceneRemover
 {
-    // Print out the name and value of every memory
-    // address each iteration of the main loop
-    private readonly bool PrintDebugValues = true;
-
     public Process Game;
     private bool InBossFight = false;
     private bool tidusReset = false;
@@ -26,31 +22,15 @@ class CutsceneRemover
     private Transition PreviouslyExecutedTransition;
     private int LoopSleepMillis;
 
-    public CutsceneRemover(bool debug, int loopSleepMillis)
+    public CutsceneRemover(int loopSleepMillis)
     {
-        PrintDebugValues = debug;
         LoopSleepMillis = loopSleepMillis;
     }
 
     public void MainLoop()
     {
-        // Update the values of our memory watchers.
-        // This is really important.
-
-        if (PrintDebugValues)
-        {
-            MemoryWatcherList watchers = MemoryWatchers.Watchers;
-
-            // Report the current status of all of our watched memory. For debug purposes
-            foreach (MemoryWatcher watcher in watchers)
-            {
-                DiagnosticLog.Information(watcher.Name + ": " + watcher.Current);
-            }
-            DiagnosticLog.Information("InBossFight: " + InBossFight);
-        }
-
         /* This loop iterates over the list of standard transitions
-            * and applies them when necessary. Most transitions can be performed here.*/
+         * and applies them when necessary. Most transitions can be performed here. */
         Dictionary<Func<bool>, Transition> standardTransitions = Transitions.StandardTransitions;
         
         foreach (var transition in standardTransitions)

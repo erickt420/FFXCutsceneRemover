@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.CommandLine;
+using System.CommandLine.Binding;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -9,62 +11,87 @@ using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover;
 
+internal sealed class CsrConfigBinder : BinderBase<CsrConfig>
+{
+    private readonly Option<bool?> _optCsrOn;
+    private readonly Option<bool?> _optRngOn;
+    private readonly Option<int?> _optMtSleepInterval;
+
+    public CsrConfigBinder(Option<bool?> optCsrOn,
+                           Option<bool?> optRngOn,
+                           Option<int?> optMtSleepInterval)
+    {
+        _optCsrOn = optCsrOn;
+        _optRngOn = optRngOn;
+        _optMtSleepInterval = optMtSleepInterval;
+    }
+
+    private static bool ResolveMandatoryBoolArg(Option<bool?> opt)
+    {
+        Console.WriteLine(opt.Description);
+        Console.WriteLine($"HINT: You can also specify {string.Join(' ', opt.Aliases)} on the command line.");
+        return Console.ReadLine().ToUpper()[0] == 'Y';
+    }
+
+    protected override CsrConfig GetBoundValue(BindingContext bindingContext)
+    {
+        return new CsrConfig
+        {
+            CsrOn = bindingContext.ParseResult.GetValueForOption(_optCsrOn) ?? ResolveMandatoryBoolArg(_optCsrOn),
+            RngOn = bindingContext.ParseResult.GetValueForOption(_optRngOn) ?? ResolveMandatoryBoolArg(_optRngOn),
+            MtSleepInterval = bindingContext.ParseResult.GetValueForOption(_optMtSleepInterval) ?? 16,
+        };
+    }
+}
+
+internal sealed record CsrConfig
+{
+    public bool CsrOn { get; init; }
+    public bool RngOn { get; init; }
+    public int  MtSleepInterval { get; init; }
+};
+
 class Program
 {
-    private static bool debug = false;
-    private static int loopSleepMillis = 16;
-
+    private static CsrConfig csrConfig;
     private static CutsceneRemover cutsceneRemover = null;
     private static RNGMod rngMod = null;
 
     private static Process Game = null;
 
-    private static bool removeCutscenes = false;
-    private static bool fixRNG = false;
     private static bool newGameMenuUpdated = false;
 
     // Cutscene Remover Version Number, 0x30 - 0x39 = 0 - 9, 0x48 = decimal point
     private const int majorID = 1;
     private const int minorID = 4;
-    private const int patchID = 1;
+    private const int patchID = 2;
     private static List<(string, byte)> startGameText;
 
     static void Main(string[] args)
     {
-        DiagnosticLog.Information($"FFX Cutscene Remover Version {majorID}.{minorID}.{patchID}");
+        DiagnosticLog.Information($"Cutscene Remover for Final Fantasy X, version {majorID}.{minorID}.{patchID}-dev");
+        if (args.Length > 0) DiagnosticLog.Information($"!!! LAUNCHED WITH COMMAND-LINE OPTIONS: {string.Join(' ', args)} !!!");
 
-        switch(args.Length)
-        {
-            case 1:
-                if (!bool.TryParse(args[0], out debug))
-                {
-                    int.TryParse(args[0], out loopSleepMillis);
-                }
-                break;
-            case 2:
-                bool.TryParse(args[0], out debug);
-                int.TryParse(args[1], out loopSleepMillis);
-                break;
-        }
+        Option<bool?> optCsrOn           = new Option<bool?>("--csr", "Enable CSR? [Y/N]");
+        Option<bool?> optRngOn           = new Option<bool?>("--rngfix", "Enable RNGfix? [Y/N]");
+        Option<int?>  optMtSleepInterval = new Option<int?>("--mt_sleep_interval", "Specify the main thread sleep interval. [ms]");
 
-        DiagnosticLog.Information("Turn on Cutscene Remover? (Y/N)");
-        removeCutscenes = Console.ReadLine().ToUpper() == "Y";
-        if(removeCutscenes)
+        RootCommand rootCmd = new RootCommand("Launches the FFX Cutscene Remover.")
         {
-            DiagnosticLog.Information(
-                "Cutscene Remover Enabled.\n" +
-                "Please submit runs to the Cutscene Remover platform.");
-        }
+            optCsrOn,
+            optRngOn,
+            optMtSleepInterval
+        };
 
-        DiagnosticLog.Information("Turn on RNG Fix? (Y/N)");
-        fixRNG = Console.ReadLine().ToUpper() == "Y";
-        if(fixRNG)
-        {
-            DiagnosticLog.Information(
-                "RNG Fix Enabled.\n" +
-                "This setting modifies how RNG works to prevent RNG Manipulation.\n" +
-                "Please submit runs to the RNG Fix category.");
-        }
+        rootCmd.SetHandler(MainLoop, new CsrConfigBinder(optCsrOn, optRngOn, optMtSleepInterval));
+
+        rootCmd.Invoke(args);
+        return;
+    }
+
+    private static void MainLoop(CsrConfig config)
+    {
+        csrConfig = config;
 
         while (true)
         {
@@ -77,14 +104,14 @@ class Program
 
             startGameText = new List<(string, byte)> { };
 
-            if (removeCutscenes)
+            if (csrConfig.CsrOn)
             {
-                cutsceneRemover = new CutsceneRemover(debug, loopSleepMillis);
+                cutsceneRemover = new CutsceneRemover(csrConfig.MtSleepInterval);
                 cutsceneRemover.Game = Game;
                 startGameText.Add(($"[Cutscene Remover v{majorID}.{minorID}.{patchID}]", 0x41));
             }
 
-            if (fixRNG)
+            if (csrConfig.RngOn)
             {
                 rngMod = new RNGMod();
                 rngMod.Game = Game;
@@ -96,11 +123,13 @@ class Program
             MemoryWatchers.Initialize(Game);
 
             DiagnosticLog.Information("Starting main loop!");
+
             while (!Game.HasExited)
             {
                 MemoryWatchers.Watchers.UpdateAll(Game);
 
-                if (!newGameMenuUpdated && MemoryWatchers.RoomNumber.Current == 0 && MemoryWatchers.Storyline.Current == 0 && MemoryWatchers.Dialogue1.Current == 6) {
+                if (!newGameMenuUpdated && MemoryWatchers.RoomNumber.Current == 0 && MemoryWatchers.Storyline.Current == 0 && MemoryWatchers.Dialogue1.Current == 6)
+                {
                     new NewGameTransition { ForceLoad = false, ConsoleOutput = false, startGameText = startGameText }.Execute();
                     newGameMenuUpdated = true;
                 }
@@ -109,18 +138,18 @@ class Program
                     newGameMenuUpdated = false;
                 }
 
-                if (removeCutscenes)
+                if (csrConfig.CsrOn)
                 {
                     cutsceneRemover.MainLoop();
                 }
 
-                if (fixRNG)
+                if (csrConfig.RngOn)
                 {
                     rngMod.MainLoop();
                 }
 
                 // Sleep for a bit so we don't destroy CPUs
-                Thread.Sleep(loopSleepMillis);
+                Thread.Sleep(csrConfig.MtSleepInterval);
             }
         }
     }
@@ -129,7 +158,6 @@ class Program
     {
         Process Game = null;
 
-        DiagnosticLog.Information("Connecting to FFX...");
         try
         {
             Game = Process.GetProcessesByName(TargetName).OrderByDescending(x => x.StartTime)
@@ -143,16 +171,16 @@ class Program
         if (Game == null || Game.HasExited)
         {
             Game = null;
-            DiagnosticLog.Information("FFX not found! Please launch the game. Waiting for 10 seconds before checking again.");
+            Console.Write("\rWaiting to connect to the game. Please launch the game if you haven't yet.");
 
-            Thread.Sleep(10 * 1000);
+            Thread.Sleep(500);
         }
         else
         {
+            Console.Write("\n");
             DiagnosticLog.Information("Connected to FFX!");
         }
 
         return Game;
-
     }
 }
