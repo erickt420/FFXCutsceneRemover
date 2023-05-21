@@ -29,7 +29,6 @@ internal sealed class CsrConfigBinder : BinderBase<CsrConfig>
     private static bool ResolveMandatoryBoolArg(Option<bool?> opt)
     {
         Console.WriteLine(opt.Description);
-        Console.WriteLine($"HINT: You can also specify {string.Join(' ', opt.Aliases)} on the command line.");
         return Console.ReadLine().ToUpper()[0] == 'Y';
     }
 
@@ -69,7 +68,7 @@ class Program
 
     static void Main(string[] args)
     {
-        DiagnosticLog.Information($"Cutscene Remover for Final Fantasy X, version {majorID}.{minorID}.{patchID}-dev");
+        DiagnosticLog.Information($"Cutscene Remover for Final Fantasy X, version {majorID}.{minorID}.{patchID}");
         if (args.Length > 0) DiagnosticLog.Information($"!!! LAUNCHED WITH COMMAND-LINE OPTIONS: {string.Join(' ', args)} !!!");
 
         Option<bool?> optCsrOn           = new Option<bool?>("--csr", "Enable CSR? [Y/N]");
