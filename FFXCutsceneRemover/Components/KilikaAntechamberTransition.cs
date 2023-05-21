@@ -1,34 +1,28 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
-using FFXCutsceneRemover.Logging;
+﻿using System.Diagnostics;
 
-namespace FFXCutsceneRemover
+namespace FFXCutsceneRemover;
+
+class KilikaAntechamberTransition : Transition
 {
-    class KilikaAntechamberTransition : Transition
+    public override void Execute(string defaultDescription = "")
     {
-        public override void Execute(string defaultDescription = "")
+        Process process = MemoryWatchers.Process;
+        int baseAddress = MemoryWatchers.GetBaseAddress();
+
+
+        if (Stage == 0)
         {
-            Process process = memoryWatchers.Process;
-            int baseAddress = base.memoryWatchers.GetBaseAddress();
+            base.Execute();
 
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
 
-            if (Stage == 0)
-            {
-                base.Execute();
+            Stage += 1;
+        }
+        else if (MemoryWatchers.KilikaAntechamberTransition.Current == (BaseCutsceneValue + 0X3CDA) && Stage == 1)
+        {
+            WriteValue<int>(MemoryWatchers.KilikaAntechamberTransition, BaseCutsceneValue + 0X3DC6);
 
-                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-
-                Stage += 1;
-            }
-            else if (base.memoryWatchers.KilikaAntechamberTransition.Current == (BaseCutsceneValue + 0X3CDA) && Stage == 1)
-            {
-                WriteValue<int>(base.memoryWatchers.KilikaAntechamberTransition, BaseCutsceneValue + 0X3DC6);
-
-                Stage += 1;
-            }
+            Stage += 1;
         }
     }
 }

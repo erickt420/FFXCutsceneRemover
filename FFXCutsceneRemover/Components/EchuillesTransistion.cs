@@ -1,33 +1,30 @@
-﻿using FFXCutsceneRemover.Logging;
+﻿namespace FFXCutsceneRemover;
 
-namespace FFXCutsceneRemover
+class EchuillesTransition : Transition
 {
-    class EchuillesTransition : Transition
+    public override void Execute(string defaultDescription = "")
     {
-        public override void Execute(string defaultDescription = "")
+        if (MemoryWatchers.EchuillesTransition.Current > 0)
         {
-            if (base.memoryWatchers.EchuillesTransition.Current > 0)
+            if (Stage == 0)
             {
-                if (Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                    Stage += 1;
+                BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
+                Stage += 1;
 
-                }
-                else if (base.memoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x20D0) && Stage == 1)
-                {
-                    WriteValue<int>(base.memoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x248A); // 0x2490
+            }
+            else if (MemoryWatchers.EchuillesTransition.Current >= (BaseCutsceneValue + 0x20D0) && Stage == 1)
+            {
+                WriteValue<int>(MemoryWatchers.EchuillesTransition, BaseCutsceneValue + 0x248A); // 0x2490
 
-                    Transition actorPositions;
+                Transition actorPositions;
 
-                    //Position Echuilles
-                    actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4210 }, Target_x = 0.0f, Target_y = -124.0f, Target_z = -40.0f };
-                    actorPositions.Execute();
+                //Position Echuilles
+                actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { 4210 }, Target_x = 0.0f, Target_y = -124.0f, Target_z = -40.0f };
+                actorPositions.Execute();
 
-                    Stage += 1;
-                }
+                Stage += 1;
             }
         }
     }

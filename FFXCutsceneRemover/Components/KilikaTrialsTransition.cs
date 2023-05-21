@@ -1,29 +1,27 @@
 ﻿using System.Collections.Generic;
-using FFXCutsceneRemover.Logging;
 
-namespace FFXCutsceneRemover
+namespace FFXCutsceneRemover;
+
+class KilikaTrialsTransition : Transition
 {
-    class KilikaTrialsTransition : Transition
+    static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
+    public override void Execute(string defaultDescription = "")
     {
-        static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
-        public override void Execute(string defaultDescription = "")
+        if (MemoryWatchers.KilikaTrialsTransition.Current > 0)
         {
-            if (base.memoryWatchers.KilikaTrialsTransition.Current > 0)
+            if (Stage == 0)
             {
-                if (Stage == 0)
-                {
-                    base.Execute();
+                base.Execute();
 
-                    BaseCutsceneValue = base.memoryWatchers.KilikaTrialsTransition.Current;
-                    Stage += 1;
+                BaseCutsceneValue = MemoryWatchers.KilikaTrialsTransition.Current;
+                Stage += 1;
 
-                }
-                else if (base.memoryWatchers.KilikaTrialsTransition.Current == (BaseCutsceneValue + 0x61) && Stage == 1) // 486
-                {
-                    WriteValue<int>(base.memoryWatchers.KilikaTrialsTransition, BaseCutsceneValue + 0x108);
+            }
+            else if (MemoryWatchers.KilikaTrialsTransition.Current == (BaseCutsceneValue + 0x61) && Stage == 1) // 486
+            {
+                WriteValue<int>(MemoryWatchers.KilikaTrialsTransition, BaseCutsceneValue + 0x108);
 
-                    Stage += 1;
-                }
+                Stage += 1;
             }
         }
     }

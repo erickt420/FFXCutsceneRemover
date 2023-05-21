@@ -2,28 +2,35 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
-    <ApplicationIcon>FFXCSR_icon.ico</ApplicationIcon>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>FFXCSR.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>false</DelaySign>
-    <Version>1.3.0</Version>
-    <PackageIcon>FFXCSR_icon.ico</PackageIcon>
-    <PackageIconUrl />
-    <RepositoryUrl>https://github.com/erickt420/FFXCutsceneRemover</RepositoryUrl>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
 	</PropertyGroup>
 
+	<!-- ADDITIONAL PROPERTIES -->
+	<PropertyGroup>
+		<Version>1.4.2</Version>
+		<RepositoryUrl>https://github.com/erickt420/FFXCutsceneRemover</RepositoryUrl>
+	</PropertyGroup>
+	
+	<!-- PACKAGE REFERENCES -->
 	<ItemGroup>
 		<PackageReference Include="Serilog" Version="2.10.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
 	</ItemGroup>
 
+	<!-- APPLICATION ICON -->
 	<ItemGroup>
 	  <None Include="FFXCSR_icon.ico">
 	    <Pack>True</Pack>
 	    <PackagePath></PackagePath>
 	  </None>
 	</ItemGroup>
-
+	
+	<PropertyGroup>
+		<ApplicationIcon>FFXCSR_icon.ico</ApplicationIcon>
+		<PackageIcon>FFXCSR_icon.ico</PackageIcon>
+	</PropertyGroup>
+	
 </Project>

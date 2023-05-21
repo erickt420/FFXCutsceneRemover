@@ -9,84 +9,73 @@ using System.Runtime.CompilerServices;
 using Serilog;
 using Serilog.Events;
 
-namespace FFXCutsceneRemover.Logging
+namespace FFXCutsceneRemover.Logging;
+
+public static class DiagnosticLog
 {
-    public static class DiagnosticLog
+    static DiagnosticLog()
     {
-        private static readonly ILogger Log;
-        public static           bool    ExtraAnnotations;
+        string rootPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ??
+                          Environment.ExpandEnvironmentVariables("%APPDATA%/FFXCutsceneRemover/Logs");
 
-        static DiagnosticLog()
-        {
-            string rootPath = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ??
-                              Environment.ExpandEnvironmentVariables("%APPDATA%/FFXCutsceneRemover/Logs");
+        Log.Logger = new LoggerConfiguration().
+                     MinimumLevel.Debug().
+                     WriteTo.Console(LogEventLevel.Information).
+                     WriteTo.File(Path.Combine(rootPath, "debug.log"),
+                                  LogEventLevel.Debug).
+                     CreateLogger();
+    }
 
-            Log = new LoggerConfiguration().
-                  WriteTo.Console(LogEventLevel.Information, 
-                                  "{Message:l}{NewLine}{Exception}").
-                  WriteTo.File(Path.Combine(rootPath, "debug.log"),
-                               LogEventLevel.Information).
-                  CreateLogger();
-        }
+    public static string TrimFilePath(string filePath)
+    {
+        return Path.GetFileName(filePath);
+    }
 
-        public static void Fatal(string                    msg,
-                                 [CallerMemberName] string mname = "",
-                                 [CallerFilePath]   string fpath = "",
-                                 [CallerLineNumber] int    lnb   = 0)
-        {
-            Log.Fatal(ExtraAnnotations
-                          ? $"[{fpath.Substring(fpath.IndexOf("FFXCutscene", StringComparison.Ordinal))}:{lnb}] {mname}: {msg}"
-                          : msg);
-        }
+    public static void Fatal(string                    msg,
+                             [CallerMemberName] string mname = "",
+                             [CallerFilePath]   string fpath = "",
+                             [CallerLineNumber] int    lnb   = 0)
+    {
+        Log.Fatal($"[{TrimFilePath(fpath)}:{lnb}] {mname}: {msg}");
+    }
 
-        public static void Error(string                    msg,
-                                 [CallerMemberName] string mname = "",
-                                 [CallerFilePath]   string fpath = "",
-                                 [CallerLineNumber] int    lnb   = 0)
-        {
-            Log.Error(ExtraAnnotations
-                          ? $"[{fpath.Substring(fpath.IndexOf("FFXCutscene", StringComparison.Ordinal))}:{lnb}] {mname}: {msg}"
-                          : msg);
-        }
+    public static void Error(string                    msg,
+                             [CallerMemberName] string mname = "",
+                             [CallerFilePath]   string fpath = "",
+                             [CallerLineNumber] int    lnb   = 0)
+    {
+        Log.Error($"[{TrimFilePath(fpath)}:{lnb}] {mname}: {msg}");
+    }
 
-        public static void Warning(string                    msg,
+    public static void Warning(string                    msg,
+                               [CallerMemberName] string mname = "",
+                               [CallerFilePath]   string fpath = "",
+                               [CallerLineNumber] int    lnb   = 0)
+    {
+        Log.Warning($"[{TrimFilePath(fpath)}:{lnb}] {mname}: {msg}");
+    }
+
+    public static void Information(string                    msg,
                                    [CallerMemberName] string mname = "",
                                    [CallerFilePath]   string fpath = "",
                                    [CallerLineNumber] int    lnb   = 0)
-        {
-            Log.Warning(ExtraAnnotations
-                            ? $"[{fpath.Substring(fpath.IndexOf("FFXCutscene", StringComparison.Ordinal))}:{lnb}] {mname}: {msg}"
-                            : msg);
-        }
+    {
+        Log.Information($"[{TrimFilePath(fpath)}:{lnb}] {mname}: {msg}");
+    }
 
-        public static void Information(string                    msg,
-                                       [CallerMemberName] string mname = "",
-                                       [CallerFilePath]   string fpath = "",
-                                       [CallerLineNumber] int    lnb   = 0)
-        {
-            Log.Information(ExtraAnnotations
-                                ? $"[{fpath.Substring(fpath.IndexOf("FFXCutscene", StringComparison.Ordinal))}:{lnb}] {mname}: {msg}"
-                                : msg);
-        }
+    public static void Debug(string                    msg,
+                             [CallerMemberName] string mname = "",
+                             [CallerFilePath]   string fpath = "",
+                             [CallerLineNumber] int    lnb   = 0)
+    {
+        Log.Debug($"[{TrimFilePath(fpath)}:{lnb}] {mname}: {msg}");
+    }
 
-        public static void Debug(string                    msg,
-                                 [CallerMemberName] string mname = "",
-                                 [CallerFilePath]   string fpath = "",
-                                 [CallerLineNumber] int    lnb   = 0)
-        {
-            Log.Debug(ExtraAnnotations
-                          ? $"[{fpath.Substring(fpath.IndexOf("FFXCutscene", StringComparison.Ordinal))}:{lnb}] {mname}: {msg}"
-                          : msg);
-        }
-
-        public static void Verbose(string                    msg,
-                                   [CallerMemberName] string mname = "",
-                                   [CallerFilePath]   string fpath = "",
-                                   [CallerLineNumber] int    lnb   = 0)
-        {
-            Log.Verbose(ExtraAnnotations
-                            ? $"[{fpath.Substring(fpath.IndexOf("FFXCutscene", StringComparison.Ordinal))}:{lnb}] {mname}: {msg}"
-                            : msg);
-        }
+    public static void Verbose(string                    msg,
+                               [CallerMemberName] string mname = "",
+                               [CallerFilePath]   string fpath = "",
+                               [CallerLineNumber] int    lnb   = 0)
+    {
+        Log.Verbose($"[{TrimFilePath(fpath)}:{lnb}] {mname}: {msg}");
     }
 }

@@ -1,29 +1,21 @@
-﻿using FFX_Cutscene_Remover.ComponentUtil;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Collections.Generic;
-using FFXCutsceneRemover.Logging;
+﻿namespace FFXCutsceneRemover;
 
-namespace FFXCutsceneRemover
+class AuronTransition : Transition
 {
-    class AuronTransition : Transition
+    public override void Execute(string defaultDescription = "")
     {
-        public override void Execute(string defaultDescription = "")
+        if (MemoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
         {
-            if (base.memoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
-            {
-                base.Execute();
+            base.Execute();
 
-                BaseCutsceneValue = base.memoryWatchers.EventFileStart.Current;
-                Stage = 1;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
+            Stage = 1;
 
-            }
-            else if (base.memoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x4233) && Stage == 1)
-            {
-                WriteValue<int>(base.memoryWatchers.AuronTransition, BaseCutsceneValue + 0x42EE);
-                Stage += 1;
-            }
+        }
+        else if (MemoryWatchers.AuronTransition.Current == (BaseCutsceneValue + 0x4233) && Stage == 1)
+        {
+            WriteValue<int>(MemoryWatchers.AuronTransition, BaseCutsceneValue + 0x42EE);
+            Stage += 1;
         }
     }
 }
