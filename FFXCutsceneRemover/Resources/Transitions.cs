@@ -987,7 +987,7 @@ static class Transitions
             // END OF ZANARKAND
             // START OF SIN
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 211 && MemoryWatchers.Storyline.Current == 2900 && Math.Abs(MemoryWatchers.XCoordinate.Current - (-9.918f)) < 0.5f; },
+            () => { return MemoryWatchers.RoomNumber.Current == 211 && MemoryWatchers.Storyline.Current == 2900 && Math.Abs(MemoryWatchers.XCoordinate.Current - (-9.918f)) < 0.5f && MemoryWatchers.YCoordinate.Current < -30f; },
             new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, OmegaRuinsFlag = 0x01, PositionTidusAfterLoad = true, Target_x = -30.525f, Target_y = 0.0f, Target_z = 39.000f, Target_rot = -0.866f, Target_var1 = 82, Description = "Yuna/Kimahri talk about defeating Sin"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 208 && MemoryWatchers.Storyline.Current == 2920 && MemoryWatchers.CutsceneAlt.Current == 91; }, 
