@@ -1145,7 +1145,32 @@ public class Transition
                     formation = SwapCharacterWithPosition(formation, initialPosition3, 2);
                     break;
             }
+            RemoveDuplicates(formation);
             WriteBytes(MemoryWatchers.Formation, formation);
+        }
+    }
+
+    private void RemoveDuplicates(byte[] formation)
+    {
+        bool[] characterPresent = new bool[81];
+
+        for (int i = 0; i < formation.Length; i++)
+        {
+            byte character = formation[i];
+
+            if (character == 0xFF)
+            {
+                continue;
+            }
+
+            if (!characterPresent[character])
+            {
+                characterPresent[character] = true;
+            }
+            else
+            {
+                formation[i] = 0xFF;
+            }
         }
     }
 
@@ -1199,7 +1224,7 @@ public class Transition
 
     public byte[] AddCharacter(byte[] formation, byte Character)
     {
-        if (Array.IndexOf(formation,0x01) == -1)
+        if (Array.IndexOf(formation, Character) == -1)
         {
             int Position = GetFirstEmptyReservePosition(formation);
 
