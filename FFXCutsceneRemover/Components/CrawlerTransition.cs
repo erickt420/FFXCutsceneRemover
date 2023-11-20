@@ -63,9 +63,6 @@ class CrawlerTransition : Transition
             {
                 process.Suspend();
 
-                Transition FormationSwitch = new Transition { ForceLoad = false, ConsoleOutput = false, FormationSwitch = Transition.formations.PostCrawler, Description = "Fix party after Crawler" };
-                FormationSwitch.Execute();
-
                 Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
                 ExitMenu.Execute();
 

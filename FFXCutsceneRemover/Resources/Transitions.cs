@@ -987,7 +987,7 @@ static class Transitions
             // END OF ZANARKAND
             // START OF SIN
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 211 && MemoryWatchers.Storyline.Current == 2900 && Math.Abs(MemoryWatchers.XCoordinate.Current - (-9.918f)) < 0.5f; },
+            () => { return MemoryWatchers.RoomNumber.Current == 211 && MemoryWatchers.Storyline.Current == 2900 && Math.Abs(MemoryWatchers.XCoordinate.Current - (-9.918f)) < 0.5f && MemoryWatchers.YCoordinate.Current < -30f; },
             new Transition { Storyline = 2915, SpawnPoint = 7, AirshipDestinations = 2048, OmegaRuinsFlag = 0x01, PositionTidusAfterLoad = true, Target_x = -30.525f, Target_y = 0.0f, Target_z = 39.000f, Target_rot = -0.866f, Target_var1 = 82, Description = "Yuna/Kimahri talk about defeating Sin"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 208 && MemoryWatchers.Storyline.Current == 2920 && MemoryWatchers.CutsceneAlt.Current == 91; }, 
@@ -1072,7 +1072,7 @@ static class Transitions
             new Transition { RoomNumber = 248, Storyline = 1470, SpawnPoint = 2, PositionTidusAfterLoad = true, Target_x = -12.163f, Target_y = 0.816f, Target_z = 34.410f, Target_rot = -1.454f, Target_var1 = 135, Description = "Spherimorph", AuronOverdrives = 49 } },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 16000 && MemoryWatchers.Storyline.Current == 1485; }, 
-            new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, Description = "Crawler"} },
+            new Transition { RoomNumber = 192, Storyline = 1504, SpawnPoint = 1, TargetFramerate = 2, MenuCleanup = true, AddRewardItems = true, FormationSwitch = Transition.formations.PostCrawler, Description = "Crawler"} },
         { 
             () => { return MemoryWatchers.HpEnemyA.Current == 1200 && MemoryWatchers.RoomNumber.Current == 102 && MemoryWatchers.Storyline.Current == 1570; }, 
             new Transition { RoomNumber = 54, Storyline = 1600, SpawnPoint = 0, Description = "Wendigo"} }, // HP Value is the Guard
