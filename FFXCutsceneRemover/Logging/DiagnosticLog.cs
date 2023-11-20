@@ -21,7 +21,7 @@ public static class DiagnosticLog
         Log.Logger = new LoggerConfiguration().
                      MinimumLevel.Debug().
                      WriteTo.Console(LogEventLevel.Information).
-                     WriteTo.File(Path.Combine(rootPath, "debug.log"),
+                     WriteTo.File(Path.Combine(rootPath, "csr-log.log"),
                                   LogEventLevel.Debug).
                      CreateLogger();
     }
