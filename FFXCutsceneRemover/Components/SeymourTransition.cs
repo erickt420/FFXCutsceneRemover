@@ -27,7 +27,6 @@ class SeymourTransition : Transition
         {
             process.Suspend();
 
-            //WriteValue<int>(MemoryWatchers.SeymourTransition, BaseCutsceneValue + 0x75DF);
             WriteValue<byte>(MemoryWatchers.CutsceneTiming, 0);
 
             formation = process.ReadBytes(MemoryWatchers.Formation.Address, 7);
@@ -43,6 +42,7 @@ class SeymourTransition : Transition
                 ScriptedBattleVar4 = 0x00000000,
                 EncounterTrigger = 2,
                 EnableShiva = 0x11,
+                Storyline = 1540,
                 Description = "Seymour",
                 ForceLoad = false
             }.Execute();

@@ -818,10 +818,10 @@ static class Transitions
         //{ () => { return MemoryWatchers.RoomNumber.Current == 80 && MemoryWatchers.Storyline.Current == 1540; },
         //  SeymourTransition},
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 80 && MemoryWatchers.Storyline.Current == 1530 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x20000; }, 
+            () => { return MemoryWatchers.RoomNumber.Current == 80 && MemoryWatchers.Storyline.Current == 1540 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x20000; }, 
             new Transition { MenuTriggerValue = 0x4008000B, ForceLoad = false, Description = "Naming Shiva"}},
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 80 && MemoryWatchers.Storyline.Current == 1530 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x4000; },
+            () => { return MemoryWatchers.RoomNumber.Current == 80 && MemoryWatchers.Storyline.Current == 1540 && MemoryWatchers.Menu.Current == 1 && MemoryWatchers.MenuValue1.Current == 0x4000; },
             new Transition { ConsoleOutput = false, Storyline = 1545, PositionTidusAfterLoad = true, Target_x = 1.470f, Target_y = 0.0f, Target_z = 0.388f, Target_rot = -0.119f, Target_var1 = 53}},
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 239 && MemoryWatchers.Storyline.Current == 1545; }, 
