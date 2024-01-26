@@ -1,21 +1,28 @@
-﻿using System.Diagnostics;
+﻿using FFXCutsceneRemover.ComponentUtil;
+using System.Diagnostics;
 
 namespace FFXCutsceneRemover;
 
 class KilikaPrayTransition : Transition
 {
+    byte dialogBoxIndex = 1;
+    int dialogBoxStructSize = 312;
+
     public override void Execute(string defaultDescription = "")
     {
         Process process = MemoryWatchers.Process;
 
-        if (MemoryWatchers.NPCLastInteraction.Current == 2 && MemoryWatchers.DialogueBoxOpen.Current == 1 && Stage == 0)
+        byte[] dialogBoxStruct = process.ReadBytes(MemoryWatchers.DialogueBoxStructs.Address + dialogBoxIndex * dialogBoxStructSize, dialogBoxStructSize);
+
+        byte dialogBoxStatus = dialogBoxStruct[0x01];
+        byte dialogBoxSelection = dialogBoxStruct[0x18];
+
+        // Selection is unimportant so just check a selection has been made
+        if (dialogBoxStatus == 0x02)
         {
-            Stage += 1;
-        }
-        else if (MemoryWatchers.NPCLastInteraction.Current == 2 && MemoryWatchers.DialogueBoxOpen.Current == 0 && Stage == 1)
-        {
+            process.Suspend();
             new Transition { RoomNumber = 96, Storyline = 335, SpawnPoint = 0, Description = "Pray or Stand and Watch", PositionTidusAfterLoad = true, Target_x = -17.879f, Target_z = 43.657f, Target_var1 = 74 }.Execute();
-            Stage += 1;
+            process.Resume();
         }
     }
 }

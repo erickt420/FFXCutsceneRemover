@@ -53,6 +53,7 @@ public static class MemoryWatchers
     public static MemoryWatcher<byte> DialogueBoxOpen;
     public static MemoryWatcher<byte> DialogueOption_Gui;
     public static MemoryWatcher<byte> DialogueBoxOpen_Gui;
+    public static MemoryWatcher<byte> DialogueBoxStructs;
     public static MemoryWatcher<byte> PlayerTurn;
     public static MemoryWatcher<int> FrameCounterFromLoad;
 
@@ -353,6 +354,7 @@ public static class MemoryWatchers
         DialogueBoxOpen = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen);
         DialogueOption_Gui = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption_Gui);
         DialogueBoxOpen_Gui = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen_Gui);
+        DialogueBoxStructs = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxStructs);
         PlayerTurn = GetMemoryWatcher<byte>(MemoryLocations.PlayerTurn);
         FrameCounterFromLoad = GetMemoryWatcher<int>(MemoryLocations.FrameCounterFromLoad);
 
