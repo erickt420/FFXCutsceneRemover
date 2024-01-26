@@ -13,6 +13,7 @@ static class Transitions
     static readonly EchuillesTransition EchuillesTransition = new EchuillesTransition { ForceLoad = false, Description = "Echuilles", Suspendable = false, Repeatable = true };
     static readonly GuiTransition GuiTransition = new GuiTransition { ForceLoad = false, Description = "Sinspawn Gui", Suspendable = false, Repeatable = true };
     static readonly FarplaneTransition FarplaneTransition = new FarplaneTransition { ForceLoad = false, Description = "Farplane", Suspendable = false, Repeatable = true };
+    static readonly TromellTransition TromellTransition = new TromellTransition { ForceLoad = false, Description = "Tromell leads Yuna away", Suspendable = false, Repeatable = true };
     static readonly SeymourTransition SeymourTransition = new SeymourTransition { ForceLoad = false, Description = "Pre-Seymour", FormationSwitch = Transition.formations.PreSeymour, Suspendable = false, Repeatable = true };
     static readonly UnderLakeTransition UnderLakeTransition = new UnderLakeTransition { ForceLoad = false, Description = "Under Macalania Lake", Suspendable = false, Repeatable = true };
     static readonly BikanelTransition BikanelTransition = new BikanelTransition { ForceLoad = false, Description = "Bikanel Desert", Suspendable = false, Repeatable = true };
@@ -806,7 +807,13 @@ static class Transitions
             new SpherimorphTransition {ForceLoad = false , Description = "Spherimorph", Suspendable = false, Repeatable = true} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 164 && MemoryWatchers.Storyline.Current == 1470; },
-            new TromellTransition {ForceLoad = false , Description = "Tromell leads Yuna away", Suspendable = false, Repeatable = true} },
+            TromellTransition },
+        {
+            () => { return MemoryWatchers.RoomNumber.Current == 221 && MemoryWatchers.Storyline.Current == 1470; },
+            TromellTransition },
+        {
+            () => { return MemoryWatchers.RoomNumber.Current == 215 && MemoryWatchers.Storyline.Current == 1470; },
+            TromellTransition },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 102 && MemoryWatchers.Storyline.Current == 1485; }, 
             new CrawlerTransition {ForceLoad = false, Description = "Pre Crawler", Suspendable = false, Repeatable = true} },

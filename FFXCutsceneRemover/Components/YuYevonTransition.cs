@@ -143,31 +143,24 @@ class YuYevonTransition : Transition
             base.Execute();
             BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
             Stage += 1;
-                
         }
-        else if (MemoryWatchers.AeonTransition.Current >= (BaseCutsceneValue + 0x69BD) && Stage == 1) // 0x68A4
+        else if (MemoryWatchers.AeonTransition.Current >= (BaseCutsceneValue + 0x69BD) && Stage == 1)
         {
-            WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + 0x6A9F); // 0x6A90
-
+            WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + 0x6A9F);
             Stage += 1;
         }
-        else if (activeAeon != "")
+        else if (activeAeon != "" && Stage == 2)
         {
-            if (MemoryWatchers.HpEnemyA.Current == 0 && MemoryWatchers.HpEnemyA.Old != 0)
+            if (MemoryWatchers.AeonTransition.Current == BaseCutsceneValue + AeonOffsets[activeAeon]["DeathOffset"])
             {
                 DiagnosticLog.Information(activeAeon + " Dead");
-                Stage += 1;
-            }
-            else if (Stage == 3 && MemoryWatchers.AeonTransition.Current == BaseCutsceneValue + AeonOffsets[activeAeon]["DeathOffset"])
-            {
                 WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + AeonOffsets[activeAeon]["NextSummonOffset"]);
                 activeAeon = "";
-                Stage -= 1;
             }
         }
         else if (MemoryWatchers.AeonTransition.Current == (BaseCutsceneValue + 0x7B30))
         {
-            WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + 0x86D0); // 0x85EA
+            WriteValue<int>(MemoryWatchers.AeonTransition, BaseCutsceneValue + 0x86D0);
             WriteValue<short>(MemoryWatchers.Storyline, 3380);
         }
     }
