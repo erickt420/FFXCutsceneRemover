@@ -16,29 +16,49 @@ class BrotherhoodTransition : Transition
         base.Execute(); // Execute the cutscene transition first (AreaID + Cutscene + SpawnPoint + EnableYuna + EnableLulu)
         int baseAddress = MemoryWatchers.GetBaseAddress();
 
-        MemoryWatcher<byte> unequipLongsword = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD30F32));
+        int equipmentStructRelativeOffset = 0xD30F2C;
+        byte equipmentStructSizeBytes = 22;
+        byte equipmentEquippedFlagOffset = 0x06;
+
+        int characterDataStructRelativeOffset = 0xD3205C;
+        byte characterDataStructSizeBytes = 148;
+        byte equippedWeaponIndexOffset = 0x2D;
+        byte equippedArmorIndexOffset = 0x2E;
+
+        byte equipmentIndex;
+        byte characterIndex;
+
+        equipmentIndex = 0;
+        MemoryWatcher<byte> unequipLongsword = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + equipmentEquippedFlagOffset));
         WriteValue<byte>(unequipLongsword, 0xFF);
 
-        MemoryWatcher<byte> addYunaStaff = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD30F5B));
-        WriteValue<byte>(addYunaStaff, 0x0);
+        equipmentIndex = 2;
+        MemoryWatcher<byte> addYunaStaff = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + 0x03));
+        WriteValue<byte>(addYunaStaff, 0x00);
 
-        MemoryWatcher<byte> addYunaRing = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD30F71));
-        WriteValue<byte>(addYunaRing, 0x0);
+        equipmentIndex = 3;
+        MemoryWatcher<byte> addYunaRing = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + 0x03));
+        WriteValue<byte>(addYunaRing, 0x00);
 
-        MemoryWatcher<byte> addLuluMoogle = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD30FDF));
-        WriteValue<byte>(addLuluMoogle, 0x0);
+        equipmentIndex = 8;
+        MemoryWatcher<byte> addLuluMoogle = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + 0x03));
+        WriteValue<byte>(addLuluMoogle, 0x00);
 
-        MemoryWatcher<byte> addLuluBangle = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD30FF5));
-        WriteValue<byte>(addLuluBangle, 0x0);
+        equipmentIndex = 9;
+        MemoryWatcher<byte> addLuluBangle = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + 0x03));
+        WriteValue<byte>(addLuluBangle, 0x00);
 
-        MemoryWatcher<byte> addBrotherhood = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3121B));
-        WriteValue<byte>(addBrotherhood, 0x9);
+        equipmentIndex = 34;
+        MemoryWatcher<byte> addBrotherhood = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + 0x03));
+        WriteValue<byte>(addBrotherhood, 0x09);
 
         // By triangle I mean the small triangle that appears in menus to show what item is equipped
-        MemoryWatcher<byte> equipBrotherhoodTriangle = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD3121E));
-        WriteValue<byte>(equipBrotherhoodTriangle, 0x0);
+        equipmentIndex = 34;
+        MemoryWatcher<byte> equipBrotherhoodTriangle = new MemoryWatcher<byte>(new IntPtr(baseAddress + equipmentStructRelativeOffset + equipmentStructSizeBytes * equipmentIndex + equipmentEquippedFlagOffset));
+        WriteValue<byte>(equipBrotherhoodTriangle, 0x00);
 
-        MemoryWatcher<byte> equipBrotherhood = new MemoryWatcher<byte>(new IntPtr(baseAddress + 0xD32089));
+        characterIndex = 0;
+        MemoryWatcher<byte> equipBrotherhood = new MemoryWatcher<byte>(new IntPtr(baseAddress + characterDataStructRelativeOffset + characterDataStructSizeBytes * characterIndex + equippedWeaponIndexOffset));
         WriteValue<byte>(equipBrotherhood, 0x22);
 
         // Adding the map to the first empty slot in the item menu
