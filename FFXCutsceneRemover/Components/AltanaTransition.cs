@@ -24,9 +24,9 @@ class AltanaTransition : Transition
                 Stage += 1;
 
             }
-            else if (MemoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x69) && Stage == 1) // CC
+            else if (MemoryWatchers.AltanaTransition.Current == (BaseCutsceneValue + 0x69) && Stage == 1)
             {
-                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0x307);//
+                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0x307);
 
                 formation = process.ReadBytes(MemoryWatchers.Formation.Address, 3);
 
@@ -51,7 +51,7 @@ class AltanaTransition : Transition
             }
             else if (MemoryWatchers.BattleState.Current == 522 && Stage == 7)
             {
-                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0xA7D);// 
+                WriteValue<int>(MemoryWatchers.AltanaTransition, BaseCutsceneValue + 0xA7D);
                 Stage = 99;
             }
             else if (MemoryWatchers.BattleState.Current == 522 && Stage == 5)

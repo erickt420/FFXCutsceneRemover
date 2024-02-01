@@ -256,38 +256,19 @@ public static class MemoryWatchers
 
     // Battle Rewards
     public static MemoryWatcher<int> GilBattleRewards;
+    public static MemoryWatcher<int> GilRewardCounter;
     public static MemoryWatcher<byte> BattleRewardItemCount;
     public static MemoryWatcher<short> BattleRewardItem1;
-    public static MemoryWatcher<short> BattleRewardItem2;
-    public static MemoryWatcher<short> BattleRewardItem3;
-    public static MemoryWatcher<short> BattleRewardItem4;
-    public static MemoryWatcher<short> BattleRewardItem5;
-    public static MemoryWatcher<short> BattleRewardItem6;
-    public static MemoryWatcher<short> BattleRewardItem7;
-    public static MemoryWatcher<short> BattleRewardItem8;
     public static MemoryWatcher<byte> BattleRewardItemQty1;
-    public static MemoryWatcher<byte> BattleRewardItemQty2;
-    public static MemoryWatcher<byte> BattleRewardItemQty3;
-    public static MemoryWatcher<byte> BattleRewardItemQty4;
-    public static MemoryWatcher<byte> BattleRewardItemQty5;
-    public static MemoryWatcher<byte> BattleRewardItemQty6;
-    public static MemoryWatcher<byte> BattleRewardItemQty7;
-    public static MemoryWatcher<byte> BattleRewardItemQty8;
     public static MemoryWatcher<byte> BattleRewardEquipCount;
     public static MemoryWatcher<byte> BattleRewardEquip1;
-    public static MemoryWatcher<byte> BattleRewardEquip2;
-    public static MemoryWatcher<byte> BattleRewardEquip3;
-    public static MemoryWatcher<byte> BattleRewardEquip4;
-    public static MemoryWatcher<byte> BattleRewardEquip5;
-    public static MemoryWatcher<byte> BattleRewardEquip6;
-    public static MemoryWatcher<byte> BattleRewardEquip7;
-    public static MemoryWatcher<byte> BattleRewardEquip8;
 
     // Items
     public static MemoryWatcher<byte> ItemsStart;
     public static MemoryWatcher<byte> ItemsQtyStart;
 
     // AP
+    public static MemoryWatcher<int> CharacterAPRewards;
     public static MemoryWatcher<byte> CharacterAPFlags;
 
     // Menu Values
@@ -551,38 +532,19 @@ public static class MemoryWatchers
 
         // Battle Rewards
         GilBattleRewards = GetMemoryWatcher<int>(MemoryLocations.GilBattleRewards);
+        GilRewardCounter = GetMemoryWatcher<int>(MemoryLocations.GilRewardCounter);
         BattleRewardItemCount = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemCount);
         BattleRewardItem1 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem1);
-        BattleRewardItem2 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem2);
-        BattleRewardItem3 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem3);
-        BattleRewardItem4 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem4);
-        BattleRewardItem5 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem5);
-        BattleRewardItem6 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem6);
-        BattleRewardItem7 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem7);
-        BattleRewardItem8 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem8);
         BattleRewardItemQty1 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty1);
-        BattleRewardItemQty2 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty2);
-        BattleRewardItemQty3 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty3);
-        BattleRewardItemQty4 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty4);
-        BattleRewardItemQty5 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty5);
-        BattleRewardItemQty6 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty6);
-        BattleRewardItemQty7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty7);
-        BattleRewardItemQty8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty8);
         BattleRewardEquipCount = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquipCount);
         BattleRewardEquip1 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip1);
-        BattleRewardEquip2 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip2);
-        BattleRewardEquip3 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip3);
-        BattleRewardEquip4 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip4);
-        BattleRewardEquip5 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip5);
-        BattleRewardEquip6 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip6);
-        BattleRewardEquip7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip7);
-        BattleRewardEquip8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip8);
 
         //Items
         ItemsStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsStart);
         ItemsQtyStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsQtyStart);
 
         // AP
+        CharacterAPRewards = GetMemoryWatcher<int>(MemoryLocations.CharacterAPRewards);
         CharacterAPFlags = GetMemoryWatcher<byte>(MemoryLocations.CharacterAPFlags);
 
         // Menu Values

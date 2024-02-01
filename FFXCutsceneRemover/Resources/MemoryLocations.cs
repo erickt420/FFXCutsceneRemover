@@ -8,7 +8,7 @@
  *      new MemoryLocation("Example", 0x00F2FD00, { 0x124, 0xD24, ... }); */
 static class MemoryLocations
 {
-    public static MemoryLocation Language = new MemoryLocation("Language", 0x8DED48, 0x04);
+    public static MemoryLocation Language            = new MemoryLocation("Language", 0x8DED48, 0x04);
 
     public static MemoryLocation RoomNumber          = new MemoryLocation("RoomNumber", 0xD2CA90);
     public static MemoryLocation Storyline           = new MemoryLocation("Storyline", 0xD2D67C);
@@ -37,8 +37,9 @@ static class MemoryLocations
     public static MemoryLocation AirshipDestinations = new MemoryLocation("AirshipDestinations", 0xD2D710);
     public static MemoryLocation AuronOverdrives     = new MemoryLocation("AuronOverdrives", 0xD307FC);
     public static MemoryLocation Gil                 = new MemoryLocation("Gil", 0xD307D8);
-    //This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
-    public static MemoryLocation TargetFramerate = new MemoryLocation("TargetFramerate", 0x830E88);
+
+    // This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
+    public static MemoryLocation TargetFramerate     = new MemoryLocation("TargetFramerate", 0x830E88);
 
     public static MemoryLocation PlayerTurn           = new MemoryLocation("PlayerTurn", 0xF3F77B);
     public static MemoryLocation FrameCounterFromLoad = new MemoryLocation("FrameCounterFromLoad", 0xF25D54);
@@ -261,38 +262,19 @@ static class MemoryLocations
 
     // Battle Rewards
     public static MemoryLocation GilBattleRewards       = new MemoryLocation("GilBattleRewards", 0x1F10F6C);
+    public static MemoryLocation GilRewardCounter       = new MemoryLocation("GilRewardCounter", 0x1469ED4);
     public static MemoryLocation BattleRewardItemCount  = new MemoryLocation("BattleRewardItemCount", 0x1F10F70);
     public static MemoryLocation BattleRewardItem1      = new MemoryLocation("BattleRewardItem1", 0x1F10F74);
-    public static MemoryLocation BattleRewardItem2      = new MemoryLocation("BattleRewardItem2", 0x1F10F76);
-    public static MemoryLocation BattleRewardItem3      = new MemoryLocation("BattleRewardItem3", 0x1F10F78);
-    public static MemoryLocation BattleRewardItem4      = new MemoryLocation("BattleRewardItem4", 0x1F10F7A);
-    public static MemoryLocation BattleRewardItem5      = new MemoryLocation("BattleRewardItem5", 0x1F10F7C);
-    public static MemoryLocation BattleRewardItem6      = new MemoryLocation("BattleRewardItem6", 0x1F10F7E);
-    public static MemoryLocation BattleRewardItem7      = new MemoryLocation("BattleRewardItem7", 0x1F10F80);
-    public static MemoryLocation BattleRewardItem8      = new MemoryLocation("BattleRewardItem8", 0x1F10F82);
     public static MemoryLocation BattleRewardItemQty1   = new MemoryLocation("BattleRewardItemQty1", 0x1F10F84);
-    public static MemoryLocation BattleRewardItemQty2   = new MemoryLocation("BattleRewardItemQty2", 0x1F10F85);
-    public static MemoryLocation BattleRewardItemQty3   = new MemoryLocation("BattleRewardItemQty3", 0x1F10F86);
-    public static MemoryLocation BattleRewardItemQty4   = new MemoryLocation("BattleRewardItemQty4", 0x1F10F87);
-    public static MemoryLocation BattleRewardItemQty5   = new MemoryLocation("BattleRewardItemQty5", 0x1F10F88);
-    public static MemoryLocation BattleRewardItemQty6   = new MemoryLocation("BattleRewardItemQty6", 0x1F10F89);
-    public static MemoryLocation BattleRewardItemQty7   = new MemoryLocation("BattleRewardItemQty7", 0x1F10F8A);
-    public static MemoryLocation BattleRewardItemQty8   = new MemoryLocation("BattleRewardItemQty8", 0x1F10F8B);
     public static MemoryLocation BattleRewardEquipCount = new MemoryLocation("BattleRewardItemCount", 0x1F10F72);
     public static MemoryLocation BattleRewardEquip1     = new MemoryLocation("BattleRewardEquip1", 0x1F10F9E);
-    public static MemoryLocation BattleRewardEquip2     = new MemoryLocation("BattleRewardEquip2", 0x1F10FC0);
-    public static MemoryLocation BattleRewardEquip3     = new MemoryLocation("BattleRewardEquip3", 0x1F10FE2);
-    public static MemoryLocation BattleRewardEquip4     = new MemoryLocation("BattleRewardEquip4", 0x1F11004);
-    public static MemoryLocation BattleRewardEquip5     = new MemoryLocation("BattleRewardEquip5", 0x1F11026);
-    public static MemoryLocation BattleRewardEquip6     = new MemoryLocation("BattleRewardEquip6", 0x1F11048);
-    public static MemoryLocation BattleRewardEquip7     = new MemoryLocation("BattleRewardEquip7", 0x1F1106A);
-    public static MemoryLocation BattleRewardEquip8     = new MemoryLocation("BattleRewardEquip8", 0x1F1108C);
 
     // Items
     public static MemoryLocation ItemsStart    = new MemoryLocation("ItemsStart", 0xD3095C);
     public static MemoryLocation ItemsQtyStart = new MemoryLocation("ItemsQtyStart", 0xD30B5C);
 
     // AP
+    public static MemoryLocation CharacterAPRewards = new MemoryLocation("CharacterAPRewards", 0x1F10F20);
     public static MemoryLocation CharacterAPFlags = new MemoryLocation("CharacterAPFlags", 0x1F10EC4);
 
     // Menu Trigger

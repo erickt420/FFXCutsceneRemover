@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 
 using FFXCutsceneRemover.ComponentUtil;
 
@@ -29,16 +30,15 @@ class FluxTransition : Transition
             WriteValue<int>(MemoryWatchers.FluxTransition, BaseCutsceneValue + 0x6E23);
             Stage += 1;
         }
-        else if (MemoryWatchers.Gil.Current > MemoryWatchers.Gil.Old && Stage == 3)
+        else if (MemoryWatchers.GilRewardCounter.Current > 0 && Stage == 3)
         {
             Stage += 1;
         }
-        else if (MemoryWatchers.Gil.Current == MemoryWatchers.Gil.Old && Stage == 4)
+        else if (MemoryWatchers.GilRewardCounter.Current == 0 && Stage == 4)
         {
             process.Suspend();
 
-            Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
-            ExitMenu.Execute();
+            new Transition { MenuCleanup = true, AddRewardItems = true, Description = "Exit Menu", ForceLoad = false }.Execute();
 
             Stage += 1;
 
