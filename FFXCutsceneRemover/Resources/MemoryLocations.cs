@@ -45,11 +45,6 @@ static class MemoryLocations
 
     // Dialogue
     public static MemoryLocation Dialogue1           = new MemoryLocation("Dialogue1", 0xF25A80);
-    public static MemoryLocation DialogueOption      = new MemoryLocation("DialogueOption", 0x146780A);
-    public static MemoryLocation DialogueBoxOpen     = new MemoryLocation("DialogueBoxOpen", 0x1465CC2);
-    public static MemoryLocation DialogueOption_Gui  = new MemoryLocation("DialogueOption_Gui", 0x1467942);
-    public static MemoryLocation DialogueBoxOpen_Gui = new MemoryLocation("DialogueBoxOpen_Gui", 0x1465CDE);
-
     public static MemoryLocation DialogueBoxStructs  = new MemoryLocation("DialogueBoxStructs", 0x14676D0);
 
     // Deep Pointers

@@ -6,29 +6,24 @@ namespace FFXCutsceneRemover;
 
 class ShoopufTransition : Transition
 {
+    byte dialogBoxIndex = 1;
+    int dialogBoxStructSize = 312;
+
     public override void Execute(string defaultDescription = "")
     {
         Process process = MemoryWatchers.Process;
 
-        if (MemoryWatchers.Dialogue1.Current == 2 && MemoryWatchers.DialogueBoxOpen.Current == 1 && Stage == 0)
-        {
-            base.Execute();
-            Stage += 1;
+        byte[] dialogBoxStruct = process.ReadBytes(MemoryWatchers.DialogueBoxStructs.Address + dialogBoxIndex * dialogBoxStructSize, dialogBoxStructSize);
 
-        }
-        else if (MemoryWatchers.Dialogue1.Current == 2 && MemoryWatchers.DialogueBoxOpen.Current == 0 && MemoryWatchers.DialogueOption.Current == 1 && Stage == 1)
+        byte dialogBoxStatus = dialogBoxStruct[0x01];
+        byte dialogBoxSelection = dialogBoxStruct[0x18];
+
+        // Check for selection made and the first item has been selected
+        if (MemoryWatchers.Dialogue1.Current == 2 && dialogBoxStatus == 0x02 && dialogBoxSelection == 0x01)
         {
             process.Suspend();
-
             new Transition { RoomNumber = 99, Description = "All Aboards!" }.Execute();
-
-            Stage += 1;
-
             process.Resume();
-        }
-        else if (MemoryWatchers.Dialogue1.Current == 2 && MemoryWatchers.DialogueBoxOpen.Current == 0 && MemoryWatchers.DialogueOption.Current == 1 && Stage == 1)
-        {
-            Stage = 0;
         }
     }
 }

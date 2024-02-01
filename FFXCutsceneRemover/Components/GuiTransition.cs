@@ -11,19 +11,19 @@ class GuiTransition : Transition
 
     static private List<short> CutsceneAltList2 = new List<short>(new short[] { 4449, 4450 });
 
+    byte dialogBoxIndex = 2;
+    int dialogBoxStructSize = 312;
+
     public override void Execute(string defaultDescription = "")
     {
         Process process = MemoryWatchers.Process;
 
-        if (MemoryWatchers.Dialogue1.Current == 95 && MemoryWatchers.DialogueBoxOpen_Gui.Current == 1 && Stage == 0)
-        {
-            Stage += 1;
-        }
-        else if (MemoryWatchers.DialogueOption_Gui.Current == 0 && MemoryWatchers.DialogueBoxOpen_Gui.Current == 0 && Stage == 1)
-        {
-            Stage -= 1;
-        }
-        else if (MemoryWatchers.DialogueOption_Gui.Current == 1 && MemoryWatchers.DialogueBoxOpen_Gui.Current == 0 && Stage == 1)
+        byte[] dialogBoxStruct = process.ReadBytes(MemoryWatchers.DialogueBoxStructs.Address + dialogBoxIndex * dialogBoxStructSize, dialogBoxStructSize);
+
+        byte dialogBoxStatus = dialogBoxStruct[0x01];
+        byte dialogBoxSelection = dialogBoxStruct[0x18];
+        
+        if (MemoryWatchers.Dialogue1.Current == 95 && dialogBoxStatus == 0x02 && dialogBoxSelection == 0x01 && Stage == 0)
         {
             process.Suspend();
             
@@ -49,11 +49,11 @@ class GuiTransition : Transition
 
             process.Resume();
         }
-        else if (MemoryWatchers.HpEnemyA.Current == 12000 && Stage == 2)
+        else if (MemoryWatchers.HpEnemyA.Current == 12000 && Stage == 1)
         {
             Stage += 1;
         }
-        else if (MemoryWatchers.BattleState2.Current == 0 && Stage == 3)
+        else if (MemoryWatchers.BattleState2.Current == 0 && Stage == 2)
         {
             process.Suspend();
 
@@ -80,7 +80,7 @@ class GuiTransition : Transition
 
             process.Resume();
         }
-        else if (MemoryWatchers.Menu.Current == 1 && Stage == 4)
+        else if (MemoryWatchers.Menu.Current == 1 && Stage == 3)
         {
             process.Suspend();
 
