@@ -36,9 +36,9 @@ class WendigoTransition : Transition
 
                 Stage += 1;
             }
-            else if (MemoryWatchers.WendigoTransition.Current == (BaseCutsceneValue + 0x1B7E) && MemoryWatchers.HpEnemyA.Current < 1200 && MemoryWatchers.HpEnemyA.Old == 1200 && Stage == 2) // 1200 is HP of Guado
+            else if (MemoryWatchers.WendigoTransition.Current == (BaseCutsceneValue + 0x1B7E) && MemoryWatchers.BattleState2.Current == 22 && Stage == 2) // 1200 is HP of Guado
             {
-                WriteValue<int>(MemoryWatchers.WendigoTransition, BaseCutsceneValue + 0x1E31);// 1E34
+                WriteValue<int>(MemoryWatchers.WendigoTransition, BaseCutsceneValue + 0x1E31);
                 Stage += 1;
             }
         }

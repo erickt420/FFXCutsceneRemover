@@ -49,7 +49,7 @@ class GuiTransition : Transition
 
             process.Resume();
         }
-        else if (MemoryWatchers.HpEnemyA.Current == 12000 && Stage == 1)
+        else if (MemoryWatchers.BattleState2.Current == 22 && Stage == 1)
         {
             Stage += 1;
         }

@@ -13,7 +13,6 @@ class DefenderXTransition : Transition
             base.Execute();
 
             BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
-            DiagnosticLog.Information(BaseCutsceneValue.ToString("X8"));
             Stage = 1;
 
         }
