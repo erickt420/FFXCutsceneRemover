@@ -4,10 +4,9 @@ namespace FFXCutsceneRemover;
 
 class DiveTransition : Transition
 {
-    static private List<short> CutsceneAltList = new List<short>(new short[] { 1137 });
     public override void Execute(string defaultDescription = "")
     {
-        if (Stage == 0)
+        if (MemoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
         {
             base.Execute();
 
@@ -15,10 +14,15 @@ class DiveTransition : Transition
             Stage += 1;
 
         }
-        else if (MemoryWatchers.DiveTransition.Current >= (BaseCutsceneValue + 0xA208) && Stage == 1)
+        else if (MemoryWatchers.DiveTransition3.Current == (BaseCutsceneValue + 0x2935) && Stage == 1)
         {
-            WriteValue<int>(MemoryWatchers.DiveTransition, BaseCutsceneValue + 0xA493);
-
+            WriteValue<int>(MemoryWatchers.DiveTransition, BaseCutsceneValue + 0xA468);
+            WriteValue<int>(MemoryWatchers.DiveTransition2, BaseCutsceneValue + 0x5BCF);
+            Stage += 1;
+        }
+        else if (MemoryWatchers.DiveTransition.Current == (BaseCutsceneValue + 0xA4C8) && Stage == 2)
+        {
+            WriteValue<int>(MemoryWatchers.DiveTransition, BaseCutsceneValue + 0xA4C9);
             Stage += 1;
         }
     }

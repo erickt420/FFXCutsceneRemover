@@ -72,6 +72,8 @@ public static class MemoryWatchers
     public static MemoryWatcher<int> TankerTransition;
     public static MemoryWatcher<int> InsideSinTransition;
     public static MemoryWatcher<int> DiveTransition;
+    public static MemoryWatcher<int> DiveTransition2;
+    public static MemoryWatcher<int> DiveTransition3;
     public static MemoryWatcher<int> GeosTransition;
     public static MemoryWatcher<int> KlikkTransition;
     public static MemoryWatcher<int> AlBhedBoatTransition;
@@ -81,11 +83,14 @@ public static class MemoryWatchers
     public static MemoryWatcher<int> LagoonTransition1;
     public static MemoryWatcher<int> LagoonTransition2;
     public static MemoryWatcher<int> ValeforTransition;
+    public static MemoryWatcher<int> BesaidNightTransition1;
+    public static MemoryWatcher<int> BesaidNightTransition2;
     public static MemoryWatcher<int> KimahriTransition;
     public static MemoryWatcher<int> YunaBoatTransition;
     public static MemoryWatcher<int> SinFinTransition;
     public static MemoryWatcher<int> EchuillesTransition;
     public static MemoryWatcher<int> GeneauxTransition;
+    public static MemoryWatcher<int> KilikaElevatorTransition;
     public static MemoryWatcher<int> KilikaTrialsTransition;
     public static MemoryWatcher<int> KilikaAntechamberTransition;
     public static MemoryWatcher<int> IfritTransition;
@@ -350,6 +355,8 @@ public static class MemoryWatchers
         TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
         InsideSinTransition = GetMemoryWatcher<int>(MemoryLocations.InsideSinTransition);
         DiveTransition = GetMemoryWatcher<int>(MemoryLocations.DiveTransition);
+        DiveTransition2 = GetMemoryWatcher<int>(MemoryLocations.DiveTransition2);
+        DiveTransition3 = GetMemoryWatcher<int>(MemoryLocations.DiveTransition3);
         GeosTransition = GetMemoryWatcher<int>(MemoryLocations.GeosTransition);
         KlikkTransition = GetMemoryWatcher<int>(MemoryLocations.KlikkTransition);
         AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
@@ -359,11 +366,14 @@ public static class MemoryWatchers
         LagoonTransition1 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition1);
         LagoonTransition2 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition2);
         ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
+        BesaidNightTransition1 = GetMemoryWatcher<int>(MemoryLocations.BesaidNightTransition1);
+        BesaidNightTransition2 = GetMemoryWatcher<int>(MemoryLocations.BesaidNightTransition2);
         KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
         YunaBoatTransition = GetMemoryWatcher<int>(MemoryLocations.YunaBoatTransition);
         SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
         EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
         GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
+        KilikaElevatorTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaElevatorTransition);
         KilikaTrialsTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaTrialsTransition);
         KilikaAntechamberTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaAntechamberTransition);
         IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);

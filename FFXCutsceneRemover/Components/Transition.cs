@@ -104,6 +104,8 @@ public class Transition
     public int? TankerTransition = null;
     public int? InsideSinTransition = null;
     public int? DiveTransition = null;
+    public int? DiveTransition2 = null;
+    public int? DiveTransition3 = null;
     public int? GeosTransition = null;
     public int? KlikkTransition = null;
     public int? AlBhedBoatTransition = null;
@@ -113,11 +115,14 @@ public class Transition
     public int? LagoonTransition1 = null;
     public int? LagoonTransition2 = null;
     public int? ValeforTransition = null;
+    public int? BesaidNightTransition1 = null;
+    public int? BesaidNightTransition2 = null;
     public int? KimahriTransition = null;
     public int? YunaBoatTransition = null;
     public int? SinFinTransition = null;
     public int? EchuillesTransition = null;
     public int? GeneauxTransition = null;
+    public int? KilikaElevatorTransition = null;
     public int? KilikaTrialsTransition = null;
     public int? KilikaAntechamberTransition = null;
     public int? IfritTransition = null;
@@ -318,6 +323,8 @@ public class Transition
         WriteValue(MemoryWatchers.TankerTransition, TankerTransition);
         WriteValue(MemoryWatchers.InsideSinTransition, InsideSinTransition);
         WriteValue(MemoryWatchers.DiveTransition, DiveTransition);
+        WriteValue(MemoryWatchers.DiveTransition2, DiveTransition2);
+        WriteValue(MemoryWatchers.DiveTransition3, DiveTransition3);
         WriteValue(MemoryWatchers.GeosTransition, GeosTransition);
         WriteValue(MemoryWatchers.KlikkTransition, KlikkTransition);
         WriteValue(MemoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
@@ -327,11 +334,14 @@ public class Transition
         WriteValue(MemoryWatchers.LagoonTransition1, LagoonTransition1);
         WriteValue(MemoryWatchers.LagoonTransition2, LagoonTransition2);
         WriteValue(MemoryWatchers.ValeforTransition, ValeforTransition);
+        WriteValue(MemoryWatchers.BesaidNightTransition1, BesaidNightTransition1);
+        WriteValue(MemoryWatchers.BesaidNightTransition2, BesaidNightTransition2);
         WriteValue(MemoryWatchers.KimahriTransition, KimahriTransition);
         WriteValue(MemoryWatchers.YunaBoatTransition, YunaBoatTransition);
         WriteValue(MemoryWatchers.SinFinTransition, SinFinTransition);
         WriteValue(MemoryWatchers.EchuillesTransition, EchuillesTransition);
         WriteValue(MemoryWatchers.GeneauxTransition, GeneauxTransition);
+        WriteValue(MemoryWatchers.KilikaElevatorTransition, KilikaElevatorTransition);
         WriteValue(MemoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
         WriteValue(MemoryWatchers.KilikaAntechamberTransition, KilikaAntechamberTransition);
         WriteValue(MemoryWatchers.IfritTransition, IfritTransition);

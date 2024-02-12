@@ -18,6 +18,7 @@ static class Transitions
     static readonly UnderLakeTransition UnderLakeTransition = new UnderLakeTransition { ForceLoad = false, Description = "Under Macalania Lake", Suspendable = false, Repeatable = true };
     static readonly BikanelTransition BikanelTransition = new BikanelTransition { ForceLoad = false, Description = "Bikanel Desert", Suspendable = false, Repeatable = true };
     static readonly HomeTransition HomeTransition = new HomeTransition { ForceLoad = false, Description = "Home Fights", Suspendable = false, Repeatable = true };
+    static readonly KilikaElevatorTransition KilikaElevatorTransition = new KilikaElevatorTransition { ForceLoad = false, Description = "Tidus is denied access", Suspendable = false, Repeatable = true };
 
     private static byte[] BlitzballBytes = new byte[]
     {
@@ -176,10 +177,12 @@ static class Transitions
         {
             () => { return MemoryWatchers.RoomNumber.Current == 48 && MemoryWatchers.Storyline.Current == 42; },
             new Transition { ForceLoad = false, TargetActorIDs = new short[] { 0x01 }, Target_x = 57.642f, Target_z = -480.248f, Target_var1 = 810, ConsoleOutput = false, Description = "Tidus wakes up - Reposition"} },
-        //{ () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 42; },
-        //  DiveTransition }, // Currently doesn't work because Tidus is unable to move after the skip. Need a way to change movement lock value.
-        //{ () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 44; },
-        //  DiveTransition }, //
+        {
+            () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 42; },
+            DiveTransition },
+        { 
+            () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 44; },
+            DiveTransition },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 49 && MemoryWatchers.Storyline.Current == 44; },
             GeosTransition },
@@ -244,8 +247,9 @@ static class Transitions
         {
             () => { return MemoryWatchers.RoomNumber.Current == 70 && MemoryWatchers.Storyline.Current == 116; },
             new Transition { ForceLoad = false, PositionTidusAfterLoad = true, Target_x = -184.754f, Target_y = 26.5f, Target_z = -46.699f, Target_rot = -1.821f, Target_var1 = 393, ConsoleOutput = false, Description = "Tidus wakes up in the sea - Reposition"} },
-        //{ () => { return MemoryWatchers.RoomNumber.Current == 41 && MemoryWatchers.Storyline.Current == 119; },
-        //  new LagoonTransition {ForceLoad = false, Description = "Lagoon", Suspendable = false, Repeatable = true} }, // Causes menu to be unable to open and menu crashing
+        //{ 
+        //    () => { return MemoryWatchers.RoomNumber.Current == 41 && MemoryWatchers.Storyline.Current == 119; },
+        //    new LagoonTransition {ForceLoad = false, Description = "Lagoon", Suspendable = false, Repeatable = true} }, // Causes menu to be unable to open and crashing
         {
             () => { return MemoryWatchers.RoomNumber.Current == 41 && MemoryWatchers.Storyline.Current == 119 && MemoryWatchers.CutsceneAlt.Current == 73; },
             new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
@@ -282,6 +286,9 @@ static class Transitions
         {
             () => { return MemoryWatchers.RoomNumber.Current == 83 && MemoryWatchers.Storyline.Current == 172 && MemoryWatchers.State.Current == 1; },
             new ValeforTransition {ForceLoad = false, Description = "Naming Valefor", Suspendable = false, Repeatable = true} },
+        {
+            () => { return MemoryWatchers.RoomNumber.Current == 100 && MemoryWatchers.Storyline.Current == 182; },
+            new BesaidNightTransition {ForceLoad = false, Description = "Besaid Night", Suspendable = false, Repeatable = true} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 68 && MemoryWatchers.Storyline.Current == 184; },
             new Transition { RoomNumber = 252, Storyline = 190, Description = "Tidus sleeping"} },
@@ -373,7 +380,16 @@ static class Transitions
             new KilikaPrayTransition { ForceLoad = false, Description = "Pray or Stand", Suspendable = false, Repeatable = true } },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 44 && MemoryWatchers.Storyline.Current == 335; },
-            new Transition { RoomNumber = 108, Storyline = 340, SpawnPoint = 0, Description = "Tidus is denied access" } },
+            new Transition { RoomNumber = 44, Storyline = 2875, SpawnPoint = 1, Description = "Tidus is denied access" } },
+        {
+            () => { return MemoryWatchers.RoomNumber.Current == 108 && MemoryWatchers.Storyline.Current == 2875; },
+            new Transition { RoomNumber = 108, Storyline = 340, SpawnPoint = 0, Description = "Trials Entry" } },
+        //{
+        //    () => { return MemoryWatchers.RoomNumber.Current == 44 && MemoryWatchers.Storyline.Current == 335; },
+        //    KilikaElevatorTransition },
+        //{
+        //    () => { return MemoryWatchers.RoomNumber.Current == 44 && MemoryWatchers.Storyline.Current == 338; },
+        //    KilikaElevatorTransition },
         //{ () => { return MemoryWatchers.RoomNumber.Current == 108 && MemoryWatchers.Storyline.Current == 340; },
         //  new KilikaTrialsTransition {ForceLoad = false, ConsoleOutput = false, Description = "Camera Pan", Suspendable = false, Repeatable = true} }, // Camera pan inside the trials -Doesn't work yet
         {
@@ -1056,9 +1072,9 @@ static class Transitions
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 2 && MemoryWatchers.EncounterFormationID2.Current == 1 && MemoryWatchers.RoomNumber.Current == 63 && MemoryWatchers.Storyline.Current == 55; },
             new Transition { RoomNumber = 71, Storyline = 60, Description = "Klikk"} },
-        { 
-            () => { return MemoryWatchers.RoomNumber.Current == 83 && MemoryWatchers.Storyline.Current == 172 && MemoryWatchers.State.Current == 1 && MemoryWatchers.CutsceneAlt.Current == 0; }, 
-            new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
+        //{ 
+        //    () => { return MemoryWatchers.RoomNumber.Current == 83 && MemoryWatchers.Storyline.Current == 172 && MemoryWatchers.State.Current == 1 && MemoryWatchers.CutsceneAlt.Current == 0; }, 
+        //    new Transition { RoomNumber = 68, Storyline = 184, Description = "Tidus joins the Aurochs"} },
         { 
             () => { return MemoryWatchers.EncounterMapID.Current == 11 && MemoryWatchers.EncounterFormationID2.Current == 0 && MemoryWatchers.Storyline.Current == 322; }, 
             new Transition { SpawnPoint = 1, Storyline = 326, PositionTidusAfterLoad = true, Target_x = -11.760f, Target_y = -159.978f, Target_z = 541.001f, Target_rot = 1.698f, Target_var1 = 88, MoveFrame = 5, Description = "Geneaux"} },
