@@ -63,6 +63,14 @@ static class MemoryLocations
     // Event File
     public static MemoryLocation EventFileStart = new MemoryLocation("EventFileStart", 0xF270B8);
 
+    // Magic File
+    public static MemoryLocation CurrentMagicID = new MemoryLocation("CurrentMagicID", 0x864CA0);
+    public static MemoryLocation ToBeDeletedMagicID = new MemoryLocation("ToBeDeletedMagicID", 0x864CA4);
+    public static MemoryLocation CurrentMagicHandle = new MemoryLocation("CurrentMagicHandle", 0x864CA8);
+    public static MemoryLocation ToBeDeletedMagicHandle = new MemoryLocation("ToBeDeletedMagicHandle", 0x864CAC);
+    public static MemoryLocation EffectPointer = new MemoryLocation("EffectPointer", 0xD33360);
+    public static MemoryLocation EffectStatusFlag = new MemoryLocation("EffectStatusFlag", 0xD33364);
+
     //Bespoke Transitions
     public static MemoryLocation AuronTransition             = new MemoryLocation("AuronTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
     public static MemoryLocation AmmesTransition             = new MemoryLocation("AmmesTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x4F - 0x1 - 0x9 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });

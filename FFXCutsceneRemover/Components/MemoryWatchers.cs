@@ -67,6 +67,12 @@ public static class MemoryWatchers
     public static MemoryWatcher<float> TidusRotation;
     public static MemoryWatcher<byte> DialogueFile;
     public static MemoryWatcher<byte> CutsceneTiming;
+    public static MemoryWatcher<int> CurrentMagicID;
+    public static MemoryWatcher<int> ToBeDeletedMagicID;
+    public static MemoryWatcher<int> CurrentMagicHandle;
+    public static MemoryWatcher<int> ToBeDeletedMagicHandle;
+    public static MemoryWatcher<int> EffectPointer;
+    public static MemoryWatcher<byte> EffectStatusFlag;
     public static MemoryWatcher<int> AuronTransition;
     public static MemoryWatcher<int> AmmesTransition;
     public static MemoryWatcher<int> TankerTransition;
@@ -350,6 +356,12 @@ public static class MemoryWatchers
         TidusRotation = GetMemoryWatcher<float>(MemoryLocations.TidusRotation);
         DialogueFile = GetMemoryWatcher<byte>(MemoryLocations.DialogueFile);
         CutsceneTiming = GetMemoryWatcher<byte>(MemoryLocations.CutsceneTiming);
+        CurrentMagicID = GetMemoryWatcher<int>(MemoryLocations.CurrentMagicID);
+        ToBeDeletedMagicID = GetMemoryWatcher<int>(MemoryLocations.ToBeDeletedMagicID);
+        CurrentMagicHandle = GetMemoryWatcher<int>(MemoryLocations.CurrentMagicHandle);
+        ToBeDeletedMagicHandle = GetMemoryWatcher<int>(MemoryLocations.ToBeDeletedMagicHandle);
+        EffectPointer = GetMemoryWatcher<int>(MemoryLocations.EffectPointer);
+        EffectStatusFlag = GetMemoryWatcher<byte>(MemoryLocations.EffectStatusFlag);
         AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
         AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
         TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);

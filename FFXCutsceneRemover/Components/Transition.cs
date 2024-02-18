@@ -98,6 +98,14 @@ public class Transition
     public byte[] DialogueFile = null;
     public byte? CutsceneTiming = null;
 
+    // Magic File
+    public int? CurrentMagicID = null;
+    public int? ToBeDeletedMagicID = null;
+    public int? CurrentMagicHandle = null;
+    public int? ToBeDeletedMagicHandle = null;
+    public int? EffectPointer = null;
+    public byte? EffectStatusFlag = null;
+
     // Bespoke Transitions
     public int? AuronTransition = null;
     public int? AmmesTransition = null;
@@ -318,6 +326,12 @@ public class Transition
         WriteValue(MemoryWatchers.TidusRotation, TidusRotation);
         WriteBytes(MemoryWatchers.DialogueFile, DialogueFile);
         WriteValue(MemoryWatchers.CutsceneTiming, CutsceneTiming);
+        WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicID);
+        WriteValue(MemoryWatchers.ToBeDeletedMagicID, ToBeDeletedMagicID);
+        WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicHandle);
+        WriteValue(MemoryWatchers.ToBeDeletedMagicHandle, ToBeDeletedMagicHandle);
+        WriteValue(MemoryWatchers.EffectPointer, EffectPointer);
+        WriteValue(MemoryWatchers.EffectStatusFlag, EffectStatusFlag);
         WriteValue(MemoryWatchers.AuronTransition, AuronTransition);
         WriteValue(MemoryWatchers.AmmesTransition, AmmesTransition);
         WriteValue(MemoryWatchers.TankerTransition, TankerTransition);

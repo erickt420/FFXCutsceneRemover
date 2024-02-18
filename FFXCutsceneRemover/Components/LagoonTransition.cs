@@ -17,7 +17,11 @@ class LagoonTransition : Transition
             else if (MemoryWatchers.LagoonTransition1.Current == (BaseCutsceneValue + 0x2D76) && Stage == 1)
             {
                 WriteValue<int>(MemoryWatchers.LagoonTransition1, BaseCutsceneValue + 0x2E34);
-                //WriteValue<int>(MemoryWatchers.LagoonTransition2, BaseCutsceneValue + 0x2D05);
+                Stage += 1;
+            }
+            else if (MemoryWatchers.LagoonTransition1.Current == (BaseCutsceneValue + 0x2EFF) && Stage == 2)
+            {
+                new Transition { ForceLoad = false, EffectPointer = 0, EffectStatusFlag = 0, CurrentMagicID = -1, CurrentMagicHandle = -1, Description = "Fix Crash" }.Execute();
                 Stage += 1;
             }
         }
