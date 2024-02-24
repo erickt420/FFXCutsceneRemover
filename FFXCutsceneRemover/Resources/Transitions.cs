@@ -808,7 +808,10 @@ static class Transitions
             new Transition { RoomNumber = 256, Storyline = 1340, Description = "Leaving the agency"} },
         { 
             () => { return MemoryWatchers.RoomNumber.Current == 162 && MemoryWatchers.Storyline.Current == 1350; },
-            new Transition { RoomNumber = 162, Storyline = 1375, SpawnPoint = 3, PositionTidusAfterLoad = true, KeepEncounterThreatAfterLoad = true, Target_x = -76.5f, Target_y = -24.25f, Target_z = 376.25f, Target_var1 = 3153, Description = "Yuna decides to marry Seymour"} },
+            new Transition { RoomNumber = 162, Storyline = 1375, SpawnPoint = 3, SupressAutosaveOnForceLoad = 1, SupressAutosaveCounter = 0, PositionTidusAfterLoad = true, KeepEncounterThreatAfterLoad = true, Target_x = -76.5f, Target_y = -24.25f, Target_z = 376.25f, Target_var1 = 3153, Description = "Yuna decides to marry Seymour"} },
+        {
+            () => { return MemoryWatchers.RoomNumber.Current == 162 && MemoryWatchers.Storyline.Current == 1375 && MemoryWatchers.SupressAutosaveOnForceLoad.Current == 1 && MemoryWatchers.MovementLock.Current == 0x20; },
+            new Transition { ForceLoad = false, SupressAutosaveOnForceLoad = 0, SupressAutosaveCounter = 0, Description = "Clean Up Autosave Suppession Values" , ConsoleOutput = true} },
         // END OF THUNDER PLAINS
             // START OF MACALANIA
         { 
