@@ -85,6 +85,7 @@ public static class MemoryWatchers
     public static MemoryWatcher<int> AlBhedBoatTransition;
     public static MemoryWatcher<int> UnderwaterRuinsTransition;
     public static MemoryWatcher<int> UnderwaterRuinsTransition2;
+    public static MemoryWatcher<int> UnderwaterRuinsOutsideTransition;
     public static MemoryWatcher<int> BeachTransition;
     public static MemoryWatcher<int> LagoonTransition1;
     public static MemoryWatcher<int> LagoonTransition2;
@@ -299,6 +300,10 @@ public static class MemoryWatchers
 
     public static MemoryWatcher<int> ActorArrayLength;
 
+    public static MemoryWatcher<byte> AutosaveTrigger;
+    public static MemoryWatcher<byte> SupressAutosaveOnForceLoad;
+    public static MemoryWatcher<byte> SupressAutosaveCounter;
+
     public static MemoryWatcher<byte> RNGArrayOpBytes;
 
     public static void Initialize(Process process)
@@ -374,6 +379,7 @@ public static class MemoryWatchers
         AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
         UnderwaterRuinsTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition);
         UnderwaterRuinsTransition2 = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition2);
+        UnderwaterRuinsOutsideTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsOutsideTransition);
         BeachTransition = GetMemoryWatcher<int>(MemoryLocations.BeachTransition);
         LagoonTransition1 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition1);
         LagoonTransition2 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition2);
@@ -585,6 +591,10 @@ public static class MemoryWatchers
         SpeedBoostVar1 = GetMemoryWatcher<int>(MemoryLocations.SpeedBoostVar1);
 
         ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
+
+        AutosaveTrigger = GetMemoryWatcher<byte>(MemoryLocations.AutosaveTrigger);
+        SupressAutosaveOnForceLoad = GetMemoryWatcher<byte>(MemoryLocations.SupressAutosaveOnForceLoad);
+        SupressAutosaveCounter = GetMemoryWatcher<byte>(MemoryLocations.SupressAutosaveCounter);
 
         // RNGMod
         RNGArrayOpBytes = GetMemoryWatcher<byte>(MemoryLocations.RNGArrayOpBytes);

@@ -27,6 +27,7 @@ public class Transition
     public bool RemoveSinLocation = false;
     public bool PositionPartyOffScreen = false;
     public bool PositionTidusAfterLoad = false;
+    public bool KeepEncounterThreatAfterLoad = false;
     public string Description = null;
     public int BaseCutsceneValue = 0;
     public int BaseCutsceneValue2 = 0;
@@ -119,6 +120,7 @@ public class Transition
     public int? AlBhedBoatTransition = null;
     public int? UnderwaterRuinsTransition = null;
     public int? UnderwaterRuinsTransition2 = null;
+    public int? UnderwaterRuinsOutsideTransition = null;
     public int? BeachTransition = null;
     public int? LagoonTransition1 = null;
     public int? LagoonTransition2 = null;
@@ -265,10 +267,18 @@ public class Transition
     public int? MenuValue2 = null;
     public int? MenuTriggerValue = null;
 
+    public byte? AutosaveTrigger = null;
+    public byte? SupressAutosaveOnForceLoad = null;
+    public byte? SupressAutosaveCounter = null;
+
     public byte[] RNGArrayOpBytes = null;
 
     // Bitmask Addition
     public int? AddCalmLandsBitmask = null;
+
+    // Stored Values
+    public float TotalDistanceBeforeLoad = 0.0f;
+    public float CycleDistanceBeforeLoad = 0.0f;
 
     public virtual void Execute(string defaultDescription = "")
     {
@@ -344,6 +354,7 @@ public class Transition
         WriteValue(MemoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
         WriteValue(MemoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
         WriteValue(MemoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
+        WriteValue(MemoryWatchers.UnderwaterRuinsOutsideTransition, UnderwaterRuinsOutsideTransition);
         WriteValue(MemoryWatchers.BeachTransition, BeachTransition);
         WriteValue(MemoryWatchers.LagoonTransition1, LagoonTransition1);
         WriteValue(MemoryWatchers.LagoonTransition2, LagoonTransition2);
@@ -472,6 +483,10 @@ public class Transition
         WriteValue(MemoryWatchers.MenuValue2, MenuValue2);
         WriteValue(MemoryWatchers.MenuTriggerValue, MenuTriggerValue);
 
+        WriteValue(MemoryWatchers.AutosaveTrigger, AutosaveTrigger);
+        WriteValue(MemoryWatchers.SupressAutosaveOnForceLoad, SupressAutosaveOnForceLoad);
+        WriteValue(MemoryWatchers.SupressAutosaveCounter, SupressAutosaveCounter);
+
         WriteBytes(MemoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
 
         // Update Bitmasks
@@ -533,6 +548,7 @@ public class Transition
                 MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
+            WriteValue<byte>(MemoryWatchers.EncountersActiveFlag, 0);
             SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
             SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason, also some other locations.
             process.Resume();
@@ -541,8 +557,16 @@ public class Transition
                 MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
-            WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
-            WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
+            if (KeepEncounterThreatAfterLoad)
+            {
+                WriteValue<float>(MemoryWatchers.TotalDistance, TotalDistanceBeforeLoad);
+                WriteValue<float>(MemoryWatchers.CycleDistance, CycleDistanceBeforeLoad);
+            }
+            else
+            {
+                WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
+                WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
+            }
             process.Resume();
         }
         else
@@ -560,6 +584,11 @@ public class Transition
     /* Set the force load bit. Will immediately cause a fade and load. */
     private void ForceGameLoad()
     {
+        // Store distances for random encounter chance before reloading map
+        TotalDistanceBeforeLoad = MemoryWatchers.TotalDistance.Current;
+        CycleDistanceBeforeLoad = MemoryWatchers.CycleDistance.Current;
+
+        // Trigger map reload
         WriteValue<byte>(MemoryWatchers.ForceLoad, 1);
         MemoryWatchers.ForceLoad.Update(process);
     }

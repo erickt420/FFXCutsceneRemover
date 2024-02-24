@@ -10,14 +10,14 @@ class UnderwaterRuinsTransition : Transition
             {
                 base.Execute();
 
-                BaseCutsceneValue = MemoryWatchers.UnderwaterRuinsTransition.Current;
+                BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
 
                 Stage += 1;
 
             }
-            else if (MemoryWatchers.UnderwaterRuinsTransition.Current == (BaseCutsceneValue + 0x584) && Stage == 1)
+            else if (MemoryWatchers.UnderwaterRuinsTransition.Current == BaseCutsceneValue + 0x515B && Stage == 1) //0x584
             {
-                WriteValue<int>(MemoryWatchers.UnderwaterRuinsTransition, BaseCutsceneValue + 0x636);
+                WriteValue<int>(MemoryWatchers.UnderwaterRuinsTransition, BaseCutsceneValue + 0x520D); //Possible other values 0x5167 or 0x51FB
                 Stage += 1;
             }
             else if (MemoryWatchers.Menu.Current == 0 && MemoryWatchers.Menu.Old == 1 && Stage == 2)
