@@ -567,6 +567,7 @@ public class Transition
                 WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
             }
+            WriteValue<byte>(MemoryWatchers.EncountersActiveFlag, 1);
             process.Resume();
         }
         else
