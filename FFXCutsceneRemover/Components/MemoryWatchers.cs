@@ -49,10 +49,6 @@ public static class MemoryWatchers
     public static MemoryWatcher<int> Gil;
     public static MemoryWatcher<int> TargetFramerate;
     public static MemoryWatcher<int> Dialogue1;
-    public static MemoryWatcher<byte> DialogueOption;
-    public static MemoryWatcher<byte> DialogueBoxOpen;
-    public static MemoryWatcher<byte> DialogueOption_Gui;
-    public static MemoryWatcher<byte> DialogueBoxOpen_Gui;
     public static MemoryWatcher<byte> DialogueBoxStructs;
     public static MemoryWatcher<byte> PlayerTurn;
     public static MemoryWatcher<int> FrameCounterFromLoad;
@@ -71,25 +67,37 @@ public static class MemoryWatchers
     public static MemoryWatcher<float> TidusRotation;
     public static MemoryWatcher<byte> DialogueFile;
     public static MemoryWatcher<byte> CutsceneTiming;
+    public static MemoryWatcher<int> CurrentMagicID;
+    public static MemoryWatcher<int> ToBeDeletedMagicID;
+    public static MemoryWatcher<int> CurrentMagicHandle;
+    public static MemoryWatcher<int> ToBeDeletedMagicHandle;
+    public static MemoryWatcher<int> EffectPointer;
+    public static MemoryWatcher<byte> EffectStatusFlag;
     public static MemoryWatcher<int> AuronTransition;
     public static MemoryWatcher<int> AmmesTransition;
     public static MemoryWatcher<int> TankerTransition;
     public static MemoryWatcher<int> InsideSinTransition;
     public static MemoryWatcher<int> DiveTransition;
+    public static MemoryWatcher<int> DiveTransition2;
+    public static MemoryWatcher<int> DiveTransition3;
     public static MemoryWatcher<int> GeosTransition;
     public static MemoryWatcher<int> KlikkTransition;
     public static MemoryWatcher<int> AlBhedBoatTransition;
     public static MemoryWatcher<int> UnderwaterRuinsTransition;
     public static MemoryWatcher<int> UnderwaterRuinsTransition2;
+    public static MemoryWatcher<int> UnderwaterRuinsOutsideTransition;
     public static MemoryWatcher<int> BeachTransition;
     public static MemoryWatcher<int> LagoonTransition1;
     public static MemoryWatcher<int> LagoonTransition2;
     public static MemoryWatcher<int> ValeforTransition;
+    public static MemoryWatcher<int> BesaidNightTransition1;
+    public static MemoryWatcher<int> BesaidNightTransition2;
     public static MemoryWatcher<int> KimahriTransition;
     public static MemoryWatcher<int> YunaBoatTransition;
     public static MemoryWatcher<int> SinFinTransition;
     public static MemoryWatcher<int> EchuillesTransition;
     public static MemoryWatcher<int> GeneauxTransition;
+    public static MemoryWatcher<int> KilikaElevatorTransition;
     public static MemoryWatcher<int> KilikaTrialsTransition;
     public static MemoryWatcher<int> KilikaAntechamberTransition;
     public static MemoryWatcher<int> IfritTransition;
@@ -260,38 +268,19 @@ public static class MemoryWatchers
 
     // Battle Rewards
     public static MemoryWatcher<int> GilBattleRewards;
+    public static MemoryWatcher<int> GilRewardCounter;
     public static MemoryWatcher<byte> BattleRewardItemCount;
     public static MemoryWatcher<short> BattleRewardItem1;
-    public static MemoryWatcher<short> BattleRewardItem2;
-    public static MemoryWatcher<short> BattleRewardItem3;
-    public static MemoryWatcher<short> BattleRewardItem4;
-    public static MemoryWatcher<short> BattleRewardItem5;
-    public static MemoryWatcher<short> BattleRewardItem6;
-    public static MemoryWatcher<short> BattleRewardItem7;
-    public static MemoryWatcher<short> BattleRewardItem8;
     public static MemoryWatcher<byte> BattleRewardItemQty1;
-    public static MemoryWatcher<byte> BattleRewardItemQty2;
-    public static MemoryWatcher<byte> BattleRewardItemQty3;
-    public static MemoryWatcher<byte> BattleRewardItemQty4;
-    public static MemoryWatcher<byte> BattleRewardItemQty5;
-    public static MemoryWatcher<byte> BattleRewardItemQty6;
-    public static MemoryWatcher<byte> BattleRewardItemQty7;
-    public static MemoryWatcher<byte> BattleRewardItemQty8;
     public static MemoryWatcher<byte> BattleRewardEquipCount;
     public static MemoryWatcher<byte> BattleRewardEquip1;
-    public static MemoryWatcher<byte> BattleRewardEquip2;
-    public static MemoryWatcher<byte> BattleRewardEquip3;
-    public static MemoryWatcher<byte> BattleRewardEquip4;
-    public static MemoryWatcher<byte> BattleRewardEquip5;
-    public static MemoryWatcher<byte> BattleRewardEquip6;
-    public static MemoryWatcher<byte> BattleRewardEquip7;
-    public static MemoryWatcher<byte> BattleRewardEquip8;
 
     // Items
     public static MemoryWatcher<byte> ItemsStart;
     public static MemoryWatcher<byte> ItemsQtyStart;
 
     // AP
+    public static MemoryWatcher<int> CharacterAPRewards;
     public static MemoryWatcher<byte> CharacterAPFlags;
 
     // Menu Values
@@ -310,6 +299,10 @@ public static class MemoryWatchers
     public static MemoryWatcher<int> SpeedBoostVar1;
 
     public static MemoryWatcher<int> ActorArrayLength;
+
+    public static MemoryWatcher<byte> AutosaveTrigger;
+    public static MemoryWatcher<byte> SupressAutosaveOnForceLoad;
+    public static MemoryWatcher<byte> SupressAutosaveCounter;
 
     public static MemoryWatcher<byte> RNGArrayOpBytes;
 
@@ -350,10 +343,6 @@ public static class MemoryWatchers
         Gil = GetMemoryWatcher<int>(MemoryLocations.Gil);
         TargetFramerate = GetMemoryWatcher<int>(MemoryLocations.TargetFramerate);
         Dialogue1 = GetMemoryWatcher<int>(MemoryLocations.Dialogue1);
-        DialogueOption = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption);
-        DialogueBoxOpen = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen);
-        DialogueOption_Gui = GetMemoryWatcher<byte>(MemoryLocations.DialogueOption_Gui);
-        DialogueBoxOpen_Gui = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxOpen_Gui);
         DialogueBoxStructs = GetMemoryWatcher<byte>(MemoryLocations.DialogueBoxStructs);
         PlayerTurn = GetMemoryWatcher<byte>(MemoryLocations.PlayerTurn);
         FrameCounterFromLoad = GetMemoryWatcher<int>(MemoryLocations.FrameCounterFromLoad);
@@ -372,25 +361,37 @@ public static class MemoryWatchers
         TidusRotation = GetMemoryWatcher<float>(MemoryLocations.TidusRotation);
         DialogueFile = GetMemoryWatcher<byte>(MemoryLocations.DialogueFile);
         CutsceneTiming = GetMemoryWatcher<byte>(MemoryLocations.CutsceneTiming);
+        CurrentMagicID = GetMemoryWatcher<int>(MemoryLocations.CurrentMagicID);
+        ToBeDeletedMagicID = GetMemoryWatcher<int>(MemoryLocations.ToBeDeletedMagicID);
+        CurrentMagicHandle = GetMemoryWatcher<int>(MemoryLocations.CurrentMagicHandle);
+        ToBeDeletedMagicHandle = GetMemoryWatcher<int>(MemoryLocations.ToBeDeletedMagicHandle);
+        EffectPointer = GetMemoryWatcher<int>(MemoryLocations.EffectPointer);
+        EffectStatusFlag = GetMemoryWatcher<byte>(MemoryLocations.EffectStatusFlag);
         AuronTransition = GetMemoryWatcher<int>(MemoryLocations.AuronTransition);
         AmmesTransition = GetMemoryWatcher<int>(MemoryLocations.AmmesTransition);
         TankerTransition = GetMemoryWatcher<int>(MemoryLocations.TankerTransition);
         InsideSinTransition = GetMemoryWatcher<int>(MemoryLocations.InsideSinTransition);
         DiveTransition = GetMemoryWatcher<int>(MemoryLocations.DiveTransition);
+        DiveTransition2 = GetMemoryWatcher<int>(MemoryLocations.DiveTransition2);
+        DiveTransition3 = GetMemoryWatcher<int>(MemoryLocations.DiveTransition3);
         GeosTransition = GetMemoryWatcher<int>(MemoryLocations.GeosTransition);
         KlikkTransition = GetMemoryWatcher<int>(MemoryLocations.KlikkTransition);
         AlBhedBoatTransition = GetMemoryWatcher<int>(MemoryLocations.AlBhedBoatTransition);
         UnderwaterRuinsTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition);
         UnderwaterRuinsTransition2 = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsTransition2);
+        UnderwaterRuinsOutsideTransition = GetMemoryWatcher<int>(MemoryLocations.UnderwaterRuinsOutsideTransition);
         BeachTransition = GetMemoryWatcher<int>(MemoryLocations.BeachTransition);
         LagoonTransition1 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition1);
         LagoonTransition2 = GetMemoryWatcher<int>(MemoryLocations.LagoonTransition2);
         ValeforTransition = GetMemoryWatcher<int>(MemoryLocations.ValeforTransition);
+        BesaidNightTransition1 = GetMemoryWatcher<int>(MemoryLocations.BesaidNightTransition1);
+        BesaidNightTransition2 = GetMemoryWatcher<int>(MemoryLocations.BesaidNightTransition2);
         KimahriTransition = GetMemoryWatcher<int>(MemoryLocations.KimahriTransition);
         YunaBoatTransition = GetMemoryWatcher<int>(MemoryLocations.YunaBoatTransition);
         SinFinTransition = GetMemoryWatcher<int>(MemoryLocations.SinFinTransition);
         EchuillesTransition = GetMemoryWatcher<int>(MemoryLocations.EchuillesTransition);
         GeneauxTransition = GetMemoryWatcher<int>(MemoryLocations.GeneauxTransition);
+        KilikaElevatorTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaElevatorTransition);
         KilikaTrialsTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaTrialsTransition);
         KilikaAntechamberTransition = GetMemoryWatcher<int>(MemoryLocations.KilikaAntechamberTransition);
         IfritTransition = GetMemoryWatcher<int>(MemoryLocations.IfritTransition);
@@ -559,38 +560,19 @@ public static class MemoryWatchers
 
         // Battle Rewards
         GilBattleRewards = GetMemoryWatcher<int>(MemoryLocations.GilBattleRewards);
+        GilRewardCounter = GetMemoryWatcher<int>(MemoryLocations.GilRewardCounter);
         BattleRewardItemCount = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemCount);
         BattleRewardItem1 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem1);
-        BattleRewardItem2 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem2);
-        BattleRewardItem3 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem3);
-        BattleRewardItem4 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem4);
-        BattleRewardItem5 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem5);
-        BattleRewardItem6 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem6);
-        BattleRewardItem7 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem7);
-        BattleRewardItem8 = GetMemoryWatcher<short>(MemoryLocations.BattleRewardItem8);
         BattleRewardItemQty1 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty1);
-        BattleRewardItemQty2 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty2);
-        BattleRewardItemQty3 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty3);
-        BattleRewardItemQty4 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty4);
-        BattleRewardItemQty5 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty5);
-        BattleRewardItemQty6 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty6);
-        BattleRewardItemQty7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty7);
-        BattleRewardItemQty8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardItemQty8);
         BattleRewardEquipCount = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquipCount);
         BattleRewardEquip1 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip1);
-        BattleRewardEquip2 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip2);
-        BattleRewardEquip3 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip3);
-        BattleRewardEquip4 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip4);
-        BattleRewardEquip5 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip5);
-        BattleRewardEquip6 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip6);
-        BattleRewardEquip7 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip7);
-        BattleRewardEquip8 = GetMemoryWatcher<byte>(MemoryLocations.BattleRewardEquip8);
 
         //Items
         ItemsStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsStart);
         ItemsQtyStart = GetMemoryWatcher<byte>(MemoryLocations.ItemsQtyStart);
 
         // AP
+        CharacterAPRewards = GetMemoryWatcher<int>(MemoryLocations.CharacterAPRewards);
         CharacterAPFlags = GetMemoryWatcher<byte>(MemoryLocations.CharacterAPFlags);
 
         // Menu Values
@@ -609,6 +591,10 @@ public static class MemoryWatchers
         SpeedBoostVar1 = GetMemoryWatcher<int>(MemoryLocations.SpeedBoostVar1);
 
         ActorArrayLength = GetMemoryWatcher<int>(MemoryLocations.ActorArrayLength);
+
+        AutosaveTrigger = GetMemoryWatcher<byte>(MemoryLocations.AutosaveTrigger);
+        SupressAutosaveOnForceLoad = GetMemoryWatcher<byte>(MemoryLocations.SupressAutosaveOnForceLoad);
+        SupressAutosaveCounter = GetMemoryWatcher<byte>(MemoryLocations.SupressAutosaveCounter);
 
         // RNGMod
         RNGArrayOpBytes = GetMemoryWatcher<byte>(MemoryLocations.RNGArrayOpBytes);

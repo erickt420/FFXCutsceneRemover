@@ -40,16 +40,15 @@ class YunalescaTransition : Transition
                 WriteValue<int>(MemoryWatchers.YunalescaTransition, BaseCutsceneValue + 0x6C8D);
                 Stage += 1;
             }
-            else if (MemoryWatchers.Gil.Current > MemoryWatchers.Gil.Old && Stage == 4)
+            else if (MemoryWatchers.GilRewardCounter.Current > 0 && Stage == 4)
             {
                 Stage += 1;
             }
-            else if (MemoryWatchers.Gil.Current == MemoryWatchers.Gil.Old && Stage == 5)
+            else if (MemoryWatchers.GilRewardCounter.Current == 0 && Stage == 5)
             {
                 process.Suspend();
 
-                Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
-                ExitMenu.Execute();
+                new Transition { MenuCleanup = true, AddRewardItems = true, Description = "Exit Menu", ForceLoad = false }.Execute();
 
                 Stage += 1;
 

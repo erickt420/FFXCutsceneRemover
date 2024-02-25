@@ -2,74 +2,87 @@
 using System.Diagnostics;
 
 using FFXCutsceneRemover.ComponentUtil;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover;
 
 class CrawlerTransition : Transition
 {
-    static private List<short> CutsceneAltList = new List<short>(new short[] { 1839 });
     public override void Execute(string defaultDescription = "")
     {
         Process process = MemoryWatchers.Process;
 
-        if (MemoryWatchers.CrawlerTransition.Current > 0)
+        if (Stage == 0)
         {
-            if (CutsceneAltList.Contains(MemoryWatchers.CutsceneAlt.Current) && Stage == 0)
-            {
-                base.Execute();
+            base.Execute();
 
-                //BaseCutsceneValue = MemoryWatchers.CrawlerTransition.Current;
-                BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
+            //BaseCutsceneValue = MemoryWatchers.CrawlerTransition.Current;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
+            Stage += 1;
 
-                Stage += 1;
+        }
+        //First 4 stages are an attempt to emulate the logic from the PS2 Pnach. Values don't line up perfectly but it works.
+        else if (MemoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0xEBC2) && Stage == 1)
+        {
+            WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF017);
+            Stage += 1;
+        }
+        else if (MemoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF02D) && Stage == 2)
+        {
+            WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF0F3);
+            Stage += 1;
+        }
+        else if (MemoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF0FC) && Stage == 3)
+        {
+            WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF113);
+            Stage += 1;
+        }
+        else if (MemoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF113) && Stage == 4)
+        {
+            WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF19E);
+            Stage += 1;
+        }
+        else if (Stage == 5)
+        {
+            byte[] formation = process.ReadBytes(MemoryWatchers.Formation.Address, 3);
 
-            }
-            //First 4 stages are an attempt to emulate the logic from the PS2 Pnach. Values don't line up perfectly but it works.
-            else if (MemoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0xEBC2) && Stage == 1)
-            {
-                WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF017);
-                Stage += 1;
-            }
-            else if (MemoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF02D) && Stage == 2)
-            {
-                WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF0F3);
-                Stage += 1;
-            }
-            else if (MemoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF0FC) && Stage == 3)
-            {
-                WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF113);
-                Stage += 1;
-            }
-            else if (MemoryWatchers.CrawlerTransition.Current >= (BaseCutsceneValue + 0xF113) && Stage == 4)
-            {
-                WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF19E);
-                Stage += 1;
-            }
-            else if (MemoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0xF1E6) && MemoryWatchers.HpEnemyA.Current < 16000 && MemoryWatchers.HpEnemyA.Old == 16000 && Stage == 5)
-            {
-                WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF437);
-                Stage += 1;
-            }
+            Transition actorPositions;
+            //Position Party Member 1
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[0] + 1) }, Target_x = 97.75f, Target_y = 0.0f, Target_z = -451.00f };
+            actorPositions.Execute();
 
-            //A value of +0x886 launches the end of the fight straight into results screen which seems to be the only way to not crash the game post battle.
-            //This causes a menu glitch if game is allowed to progress past the item rewards screen so the next stage removes the menu flag once gil has finished
-            //ticking and the game will process Crawler post boss logic
+            //Position Party Member 2
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[1] + 1) }, Target_x = 112.25f, Target_y = 0.0f, Target_z = -425.75f };
+            actorPositions.Execute();
 
-            else if (MemoryWatchers.Gil.Current > MemoryWatchers.Gil.Old && Stage == 6)
-            {
-                Stage += 1;
-            }
-            else if (MemoryWatchers.Gil.Current == MemoryWatchers.Gil.Old && Stage == 7)
-            {
-                process.Suspend();
+            //Position Party Member 3
+            actorPositions = new Transition { ForceLoad = false, ConsoleOutput = false, TargetActorIDs = new short[] { (short)(formation[2] + 1) }, Target_x = 135.25f, Target_y = 0.0f, Target_z = -405.50f };
+            actorPositions.Execute();
+            Stage += 1;
+        }
+        else if (MemoryWatchers.CrawlerTransition.Current == (BaseCutsceneValue + 0xF1E6) && MemoryWatchers.BattleState2.Current == 22 && Stage == 6)
+        {
+            WriteValue<int>(MemoryWatchers.CrawlerTransition, BaseCutsceneValue + 0xF437);
+            Stage += 1;
+        }
 
-                Transition ExitMenu = new Transition { Menu = 0, Description = "Exit Menu", ForceLoad = false };
-                ExitMenu.Execute();
+        //A value of +0x886 launches the end of the fight straight into results screen which seems to be the only way to not crash the game post battle.
+        //This causes a menu glitch if game is allowed to progress past the item rewards screen so the next stage removes the menu flag once gil has finished
+        //ticking and the game will process Crawler post boss logic
 
-                Stage += 1;
+        else if (MemoryWatchers.GilRewardCounter.Current > 0 && Stage == 7)
+        {
+            Stage += 1;
+        }
+        else if (MemoryWatchers.GilRewardCounter.Current == 0 && Stage == 8)
+        {
+            process.Suspend();
 
-                process.Resume();
-            }
+            new Transition { MenuCleanup = true, AddRewardItems = true, Description = "Exit Menu", ForceLoad = false }.Execute();
+
+            Stage += 1;
+
+            process.Resume();
         }
     }
 }

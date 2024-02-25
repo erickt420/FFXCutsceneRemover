@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Linq;
 
 using FFXCutsceneRemover.ComponentUtil;
 using FFXCutsceneRemover.Logging;
@@ -19,12 +20,14 @@ public class Transition
     public bool ConsoleOutput = true;
     public bool ForceLoad = true;
     public bool FullHeal = false;
+    public bool FixMenu = false;
     public bool MenuCleanup = false;
     public bool AddRewardItems = false;
     public bool AddSinLocation = false;
     public bool RemoveSinLocation = false;
     public bool PositionPartyOffScreen = false;
     public bool PositionTidusAfterLoad = false;
+    public bool KeepEncounterThreatAfterLoad = false;
     public string Description = null;
     public int BaseCutsceneValue = 0;
     public int BaseCutsceneValue2 = 0;
@@ -96,26 +99,40 @@ public class Transition
     public byte[] DialogueFile = null;
     public byte? CutsceneTiming = null;
 
+    // Magic File
+    public int? CurrentMagicID = null;
+    public int? ToBeDeletedMagicID = null;
+    public int? CurrentMagicHandle = null;
+    public int? ToBeDeletedMagicHandle = null;
+    public int? EffectPointer = null;
+    public byte? EffectStatusFlag = null;
+
     // Bespoke Transitions
     public int? AuronTransition = null;
     public int? AmmesTransition = null;
     public int? TankerTransition = null;
     public int? InsideSinTransition = null;
     public int? DiveTransition = null;
+    public int? DiveTransition2 = null;
+    public int? DiveTransition3 = null;
     public int? GeosTransition = null;
     public int? KlikkTransition = null;
     public int? AlBhedBoatTransition = null;
     public int? UnderwaterRuinsTransition = null;
     public int? UnderwaterRuinsTransition2 = null;
+    public int? UnderwaterRuinsOutsideTransition = null;
     public int? BeachTransition = null;
     public int? LagoonTransition1 = null;
     public int? LagoonTransition2 = null;
     public int? ValeforTransition = null;
+    public int? BesaidNightTransition1 = null;
+    public int? BesaidNightTransition2 = null;
     public int? KimahriTransition = null;
     public int? YunaBoatTransition = null;
     public int? SinFinTransition = null;
     public int? EchuillesTransition = null;
     public int? GeneauxTransition = null;
+    public int? KilikaElevatorTransition = null;
     public int? KilikaTrialsTransition = null;
     public int? KilikaAntechamberTransition = null;
     public int? IfritTransition = null;
@@ -233,46 +250,35 @@ public class Transition
     public byte? AurochsPlayer1 = null;
 
     public int? GilBattleRewards = null;
+    public int? GilRewardCounter = null;
     public byte? BattleRewardItemCount = null;
     public short? BattleRewardItem1 = null;
-    public short? BattleRewardItem2 = null;
-    public short? BattleRewardItem3 = null;
-    public short? BattleRewardItem4 = null;
-    public short? BattleRewardItem5 = null;
-    public short? BattleRewardItem6 = null;
-    public short? BattleRewardItem7 = null;
-    public short? BattleRewardItem8 = null;
     public byte? BattleRewardItemQty1 = null;
-    public byte? BattleRewardItemQty2 = null;
-    public byte? BattleRewardItemQty3 = null;
-    public byte? BattleRewardItemQty4 = null;
-    public byte? BattleRewardItemQty5 = null;
-    public byte? BattleRewardItemQty6 = null;
-    public byte? BattleRewardItemQty7 = null;
-    public byte? BattleRewardItemQty8 = null;
     public byte? BattleRewardEquipCount = null;
     public byte[] BattleRewardEquip1 = null;
-    public byte[] BattleRewardEquip2 = null;
-    public byte[] BattleRewardEquip3 = null;
-    public byte[] BattleRewardEquip4 = null;
-    public byte[] BattleRewardEquip5 = null;
-    public byte[] BattleRewardEquip6 = null;
-    public byte[] BattleRewardEquip7 = null;
-    public byte[] BattleRewardEquip8 = null;
 
     public byte[] ItemsStart = null;
     public byte[] ItemsQtyStart = null;
 
+    public int[] CharacterAPRewards = null;
     public byte[] CharacterAPFlags = null;
 
     public int? MenuValue1 = null;
     public int? MenuValue2 = null;
     public int? MenuTriggerValue = null;
 
+    public byte? AutosaveTrigger = null;
+    public byte? SupressAutosaveOnForceLoad = null;
+    public byte? SupressAutosaveCounter = null;
+
     public byte[] RNGArrayOpBytes = null;
 
     // Bitmask Addition
     public int? AddCalmLandsBitmask = null;
+
+    // Stored Values
+    public float TotalDistanceBeforeLoad = 0.0f;
+    public float CycleDistanceBeforeLoad = 0.0f;
 
     public virtual void Execute(string defaultDescription = "")
     {
@@ -330,25 +336,37 @@ public class Transition
         WriteValue(MemoryWatchers.TidusRotation, TidusRotation);
         WriteBytes(MemoryWatchers.DialogueFile, DialogueFile);
         WriteValue(MemoryWatchers.CutsceneTiming, CutsceneTiming);
+        WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicID);
+        WriteValue(MemoryWatchers.ToBeDeletedMagicID, ToBeDeletedMagicID);
+        WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicHandle);
+        WriteValue(MemoryWatchers.ToBeDeletedMagicHandle, ToBeDeletedMagicHandle);
+        WriteValue(MemoryWatchers.EffectPointer, EffectPointer);
+        WriteValue(MemoryWatchers.EffectStatusFlag, EffectStatusFlag);
         WriteValue(MemoryWatchers.AuronTransition, AuronTransition);
         WriteValue(MemoryWatchers.AmmesTransition, AmmesTransition);
         WriteValue(MemoryWatchers.TankerTransition, TankerTransition);
         WriteValue(MemoryWatchers.InsideSinTransition, InsideSinTransition);
         WriteValue(MemoryWatchers.DiveTransition, DiveTransition);
+        WriteValue(MemoryWatchers.DiveTransition2, DiveTransition2);
+        WriteValue(MemoryWatchers.DiveTransition3, DiveTransition3);
         WriteValue(MemoryWatchers.GeosTransition, GeosTransition);
         WriteValue(MemoryWatchers.KlikkTransition, KlikkTransition);
         WriteValue(MemoryWatchers.AlBhedBoatTransition, AlBhedBoatTransition);
         WriteValue(MemoryWatchers.UnderwaterRuinsTransition, UnderwaterRuinsTransition);
         WriteValue(MemoryWatchers.UnderwaterRuinsTransition2, UnderwaterRuinsTransition2);
+        WriteValue(MemoryWatchers.UnderwaterRuinsOutsideTransition, UnderwaterRuinsOutsideTransition);
         WriteValue(MemoryWatchers.BeachTransition, BeachTransition);
         WriteValue(MemoryWatchers.LagoonTransition1, LagoonTransition1);
         WriteValue(MemoryWatchers.LagoonTransition2, LagoonTransition2);
         WriteValue(MemoryWatchers.ValeforTransition, ValeforTransition);
+        WriteValue(MemoryWatchers.BesaidNightTransition1, BesaidNightTransition1);
+        WriteValue(MemoryWatchers.BesaidNightTransition2, BesaidNightTransition2);
         WriteValue(MemoryWatchers.KimahriTransition, KimahriTransition);
         WriteValue(MemoryWatchers.YunaBoatTransition, YunaBoatTransition);
         WriteValue(MemoryWatchers.SinFinTransition, SinFinTransition);
         WriteValue(MemoryWatchers.EchuillesTransition, EchuillesTransition);
         WriteValue(MemoryWatchers.GeneauxTransition, GeneauxTransition);
+        WriteValue(MemoryWatchers.KilikaElevatorTransition, KilikaElevatorTransition);
         WriteValue(MemoryWatchers.KilikaTrialsTransition, KilikaTrialsTransition);
         WriteValue(MemoryWatchers.KilikaAntechamberTransition, KilikaAntechamberTransition);
         WriteValue(MemoryWatchers.IfritTransition, IfritTransition);
@@ -454,36 +472,20 @@ public class Transition
         WriteValue(MemoryWatchers.AurochsPlayer1, AurochsPlayer1);
 
         WriteValue(MemoryWatchers.GilBattleRewards, GilBattleRewards);
+        WriteValue(MemoryWatchers.GilRewardCounter, GilRewardCounter);
         WriteValue(MemoryWatchers.BattleRewardItemCount, BattleRewardItemCount);
         WriteValue(MemoryWatchers.BattleRewardItem1, BattleRewardItem1);
-        WriteValue(MemoryWatchers.BattleRewardItem2, BattleRewardItem2);
-        WriteValue(MemoryWatchers.BattleRewardItem3, BattleRewardItem3);
-        WriteValue(MemoryWatchers.BattleRewardItem4, BattleRewardItem4);
-        WriteValue(MemoryWatchers.BattleRewardItem5, BattleRewardItem5);
-        WriteValue(MemoryWatchers.BattleRewardItem6, BattleRewardItem6);
-        WriteValue(MemoryWatchers.BattleRewardItem7, BattleRewardItem7);
-        WriteValue(MemoryWatchers.BattleRewardItem8, BattleRewardItem8);
         WriteValue(MemoryWatchers.BattleRewardItemQty1, BattleRewardItemQty1);
-        WriteValue(MemoryWatchers.BattleRewardItemQty2, BattleRewardItemQty2);
-        WriteValue(MemoryWatchers.BattleRewardItemQty3, BattleRewardItemQty3);
-        WriteValue(MemoryWatchers.BattleRewardItemQty4, BattleRewardItemQty4);
-        WriteValue(MemoryWatchers.BattleRewardItemQty5, BattleRewardItemQty5);
-        WriteValue(MemoryWatchers.BattleRewardItemQty6, BattleRewardItemQty6);
-        WriteValue(MemoryWatchers.BattleRewardItemQty7, BattleRewardItemQty7);
-        WriteValue(MemoryWatchers.BattleRewardItemQty8, BattleRewardItemQty8);
         WriteValue(MemoryWatchers.BattleRewardEquipCount, BattleRewardEquipCount);
         WriteBytes(MemoryWatchers.BattleRewardEquip1, BattleRewardEquip1);
-        WriteBytes(MemoryWatchers.BattleRewardEquip2, BattleRewardEquip2);
-        WriteBytes(MemoryWatchers.BattleRewardEquip3, BattleRewardEquip3);
-        WriteBytes(MemoryWatchers.BattleRewardEquip4, BattleRewardEquip4);
-        WriteBytes(MemoryWatchers.BattleRewardEquip5, BattleRewardEquip5);
-        WriteBytes(MemoryWatchers.BattleRewardEquip6, BattleRewardEquip6);
-        WriteBytes(MemoryWatchers.BattleRewardEquip7, BattleRewardEquip7);
-        WriteBytes(MemoryWatchers.BattleRewardEquip8, BattleRewardEquip8);
 
         WriteValue(MemoryWatchers.MenuValue1, MenuValue1);
         WriteValue(MemoryWatchers.MenuValue2, MenuValue2);
         WriteValue(MemoryWatchers.MenuTriggerValue, MenuTriggerValue);
+
+        WriteValue(MemoryWatchers.AutosaveTrigger, AutosaveTrigger);
+        WriteValue(MemoryWatchers.SupressAutosaveOnForceLoad, SupressAutosaveOnForceLoad);
+        WriteValue(MemoryWatchers.SupressAutosaveCounter, SupressAutosaveCounter);
 
         WriteBytes(MemoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
 
@@ -546,6 +548,7 @@ public class Transition
                 MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
+            WriteValue<byte>(MemoryWatchers.EncountersActiveFlag, 0);
             SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
             SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason, also some other locations.
             process.Resume();
@@ -554,8 +557,16 @@ public class Transition
                 MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
-            WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
-            WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
+            if (KeepEncounterThreatAfterLoad)
+            {
+                WriteValue<float>(MemoryWatchers.TotalDistance, TotalDistanceBeforeLoad);
+                WriteValue<float>(MemoryWatchers.CycleDistance, CycleDistanceBeforeLoad);
+            }
+            else
+            {
+                WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
+                WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
+            }
             process.Resume();
         }
         else
@@ -573,6 +584,11 @@ public class Transition
     /* Set the force load bit. Will immediately cause a fade and load. */
     private void ForceGameLoad()
     {
+        // Store distances for random encounter chance before reloading map
+        TotalDistanceBeforeLoad = MemoryWatchers.TotalDistance.Current;
+        CycleDistanceBeforeLoad = MemoryWatchers.CycleDistance.Current;
+
+        // Trigger map reload
         WriteValue<byte>(MemoryWatchers.ForceLoad, 1);
         MemoryWatchers.ForceLoad.Update(process);
     }
@@ -677,7 +693,7 @@ public class Transition
 
     private void FullPartyHeal()
     {
-        Process process = MemoryWatchers.Process;
+        //Process process = MemoryWatchers.Process;
 
         int baseAddress = MemoryWatchers.GetBaseAddress();
 
@@ -773,35 +789,14 @@ public class Transition
             WriteBytes(MemoryWatchers.ItemsQtyStart, itemsQty);
         }
 
-        // Clear Items
+        // Clear Battle Reward Items
         WriteValue<byte>(MemoryWatchers.BattleRewardItemCount, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem1, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem2, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem3, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem4, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem5, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem6, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem7, 0);
-        WriteValue<short>(MemoryWatchers.BattleRewardItem8, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty1, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty2, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty3, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty4, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty5, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty6, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty7, 0);
-        WriteValue<byte>(MemoryWatchers.BattleRewardItemQty8, 0);
+        process.WriteBytes(MemoryWatchers.BattleRewardItem1.Address, Enumerable.Repeat((byte)0x00, 16).ToArray<byte>());
+        process.WriteBytes(MemoryWatchers.BattleRewardItemQty1.Address, Enumerable.Repeat((byte)0x00, 8).ToArray<byte>());
 
-        //Clear Equipment -- Equipment Arrays are 22 bytes long
+        // Clear Battle Reward Equipment -- Equipment Arrays are 22 bytes long
         WriteValue<byte>(MemoryWatchers.BattleRewardEquipCount, 0);
-        WriteBytes(MemoryWatchers.BattleRewardEquip1, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip2, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip3, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip4, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip5, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip6, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip7, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
-        WriteBytes(MemoryWatchers.BattleRewardEquip8, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
+        process.WriteBytes(MemoryWatchers.BattleRewardEquip1.Address, Enumerable.Repeat((byte)0x00, 22 * 8).ToArray<byte>());
 
         // Clear AP Flags
         WriteBytes(MemoryWatchers.CharacterAPFlags, new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });

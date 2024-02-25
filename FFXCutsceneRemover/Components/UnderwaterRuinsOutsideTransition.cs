@@ -1,6 +1,6 @@
 ﻿namespace FFXCutsceneRemover;
 
-class UnderwaterRuinsTransition2 : Transition
+class UnderwaterRuinsOutsideTransition : Transition
 {
     public override void Execute(string defaultDescription = "")
     {
@@ -12,9 +12,9 @@ class UnderwaterRuinsTransition2 : Transition
             Stage += 1;
 
         }
-        else if (MemoryWatchers.UnderwaterRuinsTransition2.Current >= (BaseCutsceneValue + 0x3870) && Stage == 1)
+        else if (MemoryWatchers.UnderwaterRuinsOutsideTransition.Current >= (BaseCutsceneValue + 0x3870) && Stage == 1)
         {
-            WriteValue<int>(MemoryWatchers.UnderwaterRuinsTransition2, BaseCutsceneValue + 0x3AB2);
+            WriteValue<int>(MemoryWatchers.UnderwaterRuinsOutsideTransition, BaseCutsceneValue + 0x3AB2);
             Stage += 1;
         }
     }

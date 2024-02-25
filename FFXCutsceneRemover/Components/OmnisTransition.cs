@@ -7,29 +7,25 @@ class OmnisTransition : Transition
     static private List<short> CutsceneAltList = new List<short>(new short[] { 5331 });
     public override void Execute(string defaultDescription = "")
     {
-        int baseAddress = MemoryWatchers.GetBaseAddress();
-        if (MemoryWatchers.OmnisTransition.Current > 0)
+        if (MemoryWatchers.MovementLock.Current == 0x20 && Stage == 0)
         {
-            if (CutsceneAltList.Contains(MemoryWatchers.CutsceneAlt.Current) && Stage == 0)
-            {
-                base.Execute();
+            base.Execute();
 
-                BaseCutsceneValue = MemoryWatchers.OmnisTransition.Current;
-                Stage += 1;
+            BaseCutsceneValue = MemoryWatchers.EventFileStart.Current;
+            Stage += 1;
 
-            }
-            else if (MemoryWatchers.OmnisTransition.Current >= (BaseCutsceneValue + 0x7C) && Stage == 1)
-            {
-                WriteValue<int>(MemoryWatchers.OmnisTransition, BaseCutsceneValue + 0xA16);
+        }
+        else if (MemoryWatchers.OmnisTransition.Current >= (BaseCutsceneValue + 0x1DB0) && Stage == 1)
+        {
+            WriteValue<int>(MemoryWatchers.OmnisTransition, BaseCutsceneValue + 0x274A);
 
-                Stage += 1;
-            }
-            else if (MemoryWatchers.OmnisTransition.Current >= (BaseCutsceneValue + 0xA52) && MemoryWatchers.HpEnemyA.Current < 80000 && MemoryWatchers.HpEnemyA.Old == 80000 && Stage == 2)
-            {
-                WriteValue<int>(MemoryWatchers.OmnisTransition, BaseCutsceneValue + 0x1050);
+            Stage += 1;
+        }
+        else if (MemoryWatchers.OmnisTransition.Current >= (BaseCutsceneValue + 0x2786) && MemoryWatchers.BattleState2.Current == 22 && Stage == 2)
+        {
+            WriteValue<int>(MemoryWatchers.OmnisTransition, BaseCutsceneValue + 0x2D84);
 
-                Stage += 1;
-            }
+            Stage += 1;
         }
     }
 }

@@ -8,7 +8,7 @@
  *      new MemoryLocation("Example", 0x00F2FD00, { 0x124, 0xD24, ... }); */
 static class MemoryLocations
 {
-    public static MemoryLocation Language = new MemoryLocation("Language", 0x8DED48, 0x04);
+    public static MemoryLocation Language            = new MemoryLocation("Language", 0x8DED48, 0x04);
 
     public static MemoryLocation RoomNumber          = new MemoryLocation("RoomNumber", 0xD2CA90);
     public static MemoryLocation Storyline           = new MemoryLocation("Storyline", 0xD2D67C);
@@ -37,19 +37,15 @@ static class MemoryLocations
     public static MemoryLocation AirshipDestinations = new MemoryLocation("AirshipDestinations", 0xD2D710);
     public static MemoryLocation AuronOverdrives     = new MemoryLocation("AuronOverdrives", 0xD307FC);
     public static MemoryLocation Gil                 = new MemoryLocation("Gil", 0xD307D8);
-    //This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
-    public static MemoryLocation TargetFramerate = new MemoryLocation("TargetFramerate", 0x830E88);
+
+    // This is target framerate 0 = Uncapped??? / 1 = 60 / 2 = 30 / 3 = 20 / 4 = 15 / 5 = 12 / 6 = 10. Formula appears to be Target Framerate = 60 / this value
+    public static MemoryLocation TargetFramerate     = new MemoryLocation("TargetFramerate", 0x830E88);
 
     public static MemoryLocation PlayerTurn           = new MemoryLocation("PlayerTurn", 0xF3F77B);
     public static MemoryLocation FrameCounterFromLoad = new MemoryLocation("FrameCounterFromLoad", 0xF25D54);
 
     // Dialogue
     public static MemoryLocation Dialogue1           = new MemoryLocation("Dialogue1", 0xF25A80);
-    public static MemoryLocation DialogueOption      = new MemoryLocation("DialogueOption", 0x146780A);
-    public static MemoryLocation DialogueBoxOpen     = new MemoryLocation("DialogueBoxOpen", 0x1465CC2);
-    public static MemoryLocation DialogueOption_Gui  = new MemoryLocation("DialogueOption_Gui", 0x1467942);
-    public static MemoryLocation DialogueBoxOpen_Gui = new MemoryLocation("DialogueBoxOpen_Gui", 0x1465CDE);
-
     public static MemoryLocation DialogueBoxStructs  = new MemoryLocation("DialogueBoxStructs", 0x14676D0);
 
     // Deep Pointers
@@ -67,77 +63,91 @@ static class MemoryLocations
     // Event File
     public static MemoryLocation EventFileStart = new MemoryLocation("EventFileStart", 0xF270B8);
 
+    // Magic File
+    public static MemoryLocation CurrentMagicID = new MemoryLocation("CurrentMagicID", 0x864CA0);
+    public static MemoryLocation ToBeDeletedMagicID = new MemoryLocation("ToBeDeletedMagicID", 0x864CA4);
+    public static MemoryLocation CurrentMagicHandle = new MemoryLocation("CurrentMagicHandle", 0x864CA8);
+    public static MemoryLocation ToBeDeletedMagicHandle = new MemoryLocation("ToBeDeletedMagicHandle", 0x864CAC);
+    public static MemoryLocation EffectPointer = new MemoryLocation("EffectPointer", 0xD33360);
+    public static MemoryLocation EffectStatusFlag = new MemoryLocation("EffectStatusFlag", 0xD33364);
+
     //Bespoke Transitions
-    public static MemoryLocation AuronTransition             = new MemoryLocation("AuronTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation AmmesTransition             = new MemoryLocation("AmmesTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x4F - 0x1 - 0x9 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
-    public static MemoryLocation TankerTransition            = new MemoryLocation("TankerTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x38 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
-    public static MemoryLocation InsideSinTransition         = new MemoryLocation("InsideSinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xC - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
-    public static MemoryLocation DiveTransition              = new MemoryLocation("DiveTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation GeosTransition              = new MemoryLocation("GeosTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 + 0x4C });
-    public static MemoryLocation KlikkTransition             = new MemoryLocation("KlikkTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x30 - 0x9 - 0x4 - 0x8) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation AlBhedBoatTransition        = new MemoryLocation("AlBhedBoatTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x0 - 0x3 - 0x3) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation UnderwaterRuinsTransition   = new MemoryLocation("UnderwaterRuinsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation UnderwaterRuinsTransition2  = new MemoryLocation("UnderwaterRuinsTransition2", 0xF25B60 + 0x1C, new int[] { 0x18148 });
-    public static MemoryLocation BeachTransition             = new MemoryLocation("BeachTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x43 - 0x1 - 0xD - 0x22) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation LagoonTransition1           = new MemoryLocation("LagoonTransition1", 0xF25B60 + 0x1C, new int[] { 0x068D8 });
-    public static MemoryLocation LagoonTransition2           = new MemoryLocation("LagoonTransition2", 0xF25B60 + 0x1C, new int[] { 0x07398 });
-    public static MemoryLocation ValeforTransition           = new MemoryLocation("ValeforTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x39 - 0x9 - 0x6 - 0x11) + 0x12C + 0x4C + 0x18 + 0x1560 });
-    public static MemoryLocation KimahriTransition           = new MemoryLocation("KimahriTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x17 - 0x4 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x5A28 });
-    public static MemoryLocation YunaBoatTransition          = new MemoryLocation("YunaBoatTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x52 - 0xE - 0xA - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
-    public static MemoryLocation SinFinTransition            = new MemoryLocation("SinFinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x29 - 0x2 - 0x4 - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
-    public static MemoryLocation EchuillesTransition         = new MemoryLocation("EchuillesTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x11 - 0x0 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558});
-    public static MemoryLocation GeneauxTransition           = new MemoryLocation("GeneauxTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation KilikaTrialsTransition      = new MemoryLocation("KilikaTrialsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x30 - 0xD - 0xC - 0x7) + 0x12C + 0x18 });
-    public static MemoryLocation KilikaAntechamberTransition = new MemoryLocation("KilikaAntechamberTransition", 0xF25B60 + 0x1C, new int[] { 0xD918 });
-    public static MemoryLocation IfritTransition             = new MemoryLocation("IfritTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation IfritTransition2            = new MemoryLocation("IfritTransition2", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
-    public static MemoryLocation JechtShotTransition         = new MemoryLocation("JechtShotTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x31 - 0x7 - 0xB - 0xB) + 0x12C + 0x4C + 0x18 + 0xAB0 });
-    public static MemoryLocation OblitzeratorTransition      = new MemoryLocation("OblitzeratorTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation BlitzballTransition         = new MemoryLocation("BlitzballTransition", 0xF25B60 + 0x1C, new int[] { 0x144});
-    public static MemoryLocation SahaginTransition           = new MemoryLocation("SahaginTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x10 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
-    public static MemoryLocation GarudaTransition            = new MemoryLocation("GarudaTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1E - 0x0 - 0x5 - 0x0) + 0x12C + 0x18 });
-    public static MemoryLocation RinTransition               = new MemoryLocation("RinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x21 - 0x5 - 0x5 - 0x2) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation ChocoboEaterTransition      = new MemoryLocation("ChocoboEaterTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x35 - 0x3 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation GuiTransition               = new MemoryLocation("GuiTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x39 - 0x4 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation Gui2Transition              = new MemoryLocation("Gui2Transition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x16 - 0x1 - 0x6 - 0x5) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation DjoseTransition             = new MemoryLocation("DjoseTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation IxionTransition             = new MemoryLocation("IxionTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1E - 0x2 - 0x7 - 0x0) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation ExtractorTransition         = new MemoryLocation("ExtractorTransition", 0xF25B60 + 0x1C, new int[] { 0x675C });
-    public static MemoryLocation SeymoursHouseTransition1    = new MemoryLocation("SeymoursHouseTransition1", 0xF25B60 + 0x1C, new int[] { 0xD77C });
-    public static MemoryLocation SeymoursHouseTransition2    = new MemoryLocation("SeymoursHouseTransition2", 0xF25B60 + 0x1C, new int[] { 0xD270 });
-    public static MemoryLocation FarplaneTransition1         = new MemoryLocation("FarplaneTransition1", 0xF25B60 + 0x1C, new int[] { 0xDD7C });
-    public static MemoryLocation FarplaneTransition2         = new MemoryLocation("FarplaneTransition2", 0xF25B60 + 0x1C, new int[] { 0xDDC8 });
-    public static MemoryLocation TromellTransition           = new MemoryLocation("TromellTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x7 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0xAB0 });
-    public static MemoryLocation CrawlerTransition           = new MemoryLocation("CrawlerTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC});
-    public static MemoryLocation SeymourTransition           = new MemoryLocation("SeymourTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x14 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation SeymourTransition2          = new MemoryLocation("SeymourTransition2", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x14 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
-    public static MemoryLocation WendigoTransition           = new MemoryLocation("WendigoTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC });
-    public static MemoryLocation SpherimorphTransition       = new MemoryLocation("SpherimorphTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x14 - 0x1 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation UnderLakeTransition         = new MemoryLocation("UnderLakeTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xC - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation BikanelTransition           = new MemoryLocation("BikanelTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x42 - 0x6 - 0xC - 0x18) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation HomeTransition              = new MemoryLocation("HomeTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x2D - 0x6 - 0x9 - 0xA) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation EvraeTransition             = new MemoryLocation("EvraeTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x26 - 0x2 - 0x6 - 0x1) + 0x12C + 0x18 });
-    public static MemoryLocation EvraeAirshipTransition      = new MemoryLocation("EvraeAirshipTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x20 - 0x3 - 0x5 - 0x5) + 0x12C + 0x18 });
-    public static MemoryLocation GuardsTransition            = new MemoryLocation("GuardsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x3C - 0x6 - 0x2 - 0x5) + 0x12C + 0x4C + 0x18 - 0x11BE4 });
-    public static MemoryLocation BahamutTransition           = new MemoryLocation("BahamutTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x27 - 0x1 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x9F1C });
-    public static MemoryLocation IsaaruTransition            = new MemoryLocation("IsaaruTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x43 - 0xE - 0x5 - 0x17) + 0x12C + 0x4C + 0x18 + 0x1B9C});
-    public static MemoryLocation AltanaTransition            = new MemoryLocation("AltanaTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x17 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0xB94 });
-    public static MemoryLocation NatusTransition             = new MemoryLocation("NatusTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x4378 });
-    public static MemoryLocation DefenderXTransition         = new MemoryLocation("DefenderXTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x20 - 0x3 - 0x7 - 0x9) + 0x12C + 0x4C + 0x18 + 0x4C });
-    public static MemoryLocation RonsoTransition             = new MemoryLocation("RonsoTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x27 - 0x5 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation FluxTransition              = new MemoryLocation("FluxTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x15 - 0x2 - 0x6 - 0x1) + 0x12C + 0x4C + 0x18});
-    public static MemoryLocation SanctuaryTransition         = new MemoryLocation("SanctuaryTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x15 - 0x2 - 0x7 - 0x1) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation SpectralKeeperTransition    = new MemoryLocation("SpectralKeeperTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x11 - 0x0 - 0x6 - 0x0) + 0x12C + 0x4C + 0x18});
-    public static MemoryLocation SpectralKeeperTransition2   = new MemoryLocation("SpectralKeeperTransition2", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x55 - 0xF - 0x7 - 0x1E) + 0x12C + 0x4C + 0x18});
-    public static MemoryLocation YunalescaTransition         = new MemoryLocation("YunalescaTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x1 - 0x7 - 0x2) + 0x12C + 0x4C + 0x18});
-    public static MemoryLocation FinsTransition              = new MemoryLocation("FinsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x12 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
-    public static MemoryLocation FinsAirshipTransition       = new MemoryLocation("FinsAirshipTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1F - 0x3 - 0x5 - 0x5) + 0x12C + 0x18 });
-    public static MemoryLocation SinCoreTransition           = new MemoryLocation("SinCoreTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xF - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x3904 });
-    public static MemoryLocation OverdriveSinTransition      = new MemoryLocation("OverdriveSinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x22 - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 - 0x4C });
-    public static MemoryLocation OmnisTransition             = new MemoryLocation("OmnisTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x2 - 0x3 - 0x1) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation BFATransition               = new MemoryLocation("BFATransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x0 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation AeonTransition              = new MemoryLocation("AeonTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
-    public static MemoryLocation YuYevonTransition           = new MemoryLocation("YuYevonTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
+    public static MemoryLocation AuronTransition                   = new MemoryLocation("AuronTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x1 - 0x5 - 0x3) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation AmmesTransition                   = new MemoryLocation("AmmesTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x4F - 0x1 - 0x9 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
+    public static MemoryLocation TankerTransition                  = new MemoryLocation("TankerTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x38 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
+    public static MemoryLocation InsideSinTransition               = new MemoryLocation("InsideSinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xC - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558 });
+    public static MemoryLocation DiveTransition                    = new MemoryLocation("DiveTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation DiveTransition2                   = new MemoryLocation("DiveTransition2", 0xF25B60 + 0x1C, new int[] { 0x89B0 });
+    public static MemoryLocation DiveTransition3                   = new MemoryLocation("DiveTransition3", 0xF25B60 + 0x1C, new int[] { 0x190 });
+    public static MemoryLocation GeosTransition                    = new MemoryLocation("GeosTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x31 - 0xA - 0x2 - 0xA) + 0x12C + 0x4C + 0x18 + 0x4C });
+    public static MemoryLocation KlikkTransition                   = new MemoryLocation("KlikkTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x30 - 0x9 - 0x4 - 0x8) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation AlBhedBoatTransition              = new MemoryLocation("AlBhedBoatTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x0 - 0x3 - 0x3) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation UnderwaterRuinsTransition         = new MemoryLocation("UnderwaterRuinsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation UnderwaterRuinsTransition2        = new MemoryLocation("UnderwaterRuinsTransition2", 0xF25B60 + 0x1C, new int[] { 0x1840 });
+    public static MemoryLocation UnderwaterRuinsOutsideTransition  = new MemoryLocation("UnderwaterRuinsOutsideTransition", 0xF25B60 + 0x1C, new int[] { 0x18148 });
+    public static MemoryLocation BeachTransition                   = new MemoryLocation("BeachTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x43 - 0x1 - 0xD - 0x22) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation LagoonTransition1                 = new MemoryLocation("LagoonTransition1", 0xF25B60 + 0x1C, new int[] { 0x68D8 });
+    public static MemoryLocation LagoonTransition2                 = new MemoryLocation("LagoonTransition2", 0xF25B60 + 0x1C, new int[] { 0x5CE8 });
+    public static MemoryLocation ValeforTransition                 = new MemoryLocation("ValeforTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x39 - 0x9 - 0x6 - 0x11) + 0x12C + 0x4C + 0x18 + 0x1560 });
+    public static MemoryLocation BesaidNightTransition1            = new MemoryLocation("BesaidNightTransition1", 0xF25B60 + 0x1C, new int[] { 0x10ADC });
+    public static MemoryLocation BesaidNightTransition2            = new MemoryLocation("BesaidNightTransition2", 0xF25B60 + 0x1C, new int[] { 0x10B28 });
+    public static MemoryLocation KimahriTransition                 = new MemoryLocation("KimahriTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x17 - 0x4 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x5A28 });
+    public static MemoryLocation YunaBoatTransition                = new MemoryLocation("YunaBoatTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x52 - 0xE - 0xA - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
+    public static MemoryLocation SinFinTransition                  = new MemoryLocation("SinFinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x29 - 0x2 - 0x4 - 0xA) + 0x12C + 0x4C + 0x18 + 0x558 });
+    public static MemoryLocation EchuillesTransition               = new MemoryLocation("EchuillesTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x11 - 0x0 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0x558});
+    public static MemoryLocation GeneauxTransition                 = new MemoryLocation("GeneauxTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x2 - 0x4 - 0x3) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation KilikaElevatorTransition          = new MemoryLocation("KilikaElevatorTransition", 0xF25B60 + 0x1C, new int[] { 0xABB8 });
+    public static MemoryLocation KilikaTrialsTransition            = new MemoryLocation("KilikaTrialsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x30 - 0xD - 0xC - 0x7) + 0x12C + 0x18 });
+    public static MemoryLocation KilikaAntechamberTransition       = new MemoryLocation("KilikaAntechamberTransition", 0xF25B60 + 0x1C, new int[] { 0xD918 });
+    public static MemoryLocation IfritTransition                   = new MemoryLocation("IfritTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation IfritTransition2                  = new MemoryLocation("IfritTransition2", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x3 - 0x3 - 0x2) + 0x12C + 0x4C + 0x18 - 0x23D0 });
+    public static MemoryLocation JechtShotTransition               = new MemoryLocation("JechtShotTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x31 - 0x7 - 0xB - 0xB) + 0x12C + 0x4C + 0x18 + 0xAB0 });
+    public static MemoryLocation OblitzeratorTransition            = new MemoryLocation("OblitzeratorTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x13 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation BlitzballTransition               = new MemoryLocation("BlitzballTransition", 0xF25B60 + 0x1C, new int[] { 0x144});
+    public static MemoryLocation SahaginTransition                 = new MemoryLocation("SahaginTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x10 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
+    public static MemoryLocation GarudaTransition                  = new MemoryLocation("GarudaTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1E - 0x0 - 0x5 - 0x0) + 0x12C + 0x18 });
+    public static MemoryLocation RinTransition                     = new MemoryLocation("RinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x21 - 0x5 - 0x5 - 0x2) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation ChocoboEaterTransition            = new MemoryLocation("ChocoboEaterTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x35 - 0x3 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation GuiTransition                     = new MemoryLocation("GuiTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x39 - 0x4 - 0x8 - 0xA) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation Gui2Transition                    = new MemoryLocation("Gui2Transition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x16 - 0x1 - 0x6 - 0x5) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation DjoseTransition                   = new MemoryLocation("DjoseTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation IxionTransition                   = new MemoryLocation("IxionTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1E - 0x2 - 0x7 - 0x0) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation ExtractorTransition               = new MemoryLocation("ExtractorTransition", 0xF25B60 + 0x1C, new int[] { 0x675C });
+    public static MemoryLocation SeymoursHouseTransition1          = new MemoryLocation("SeymoursHouseTransition1", 0xF25B60 + 0x1C, new int[] { 0xD77C });
+    public static MemoryLocation SeymoursHouseTransition2          = new MemoryLocation("SeymoursHouseTransition2", 0xF25B60 + 0x1C, new int[] { 0xD270 });
+    public static MemoryLocation FarplaneTransition1               = new MemoryLocation("FarplaneTransition1", 0xF25B60 + 0x1C, new int[] { 0xDD7C });
+    public static MemoryLocation FarplaneTransition2               = new MemoryLocation("FarplaneTransition2", 0xF25B60 + 0x1C, new int[] { 0xDDC8 });
+    public static MemoryLocation TromellTransition                 = new MemoryLocation("TromellTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x23 - 0x7 - 0x4 - 0x0) + 0x12C + 0x4C + 0x18 + 0xAB0 });
+    public static MemoryLocation CrawlerTransition                 = new MemoryLocation("CrawlerTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1F - 0x2 - 0x5 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC});
+    public static MemoryLocation SeymourTransition                 = new MemoryLocation("SeymourTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x14 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation SeymourTransition2                = new MemoryLocation("SeymourTransition2", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x14 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
+    public static MemoryLocation WendigoTransition                 = new MemoryLocation("WendigoTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0xFBC });
+    public static MemoryLocation SpherimorphTransition             = new MemoryLocation("SpherimorphTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x14 - 0x1 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation UnderLakeTransition               = new MemoryLocation("UnderLakeTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xC - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation BikanelTransition                 = new MemoryLocation("BikanelTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x42 - 0x6 - 0xC - 0x18) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation HomeTransition                    = new MemoryLocation("HomeTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x2D - 0x6 - 0x9 - 0xA) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation EvraeTransition                   = new MemoryLocation("EvraeTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x26 - 0x2 - 0x6 - 0x1) + 0x12C + 0x18 });
+    public static MemoryLocation EvraeAirshipTransition            = new MemoryLocation("EvraeAirshipTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x20 - 0x3 - 0x5 - 0x5) + 0x12C + 0x18 });
+    public static MemoryLocation GuardsTransition                  = new MemoryLocation("GuardsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x3C - 0x6 - 0x2 - 0x5) + 0x12C + 0x4C + 0x18 - 0x11BE4 });
+    public static MemoryLocation BahamutTransition                 = new MemoryLocation("BahamutTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x27 - 0x1 - 0x2 - 0x0) + 0x12C + 0x4C + 0x18 - 0x9F1C });
+    public static MemoryLocation IsaaruTransition                  = new MemoryLocation("IsaaruTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x43 - 0xE - 0x5 - 0x17) + 0x12C + 0x4C + 0x18 + 0x1B9C});
+    public static MemoryLocation AltanaTransition                  = new MemoryLocation("AltanaTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x17 - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 + 0xB94 });
+    public static MemoryLocation NatusTransition                   = new MemoryLocation("NatusTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x4378 });
+    public static MemoryLocation DefenderXTransition               = new MemoryLocation("DefenderXTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x20 - 0x3 - 0x7 - 0x9) + 0x12C + 0x4C + 0x18 + 0x4C });
+    public static MemoryLocation RonsoTransition                   = new MemoryLocation("RonsoTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x27 - 0x5 - 0x6 - 0x2) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation FluxTransition                    = new MemoryLocation("FluxTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x15 - 0x2 - 0x6 - 0x1) + 0x12C + 0x4C + 0x18});
+    public static MemoryLocation SanctuaryTransition               = new MemoryLocation("SanctuaryTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x15 - 0x2 - 0x7 - 0x1) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation SpectralKeeperTransition          = new MemoryLocation("SpectralKeeperTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x11 - 0x0 - 0x6 - 0x0) + 0x12C + 0x4C + 0x18});
+    public static MemoryLocation SpectralKeeperTransition2         = new MemoryLocation("SpectralKeeperTransition2", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x55 - 0xF - 0x7 - 0x1E) + 0x12C + 0x4C + 0x18});
+    public static MemoryLocation YunalescaTransition               = new MemoryLocation("YunalescaTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x1 - 0x7 - 0x2) + 0x12C + 0x4C + 0x18});
+    public static MemoryLocation FinsTransition                    = new MemoryLocation("FinsTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x12 - 0x0 - 0x2 - 0x0) + 0x12C + 0x18 });
+    public static MemoryLocation FinsAirshipTransition             = new MemoryLocation("FinsAirshipTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1F - 0x3 - 0x5 - 0x5) + 0x12C + 0x18 });
+    public static MemoryLocation SinCoreTransition                 = new MemoryLocation("SinCoreTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0xF - 0x0 - 0x0 - 0x0) + 0x12C + 0x4C + 0x18 - 0x3904 });
+    public static MemoryLocation OverdriveSinTransition            = new MemoryLocation("OverdriveSinTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x22 - 0x2 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 - 0x4C });
+    public static MemoryLocation OmnisTransition                   = new MemoryLocation("OmnisTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x18 - 0x2 - 0x3 - 0x1) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation BFATransition                     = new MemoryLocation("BFATransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1B - 0x0 - 0x5 - 0x1) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation AeonTransition                    = new MemoryLocation("AeonTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 });
+    public static MemoryLocation YuYevonTransition                 = new MemoryLocation("YuYevonTransition", 0xF25B60 + 0x1C, new int[] { 0xB58 * (0x1D - 0x0 - 0x3 - 0x0) + 0x12C + 0x4C + 0x18 + 0x4C });
 
     public static MemoryLocation YojimboFaythTransition = new MemoryLocation("YojimboFaythTransition", 0xF25B60 + 0x1C, new int[] { 0x9508 });
 
@@ -266,38 +276,19 @@ static class MemoryLocations
 
     // Battle Rewards
     public static MemoryLocation GilBattleRewards       = new MemoryLocation("GilBattleRewards", 0x1F10F6C);
+    public static MemoryLocation GilRewardCounter       = new MemoryLocation("GilRewardCounter", 0x1469ED4);
     public static MemoryLocation BattleRewardItemCount  = new MemoryLocation("BattleRewardItemCount", 0x1F10F70);
     public static MemoryLocation BattleRewardItem1      = new MemoryLocation("BattleRewardItem1", 0x1F10F74);
-    public static MemoryLocation BattleRewardItem2      = new MemoryLocation("BattleRewardItem2", 0x1F10F76);
-    public static MemoryLocation BattleRewardItem3      = new MemoryLocation("BattleRewardItem3", 0x1F10F78);
-    public static MemoryLocation BattleRewardItem4      = new MemoryLocation("BattleRewardItem4", 0x1F10F7A);
-    public static MemoryLocation BattleRewardItem5      = new MemoryLocation("BattleRewardItem5", 0x1F10F7C);
-    public static MemoryLocation BattleRewardItem6      = new MemoryLocation("BattleRewardItem6", 0x1F10F7E);
-    public static MemoryLocation BattleRewardItem7      = new MemoryLocation("BattleRewardItem7", 0x1F10F80);
-    public static MemoryLocation BattleRewardItem8      = new MemoryLocation("BattleRewardItem8", 0x1F10F82);
     public static MemoryLocation BattleRewardItemQty1   = new MemoryLocation("BattleRewardItemQty1", 0x1F10F84);
-    public static MemoryLocation BattleRewardItemQty2   = new MemoryLocation("BattleRewardItemQty2", 0x1F10F85);
-    public static MemoryLocation BattleRewardItemQty3   = new MemoryLocation("BattleRewardItemQty3", 0x1F10F86);
-    public static MemoryLocation BattleRewardItemQty4   = new MemoryLocation("BattleRewardItemQty4", 0x1F10F87);
-    public static MemoryLocation BattleRewardItemQty5   = new MemoryLocation("BattleRewardItemQty5", 0x1F10F88);
-    public static MemoryLocation BattleRewardItemQty6   = new MemoryLocation("BattleRewardItemQty6", 0x1F10F89);
-    public static MemoryLocation BattleRewardItemQty7   = new MemoryLocation("BattleRewardItemQty7", 0x1F10F8A);
-    public static MemoryLocation BattleRewardItemQty8   = new MemoryLocation("BattleRewardItemQty8", 0x1F10F8B);
     public static MemoryLocation BattleRewardEquipCount = new MemoryLocation("BattleRewardItemCount", 0x1F10F72);
     public static MemoryLocation BattleRewardEquip1     = new MemoryLocation("BattleRewardEquip1", 0x1F10F9E);
-    public static MemoryLocation BattleRewardEquip2     = new MemoryLocation("BattleRewardEquip2", 0x1F10FC0);
-    public static MemoryLocation BattleRewardEquip3     = new MemoryLocation("BattleRewardEquip3", 0x1F10FE2);
-    public static MemoryLocation BattleRewardEquip4     = new MemoryLocation("BattleRewardEquip4", 0x1F11004);
-    public static MemoryLocation BattleRewardEquip5     = new MemoryLocation("BattleRewardEquip5", 0x1F11026);
-    public static MemoryLocation BattleRewardEquip6     = new MemoryLocation("BattleRewardEquip6", 0x1F11048);
-    public static MemoryLocation BattleRewardEquip7     = new MemoryLocation("BattleRewardEquip7", 0x1F1106A);
-    public static MemoryLocation BattleRewardEquip8     = new MemoryLocation("BattleRewardEquip8", 0x1F1108C);
 
     // Items
     public static MemoryLocation ItemsStart    = new MemoryLocation("ItemsStart", 0xD3095C);
     public static MemoryLocation ItemsQtyStart = new MemoryLocation("ItemsQtyStart", 0xD30B5C);
 
     // AP
+    public static MemoryLocation CharacterAPRewards = new MemoryLocation("CharacterAPRewards", 0x1F10F20);
     public static MemoryLocation CharacterAPFlags = new MemoryLocation("CharacterAPFlags", 0x1F10EC4);
 
     // Menu Trigger
@@ -321,6 +312,11 @@ static class MemoryLocations
 
     // Actor Model Positions
     public static MemoryLocation ActorArrayLength = new MemoryLocation("ActorArrayLength", 0x1FC44E0);
+
+    // Autosave Values
+    public static MemoryLocation AutosaveTrigger            = new MemoryLocation("AutosaveTrigger", 0x1FCBEBC);
+    public static MemoryLocation SupressAutosaveOnForceLoad = new MemoryLocation("SupressAutosaveOnForceLoad", 0x858E40);
+    public static MemoryLocation SupressAutosaveCounter     = new MemoryLocation("SupressAutosaveCounter", 0xF30800);
 
     // RNGmod
     public static MemoryLocation RNGArrayOpBytes = new MemoryLocation("RNGArrayOpBytes", 0x398903);

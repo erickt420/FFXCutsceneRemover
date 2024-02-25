@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 
 using FFXCutsceneRemover.ComponentUtil;
+using FFXCutsceneRemover.Logging;
 
 namespace FFXCutsceneRemover;
 
@@ -36,6 +37,9 @@ class FarplaneTransition : Transition
             IntPtr EquipMenu = new IntPtr(baseAddress + 0xD30F2C); // Address of beginning of Equipment menu
             bool foundBrotherhood = false;
             var brotherhood = new byte[2] { 0x1, 0x50 }; // Brotherhood name identifier in hex
+            
+            int weaponBinaryAddress = process.ReadValue<int>(baseAddress + 0xD35FF4);
+            byte[] brotherhoodAbilityBytes = process.ReadBytes(weaponBinaryAddress + 0x2C, 8);
 
             while (!foundBrotherhood)
             {
@@ -50,15 +54,15 @@ class FarplaneTransition : Transition
 
                     // Second slot for Brotherhood, +10% Strength
                     IntPtr slot2 = IntPtr.Add(EquipMenu, 16);
-                    process.WriteBytes(slot2, new byte[2] { 0x64, 0x80 });
+                    process.WriteBytes(slot2, new byte[2] { brotherhoodAbilityBytes[2], brotherhoodAbilityBytes[3] });
 
                     // Third slot for Brotherhood, Waterstrike
                     IntPtr slot3 = IntPtr.Add(EquipMenu, 18);
-                    process.WriteBytes(slot3, new byte[2] { 0x2A, 0x80 });
+                    process.WriteBytes(slot3, new byte[2] { brotherhoodAbilityBytes[4], brotherhoodAbilityBytes[5] });
 
                     // Fourth slot for Brotherhood, Sensor
                     IntPtr slot4 = IntPtr.Add(EquipMenu, 20);
-                    process.WriteBytes(slot4, new byte[2] { 0x00, 0x80 });
+                    process.WriteBytes(slot4, new byte[2] { brotherhoodAbilityBytes[6], brotherhoodAbilityBytes[7] });
 
                     // Finally skip the Farplane scenes
                     foundBrotherhood = true;

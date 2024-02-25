@@ -41,6 +41,7 @@ class CutsceneRemover
             }
         }
 
+        // Reset multi-stage transitions when on the main menu
         if (MemoryWatchers.RoomNumber.Current == 23)
         {
             foreach (var transition in standardTransitions)
@@ -78,22 +79,7 @@ class CutsceneRemover
             PostBossFightTransition = null;
         }
 
-        // SPECIAL CHECKS
-        /*
-            * A GameState object is created in order to verify the current state of the game
-            * based on the inputs provided. Inputs not provided will be ignored.
-            * Once the CheckState() returns true, indicating the game is in the state we want,
-            * then a Transition object is created with inputs required to execute the transition.
-            * The Execute() method causes the transition to write the updated values to memory.
-            *
-            * IF YOU ONLY NEED TO CHECK IF ADDRESSES ARE CERTAIN VALUES (ALMOST ALL CASES), THEN ADD YOUR
-            * TRANSITION INTO THE 'Resources\Transitions.cs' FILE.
-            *
-            * Rarely there are conditions where the check we want is not equality. In that case you can write your
-            * own condition. An example is below.
-            * 
-            * Make sure to call ExecuteTransition() instead of calling the Transition.Execute() method directly.
-            */
+
         // Soft reset by holding L1 R1 L2 R2 + Start - Disabled in battle because game crashes
 #if DEBUG
         if (MemoryWatchers.Input.Current == 2063 && MemoryWatchers.BattleState.Current != 10)
@@ -101,38 +87,6 @@ class CutsceneRemover
             ExecuteTransition(new Transition { RoomNumber = 23, BattleState = 778, Description = "Soft reset by holding L1 R1 L2 R2 + Start", Repeatable = true });
         }
 #endif
-
-        // Custom Check - Airship
-        if (MemoryWatchers.RoomNumber.Current == 194 && MemoryWatchers.Storyline.Current == 2000 && MemoryWatchers.State.Current == 0 && MemoryWatchers.XCoordinate.Current > 300f)
-        {
-            ExecuteTransition(new Transition {RoomNumber = 194, Storyline = 2020, SpawnPoint = 1, PositionTidusAfterLoad = true, Target_x = -242.667f, Target_y = 12.514f, Target_z = 398.095f, Target_rot = -1.659f, Target_var1 = 1463, Description = "Zoom in on Bevelle"});
-        }
-
-        // Custom Check - Djose
-        if (MemoryWatchers.RoomNumber.Current == 161 && MemoryWatchers.Storyline.Current == 1010 && MemoryWatchers.MovementLock.Current == 48 && MemoryWatchers.YCoordinate.Current > 10.0f)
-        {
-            ExecuteTransition(new Transition { RoomNumber = 82, Storyline = 1015, SpawnPoint = 2, Description = "Tidus wakes Yuna up"});
-        }
-
-        // Custom Check - Zanarkand 
-        if (MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.FangirlsOrKidsSkip.Current == 3)
-        {
-            if (MemoryWatchers.TidusXCoordinate.Current < 5.0f && MemoryWatchers.TidusZCoordinate.Current < 8.0f && MemoryWatchers.TidusZCoordinate.Current > -8.0f)
-            {
-                ExecuteTransition(new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans" });
-            }
-        }
-        /*/
-        if (!tidusReset && !InBossFight && MemoryWatchers.Storyline.Current != 2080 && MemoryWatchers.FrameCounterFromLoad.Current >= 20)
-        {
-            new Transition { ForceLoad = false, TargetActorIDs = new short[] { 1 }, Target_var1 = -1 , ConsoleOutput = false}.Execute();
-            tidusReset = true;
-        }
-        else if (tidusReset && (MemoryWatchers.FrameCounterFromLoad.Current < 20))
-        {
-            tidusReset = false;
-        }
-        //*/
     }
 
     // Save the previous transition so that we don't execute the same transition multiple times in a row.

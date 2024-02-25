@@ -54,7 +54,7 @@ class NatusTransition : Transition
 
                 Stage += 1;
             }
-            else if (MemoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0xE2FD) && MemoryWatchers.HpEnemyA.Current < 36000 && MemoryWatchers.HpEnemyA.Old == 36000 && Stage == 2)
+            else if (MemoryWatchers.NatusTransition.Current == (BaseCutsceneValue + 0xE2FD) && MemoryWatchers.BattleState2.Current == 22 && Stage == 2)
             {
                 WriteValue<int>(MemoryWatchers.NatusTransition, BaseCutsceneValue + 0xE395);
                 Stage += 1;
