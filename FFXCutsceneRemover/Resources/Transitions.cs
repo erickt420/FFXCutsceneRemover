@@ -123,7 +123,7 @@ static class Transitions
             new Transition {FangirlsOrKidsSkip = 3, PositionTidusAfterLoad = true, Target_x = 15.0f, Target_y = -14.960f, Target_z = -8.0f, Target_var1 = 123, Description = "Fangirls"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 368 && MemoryWatchers.Storyline.Current == 3 && MemoryWatchers.FangirlsOrKidsSkip.Current == 3 && MemoryWatchers.TidusXCoordinate.Current < 5.0f && MemoryWatchers.TidusZCoordinate.Current < 8.0f && MemoryWatchers.TidusZCoordinate.Current > -8.0f; },
-            new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans"} }, // Removed and replaced with custom check in cutsceneremover.cs
+            new Transition { RoomNumber = 376, Storyline = 4, SpawnPoint = 0, Description = "Tidus leaves fans"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 376 && MemoryWatchers.Storyline.Current == 4; },
             new Transition { RoomNumber = 376, Storyline = 5, SpawnPoint = 0, Description = "Tidus looks at Jecht sign"} },
@@ -251,7 +251,7 @@ static class Transitions
             new Transition { ForceLoad = false, PositionTidusAfterLoad = true, Target_x = -184.754f, Target_y = 26.5f, Target_z = -46.699f, Target_rot = -1.821f, Target_var1 = 393, ConsoleOutput = false, Description = "Tidus wakes up in the sea - Reposition"} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 41 && MemoryWatchers.Storyline.Current == 119; },
-            new LagoonTransition {ForceLoad = false, Description = "Lagoon", Suspendable = false, Repeatable = true} }, // Causes menu to be unable to open and crashing
+            new LagoonTransition {ForceLoad = false, Description = "Lagoon", Suspendable = false, Repeatable = true} },
         {
             () => { return MemoryWatchers.RoomNumber.Current == 41 && MemoryWatchers.Storyline.Current == 119 && MemoryWatchers.CutsceneAlt.Current == 73; },
             new Transition { RoomNumber = 67, Storyline = 124, Description = "Wakka asks Tidus to join his team"} },
