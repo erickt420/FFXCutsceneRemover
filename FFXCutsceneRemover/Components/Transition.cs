@@ -338,7 +338,7 @@ public class Transition
         WriteValue(MemoryWatchers.CutsceneTiming, CutsceneTiming);
         WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicID);
         WriteValue(MemoryWatchers.ToBeDeletedMagicID, ToBeDeletedMagicID);
-        WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicHandle);
+        WriteValue(MemoryWatchers.CurrentMagicHandle, CurrentMagicHandle);
         WriteValue(MemoryWatchers.ToBeDeletedMagicHandle, ToBeDeletedMagicHandle);
         WriteValue(MemoryWatchers.EffectPointer, EffectPointer);
         WriteValue(MemoryWatchers.EffectStatusFlag, EffectStatusFlag);
