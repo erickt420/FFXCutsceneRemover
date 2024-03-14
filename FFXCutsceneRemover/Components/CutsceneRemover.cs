@@ -69,6 +69,7 @@ class CutsceneRemover
         else if (InBossFight && MemoryWatchers.RoomNumber.Current == 23)
         {
             DiagnosticLog.Information("Main menu detected. Exiting boss loop (This means you died or soft-reset)");
+            new Transition { EncounterMapID = 0, EncounterFormationID1 = 0, EncounterFormationID2 = 0, Description = "Clear boss battle memory" }.Execute();
             InBossFight = false;
         }
         else if (MemoryWatchers.Menu.Current == 0 && MemoryWatchers.Menu.Old == 1)
