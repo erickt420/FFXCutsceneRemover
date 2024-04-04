@@ -548,6 +548,7 @@ public class Transition
                 MemoryWatchers.FrameCounterFromLoad.Update(process);
             }
             process.Suspend();
+            byte originalEncountersActiveFlag = MemoryWatchers.EncountersActiveFlag.Current;
             WriteValue<byte>(MemoryWatchers.EncountersActiveFlag, 0);
             SetActorPosition(1, Target_x, Target_y, Target_z, Target_rot, Target_var1);
             SetActorPosition(101, Target_x, Target_y, Target_z, Target_rot, Target_var1); // In Besaid Temple Tidus is ID 101 for some reason, also some other locations.
@@ -567,7 +568,7 @@ public class Transition
                 WriteValue<float>(MemoryWatchers.TotalDistance, 0.0f);
                 WriteValue<float>(MemoryWatchers.CycleDistance, 0.0f);
             }
-            WriteValue<byte>(MemoryWatchers.EncountersActiveFlag, 1);
+            WriteValue<byte>(MemoryWatchers.EncountersActiveFlag, originalEncountersActiveFlag);
             process.Resume();
         }
         else
