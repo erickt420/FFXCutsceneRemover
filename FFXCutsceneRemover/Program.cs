@@ -72,7 +72,7 @@ class Program
         if (args.Length > 0) DiagnosticLog.Information($"!!! LAUNCHED WITH COMMAND-LINE OPTIONS: {string.Join(' ', args)} !!!");
 
         Option<bool?> optCsrOn           = new Option<bool?>("--csr", "Enable CSR? [Y/N]");
-        Option<bool?> optRngOn           = new Option<bool?>("--rngfix", "Enable RNGfix? [Y/N]");
+        Option<bool?> optRngOn           = new Option<bool?>("--truerng", "Enable True RNG? [Y/N]");
         Option<int?>  optMtSleepInterval = new Option<int?>("--mt_sleep_interval", "Specify the main thread sleep interval. [ms]");
 
         RootCommand rootCmd = new RootCommand("Launches the FFX Cutscene Remover.")
