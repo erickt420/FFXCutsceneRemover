@@ -8,7 +8,7 @@
 
 	<!-- ADDITIONAL PROPERTIES -->
 	<PropertyGroup>
-		<Version>1.5.3</Version>
+		<Version>1.5.4</Version>
 		<RepositoryUrl>https://github.com/erickt420/FFXCutsceneRemover</RepositoryUrl>
 	</PropertyGroup>
 	
