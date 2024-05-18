@@ -6,7 +6,7 @@ using FFXCutsceneRemover.ComponentUtil;
 using FFXCutsceneRemover.Logging;
 
 /*
- * Main loops for the Rngfix Mod.
+ * Main loops for the True RNG Mod.
  */
 namespace FFXCutsceneRemover;
 
@@ -25,7 +25,7 @@ class RNGMod
         {
             if (MemoryWatchers.RoomNumber.Current == 23)
             {
-                new Transition { ForceLoad = false, RNGArrayOpBytes = new byte[] { 0x31, 0xD2, 0x90 } , Description = "RNG patch applied!" }.Execute();
+                new Transition { ForceLoad = false, RNGArrayOpBytes = new byte[] { 0x31, 0xD2, 0x90 } , Description = "True RNG patch applied!" }.Execute();
                 rngPatched = true;
             }
         }

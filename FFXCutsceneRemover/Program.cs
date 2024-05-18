@@ -63,7 +63,7 @@ class Program
     // Cutscene Remover Version Number, 0x30 - 0x39 = 0 - 9, 0x48 = decimal point
     private const int majorID = 1;
     private const int minorID = 5;
-    private const int patchID = 3;
+    private const int patchID = 4;
     private static List<(string, byte)> startGameText;
 
     static void Main(string[] args)
@@ -72,7 +72,7 @@ class Program
         if (args.Length > 0) DiagnosticLog.Information($"!!! LAUNCHED WITH COMMAND-LINE OPTIONS: {string.Join(' ', args)} !!!");
 
         Option<bool?> optCsrOn           = new Option<bool?>("--csr", "Enable CSR? [Y/N]");
-        Option<bool?> optRngOn           = new Option<bool?>("--rngfix", "Enable RNGfix? [Y/N]");
+        Option<bool?> optRngOn           = new Option<bool?>("--truerng", "Enable True RNG? [Y/N]");
         Option<int?>  optMtSleepInterval = new Option<int?>("--mt_sleep_interval", "Specify the main thread sleep interval. [ms]");
 
         RootCommand rootCmd = new RootCommand("Launches the FFX Cutscene Remover.")

@@ -28,6 +28,7 @@ public class Transition
     public bool PositionPartyOffScreen = false;
     public bool PositionTidusAfterLoad = false;
     public bool KeepEncounterThreatAfterLoad = false;
+    public int AddOverdrive = 0;
     public string Description = null;
     public int BaseCutsceneValue = 0;
     public int BaseCutsceneValue2 = 0;
@@ -528,7 +529,12 @@ public class Transition
         if (!(AddItemsToInventory is null))
         {
             AddItems(AddItemsToInventory);
-        }    
+        }
+
+        if (AddOverdrive > 0)
+        {
+            WriteValue<byte>(MemoryWatchers.AuronOverdrives, (byte)(MemoryWatchers.AuronOverdrives.Current | AddOverdrive));
+        }
 
         UpdateFormation(Formation);
 
