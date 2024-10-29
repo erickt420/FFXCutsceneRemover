@@ -14,10 +14,20 @@ If you encounter any bugs or have any questions, please open an issue on GitHub 
 
 2. Launch FFXCutsceneRemove.exe.
 
-3. Launch Final Fantasy X.
+3. Type "Y" and press Enter to enable Cutscene Remover.
+
+4. Type "Y" or "N" to and press Enter Enable or Disable True RNG (read below for details).
+
+5. Launch Final Fantasy X.
 
 The order in which you launch the mod and the game does not matter.
 You do not need to start a new game in order to gain the effects of the mod, however, if you start from a save file you may find that it takes a while before the cutscenes start skipping.
+
+### True RNG:
+
+The True RNG setting used to make RNG manipulation impossible.
+For speedruns, it is required to use this setting to submit to the True RNG category.
+For normal gameplay, using this setting will make no perceivable difference.
 
 ### Arguments:
 You can use multiple arguments by separating them with a space.
