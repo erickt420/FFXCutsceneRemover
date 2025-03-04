@@ -383,11 +383,6 @@ class BreakTransition : Transition
 
             messageBoxEndNew[1] = messageBoxStart[1] + newMessageBoxLength[1] + 1;
 
-            //DiagnosticLog.Information($"Message Box Start: {messageBoxStart}");
-            //DiagnosticLog.Information($"Message Box End: {messageBoxEndOriginal}");
-            //DiagnosticLog.Information($"Message Box New Length: {newMessageBoxLength}");
-            //DiagnosticLog.Information($"Message Box End New: {messageBoxEndOriginal.ToString("X")}");
-
             originalMessageNumBytes1 = messageBoxEndOriginal[0] - messageBoxStart[0] + 1;
 
             for (int i = originalMessageNumBytes1; i > 0; i--)
@@ -553,7 +548,7 @@ class BreakTransition : Transition
             
             // Update body data with message box new bytes
 
-            for (int i = 0; i < Math.Min(modDialogueBytes.Count, originalScriptLength); i++)
+            for (int i = 0; i < Math.Min(modDialogueBytes.Count, originalScriptLength - messageBoxStart[0]); i++)
             {
                 try
                 {
@@ -569,11 +564,6 @@ class BreakTransition : Transition
             timerMessageLength += 2; // Add 2 for new line characters
             originalMessageLengthChange = originalMessageNumBytesToKeep1 - originalMessageNumBytes1 + continueRunLength + 1 + 4 + 1; // Add one for full stop, 4 for colour change and 1 for null termination
             totalMessageLengthChange = infoMessageLength + 2 * timerMessageLength + originalMessageLengthChange;
-
-            DiagnosticLog.Information($"originalMessageNumBytesToKeep1: {originalMessageNumBytesToKeep1}");
-            DiagnosticLog.Information($"originalMessageNumBytes1: {originalMessageNumBytes1}");
-            DiagnosticLog.Information($"originalMessageLengthChange: {originalMessageLengthChange}");
-            DiagnosticLog.Information($"totalMessageLengthChange: {totalMessageLengthChange}");
 
             // Skip the first message box at i = 0 because that message box doesn't change start point
             // Update the start positions for all other message boxes in the binary file
