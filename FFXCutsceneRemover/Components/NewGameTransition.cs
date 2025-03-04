@@ -25,7 +25,21 @@ class NewGameTransition : Transition
         {'8', (null ,0x38)},
         {'9', (null ,0x39)},
         {' ', (null, 0x3A)},
+        {'&', (null, 0x40)},
+        //{'X', (null, 0x41)}, // Multiply Sign
+        {'(', (null, 0x42)},
+        {')', (null, 0x43)},
+        {'*', (null, 0x44)},
+        {'+', (null, 0x45)},
+        {',', (null, 0x46)},
+        {'-', (null, 0x47)},
         {'.', (null, 0x48)},
+        {'/', (null, 0x49)},
+        {':', (null, 0x4A)},
+        {';', (null, 0x4B)},
+        {'<', (null, 0x4C)},
+        {'=', (null, 0x4D)},
+        {'>', (null, 0x4E)},
         {'?', (null, 0x4F)},
         {'A', (null, 0x50)},
         {'B', (null, 0x51)},
@@ -327,6 +341,11 @@ class NewGameTransition : Transition
             {
                 break;
             }
+            else if (dialogueBoxBytes[i] == 0x07)
+            {
+                arrangedYesNoBytes.Insert(0, dialogueBoxBytes[i]);
+                arrangedYesNoBytes[1] = 0x55;
+            }
             else
             {
                 arrangedYesNoBytes.Insert(0,dialogueBoxBytes[i]);
@@ -346,6 +365,11 @@ class NewGameTransition : Transition
             if (newLineCount == 2)
             {
                 break;
+            }
+            else if (dialogueBoxBytes[i] == 0x07)
+            {
+                originalYesNoBytes.Insert(0, dialogueBoxBytes[i]);
+                originalYesNoBytes[1] = 0x55;
             }
             else
             {

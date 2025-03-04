@@ -99,6 +99,7 @@ public class Transition
     public float? TidusRotation = null;
     public byte[] DialogueFile = null;
     public byte? CutsceneTiming = null;
+    public byte? IsLoading = null;
 
     // Magic File
     public int? CurrentMagicID = null;
@@ -272,6 +273,8 @@ public class Transition
     public byte? SupressAutosaveOnForceLoad = null;
     public byte? SupressAutosaveCounter = null;
 
+    public byte? LucaMusicSpheresUnlocked = null;
+
     public byte[] RNGArrayOpBytes = null;
 
     // Bitmask Addition
@@ -337,6 +340,7 @@ public class Transition
         WriteValue(MemoryWatchers.TidusRotation, TidusRotation);
         WriteBytes(MemoryWatchers.DialogueFile, DialogueFile);
         WriteValue(MemoryWatchers.CutsceneTiming, CutsceneTiming);
+        WriteValue(MemoryWatchers.IsLoading, IsLoading);
         WriteValue(MemoryWatchers.CurrentMagicID, CurrentMagicID);
         WriteValue(MemoryWatchers.ToBeDeletedMagicID, ToBeDeletedMagicID);
         WriteValue(MemoryWatchers.CurrentMagicHandle, CurrentMagicHandle);
@@ -487,6 +491,8 @@ public class Transition
         WriteValue(MemoryWatchers.AutosaveTrigger, AutosaveTrigger);
         WriteValue(MemoryWatchers.SupressAutosaveOnForceLoad, SupressAutosaveOnForceLoad);
         WriteValue(MemoryWatchers.SupressAutosaveCounter, SupressAutosaveCounter);
+
+        WriteValue(MemoryWatchers.LucaMusicSpheresUnlocked, LucaMusicSpheresUnlocked);
 
         WriteBytes(MemoryWatchers.RNGArrayOpBytes, RNGArrayOpBytes);
 

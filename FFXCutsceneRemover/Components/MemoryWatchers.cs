@@ -67,6 +67,7 @@ public static class MemoryWatchers
     public static MemoryWatcher<float> TidusRotation;
     public static MemoryWatcher<byte> DialogueFile;
     public static MemoryWatcher<byte> CutsceneTiming;
+    public static MemoryWatcher<byte> IsLoading;
     public static MemoryWatcher<int> CurrentMagicID;
     public static MemoryWatcher<int> ToBeDeletedMagicID;
     public static MemoryWatcher<int> CurrentMagicHandle;
@@ -304,6 +305,8 @@ public static class MemoryWatchers
     public static MemoryWatcher<byte> SupressAutosaveOnForceLoad;
     public static MemoryWatcher<byte> SupressAutosaveCounter;
 
+    public static MemoryWatcher<byte> LucaMusicSpheresUnlocked;
+
     public static MemoryWatcher<byte> RNGArrayOpBytes;
 
     public static void Initialize(Process process)
@@ -361,6 +364,7 @@ public static class MemoryWatchers
         TidusRotation = GetMemoryWatcher<float>(MemoryLocations.TidusRotation);
         DialogueFile = GetMemoryWatcher<byte>(MemoryLocations.DialogueFile);
         CutsceneTiming = GetMemoryWatcher<byte>(MemoryLocations.CutsceneTiming);
+        IsLoading = GetMemoryWatcher<byte>(MemoryLocations.IsLoading);
         CurrentMagicID = GetMemoryWatcher<int>(MemoryLocations.CurrentMagicID);
         ToBeDeletedMagicID = GetMemoryWatcher<int>(MemoryLocations.ToBeDeletedMagicID);
         CurrentMagicHandle = GetMemoryWatcher<int>(MemoryLocations.CurrentMagicHandle);
@@ -595,6 +599,9 @@ public static class MemoryWatchers
         AutosaveTrigger = GetMemoryWatcher<byte>(MemoryLocations.AutosaveTrigger);
         SupressAutosaveOnForceLoad = GetMemoryWatcher<byte>(MemoryLocations.SupressAutosaveOnForceLoad);
         SupressAutosaveCounter = GetMemoryWatcher<byte>(MemoryLocations.SupressAutosaveCounter);
+
+        // Break Specific Values
+        LucaMusicSpheresUnlocked = GetMemoryWatcher<byte>(MemoryLocations.LucaMusicSpheresUnlocked);
 
         // RNGMod
         RNGArrayOpBytes = GetMemoryWatcher<byte>(MemoryLocations.RNGArrayOpBytes);

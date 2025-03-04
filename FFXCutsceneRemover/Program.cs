@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Binding;
+using System.CommandLine.Parsing;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -14,14 +15,17 @@ namespace FFXCutsceneRemover;
 internal sealed class CsrConfigBinder : BinderBase<CsrConfig>
 {
     private readonly Option<bool?> _optCsrOn;
+    private readonly Option<bool?> _optCsrBreakOn;
     private readonly Option<bool?> _optRngOn;
     private readonly Option<int?> _optMtSleepInterval;
 
     public CsrConfigBinder(Option<bool?> optCsrOn,
+                           Option<bool?> optCsrBreakOn,
                            Option<bool?> optRngOn,
                            Option<int?> optMtSleepInterval)
     {
         _optCsrOn = optCsrOn;
+        _optCsrBreakOn = optCsrBreakOn;
         _optRngOn = optRngOn;
         _optMtSleepInterval = optMtSleepInterval;
     }
@@ -34,23 +38,26 @@ internal sealed class CsrConfigBinder : BinderBase<CsrConfig>
 
     protected override CsrConfig GetBoundValue(BindingContext bindingContext)
     {
-        return new CsrConfig
+        var csr_config = new CsrConfig
         {
             CsrOn = bindingContext.ParseResult.GetValueForOption(_optCsrOn) ?? ResolveMandatoryBoolArg(_optCsrOn),
             RngOn = bindingContext.ParseResult.GetValueForOption(_optRngOn) ?? ResolveMandatoryBoolArg(_optRngOn),
             MtSleepInterval = bindingContext.ParseResult.GetValueForOption(_optMtSleepInterval) ?? 16,
         };
+        csr_config.CsrBreakOn = csr_config.CsrOn && ResolveMandatoryBoolArg(_optCsrBreakOn);
+        return csr_config;
     }
 }
 
 internal sealed record CsrConfig
 {
     public bool CsrOn { get; init; }
+    public bool CsrBreakOn { get; set; }
     public bool RngOn { get; init; }
     public int  MtSleepInterval { get; init; }
 };
 
-class Program
+public class Program
 {
     private static CsrConfig csrConfig;
     private static CutsceneRemover cutsceneRemover = null;
@@ -60,10 +67,12 @@ class Program
 
     private static bool newGameMenuUpdated = false;
 
+    private static readonly BreakTransition BreakTransition = new BreakTransition { ForceLoad = false, Description = "Break Setup", ConsoleOutput = false, Suspendable = false, Repeatable = true };
+
     // Cutscene Remover Version Number, 0x30 - 0x39 = 0 - 9, 0x48 = decimal point
     private const int majorID = 1;
-    private const int minorID = 5;
-    private const int patchID = 4;
+    private const int minorID = 6;
+    private const int patchID = 0;
     private static List<(string, byte)> startGameText;
 
     static void Main(string[] args)
@@ -72,17 +81,19 @@ class Program
         if (args.Length > 0) DiagnosticLog.Information($"!!! LAUNCHED WITH COMMAND-LINE OPTIONS: {string.Join(' ', args)} !!!");
 
         Option<bool?> optCsrOn           = new Option<bool?>("--csr", "Enable CSR? [Y/N]");
+        Option<bool?> optCsrBreakOn      = new Option<bool?>("--csrbreak", "Enable break for CSR? [Y/N]");
         Option<bool?> optRngOn           = new Option<bool?>("--truerng", "Enable True RNG? [Y/N]");
         Option<int?>  optMtSleepInterval = new Option<int?>("--mt_sleep_interval", "Specify the main thread sleep interval. [ms]");
 
         RootCommand rootCmd = new RootCommand("Launches the FFX Cutscene Remover.")
         {
             optCsrOn,
+            optCsrBreakOn,
             optRngOn,
             optMtSleepInterval
         };
 
-        rootCmd.SetHandler(MainLoop, new CsrConfigBinder(optCsrOn, optRngOn, optMtSleepInterval));
+        rootCmd.SetHandler(MainLoop, new CsrConfigBinder(optCsrOn, optCsrBreakOn, optRngOn, optMtSleepInterval));
 
         rootCmd.Invoke(args);
         return;
@@ -107,17 +118,26 @@ class Program
             {
                 cutsceneRemover = new CutsceneRemover(csrConfig.MtSleepInterval);
                 cutsceneRemover.Game = Game;
-                startGameText.Add(($"[Cutscene Remover v{majorID}.{minorID}.{patchID}]", 0x41));
+                startGameText.Add(($"[Cutscene Remover v{majorID}.{minorID}.{patchID}]", 0x49));
+            }
+
+            if (csrConfig.CsrBreakOn)
+            {
+                startGameText.Add(($"[Cutscene Remover Break Enabled]", 0x00));
+            }
+            else
+            {
+                startGameText.Add(($"[Cutscene Remover Break Disabled]", 0x00));
             }
 
             if (csrConfig.RngOn)
             {
                 rngMod = new RNGMod();
                 rngMod.Game = Game;
-                startGameText.Add(($"[RNG Fix Mod Enabled]", 0x45));
+                startGameText.Add(($"[RNG Fix Mod Enabled]", 0x4b));
             }
 
-            startGameText.Add(($"Start Game?", 0x49));
+            startGameText.Add(($"Start Game?", 0x50));
 
             MemoryWatchers.Initialize(Game);
 
@@ -135,6 +155,29 @@ class Program
                 if (newGameMenuUpdated && MemoryWatchers.RoomNumber.Current == 23)
                 {
                     newGameMenuUpdated = false;
+                }
+
+                if (csrConfig.CsrBreakOn && MemoryWatchers.ForceLoad.Current == 0)
+                {
+                    if (MemoryWatchers.RoomNumber.Current == 140 && MemoryWatchers.Storyline.Current == 1300)
+                    {
+                        new Transition { RoomNumber = 184, SpawnPoint = 0, Description = "Break" }.Execute();
+                    }
+                    else if (MemoryWatchers.RoomNumber.Current == 184 && MemoryWatchers.Storyline.Current == 1300)
+                    {
+                        BreakTransition.Execute();
+                    }
+                    else if (MemoryWatchers.RoomNumber.Current == 158 && MemoryWatchers.Storyline.Current == 1300)
+                    {
+                        new Transition { RoomNumber = 140, Storyline = 1310, SpawnPoint = 0, Description = "End of Break + Map + Rikku afraid + tutorial" }.Execute();
+                    }
+                }
+                else
+                {
+                    if (MemoryWatchers.RoomNumber.Current == 140 && MemoryWatchers.Storyline.Current == 1300)
+                    {
+                        new Transition { RoomNumber = 140, Storyline = 1310, SpawnPoint = 0, Description = "End of Break + Map + Rikku afraid + tutorial" }.Execute();
+                    }
                 }
 
                 if (csrConfig.CsrOn)

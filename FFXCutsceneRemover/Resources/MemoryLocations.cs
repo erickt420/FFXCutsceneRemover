@@ -49,16 +49,17 @@ static class MemoryLocations
     public static MemoryLocation DialogueBoxStructs  = new MemoryLocation("DialogueBoxStructs", 0x14676D0);
 
     // Deep Pointers
-    public static MemoryLocation HpEnemyA            = new MemoryLocation("HpEnemyA", 0xD34460, 0x5D0);
-    public static MemoryLocation GuadoCount          = new MemoryLocation("GuadoCount", 0xF2FF14, 0x120);
-    public static MemoryLocation NPCLastInteraction  = new MemoryLocation("NPCLastInteraction", 0xF26AE8, 0x1E8);
-    public static MemoryLocation TidusActionCount    = new MemoryLocation("TidusActionCount", 0xD334CC, 0x6DF);
-    public static MemoryLocation TidusXCoordinate    = new MemoryLocation("TidusXCoordinate", 0x1FC44E4, 0x0C);
-    public static MemoryLocation TidusYCoordinate    = new MemoryLocation("TidusYCoordinate", 0x1FC44E4, 0x10);
-    public static MemoryLocation TidusZCoordinate    = new MemoryLocation("TidusZCoordinate", 0x1FC44E4, 0x14);
-    public static MemoryLocation TidusRotation       = new MemoryLocation("TidusRotation", 0x1FC44E4, 0x168);
-    public static MemoryLocation DialogueFile        = new MemoryLocation("DialogueFile", 0xF270E8, 0x00);
-    public static MemoryLocation CutsceneTiming      = new MemoryLocation("CutsceneTiming", 0x8E9004, 0x1C);
+    public static MemoryLocation HpEnemyA               = new MemoryLocation("HpEnemyA", 0xD34460, 0x5D0);
+    public static MemoryLocation GuadoCount             = new MemoryLocation("GuadoCount", 0xF2FF14, 0x120);
+    public static MemoryLocation NPCLastInteraction     = new MemoryLocation("NPCLastInteraction", 0xF26AE8, 0x1E8);
+    public static MemoryLocation TidusActionCount       = new MemoryLocation("TidusActionCount", 0xD334CC, 0x6DF);
+    public static MemoryLocation TidusXCoordinate       = new MemoryLocation("TidusXCoordinate", 0x1FC44E4, 0x0C);
+    public static MemoryLocation TidusYCoordinate       = new MemoryLocation("TidusYCoordinate", 0x1FC44E4, 0x10);
+    public static MemoryLocation TidusZCoordinate       = new MemoryLocation("TidusZCoordinate", 0x1FC44E4, 0x14);
+    public static MemoryLocation TidusRotation          = new MemoryLocation("TidusRotation", 0x1FC44E4, 0x168);
+    public static MemoryLocation DialogueFile           = new MemoryLocation("DialogueFile", 0xF270E8, 0x00);
+    public static MemoryLocation CutsceneTiming         = new MemoryLocation("CutsceneTiming", 0x8E9004, 0x1C);
+    public static MemoryLocation IsLoading              = new MemoryLocation("IsLoading", 0x8CC898, 0x123A4);
 
     // Event File
     public static MemoryLocation EventFileStart = new MemoryLocation("EventFileStart", 0xF270B8);
@@ -317,6 +318,9 @@ static class MemoryLocations
     public static MemoryLocation AutosaveTrigger            = new MemoryLocation("AutosaveTrigger", 0x1FCBEBC);
     public static MemoryLocation SupressAutosaveOnForceLoad = new MemoryLocation("SupressAutosaveOnForceLoad", 0x858E40);
     public static MemoryLocation SupressAutosaveCounter     = new MemoryLocation("SupressAutosaveCounter", 0xF30800);
+
+    // Break Specific Values
+    public static MemoryLocation LucaMusicSpheresUnlocked = new MemoryLocation("LucaMusicSpheresUnlocked", 0xD2CDCF);
 
     // RNGmod
     public static MemoryLocation RNGArrayOpBytes = new MemoryLocation("RNGArrayOpBytes", 0x398903);

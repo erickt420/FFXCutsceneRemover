@@ -783,9 +783,6 @@ static class Transitions
         // END OF GUADOSALAM
         // START OF THUNDER PLAINS
         { 
-            () => { return MemoryWatchers.RoomNumber.Current == 140 && MemoryWatchers.Storyline.Current == 1300; }, 
-            new Transition { RoomNumber = 140, Storyline = 1310, SpawnPoint = 0, Description = "Map + Rikku afraid + tutorial"} },
-        { 
             () => { return MemoryWatchers.RoomNumber.Current == 140 && MemoryWatchers.Storyline.Current == 1310 && MemoryWatchers.ThunderPlainsFlag.Current == 0x08; },
             new Transition { RoomNumber = 256, Storyline = 1310, SpawnPoint = 0, ThunderPlainsFlag = 0x18, Description = "Rikku freaks out"} },
         { 
