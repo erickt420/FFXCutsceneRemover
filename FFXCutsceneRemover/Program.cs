@@ -33,7 +33,7 @@ internal sealed class CsrConfigBinder : BinderBase<CsrConfig>
     private static bool ResolveMandatoryBoolArg(Option<bool?> opt)
     {
         Console.WriteLine(opt.Description);
-        return Console.ReadLine().ToUpper()[0] == 'Y';
+        return Console.ReadLine()?.ToUpper().StartsWith("Y") ?? false;
     }
 
     protected override CsrConfig GetBoundValue(BindingContext bindingContext)
