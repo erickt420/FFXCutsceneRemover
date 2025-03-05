@@ -134,7 +134,7 @@ public class Program
             {
                 rngMod = new RNGMod();
                 rngMod.Game = Game;
-                startGameText.Add(($"[RNG Fix Mod Enabled]", 0x4b));
+                startGameText.Add(($"[True RNG Enabled]", 0x4b));
             }
 
             startGameText.Add(($"Start Game?", 0x50));
