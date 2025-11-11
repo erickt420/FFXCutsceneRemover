@@ -1,4 +1,6 @@
-# FFXCutsceneRemover
+# [This repository has moved. Click here for the latest changes.](https://github.com/HannibalSnekter/FFXCutsceneRemover)
+
+## FFXCutsceneRemover
 Cutscene skipping program for the Windows Steam version of Final Fantasy X HD Remaster.
 If you encounter any bugs or have any questions, please open an issue on GitHub or contact us on the [FFX Speedrun Discord](https://discord.gg/X3qXHWG).
 
@@ -10,7 +12,7 @@ If you encounter any bugs or have any questions, please open an issue on GitHub 
 
 ### Usage:
 
-1. Download the latest release from the [releases page here](https://github.com/erickt420/FFXCutsceneRemover/releases).
+1. Download the latest release from the [releases page here](https://github.com/HannibalSnekter/FFXCutsceneRemover/releases).
 
 2. Launch FFXCutsceneRemove.exe.
 
