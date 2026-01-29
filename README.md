@@ -12,7 +12,7 @@ If you encounter any bugs or have any questions, please open an issue on GitHub 
 
 ### Usage:
 
-1. Download the latest release from the [releases page here](https://github.com/HannibalSnekter/FFXCutsceneRemover/releases).
+1. Download the latest release from the [releases page here](https://github.com/HannibalSnekter/FFXSpeedrunMod/releases).
 
 2. Launch FFXCutsceneRemove.exe.
 
