@@ -1,4 +1,4 @@
-# [This repository has moved. Click here for the latest changes.](https://github.com/HannibalSnekter/FFXCutsceneRemover)
+# [This repository has moved. Click here for the latest changes.](https://github.com/HannibalSnekter/FFXSpeedrunMod)
 
 ## FFXCutsceneRemover
 Cutscene skipping program for the Windows Steam version of Final Fantasy X HD Remaster.
